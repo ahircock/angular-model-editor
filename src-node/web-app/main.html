@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Andy Page</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/modelDetails.css" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/dialog-polyfill.css" />
+    <style>
+        body { font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; }
+        .searchTable { border-style: solid; border: 1px black solid; border-collapse: separate; width: 90%; }
+        .searchTableHeader { }
+        .searchTableData { }
+        .forceListBox { margin-bottom: 10px; padding: 7px; border: solid black 2px; min-height: 300px; width: 500px; }
+        .forceListTitle { font-size: 1.5em; font-weight: bold; }
+    </style>
+</head>
+<body onload="bodyOnLoad()">
+    <h1>Model Designer</h1>
+    <div id="multiColumnSection" style="display: flex;">
+        <div id="leftColumn" style="flex:1 0 550px; ">
+            <div id="searchBox" style="display:block;">
+                <input id="searchInput" type="search" onsearch="searchInputOnSearch()">
+                <button id="modelSearchButton" type="button" onclick="modelSearchButtonOnClick();">models</button>
+                <button id="ruleSearchButton" type="button" onclick="ruleSearchButtonOnClick();">rules</button>
+            </div>
+            <div id="modelResults" style="display:none">
+                <button id="addModel" type="button" onclick="newModelOnClick();">New</button>
+                <table id="modelTable" class="searchTable">
+                    <tr class="searchTableHeader">
+                        <th style="width:150px;"></th>
+                        <th style="width:5px;">Cost</th>
+                        <th>Model Name</th>
+                    </tr>
+                </table>
+            </div>
+            <div id="ruleResults" style="display:none">
+                <button id="addSpecialRule" type="button" onclick="addSpecialRuleOnClick();">Add Special Rule</button>
+                <table id="ruleTable" class="searchTable">
+                    <tr class="searchTableHeader">
+                        <th style="width:77px;"></th>
+                        <th>ID</th>
+                        <th style="width:20%;">Rule Name</th>
+                        <th>Rule Text</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="rightColumn" style="flex:1 0 550px;">
+            <div class="forceListBox">
+                <div class="forceListTitle">Force List</div>
+                <div id="forceListButtons">
+                    <button id="printForceList" type="button" onclick="printModelsButtonOnClick();">Print</button>
+                    <button id="clearForceList" type="button" onclick="clearModelsButtonOnClick();">Clear</button>
+                </div>
+                <div id="modelList"></div>
+            </div>
+            <div id="modelDisplay"></div>
+        </div>
+    </div>
+
+    <!-- create the dialog box -->
+    <script src="javascripts/dialog-polyfill.js"></script>
+    <dialog id="outputDialog">
+        <p id="outputText"></p>
+        <button id="closeOutputDialogButton" type="button" onclick="closeOutputDialogButtonOnClick();">Close</button>
+    </dialog>
+    <script>
+        var outputDialog = document.getElementById("outputDialog");
+        dialogPolyfill.registerDialog(outputDialog);
+        function closeOutputDialogButtonOnClick() {
+            var outputDialog = document.getElementById("outputDialog");
+            outputDialog.close();
+        }
+        function displayOutputDialog(message) {
+            document.getElementById("outputText").innerHTML = message;
+            outputDialog = document.getElementById("outputDialog");
+            outputDialog.showModal();
+        }
+    </script>
+    
+    <script src="javascripts/utils.js"></script>
+    <script src="javascripts/modelAPIClient.js"></script>
+    <script src="javascripts/genModelDetailsDiv.js"></script>
+    <script src="javascripts/pageMain.js"></script>
+</body>
+</html>

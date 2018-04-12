@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Andy Page</title>
+    <style>
+        body { font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; }
+        .ruleLabel { 
+            display: inline-block; width: 125px; 
+            vertical-align: top; text-align: right;
+        }
+        .ruleTypeInput { 
+            width: 150px; margin-bottom: 5px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; 
+        }
+        .ruleCostInput { 
+            width: 50px; margin-left: 5px; margin-bottom: 5px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; 
+        }
+        .ruleAPInput { 
+            width: 50px; margin-left: 5px; margin-bottom: 5px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; 
+        }
+        .ruleNameInput { 
+            width: 750px; margin-left: 5px; margin-bottom: 5px;
+            font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; 
+        }
+        .ruleTextInput { 
+            width: 750px; height: 150px; margin-left: 5px; 
+            font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px; 
+        }
+        .buttonBox { display: block; }
+    </style>
+</head>
+<body onload="bodyOnLoad()" onkeydown="bodyOnKeyDown(event);">
+    <h1>Special Rule Editor</h1>
+    
+    <div class="ruleLabel">Rule Type: </div>
+    <select id="ruleTypeInput" class="ruleTypeInput">
+        <option value="model">Model</option>
+        <option value="attack">Attack</option>
+        <option value="special">Special Actions</option>
+        <option value="move">Move Actions</option>
+        <option value="command">Command Actions</option>
+    </select>
+    <div class="ruleLabel">Cost: </div><input id="ruleCostInput" type="text" class="ruleCostInput">
+    <div class="ruleLabel">AP: </div><input id="ruleAPInput" type="text" class="ruleAPInput"><br>
+    <div class="ruleLabel">Rule Name: </div><input id="ruleNameInput" type="text" class="ruleNameInput"><br>
+    <div class="ruleLabel">Rule Description: </div><textarea id="ruleTextInput" class="ruleTextInput"></textarea><br>
+    <div id="buttonBox" class="buttonBox">
+        <button id="okButton" type="button" onclick="okButtonOnClick();">OK</button>
+        <button id="cancelButton" type="button" onclick="cancelButtonOnClick();">Cancel</button>
+    </div>
+    
+    <!-- OUTPUT DIALOG BOX -->
+    <script src="javascripts/dialog-polyfill.js"></script>
+    <dialog id="outputDialog">
+        <p id="outputText"></p>
+        <button id="closeOutputDialogButton" type="button" onclick="closeOutputDialogButtonOnClick();">Close</button>
+    </dialog>
+    <script>
+        var outputDialog = document.getElementById("outputDialog");
+        dialogPolyfill.registerDialog(outputDialog);
+        function closeOutputDialogButtonOnClick() {
+            var outputDialog = document.getElementById("outputDialog");
+            outputDialog.close();
+        }
+        function displayOutputDialog(message) {
+            document.getElementById("outputText").innerHTML = message;
+            outputDialog = document.getElementById("outputDialog");
+            outputDialog.showModal();
+        }
+    </script>
+
+    <script src="javascripts/utils.js"></script>
+    <script src="javascripts/modelAPIClient.js"></script>
+    <script>
+        
+        var globalRuleId = "NEW";
+        
+        async function bodyOnLoad() {
+            try {
+                
+                // if there is an ID, then load that object. Otherwise use a new object
+                var editIdParm = getQueryParameterByName("editId");
+                if ( editIdParm != null ) {
+                    globalRuleId = editIdParm;
+                    var specialRule = await getSpecialRuleById(editIdParm);
+                    if ( typeof(specialRule.ruleType) == "undefined" ) { 
+                        specialRule.ruleType = "model"; 
+                    }
+                    document.getElementById("ruleTypeInput").value = specialRule.ruleType;
+                    document.getElementById("ruleCostInput").value = specialRule.ruleCost;
+                    document.getElementById("ruleNameInput").value = specialRule.ruleName;
+                    document.getElementById("ruleTextInput").innerHTML = specialRule.ruleText;
+                    
+                    // if a rule AP is given
+                    if ( typeof(specialRule.ruleAP) != "undefined" ) {
+                        document.getElementById("ruleAPInput").value = specialRule.ruleAP;
+                    }
+                    
+                    
+                } else {
+                    globalRuleId = "NEW";
+                }
+                
+            } catch ( err ) {
+                displayOutputDialog(err.toString());
+            }
+            
+            document.getElementById("ruleTypeInput").focus();
+        }
+        
+        function bodyOnKeyDown( event ) {
+            if ( event.key == "Escape" ) {
+                cancelButtonOnClick();
+            }
+        }
+        
+        async function okButtonOnClick() {
+            
+            try {
+            
+                // create the edited rule object
+                var ruleObj = {};
+                ruleObj.ruleType = document.getElementById("ruleTypeInput").value;
+                ruleObj.ruleCost = document.getElementById("ruleCostInput").value;
+                ruleObj.ruleName = document.getElementById("ruleNameInput").value;
+                ruleObj.ruleText = document.getElementById("ruleTextInput").value;
+                
+                // make sure that mandatory fields are filled in
+                if ( ruleObj.ruleCost == "" || ruleObj.ruleName == "" || ruleObj.ruleText == "" ) {
+                    displayOutputDialog("You must provide a rule cost, name and description!");
+                    return;
+                }
+                
+                // if this is a special rule, then load the AP
+                if ( ruleObj.ruleType == "special" || ruleObj.ruleType == "move" || ruleObj.ruleType == "command" ) {
+                    ruleObj.ruleAP = document.getElementById("ruleAPInput").value;
+                    
+                    // make sure that an AP is provided
+                    if ( ruleObj.ruleAP == "" ) {
+                        displayOutputDialog("You must provide an AP for all actions!");
+                        return;
+                    }
+                }
+                
+                // add the new rule
+                if ( globalRuleId == "NEW" ) {
+                    var ruleObjId = await addSpecialRule( ruleObj );
+                } else {
+                    var editRuleId = await updateSpecialRule(globalRuleId, ruleObj);
+                }
+            
+                // redirect to the main page
+                window.history.back();
+                
+            // if an error occurred
+            } catch(err) {
+                displayOutputDialog(err.toString());
+            }
+        }
+
+        function cancelButtonOnClick() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

@@ -5,7 +5,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "start:prod": "node ./dist/app.js",
+    "build": "npm run build:ng && npm run build:node",
+    "build:ng": "ng build",
+    "build:node": "tsc -p src-node",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -21,16 +24,21 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "body-parser": "^1.18.2",
     "core-js": "^2.4.1",
+    "express": "^4.16.3",
+    "mongodb": "^3.0.6",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.3",
     "@angular/compiler-cli": "^5.2.0",
+    "@types/express": "^4.11.1",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
+    "@types/mongodb": "^3.0.13",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",

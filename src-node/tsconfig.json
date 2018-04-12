@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "outDir": "../dist",
+        "allowJs": true,
+        "target": "es5",
+        "watch": false,
+        "noFallthroughCasesInSwitch": true,
+        "module": "commonjs",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "pretty": true,
+        "lib": [
+            "es2015"
+        ]
+    }
+}

@@ -4,11 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "start:prod": "node ./dist/app.js",
-    "build": "npm run build:ng && npm run build:node",
-    "build:ng": "ng build",
-    "build:node": "tsc -p src-node",
+    "start": "node ./dist/app.js",
+    "start-dev-ng": "ng serve",
+    "start-dev-node": "nodemon --inspect --watch dist ./dist/app.js",
+    "build": "npm run build-ng && npm run build-node",
+    "build-ng": "ng build -prod",
+    "build-node": "tsc -p src-node",
+    "build-dev-node": "tsc -w -p src-node",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

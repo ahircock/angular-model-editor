@@ -1,27 +1,37 @@
-# AngularModelEditor
+## Run Development
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+In order to run in a development environment, execute the folloiwng commands on SEPARATE command lines.
+Each of these is a separate WATCH process and will not stop. So you need 3 different command lines
 
-## Development server
+```
+npm run build-dev-node
+npm run start-dev-node
+npm run start-dev-ng
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Debug development
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Assume you are using Visual Studio Code
+If you want to debug the angular client,  
 
-## Build
+## Build production 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+In order to build a production version, do the following
 
-## Running unit tests
+```
+npm run build
+```
+The build artifacts will be stored in the `dist/` directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
+## Run production
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Once it is built, you can run a production environment by doing the following
 
-## Further help
+```
+npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Navigate to `http://localhost:3000/`. The app will not automatically reload on file changes

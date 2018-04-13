@@ -1,0 +1,17 @@
+.multiColumnSection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    max-width: 1500px;
+    margin: auto;
+}
+.leftColumn {
+    flex: 1 0 150px;
+    border: outset;
+    margin: 16px;
+}
+.rightColumn {
+    flex: 0 0 550px;
+    border: outset; 
+    margin: 16px;
+}

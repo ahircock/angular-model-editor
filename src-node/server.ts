@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as bodyParser from 'body-parser';
 
 // load the various application routers
-import modelRouter from './routes/modelRouter';
+import modelRouter from './routers/modelRouter';
 
 // create the express application
 var app = express();
@@ -20,5 +20,5 @@ app.use('/api', modelRouter);
 
 // start listening
 app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+    console.log('App listening on port 3000!');
 });

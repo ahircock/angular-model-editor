@@ -49,9 +49,10 @@
 }
 
 /* model special rules */
-.specialRulesBox { 
+.modelSpecialRulesBox { 
     margin-left: 10px; margin-top: 0px; padding: 3px;
-    border: solid black 2px; background-color: white; border-top-style: none;
+    border-style: none solid solid solid; border-width: 2px;
+    background-color: white; 
 }
 .specialRule {
     font-weight: normal; font-size: 1em;
@@ -79,9 +80,13 @@
 /* attack actions */
 .attackActionStatBar {
     width: 200px;
-    border-color: black; border-style: solid; border-top-style: none; border-width: 2px;
+    border-style: none solid none solid; border-width: 2px;
     margin-left:10px; font-size:0;
 }
+.attackActionStatBar:last-child {
+    border-bottom-style: solid;
+}
+
 .attackActionIconDiv {
     width:42px; height:42px; display: inline-block; font-size:0%;
     background-color: black;
@@ -99,13 +104,14 @@
 }
 .attackActionSpecialRulesBox {
     margin-left: 10px; margin-top: 0px; padding: 3px;
-    border-style: solid; border-width: 2px; background-color: white; 
+    border-style: solid; border-width: 2px; 
+    background-color: white; 
 }
 
 /* special actions */
 .specialActionRulesBox {
     margin-left: 10px; margin-top: 0px; padding: 0px; min-height: 40px;
-    border-style: solid; border-width: 2px; background-color: white; 
+    border-style: none solid solid solid; border-width: 2px; background-color: white; 
 }
 .specialActionIconDiv {
     width:42px; height:42px; float: left;

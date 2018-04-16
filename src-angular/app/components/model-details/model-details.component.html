@@ -1,4 +1,6 @@
 <div *ngIf="model" class="modelBox">
+  
+  <!-- TITLE BOX -->
   <div class="titleBox">
     <div class="modelTextBox">
       <div class="modelName">{{model.name}}</div>
@@ -23,64 +25,66 @@
       <img class="modelImage" [src]="'assets/portraits/' + model.picture">
     </div>
   </div>
-  <div *ngIf="model.specialRules.length > 0" class="specialRulesBox">
+
+  <!-- MODEL SPECIAL RULES -->
+  <div *ngIf="model.specialRules.length > 0" class="modelSpecialRulesBox">
     <div *ngFor="let specialRule of model.specialRules" class="specialRule">
       <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
     </div>
   </div>
-  <div id="action1">
+
+  <!-- ACTIONS -->
+  <div *ngFor="let action of model.actions" class="actionBox">
     <div class="actionTitleBox">
-      <div class="actionAPCost">1</div>
-      <div class="actionTitle">Relic Hammer</div>
-      <div class="actionTraits"></div>
+      <div class="actionAPCost">{{action.AP}}</div>
+      <div class="actionTitle">{{action.name}}</div>
+      <div class="actionTraits">{{action.traits}}</div>
     </div>
-    <div class="attackActionStatBar">
-      <div class="attackActionIconDiv"><img class="attackActionIcon" src="assets/icons/icon-sword-invert.png"></div>
-      <div class="attackActionTableDiv">
-        <table class="attackActionTable">
-          <tr class="statHeader">
-            <th>RNG</th>
-            <th>HIT</th>
-            <th>DMG</th>
-          </tr>
-          <tr class="statData">
-            <td>1</td>
-            <td>7</td>
-            <td>7</td>
-          </tr>
-        </table>
+
+    <!-- ATTACK ACION -->
+    <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'" class="attackActionBox">
+      <div class="attackActionStatBar">
+        <div class="attackActionIconDiv">
+          <img *ngIf="action.type == 'MELEE'" class="attackActionIcon" src="assets/icons/icon-sword-invert.png">
+          <img *ngIf="action.type == 'RANGED'" class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
+        </div>
+        <div class="attackActionTableDiv">
+          <table class="attackActionTable">
+            <tr class="statHeader">
+              <th>RNG</th>
+              <th>HIT</th>
+              <th>DMG</th>
+            </tr>
+            <tr class="statData">
+              <td>{{action.RNG}}</td>
+              <td>{{action.HIT}}</td>
+              <td>{{action.DMG}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div *ngIf="action.specialRules.length > 0" class="attackActionSpecialRulesBox">
+        <div *ngFor="let specialRule of action.specialRules" class="specialRule">
+          <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
+        </div>
       </div>
     </div>
+
+    <!-- SPECIAL ACION -->
+    <div *ngIf="action.type == 'SPECIAL'" class="specialActionBox">
+      <div class="specialActionRulesBox">
+        <div class="specialActionIconDiv">
+          <img class="specialActionIcon" src="assets/icons/icon-star-invert.png">
+        </div>
+        <div class="specialActionRule">
+          <b>{{action.specialRules[0].ruleName}}</b> - <span [innerHTML]="action.specialRules[0].ruleText"></span>
+        </div>
+      </div>      
+    </div>
+  
   </div>
-  <div id="action2">
-    <div class="actionTitleBox">
-      <div class="actionAPCost">1</div>
-      <div class="actionTitle">Soul Fire</div>
-      <div class="actionTraits">soul-powered</div>
-    </div>
-    <div class="attackActionStatBar" style="border-bottom-style: none;">
-      <div class="attackActionIconDiv">
-        <img class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
-      </div>
-      <div class="attackActionTableDiv">
-        <table class="attackActionTable">
-          <tr class="statHeader">
-            <th>RNG</th>
-            <th>HIT</th>
-            <th>DMG</th>
-          </tr>
-          <tr class="statData">
-            <td>12</td>
-            <td>6</td>
-            <td>6</td>
-          </tr>
-        </table>
-      </div>
-    </div>
-    <div class="attackActionSpecialRulesBox">
-      <div class="specialRule"><b>Weaken</b> - Target model gets the following condition for one round (<i>Weakened</i>: This model gets -2 DMG on all attacks)</div>
-    </div>
-  </div>
+
+<!-- TO BE REMOVED
   <div id="action3">
     <div class="actionTitleBox">
       <div class="actionAPCost">1</div>
@@ -95,3 +99,4 @@
     </div>
   </div>
 </div>
+-->

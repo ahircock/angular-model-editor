@@ -6,21 +6,33 @@ ul.menuBar {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #f3f3f3;
+    border: 1px solid #e7e7e7;
 }
 ul.menuBar li {
     float: left
 }
-ul.menuBar li a {
+ul.menuBar li h1 {
     display: block;
     color: white;
+    text-align: center;
+    padding: 14px 16px;
+    margin: 0;
+    text-decoration: none;    
+    background-color: black;
+}
+ul.menuBar li a {
+    display: block;
+    color: #666;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;    
 }
 ul.menuBar li a:hover:not(.active) {
-    background-color: #111
+    background-color: slategray;
+    color: white;
 }
 ul.menuBar li .active {
-    background-color: #4CAF50;
+    background-color: darkslategray;
+    color: white;
 }

@@ -1,7 +1,8 @@
 ## Run Development
 
 In order to run in a development environment, execute the folloiwng commands on SEPARATE command lines.
-Each of these is a separate WATCH process and will not stop. So you need 3 different command lines
+Each of these is a separate WATCH process and will not stop. So you need 3 different command lines.
+Alternatively, you can use Visual Studio Code's "Tasks / Run Tasks" feature to launch these three processes
 
 ```
 npm run build-dev-node

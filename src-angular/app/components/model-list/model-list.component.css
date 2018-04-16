@@ -1,0 +1,31 @@
+div.multiColumnSection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    max-width: 1500px;
+    margin: auto;
+}
+div.multiColumnSection .leftColumn {
+    flex: 1 0 150px;
+    border: outset;
+    margin: 16px;
+}
+div.multiColumnSection .rightColumn {
+    flex: 0 0 550px;
+    border: outset; 
+    margin: 16px;
+}
+ul.modelList {
+    list-style-type: none;
+}
+ul.modelList li {
+    padding: 4px;
+    margin: 8px;
+    border: outset;
+}
+ul.modelList li:hover:not(.selected) {
+    background: lightgray;
+}
+.selected {
+    background: gray;
+}

@@ -1,0 +1,15 @@
+<div class="multiColumnSection">
+    <div class="leftColumn" style="height: 750px;">
+      <ul class="modelList">
+        <li *ngFor="let model of models;" 
+          (click)="onSelect(model)"
+          [class.selected]="model === selectedModel">
+            {{model.name}}
+        </li>
+      </ul>
+    </div>
+    <div class="rightColumn" style="height: 500px;">
+      <app-model-details [model]="selectedModel"></app-model-details>
+    </div>
+  </div>
+

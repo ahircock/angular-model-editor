@@ -1,23 +1,6 @@
 * {
     font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
 }
-.multiColumnSection {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    max-width: 1500px;
-    margin: auto;
-}
-.leftColumn {
-    flex: 1 0 150px;
-    border: outset;
-    margin: 16px;
-}
-.rightColumn {
-    flex: 0 0 550px;
-    border: outset; 
-    margin: 16px;
-}
 ul.menuBar {
     list-style-type: none;
     margin: 0;
@@ -38,6 +21,6 @@ ul.menuBar li a {
 ul.menuBar li a:hover:not(.active) {
     background-color: #111
 }
-.active {
+ul.menuBar li .active {
     background-color: #4CAF50;
 }

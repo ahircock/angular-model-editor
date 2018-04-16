@@ -1,4 +1,97 @@
-<div *ngIf="model">
-  <div><span>ID: </span>{{model._id}}</div>
-  <div><span>NAME: </span>{{model.name}}</div>
+<div *ngIf="model" class="modelBox">
+  <div class="titleBox">
+    <div class="modelTextBox">
+      <div class="modelName">{{model.name}}</div>
+      <div class="modelType">{{model.traits}}</div>
+      <div class="modelCost">{{model.cost}} points</div>
+      <table class="statTable">
+        <tr class="statHeader">
+          <th>SPD</th>
+          <th>EV</th>
+          <th>ARM</th>
+          <th>HP</th>
+        </tr>
+        <tr class="statData">
+          <td>{{model.SPD}}</td>
+          <td>{{model.EV}}</td>
+          <td>{{model.ARM}}</td>
+          <td>{{model.HP}}</td>
+        </tr>
+      </table>
+    </div>
+    <div class="modelImageBox">
+      <img class="modelImage" [src]="'assets/portraits/' + model.picture">
+    </div>
+  </div>
+  <div *ngIf="model.specialRules.length > 0" class="specialRulesBox">
+    <div *ngFor="let specialRule of model.specialRules" class="specialRule">
+      <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
+    </div>
+  </div>
+  <div id="action1">
+    <div class="actionTitleBox">
+      <div class="actionAPCost">1</div>
+      <div class="actionTitle">Relic Hammer</div>
+      <div class="actionTraits"></div>
+    </div>
+    <div class="attackActionStatBar">
+      <div class="attackActionIconDiv"><img class="attackActionIcon" src="assets/icons/icon-sword-invert.png"></div>
+      <div class="attackActionTableDiv">
+        <table class="attackActionTable">
+          <tr class="statHeader">
+            <th>RNG</th>
+            <th>HIT</th>
+            <th>DMG</th>
+          </tr>
+          <tr class="statData">
+            <td>1</td>
+            <td>7</td>
+            <td>7</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div id="action2">
+    <div class="actionTitleBox">
+      <div class="actionAPCost">1</div>
+      <div class="actionTitle">Soul Fire</div>
+      <div class="actionTraits">soul-powered</div>
+    </div>
+    <div class="attackActionStatBar" style="border-bottom-style: none;">
+      <div class="attackActionIconDiv">
+        <img class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
+      </div>
+      <div class="attackActionTableDiv">
+        <table class="attackActionTable">
+          <tr class="statHeader">
+            <th>RNG</th>
+            <th>HIT</th>
+            <th>DMG</th>
+          </tr>
+          <tr class="statData">
+            <td>12</td>
+            <td>6</td>
+            <td>6</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="attackActionSpecialRulesBox">
+      <div class="specialRule"><b>Weaken</b> - Target model gets the following condition for one round (<i>Weakened</i>: This model gets -2 DMG on all attacks)</div>
+    </div>
+  </div>
+  <div id="action3">
+    <div class="actionTitleBox">
+      <div class="actionAPCost">1</div>
+      <div class="actionTitle">Reinforce Soul</div>
+      <div class="actionTraits">soul-powered</div>
+    </div>
+    <div class="specialActionRulesBox" style="border-top-style: none;">
+      <div class="specialActionIconDiv">
+        <img class="specialActionIcon" src="assets/icons/icon-star-invert.png">
+      </div>
+      <div class="specialActionRule"><b>Healing Touch</b> - Target friendly model within 0" receives a 6/0 heal test.</div>
+    </div>
+  </div>
 </div>

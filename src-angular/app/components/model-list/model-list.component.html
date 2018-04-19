@@ -1,15 +1,34 @@
 <div class="multiColumnSection">
-    <div class="leftColumn" style="height: 750px;">
+    
+  <!-- MODEL LIST -->
+  <div class="leftColumn" style="height: 750px;">
       <ul class="modelList">
         <li *ngFor="let model of models;" 
           (click)="onSelect(model)"
           [class.selected]="model === selectedModel">
-            {{model.name}}
+          
+          <!-- MODEL LIST BOX -->
+          <div class="modelBox">
+            <div class="modelImageBox">
+              <img class="modelImage" [src]="'assets/portraits/' + model.picture">
+            </div>
+            <div class="modelDetailsBox">
+              <div class="modelName">{{model.name}}</div>
+              <div class="modelCost">{{model.cost}} points</div>
+            </div>
+            <div class="modelButtonBox">
+              <div class="modelButton">EDIT</div>
+              <div class="modelButton">CLONE</div>
+              <div class="modelButton">DELETE</div>
+            </div>
+          </div>  
+
         </li>
       </ul>
     </div>
+
+    <!-- MODEL DETAILS -->
     <div class="rightColumn" style="height: 500px;">
       <app-model-details [model]="selectedModel"></app-model-details>
     </div>
   </div>
-

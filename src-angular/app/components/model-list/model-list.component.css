@@ -1,31 +1,75 @@
+/* multi-column display */
 div.multiColumnSection {
     display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    max-width: 1500px;
     margin: auto;
 }
 div.multiColumnSection .leftColumn {
-    flex: 1 0 150px;
-    border: outset;
+    flex: 1 0 50px;
     margin: 16px;
 }
 div.multiColumnSection .rightColumn {
-    flex: 0 0 550px;
-    border: outset; 
+    flex: 0 0 518px;
+    border: none; 
     margin: 16px;
 }
+
+/* model list */
 ul.modelList {
     list-style-type: none;
+    margin: 0px;
+    padding: 0px;
 }
 ul.modelList li {
     padding: 4px;
-    margin: 8px;
-    border: outset;
+    margin: 4px 0px 4px 0px;
+    border: 1px solid #e7e7e7;
+    border-radius: 4px;
 }
 ul.modelList li:hover:not(.selected) {
     background: lightgray;
 }
-.selected {
+ul.modelList li:not(.selected) {
+    background: #f3f3f3;
+}
+ul.modelList li.selected {
     background: gray;
 }
+
+/* MODEL BOX */
+.modelImageBox {
+    height: 75px; width: 75px; 
+    display: inline-block;
+    background-color: white;
+}
+.modelImage {
+    height: 75px; margin-left: auto; margin-right: auto; display: block;
+}
+.modelDetailsBox {
+    display: inline-block; vertical-align: top;
+    width: 200px;
+}
+.modelName {
+    font-weight: bold;
+}
+.modelCost { 
+    margin-top:10px; margin-bottom: 10px;
+    padding-left: 6px; padding-right: 6px;
+    width: max-content;
+    font-style: italic;
+    background-color: grey; color: white; font-weight: bold; border-radius: 3px;
+}
+.modelButtonBox {
+    display: inline-flex; align-items: center;
+    vertical-align: top; height: 75px;
+}
+.modelButton {
+    display: inline-block;
+    border: 1px outset;
+    padding: 4px 8px 4px 8px;
+    margin: 4px;
+    background-color: lightgrey; color: black;
+}
+.modelButton:hover {
+    background-color: darkslategray; color: white;
+}
+

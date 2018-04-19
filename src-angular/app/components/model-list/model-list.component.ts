@@ -15,6 +15,11 @@ export class ModelListComponent implements OnInit {
 
   ngOnInit() {
     this.models = this.modelDataService.getModels();
+
+    // select the first one
+    if ( this.models.length > 0 ) {
+      this.selectedModel = this.models[0];
+    }
   }
 
   onSelect(selectedModel: ModelData ) {

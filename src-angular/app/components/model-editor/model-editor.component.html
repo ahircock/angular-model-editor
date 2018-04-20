@@ -1,0 +1,10 @@
+<p>Let's start editing model {{model._id}}</p>
+<label>Name: <input [(ngModel)]="model.name" placeholder="Enter name"></label>
+<label>Traits: <input [(ngModel)]="model.traits" placeholder="Enter traits"></label>
+
+<!-- MODEL DETAILS -->
+<div>
+  <app-model-details [model]="model"></app-model-details>
+</div>
+
+<button (click)="ok()">OK</button>

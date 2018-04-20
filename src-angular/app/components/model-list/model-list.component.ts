@@ -13,8 +13,8 @@ export class ModelListComponent implements OnInit {
 
   constructor( private modelDataService: ModelDataService ) { }
 
-  ngOnInit() {
-    this.models = this.modelDataService.getModels();
+  async ngOnInit() {
+    this.models = await this.modelDataService.getModels();
 
     // select the first one
     if ( this.models.length > 0 ) {

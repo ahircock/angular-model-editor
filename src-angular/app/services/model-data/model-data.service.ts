@@ -46,10 +46,17 @@ export class ModelDataService {
 
   constructor() { }
 
-  getModels(): ModelData[] {
+  async getModels() {
+    // make a deep copy of the model list and then return it
+    let returnList: ModelData[] = JSON.parse(JSON.stringify(this.modelList));
+    return returnList;
+  }
 
-    return this.modelList;
-
+  async getModel(id: string) {
+    // find the model in the arrach (using the "find" function), and then return a deep copy of that model
+    let findModel: ModelData = this.modelList.find( element => { return element._id == id;} );
+    let returnModel: ModelData = JSON.parse( JSON.stringify( findModel) );
+    return returnModel;
   }
 
 }

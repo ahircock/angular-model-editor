@@ -5,11 +5,31 @@
     <p>Let's start editing model {{model._id}}</p>
     <label>Name: <input [(ngModel)]="model.name" placeholder="Enter name"></label><br>
     <label>Traits: <input [(ngModel)]="model.traits" placeholder="Enter traits"></label><br>
+    
     <label>SPD: <span>{{MODEL_BASE_STATS.SPD}}</span>
-      <select [(ngModel)]="model.SPDBonus" (input)="selectSPDBonus($event.srcElement.value)">
-        <option *ngFor="let SPDBonus of SPD_BONUS_COST;" [value]="SPDBonus.Bonus">{{SPDBonus.Bonus}} ({{SPDBonus.Cost}} points)</option>
+      <select [(ngModel)]="model.SPDBonus" (input)="selectBonus($event.srcElement.value, 'SPD')">
+        <option *ngFor="let SPDBonus of SPD_BONUS_COST;" [value]="SPDBonus.Bonus">{{ (SPDBonus.Bonus>0)? ("+" + SPDBonus.Bonus) : SPDBonus.Bonus}} ({{SPDBonus.Cost}} points)</option>
       </select>
     </label><br>
+    
+    <label>EV: <span>{{MODEL_BASE_STATS.EV}}</span>
+      <select [(ngModel)]="model.EVBonus" (input)="selectBonus($event.srcElement.value, 'EV')">
+        <option *ngFor="let EVBonus of EV_BONUS_COST;" [value]="EVBonus.Bonus">{{ (EVBonus.Bonus>0)? ("+" + EVBonus.Bonus) : EVBonus.Bonus}} ({{EVBonus.Cost}} points)</option>
+      </select>
+    </label><br>
+
+    <label>ARM: <span>{{MODEL_BASE_STATS.ARM}}</span>
+      <select [(ngModel)]="model.ARMBonus" (input)="selectBonus($event.srcElement.value, 'ARM')">
+        <option *ngFor="let ARMBonus of ARM_BONUS_COST;" [value]="ARMBonus.Bonus">{{ (ARMBonus.Bonus>0)? ("+" + ARMBonus.Bonus) : ARMBonus.Bonus}} ({{ARMBonus.Cost}} points)</option>
+      </select>
+    </label><br>
+
+    <label>HP: <span>{{MODEL_BASE_STATS.HP}}</span>
+      <select [(ngModel)]="model.HPBonus" (input)="selectBonus($event.srcElement.value, 'HP')">
+        <option *ngFor="let HPBonus of HP_BONUS_COST;" [value]="HPBonus.Bonus">{{ (HPBonus.Bonus>0)? ("+" + HPBonus.Bonus) : HPBonus.Bonus}} ({{HPBonus.Cost}} points)</option>
+      </select>
+    </label><br>
+
     <button (click)="ok()">OK</button>
   </div>
   

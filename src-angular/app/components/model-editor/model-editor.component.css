@@ -1,0 +1,15 @@
+/* multi-column display */
+div.multiColumnSection {
+    display: flex;
+    margin: auto;
+}
+div.multiColumnSection .leftColumn {
+    flex: 1 0 50px;
+    margin: 16px;
+}
+div.multiColumnSection .rightColumn {
+    flex: 0 0 518px;
+    border: none; 
+    margin: 16px;
+}
+

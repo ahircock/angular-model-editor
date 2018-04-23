@@ -1,10 +1,23 @@
-<p>Let's start editing model {{model._id}}</p>
-<label>Name: <input [(ngModel)]="model.name" placeholder="Enter name"></label>
-<label>Traits: <input [(ngModel)]="model.traits" placeholder="Enter traits"></label>
+<div class="multiColumnSection">
+    
+  <!-- MODEL LIST -->
+  <div class="leftColumn">
+    <p>Let's start editing model {{model._id}}</p>
+    <label>Name: <input [(ngModel)]="model.name" placeholder="Enter name"></label><br>
+    <label>Traits: <input [(ngModel)]="model.traits" placeholder="Enter traits"></label><br>
+    <label>SPD: <span>{{MODEL_BASE_STATS.SPD}}</span>
+      <select [(ngModel)]="model.SPDBonus" (input)="selectSPDBonus($event.srcElement.value)">
+        <option *ngFor="let SPDBonus of SPD_BONUS_COST;" [value]="SPDBonus.Bonus">{{SPDBonus.Bonus}} ({{SPDBonus.Cost}} points)</option>
+      </select>
+    </label><br>
+    <button (click)="ok()">OK</button>
+  </div>
+  
+  <!-- MODEL DETAILS -->
+  <div class="rightColumn">
+    <div>
+      <app-model-details [model]="model"></app-model-details>
+    </div>
+  </div>
 
-<!-- MODEL DETAILS -->
-<div>
-  <app-model-details [model]="model"></app-model-details>
 </div>
-
-<button (click)="ok()">OK</button>

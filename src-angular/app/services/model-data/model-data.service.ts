@@ -31,7 +31,8 @@ export interface ModelActionData {
 @Injectable()
 export class ModelDataService {
 
-  private modelList: ModelData[] = [
+  // this array will simulate the data that comes back from a database
+  private modelDB: ModelData[] = [
     {"_id":"M0001","name":"Templar General","traits":"Templar","picture":"templar - general.jpg","cost":15,"SPD":5,"EV":5,"ARM":4,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":0,"HIT":7,"DMG":5,"ONCE":false,"specialRules":[]}]},
     {"_id":"M0002","name":"Templar Knight","traits":"Templar","picture":"templar - knight.jpg","cost":16,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Shield Wall","traits":"","AP":1,"specialRules":[{"_id": "S0001", "ruleType": "special", "ruleCost": 2, "ruleAP": 1, "ruleName": "Armor Stance", "ruleText": "This model gains the following condition for one round: <i>Armor Stance<\/i> - This model gets +2 ARM\n"}]}]},
     {"_id":"M0003","name":"Templar Paladin","traits":"Templar","picture":"templar - paladin.jpg","cost":21,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"StarMaul","traits":null,"AP":1,"RNG":2,"HIT":8,"DMG":9,"ONCE":false,"specialRules":[{"_id": "S0002", "ruleType": "attack", "ruleCost": 2, "ruleName": "Stun", "ruleText": "Target model gets the following condition for one round (<i>Stunned<\/i>: This model gets -1 action point during its activation)"}]}]},
@@ -48,13 +49,13 @@ export class ModelDataService {
 
   async getModels() {
     // make a deep copy of the model list and then return it
-    let returnList: ModelData[] = JSON.parse(JSON.stringify(this.modelList));
+    let returnList: ModelData[] = JSON.parse(JSON.stringify(this.modelDB));
     return returnList;
   }
 
   async getModel(id: string) {
     // find the model in the arrach (using the "find" function), and then return a deep copy of that model
-    let findModel: ModelData = this.modelList.find( element => { return element._id == id;} );
+    let findModel: ModelData = this.modelDB.find( element => { return element._id == id;} );
     let returnModel: ModelData = JSON.parse( JSON.stringify( findModel) );
     return returnModel;
   }

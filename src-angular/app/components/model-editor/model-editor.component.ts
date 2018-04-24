@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ModelData, ModelDataService, ModelActionData } from '../../services/model-data/model-data.service';
-import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
+import { SpecialRuleData, SpecialRuleDataService } from '../../services/special-rule-data/special-rule-data.service';
 
 interface StatCost {
   stat: number;
@@ -17,6 +17,16 @@ interface StatCost {
 export class ModelEditorComponent implements OnInit {
 
   public model: ModelData;
+
+  public attackSpecialRules: SpecialRuleData[] = [];
+
+  // dropdowns for special rule actions
+  public actionSpecialRules: SpecialRuleData[] = [];
+  public actionSpecialRuleInput: string = "";
+
+  // dropdowns for model special rules
+  public modelSpecialRules: SpecialRuleData[] = [];
+  public modelSpecialRuleInput: string = "";
   
   // These constant arrays are used to calculate the total cost of a model
   public BASE_COST = 10;
@@ -35,12 +45,16 @@ export class ModelEditorComponent implements OnInit {
   constructor( 
     private location: Location,
     private route: ActivatedRoute,
-    private modelDataService: ModelDataService
+    private modelDataService: ModelDataService,
+    private specialRuleDataService: SpecialRuleDataService
    ) { }
 
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get("id");
     this.model = await this.modelDataService.getModel(id);
+    this.attackSpecialRules = await this.specialRuleDataService.getAttackSpecialRules();
+    this.actionSpecialRules = await this.specialRuleDataService.getActionSpecialRules();
+    this.modelSpecialRules  = await this.specialRuleDataService.getModelSpecialRules();
 
     // calculate the cost of the model
     this.calculateCost();
@@ -79,10 +93,11 @@ export class ModelEditorComponent implements OnInit {
     this.calculateCost();
   }
 
-  addSpecialRule( ruleName: string ) : void {
-    let newRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:ruleName, ruleText:"This is a new rule", ruleCost:2 };
-    this.model.specialRules.push(newRule);
+  addModelSpecialRule( ruleName: string ) : void {
+    let newSpecialRule: SpecialRuleData = this.modelSpecialRules.find( (element) => { return element.ruleName == ruleName; } );
+    this.model.specialRules.push(newSpecialRule);
     this.calculateCost();
+    this.modelSpecialRuleInput = "";
   }
 
   deleteSpecialRule( ruleIndex: number ): void {
@@ -105,10 +120,11 @@ export class ModelEditorComponent implements OnInit {
     this.addAction( newAction );
   }
 
-  addSpecialAction( newRule: string ): void {
-    let newSpecialRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:newRule, ruleText:"This is a new action", ruleCost:2 };
-    let newAction: ModelActionData = { type:"SPECIAL", name:newRule, AP:1, specialRules:[ newSpecialRule ] };
+  addSpecialAction( ruleName: string ): void {
+    let newSpecialRule: SpecialRuleData = this.actionSpecialRules.find( (element) => { return element.ruleName == ruleName; } );
+    let newAction: ModelActionData = { type:"SPECIAL", name:ruleName, AP:1, specialRules:[ newSpecialRule ] };
     this.addAction( newAction );
+    this.actionSpecialRuleInput = "";
   }
 
   private addAction( newAction: ModelActionData ) {

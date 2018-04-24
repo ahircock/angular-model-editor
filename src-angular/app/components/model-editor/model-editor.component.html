@@ -6,68 +6,104 @@
     <label>Name: <input [(ngModel)]="model.name" placeholder="Enter name"></label><br>
     <label>Traits: <input [(ngModel)]="model.traits" placeholder="Enter traits"></label><br>
     
-    <label>SPD: <span>{{MODEL_BASE_STATS.SPD}}</span>
-      <select [(ngModel)]="model.SPDBonus" (input)="selectModelBonus($event.srcElement.value, 'SPD')">
-        <option *ngFor="let SPDBonus of SPD_BONUS_COST;" [value]="SPDBonus.Bonus">{{ (SPDBonus.Bonus>0)? ("+" + SPDBonus.Bonus) : SPDBonus.Bonus}} ({{SPDBonus.Cost}} points)</option>
+    <label>SPD:
+      <select [ngModel]="model.SPD" (input)="selectModelStat($event.srcElement.value, 'SPD')">
+        <option *ngFor="let SPDCost of SPD_COST;" [value]="SPDCost.stat">{{SPDCost.stat}} ({{SPDCost.cost}} points)</option>
       </select>
     </label><br>
     
-    <label>EV: <span>{{MODEL_BASE_STATS.EV}}</span>
-      <select [(ngModel)]="model.EVBonus" (input)="selectModelBonus($event.srcElement.value, 'EV')">
-        <option *ngFor="let EVBonus of EV_BONUS_COST;" [value]="EVBonus.Bonus">{{ (EVBonus.Bonus>0)? ("+" + EVBonus.Bonus) : EVBonus.Bonus}} ({{EVBonus.Cost}} points)</option>
+    <label>EV:
+      <select [ngModel]="model.EV" (input)="selectModelStat($event.srcElement.value, 'EV')">
+        <option *ngFor="let EVCost of EV_COST;" [value]="EVCost.stat">{{EVCost.stat}} ({{EVCost.cost}} points)</option>
       </select>
     </label><br>
 
-    <label>ARM: <span>{{MODEL_BASE_STATS.ARM}}</span>
-      <select [(ngModel)]="model.ARMBonus" (input)="selectModelBonus($event.srcElement.value, 'ARM')">
-        <option *ngFor="let ARMBonus of ARM_BONUS_COST;" [value]="ARMBonus.Bonus">{{ (ARMBonus.Bonus>0)? ("+" + ARMBonus.Bonus) : ARMBonus.Bonus}} ({{ARMBonus.Cost}} points)</option>
+    <label>ARM:
+      <select [ngModel]="model.ARM" (input)="selectModelStat($event.srcElement.value, 'ARM')">
+        <option *ngFor="let ARMCost of ARM_COST;" [value]="ARMCost.stat">{{ARMCost.stat}} ({{ARMCost.cost}} points)</option>
       </select>
     </label><br>
 
-    <label>HP: <span>{{MODEL_BASE_STATS.HP}}</span>
-      <select [(ngModel)]="model.HPBonus" (input)="selectModelBonus($event.srcElement.value, 'HP')">
-        <option *ngFor="let HPBonus of HP_BONUS_COST;" [value]="HPBonus.Bonus">{{ (HPBonus.Bonus>0)? ("+" + HPBonus.Bonus) : HPBonus.Bonus}} ({{HPBonus.Cost}} points)</option>
+    <label>HP:
+      <select [ngModel]="model.HP" (input)="selectModelStat($event.srcElement.value, 'HP')">
+        <option *ngFor="let HPCost of HP_COST;" [value]="HPCost.stat">{{HPCost.stat}} ({{HPCost.cost}} points)</option>
       </select>
     </label><br>
 
-    <div class="actionBand" *ngFor="let action of model.actions">
+    <div class="specialRuleBand">
+      <div>Special Rules</div>
+      <div class="specialRule" *ngFor="let specialRule of model.specialRules; index as ruleIndex">
+        * <button (click)="deleteSpecialRule(ruleIndex)">Del</button> {{specialRule.ruleName}}
+      </div>
+      <div>
+        * <input [(ngModel)]="newSpecialRule" placeholder="Add new special rule"><button (click)="addSpecialRule()">Add</button>
+      </div>
+    </div>
+
+    <div class="actionBand" *ngFor="let action of model.actions; index as actionIndex;">
       <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'">
         <br>
+        <button (click)="deleteAction(actionIndex)">Del</button> 
         Action Type {{action.type}} <br>
+        AP {{action.AP}}<br>
         <label>Name: <input [(ngModel)]="action.name" placeholder="Enter name"></label><br>
         <label>Traits: <input [(ngModel)]="action.traits" placeholder="Enter traits"></label><br>
-
+        
         <div *ngIf="action.type == 'MELEE'">
-          <label>RNG: <span>{{MODEL_BASE_STATS.RNG_MELEE}}</span>
-            <select [(ngModel)]="action.RNGBonus" (input)="selectActionBonus(action.index, $event.srcElement.value, 'RNG-MELEE')">
-              <option *ngFor="let RNGBonus of MELEE_RNG_BONUS_COST;" [value]="RNGBonus.Bonus">{{ (RNGBonus.Bonus>0)? ("+" + RNGBonus.Bonus) : RNGBonus.Bonus}} ({{RNGBonus.Cost}} points)</option>
+          <label>RNG:
+            <select [ngModel]="action.RNG" (input)="selectActionStat(actionIndex, $event.srcElement.value, 'RNG-MELEE')">
+              <option *ngFor="let RNGCost of MELEE_RNG_COST;" [value]="RNGCost.stat">{{RNGCost.stat}} ({{RNGCost.cost}} points)</option>
             </select>
           </label><br>
         </div>
 
         <div *ngIf="action.type == 'RANGED'">
-          <label>RNG: <span>{{MODEL_BASE_STATS.RNG_RANGED}}</span>
-            <select [(ngModel)]="action.RNGBonus" (input)="selectActionBonus(action.index, $event.srcElement.value, 'RNG-RANGED')">
-              <option *ngFor="let RNGBonus of RANGED_RNG_BONUS_COST;" [value]="RNGBonus.Bonus">{{ (RNGBonus.Bonus>0)? ("+" + RNGBonus.Bonus) : RNGBonus.Bonus}} ({{RNGBonus.Cost}} points)</option>
+          <label>RNG:
+            <select [ngModel]="action.RNG" (input)="selectActionStat(actionIndex, $event.srcElement.value, 'RNG-RANGED')">
+              <option *ngFor="let RNGCost of RANGED_RNG_COST;" [value]="RNGCost.stat">{{RNGCost.stat}} ({{RNGCost.cost}} points)</option>
             </select>
           </label><br>
         </div>
 
-        <label>HIT: <span>{{MODEL_BASE_STATS.HIT}}</span>
-          <select [(ngModel)]="action.HITBonus" (input)="selectActionBonus(action.index, $event.srcElement.value, 'HIT')">
-            <option *ngFor="let HITBonus of HIT_BONUS_COST;" [value]="HITBonus.Bonus">{{ (HITBonus.Bonus>0)? ("+" + HITBonus.Bonus) : HITBonus.Bonus}} ({{HITBonus.Cost}} points)</option>
+        <label>HIT:
+          <select [ngModel]="action.HIT" (input)="selectActionStat(actionIndex, $event.srcElement.value, 'HIT')">
+              <option *ngFor="let HITCost of HIT_COST;" [value]="HITCost.stat">{{HITCost.stat}} ({{HITCost.cost}} points)</option>
           </select>
         </label><br>
 
-        <label>DMG: <span>{{MODEL_BASE_STATS.DMG}}</span>
-          <select [(ngModel)]="action.DMGBonus" (input)="selectActionBonus(action.index, $event.srcElement.value, 'DMG')">
-            <option *ngFor="let DMGBonus of DMG_BONUS_COST;" [value]="DMGBonus.Bonus">{{ (DMGBonus.Bonus>0)? ("+" + DMGBonus.Bonus) : DMGBonus.Bonus}} ({{DMGBonus.Cost}} points)</option>
+        <label>DMG:
+          <select [ngModel]="action.DMG" (input)="selectActionStat(actionIndex, $event.srcElement.value, 'DMG')">
+            <option *ngFor="let DMGCost of DMG_COST;" [value]="DMGCost.stat">{{DMGCost.stat}} ({{DMGCost.cost}} points)</option>
           </select>
         </label><br>
+
+        <div class="attackSpecialRuleBand">
+          <div>Special Rules</div>
+          <div *ngFor="let specialRule of action.specialRules; index as ruleIndex">
+            * <button (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)">Del</button> {{specialRule.ruleName}}
+          </div>
+          <div>
+            * <input [(ngModel)]="newAttackSpecialRule[actionIndex]" placeholder="Add new special rule"><button (click)="addAttackSpecialRule(actionIndex)">Add</button>
+          </div>
+        </div>
+              
 
       </div>
-    </div>
 
+      <div *ngIf="action.type == 'SPECIAL'">
+        <br>
+        <button (click)="deleteAction(actionIndex)">Del</button> 
+        Action Type {{action.type}} <br>
+        AP {{action.AP}}<br>
+        <label>Name: <input [(ngModel)]="action.name" placeholder="Enter name"></label><br>
+      </div>
+
+    </div>
+    <br>
+    <input [(ngModel)]="newSpecialAction" (keyup.enter)="addSpecialAction()" placeholder="Select new special action"><button (click)="addSpecialAction()">Add</button>
+    <button (click)="addMeleeAction()">Add Melee</button>
+    <button (click)="addRangedAction()">Add Ranged</button>
+    <br>
     <button (click)="ok()">OK</button>
   </div>
   

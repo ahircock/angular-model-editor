@@ -32,10 +32,6 @@ export class ModelEditorComponent implements OnInit {
   public NEW_MELEE_ACTION: ModelActionData = { type: "MELEE", name: "NEW", AP:1, RNG:1, HIT:6, DMG:6, specialRules:[] };
   public NEW_RANGED_ACTION: ModelActionData = { type: "RANGED", name: "NEW", AP:1, RNG:12, HIT:6, DMG:6, specialRules:[] };
 
-  public newSpecialRule: string = "";
-  public newAttackSpecialRule: string[] = [];
-  public newSpecialAction: string = "";
-
   constructor( 
     private location: Location,
     private route: ActivatedRoute,
@@ -45,11 +41,6 @@ export class ModelEditorComponent implements OnInit {
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get("id");
     this.model = await this.modelDataService.getModel(id);
-
-    // initialize all of the special rule fields to ""
-    for ( let i=0; i<this.model.actions.length; i++ ) {
-      this.newAttackSpecialRule.push("");
-    }
 
     // calculate the cost of the model
     this.calculateCost();
@@ -88,11 +79,10 @@ export class ModelEditorComponent implements OnInit {
     this.calculateCost();
   }
 
-  addSpecialRule() : void {
-    let newRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:this.newSpecialRule, ruleText:"This is a new rule", ruleCost:2 };
+  addSpecialRule( ruleName: string ) : void {
+    let newRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:ruleName, ruleText:"This is a new rule", ruleCost:2 };
     this.model.specialRules.push(newRule);
     this.calculateCost();
-    this.newSpecialRule = "";
   }
 
   deleteSpecialRule( ruleIndex: number ): void {
@@ -115,24 +105,21 @@ export class ModelEditorComponent implements OnInit {
     this.addAction( newAction );
   }
 
-  addSpecialAction(): void {
-    let newSpecialRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:this.newSpecialAction, ruleText:"This is a new action", ruleCost:2 };
-    let newAction: ModelActionData = { type:"SPECIAL", name:this.newSpecialAction, AP:1, specialRules:[ newSpecialRule ] };
+  addSpecialAction( newRule: string ): void {
+    let newSpecialRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:newRule, ruleText:"This is a new action", ruleCost:2 };
+    let newAction: ModelActionData = { type:"SPECIAL", name:newRule, AP:1, specialRules:[ newSpecialRule ] };
     this.addAction( newAction );
-    this.newSpecialAction = "";
   }
 
   private addAction( newAction: ModelActionData ) {
     this.model.actions.push(newAction);
-    this.newAttackSpecialRule.push("");
     this.calculateCost();
   }
 
-  addAttackSpecialRule( actionIndex: number ): void {
-    let newRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:this.newAttackSpecialRule[actionIndex], ruleText:"This is a new rule", ruleCost:2 };
+  addAttackSpecialRule( actionIndex: number, ruleName: string ): void {
+    let newRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:ruleName, ruleText:"This is a new rule", ruleCost:2 };
     this.model.actions[actionIndex].specialRules.push(newRule);
     this.calculateCost();
-    this.newAttackSpecialRule[actionIndex] = "";
   }
 
   deleteAttackSpecialRule( actionIndex: number, ruleIndex: number ): void {

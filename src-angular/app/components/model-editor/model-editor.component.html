@@ -36,7 +36,10 @@
         * <button (click)="deleteSpecialRule(ruleIndex)">Del</button> {{specialRule.ruleName}}
       </div>
       <div>
-        * <input [(ngModel)]="newSpecialRule" placeholder="Add new special rule"><button (click)="addSpecialRule()">Add</button>
+        * <input #newSpecialRuleInput 
+            (keyup.enter)="addSpecialRule(newSpecialRuleInput.value); newSpecialRuleInput.value='';" 
+            placeholder="Add new special rule">
+            <button (click)="addSpecialRule(newSpecialRuleInput.value); newSpecialRuleInput.value='';">Add</button>
       </div>
     </div>
 
@@ -83,7 +86,10 @@
             * <button (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)">Del</button> {{specialRule.ruleName}}
           </div>
           <div>
-            * <input [(ngModel)]="newAttackSpecialRule[actionIndex]" placeholder="Add new special rule"><button (click)="addAttackSpecialRule(actionIndex)">Add</button>
+            * <input #newAttackSpecialRuleInput 
+                (keyup.enter)="addAttackSpecialRule(actionIndex, newAttackSpecialRuleInput.value); newAttackSpecialRuleInput.value='';"
+                placeholder="Add new special rule">
+              <button (click)="addAttackSpecialRule(actionIndex, newAttackSpecialRuleInput.value); newAttackSpecialRuleInput.value='';">Add</button>
           </div>
         </div>
               
@@ -100,7 +106,10 @@
 
     </div>
     <br>
-    <input [(ngModel)]="newSpecialAction" (keyup.enter)="addSpecialAction()" placeholder="Select new special action"><button (click)="addSpecialAction()">Add</button>
+    <input #newSpecialActionInput 
+        (keyup.enter)="addSpecialAction(newSpecialActionInput.value); newSpecialActionInput.value = '';" 
+        placeholder="Select new special action">
+    <button (click)="addSpecialAction(newSpecialActionInput.value); newSpecialActionInput.value = '';">Add</button>
     <button (click)="addMeleeAction()">Add Melee</button>
     <button (click)="addRangedAction()">Add Ranged</button>
     <br>

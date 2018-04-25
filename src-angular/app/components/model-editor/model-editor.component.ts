@@ -16,7 +16,7 @@ interface StatCost {
 })
 export class ModelEditorComponent implements OnInit {
 
-  public model: ModelData;
+  public model: ModelData ;
 
   public attackSpecialRules: SpecialRuleData[] = [];
 
@@ -132,8 +132,7 @@ export class ModelEditorComponent implements OnInit {
     this.calculateCost();
   }
 
-  addAttackSpecialRule( actionIndex: number, ruleName: string ): void {
-    let newRule: SpecialRuleData = { "_id":"S0000", ruleType:"", ruleName:ruleName, ruleText:"This is a new rule", ruleCost:2 };
+  addAttackSpecialRule( actionIndex: number, newRule: SpecialRuleData ): void {
     this.model.actions[actionIndex].specialRules.push(newRule);
     this.calculateCost();
   }

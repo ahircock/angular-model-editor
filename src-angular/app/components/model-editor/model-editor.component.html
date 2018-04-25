@@ -1,4 +1,4 @@
-<div class="multiColumnSection">
+<div *ngIf="model !== undefined" class="multiColumnSection">
     
   <!-- MODEL LIST -->
   <div class="leftColumn">
@@ -37,20 +37,13 @@
       </div>
 
       <!-- ADD SPECIAL RULE INPUT -->
-      <div>
-          * <input 
-              [(ngModel)]="modelSpecialRuleInput"
-              class="dropdownInput"
-              placeholder="Select new special rule">
-          <div class="dropdownContent">
-            <div *ngFor="let specialRule of modelSpecialRules" (click)="addModelSpecialRule(specialRule.ruleName);">{{specialRule.ruleName}}</div>
-          </div>
-      </div>
+      * <div style="display:inline-block;"><app-special-rule-selector [ruleType]="'model'" (ruleSelected)="addModelSpecialRule($event.ruleName)"></app-special-rule-selector></div>
     </div>
 
     <!-- ACTION LIST -->
     <div class="actionBand" *ngFor="let action of model.actions; index as actionIndex;">
       <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'">
+        
         <br>
         <button (click)="deleteAction(actionIndex)">Del</button> 
         Action Type {{action.type}} <br>
@@ -86,48 +79,27 @@
           </select>
         </label><br>
 
-        <div class="attackSpecialRuleBand">
-          <div>Special Rules</div>
-          <div *ngFor="let specialRule of action.specialRules; index as ruleIndex">
-            * <button (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)">Del</button> {{specialRule.ruleName}}
-          </div>
-
-          <!-- Create a fake dropdown for selecting the attack special rule -->
-          <div>
-            * <input 
-                class="dropdownInput"
-                #newAttackSpecialRuleInput 
-                (keyup.enter)="addAttackSpecialRule(actionIndex, newAttackSpecialRuleInput.value); newAttackSpecialRuleInput.value='';"
-                placeholder="Add new special rule">
-              <button (click)="addAttackSpecialRule(actionIndex, newAttackSpecialRuleInput.value); newAttackSpecialRuleInput.value='';">Add</button>
-              <div class="dropdownContent">
-                <div *ngFor="let specialRule of attackSpecialRules">{{specialRule.ruleName}}</div>
-              </div>
-          </div>
+        <div>Special Rules</div>
+        <div *ngFor="let specialRule of action.specialRules; index as ruleIndex">
+          * <button (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)">Del</button> {{specialRule.ruleName}}
         </div>
-              
 
+        * <div style="display:inline-block;"><app-special-rule-selector [ruleType]="'attack'" (ruleSelected)="addAttackSpecialRule(actionIndex, $event)"></app-special-rule-selector></div>
       </div>
-
+      
       <div *ngIf="action.type == 'SPECIAL'">
-        <br>
-        <button (click)="deleteAction(actionIndex)">Del</button> 
-        Action Type {{action.type}} <br>
-        AP {{action.AP}}<br>
-        <label>Name: <input [(ngModel)]="action.name" placeholder="Enter name"></label><br>
+          <br>
+          <button (click)="deleteAction(actionIndex)">Del</button> 
+          Action Type {{action.type}} <br>
+          AP {{action.AP}}<br>
+          <label>Name: <input [(ngModel)]="action.name" placeholder="Enter name"></label><br>
       </div>
-
     </div>
+
     <br>
 
     <!-- ADD SPECIAL ACTION -->
-    <input 
-        [(ngModel)]="actionSpecialRuleInput"
-        class="dropdownInput"
-        placeholder="Select new special action">
-    <div class="dropdownContent">
-      <div *ngFor="let specialRule of actionSpecialRules" (click)="addSpecialAction(specialRule.ruleName);">{{specialRule.ruleName}}</div>
-    </div>
+    <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event.ruleName)"></app-special-rule-selector>
 
     <button (click)="addMeleeAction()">Add Melee</button>
     <button (click)="addRangedAction()">Add Ranged</button>

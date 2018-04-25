@@ -11,6 +11,7 @@ import { ModelDataService } from './services/model-data/model-data.service';
 import { SpecialRuleDataService } from './services/special-rule-data/special-rule-data.service';
 import { ModelEditorComponent } from './components/model-editor/model-editor.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { SpecialRuleSelectorComponent } from './components/special-rule-selector/special-rule-selector.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AppRoutingModule } from './/app-routing.module';
     AppComponent,
     ModelListComponent,
     ModelDetailsComponent,
-    ModelEditorComponent
+    ModelEditorComponent,
+    SpecialRuleSelectorComponent
   ],
   imports: [
     BrowserModule,

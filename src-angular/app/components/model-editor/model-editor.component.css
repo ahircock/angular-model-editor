@@ -17,7 +17,6 @@ div.multiColumnSection .rightColumn {
 .dropdownInput {
     display: inline;
 }
-
 .dropdownContent {
     display: none;
     position: absolute;
@@ -25,15 +24,12 @@ div.multiColumnSection .rightColumn {
     border: 1px solid;
     background: white;
 }
-
 .dropdownInput:focus ~ .dropdownContent {
     display: block;
 }
-
 .dropdownContent:hover {
     display: block;
 }
-
 .dropdownContent div:hover {
     background: darkslategrey;
     color: white;

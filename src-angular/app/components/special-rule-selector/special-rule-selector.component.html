@@ -1,0 +1,9 @@
+<input 
+    [(ngModel)]="specialRuleInput"
+    class="dropdownInput"
+    placeholder="Select new special rule"
+    (focus)="showDropdown()"
+    (blur)="hideDropdown()">
+<div *ngIf="dropdownVisible" class="dropdownContent">
+  <div *ngFor="let specialRule of specialRules" (click)="selectSpecialRule(specialRule.ruleName);">{{specialRule.ruleName}}</div>
+</div>

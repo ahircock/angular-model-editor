@@ -13,3 +13,25 @@ div.multiColumnSection .rightColumn {
     margin: 16px;
 }
 
+/* dropdown display styles */
+.dropdownInput {
+    display: inline;
+}
+.dropdownContent {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    border: 1px solid;
+    background: white;
+}
+.dropdownInput:focus ~ .dropdownContent {
+    display: block;
+}
+.dropdownContent:hover {
+    display: block;
+}
+.dropdownContent div:hover {
+    background: darkslategrey;
+    color: white;
+}
+

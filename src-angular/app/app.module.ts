@@ -12,6 +12,8 @@ import { SpecialRuleDataService } from './services/special-rule-data/special-rul
 import { ModelEditorComponent } from './components/model-editor/model-editor.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { SpecialRuleSelectorComponent } from './components/special-rule-selector/special-rule-selector.component';
+import { SpecialRuleListComponent } from './components/special-rule-list/special-rule-list.component';
+import { ForceEditorComponent } from './components/force-editor/force-editor.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { SpecialRuleSelectorComponent } from './components/special-rule-selector
     ModelListComponent,
     ModelDetailsComponent,
     ModelEditorComponent,
-    SpecialRuleSelectorComponent
+    SpecialRuleSelectorComponent,
+    SpecialRuleListComponent,
+    ForceEditorComponent
   ],
   imports: [
     BrowserModule,

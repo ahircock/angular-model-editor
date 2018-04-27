@@ -2,6 +2,40 @@
     
   <!-- MODEL LIST -->
   <div class="leftColumn">
+
+    <div *ngIf="model" class="modelBox">
+  
+      <!-- TITLE BOX -->
+      <div class="titleBox">
+        <div class="modelTextBox">
+          <div><input class="inputText titleFont" [(ngModel)]="model.name" placeholder="Model name"></div>
+          <div><input class="inputText traitsFont" [(ngModel)]="model.traits" placeholder="Model traits"></div>
+          <div class="modelCost">{{model.cost}} points</div>
+          <table class="statTable">
+            <tr class="statHeader">
+              <th>SPD</th>
+              <th>EV</th>
+              <th>ARM</th>
+              <th>HP</th>
+            </tr>
+            <tr class="statData">
+              <td><input class="inputText statFont" [(ngModel)]="model.SPD"></td>
+              <td><input class="inputText statFont" [(ngModel)]="model.EV"></td>
+              <td><input class="inputText statFont" [(ngModel)]="model.ARM"></td>
+              <td><input class="inputText statFont" [(ngModel)]="model.HP"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modelImageBox">
+          <img class="modelImage" [src]="'assets/portraits/' + model.picture">
+        </div>
+      </div>
+    </div>
+  
+
+  
+
+
     <p>Let's start editing model {{model._id}}</p>
     <label>Name: <input [(ngModel)]="model.name" placeholder="Enter name"></label><br>
     <label>Traits: <input [(ngModel)]="model.traits" placeholder="Enter traits"></label><br>

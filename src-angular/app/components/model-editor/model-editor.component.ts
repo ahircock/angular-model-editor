@@ -12,7 +12,7 @@ interface StatCost {
 @Component({
   selector: 'app-model-editor',
   templateUrl: './model-editor.component.html',
-  styleUrls: ['./model-editor.component.css']
+  styleUrls: ['./model-editor.component.css', './model-details.component.css']
 })
 export class ModelEditorComponent implements OnInit {
 

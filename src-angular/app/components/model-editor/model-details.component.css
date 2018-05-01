@@ -42,7 +42,6 @@ input {
 
 /* button styling */
 .textActionButton {
-    display: inline-block;
     border-radius: 8px;
     border: 1px solid;
     text-align: center;

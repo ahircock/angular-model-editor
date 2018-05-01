@@ -78,3 +78,13 @@ ul.modelList li.selected {
     background-color: darkslategray; color: white;
 }
 
+.imageButton img {
+    width: 40px;
+    background-color:white;
+    border: 4px solid transparent;
+    border-radius: 12px;
+}
+.imageButton img:hover {
+    border-color:grey;
+    background-color:grey;
+}

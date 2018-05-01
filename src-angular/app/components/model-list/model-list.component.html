@@ -29,6 +29,8 @@
 
     <!-- MODEL DETAILS -->
     <div class="rightColumn" style="height: 500px;">
-      <app-model-editor [model]="selectedModel"></app-model-editor>
+      <div *ngIf="!editMode" class="imageButton" (click)="setEditMode(true)"><img src="/assets/icons/icon-edit-128.png"></div>
+      <app-model-details *ngIf="!editMode" [model]="selectedModel"></app-model-details>
+      <app-model-editor *ngIf="editMode" [model]="selectedModel"></app-model-editor>
     </div>
   </div>

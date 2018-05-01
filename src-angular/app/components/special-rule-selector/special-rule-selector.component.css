@@ -13,7 +13,7 @@ input {
 /* dropdown display styles */
 .dropdownInput {
     width: auto;
-    background-image: url('assets/icons/icon-outline-plus-16.png');
+    background-image: url('/assets/icons/icon-outline-plus-16.png');
     background-repeat: no-repeat;
     background-color: lightgrey;
     padding-left:18px;

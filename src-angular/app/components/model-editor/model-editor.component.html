@@ -1,114 +1,114 @@
-<div *ngIf="model !== undefined" class="multiColumnSection">
     
-  <!-- MODEL LIST -->
-  <div class="leftColumn">
+<div *ngIf="model" class="modelBox">
 
-    <div *ngIf="model" class="modelBox">
-  
-      <!-- TITLE BOX -->
-      <div class="titleBox">
-        <div class="modelTextBox">
-          <div><input class="inputText titleFont" [(ngModel)]="model.name" placeholder="Model name"></div>
-          <div><input class="inputText traitsFont" [(ngModel)]="model.traits" placeholder="Model traits"></div>
-          <div class="modelCost">{{model.cost}} points</div>
-          <table class="statTable">
+  <!-- TITLE BOX -->
+  <div class="titleBox">
+    <div class="modelTextBox">
+      <div><input class="inputText titleFont" [(ngModel)]="model.name" placeholder="Model name"></div>
+      <div><input class="inputText traitsFont" [(ngModel)]="model.traits" placeholder="Model traits"></div>
+      <div class="modelCost">{{model.cost}} points</div>
+      <table class="statTable">
+        <tr>
+          <th>SPD</th>
+          <th>EV</th>
+          <th>ARM</th>
+          <th>HP</th>
+        </tr>
+        <tr>
+          <td><select [(ngModel)]="model.SPD" class="inputText statFont" (change)="selectModelStat($event.target.value, 'SPD')">
+            <option *ngFor="let SPD of SPD_COST;" [value]="SPD.stat">{{SPD.stat}}</option></select></td>
+          <td><select [(ngModel)]="model.EV" class="inputText statFont" (change)="selectModelStat($event.target.value, 'EV')">
+            <option *ngFor="let EV of EV_COST;" [value]="EV.stat">{{EV.stat}}</option></select></td>
+          <td><select [(ngModel)]="model.ARM" class="inputText statFont" (change)="selectModelStat($event.target.value, 'ARM')">
+            <option *ngFor="let ARM of ARM_COST;" [value]="ARM.stat">{{ARM.stat}}</option></select></td>
+          <td><select [(ngModel)]="model.HP" class="inputText statFont" (change)="selectModelStat($event.target.value, 'HP')">
+            <option *ngFor="let HP of HP_COST;" [value]="HP.stat">{{HP.stat}}</option></select></td>
+        </tr>
+      </table>
+    </div>
+    <div class="modelImageBox">
+      <img class="modelImage" [src]="'assets/portraits/' + model.picture">
+    </div>
+  </div>
+
+  <!-- MODEL SPECIAL RULES -->
+  <div class="modelSpecialRulesBox">
+    <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="specialRule">
+      <div class="textActionButton" (click)="deleteModelSpecialRule(ruleIndex)"><img src="/assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
+      <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
+    </div>
+    <app-special-rule-selector [ruleType]="'model'" (ruleSelected)="addModelSpecialRule($event)"></app-special-rule-selector>
+  </div>
+
+  <!-- ACTIONS -->
+  <div *ngFor="let action of model.actions; index as actionIndex" class="actionBox">
+    <div class="actionTitleBox">
+      <div class="textActionButton" (click)="deleteAction(actionIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
+      <div class="actionAPCost">{{action.AP}}</div>
+      <div class="actionTitle"><input class="inputText actionFont" [(ngModel)]="action.name"></div>
+      <div class="actionTraits"><input class="inputText actionTraitsFont" [(ngModel)]="action.traits"></div>
+    </div>
+
+    <!-- ATTACK ACION -->
+    <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'" class="attackActionBox">
+      <div class="attackActionStatBar">
+        <div class="attackActionIconDiv">
+          <img *ngIf="action.type == 'MELEE'" class="attackActionIcon" src="assets/icons/icon-sword-invert.png">
+          <img *ngIf="action.type == 'RANGED'" class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
+        </div>
+        <div class="attackActionTableDiv">
+          <table class="attackActionTable statTable">
             <tr class="statHeader">
-              <th>SPD</th>
-              <th>EV</th>
-              <th>ARM</th>
-              <th>HP</th>
+              <th>RNG</th>
+              <th>HIT</th>
+              <th>DMG</th>
             </tr>
             <tr class="statData">
-              <td><input class="inputText statFont" [(ngModel)]="model.SPD"></td>
-              <td><input class="inputText statFont" [(ngModel)]="model.EV"></td>
-              <td><input class="inputText statFont" [(ngModel)]="model.ARM"></td>
-              <td><input class="inputText statFont" [(ngModel)]="model.HP"></td>
+              <td *ngIf="action.type == 'MELEE'">
+                <select [(ngModel)]="action.RNG" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'RNG-MELEE')">
+                  <option *ngFor="let RNG of MELEE_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
+              <td *ngIf="action.type == 'RANGED'">
+                <select [(ngModel)]="action.RNG" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'RNG-RANGED')">
+                  <option *ngFor="let RNG of RANGED_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
+              <td >
+                <select [(ngModel)]="action.HIT" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'HIT')">
+                  <option *ngFor="let HIT of HIT_COST;" [value]="HIT.stat">{{HIT.stat}}</option></select></td>
+              <td >
+                <select [(ngModel)]="action.DMG" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'DMG')">
+                  <option *ngFor="let DMG of DMG_COST;" [value]="DMG.stat">{{DMG.stat}}</option></select></td>
             </tr>
           </table>
         </div>
-        <div class="modelImageBox">
-          <img class="modelImage" [src]="'assets/portraits/' + model.picture">
-        </div>
       </div>
-  
-      <!-- MODEL SPECIAL RULES -->
-      <div class="modelSpecialRulesBox">
-        <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="specialRule">
-          <div class="textActionButton" (click)="deleteModelSpecialRule(ruleIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
+      <div class="attackActionSpecialRulesBox">
+        <div *ngFor="let specialRule of action.specialRules; index as ruleIndex;" class="specialRule">
+          <div class="textActionButton" (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
           <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
         </div>
-        <app-special-rule-selector [ruleType]="'model'" (ruleSelected)="addModelSpecialRule($event)"></app-special-rule-selector>
+        <app-special-rule-selector [ruleType]="'attack'" (ruleSelected)="addAttackSpecialRule(actionIndex, $event)"></app-special-rule-selector>
       </div>
-
-      <!-- ACTIONS -->
-      <div *ngFor="let action of model.actions; index as actionIndex" class="actionBox">
-        <div class="actionTitleBox">
-          <div class="textActionButton" (click)="deleteAction(actionIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
-          <div class="actionAPCost">{{action.AP}}</div>
-          <div class="actionTitle"><input class="inputText actionFont" [(ngModel)]="action.name"></div>
-          <div class="actionTraits"><input class="inputText actionTraitsFont" [(ngModel)]="action.traits"></div>
-        </div>
-
-        <!-- ATTACK ACION -->
-        <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'" class="attackActionBox">
-          <div class="attackActionStatBar">
-            <div class="attackActionIconDiv">
-              <img *ngIf="action.type == 'MELEE'" class="attackActionIcon" src="assets/icons/icon-sword-invert.png">
-              <img *ngIf="action.type == 'RANGED'" class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
-            </div>
-            <div class="attackActionTableDiv">
-              <table class="attackActionTable">
-                <tr class="statHeader">
-                  <th>RNG</th>
-                  <th>HIT</th>
-                  <th>DMG</th>
-                </tr>
-                <tr class="statData">
-                  <td>{{action.RNG}}</td>
-                  <td>{{action.HIT}}</td>
-                  <td>{{action.DMG}}</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          <div class="attackActionSpecialRulesBox">
-            <div *ngFor="let specialRule of action.specialRules; index as ruleIndex;" class="specialRule">
-              <div class="textActionButton" (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
-              <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
-            </div>
-            <app-special-rule-selector [ruleType]="'attack'" (ruleSelected)="addAttackSpecialRule(actionIndex, $event)"></app-special-rule-selector>
-          </div>
-        </div>
-
-        <!-- SPECIAL ACION -->
-        <div *ngIf="action.type == 'SPECIAL'" class="specialActionBox">
-          <div class="specialActionRulesBox">
-            <div class="specialActionIconDiv">
-              <img class="specialActionIcon" src="assets/icons/icon-star-invert.png">
-            </div>
-            <div class="specialActionRule">
-              <b>{{action.specialRules[0].ruleName}}</b> - <span [innerHTML]="action.specialRules[0].ruleText"></span>
-            </div>
-          </div>      
-        </div>
-      </div>
-
-      <br>
-      <div class="textActionButton" (click)="addMeleeAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Melee Attack Action</div></div>
-      <br>
-      <div class="textActionButton" (click)="addRangedAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Ranged Attack Action</div></div>
-      <br>
-      <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event)" title="Add Special Action"></app-special-rule-selector>
     </div>
-    
-    <button (click)="ok()">OK</button>
-  </div>
-  
-  <!-- MODEL DETAILS -->
-  <div class="rightColumn">
-    <div>
-      <app-model-details [model]="model"></app-model-details>
+
+    <!-- SPECIAL ACION -->
+    <div *ngIf="action.type == 'SPECIAL'" class="specialActionBox">
+      <div class="specialActionRulesBox">
+        <div class="specialActionIconDiv">
+          <img class="specialActionIcon" src="assets/icons/icon-star-invert.png">
+        </div>
+        <div class="specialActionRule">
+          <b>{{action.specialRules[0].ruleName}}</b> - <span [innerHTML]="action.specialRules[0].ruleText"></span>
+        </div>
+      </div>      
     </div>
   </div>
 
+  <br>
+  <div class="textActionButton" (click)="addMeleeAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Melee Attack Action</div></div>
+  <br>
+  <div class="textActionButton" (click)="addRangedAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Ranged Attack Action</div></div>
+  <br>
+  <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event)" title="Add Special Action"></app-special-rule-selector>
 </div>
+
+<div class="okButton" (click)="ok()">OK</div>
+

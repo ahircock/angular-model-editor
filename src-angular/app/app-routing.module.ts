@@ -10,8 +10,7 @@ const routes: Routes = [
   { path: "", redirectTo: "/models", pathMatch: "full" },
   { path: "models", component: ModelListComponent },
   { path: "specialrules", component: SpecialRuleListComponent },
-  { path: "forces", component: ForceEditorComponent },
-  { path: "models/edit/:id", component: ModelEditorComponent }
+  { path: "forces", component: ForceEditorComponent }
 ]
 
 @NgModule({

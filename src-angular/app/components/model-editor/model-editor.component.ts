@@ -100,7 +100,7 @@ export class ModelEditorComponent implements OnInit {
     this.modelSpecialRuleInput = "";
   }
 
-  deleteSpecialRule( ruleIndex: number ): void {
+  deleteModelSpecialRule( ruleIndex: number ): void {
     this.model.specialRules.splice( ruleIndex, 1 );
     this.calculateCost();
   }

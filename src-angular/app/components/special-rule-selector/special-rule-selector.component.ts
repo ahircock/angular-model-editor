@@ -9,6 +9,7 @@ import { SpecialRuleData, SpecialRuleDataService } from '../../services/special-
 export class SpecialRuleSelectorComponent implements OnInit {
 
   @Input() ruleType: string;
+  @Input() title: string = "Select new special rule";
   @Output() ruleSelected = new EventEmitter<SpecialRuleData>();
 
   public specialRules: SpecialRuleData[] = [];

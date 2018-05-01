@@ -30,8 +30,39 @@ input {
 .traitsFont {
     font-style: italic; text-transform: capitalize; 
 }
+.actionFont {
+    font-weight: bold; text-transform: uppercase;
+}
+.actionTraitsFont {
+    text-transform: capitalize; font-style: italic; text-align: right;
+}
 .statFont {
     font-weight: bold;
+}
+
+/* button styling */
+.textActionButton {
+    display: inline-block;
+    border-radius: 8px;
+    border: 1px solid;
+    text-align: center;
+    margin-right: 8px;
+    font:13px Arial;
+    padding-right: 4px;
+    float: left;
+    background: lightgrey;
+}
+.textActionButton img {
+    width: 16px;
+    float: left;
+}
+.textActionButton div {
+    display: inline-block;
+    font-size: 12px;
+    padding-top: 1px;
+}
+.textActionButton:hover {
+    background-color: lightslategray;
 }
 
 /* title area */
@@ -86,7 +117,7 @@ input {
     background-color: white; 
 }
 .specialRule {
-    font-weight: normal; font-size: 1em;
+    margin-bottom: 8px;
 }
 
 /* action Title */
@@ -101,7 +132,6 @@ input {
 }
 .actionTitle {
     display: inline-block; margin-left: 3px;
-    font-weight: bold; text-transform: uppercase;
 }
 .actionTraits {
     float: right;

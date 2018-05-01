@@ -37,7 +37,7 @@
           <div class="textActionButton" (click)="deleteModelSpecialRule(ruleIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
           <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
         </div>
-        <app-special-rule-selector [ruleType]="'model'" (ruleSelected)="addModelSpecialRule($event.ruleName)"></app-special-rule-selector>
+        <app-special-rule-selector [ruleType]="'model'" (ruleSelected)="addModelSpecialRule($event)"></app-special-rule-selector>
       </div>
 
       <!-- ACTIONS -->
@@ -98,7 +98,7 @@
       <br>
       <div class="textActionButton" (click)="addRangedAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Ranged Attack Action</div></div>
       <br>
-      <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event.ruleName)" title="Add Special Action"></app-special-rule-selector>
+      <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event)" title="Add Special Action"></app-special-rule-selector>
     </div>
     
     <button (click)="ok()">OK</button>

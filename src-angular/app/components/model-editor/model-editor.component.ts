@@ -18,16 +18,6 @@ export class ModelEditorComponent implements OnInit {
 
   public model: ModelData ;
 
-  public attackSpecialRules: SpecialRuleData[] = [];
-
-  // dropdowns for special rule actions
-  public actionSpecialRules: SpecialRuleData[] = [];
-  public actionSpecialRuleInput: string = "";
-
-  // dropdowns for model special rules
-  public modelSpecialRules: SpecialRuleData[] = [];
-  public modelSpecialRuleInput: string = "";
-  
   // These constant arrays are used to calculate the total cost of a model
   public BASE_COST = 10;
   public SPD_COST: StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:6} ];
@@ -52,9 +42,6 @@ export class ModelEditorComponent implements OnInit {
   async ngOnInit() {
     let id = this.route.snapshot.paramMap.get("id");
     this.model = await this.modelDataService.getModel(id);
-    this.attackSpecialRules = await this.specialRuleDataService.getAttackSpecialRules();
-    this.actionSpecialRules = await this.specialRuleDataService.getActionSpecialRules();
-    this.modelSpecialRules  = await this.specialRuleDataService.getModelSpecialRules();
 
     // calculate the cost of the model
     this.calculateCost();
@@ -93,11 +80,9 @@ export class ModelEditorComponent implements OnInit {
     this.calculateCost();
   }
 
-  addModelSpecialRule( ruleName: string ) : void {
-    let newSpecialRule: SpecialRuleData = this.modelSpecialRules.find( (element) => { return element.ruleName == ruleName; } );
-    this.model.specialRules.push(newSpecialRule);
+  addModelSpecialRule( newSpecialRule: SpecialRuleData ) : void {
+    this.model.specialRules.push( newSpecialRule);
     this.calculateCost();
-    this.modelSpecialRuleInput = "";
   }
 
   deleteModelSpecialRule( ruleIndex: number ): void {
@@ -112,22 +97,18 @@ export class ModelEditorComponent implements OnInit {
 
   addMeleeAction() : void {
     let newAction = JSON.parse( JSON.stringify(this.NEW_MELEE_ACTION));
-    this.addAction( newAction );
+    this.model.actions.push(newAction);
+    this.calculateCost();
   }
 
   addRangedAction(): void {
     let newAction = JSON.parse( JSON.stringify(this.NEW_RANGED_ACTION));
-    this.addAction( newAction );
+    this.model.actions.push(newAction);
+    this.calculateCost();
   }
 
-  addSpecialAction( ruleName: string ): void {
-    let newSpecialRule: SpecialRuleData = this.actionSpecialRules.find( (element) => { return element.ruleName == ruleName; } );
-    let newAction: ModelActionData = { type:"SPECIAL", name:ruleName, AP:1, specialRules:[ newSpecialRule ] };
-    this.addAction( newAction );
-    this.actionSpecialRuleInput = "";
-  }
-
-  private addAction( newAction: ModelActionData ) {
+  addSpecialAction( newSpecialRule: SpecialRuleData ): void {
+    let newAction: ModelActionData = { type:"SPECIAL", name:newSpecialRule.ruleName, AP:1, specialRules:[ newSpecialRule ] };
     this.model.actions.push(newAction);
     this.calculateCost();
   }

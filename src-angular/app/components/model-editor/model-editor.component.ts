@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ModelData, ModelDataService, ModelActionData } from '../../services/model-data/model-data.service';
@@ -16,7 +16,7 @@ interface StatCost {
 })
 export class ModelEditorComponent implements OnInit {
 
-  public model: ModelData ;
+  @Input() model: ModelData;
 
   // These constant arrays are used to calculate the total cost of a model
   public BASE_COST = 10;
@@ -40,10 +40,6 @@ export class ModelEditorComponent implements OnInit {
    ) { }
 
   async ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id");
-    this.model = await this.modelDataService.getModel(id);
-
-    // calculate the cost of the model
     this.calculateCost();
   }
 

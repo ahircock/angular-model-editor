@@ -67,10 +67,8 @@ input {
     border-radius: 8px;
     border: 1px solid;
     text-align: center;
-    margin-right: 8px;
     font:13px Arial;
     padding-right: 4px;
-    float: left;
     background: lightgrey;
 }
 .textActionButton img {
@@ -152,6 +150,10 @@ input {
     padding: 3px; margin-top: 5px; 
     border: solid 2px; background-color: white; 
 }
+.actionRemoveButton {
+    margin-right: 8px;
+    float: left;
+}
 .actionAPCost {
     padding-left: 6px; padding-right: 6px;
     background-color: grey; color: white; text-align: center; font-weight: bold; border-radius: 3px;
@@ -211,4 +213,11 @@ input {
 }
 .specialActionRule {
     margin-left: 3px; width:441px; float: left;
+}
+
+/* add action buttons */ 
+.addActionButton {
+    margin-right: 8px;
+    display: inline-block;
+    margin-bottom: 4px;
 }

@@ -34,7 +34,7 @@
   <!-- MODEL SPECIAL RULES -->
   <div class="modelSpecialRulesBox">
     <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="specialRule">
-      <div class="textActionButton" (click)="deleteModelSpecialRule(ruleIndex)"><img src="/assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
+      <div class="actionRemoveButton textActionButton" (click)="deleteModelSpecialRule(ruleIndex)"><img src="/assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
       <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
     </div>
     <app-special-rule-selector [ruleType]="'model'" (ruleSelected)="addModelSpecialRule($event)"></app-special-rule-selector>
@@ -43,7 +43,8 @@
   <!-- ACTIONS -->
   <div *ngFor="let action of model.actions; index as actionIndex" class="actionBox">
     <div class="actionTitleBox">
-      <div class="textActionButton" (click)="deleteAction(actionIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
+      <div class="actionRemoveButton textActionButton" style="margin-top:2px;" (click)="deleteAction(actionIndex)">
+        <img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
       <div class="actionAPCost">{{action.AP}}</div>
       <div class="actionTitle"><input class="inputText actionFont" [(ngModel)]="action.name"></div>
       <div class="actionTraits"><input class="inputText actionTraitsFont" [(ngModel)]="action.traits"></div>
@@ -82,7 +83,7 @@
       </div>
       <div class="attackActionSpecialRulesBox">
         <div *ngFor="let specialRule of action.specialRules; index as ruleIndex;" class="specialRule">
-          <div class="textActionButton" (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
+          <div class="actionRemoveButton textActionButton" (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)"><img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
           <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
         </div>
         <app-special-rule-selector [ruleType]="'attack'" (ruleSelected)="addAttackSpecialRule(actionIndex, $event)"></app-special-rule-selector>
@@ -103,10 +104,12 @@
   </div>
 
   <br>
-  <div class="textActionButton" (click)="addMeleeAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Melee Attack Action</div></div>
-  <br>
-  <div class="textActionButton" (click)="addRangedAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Ranged Attack Action</div></div>
-  <br>
-  <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event)" title="Add Special Action"></app-special-rule-selector>
+  <div>
+    <div class="addActionButton textActionButton" (click)="addMeleeAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Melee Attack Action</div></div>
+    <br>
+    <div class="addActionButton textActionButton" (click)="addRangedAction()"><img src="assets/icons/icon-outline-plus-128.png"><div>Add Ranged Attack Action</div></div>
+    <br>
+    <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event)" title="Add Special Action"></app-special-rule-selector>
+  </div>
 </div>
 

@@ -1,4 +1,5 @@
 <div class="specialRuleSelectorBox">
+  <img class="plusIcon" src="/assets/icons/icon-outline-plus-128.png">
   <input 
     [(ngModel)]="specialRuleInput"
     class="dropdownInput"
@@ -6,6 +7,8 @@
     (focus)="showDropdown()"
     (blur)="hideDropdown()">
   <div *ngIf="dropdownVisible" class="dropdownContent">
-    <div *ngFor="let specialRule of specialRules" (click)="selectSpecialRule(specialRule.ruleName);">{{specialRule.ruleName}}</div>
+    <div *ngFor="let specialRule of specialRules" (click)="selectSpecialRule(specialRule.ruleName);">
+      ({{specialRule.ruleCost}} points) <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>      
+    </div>
   </div>
 </div>

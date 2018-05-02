@@ -78,6 +78,7 @@ input {
 .modelTextBox {
     display: inline-block; vertical-align: top;
     margin-left: 6px;
+    width: 334px;
 }
 .modelName { 
     margin:4px; font-size: 1.75em; font-weight: bold; text-transform: uppercase;
@@ -140,6 +141,7 @@ input {
 .actionTraits {
     float: right;
     text-transform: capitalize; font-style: italic;
+    width: 180px;
 }
 
 /* attack actions */

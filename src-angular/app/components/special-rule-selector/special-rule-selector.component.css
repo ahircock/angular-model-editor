@@ -10,11 +10,16 @@ input {
     position: relative;
 }
 
+/* image in the selection box */
+.plusIcon {
+    width: 16px;
+    position:absolute;
+    top: 1px; left: 1px;
+}
+
 /* dropdown display styles */
 .dropdownInput {
     width: auto;
-    background-image: url('/assets/icons/icon-outline-plus-16.png');
-    background-repeat: no-repeat;
     background-color: lightgrey;
     padding-left:18px;
     border: 1px solid black; border-radius: 8px;

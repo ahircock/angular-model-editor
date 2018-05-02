@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForceEditorComponent } from './force-editor.component';
+import { ForceListComponent } from './force-list.component';
 
-describe('ForceEditorComponent', () => {
-  let component: ForceEditorComponent;
-  let fixture: ComponentFixture<ForceEditorComponent>;
+describe('ForceListComponent', () => {
+  let component: ForceListComponent;
+  let fixture: ComponentFixture<ForceListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForceEditorComponent ]
+      declarations: [ ForceListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ForceEditorComponent);
+    fixture = TestBed.createComponent(ForceListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

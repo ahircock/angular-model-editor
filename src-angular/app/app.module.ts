@@ -13,7 +13,7 @@ import { ModelEditorComponent } from './components/model-editor/model-editor.com
 import { AppRoutingModule } from './/app-routing.module';
 import { SpecialRuleSelectorComponent } from './components/special-rule-selector/special-rule-selector.component';
 import { SpecialRuleListComponent } from './components/special-rule-list/special-rule-list.component';
-import { ForceEditorComponent } from './components/force-editor/force-editor.component';
+import { ForceListComponent } from './components/force-list/force-list.component';
 
 
 @NgModule({
@@ -24,7 +24,7 @@ import { ForceEditorComponent } from './components/force-editor/force-editor.com
     ModelEditorComponent,
     SpecialRuleSelectorComponent,
     SpecialRuleListComponent,
-    ForceEditorComponent
+    ForceListComponent
   ],
   imports: [
     BrowserModule,

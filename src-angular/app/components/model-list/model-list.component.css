@@ -78,13 +78,20 @@ ul.modelList li.selected {
     background-color: darkslategray; color: white;
 }
 
-.imageButton img {
-    width: 40px;
+.imageButton {
+    border: 2px solid black;
     background-color:white;
-    border: 4px solid transparent;
-    border-radius: 12px;
+    border-radius: 4px;
+    padding: 2px;
+    width: fit-content;
+    margin-bottom:8px;
+    display: inline-block;
 }
-.imageButton img:hover {
+.imageButton img {
+    width: 16px; 
+    margin-right: 4px;   
+}
+.imageButton:hover {
     border-color:grey;
-    background-color:grey;
+    background-color:lightgrey;
 }

@@ -16,11 +16,6 @@
               <div class="modelName">{{model.name}}</div>
               <div class="modelCost">{{model.cost}} points</div>
             </div>
-            <div class="modelButtonBox">
-              <div routerLink="/models/edit/{{model._id}}" class="modelButton">EDIT</div>
-              <div class="modelButton">CLONE</div>
-              <div class="modelButton">DELETE</div>
-            </div>
           </div>  
 
         </li>
@@ -30,8 +25,8 @@
     <!-- MODEL DETAILS -->
     <div class="rightColumn" style="height: 500px;">
       <div *ngIf="!editMode" class="imageButton" (click)="setEditMode(true)"><img src="/assets/icons/icon-edit-128.png">Edit</div>
-      <div *ngIf="!editMode" class="imageButton" ><img src="/assets/icons/icon-edit-128.png">Clone</div>
-      <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-edit-128.png">Save</div>
+      <div *ngIf="!editMode" class="imageButton" ><img src="/assets/icons/icon-clone-128.png">Clone</div>
+      <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-check-128.png">Save</div>
       <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-close-128.png">Cancel</div>
       <app-model-details *ngIf="!editMode" [model]="selectedModel"></app-model-details>
       <app-model-editor *ngIf="editMode" [model]="selectedModel"></app-model-editor>

@@ -80,7 +80,7 @@ ul.modelList li.selected {
 
 .imageButton {
     border: 2px solid black;
-    background-color:white;
+    background-color:lightgrey;
     border-radius: 4px;
     padding: 2px;
     width: fit-content;
@@ -92,6 +92,5 @@ ul.modelList li.selected {
     margin-right: 4px;   
 }
 .imageButton:hover {
-    border-color:grey;
-    background-color:lightgrey;
+    background-color:lightslategrey;
 }

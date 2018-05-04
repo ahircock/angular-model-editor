@@ -1,7 +1,18 @@
-<ul class = "menuBar">
-  <li><h1>GENESYS</h1></li>
-  <li><a routerLink="/forces" routerLinkActive="active">Forces</a></li>
-  <li><a routerLink="/models" routerLinkActive="active">Models</a></li>
-  <li><a routerLink="/specialrules" routerLinkActive="active">Special Rules</a></li>
-</ul>
-<router-outlet></router-outlet>
+<div class="header">
+  <div class="appImage"><img src="/assets/icons/age-of-sigmar.jpg"></div>
+  <div class="menuBar">
+      <div class="menuItem" routerLink="/forces" routerLinkActive="active">Forces</div>
+      <div class="menuItem" routerLink="/models" routerLinkActive="active">Models</div>
+      <div class="menuItem" routerLink="/specialrules" routerLinkActive="active">Special Rules</div>
+  </div>
+</div>
+<div class="middle">
+  <!-- <div class="column-box">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div> -->
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+  Footer
+</div>

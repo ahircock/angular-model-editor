@@ -3,18 +3,24 @@
 }
 
 /* multi-column display */
-div.multiColumnSection {
+div.column-section {
+    position: relative;
+    top: 0; bottom: 0;
     display: flex;
-    margin: auto;
+    height: 100%;
 }
-div.multiColumnSection .leftColumn {
-    flex: 1 0 50px;
-    margin: 16px;
+div.column-section .left {
+    flex: 1 0 128px;
+    height: 100%;
+    overflow-y: auto;    
 }
-div.multiColumnSection .rightColumn {
-    flex: 0 0 518px;
-    border: none; 
-    margin: 16px;
+div.column-section .right {
+    flex: 0 0 550px;
+    padding: 16px;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;    
 }
 
 /* model list */

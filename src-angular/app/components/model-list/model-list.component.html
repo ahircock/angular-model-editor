@@ -1,7 +1,7 @@
-<div class="multiColumnSection">
+<div class="column-section">
     
   <!-- MODEL LIST -->
-  <div class="leftColumn" style="height: 750px;">
+  <div class="left" style="height: 750px;">
       <ul class="modelList">
         <li *ngFor="let model of models;" 
           (click)="onSelect(model)"
@@ -23,7 +23,7 @@
     </div>
 
     <!-- MODEL DETAILS -->
-    <div class="rightColumn" style="height: 500px;">
+    <div class="right">
       <div *ngIf="!editMode" class="imageButton" (click)="setEditMode(true)"><img src="/assets/icons/icon-edit-128.png">Edit</div>
       <div *ngIf="!editMode" class="imageButton" ><img src="/assets/icons/icon-clone-128.png">Clone</div>
       <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-check-128.png">Save</div>

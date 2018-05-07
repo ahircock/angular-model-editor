@@ -19,6 +19,7 @@ import { SpecialRuleListComponent } from './components/special-rule-list/special
 import { ForceListComponent } from './components/force-list/force-list.component';
 import { ModelTileComponent } from './components/model-tile/model-tile.component';
 import { ForceTileComponent } from './components/force-tile/force-tile.component';
+import { ForceDetailsComponent } from './components/force-details/force-details.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ForceTileComponent } from './components/force-tile/force-tile.component
     SpecialRuleListComponent,
     ForceListComponent,
     ModelTileComponent,
-    ForceTileComponent
+    ForceTileComponent,
+    ForceDetailsComponent
   ],
   imports: [
     BrowserModule,

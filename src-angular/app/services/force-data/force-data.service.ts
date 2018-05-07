@@ -28,9 +28,26 @@ export class ForceDataService {
 
   constructor() { }
 
-  async getForces() {
+  async getAllForces() {
     // make a deep copy of the model list and then return it
     let returnList: ForceData[] = JSON.parse(JSON.stringify(this.forceDB));
     return returnList;
   }
+
+  async getForceById( id: string ) {
+    // find the model in the arrach (using the "find" function), and then return a deep copy of that model
+    let findForce: ForceData = this.forceDB.find( element => { return element._id == id;} );
+    let returnForce: ForceData = JSON.parse( JSON.stringify( findForce) );
+    return returnForce;
+  }
+
+  async getForceListById( idList: string[] ) {
+
+    let returnList: ForceData[] = [];
+    for ( let id of idList ) {
+      returnList.push( await this.getForceById(id) );
+    }
+    return returnList;
+  }
+  
 }

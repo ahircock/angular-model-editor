@@ -13,7 +13,7 @@ export class ForceListComponent implements OnInit {
   constructor( private forceDataService: ForceDataService ) { }
 
   async ngOnInit() {
-    this.forces = await this.forceDataService.getForces();
+    this.forces = await this.forceDataService.getAllForces();
   }
 
   onSelect( selectedForce: ForceData ) {

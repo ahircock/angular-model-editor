@@ -15,7 +15,7 @@ export class ModelListComponent implements OnInit {
   constructor( private modelDataService: ModelDataService ) { }
 
   async ngOnInit() {
-    this.models = await this.modelDataService.getModels();
+    this.models = await this.modelDataService.getAllModels();
 
     // select the first one
     if ( this.models.length > 0 ) {

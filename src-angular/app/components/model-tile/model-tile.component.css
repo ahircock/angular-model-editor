@@ -1,0 +1,22 @@
+/* MODEL BOX */
+.model-tile {
+    position: relative;
+    height: 82px; width: 264px;
+    border-radius: 4px;
+}
+.model-image-box {
+    position: absolute;
+    left: 4px; top: 4px; height: 72px; width: 72px; 
+    display: inline-block;
+}
+.model-image {
+    height: 72px; margin-left: auto; margin-right: auto; display: block;
+}
+.model-details-box {
+    position: absolute;
+    left: 80px; top:8px; width: 188px;
+}
+.model-cost { 
+    margin-top:10px; margin-bottom: 10px;
+    width: max-content;    
+}

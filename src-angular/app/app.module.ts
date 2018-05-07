@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { SpecialRuleSelectorComponent } from './components/special-rule-selector/special-rule-selector.component';
 import { SpecialRuleListComponent } from './components/special-rule-list/special-rule-list.component';
 import { ForceListComponent } from './components/force-list/force-list.component';
+import { ModelTileComponent } from './components/model-tile/model-tile.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ForceListComponent } from './components/force-list/force-list.component
     ModelEditorComponent,
     SpecialRuleSelectorComponent,
     SpecialRuleListComponent,
-    ForceListComponent
+    ForceListComponent,
+    ModelTileComponent
   ],
   imports: [
     BrowserModule,

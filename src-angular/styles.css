@@ -1,4 +1,94 @@
-/* You can add global styles to this file, and also import other style files */
+/* for some reason angular puts a margin on the body tag */
 body {
     margin:0px;
+}
+
+/* FONTS */
+* {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
+}
+input {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
+}
+.font-title-big {
+    font-size: 28px; font-weight: bold; text-transform: uppercase; 
+}
+.font-title {
+    font-weight: bold; text-transform: uppercase; 
+}
+.font-traits {
+    font-style: italic; text-transform: capitalize; 
+}
+
+
+/* BOX COLORS (normally applied to DIV elements)
+
+   box-white-hover     A white box that changes color if you hover over it
+   box-light-hover     A light-color box that changes color if you hover over it
+   box-mid-hover       A mid-color box that changes color if you hover over it
+   box-dark-hover      A dark-color box that changes color if you hover over it
+   box-black-hover     A dark-color box that changes color if you hover over it
+   box-white           A light-color box that does not change color if you hover over it
+   box-light           A light-color box that does not change color if you hover over it
+   box-mid             A light-color box that does not change color if you hover over it
+   box-dark            A light-color box that does not change color if you hover over it
+   box-black           A light-color box that does not change color if you hover over it
+
+   selected            Apply this class if the box has been selected. Will change the style
+*/
+.box-white-hover {
+    color: black;
+    border: 1px solid black;
+}
+.box-white-hover:not(.selected) {
+    background-color: rgb(255, 255, 255);
+}
+.box-white-hover:hover:not(.selected) {
+    background-color: rgb(211,211,211);
+}
+.box-white-hover.selected {
+    background-color: rgb(128,128,128);
+    color: white;
+}
+.box-light-hover {
+    color: black;
+    border: 1px solid black;
+}
+.box-light-hover:not(.selected) {
+    background-color: rgb(243,243,243);
+}
+.box-light-hover:hover:not(.selected) {
+    background-color: rgb(211,211,211);
+}
+.box-light-hover.selected {
+    background-color: rgb(128,128,128);
+    color: white;
+}
+.box-mid-hover {
+    color: black;
+    border: 1px solid black;
+}
+.box-mid-hover:not(.selected) {
+    background-color: rgb(210,210,210);
+}
+.box-mid-hover:hover:not(.selected) {
+    background-color: rgb(180,180,180);
+}
+.box-mid-hover.selected {
+    background-color: rgb(96,96,96);
+    color: white;
+}
+.box-dark-hover {
+    color: white;
+    border: 1px solid black;
+}
+.box-dark-hover:not(.selected) {
+    background-color: rgb(96,96,96);
+}
+.box-dark-hover:hover:not(.selected) {
+    background-color: rgb(128,128,128);
+}
+.box-dark-hover.selected {
+    background-color: rgb(180,180,180);
+    color: black;
 }

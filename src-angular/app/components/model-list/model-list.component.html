@@ -2,33 +2,23 @@
     
   <!-- MODEL LIST -->
   <div class="left" style="height: 750px;">
-      <ul class="modelList">
-        <li *ngFor="let model of models;" 
-          (click)="onSelect(model)"
-          [class.selected]="model === selectedModel">
-          
-          <!-- MODEL LIST BOX -->
-          <div class="modelBox">
-            <div class="modelImageBox">
-              <img class="modelImage" [src]="'assets/portraits/' + model.picture">
-            </div>
-            <div class="modelDetailsBox">
-              <div class="modelName">{{model.name}}</div>
-              <div class="modelCost">{{model.cost}} points</div>
-            </div>
-          </div>  
-
-        </li>
-      </ul>
-    </div>
-
-    <!-- MODEL DETAILS -->
-    <div class="right">
-      <div *ngIf="!editMode" class="imageButton" (click)="setEditMode(true)"><img src="/assets/icons/icon-edit-128.png">Edit</div>
-      <div *ngIf="!editMode" class="imageButton" ><img src="/assets/icons/icon-clone-128.png">Clone</div>
-      <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-check-128.png">Save</div>
-      <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-close-128.png">Cancel</div>
-      <app-model-details *ngIf="!editMode" [model]="selectedModel"></app-model-details>
-      <app-model-editor *ngIf="editMode" [model]="selectedModel"></app-model-editor>
+    <div class="model-list">
+      <div *ngFor="let model of models;" 
+        (click)="onSelect(model)"
+        [class.selected]="model === selectedModel">
+        
+        <app-model-tile [model]="model" [selected]="model === selectedModel"></app-model-tile>
+      </div>
     </div>
   </div>
+
+  <!-- MODEL DETAILS -->
+  <div class="right">
+    <div *ngIf="!editMode" class="imageButton" (click)="setEditMode(true)"><img src="/assets/icons/icon-edit-128.png">Edit</div>
+    <div *ngIf="!editMode" class="imageButton" ><img src="/assets/icons/icon-clone-128.png">Clone</div>
+    <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-check-128.png">Save</div>
+    <div *ngIf="editMode" class="imageButton" (click)="setEditMode(false)"><img src="/assets/icons/icon-outline-close-128.png">Cancel</div>
+    <app-model-details *ngIf="!editMode" [model]="selectedModel"></app-model-details>
+    <app-model-editor *ngIf="editMode" [model]="selectedModel"></app-model-editor>
+  </div>
+</div>

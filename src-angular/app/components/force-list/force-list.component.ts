@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModelDataService, ModelData  } from '../../services/model-data/model-data.service';
 
 @Component({
   selector: 'app-force-list',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForceListComponent implements OnInit {
 
-  constructor() { }
+  public models: ModelData[];
+  public selectedModel: ModelData;
 
-  ngOnInit() {
+  constructor( private modelDataService: ModelDataService ) { }
+
+  async ngOnInit() {
+    this.models = await this.modelDataService.getModels();
+
+    // select the first one
+    if ( this.models.length > 0 ) {
+      this.selectedModel = this.models[0];
+    }
   }
 
 }

@@ -16,6 +16,9 @@ input {
 .font-title {
     font-weight: bold; text-transform: uppercase; 
 }
+.font-subtitle {
+    text-transform: capitalize;
+}
 .font-traits {
     font-style: italic; text-transform: capitalize; 
 }

@@ -1,8 +1,14 @@
-  <!-- MODEL LIST -->
-  <div class="left" style="height: 750px;">
-    <div class="force-list">
-      <div *ngFor="let force of forces;" (click)="onSelect(force)">
-        <app-force-tile [force]="force" [selected]="false"></app-force-tile>
-      </div>
+<!-- ACTION BUTTONS -->
+<div class="force-action box-light-hover font-title" routerLink="/force/NEW" >
+  <img src="/assets/icons/icon-outline-plus-128.png">
+  <div>New Force List</div>
+</div>
+
+<!-- LIST OF FORCES -->
+<div class="left" style="height: 750px;">
+  <div class="force-list">
+    <div *ngFor="let force of forces;" routerLink="/force/{{force._id}}" (click)="onSelect(force)">
+      <app-force-tile [force]="force" [selected]="false"></app-force-tile>
     </div>
   </div>
+</div>

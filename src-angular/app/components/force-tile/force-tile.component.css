@@ -1,8 +1,9 @@
 /* MODEL BOX */
 .force-tile {
-    height: 120px; width: 196px;
+    height: 136px; width: 212px;
     border-radius: 4px;
     padding: 8px;
+    box-sizing: border-box;
 }
 .force-title {
 }

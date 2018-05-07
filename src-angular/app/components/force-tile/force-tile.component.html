@@ -1,0 +1,11 @@
+<div class="force-tile box-light-hover" [class.selected]="selected">
+  <div class="force-title font-title">{{force.name}}</div>
+  <div class="force-cost font-subtitle">{{force.cost}} points</div>
+  <div class="force-size font-subtitle">{{force.sizeName}} ({{force.maxCost}} points)</div>
+  <div class="force-summary font-subtitle">{{force.models.length}} models, {{force.equipment.length}} equipment</div>
+  <div class="force-button-band">
+    <div class="force-button box-light-hover"><img src="/assets/icons/icon-ellipsis-128.png"></div>
+    <div class="force-button box-light-hover"><img src="/assets/icons/icon-delete-128.png"></div>
+    <div class="force-button box-light-hover"><img src="/assets/icons/icon-clone-128.png"></div>
+  </div>
+</div>  

@@ -1,5 +1,8 @@
-<p>
-  force-list works!
-</p>
-<app-model-tile [model]="selectedModel"></app-model-tile>
-<input type="text" placeholder="Test this text baby">
+  <!-- MODEL LIST -->
+  <div class="left" style="height: 750px;">
+    <div class="force-list">
+      <div *ngFor="let force of forces;" (click)="onSelect(force)">
+        <app-force-tile [force]="force" [selected]="false"></app-force-tile>
+      </div>
+    </div>
+  </div>

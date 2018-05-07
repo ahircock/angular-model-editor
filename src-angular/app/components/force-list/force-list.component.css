@@ -1,0 +1,9 @@
+/* model list */
+div.force-list {
+    display: flex;
+    flex-flow: row wrap;
+}
+div.force-list div {
+    flex: 0 0 264px;
+    margin: 8px;
+}

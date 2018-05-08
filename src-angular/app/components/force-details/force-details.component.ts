@@ -61,8 +61,8 @@ export class ForceDetailsComponent implements OnInit {
     this.selectedModel = selectedModel;
   }
 
-  newModelClick() {
-    let newModel = this.modelDataService.initNewModel();
+  async newModelClick() {
+    let newModel = await this.modelDataService.addNewModel();
     this.force.models.push ( { _id:newModel._id, count:1 } );
     this.models.push( newModel );
     this.calculateCost();

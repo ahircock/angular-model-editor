@@ -10,11 +10,17 @@ body {
 input {
     font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
 }
+.font-normal {
+    font-weight: normal; text-transform: none;
+}
 .font-title-big {
     font-size: 28px; font-weight: bold; text-transform: uppercase; 
 }
 .font-title {
     font-weight: bold; text-transform: uppercase; 
+}
+.font-subtitle {
+    text-transform: capitalize;
 }
 .font-traits {
     font-style: italic; text-transform: capitalize; 
@@ -91,4 +97,21 @@ input {
 .box-dark-hover.selected {
     background-color: rgb(180,180,180);
     color: black;
+}
+
+.box-white {
+    color: black;
+    background-color: rgb(255, 255, 255);    
+}
+.box-light {
+    color: black;
+    background-color: rgb(243,243,243);
+}
+.box-mid {
+    color: black;
+    background-color: rgb(210,210,210);
+}
+.box-dark {
+    color: white;
+    background-color: rgb(96,96,96);
 }

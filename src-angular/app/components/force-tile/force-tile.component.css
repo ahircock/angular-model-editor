@@ -1,0 +1,29 @@
+/* MODEL BOX */
+.force-tile {
+    height: 136px; width: 212px;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.force-title {
+}
+.force-cost { 
+    margin-bottom: 4px;
+}
+.force-size {
+}
+.force-summary {
+}
+
+/* buttons */
+.force-button {
+    float: right;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-left: 8px;
+    height: 28px;
+}
+.force-button img {
+    width: 20px;
+    margin: 4px;
+}

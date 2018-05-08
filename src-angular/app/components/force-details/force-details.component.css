@@ -1,0 +1,33 @@
+div.force-header {
+    width: 100%; height:80px;
+    position: relative;
+}
+div.back-arrow {
+    width: 64px; height: 80px;
+    border: none;
+    vertical-align: center;
+}
+.back-arrow img {
+    margin-top: 8px;
+    width:64px;
+}
+div.force-name {
+    position:absolute;
+    left: 80px; top: 8px;
+}
+div.force-size {
+    position:absolute;
+    left: 80px; top: 44px;
+}
+div.force-model-summary {
+    position:absolute;
+    left: 400px; top: 8px;
+}
+div.force-equipment-summary {
+    position:absolute;
+    left: 400px; top: 28px;
+}
+div.force-total-cost {
+    position:absolute;
+    left: 400px; top: 48px;
+}

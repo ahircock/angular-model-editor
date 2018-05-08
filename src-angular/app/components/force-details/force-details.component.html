@@ -1,14 +1,42 @@
-<div class="force-header box-dark">
+<!-- THE HEADER BAND -->
+<div *ngIf="force" class="force-header box-dark">
   <div class="back-arrow box-dark-hover" routerLink="/forces"><img src="/assets/icons/icon-arrow-left-128.png"></div>
-  <div class="force-name font-title-big">Templar Attack!</div>
-  <div class="force-size font-subtitle">Standard (200 Points)</div>
-  <div class="force-model-summary font-normal">8 Models (123 Points)</div>
-  <div class="force-equipment-summary">4 Equipment (46 Points)</div>
-  <div class="force-total-cost font-subtitle">Total Cost (169 Points)</div>
+  <div class="force-name font-title-big">{{force.name}}</div>
+  <div class="force-size font-subtitle">{{force.sizeName}} ({{force.maxCost}} Points)</div>
+  <div class="force-model-summary font-normal">{{force.models.length}} Models ({{modelCost}} Points)</div>
+  <div class="force-equipment-summary">{{force.equipment.length}} Equipment ({{equipmentCost}} Points)</div>
+  <div class="force-total-cost font-subtitle">Total Cost ({{force.cost}} Points)</div>
 </div>
-<p>
-  force-details works!
-</p>
-<p>
-  ID: {{id}}
-</p>
+
+<!-- THE CONTENT AREA -->
+<div class="column-section">
+
+   <!-- MODEL TILES -->
+  <div class="left">
+
+    <!-- ACTION BUTTONS -->
+    <div class="force-action box-light-hover font-title" (click)="newModelClick();">
+      <img src="/assets/icons/icon-outline-plus-128.png">
+      <div>New Model</div>
+    </div>
+
+    <!-- LIST OF MODELS IN FORCE -->
+    <div class="model-list">
+      <div *ngFor="let model of models; index as modelIndex;" 
+        (click)="onModelSelect(model)"
+        [class.selected]="model === selectedModel">
+
+        {{force.models[modelIndex].count}}
+        
+        <app-model-tile [model]="model" [selected]="model === selectedModel"></app-model-tile>
+      </div>
+    </div>
+  
+  </div>
+
+  <!-- MODEL EDITOR -->
+  <div class="right">
+    <app-model-editor [model]="selectedModel"></app-model-editor>
+  </div>
+
+</div>

@@ -84,9 +84,12 @@ export class ModelDataService {
   }
 
   async getModelListById ( idList: string[] ): Promise<ModelData[]> {
+    
+    // get the list of models, and return a deep copy
     let returnList: ModelData[] = [];
     for ( let id of idList ) {
-      returnList.push( await this.getModelById(id) );
+      let returnModel: ModelData = JSON.parse( JSON.stringify( await this.getModelById(id) ) );
+      returnList.push( returnModel );
     }
     return returnList;
   }
@@ -94,14 +97,15 @@ export class ModelDataService {
   async addNewModel(): Promise<ModelData> {
     
     // create a new model with a single melee action
-    let newModel: ModelData = JSON.parse( JSON.stringify(this.NEW_MODEL));
+    let newModel: ModelData = JSON.parse(JSON.stringify(this.NEW_MODEL));
     newModel.actions.push( JSON.parse(JSON.stringify( this.NEW_MELEE_ACTION )));
     this.updateCost(newModel);
 
     // add this new model to the fake database
     this.modelDB.push(newModel);
 
-    return newModel;
+    // return a deep copy
+    return JSON.parse( JSON.stringify( newModel ) );
   }
 
   async updateModel( updateModel: ModelData ): Promise<ModelData> {
@@ -113,7 +117,7 @@ export class ModelDataService {
     let findModel: ModelData = this.modelDB.find( element => { return element._id == updateModel._id;} );
     findModel = updateModel;
 
-    // return a copy of the model from the DB
+    // return a deep copy of the model from the DB
     let returnModel: ModelData = JSON.parse( JSON.stringify( findModel) );
     return returnModel;
   }

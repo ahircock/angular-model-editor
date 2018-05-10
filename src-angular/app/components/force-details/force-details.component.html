@@ -36,7 +36,7 @@
 
   <!-- MODEL EDITOR -->
   <div class="right">
-    <app-model-editor [model]="selectedModel"></app-model-editor>
+    <app-model-editor [model]="selectedModel" (change)="refreshData()"></app-model-editor>
   </div>
 
 </div>

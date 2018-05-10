@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ModelData, ModelDataService, ModelActionData } from '../../services/model-data/model-data.service';
@@ -17,20 +17,7 @@ interface StatCost {
 export class ModelEditorComponent implements OnInit {
 
   @Input() model: ModelData;
-
-  // These constant arrays are used to calculate the total cost of a model
-  public BASE_COST = 10;
-  public SPD_COST: StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:6} ];
-  public EV_COST:  StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:5} ];
-  public ARM_COST: StatCost[] = [ {stat:0, cost:0 }, {stat:1, cost:1 }, {stat:2,  cost:2}, {stat:3, cost:4}, {stat:4, cost:6} ];
-  public HP_COST:  StatCost[] = [ {stat:5, cost:0 }, {stat:8, cost:3 }, {stat:10, cost:5} ];
-  public HIT_COST: StatCost[] = [ {stat:4, cost:-2}, {stat:5, cost:-1}, {stat:6,  cost:0}, {stat:7, cost:1}, {stat:8, cost:2}, {stat:9, cost:3} ];
-  public DMG_COST: StatCost[] = [ {stat:4, cost:-2}, {stat:5, cost:-1}, {stat:6,  cost:0}, {stat:7, cost:1}, {stat:8, cost:2}, {stat:9, cost:3} ];
-  public MELEE_RNG_COST:  StatCost[] = [ {stat:0, cost:-1 }, {stat:1, cost:0 }, {stat:2, cost:2} ];
-  public RANGED_RNG_COST: StatCost[] = [ {stat:8, cost:2 }, {stat:12, cost:3 }, {stat:24, cost:5}, {stat:60, cost:7} ];
-
-  public NEW_MELEE_ACTION: ModelActionData = { type: "MELEE", name: "NEW", AP:1, RNG:1, HIT:6, DMG:6, specialRules:[] };
-  public NEW_RANGED_ACTION: ModelActionData = { type: "RANGED", name: "NEW", AP:1, RNG:12, HIT:6, DMG:6, specialRules:[] };
+  @Output() change: EventEmitter<void> = new EventEmitter();
 
   constructor( 
     private location: Location,
@@ -40,11 +27,31 @@ export class ModelEditorComponent implements OnInit {
    ) { }
 
   async ngOnInit() {
-    this.calculateCost();
   }
 
-  ok(): void {
-    this.location.back();
+  selectModelStat( value: any, statName: string ): void {
+    
+    let newStat = Number(value);
+    
+    switch ( statName ) {
+      case "SPD": this.model.SPD = newStat; break;
+      case "EV": this.model.EV = newStat; break;
+      case "ARM": this.model.ARM = newStat; break;
+      case "HP": this.model.HP = newStat; break;
+    }
+
+    // save the changed model to the database
+    this.saveModelData();
+  }
+
+  addModelSpecialRule( newSpecialRule: SpecialRuleData ) : void {
+    this.model.specialRules.push( newSpecialRule);
+    this.saveModelData();
+  }
+
+  deleteModelSpecialRule( ruleIndex: number ): void {
+    this.model.specialRules.splice( ruleIndex, 1 );
+    this.saveModelData();
   }
 
   selectActionStat( index: number, value: any, type: string ): void {
@@ -59,119 +66,45 @@ export class ModelEditorComponent implements OnInit {
     }
 
     // update the cost of the model
-    this.calculateCost();
+    this.saveModelData();
   }
 
-  selectModelStat( value: any, statName: string ): void {
-    
-    let newStat = Number(value);
-    
-    switch ( statName ) {
-      case "SPD": this.model.SPD = newStat; break;
-      case "EV": this.model.EV = newStat; break;
-      case "ARM": this.model.ARM = newStat; break;
-      case "HP": this.model.HP = newStat; break;
-    }
-
-    this.calculateCost();
-  }
-
-  addModelSpecialRule( newSpecialRule: SpecialRuleData ) : void {
-    this.model.specialRules.push( newSpecialRule);
-    this.calculateCost();
-  }
-
-  deleteModelSpecialRule( ruleIndex: number ): void {
-    this.model.specialRules.splice( ruleIndex, 1 );
-    this.calculateCost();
-  }
-
-  deleteAction( actionIndex: number ) {
+deleteAction( actionIndex: number ) {
     this.model.actions.splice( actionIndex, 1 );
-    this.calculateCost();
+    this.saveModelData();
   }
 
   addMeleeAction() : void {
-    let newAction = JSON.parse( JSON.stringify(this.NEW_MELEE_ACTION));
+    let newAction = JSON.parse( JSON.stringify(this.modelDataService.NEW_MELEE_ACTION));
     this.model.actions.push(newAction);
-    this.calculateCost();
+    this.saveModelData();
   }
 
   addRangedAction(): void {
-    let newAction = JSON.parse( JSON.stringify(this.NEW_RANGED_ACTION));
+    let newAction = JSON.parse( JSON.stringify(this.modelDataService.NEW_RANGED_ACTION));
     this.model.actions.push(newAction);
-    this.calculateCost();
+    this.saveModelData();
   }
 
   addSpecialAction( newSpecialRule: SpecialRuleData ): void {
     let newAction: ModelActionData = { type:"SPECIAL", name:newSpecialRule.ruleName, AP:1, specialRules:[ newSpecialRule ] };
     this.model.actions.push(newAction);
-    this.calculateCost();
+    this.saveModelData();
   }
 
   addAttackSpecialRule( actionIndex: number, newRule: SpecialRuleData ): void {
     this.model.actions[actionIndex].specialRules.push(newRule);
-    this.calculateCost();
+    this.saveModelData();    
   }
 
   deleteAttackSpecialRule( actionIndex: number, ruleIndex: number ): void {
     this.model.actions[actionIndex].specialRules.splice( ruleIndex, 1 );
-    this.calculateCost();
+    this.saveModelData();
   }
 
-  calculateCost(): void {
-    this.model.cost = this.BASE_COST;
-
-    // add the cost of model stats
-    this.model.cost += this.SPD_COST.find( (element) => { return element.stat == this.model.SPD; } ).cost;
-    this.model.cost += this.EV_COST.find( (element) => { return element.stat == this.model.EV; } ).cost;
-    this.model.cost += this.ARM_COST.find( (element) => { return element.stat == this.model.ARM; } ).cost;
-    this.model.cost += this.HP_COST.find( (element) => { return element.stat == this.model.HP; } ).cost;
-
-    // add the special rule costs
-    for ( let specialRule of this.model.specialRules ) {
-      this.model.cost += specialRule.ruleCost;
-    }
-    
-    // add the action costs, based on the type of action
-    for ( let action of this.model.actions ) {
-
-      let actionCost = 0;
-
-      switch ( action.type ) {
-
-        case "MELEE":
-          actionCost += this.MELEE_RNG_COST.find( (element) => { return element.stat == action.RNG; } ).cost;
-          actionCost += this.HIT_COST.find( (element) => { return element.stat == action.HIT; } ).cost;
-          actionCost += this.DMG_COST.find( (element) => { return element.stat == action.DMG; } ).cost;
-          
-          // add in the cost of all special rules
-          for ( let specialRule of action.specialRules ) {
-            actionCost += specialRule.ruleCost;
-          }
-
-          break;
-
-        case "RANGED":
-          actionCost += this.RANGED_RNG_COST.find( (element) => { return element.stat == action.RNG; } ).cost;
-          actionCost += this.HIT_COST.find( (element) => { return element.stat == action.HIT; } ).cost;
-          actionCost += this.DMG_COST.find( (element) => { return element.stat == action.DMG; } ).cost;
-
-          // add in the cost of all special rules
-          for ( let specialRule of action.specialRules ) {
-            actionCost += specialRule.ruleCost;
-          }
-
-          break;
-
-        case "SPECIAL":
-          actionCost += action.specialRules[0].ruleCost;
-      }
-
-      // actions cannot have a negative cost
-      if ( actionCost > 0 ) {
-        this.model.cost += actionCost;
-      }
-    }
+  async saveModelData() {
+    let updatedModel = await this.modelDataService.updateModel( this.model );
+    this.model = updatedModel;
+    this.change.emit();
   }
 }

@@ -114,11 +114,11 @@ export class ModelDataService {
     this.updateCost(updateModel);
 
     // find the model in the fake DB, and then update it
-    let findModel: ModelData = this.modelDB.find( element => { return element._id == updateModel._id;} );
-    findModel = updateModel;
+    let findModelIndex: number = this.modelDB.findIndex( element => { return element._id == updateModel._id;} );
+    this.modelDB[findModelIndex] = updateModel;
 
     // return a deep copy of the model from the DB
-    let returnModel: ModelData = JSON.parse( JSON.stringify( findModel) );
+    let returnModel: ModelData = JSON.parse( JSON.stringify(this.modelDB[findModelIndex]) );
     return returnModel;
   }
 

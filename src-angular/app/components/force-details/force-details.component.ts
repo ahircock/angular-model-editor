@@ -68,6 +68,10 @@ export class ForceDetailsComponent implements OnInit {
     this.calculateCost();
   }
 
+  async refreshData() {
+    await this.initForceFromId();
+  }
+
   calculateCost() {
     
     // get the total cost of models

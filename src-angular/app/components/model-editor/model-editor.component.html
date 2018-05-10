@@ -4,8 +4,8 @@
   <!-- TITLE BOX -->
   <div class="titleBox">
     <div class="modelTextBox">
-      <div><input class="inputText titleFont" [(ngModel)]="model.name" placeholder="Model name"></div>
-      <div><input class="inputText traitsFont" [(ngModel)]="model.traits" placeholder="Model traits"></div>
+      <div><input class="inputText titleFont" [(ngModel)]="model.name" (blur)="saveModelData()" placeholder="Model name"></div>
+      <div><input class="inputText traitsFont" [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
       <div class="modelCost">{{model.cost}} points</div>
       <table class="statTable">
         <tr>
@@ -16,13 +16,13 @@
         </tr>
         <tr>
           <td><select [(ngModel)]="model.SPD" class="inputText statFont" (change)="selectModelStat($event.target.value, 'SPD')">
-            <option *ngFor="let SPD of SPD_COST;" [value]="SPD.stat">{{SPD.stat}}</option></select></td>
+            <option *ngFor="let SPD of modelDataService.SPD_COST;" [value]="SPD.stat">{{SPD.stat}}</option></select></td>
           <td><select [(ngModel)]="model.EV" class="inputText statFont" (change)="selectModelStat($event.target.value, 'EV')">
-            <option *ngFor="let EV of EV_COST;" [value]="EV.stat">{{EV.stat}}</option></select></td>
+            <option *ngFor="let EV of modelDataService.EV_COST;" [value]="EV.stat">{{EV.stat}}</option></select></td>
           <td><select [(ngModel)]="model.ARM" class="inputText statFont" (change)="selectModelStat($event.target.value, 'ARM')">
-            <option *ngFor="let ARM of ARM_COST;" [value]="ARM.stat">{{ARM.stat}}</option></select></td>
+            <option *ngFor="let ARM of modelDataService.ARM_COST;" [value]="ARM.stat">{{ARM.stat}}</option></select></td>
           <td><select [(ngModel)]="model.HP" class="inputText statFont" (change)="selectModelStat($event.target.value, 'HP')">
-            <option *ngFor="let HP of HP_COST;" [value]="HP.stat">{{HP.stat}}</option></select></td>
+            <option *ngFor="let HP of modelDataService.HP_COST;" [value]="HP.stat">{{HP.stat}}</option></select></td>
         </tr>
       </table>
     </div>
@@ -46,8 +46,8 @@
       <div class="actionRemoveButton textActionButton" style="margin-top:2px;" (click)="deleteAction(actionIndex)">
         <img src="assets/icons/icon-outline-close-128.png"><div>Remove</div></div>
       <div class="actionAPCost">{{action.AP}}</div>
-      <div class="actionTitle"><input class="inputText actionFont" [(ngModel)]="action.name"></div>
-      <div class="actionTraits"><input class="inputText actionTraitsFont" [(ngModel)]="action.traits"></div>
+      <div class="actionTitle"><input class="inputText actionFont" [(ngModel)]="action.name" (blur)="saveModelData()" ></div>
+      <div class="actionTraits"><input class="inputText actionTraitsFont" [(ngModel)]="action.traits" (blur)="saveModelData()" ></div>
     </div>
 
     <!-- ATTACK ACION -->
@@ -67,16 +67,16 @@
             <tr class="statData">
               <td *ngIf="action.type == 'MELEE'">
                 <select [(ngModel)]="action.RNG" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'RNG-MELEE')">
-                  <option *ngFor="let RNG of MELEE_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
+                  <option *ngFor="let RNG of modelDataService.MELEE_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
               <td *ngIf="action.type == 'RANGED'">
                 <select [(ngModel)]="action.RNG" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'RNG-RANGED')">
-                  <option *ngFor="let RNG of RANGED_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
+                  <option *ngFor="let RNG of modelDataService.RANGED_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
               <td >
                 <select [(ngModel)]="action.HIT" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'HIT')">
-                  <option *ngFor="let HIT of HIT_COST;" [value]="HIT.stat">{{HIT.stat}}</option></select></td>
+                  <option *ngFor="let HIT of modelDataService.HIT_COST;" [value]="HIT.stat">{{HIT.stat}}</option></select></td>
               <td >
                 <select [(ngModel)]="action.DMG" class="inputText statFont" (change)="selectActionStat(actionIndex, $event.target.value, 'DMG')">
-                  <option *ngFor="let DMG of DMG_COST;" [value]="DMG.stat">{{DMG.stat}}</option></select></td>
+                  <option *ngFor="let DMG of modelDataService.DMG_COST;" [value]="DMG.stat">{{DMG.stat}}</option></select></td>
             </tr>
           </table>
         </div>

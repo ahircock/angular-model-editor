@@ -1,5 +1,5 @@
 <!-- ACTION BUTTONS -->
-<div class="force-action box-light-hover font-title" routerLink="/force/NEW" >
+<div class="force-action box-light-hover font-title" (click)="newForce()">
   <img src="/assets/icons/icon-outline-plus-128.png">
   <div>New Force List</div>
 </div>
@@ -7,7 +7,7 @@
 <!-- LIST OF FORCES -->
 <div class="left" style="height: 750px;">
   <div class="force-list">
-    <div *ngFor="let force of forces;" routerLink="/force/{{force._id}}" (click)="onSelect(force)">
+    <div *ngFor="let force of forces;" routerLink="/force/{{force._id}}">
       <app-force-tile [force]="force" [selected]="false"></app-force-tile>
     </div>
   </div>

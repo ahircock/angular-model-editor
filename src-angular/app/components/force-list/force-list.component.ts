@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ForceDataService, ForceData  } from '../../services/force-data/force-data.service';
 
 @Component({
@@ -10,14 +11,18 @@ export class ForceListComponent implements OnInit {
 
   public forces: ForceData[];
 
-  constructor( private forceDataService: ForceDataService ) { }
+  constructor( 
+    private forceDataService: ForceDataService,
+    private router: Router 
+  ) { }
 
   async ngOnInit() {
     this.forces = await this.forceDataService.getAllForces();
   }
 
-  onSelect( selectedForce: ForceData ) {
-    
+  async newForce() {
+    let newForce: ForceData = await this.forceDataService.addNewForce();
+    this.router.navigateByUrl("/force/" + newForce._id );
   }
 
 }

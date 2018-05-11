@@ -66,5 +66,16 @@ export class ForceDataService {
     let returnForce = JSON.parse( JSON.stringify( newForce ) );
     return returnForce;
   }
+
+  async updateForce( updateForce: ForceData ): Promise<ForceData> {
+
+    // find the force in the fake DB, and then update it
+    let findForce: ForceData = this.forceDB.find( element => { return element._id == updateForce._id;} );
+    findForce = updateForce;
+
+    // return a deep copy of the model from the DB
+    let returnForce: ForceData = JSON.parse( JSON.stringify(findForce) );
+    return returnForce;
+  }    
   
 }

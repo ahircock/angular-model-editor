@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ForceDataService, ForceData } from '../../services/force-data/force-data.service';
+import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data/force-data.service';
 import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
 
 @Component({
@@ -10,14 +10,12 @@ import { ModelData, ModelDataService } from '../../services/model-data/model-dat
 })
 export class ForceDetailsComponent implements OnInit {
 
-  public id: string;
   public force: ForceData;
-  public models: ModelData[];
   public selectedModel: ModelData;
 
   // some cost counterse
-  public modelCost: number;
-  public equipmentCost: number;
+  public modelCost: number = 0;
+  public equipmentCost: number = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,35 +24,15 @@ export class ForceDetailsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.id = this.activatedRoute.snapshot.paramMap.get("id");
-
-    if ( this.id == "NEW") {
-      this.initNewForce();
-    } else {
-      await this.initForceFromId();
-    }
-
-    this.calculateCost();
+    
+    // load the forceData object
+    let forceId = this.activatedRoute.snapshot.paramMap.get("id");
+    this.force = await this.forceDataService.getForceById(forceId);
     
     // mark the first model as selected
-    if ( this.models.length > 0 ) {
-      this.selectedModel = this.models[0];
+    if ( this.force.models.length > 0 ) {
+      this.selectedModel = this.force.models[0];
     }
-
-  }
-
-  private initNewForce() {
-    this.force = { _id:this.id, name:"New Force", sizeName:"Standard", maxCost:200, cost:0, models:[], equipment:[]};
-    this.models = [];
-  }
-
-  private async initForceFromId() {
-    this.force = await this.forceDataService.getForceById(this.id);    
-    let modelIdList: string[] = [];
-    for ( let forceModelData of this.force.models ) {
-      modelIdList.push( forceModelData._id );
-    }
-    this.models = await this.modelDataService.getModelListById( modelIdList );
   }
 
   onModelSelect( selectedModel: ModelData ) {
@@ -62,28 +40,14 @@ export class ForceDetailsComponent implements OnInit {
   }
 
   async newModelClick() {
-    let newModel = await this.modelDataService.addNewModel();
-    this.force.models.push ( { _id:newModel._id, count:1 } );
-    this.models.push( newModel );
-    this.calculateCost();
+    this.force = await this.forceDataService.addNewModelToForce( this.force );
+    
+    // select the last model in the list (which should be the new model)
+    this.selectedModel = this.force.models[ this.force.models.length - 1 ];
   }
 
   async refreshData() {
-    await this.initForceFromId();
-  }
-
-  calculateCost() {
-    
-    // get the total cost of models
-    this.modelCost = 0;
-    for ( let i=0; i<this.models.length; i++ ) {
-      this.modelCost += this.models[i].cost * this.force.models[i].count;
-    }
-
-    // get the total cost of equipment
-    this.equipmentCost = 0;
-
-    this.force.cost = this.modelCost + this.equipmentCost;
+    this.force = await this.forceDataService.getForceById(this.force._id);
   }
 
 }

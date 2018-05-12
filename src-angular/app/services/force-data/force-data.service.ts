@@ -29,6 +29,7 @@ interface ForceDBData {
   _id: string,
   name: string,
   size: string,
+  cost: number,
   models: ForceModelDBData[]
 }
 
@@ -50,8 +51,8 @@ interface ForceSize {
 export class ForceDataService {
 
   private forceDB: ForceDBData[] = [
-    { _id:"F0001", name:"Templar Attack!", size:"standard", models:[{_id:"M0011",count:1},{_id:"M0003",count:2},{_id:"M0002",count:3}] },
-    { _id:"F0002", name:"Khorne Bloodbound", size:"standard", models:[{_id:"M0008",count:1},{_id:"M0007",count:3},{_id:"M0005",count:6}] }
+    { _id:"F0001", name:"Templar Attack!", size:"standard", cost:101, models:[{_id:"M0011",count:1},{_id:"M0003",count:2},{_id:"M0002",count:3}] },
+    { _id:"F0002", name:"Khorne Bloodbound", size:"standard", cost:102, models:[{_id:"M0008",count:1},{_id:"M0007",count:3},{_id:"M0005",count:6}] }
   ];
   private nextForceIdDB: number = 3;
 
@@ -70,15 +71,19 @@ export class ForceDataService {
   ) { }
 
   async getAllForces(): Promise<ForceData[]> {
-    // make a deep copy of the model list and then return it
-    let returnList: ForceData[] = Object.assign({}, this.forceDB);
+    
+    // convert every entry in the ForceDB into a ForceData object
+    let returnList: ForceData[] = [];
+    for ( let forceDBData of this.forceDB ) {
+      returnList.push( await this.convertDBToForceData(forceDBData) );
+    }
     return returnList;
   }
 
   async getForceById( id: string ): Promise<ForceData> {
-    // find the model in the arrach (using the "find" function), and then return a deep copy of that model
+    
     let findForce: ForceDBData = this.forceDB.find( element => { return element._id == id;} );
-    let returnForce: ForceData = Object.assign({}, findForce);
+    let returnForce: ForceData = await this.convertDBToForceData( findForce );
     return returnForce;
   }
 
@@ -93,30 +98,55 @@ export class ForceDataService {
 
   async addNewForce(): Promise<ForceData> {
     
-    // get the ID of the next force
+    // generate a new ID for the new force
     let newForceId = "F" + this.nextForceIdDB;
     this.nextForceIdDB++;
 
-    // create a new force entry
-    let newForce: ForceDBData = { _id:"NEW", name:"New Force", sizeName:"standard", maxCost:200, cost:0, models:[], equipment:[] };
-
-    newForce._id = newForceId;
+    // create a new force entry and add it to the database
+    let newForce: ForceDBData = { _id: newForceId, name:"New Force", size:"standard", cost:0, models:[] };
     this.forceDB.push(newForce);
 
-    // return a deep copy of the database force
-    let returnForce = Object.assign({}, newForce );
-    return returnForce;
+    // return the new force
+    return this.convertDBToForceData( newForce );
   }
 
+  /**
+   * Creates a new model object in the DB and updates the force in the DB to include this new 
+   * model. The provided force will be updated. Returns the updated force
+   * @param force The force that the new model will be added to
+   */
+  async addNewModelToForce( force: ForceData ): Promise<ForceData> {
+
+    // create a new model in the DB
+    let newModelData: ModelData = await this.modelDataService.addNewModel();
+
+    // add the new model to the force
+    let newForceModelData: ForceModelData = Object.assign( {}, {count:1}, newModelData );
+    force.models.push ( newForceModelData );
+    
+    // update the force in the DB
+    force = await this.updateForce( force );
+    return force;
+
+  }
+
+  /**
+   * Update the existing record in the database to the value that is being 
+   * provided. Some values on the force may be altered as a result of this update. Will not update 
+   * any attributes of the force's model objects. Returns the updated object
+   * @param updateForce The udpated force object that will be saved to the DB. This value may be modified as a result of this update
+   */
   async updateForce( updateForce: ForceData ): Promise<ForceData> {
 
-    // find the force in the fake DB, and then update it
-    let findForce: ForceDBData = this.forceDB.find( element => { return element._id == updateForce._id;} );
-    findForce = updateForce;
+    // make sure that the cost of the updated force is correct
+    updateForce = this.updateForceCost( updateForce );
+    
+    // find the force record in the fake DB, and then replace it with the updated force
+    let forceIndex: number = this.forceDB.findIndex( element => { return element._id == updateForce._id;} );
+    this.forceDB[forceIndex] = this.convertForceDataToDB(updateForce);
 
     // return a deep copy of the model from the DB
-    let returnForce: ForceData = Object.assign({}, findForce);
-    return returnForce;
+    return updateForce;
   }
 
   /**
@@ -130,7 +160,7 @@ export class ForceDataService {
     // look up the force size from the DB
     let forceSize: ForceSize = this.FORCE_SIZES.find( element => { return element.size == forceDBData.size;} )
 
-    // load up the list of models
+    // retrieve the model information from its service
     let modelIdList: string[] = [];
     for ( let forceModelData of forceDBData.models ) {
       modelIdList.push( forceModelData._id );
@@ -144,6 +174,7 @@ export class ForceDataService {
       modelList.push(forceModelData);
     }
 
+    // create the new object
     let forceData: ForceData = {
       _id: forceDBData._id,
       name: forceDBData.name,
@@ -153,7 +184,7 @@ export class ForceDataService {
       cost: 0,
       models: modelList,
       equipment: []
-        };
+    };
 
     // update the force cost
     forceData = this.updateForceCost( forceData );
@@ -169,20 +200,44 @@ export class ForceDataService {
    * @param forceData the source record
    */
   private convertForceDataToDB( forceData: ForceData ): ForceDBData {
-    let forceDBData: ForceDBData;
+
+    // create the list of models
+    let modelList: ForceModelDBData[] = [];
+    for ( let model of forceData.models ) {
+      let newModelDBData: ForceModelDBData = {
+        _id: model._id,
+        count: model.count 
+      }
+      modelList.push( newModelDBData );
+    }
+
+    let forceDBData: ForceDBData = {
+      _id: forceData._id,
+      name: forceData.name,
+      size: forceData.size,
+      cost: forceData.cost,
+      models: modelList
+    };
+
+    // update the cost
     return forceDBData;
   }
 
   /**
    * This method will calculate the cost of a force based on the models, equipment and other 
-   * settings. Returns the updated force
+   * settings. It will then update the provided force object. Returns the updated force
    * @param forceData The force whose cost needs to be calculated. This object will be updated
    */
   private updateForceCost( forceData: ForceData ): ForceData {
-    forceData.cost = 100;
+    
+    // get the total cost of models
+    forceData.cost = 0;
+    for ( let model of forceData.models ) {
+      forceData.cost += model.cost * model.count;
+    }
+
+    // return the updated forceData
     return forceData;
   }
-
-
-  
+ 
 }

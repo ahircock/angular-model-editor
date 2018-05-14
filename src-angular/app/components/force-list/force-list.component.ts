@@ -22,7 +22,11 @@ export class ForceListComponent implements OnInit {
 
   async newForce() {
     let newForce: ForceData = await this.forceDataService.addNewForce();
-    this.router.navigateByUrl("/force/" + newForce._id );
+    this.openForce( newForce._id );
+  }
+
+  openForce( forceId: string ) {
+    this.router.navigateByUrl("/force/" + forceId );
   }
 
 }

@@ -19,6 +19,6 @@ div.force-list {
     flex-flow: row wrap;
 }
 div.force-list div {
-    flex: 0 0 264px;
+    flex: 0 0;
     margin: 8px;
 }

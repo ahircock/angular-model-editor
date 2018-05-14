@@ -155,6 +155,17 @@ export class ForceDataService {
   }
 
   /**
+   * Delete the given force from the database. Does not return anything
+   * @param deleteForce The force to be delete
+   */
+  async deleteForce( deleteForce: ForceData ): Promise<void> {
+    
+    // delete the matching force from the DB
+    let forceIndex: number = this.forceDB.findIndex( element => element._id == deleteForce._id );
+    this.forceDB.splice( forceIndex, 1 );
+  }
+
+  /**
    * This method will convert a ForceDBData record (which is used internally) into a ForceData record (which 
    * is used externally). Returns the converted object
    * 

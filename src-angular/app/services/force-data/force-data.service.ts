@@ -82,7 +82,7 @@ export class ForceDataService {
 
   async getForceById( id: string ): Promise<ForceData> {
     
-    let findForce: ForceDBData = this.forceDB.find( element => { return element._id == id;} );
+    let findForce: ForceDBData = this.forceDB.find( element => element._id == id );
     let returnForce: ForceData = await this.convertDBToForceData( findForce );
     return returnForce;
   }
@@ -142,11 +142,35 @@ export class ForceDataService {
     updateForce = this.updateForceCost( updateForce );
     
     // find the force record in the fake DB, and then replace it with the updated force
-    let forceIndex: number = this.forceDB.findIndex( element => { return element._id == updateForce._id;} );
+    let forceIndex: number = this.forceDB.findIndex( element => element._id == updateForce._id );
     this.forceDB[forceIndex] = this.convertForceDataToDB(updateForce);
 
     // return a deep copy of the model from the DB
     return updateForce;
+  }
+
+  /**
+   * Called whenever a model is updated by the ModelDataService. This will update 
+   * the cost of any forces that contain that model
+   * @param model The model that was just updated
+   */
+  async modelUpdated( updatedModel: ModelData ): Promise<void> {
+
+    // loop through every force in the DB
+    for ( let dbForce of this.forceDB ) {
+
+      // if the updated model is in this force, then reload the force (which will recalculate the 
+      // cost) and then save it
+      if ( dbForce.models.find( element => element._id == updatedModel._id ) != undefined ) {
+
+        // update the cost
+        let forceData: ForceData = await this.convertDBToForceData( dbForce );
+        forceData = this.updateForceCost( forceData );
+
+        //save the force to the DB
+        this.updateForce( forceData );
+      }
+    }
   }
 
   /**
@@ -158,7 +182,7 @@ export class ForceDataService {
   private async convertDBToForceData( forceDBData: ForceDBData ): Promise<ForceData> {
 
     // look up the force size from the DB
-    let forceSize: ForceSize = this.FORCE_SIZES.find( element => { return element.size == forceDBData.size;} )
+    let forceSize: ForceSize = this.FORCE_SIZES.find( element => element.size == forceDBData.size )
 
     // retrieve the model information from its service
     let modelIdList: string[] = [];

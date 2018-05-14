@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { SpecialRuleData } from '../special-rule-data/special-rule-data.service';
+import { ForceDataService } from '../force-data/force-data.service'
 
 export interface ModelData {
   _id: string;
@@ -68,18 +69,20 @@ export class ModelDataService {
   public NEW_MELEE_ACTION: ModelActionData = { type: "MELEE", name: "NEW MELEE", AP:1, RNG:1, HIT:6, DMG:6, specialRules:[] };
   public NEW_RANGED_ACTION: ModelActionData = { type: "RANGED", name: "NEW RANGED", AP:1, RNG:12, HIT:6, DMG:6, specialRules:[] };
 
-  constructor() { }
+  constructor(
+    private forceDataService: ForceDataService
+  ) { }
 
   async getAllModels(): Promise<ModelData[]> {
     // make a deep copy of the model list and then return it
-    let returnList: ModelData[] = JSON.parse(JSON.stringify(this.modelDB));
+    let returnList: ModelData[] = Object.assign( {}, this.modelDB );
     return returnList;
   }
 
   async getModelById(id: string): Promise<ModelData> {
     // find the model in the arrach (using the "find" function), and then return a deep copy of that model
     let findModel: ModelData = this.modelDB.find( element => { return element._id == id;} );
-    let returnModel: ModelData = JSON.parse( JSON.stringify( findModel) );
+    let returnModel: ModelData = Object.assign( {}, findModel );
     return returnModel;
   }
 
@@ -88,7 +91,7 @@ export class ModelDataService {
     // get the list of models, and return a deep copy
     let returnList: ModelData[] = [];
     for ( let id of idList ) {
-      let returnModel: ModelData = JSON.parse( JSON.stringify( await this.getModelById(id) ) );
+      let returnModel: ModelData = Object.assign( {}, await this.getModelById(id) );
       returnList.push( returnModel );
     }
     return returnList;
@@ -97,15 +100,18 @@ export class ModelDataService {
   async addNewModel(): Promise<ModelData> {
     
     // create a new model with a single melee action
-    let newModel: ModelData = JSON.parse(JSON.stringify(this.NEW_MODEL));
-    newModel.actions.push( JSON.parse(JSON.stringify( this.NEW_MELEE_ACTION )));
+    let newModel: ModelData = Object.assign( {}, this.NEW_MODEL );
+    newModel.actions.push( Object.assign( {}, this.NEW_MELEE_ACTION ));
     this.updateCost(newModel);
 
     // add this new model to the fake database
     this.modelDB.push(newModel);
 
+    // update any forces that may use this model
+    this.forceDataService.modelUpdated( newModel );
+
     // return a deep copy
-    return JSON.parse( JSON.stringify( newModel ) );
+    return Object.assign( {}, newModel );
   }
 
   async updateModel( updateModel: ModelData ): Promise<ModelData> {
@@ -117,8 +123,11 @@ export class ModelDataService {
     let findModelIndex: number = this.modelDB.findIndex( element => { return element._id == updateModel._id;} );
     this.modelDB[findModelIndex] = updateModel;
 
+    // update any forces that may use this model
+    this.forceDataService.modelUpdated( updateModel );
+
     // return a deep copy of the model from the DB
-    let returnModel: ModelData = JSON.parse( JSON.stringify(this.modelDB[findModelIndex]) );
+    let returnModel: ModelData = Object.assign( {}, this.modelDB[findModelIndex] );
     return returnModel;
   }
 

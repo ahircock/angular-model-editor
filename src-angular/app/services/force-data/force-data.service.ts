@@ -11,6 +11,8 @@ export interface ForceData {
   maxCost: number,
   stdMissionCost: number,
   cost: number,
+  modelCost: number,
+  equipmentCost: number,
   models: ForceModelData[],
   equipment: ForceEquipmentData[]
 }
@@ -184,6 +186,8 @@ export class ForceDataService {
       maxCost: forceSize.maxCost,
       stdMissionCost: forceSize.stdMissionCost,
       cost: 0, // will be calculated below
+      modelCost: 0,
+      equipmentCost: 0,
       models: [],
       equipment: []
     };
@@ -245,10 +249,16 @@ export class ForceDataService {
   private updateForceCost( forceData: ForceData ): ForceData {
     
     // get the total cost of models
-    forceData.cost = 0;
+    forceData.modelCost = 0;
     for ( let model of forceData.models ) {
-      forceData.cost += model.cost * model.count;
+      forceData.modelCost += model.cost * model.count;
     }
+
+    // get the total cost of equipment
+    forceData.equipmentCost = 0;
+
+    // update the full cost
+    forceData.cost = forceData.modelCost + forceData.equipmentCost;
 
     // return the updated forceData
     return forceData;

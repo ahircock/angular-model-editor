@@ -26,7 +26,7 @@ export class ForceListComponent implements OnInit {
   }
 
   openForce( forceId: string ) {
-    this.router.navigateByUrl("/force/" + forceId );
+    this.router.navigateByUrl("/forces/" + forceId );
   }
 
 }

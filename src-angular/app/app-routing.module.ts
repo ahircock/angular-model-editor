@@ -8,11 +8,12 @@ import { ForceListComponent } from './components/force-list/force-list.component
 import { ForceDetailsComponent } from './components/force-details/force-details.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/models", pathMatch: "full" },
+  { path: "", redirectTo: "/forces", pathMatch: "full" },
   { path: "models", component: ModelListComponent },
   { path: "specialrules", component: SpecialRuleListComponent },
-  { path: "forces", component: ForceListComponent },
-  { path: "force/:id", component: ForceDetailsComponent }
+  { path: "forces/:id", component: ForceDetailsComponent },
+  { path: "forces", component: ForceListComponent }
+  
 ]
 
 @NgModule({

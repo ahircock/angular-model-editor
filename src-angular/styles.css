@@ -99,7 +99,7 @@ body {
 
 .box-white {
     color: black;
-    background-color: rgb(255, 255, 255);    
+    background-color: white;
     border: 1px solid black;
 }
 .box-light {
@@ -121,44 +121,57 @@ body {
 /* INPUT STYLES */
 input {
     border: 2px solid transparent; border-radius: 4px;
-    background-color: inherit;
-    color: inherit;
     width: 100%;
     padding: 0px 0px 0px 4px; 
     outline: none; box-sizing: border-box;
-    
-}
-input:hover {
-    border-color: rgb(32,32,32);; 
-}
-input:focus {
-    border-color: rgb(0,0,0);
 }
 select {
     border: 2px solid transparent; border-radius: 4px;
-    background-color: inherit;
-    color: inherit;
     width: 100%;
     padding: 0px 0px 0px 4px; 
     outline: none; box-sizing: border-box;
-    
 }
-select:hover {
-    border-color: rgb(32,32,32);; 
+.input-white {
+    color: black;
+    background-color: white;
 }
-select:focus {
-    border-color: rgb(0,0,0);
+.input-white:hover {
+    border-color: rgb(64,64,64);
+    background-color: rgb(211,211,211);
 }
-option {
-    border: 2px solid transparent; border-radius: 4px;
-    background-color: inherit;
-    color: inherit;
-    width: 100%;
-    padding: 0px 0px 0px 4px; 
-    outline: none; box-sizing: border-box;
-    
+.input-white:focus {
+    border-color: rgb(64,64,64);
+    background-color: rgb(211,211,211);
 }
-option:hover {
-    border-color: rgb(32,32,32);; 
+.input-light {
+    color: black;
+    background-color: rgb(243,243,243);
 }
-
+.input-light:hover {
+    border-color: rgb(64,64,64);
+}
+.input-light:focus {
+    border-color: rgb(64,64,64);
+}
+.input-mid {
+    color: black;
+    background-color: rgb(210,210,210);
+}
+.input-mid:hover {
+    border-color: rgb(64,64,64);
+}
+.input-mid:focus {
+    border-color: rgb(64,64,64);
+}
+.input-dark {
+    color: white;
+    background-color: rgb(96,96,96);
+}
+.input-dark:hover {
+    border-color: rgb(180,180,180);
+    background-color: rgb(128,128,128);
+}
+.input-dark:focus {
+    border-color: rgb(211,211,211);
+    background-color: rgb(128,128,128);
+}

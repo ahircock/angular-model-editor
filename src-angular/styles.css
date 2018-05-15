@@ -4,25 +4,27 @@ body {
 }
 
 /* FONTS */
-* {
-    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
-}
 input {
     font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
 }
 .font-normal {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
     font-weight: normal; text-transform: none;
 }
 .font-title-big {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
     font-size: 28px; font-weight: bold; text-transform: uppercase; 
 }
 .font-title {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
     font-weight: bold; text-transform: uppercase; 
 }
 .font-subtitle {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
     text-transform: capitalize;
 }
 .font-traits {
+    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
     font-style: italic; text-transform: capitalize; 
 }
 

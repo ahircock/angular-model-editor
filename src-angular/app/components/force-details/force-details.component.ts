@@ -50,4 +50,8 @@ export class ForceDetailsComponent implements OnInit {
     this.force = await this.forceDataService.getForceById(this.force._id);
   }
 
+  async saveForce() {
+    this.force = await this.forceDataService.updateForce( this.force );
+  }
+
 }

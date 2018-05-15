@@ -13,23 +13,25 @@ div.back-arrow {
 }
 div.force-name {
     position:absolute;
-    left: 80px; top: 8px;
+    left: 76px; top: 8px;
+    width: 327px; box-sizing: border-box;
 }
 div.force-size {
     position:absolute;
-    left: 80px; top: 44px;
+    left: 76px; top: 46px;
+    width: 327px; box-sizing: border-box;
 }
 div.force-model-summary {
     position:absolute;
-    left: 400px; top: 8px;
+    left: 416px; top: 8px;
 }
 div.force-equipment-summary {
     position:absolute;
-    left: 400px; top: 28px;
+    left: 416px; top: 28px;
 }
 div.force-total-cost {
     position:absolute;
-    left: 400px; top: 48px;
+    left: 416px; top: 48px;
 }
 
 /* multi-column display */

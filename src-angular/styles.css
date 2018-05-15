@@ -119,4 +119,46 @@ body {
 }
 
 /* INPUT STYLES */
+input {
+    border: 2px solid transparent; border-radius: 4px;
+    background-color: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 0px 0px 0px 4px; 
+    outline: none; box-sizing: border-box;
+    
+}
+input:hover {
+    border-color: rgb(32,32,32);; 
+}
+input:focus {
+    border-color: rgb(0,0,0);
+}
+select {
+    border: 2px solid transparent; border-radius: 4px;
+    background-color: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 0px 0px 0px 4px; 
+    outline: none; box-sizing: border-box;
+    
+}
+select:hover {
+    border-color: rgb(32,32,32);; 
+}
+select:focus {
+    border-color: rgb(0,0,0);
+}
+option {
+    border: 2px solid transparent; border-radius: 4px;
+    background-color: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 0px 0px 0px 4px; 
+    outline: none; box-sizing: border-box;
+    
+}
+option:hover {
+    border-color: rgb(32,32,32);; 
+}
 

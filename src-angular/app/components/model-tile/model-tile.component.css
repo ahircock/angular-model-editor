@@ -1,7 +1,7 @@
 /* MODEL BOX */
 .model-tile {
     position: relative;
-    height: 96px; width: 264px;
+    height: 96px; width: 292px;
     border-radius: 4px;
 }
 .model-image-box {
@@ -29,7 +29,7 @@
     float: right;
     border-radius: 4px;
     margin-top: 4px;
-    margin-right: 8px;
+    margin-left: 8px;
     margin-bottom: 8px;
     height: 28px;
 }

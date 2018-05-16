@@ -32,7 +32,7 @@
         (click)="onModelSelect(model)"
         [class.selected]="model === selectedModel">
         <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
-        <app-model-tile [model]="model" [force]="force" [selected]="model === selectedModel"></app-model-tile>
+        <app-model-tile [model]="model" [force]="force" [selected]="model === selectedModel" (change)="refreshData()"></app-model-tile>
       </div>
     </div>
   

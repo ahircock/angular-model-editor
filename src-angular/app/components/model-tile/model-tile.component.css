@@ -12,19 +12,24 @@
 .model-image {
     height: 88px; margin-left: auto; margin-right: auto; display: block;
 }
-.model-details-box {
+div.model-details-box {
     position: absolute;
     left: 96px; top:8px; width: 188px;
 }
-.model-cost { 
+div.model-details-box .model-name {
+    width: 196px;
+    height: 20px;
+    overflow-y: hidden;
+}
+div.model-details-box .model-cost { 
     margin-top:4px; margin-bottom: 4px;
     width: max-content;    
 }
-
-/* buttons */
-.model-button-band {
+div.model-details-box .model-button-band {
     width: 100%;
 }
+
+/* buttons */
 .model-button {
     float: right;
     border-radius: 4px;

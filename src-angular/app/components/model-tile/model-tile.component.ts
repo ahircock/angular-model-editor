@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
-import { ForceData, ForceDataService } from '../../services/force-data/force-data.service';
+import { ForceData, ForceDataService, ForceModelData } from '../../services/force-data/force-data.service';
 
 @Component({
   selector: 'app-model-tile',
@@ -47,7 +47,22 @@ export class ModelTileComponent implements OnInit {
     // save the changes and tell the parent component
     this.force = await this.forceDataService.updateForce(this.force);
     this.change.emit();
+  }
 
+  async cloneModel() {
+
+    // clone the model
+    let newModel: ModelData = await this.modelDataService.cloneModel( this.model );
+
+    // if you are on a force, add this model to the force
+    if ( this.force ) {
+      let forceModelData: ForceModelData = Object.assign( {}, newModel, { count: 1 });
+      this.force.models.push( forceModelData );
+      this.force = await this.forceDataService.updateForce(this.force);
+    }
+
+    // tell the parent that something changed
+    this.change.emit();
   }
 
 }

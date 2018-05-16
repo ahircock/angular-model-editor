@@ -7,7 +7,7 @@
         (click)="onSelect(model)"
         [class.selected]="model === selectedModel">
         
-        <app-model-tile [model]="model" [selected]="model === selectedModel"></app-model-tile>
+        <app-model-tile [model]="model" [selected]="model === selectedModel" (change)="refreshData()"></app-model-tile>
       </div>
     </div>
   </div>

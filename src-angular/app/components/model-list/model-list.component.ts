@@ -15,7 +15,7 @@ export class ModelListComponent implements OnInit {
   constructor( private modelDataService: ModelDataService ) { }
 
   async ngOnInit() {
-    this.models = await this.modelDataService.getAllModels();
+    await this.refreshData();
 
     // select the first one
     if ( this.models.length > 0 ) {
@@ -30,5 +30,9 @@ export class ModelListComponent implements OnInit {
 
   setEditMode(newVal: boolean) {
     this.editMode = newVal;
+  }
+
+  async refreshData() {
+    this.models = await this.modelDataService.getAllModels();
   }
 }

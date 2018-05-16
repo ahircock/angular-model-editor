@@ -107,7 +107,7 @@ export class ModelDataService {
     newModel.actions.push( JSON.parse(JSON.stringify( this.NEW_MELEE_ACTION )));
     this.updateCost(newModel);
 
-    // generate a new ID for the new force
+    // generate a new ID for the model
     newModel._id = "M" + this.nextModelIdDB.toString().padStart(4,"0");
     this.nextModelIdDB++;
 
@@ -129,6 +129,27 @@ export class ModelDataService {
 
     // return a deep copy of the model from the DB
     let returnModel: ModelData = JSON.parse(JSON.stringify( this.modelDB[findModelIndex] ));
+    return returnModel;
+  }
+
+  async cloneModel( cloneModel: ModelData ): Promise<ModelData> {
+
+    // create a new copy of the model
+    let newModel: ModelData = JSON.parse( JSON.stringify(cloneModel) );
+    this.updateCost(newModel);
+
+    // generate a new ID for the model
+    newModel._id = "M" + this.nextModelIdDB.toString().padStart(4,"0");
+    this.nextModelIdDB++;
+
+    // give the new model a different name
+    newModel.name = newModel.name + "-C"
+
+    // add this new model to the fake database
+    this.modelDB.push(newModel);
+
+    // return a deep copy of the new model
+    let returnModel: ModelData = JSON.parse(JSON.stringify( newModel ));
     return returnModel;
   }
 

@@ -60,7 +60,7 @@ div.force-action {
     height: 82px; width: 264px;
     border-radius: 4px;
     position: relative;
-    margin: 8px;
+    margin: 16px;
     text-align: center;
     box-sizing: border-box;
 }
@@ -76,7 +76,7 @@ div.model-list {
 }
 div.model-list div {
     flex: 0 0 264px;
-    margin: 8px;
+    margin: 16px;
 }
 
 /* model-count */

@@ -1,22 +1,40 @@
 /* MODEL BOX */
 .model-tile {
     position: relative;
-    height: 82px; width: 264px;
+    height: 96px; width: 264px;
     border-radius: 4px;
 }
 .model-image-box {
     position: absolute;
-    left: 4px; top: 4px; height: 72px; width: 72px; 
+    left: 4px; top: 4px; width: 88px; 
     display: inline-block;
 }
 .model-image {
-    height: 72px; margin-left: auto; margin-right: auto; display: block;
+    height: 88px; margin-left: auto; margin-right: auto; display: block;
 }
 .model-details-box {
     position: absolute;
-    left: 80px; top:8px; width: 188px;
+    left: 96px; top:8px; width: 188px;
 }
 .model-cost { 
-    margin-top:10px; margin-bottom: 10px;
+    margin-top:4px; margin-bottom: 4px;
     width: max-content;    
 }
+
+/* buttons */
+.model-button-band {
+    width: 100%;
+}
+.model-button {
+    float: right;
+    border-radius: 4px;
+    margin-top: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    height: 28px;
+}
+.model-button img {
+    width: 20px;
+    margin: 4px;
+}
+

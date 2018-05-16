@@ -78,3 +78,17 @@ div.model-list div {
     flex: 0 0 264px;
     margin: 8px;
 }
+
+/* model-count */
+div.model-tile {
+    position: relative;
+}
+div.model-tile .model-count {
+    position: absolute;
+    z-index: 1;
+    border-radius: 32px;
+    margin: 0px;
+    padding: 8px;
+    top: -8px;
+    left: -8px;
+}

@@ -27,11 +27,10 @@
     <!-- LIST OF MODELS IN FORCE -->
     <div class="model-list">
       <div *ngFor="let model of force.models; index as modelIndex;" 
+        class="model-tile"
         (click)="onModelSelect(model)"
         [class.selected]="model === selectedModel">
-
-        {{force.models[modelIndex].count}}
-        
+        <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
         <app-model-tile [model]="model" [selected]="model === selectedModel"></app-model-tile>
       </div>
     </div>

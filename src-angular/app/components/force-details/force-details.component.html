@@ -4,7 +4,7 @@
   <div class="force-name"><input class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
   <div class="force-size">
     <select [(ngModel)]="force.size" class="input-dark font-subtitle" (change)="saveForce()">
-      <option *ngFor="let size of forceDataService.FORCE_SIZES;" [value]="size.size">{{size.size}}</option>
+      <option *ngFor="let size of forceDataService.FORCE_SIZES;" [value]="size.size">{{size.size}} ({{size.maxCost}} Points)</option>
     </select>
   </div>
   <div class="force-model-summary font-normal">{{force.models.length}} Models ({{force.modelCost}} Points)</div>

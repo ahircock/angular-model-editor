@@ -77,7 +77,7 @@ export class ModelDataService {
     let returnList: ModelData[] = [];
     for ( let modelDB of this.modelDB ) {
       let modelData: ModelData = JSON.parse(JSON.stringify( modelDB ));
-      returnList.push( modelData );
+      returnList.push( this.updateCost(modelData) );
     }
     return returnList;
   }
@@ -86,7 +86,7 @@ export class ModelDataService {
     // find the model in the arrach (using the "find" function), and then return a deep copy of that model
     let findModel: ModelData = this.modelDB.find( element => { return element._id == id;} );
     let returnModel: ModelData = JSON.parse(JSON.stringify( findModel ));
-    return returnModel;
+    return this.updateCost(returnModel);
   }
 
   async getModelListById ( idList: string[] ): Promise<ModelData[]> {
@@ -95,7 +95,7 @@ export class ModelDataService {
     let returnList: ModelData[] = [];
     for ( let id of idList ) {
       let returnModel: ModelData = JSON.parse(JSON.stringify( await this.getModelById(id) ));
-      returnList.push( returnModel );
+      returnList.push( this.updateCost(returnModel) );
     }
     return returnList;
   }
@@ -132,7 +132,7 @@ export class ModelDataService {
     return returnModel;
   }
 
-  private updateCost( model: ModelData ): void {
+  private updateCost( model: ModelData ): ModelData {
     model.cost = this.BASE_COST;
 
     // add the cost of model stats
@@ -186,5 +186,8 @@ export class ModelDataService {
         model.cost += actionCost;
       }
     }
+    
+    // return the updated model
+    return model;
   }
 }

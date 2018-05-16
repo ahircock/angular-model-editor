@@ -19,7 +19,7 @@ div.force-name {
 div.force-size {
     position:absolute;
     left: 76px; top: 46px;
-    width: 327px; box-sizing: border-box;
+    box-sizing: border-box;
 }
 div.force-model-summary {
     position:absolute;
@@ -32,6 +32,11 @@ div.force-equipment-summary {
 div.force-total-cost {
     position:absolute;
     left: 416px; top: 48px;
+}
+div.force-points-remaining {
+    position:absolute;
+    left: 650px; top: 8px;
+    box-sizing: border-box;
 }
 
 /* multi-column display */

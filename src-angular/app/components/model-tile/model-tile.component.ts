@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModelData } from '../../services/model-data/model-data.service'
+import { ModelData } from '../../services/model-data/model-data.service';
+import { ForceData } from '../../services/force-data/force-data.service';
 
 @Component({
   selector: 'app-model-tile',
@@ -9,6 +10,7 @@ import { ModelData } from '../../services/model-data/model-data.service'
 export class ModelTileComponent implements OnInit {
 
   @Input() model: ModelData;
+  @Input() force: ForceData;
   @Input() selected: boolean;
   
   constructor(

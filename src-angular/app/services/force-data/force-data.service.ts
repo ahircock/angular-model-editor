@@ -248,6 +248,11 @@ export class ForceDataService {
    */
   private updateForceCost( forceData: ForceData ): ForceData {
     
+    // load the cost information for the size
+    let forceSize: ForceSize = this.FORCE_SIZES.find( element => element.size == forceData.size );
+    forceData.maxCost = forceSize.maxCost;
+    forceData.stdMissionCost = forceSize.stdMissionCost;
+
     // get the total cost of models
     forceData.modelCost = 0;
     for ( let model of forceData.models ) {

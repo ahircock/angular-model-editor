@@ -66,6 +66,7 @@ export class ForceDetailsComponent implements OnInit {
 
   async refreshData() {
     this.force = await this.forceDataService.getForceById(this.force._id);
+    this.modelTemplates = await this.modelDataService.getAllModels();
   }
 
   async saveForce() {

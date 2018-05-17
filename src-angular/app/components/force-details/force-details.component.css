@@ -60,7 +60,7 @@ div.column-section .right {
     overflow-y: auto;    
 }
 
-/* MODEL BUTTONS */
+/* NEW MODEL BUTTON */
 div.force-action {
     height: 82px; width: 264px;
     border-radius: 4px;
@@ -69,10 +69,34 @@ div.force-action {
     text-align: center;
     box-sizing: border-box;
 }
-div.force-action img {
+img.create-model-button {
     width: 48px;
     margin-top: 4px;
 }
+div.force-action .model-selector-box {
+    position: absolute;
+    left: 268px; top: 0px;
+    width: 400px;
+    z-index: 2;
+}
+div.force-action .model-selection {
+    padding: 4px;
+    height: 24px;
+    border: none;    
+}
+div.model-image-box {
+    position: absolute;
+    width: 24px;
+}
+img.model-image {
+    height: 24px; margin-left: auto; margin-right: auto; display: block;
+}
+div.model-text-box {
+    float: left;
+    padding-left: 28px;
+    padding-top: 4px;
+}
+
 
 /* model list */
 div.model-list {

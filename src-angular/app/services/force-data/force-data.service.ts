@@ -84,6 +84,9 @@ export class ForceDataService {
     for ( let forceDBData of this.forceDB ) {
       returnList.push( await this.convertDBToForceData(forceDBData) );
     }
+
+    // sort the list by force name
+    returnList.sort( this.sortForceData );
     return returnList;
   }
 
@@ -267,6 +270,21 @@ export class ForceDataService {
 
     // return the updated forceData
     return forceData;
+  }
+
+  /**
+   * The method used by Javascript array.sort to sort force datas
+   * @param a first force
+   * @param b second force
+   */
+  private sortForceData( a: ForceData, b: ForceData ): number {
+    if ( a.name < b.name ) {
+      return -1;
+    } else if ( a.name > b.name ) {
+      return 1;
+    } else {
+      return 0;
+    }
   }
  
 }

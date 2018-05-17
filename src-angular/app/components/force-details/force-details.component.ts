@@ -12,6 +12,8 @@ export class ForceDetailsComponent implements OnInit {
 
   public force: ForceData;
   public selectedModel: ModelData;
+  public modelTemplates: ModelData[];
+  public showModelListDropdown: boolean = false;
 
   // some cost counterse
   public modelCost: number = 0;
@@ -33,6 +35,9 @@ export class ForceDetailsComponent implements OnInit {
     if ( this.force.models.length > 0 ) {
       this.selectedModel = this.force.models[0];
     }
+
+    // load up the list of model templates
+    this.modelTemplates = await this.modelDataService.getAllModels();
   }
 
   onModelSelect( selectedModel: ModelData ) {
@@ -40,9 +45,22 @@ export class ForceDetailsComponent implements OnInit {
   }
 
   async newModelClick() {
-    this.force = await this.forceDataService.addNewModelToForce( this.force );
+    this.showModelListDropdown = !this.showModelListDropdown;
+  }
+
+  async addModel( selectedModel: ModelData ) {
     
-    // select the last model in the list (which should be the new model)
+    // create a new model based on the selected one
+    let newModelData = await this.modelDataService.cloneModel( selectedModel );
+
+    // add the model to the force
+    let newForceModelData: ForceModelData = Object.assign( {}, {count:1}, newModelData );
+    this.force.models.push ( newForceModelData );
+    
+    // update the force in the DB
+    this.force = await this.forceDataService.updateForce( this.force );
+
+    // select the new model (which should be the last one in the list)
     this.selectedModel = this.force.models[ this.force.models.length - 1 ];
   }
 

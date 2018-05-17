@@ -40,6 +40,7 @@ export class ModelDataService {
 
   // this array will simulate the data that comes back from a database
   private modelDB: ModelData[] = [
+    {"_id":"M0000","name":"Basic Model","traits":null,"picture":"basic.jpg","cost":0,"SPD":5,"EV":5,"ARM":0,"HP":5,"specialRules":[],"actions":[{"type":"MELEE","name":"Basic Weapon","traits":null,"AP":1,"RNG":1,"HIT":6,"DMG":6,"ONCE":false,"specialRules":[]}]},
     {"_id":"M0001","name":"Templar General","traits":"Templar","picture":"templar - general.jpg","cost":15,"SPD":5,"EV":5,"ARM":4,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":0,"HIT":7,"DMG":5,"ONCE":false,"specialRules":[]}]},
     {"_id":"M0002","name":"Templar Knight","traits":"Templar","picture":"templar - knight.jpg","cost":16,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Shield Wall","traits":"","AP":1,"specialRules":[{"_id": "S0001", "ruleType": "special", "ruleCost": 2, "ruleAP": 1, "ruleName": "Armor Stance", "ruleText": "This model gains the following condition for one round: <i>Armor Stance<\/i> - This model gets +2 ARM\n"}]}]},
     {"_id":"M0003","name":"Templar Paladin","traits":"Templar","picture":"templar - paladin.jpg","cost":21,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"StarMaul","traits":null,"AP":1,"RNG":2,"HIT":8,"DMG":9,"ONCE":false,"specialRules":[{"_id": "S0002", "ruleType": "attack", "ruleCost": 2, "ruleName": "Stun", "ruleText": "Target model gets the following condition for one round (<i>Stunned<\/i>: This model gets -1 action point during its activation)"}]}]},
@@ -79,6 +80,9 @@ export class ModelDataService {
       let modelData: ModelData = JSON.parse(JSON.stringify( modelDB ));
       returnList.push( this.updateCost(modelData) );
     }
+
+    // sort the list of models
+    returnList.sort(this.sortModelData);
     return returnList;
   }
 
@@ -211,4 +215,25 @@ export class ModelDataService {
     // return the updated model
     return model;
   }
+
+  /**
+   * The method used by Javascript array.sort to sort force datas
+   * @param a first force
+   * @param b second force
+   */
+  private sortModelData( a: ModelData, b: ModelData ): number {
+    
+    // always return the basic model first
+    if ( a._id == "M0000" ) { return -1 };
+    if ( b._id == "M0000" ) { return 1};
+
+    if ( a.name < b.name ) {
+      return -1;
+    } else if ( a.name > b.name ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  
 }

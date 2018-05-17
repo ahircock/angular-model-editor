@@ -33,6 +33,6 @@ export class ModelListComponent implements OnInit {
   }
 
   async refreshData() {
-    this.models = await this.modelDataService.getAllModels();
+    this.models = await this.modelDataService.getAllTemplates();
   }
 }

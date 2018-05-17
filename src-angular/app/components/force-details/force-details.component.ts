@@ -37,7 +37,7 @@ export class ForceDetailsComponent implements OnInit {
     }
 
     // load up the list of model templates
-    this.modelTemplates = await this.modelDataService.getAllModels();
+    this.modelTemplates = await this.modelDataService.getAllTemplates();
   }
 
   onModelSelect( selectedModel: ModelData ) {
@@ -48,10 +48,10 @@ export class ForceDetailsComponent implements OnInit {
     this.showModelListDropdown = !this.showModelListDropdown;
   }
 
-  async addModel( selectedModel: ModelData ) {
+  async addModel( template: ModelData ) {
     
     // create a new model based on the selected one
-    let newModelData = await this.modelDataService.cloneModel( selectedModel );
+    let newModelData = await this.modelDataService.cloneModelFromTemplate( template );
 
     // add the model to the force
     let newForceModelData: ForceModelData = Object.assign( {}, {count:1}, newModelData );
@@ -66,7 +66,7 @@ export class ForceDetailsComponent implements OnInit {
 
   async refreshData() {
     this.force = await this.forceDataService.getForceById(this.force._id);
-    this.modelTemplates = await this.modelDataService.getAllModels();
+    this.modelTemplates = await this.modelDataService.getAllTemplates();
   }
 
   async saveForce() {

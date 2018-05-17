@@ -58,8 +58,8 @@ export class ForceDataService {
    * Fake DB used 
    */
   private forceDB: ForceDBData[] = [
-    { _id:"F0001", name:"Templar Attack!", size:"standard", models:[{_id:"M0011",count:1},{_id:"M0003",count:2},{_id:"M0002",count:3}] },
-    { _id:"F0002", name:"Khorne Bloodbound", size:"standard", models:[{_id:"M0008",count:1},{_id:"M0007",count:3},{_id:"M0005",count:6}] }
+    { _id:"F0001", name:"Templar Attack!", size:"standard", models:[{_id:"M0021",count:1},{_id:"M0023",count:2},{_id:"M0022",count:3}] },
+    { _id:"F0002", name:"Khorne Bloodbound", size:"standard", models:[{_id:"M0031",count:1},{_id:"M0032",count:3},{_id:"M0033",count:6}] }
   ];
   private nextForceIdDB: number = 3;
 
@@ -118,26 +118,6 @@ export class ForceDataService {
 
     // return the new force
     return this.convertDBToForceData( newForce );
-  }
-
-  /**
-   * Creates a new model object in the DB and updates the force in the DB to include this new 
-   * model. The provided force will be updated. Returns the updated force
-   * @param force The force that the new model will be added to
-   */
-  async addNewModelToForce( force: ForceData ): Promise<ForceData> {
-
-    // create a new model in the DB
-    let newModelData: ModelData = await this.modelDataService.addNewModel();
-
-    // add the new model to the force
-    let newForceModelData: ForceModelData = Object.assign( {}, {count:1}, newModelData );
-    force.models.push ( newForceModelData );
-    
-    // update the force in the DB
-    force = await this.updateForce( force );
-    return force;
-
   }
 
   /**

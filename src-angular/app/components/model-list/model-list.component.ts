@@ -10,7 +10,6 @@ export class ModelListComponent implements OnInit {
 
   public models: ModelData[];
   public selectedModel: ModelData;
-  public editMode: boolean = false;
 
   constructor( private modelDataService: ModelDataService ) { }
 
@@ -25,11 +24,6 @@ export class ModelListComponent implements OnInit {
 
   onSelect(selectedModel: ModelData ) {
     this.selectedModel = selectedModel;
-    this.editMode = false;
-  }
-
-  setEditMode(newVal: boolean) {
-    this.editMode = newVal;
   }
 
   async refreshData() {

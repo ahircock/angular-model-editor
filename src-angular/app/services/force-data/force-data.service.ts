@@ -68,9 +68,9 @@ export class ForceDataService {
    * This is the hardcoded list of force sizes, their names and point costs
    */
   public FORCE_SIZES:ForceSize[] = [ 
-    {size:"small", maxCost:150, stdMissionCost:100},
-    {size:"standard", maxCost:250, stdMissionCost:150},
-    {size:"epic", maxCost:350, stdMissionCost:250} 
+    {size:"small", maxCost:100, stdMissionCost:100},
+    {size:"standard", maxCost:150, stdMissionCost:150},
+    {size:"epic", maxCost:250, stdMissionCost:250} 
   ];
 
   constructor(

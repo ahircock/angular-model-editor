@@ -3,17 +3,17 @@
   <!-- MODEL LIST -->
   <div class="left" style="height: 750px;">
     <div class="model-list">
-      <div *ngFor="let model of models;" 
-        (click)="onSelect(model)"
-        [class.selected]="model === selectedModel">
+      <div *ngFor="let model of models; index as modelIndex" 
+        (click)="onSelect(modelIndex)"
+        [class.selected]="modelIndex === selectedModelIndex">
         
-        <app-model-tile [model]="model" [selected]="model === selectedModel" (change)="refreshData()"></app-model-tile>
+        <app-model-tile [model]="model" [selected]="modelIndex == selectedModelIndex" (change)="refreshData()"></app-model-tile>
       </div>
     </div>
   </div>
 
   <!-- MODEL DETAILS -->
   <div class="right">
-    <app-model-editor [model]="selectedModel" (change)="refreshData()"></app-model-editor>
+    <app-model-editor [model]="models[selectedModelIndex]" (change)="modelDetailsChanged(selectedModelIndex)"></app-model-editor>
   </div>
 </div>

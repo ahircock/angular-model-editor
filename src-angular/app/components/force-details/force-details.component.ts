@@ -11,7 +11,7 @@ import { ModelData, ModelDataService } from '../../services/model-data/model-dat
 export class ForceDetailsComponent implements OnInit {
 
   public force: ForceData;
-  public selectedModel: ModelData;
+  public selectedModelIndex: number;
   public modelTemplates: ModelData[];
   public showModelListDropdown: boolean = false;
 
@@ -33,15 +33,15 @@ export class ForceDetailsComponent implements OnInit {
     
     // mark the first model as selected
     if ( this.force.models.length > 0 ) {
-      this.selectedModel = this.force.models[0];
+      this.selectedModelIndex = 0;
     }
 
     // load up the list of model templates
     this.modelTemplates = await this.modelDataService.getAllTemplates();
   }
 
-  onModelSelect( selectedModel: ModelData ) {
-    this.selectedModel = selectedModel;
+  selectModel( selectedModelIndex: number ) {
+    this.selectedModelIndex = selectedModelIndex;
   }
 
   async newModelClick() {
@@ -61,10 +61,11 @@ export class ForceDetailsComponent implements OnInit {
     this.force = await this.forceDataService.updateForce( this.force );
 
     // select the new model (which should be the last one in the list)
-    this.selectedModel = this.force.models[ this.force.models.length - 1 ];
+    this.selectedModelIndex = this.force.models.length - 1;
   }
 
-  async refreshData() {
+  async forceDetailsChanged() {
+
     this.force = await this.forceDataService.getForceById(this.force._id);
     this.modelTemplates = await this.modelDataService.getAllTemplates();
   }

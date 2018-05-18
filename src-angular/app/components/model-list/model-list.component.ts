@@ -9,24 +9,25 @@ import { ModelDataService, ModelData  } from '../../services/model-data/model-da
 export class ModelListComponent implements OnInit {
 
   public models: ModelData[];
-  public selectedModel: ModelData;
+  public selectedModelIndex: number;
 
   constructor( private modelDataService: ModelDataService ) { }
 
   async ngOnInit() {
-    await this.refreshData();
+    this.models = await this.modelDataService.getAllTemplates();
 
     // select the first one
     if ( this.models.length > 0 ) {
-      this.selectedModel = this.models[0];
+      this.selectedModelIndex = 0;
     }
   }
 
-  onSelect(selectedModel: ModelData ) {
-    this.selectedModel = selectedModel;
+  onSelect( selectedModelIndex: number ) {
+    this.selectedModelIndex = selectedModelIndex;
   }
 
-  async refreshData() {
-    this.models = await this.modelDataService.getAllTemplates();
+  async modelDetailsChanged( modelIndex: number ) {
+    let updatedModel = await this.modelDataService.getModelById( this.models[modelIndex]._id );
+    this.models[modelIndex] = updatedModel;    
   }
 }

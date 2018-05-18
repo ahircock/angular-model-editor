@@ -35,10 +35,10 @@
     <div class="model-list">
       <div *ngFor="let model of force.models; index as modelIndex;" 
         class="model-tile"
-        (click)="onModelSelect(model)"
-        [class.selected]="model === selectedModel">
+        (click)="selectModel(modelIndex)"
+        [class.selected]="modelIndex == selectedModelIndex">
         <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
-        <app-model-tile [model]="model" [force]="force" [selected]="model === selectedModel" (change)="refreshData()"></app-model-tile>
+        <app-model-tile [model]="model" [force]="force" [selected]="modelIndex == selectedModelIndex" (change)="selectModel(modelIndex); forceDetailsChanged()"></app-model-tile>
       </div>
     </div>
   
@@ -46,7 +46,7 @@
 
   <!-- MODEL EDITOR -->
   <div class="right">
-    <app-model-editor [model]="selectedModel" (change)="refreshData()"></app-model-editor>
+    <app-model-editor [model]="force.models[selectedModelIndex]" (change)="forceDetailsChanged()"></app-model-editor>
   </div>
 
 </div>

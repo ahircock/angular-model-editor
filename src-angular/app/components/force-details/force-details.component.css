@@ -123,3 +123,22 @@ div.model-tile .model-count {
     top: -8px;
     left: -8px;
 }
+
+/* buttons */
+.header-button-bar {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;    
+}
+.model-button {
+    float: right;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    height: 28px;
+    z-index: 1;
+}
+.model-button img {
+    width: 20px;
+    margin: 4px;
+}

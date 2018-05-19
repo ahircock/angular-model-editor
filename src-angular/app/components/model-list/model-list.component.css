@@ -11,7 +11,7 @@ div.column-section .left {
     overflow-y: auto;    
 }
 div.column-section .right {
-    flex: 0 0 550px;
+    flex: 0 0 551px;
     padding: 16px;
     background-color: lightgrey;
     box-sizing: border-box;

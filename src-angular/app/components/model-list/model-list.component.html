@@ -1,8 +1,8 @@
 <div class="column-section">
     
   <!-- MODEL LIST -->
-  <div class="left" style="height: 750px;">
-    <div class="model-list">
+  <div class="left">
+    <div *ngIf="models" class="model-list">
       <div *ngFor="let model of models; index as modelIndex" 
         (click)="onSelect(modelIndex)"
         [class.selected]="modelIndex === selectedModelIndex">
@@ -14,6 +14,6 @@
 
   <!-- MODEL DETAILS -->
   <div class="right">
-    <app-model-editor [model]="models[selectedModelIndex]" (change)="modelDetailsChanged(selectedModelIndex)"></app-model-editor>
+    <app-model-editor *ngIf="models" [model]="models[selectedModelIndex]" (change)="modelDetailsChanged(selectedModelIndex)"></app-model-editor>
   </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data/force-data.service';
 import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
 
@@ -21,6 +21,7 @@ export class ForceDetailsComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private modelDataService: ModelDataService,
     private forceDataService: ForceDataService
   ) { }
@@ -73,5 +74,11 @@ export class ForceDetailsComponent implements OnInit {
   async saveForce() {
     this.force = await this.forceDataService.updateForce( this.force );
   }
+
+  printForce() {
+    // open the print page in a new window/tab
+    window.open("/forces/print/" + this.force._id);
+  }
+
 
 }

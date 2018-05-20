@@ -20,6 +20,7 @@ import { ForceListComponent } from './components/force-list/force-list.component
 import { ModelTileComponent } from './components/model-tile/model-tile.component';
 import { ForceTileComponent } from './components/force-tile/force-tile.component';
 import { ForceDetailsComponent } from './components/force-details/force-details.component';
+import { ForcePrintComponent } from './components/force-print/force-print.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ForceDetailsComponent } from './components/force-details/force-details.
     ForceListComponent,
     ModelTileComponent,
     ForceTileComponent,
-    ForceDetailsComponent
+    ForceDetailsComponent,
+    ForcePrintComponent
   ],
   imports: [
     BrowserModule,

@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+
+  public showHeader:boolean = true;
+
+  routerOutletActivate( component: any ) {
+
+    if ( typeof component.showHeader == "boolean" && !component.showHeader ) {
+      this.showHeader = false;
+    } else {
+      this.showHeader = true;
+    }
+  }
 }

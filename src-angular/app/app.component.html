@@ -1,4 +1,4 @@
-<div class="header">
+<div *ngIf="showHeader" class="header">
   <div class="appImage"><img src="/assets/icons/age-of-sigmar.jpg"></div>
   <div class="menuBar">
       <div class="font-normal menuItem" routerLink="/forces" routerLinkActive="active">Forces</div>
@@ -6,9 +6,6 @@
       <div class="font-normal menuItem" routerLink="/specialrules" routerLinkActive="active">Special Rules</div>
   </div>
 </div>
-<div class="middle">
-  <router-outlet></router-outlet>
-</div>
-<div class="footer">
-  Footer
+<div [class.middle]="showHeader">
+  <router-outlet (activate)="routerOutletActivate($event)"></router-outlet>
 </div>

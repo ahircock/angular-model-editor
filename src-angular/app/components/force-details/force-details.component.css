@@ -45,6 +45,7 @@ div.force-points-remaining {
 /* multi-column display */
 div.column-section {
     position: absolute;
+    width: 100%;
     top: 80px; bottom: 0px;
     display: flex;    
 }

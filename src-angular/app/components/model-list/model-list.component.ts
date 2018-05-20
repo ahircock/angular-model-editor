@@ -22,6 +22,10 @@ export class ModelListComponent implements OnInit {
     }
   }
 
+  async refreshData() {
+    this.models = await this.modelDataService.getAllTemplates();
+  }
+
   onSelect( selectedModelIndex: number ) {
     this.selectedModelIndex = selectedModelIndex;
   }

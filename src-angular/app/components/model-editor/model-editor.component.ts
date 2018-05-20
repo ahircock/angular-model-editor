@@ -17,7 +17,7 @@ interface StatCost {
 export class ModelEditorComponent implements OnInit {
 
   @Input() model: ModelData;
-  @Output() change: EventEmitter<void> = new EventEmitter();
+  @Output() updated: EventEmitter<void> = new EventEmitter();
 
   constructor( 
     private location: Location,
@@ -69,7 +69,7 @@ export class ModelEditorComponent implements OnInit {
     this.saveModelData();
   }
 
-deleteAction( actionIndex: number ) {
+  deleteAction( actionIndex: number ) {
     this.model.actions.splice( actionIndex, 1 );
     this.saveModelData();
   }
@@ -105,6 +105,6 @@ deleteAction( actionIndex: number ) {
   async saveModelData() {
     let updatedModel = await this.modelDataService.updateModel( this.model );
     this.model = updatedModel;
-    this.change.emit();
+    this.updated.emit();
   }
 }

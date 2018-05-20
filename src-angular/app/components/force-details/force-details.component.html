@@ -53,7 +53,7 @@
 
   <!-- MODEL EDITOR -->
   <div class="right">
-    <app-model-editor [model]="force.models[selectedModelIndex]" (change)="forceDetailsChanged()"></app-model-editor>
+    <app-model-editor [model]="force.models[selectedModelIndex]" (updated)="forceDetailsChanged()"></app-model-editor>
   </div>
 
 </div>

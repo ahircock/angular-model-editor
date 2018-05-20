@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 div.header {
     position:fixed; 
     top:0; height:64px; width:100%; 
@@ -68,68 +67,4 @@ div.menuItem:hover:not(.active) {
 div.menuItem.active {
     background-color: darkslategray;
     color: white;
-=======
-div.header {
-    position:fixed; 
-    z-index: 1;
-    top:0; height:64px; width:100%; 
-    border:1px solid; 
-    background-color:grey;
-    box-sizing: border-box;
-}
-div.middle {
-    position:fixed;  
-    top:64px; bottom:0px; width:100%;
-}
-
-div.column-box {
-    display: flex;
-    height: 100%;
-}
-div.column-box .left {
-    flex: 1 0 150px;
-    background-color: white;
-    height: 100%;
-}
-div.column-box .right {
-    flex: 0 0 550px;
-    background-color: lightgray;
-    height: 100%;
-}
-
-/* the application image in the title */
-div.appImage {
-    position: absolute;
-    top: 0; left: 0; height: 64px; width: 192px;
-}
-div.appImage img {
-    height: 64px; width:192px;
-}
-
-/* the menu bar */
-div.menuBar {
-    position: absolute;
-    left: 192px; top: 15px; right: 0px; height: 47px;
-    color: black;
-    background-color: lightgray;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    z-index: 2;
-}
-div.menuItem {
-    float: left;
-    padding: 0px 16px;
-    height: 47px;
-    box-sizing: border-box;
-    outline: none;
-    line-height: 47px;
-}
-div.menuItem:hover:not(.active) {
-    background-color: slategrey;
-    color: white;
-}
-div.menuItem.active {
-    background-color: darkslategray;
-    color: white;
->>>>>>> d6ff6fe3aad20f1761d0fa3f879c98a5c88769fc
 }

@@ -49,6 +49,9 @@ export class SpecialRuleDataService {
     {_id:"S0027",type:"attack",cost:3,name:"Lucky Damage",text:"This attack may reroll failed DMG tests."},
     {_id:"S0028",type:"model",cost:4,name:"Melee Expert",text:"This model gains 1 additional AP which may only be used to make melee attacks"}
   ];
+  private nextRuleIdDB: number = 29;
+
+  public origText: string;
 
   constructor() { }
 
@@ -84,7 +87,58 @@ export class SpecialRuleDataService {
         returnList.push( this.convertDBToRuleData(specialRule) );
       }
     }
+    returnList.sort(this.sortRuleData);
     return returnList;
+  }
+
+  /**
+   * Create a new rule with default settings. Returns the new rule
+   * @param ruleType the type of the new rule. Must be "attack", "model", or "special"
+   */
+  async createNewRule( ruleType: string ): Promise<SpecialRuleData> {
+    
+    // generate a new ID for the rule
+    let newRuleId = "S" + this.nextRuleIdDB.toString().padStart(4,"0");
+    this.nextRuleIdDB++;
+
+    // create a new force entry and add it to the database
+    let newRule: RuleDBData = { _id: newRuleId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1 };
+    if ( ruleType == "special" ) {
+      newRule.AP = 1;
+    }
+    this.specialRuleDB.push(newRule);
+
+    // return the new force
+    return this.convertDBToRuleData( newRule );    
+  }
+
+  /**
+   * Update an existing rule with new details. Returns the updated rule
+   * @param specialRuleData the rule that is being updated
+   */
+  async updateRule( updateRule: SpecialRuleData ): Promise<SpecialRuleData> {
+
+    // make sure that the rule name is uppercase (for sorting)
+    updateRule.ruleName = updateRule.ruleName.toUpperCase();
+    
+    // find the model in the fake DB, and then update it
+    let findRuleIndex: number = this.specialRuleDB.findIndex( element => element._id == updateRule._id );
+    this.specialRuleDB[findRuleIndex] = this.convertRuleDataToDB( updateRule );
+
+    // return a deep copy of the model from the DB
+    let returnRule = this.convertDBToRuleData( this.specialRuleDB[findRuleIndex] );
+    return returnRule;
+  }
+
+  /**
+   * Delete an existing rule. Returns nothing
+   * @param deleteRule the rule that will be deleted
+   */
+  async deleteRule( deleteRule: SpecialRuleData ): Promise<void> {
+
+    // find the model in the fake DB, and then remove it
+    let findRuleIndex: number = this.specialRuleDB.findIndex( element => element._id == deleteRule._id );
+    this.specialRuleDB.splice(findRuleIndex, 1 );
   }
 
   /**
@@ -135,4 +189,21 @@ export class SpecialRuleDataService {
     return ruleDBData;    
   }
 
+/**
+   * The method used by Javascript array.sort to sort the array of rules
+   * @param a first rule
+   * @param b second rule
+   */
+  private sortRuleData( a: SpecialRuleData, b: SpecialRuleData ): number {
+    
+    // always return the basic model first
+    if ( a.ruleName < b.ruleName ) {
+      return -1;
+    } else if ( a.ruleName > b.ruleName ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+  
 }

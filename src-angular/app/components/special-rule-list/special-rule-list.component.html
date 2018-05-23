@@ -1,3 +1,68 @@
-<p>
-  special-rule-list works!
-</p>
+<div class="column-section">
+    
+  <!-- RULE LIST -->
+  <div class="left">
+
+    <!-- BUTTON BAND -->
+    <div class="type-button-band">
+      <div class="type-button-left box-mid-hover font-normal" [class.selected]="ruleType == 'model'" (click)="selectType('model')">Model Rule</div>
+      <div class="type-button-middle box-mid-hover font-normal" [class.selected]="ruleType == 'attack'" (click)="selectType('attack')">Attack Rule</div>
+      <div class="type-button-right box-mid-hover font-normal" [class.selected]="ruleType == 'special'" (click)="selectType('special')">Special Action</div>
+    </div>
+
+    <div>
+      
+      <!-- CREATE NEW RULE BUTTON -->
+      <div class="create-rule-button box-light-hover font-title" (click)="newModelClick();">
+        <img src="/assets/icons/icon-outline-plus-128.png">
+        <div class="button-text">New Rule</div>
+      </div>
+
+
+      <!-- LIST OF RULES -->
+      <div *ngFor="let rule of ruleData; index as ruleIndex" 
+          class="rule-tile box-light-hover font-normal" 
+          [class.selected]="ruleIndex == selectedRuleIndex" 
+          (click)="selectRule(ruleIndex)">
+        <div class="rule-text">
+          <span class="font-title">{{rule.ruleName}}</span> ({{rule.ruleCost}} points) <span *ngIf="ruleType == 'special'">[{{rule.ruleAP}} AP]</span><br>
+          <span [innerHTML]="rule.ruleText"></span>
+        </div>
+        <div class="rule-button-band">
+          <div class="icon-button box-light-hover"><img src="/assets/icons/icon-ellipsis-128.png"></div>
+          <div class="icon-button box-light-hover" (click)="deleteRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE DETAILS -->
+  <div class="right">
+    <div class="rule-editor" *ngIf="ruleData[selectedRuleIndex]">
+      <div class="rule-name"><input class="input-light font-title-big" 
+        [(ngModel)]="ruleData[selectedRuleIndex].ruleName" 
+        (focus)="$event.target.select(); origText = ruleData[selectedRuleIndex].ruleName" 
+        (blur)="updateRuleData(selectedRuleIndex)" 
+        (keyup.enter)="$event.target.blur()" 
+        (keyup.escape)="ruleData[selectedRuleIndex].ruleName = origText; $event.target.blur();"></div>
+      <div class="rule-cost font-normal"><input class="input-light font-normal" 
+        [(ngModel)]="ruleData[selectedRuleIndex].ruleCost" 
+        (focus)="$event.target.select(); origText = ruleData[selectedRuleIndex].ruleCost" 
+        (blur)="updateRuleData(selectedRuleIndex)" 
+        (keyup.enter)="$event.target.blur()" 
+        (keyup.escape)="ruleData[selectedRuleIndex].ruleCost = origText; $event.target.blur();">Points</div>
+      <div *ngIf="ruleData[selectedRuleIndex].ruleType == 'special'" class="rule-ap font-normal"><input class="input-light font-normal" 
+        [(ngModel)]="ruleData[selectedRuleIndex].ruleCost" 
+        (focus)="$event.target.select(); origText = ruleData[selectedRuleIndex].ruleCost" 
+        (blur)="updateRuleData(selectedRuleIndex)" 
+        (keyup.enter)="$event.target.blur()" 
+        (keyup.escape)="ruleData[selectedRuleIndex].ruleCost = origText; $event.target.blur();">AP</div>
+      <div class="rule-text"><textarea class="input-light font-normal" 
+        [(ngModel)]="ruleData[selectedRuleIndex].ruleText" 
+        (focus)="$event.target.select(); origText = ruleData[selectedRuleIndex].ruleText" 
+        (blur)="updateRuleData(selectedRuleIndex)" 
+        (keyup.control.enter)="$event.target.blur()" 
+        (keyup.escape)="ruleData[selectedRuleIndex].ruleText = origText; $event.target.blur();"></textarea></div>
+    </div>
+  </div>
+</div>

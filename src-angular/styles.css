@@ -131,6 +131,13 @@ select {
     padding: 0px 0px 0px 4px; 
     outline: none; box-sizing: border-box;
 }
+textarea {
+    border: 2px solid transparent; border-radius: 4px;
+    width: 100%;
+    padding: 4px; 
+    outline: none; box-sizing: border-box;
+    resize: none;
+}
 .input-white {
     color: black;
     background-color: white;

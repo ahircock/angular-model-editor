@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SpecialRuleDataService, SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 
 @Component({
   selector: 'app-special-rule-list',
@@ -7,9 +8,72 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SpecialRuleListComponent implements OnInit {
 
-  constructor() { }
+  /**
+   * Controls the type of rule that is being displayed
+   */
+  public ruleType: string = "model";
 
-  ngOnInit() {
+  /**
+   * The list of special rules being displayed
+   */
+  public ruleData: SpecialRuleData[] = [];
+
+  /**
+   * The index of the selected rule in ruleData
+   */
+  public selectedRuleIndex: number = 0;
+
+  constructor(
+    private specialRuleDataService: SpecialRuleDataService
+  ) { }
+
+  async ngOnInit() {
+    await this.loadRuleList();
   }
+
+  async selectType( newType: string ) {
+    this.ruleType = newType;
+    await this.loadRuleList();
+  }
+
+  async loadRuleList() {
+    switch ( this.ruleType ) {
+      case "model":
+        this.ruleData = await this.specialRuleDataService.getModelSpecialRules();
+        break;
+      case "attack":
+        this.ruleData = await this.specialRuleDataService.getAttackSpecialRules();
+        break;
+      case "special":
+        this.ruleData = await this.specialRuleDataService.getActionSpecialRules();
+        break;
+    }
+  }
+
+  public selectRule( ruleIndex: number ) {
+    this.selectedRuleIndex = ruleIndex;
+  }
+
+  async newModelClick() {
+    let newRule: SpecialRuleData = await this.specialRuleDataService.createNewRule( this.ruleType );
+    await this.loadRuleList();
+
+    // select the new rule from the list
+    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == newRule._id );
+  }
+
+  async updateRuleData( ruleIndex: number ) {
+    let updatedRule = await this.specialRuleDataService.updateRule( this.ruleData[ruleIndex]);
+    await this.loadRuleList();
+
+    // select the updated rule from the list
+    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == updatedRule._id );
+  }
+
+  async deleteRule( ruleIndex: number ) {
+    await this.specialRuleDataService.deleteRule( this.ruleData[ruleIndex] );
+    await this.loadRuleList();
+  }
+
 
 }

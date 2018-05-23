@@ -1,0 +1,118 @@
+/* multi-column display */
+div.column-section {
+    position: relative;
+    top: 0;
+    height: 100%;
+    display: flex;
+}
+div.column-section .left {
+    flex: 1 0 128px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;
+    padding: 16px;    
+}
+div.column-section .right {
+    flex: 0 0 551px;
+    padding: 16px;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;    
+}
+
+/* rule type buttons */
+div.type-button-band {
+    height: 30px;
+    margin-bottom: 16px;
+}
+div.type-button-left {
+    float: left;
+    padding: 4px 16px 4px 16px;
+    border-radius: 8px 0px 0px 8px;
+}
+div.type-button-middle {
+    float: left;
+    border-right: 0px;
+    border-left: 0px;
+    padding: 4px 16px 4px 16px;
+}
+div.type-button-right {
+    float: left;
+    padding: 4px 16px 4px 16px;
+    border-radius: 0px 8px 8px 0px;
+}
+
+/* NEW MODEL BUTTON */
+div.create-rule-button {
+    height: 50px; width: 144px;
+    border-radius: 4px;
+    position: relative;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+div.create-rule-button img {
+    width: 32px;
+    float: left;
+}
+div.create-rule-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
+}
+
+/* RULE LIST */
+div.rule-tile {
+    display: flex;
+    align-items: flex-end;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    padding: 8px;
+}
+div.rule-tile .rule-text {
+    flex: 1 0 128px;
+}
+div.rule-tile .rule-button-band {
+    flex: 0 0 76px;
+    height: min-content
+}
+
+/* ICON BUTTONS */
+.icon-button {
+    float: right;
+    border-radius: 4px;
+    margin-left: 8px;
+    height: 28px;
+}
+.icon-button img {
+    width: 20px;
+    margin: 4px;
+}
+
+
+/* RULE EDITOR */
+div.rule-editor .rule-name {
+    margin-bottom: 8px;
+}
+div.rule-editor .rule-cost {
+    margin-bottom: 8px;
+    display: inline-block;
+}
+div.rule-editor .rule-cost input {
+    width: 32px;
+    margin-right: 8px;
+}
+div.rule-editor .rule-ap {
+    display: inline-block;
+    margin-left: 64px;
+    margin-bottom: 8px;
+}
+div.rule-editor .rule-ap input {
+    width: 32px;
+    margin-right: 8px;
+}
+div.rule-editor .rule-text textarea {
+    height: 256px;
+    margin-right: 8px;    
+}
+

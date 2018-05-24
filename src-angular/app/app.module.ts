@@ -21,6 +21,7 @@ import { ModelTileComponent } from './components/model-tile/model-tile.component
 import { ForceTileComponent } from './components/force-tile/force-tile.component';
 import { ForceDetailsComponent } from './components/force-details/force-details.component';
 import { ForcePrintComponent } from './components/force-print/force-print.component';
+import { DbConnectService } from './services/db-connect/db-connect.service';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { ForcePrintComponent } from './components/force-print/force-print.compon
   providers: [
     ModelDataService,
     SpecialRuleDataService,
-    ForceDataService
+    ForceDataService,
+    DbConnectService
   ],
   bootstrap: [AppComponent]
 })

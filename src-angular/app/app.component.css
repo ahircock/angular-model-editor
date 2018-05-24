@@ -1,8 +1,7 @@
+/* PAGE LAYOUT */
 div.header {
     position:fixed; 
     top:0; height:64px; width:100%; 
-    border:1px solid; 
-    background-color:grey;
     box-sizing: border-box;
 }
 div.middle {
@@ -10,53 +9,30 @@ div.middle {
     top:65px; bottom:0px; width:100%;
 }
 
-div.column-box {
-    display: flex;
-    height: 100%;
-}
-div.column-box .left {
-    flex: 1 0 150px;
-    background-color: white;
-    height: 100%;
-}
-div.column-box .right {
-    flex: 0 0 550px;
-    background-color: lightgray;
-    height: 100%;
-}
 
-/* the application image in the title */
-div.appImage {
+/* APPLICATION IMAGE */
+div.app-image {
     position: absolute;
     top: 0; left: 0; height: 64px; width: 192px;
 }
-div.appImage img {
+div.app-image img {
     height: 64px; width:192px;
 }
 
 /* the menu bar */
-div.menuBar {
+div.menu-bar {
     position: absolute;
-    left: 192px; top: 15px; right: 0px; height: 47px;
-    color: black;
-    background-color: lightgray;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+    left: 192px; top: 0px; right: 0px; height: 62px;
     z-index: 2;
 }
-div.menuItem {
+div.menu-item {
     float: left;
-    padding: 0px 16px;
-    height: 47px;
+    margin-top: 14px;
+    margin-left:16px;
+    border-radius: 8px;
+    border: none;
+    padding: 6px 16px 0px 16px;
+    height: 32px;
     box-sizing: border-box;
     outline: none;
-    line-height: 47px;
-}
-div.menuItem:hover:not(.active) {
-    background-color: slategrey;
-    color: white;
-}
-div.menuItem.active {
-    background-color: darkslategray;
-    color: white;
 }

@@ -1,9 +1,9 @@
-<div *ngIf="showHeader" class="header">
-  <div class="appImage"><img src="/assets/icons/age-of-sigmar.jpg"></div>
-  <div class="menuBar">
-      <div class="font-normal menuItem" routerLink="/forces" routerLinkActive="active">Forces</div>
-      <div class="font-normal menuItem" routerLink="/models" routerLinkActive="active">Models</div>
-      <div class="font-normal menuItem" routerLink="/specialrules" routerLinkActive="active">Special Rules</div>
+<div *ngIf="showHeader" class="header box-mid">
+  <div class="app-image"><img src="/assets/icons/age-of-sigmar.jpg"></div>
+  <div class="menu-bar">
+      <div class="menu-item box-mid-hover font-normal" routerLink="/forces" routerLinkActive="selected">Forces</div>
+      <div class="menu-item box-mid-hover font-normal" routerLink="/models" routerLinkActive="selected">Models</div>
+      <div class="menu-item box-mid-hover font-normal" routerLink="/specialrules" routerLinkActive="selected">Special Rules</div>
   </div>
 </div>
 <div [class.middle]="showHeader">

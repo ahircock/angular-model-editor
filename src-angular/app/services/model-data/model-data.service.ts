@@ -189,13 +189,14 @@ export class ModelDataService {
     // if this is being cloned from a template, then the new model should not be a template
     if ( cloneModelFromTemplate ) {
       newModel.template = false;
+
+    // if not cloned from a template, then give the new model a different name
+    } else {
+      newModel.name = newModel.name + "-C"
     }
 
     // generate a new ID for the model
     newModel._id = await this.dbConnectService.getNextId("M");
-
-    // give the new model a different name
-    newModel.name = newModel.name + "-C"
 
     // add the new model to the database
     let newDBModel = await this.dbConnectService.createModel(this.convertModelDataToDB(newModel));

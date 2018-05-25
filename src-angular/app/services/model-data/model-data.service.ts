@@ -50,9 +50,6 @@ export class ModelDataService {
   public MELEE_RNG_COST:  StatCost[] = [ {stat:0, cost:-1 }, {stat:1, cost:0 }, {stat:2, cost:2} ];
   public RANGED_RNG_COST: StatCost[] = [ {stat:8, cost:2 }, {stat:12, cost:3 }, {stat:24, cost:5}, {stat:60, cost:7} ];
 
-  // default values for new models & actions
-  public NEW_MODEL: ModelData = {_id:"NEW",template:true,name:"New Model",traits:null,picture:"basic.jpg",cost:0,SPD:5,EV:5,ARM:0,HP:5,specialRules:[],actions:[]};
-
   constructor(
     private specialRuleDataService: SpecialRuleDataService,
     private dbConnectService: DbConnectService
@@ -135,28 +132,19 @@ export class ModelDataService {
   async createTemplate(): Promise<ModelData> {
     
     // clone the "basic" model
-    let newModel: ModelData = JSON.parse(JSON.stringify( this.NEW_MODEL ));
-    let newAction: ModelActionData = { 
-      type: "MELEE", 
-      name: "NEW MELEE", 
-      traits: "", 
-      ONCE: false, 
-      AP:1, 
-      RNG:1,
-      HIT:6, 
-      DMG:6, 
-      specialRules:[] 
-    };
-    newModel.actions.push(newAction);
-    this.updateCost(newModel);
+    let newModelDB: ModelDBData = { _id:"NEW", template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
+    let newAction: ModelActionData = { type: "MELEE", name: "NEW MELEE", traits: "", ONCE: false, AP:1, RNG:1, HIT:6, DMG:6, specialRules:[] };
+    newModelDB.actions.push(newAction);
+    this.updateCost(newModelDB);
 
     // generate a new ID for the model
-    newModel._id = await this.dbConnectService.getNextId("M");    
+    newModelDB._id = await this.dbConnectService.getNextId("M");    
 
     // create the model in the database
-    await this.dbConnectService.createModel( this.convertModelDataToDB(newModel) );
+    newModelDB = await this.dbConnectService.createModel( this.convertModelDataToDB(newModelDB) );
 
     // add this new model to the cache
+    let newModel = await this.convertDBToModelData( newModelDB );
     this.modelCache.push(newModel);
 
     // return the new model
@@ -500,6 +488,9 @@ export class ModelDataService {
     return modelData;
   }
 
+  /**
+   * method that loads all records from the database and stores them in the local cache
+   */
   private async loadCache() {
     
     // clear out the rule cache

@@ -90,9 +90,6 @@ export class SpecialRuleDataService {
 
     // prepare a new rule object
     let newRuleDB: RuleDBData = { _id: newRuleId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
-    if ( ruleType == "special" ) {
-      newRuleDB.AP = 1;
-    }
 
     // add the new rule to the DB
     newRuleDB = await this.dbConnectService.createRule( newRuleDB );

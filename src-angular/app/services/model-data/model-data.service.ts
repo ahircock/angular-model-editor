@@ -131,18 +131,17 @@ export class ModelDataService {
    */
   async createTemplate(): Promise<ModelData> {
     
-    // clone the "basic" model
-    let newModelDB: ModelDBData = { _id:"NEW", template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
-    let newAction: ModelActionData = { type: "MELEE", name: "NEW MELEE", traits: "", ONCE: false, AP:1, RNG:1, HIT:6, DMG:6, specialRules:[] };
-    newModelDB.actions.push(newAction);
-    this.updateCost(newModelDB);
-
     // generate a new ID for the model
-    newModelDB._id = await this.dbConnectService.getNextId("M");    
+    let newModelId = await this.dbConnectService.getNextId("M");    
+
+    // clone the "basic" model
+    let newModelDB: ModelDBData = { _id:newModelId, template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
+    let newAction: ModelActionDBData = { type: "MELEE", name: "NEW MELEE", traits: "", ONCE: false, AP:1, RNG:1, HIT:6, DMG:6, specialRuleIds:[] };
+    newModelDB.actions.push( newAction );
 
     // create the model in the database
-    newModelDB = await this.dbConnectService.createModel( this.convertModelDataToDB(newModelDB) );
-
+    newModelDB = await this.dbConnectService.createModel( newModelDB );
+    
     // add this new model to the cache
     let newModel = await this.convertDBToModelData( newModelDB );
     this.modelCache.push(newModel);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbConnector, RuleDBData, ModelDBData } from './db-connector.interface';
+import { DbConnector, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
 import { InternalDbConnector } from './internal-db-connector.class';
 
 // re-export the db interfaces
@@ -41,6 +41,18 @@ export class DbConnectService implements DbConnector {
     return this.dbConnector.deleteModel( deleteModel );
   }
 
+  getForces(): Promise<ForceDBData[]> {
+    return this.dbConnector.getForces();
+  }
+  createForce( newForce: ForceDBData ): Promise<ForceDBData> {
+    return this.dbConnector.createForce( newForce );
+  }
+  updateForce( updateForce: ForceDBData ): Promise<ForceDBData> {
+    return this.dbConnector.updateForce( updateForce );
+  }
+  deleteForce( deleteForce: ForceDBData ): Promise<void> {
+    return this.dbConnector.deleteForce( deleteForce );
+  }
 
   getNextId( prefix: string ): Promise<string> {
     return this.dbConnector.getNextId(prefix);

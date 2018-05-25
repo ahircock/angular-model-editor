@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DbConnectService, ForceDBData, ForceModelDBData } from '../db-connect/db-connect.service';
 import { ModelData, ModelDataService } from '../model-data/model-data.service';
 
 /**
@@ -25,24 +26,6 @@ export interface ForceEquipmentData {
 }
 
 /**
- * private interface used to define the structure of the force-information that will be saved to the DB/server
- */
-interface ForceDBData {
-  _id: string,
-  name: string,
-  size: string,
-  models: ForceModelDBData[]
-}
-
-/**
- * private interface used to define the structure of the force-model information, that will be saved to the DB/server
- */
-interface ForceModelDBData {
-  _id: string,
-  count: number 
-}
-
-/**
  * Used to store the table of size to cost conversions
  */
 interface ForceSize {
@@ -55,13 +38,9 @@ interface ForceSize {
 export class ForceDataService {
 
   /**
-   * Fake DB used 
+   * Cache of the forces, loaded from DB
    */
-  private forceDB: ForceDBData[] = [
-    { _id:"F0001", name:"Templar Attack!", size:"standard", models:[{_id:"M0021",count:1},{_id:"M0023",count:2},{_id:"M0022",count:3}] },
-    { _id:"F0002", name:"Khorne Bloodbound", size:"standard", models:[{_id:"M0031",count:1},{_id:"M0032",count:3},{_id:"M0033",count:6}] }
-  ];
-  private nextForceIdDB: number = 3;
+  private forceCache: ForceData[] = [];
 
 
   /**
@@ -74,29 +53,47 @@ export class ForceDataService {
   ];
 
   constructor(
-    private modelDataService: ModelDataService
+    private modelDataService: ModelDataService,
+    private dbConnectService: DbConnectService
   ) { }
 
+  /**
+   * Returns the list of all forces in the database
+   */
   async getAllForces(): Promise<ForceData[]> {
     
-    // convert every entry in the ForceDB into a ForceData object
-    let returnList: ForceData[] = [];
-    for ( let forceDBData of this.forceDB ) {
-      returnList.push( await this.convertDBToForceData(forceDBData) );
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.forceCache.length == 0 ) {
+      await this.loadCache();
     }
+    
+    // sort the list of models in the cache
+    this.forceCache.sort(this.sortForceData);
 
-    // sort the list by force name
-    returnList.sort( this.sortForceData );
-    return returnList;
+    // return all models in the cache
+    return this.forceCache;
   }
 
+  /**
+   * Returns the details of a single force
+   * @param id the id of the force to return
+   */
   async getForceById( id: string ): Promise<ForceData> {
     
-    let findForce: ForceDBData = this.forceDB.find( element => element._id == id );
-    let returnForce: ForceData = await this.convertDBToForceData( findForce );
-    return returnForce;
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.forceCache.length == 0 ) {
+      await this.loadCache();
+    }
+
+    // return the entry with the matching ID
+    return this.forceCache.find( element => element._id == id );    
   }
 
+  /**
+   * Returns an array of forces, based on the given array of _id values. The return array will 
+   * be in the same order as the provided idList array
+   * @param idList array of _id values to return
+   */
   async getForceListById( idList: string[] ): Promise<ForceData[]> {
 
     let returnList: ForceData[] = [];
@@ -106,18 +103,26 @@ export class ForceDataService {
     return returnList;
   }
 
-  async addNewForce(): Promise<ForceData> {
+  /**
+   * Create a new force, initializing the attributes to some defaults
+   */
+  async createForce(): Promise<ForceData> {
     
     // generate a new ID for the new force
-    let newForceId = "F" + this.nextForceIdDB.toString().padStart(4,"0");
-    this.nextForceIdDB++;
+    let newForceId = await this.dbConnectService.getNextId("F");
+    
+    // create a new force DB Object
+    let newForceDB: ForceDBData = { _id: newForceId, name:"New Force", size:"standard", models:[] };
 
-    // create a new force entry and add it to the database
-    let newForce: ForceDBData = { _id: newForceId, name:"New Force", size:"standard", models:[] };
-    this.forceDB.push(newForce);
+    // create the model in the database
+    newForceDB = await this.dbConnectService.createForce( newForceDB );
 
-    // return the new force
-    return this.convertDBToForceData( newForce );
+    // add this new model to the cache
+    let newForce = await this.convertDBToForceData( newForceDB );
+    this.forceCache.push(newForce);
+
+    // return the new model
+    return newForce;
   }
 
   /**
@@ -130,13 +135,17 @@ export class ForceDataService {
 
     // make sure that the cost of the updated force is correct
     updateForce = this.updateForceCost( updateForce );
+
+    // update the database
+    let updateDBForce = await this.dbConnectService.updateForce( this.convertForceDataToDB(updateForce) );
     
     // find the force record in the fake DB, and then replace it with the updated force
-    let forceIndex: number = this.forceDB.findIndex( element => element._id == updateForce._id );
-    this.forceDB[forceIndex] = this.convertForceDataToDB(updateForce);
+    let newUpdatedForce = await this.convertDBToForceData( updateDBForce );
+    let forceIndex: number = this.forceCache.findIndex( element => element._id == newUpdatedForce._id );
+    this.forceCache[forceIndex] = newUpdatedForce;
 
     // return a deep copy of the model from the DB
-    return updateForce;
+    return newUpdatedForce;
   }
 
   /**
@@ -146,8 +155,9 @@ export class ForceDataService {
   async deleteForce( deleteForce: ForceData ): Promise<void> {
     
     // delete the matching force from the DB
-    let forceIndex: number = this.forceDB.findIndex( element => element._id == deleteForce._id );
-    this.forceDB.splice( forceIndex, 1 );
+    await this.dbConnectService.deleteForce( this.convertForceDataToDB(deleteForce) );
+    let forceIndex: number = this.forceCache.findIndex( element => element._id == deleteForce._id );
+    this.forceCache.splice( forceIndex, 1 );
   }
 
   /**
@@ -253,7 +263,7 @@ export class ForceDataService {
   }
 
   /**
-   * The method used by Javascript array.sort to sort force datas
+   * The method used by Javascript to sort force datas
    * @param a first force
    * @param b second force
    */
@@ -266,5 +276,22 @@ export class ForceDataService {
       return 0;
     }
   }
- 
+
+/**
+   * method that loads all records from the database and stores them in the local cache
+   */
+  private async loadCache() {
+    
+    // clear out the rule cache
+    this.forceCache = [];
+
+    // load the rule objects form the DB
+    let forceDBList: ForceDBData[] = await this.dbConnectService.getForces();
+    
+    // convert everything to a SpecialRuleData and add it to the cache
+    for ( let forceDB of forceDBList ) {
+      this.forceCache.push( await this.convertDBToForceData(forceDB) );
+    }
+  }
+  
 }

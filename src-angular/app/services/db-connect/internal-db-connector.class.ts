@@ -1,4 +1,4 @@
-import { DbConnector, RuleDBData, ModelDBData } from './db-connector.interface';
+import { DbConnector, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
 
 export class InternalDbConnector implements DbConnector {
 
@@ -46,6 +46,11 @@ export class InternalDbConnector implements DbConnector {
     {_id:"M0033",template: false,name:"Chaos Marauder",traits:"Chaos",picture:"chaos - marauder.jpg",SPD:6,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[{type:"MELEE",name:"Reaver Blade",traits:"",AP:1,RNG:1,HIT:6,DMG:6,ONCE:false,specialRuleIds:[]}]}
   ];
 
+  private forceDB: ForceDBData[] = [
+    { _id:"F0001", name:"Templar Attack!", size:"standard", models:[{_id:"M0021",count:1},{_id:"M0023",count:2},{_id:"M0022",count:3}] },
+    { _id:"F0002", name:"Khorne Bloodbound", size:"standard", models:[{_id:"M0031",count:1},{_id:"M0032",count:3},{_id:"M0033",count:6}] }
+  ];
+
   private nextId: number = 100;
 
 
@@ -84,6 +89,24 @@ export class InternalDbConnector implements DbConnector {
     deleteModel( deleteModel: ModelDBData ): Promise<void> {
         let findRuleIndex: number = this.modelDB.findIndex( element => element._id == deleteModel._id );
         this.modelDB.splice(findRuleIndex, 1 );
+        return;
+    }
+
+    async getForces(): Promise<ForceDBData[]> {
+        return JSON.parse(JSON.stringify(this.forceDB));
+    }
+    async createForce( newForce: ForceDBData ): Promise<ForceDBData> {
+        this.forceDB.push( JSON.parse(JSON.stringify(newForce)) );
+        return JSON.parse(JSON.stringify(newForce));
+    }
+    updateForce( updateForce: ForceDBData ): Promise<ForceDBData> {
+        let findRuleIndex: number = this.forceDB.findIndex( element => element._id == updateForce._id );
+        this.forceDB[findRuleIndex] = JSON.parse(JSON.stringify(updateForce));
+        return JSON.parse(JSON.stringify(updateForce));
+    }
+    deleteForce( deleteForce: ForceDBData ): Promise<void> {
+        let findRuleIndex: number = this.forceDB.findIndex( element => element._id == deleteForce._id );
+        this.forceDB.splice(findRuleIndex, 1 );
         return;
     }
        

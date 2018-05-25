@@ -15,10 +15,10 @@ export interface DbConnector {
     updateModel: ( updateModel: ModelDBData ) => Promise<ModelDBData>;
     deleteModel: ( deleteModel: ModelDBData ) => Promise<void>;
     
-    // getForces: () => Promise<ForceDBData[]>;
-    // createForce: () => Promise<ForceDBData>;
-    // updateForce: ( updateForce: ForceDBData ) => Promise<ForceDBData>;
-    // deleteForce: ( deleteForce: ForceDBData ) => Promise<void>;
+    getForces: () => Promise<ForceDBData[]>;
+    createForce: ( newForce: ForceDBData ) => Promise<ForceDBData>;
+    updateForce: ( updateForce: ForceDBData ) => Promise<ForceDBData>;
+    deleteForce: ( deleteForce: ForceDBData ) => Promise<void>;
 
     getNextId: ( prefix: string ) => Promise<string>;
 }
@@ -68,14 +68,14 @@ export interface ModelActionDBData {
 /**
  * Structure of Force data, as stored in the database
  */
-// export interface ForceDBData {
-//     _id: string,
-//     name: string,
-//     size: string,
-//     models: ForceModelDBData[]
-// } 
-// export interface ForceModelDBData {
-//     modelId: string,
-//     count: number 
-// }
+export interface ForceDBData {
+    _id: string,
+    name: string,
+    size: string,
+    models: ForceModelDBData[]
+} 
+export interface ForceModelDBData {
+    _id: string,
+    count: number 
+}
   

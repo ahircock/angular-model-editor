@@ -21,7 +21,7 @@ export class ForceListComponent implements OnInit {
   }
 
   async newForce() {
-    let newForce: ForceData = await this.forceDataService.addNewForce();
+    let newForce: ForceData = await this.forceDataService.createForce();
     this.openForce( newForce._id );
   }
 

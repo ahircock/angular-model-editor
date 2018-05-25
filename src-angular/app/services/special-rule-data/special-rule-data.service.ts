@@ -7,13 +7,13 @@ export interface SpecialRuleData {
   ruleName: string;
   ruleText: string;
   ruleCost: number;
-  ruleAP?: number;
+  ruleAP: number;
 }
 
 @Injectable()
 export class SpecialRuleDataService {
 
-  private ruleDBCache: RuleDBData[] = [];
+  private ruleCache: SpecialRuleData[] = [];
 
   constructor(
     private dbConnectService: DbConnectService
@@ -47,18 +47,36 @@ export class SpecialRuleDataService {
   private async getSpecialRuleByType( type:string ): Promise<SpecialRuleData[]> {
     
     // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.ruleDBCache.length == 0 ) {
-      this.ruleDBCache = await this.dbConnectService.getRules();
+    if ( this.ruleCache.length == 0 ) {
+      await this.loadCache();
     }
 
+    // filter down the array to only include those with the correct type
     let returnList: SpecialRuleData[] = [];
-    for ( let specialRule of this.ruleDBCache ) {
-      if ( specialRule.type == type ) {
-        returnList.push( this.convertDBToRuleData(specialRule) );
+    for ( let rule of this.ruleCache ) {
+      if ( rule.ruleType == type ) {
+        returnList.push( rule );
       }
     }
+
+    // sor the data and then return it
     returnList.sort(this.sortRuleData);
     return returnList;
+  }
+
+  /**
+   * Returns the special rule with the given ID
+   * @param ruleId _id of the rule that you want to return
+   */
+  async getSpecialRuleById( ruleId: string ): Promise<SpecialRuleData> {
+
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.ruleCache.length == 0 ) {
+      await this.loadCache();
+    }
+
+    // find the rule in the cache and return it
+    return this.ruleCache.find( element => element._id == ruleId );    
   }
 
   /**
@@ -71,17 +89,20 @@ export class SpecialRuleDataService {
     let newRuleId = await this.dbConnectService.getNextId("S");
 
     // prepare a new rule object
-    let newRule: RuleDBData = { _id: newRuleId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1 };
+    let newRuleDB: RuleDBData = { _id: newRuleId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
     if ( ruleType == "special" ) {
-      newRule.AP = 1;
+      newRuleDB.AP = 1;
     }
 
     // add the new rule to the DB
-    newRule = await this.dbConnectService.createRule( newRule );
-    this.ruleDBCache.push(newRule);
+    newRuleDB = await this.dbConnectService.createRule( newRuleDB );
+
+    // add the new rule to the cache
+    let newRule: SpecialRuleData = this.convertDBToRuleData( newRuleDB );
+    this.ruleCache.push(newRule);
 
     // return the new force
-    return this.convertDBToRuleData( newRule );    
+    return newRule;
   }
 
   /**
@@ -95,14 +116,14 @@ export class SpecialRuleDataService {
     
     // update the database
     let updateDBRule = await this.dbConnectService.updateRule(this.convertRuleDataToDB(updateRule));
+    let newUpdateRule = this.convertDBToRuleData(updateDBRule);
     
     // find the entry in the fake DB, and then update it
-    let findRuleIndex: number = this.ruleDBCache.findIndex( element => element._id == updateRule._id );
-    this.ruleDBCache[findRuleIndex] = updateDBRule;
+    let findRuleIndex: number = this.ruleCache.findIndex( element => element._id == newUpdateRule._id );
+    this.ruleCache[findRuleIndex] = newUpdateRule;
 
     // return a deep copy of the updated record
-    let returnRule = this.convertDBToRuleData( updateDBRule );
-    return returnRule;
+    return newUpdateRule;
   }
 
   /**
@@ -115,8 +136,8 @@ export class SpecialRuleDataService {
     await this.dbConnectService.deleteRule( this.convertRuleDataToDB(deleteRule));
 
     // find the model in the fake DB, and then remove it
-    let findRuleIndex: number = this.ruleDBCache.findIndex( element => element._id == deleteRule._id );
-    this.ruleDBCache.splice(findRuleIndex, 1 );
+    let findRuleIndex: number = this.ruleCache.findIndex( element => element._id == deleteRule._id );
+    this.ruleCache.splice(findRuleIndex, 1 );
   }
 
   /**
@@ -132,7 +153,8 @@ export class SpecialRuleDataService {
       ruleType: ruleDBData.type,
       ruleName: ruleDBData.name,
       ruleText: ruleDBData.text,
-      ruleCost: ruleDBData.cost
+      ruleCost: ruleDBData.cost,
+      ruleAP: ruleDBData.AP
     }
 
     // copy optional parameters
@@ -156,13 +178,11 @@ export class SpecialRuleDataService {
       type: ruleData.ruleType,
       name: ruleData.ruleName,
       text: ruleData.ruleText,
-      cost: ruleData.ruleCost
+      cost: ruleData.ruleCost,
+      AP: ruleData.ruleAP
+
     };
 
-    // copy optional parameters
-    if ( typeof ruleData.ruleAP !== "undefined" ) {
-      ruleDBData.AP = ruleData.ruleAP;
-    }
 
     return ruleDBData;    
   }
@@ -181,6 +201,19 @@ export class SpecialRuleDataService {
       return 1;
     } else {
       return 0;
+    }
+  }
+
+  private async loadCache() {
+    // clear out the rule cache
+    this.ruleCache = [];
+
+    // load the rule objects form the DB
+    let ruleDBList: RuleDBData[] = await this.dbConnectService.getRules();
+    
+    // convert everything to a SpecialRuleData and add it to the cache
+    for ( let ruleDB of ruleDBList ) {
+      this.ruleCache.push( this.convertDBToRuleData(ruleDB));
     }
   }
     

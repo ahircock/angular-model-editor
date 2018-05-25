@@ -10,10 +10,10 @@ export interface DbConnector {
     updateRule: ( updateRule: RuleDBData ) => Promise<RuleDBData>;
     deleteRule: ( deleteRule: RuleDBData ) => Promise<void>;
 
-    // getModels: () => Promise<ModelDBData[]>;
-    // createModel: () => Promise<ModelDBData>;
-    // updateModel: ( updateModel: ModelDBData ) => Promise<ModelDBData>;
-    // deleteModel: ( deleteModel: ModelDBData ) => Promise<void>;
+    getModels: () => Promise<ModelDBData[]>;
+    createModel: ( newModel: ModelDBData ) => Promise<ModelDBData>;
+    updateModel: ( updateModel: ModelDBData ) => Promise<ModelDBData>;
+    deleteModel: ( deleteModel: ModelDBData ) => Promise<void>;
     
     // getForces: () => Promise<ForceDBData[]>;
     // createForce: () => Promise<ForceDBData>;
@@ -34,7 +34,35 @@ export interface RuleDBData {
     name: string;
     text: string;
     cost: number;
-    AP?: number;
+    AP: number;
+}
+
+/**
+ * Structure of Model data, as stored in the database
+ */
+export interface ModelDBData {
+    _id: string;
+    template: boolean,
+    name: string;
+    traits: string;
+    picture: string;
+    SPD: number;
+    EV: number;
+    ARM: number;
+    HP: number;
+    specialRuleIds: string[];
+    actions: ModelActionDBData[];
+}
+export interface ModelActionDBData {
+    type: string;
+    name: string;
+    traits: string;
+    AP: number;
+    RNG: number;
+    HIT: number;
+    DMG: number;
+    ONCE: boolean;
+    specialRuleIds: string[];
 }
 
 /**
@@ -51,32 +79,3 @@ export interface RuleDBData {
 //     count: number 
 // }
   
-// /**
-//  * Structure of Model data, as stored in the database
-//  */
-// export interface ModelDBData {
-//     _id: string;
-//     template: boolean,
-//     name: string;
-//     traits?: string;
-//     picture: string;
-//     cost: number;
-//     SPD: number;
-//     EV: number;
-//     ARM: number;
-//     HP: number;
-//     specialRuleIds: string[];
-//     actions: ModelActionDBData[];
-// }
-// export interface ModelActionDBData {
-//     type: string;
-//     name: string;
-//     traits?: string;
-//     AP: number;
-//     RNG?: number;
-//     HIT?: number;
-//     DMG?: number;
-//     ONCE?: boolean;
-//     specialRuleIds: string[];
-// }
-

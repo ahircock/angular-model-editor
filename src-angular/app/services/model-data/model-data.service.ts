@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-
-import { SpecialRuleData } from '../special-rule-data/special-rule-data.service';
+import { DbConnectService, ModelDBData, ModelActionDBData } from '../db-connect/db-connect.service';
+import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
 
 export interface ModelData {
   _id: string;
   template: boolean,
   name: string;
-  traits?: string;
+  traits: string;
   picture: string;
   cost: number;
   SPD: number;
@@ -20,12 +20,12 @@ export interface ModelData {
 export interface ModelActionData {
   type: string;
   name: string;
-  traits?: string;
+  traits: string;
   AP: number;
-  RNG?: number;
-  HIT?: number;
-  DMG?: number;
-  ONCE?: boolean;
+  RNG: number;
+  HIT: number;
+  DMG: number;
+  ONCE: boolean;
   specialRules: SpecialRuleData[];
 }
 
@@ -34,31 +34,10 @@ export interface StatCost {
   cost: number;
 }
 
-
-
 @Injectable()
 export class ModelDataService {
 
-  // this array will simulate the data that comes back from a database
-  private modelDB: ModelData[] = [
-    {"_id":"M0000",template: true,"name":"Basic Model","traits":null,"picture":"basic.jpg","cost":0,"SPD":5,"EV":5,"ARM":0,"HP":5,"specialRules":[],"actions":[{"type":"MELEE","name":"Basic Weapon","traits":null,"AP":1,"RNG":1,"HIT":6,"DMG":6,"ONCE":false,"specialRules":[]}]},
-    {"_id":"M0001",template: true,"name":"Templar General","traits":"Templar","picture":"templar - general.jpg","cost":15,"SPD":5,"EV":5,"ARM":4,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":0,"HIT":7,"DMG":5,"ONCE":false,"specialRules":[]}]},
-    {"_id":"M0002",template: true,"name":"Templar Knight","traits":"Templar","picture":"templar - knight.jpg","cost":16,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Shield Wall","traits":"","AP":1,"specialRules":[{"_id": "S0001", "ruleType": "special", "ruleCost": 2, "ruleAP": 1, "ruleName": "Armor Stance", "ruleText": "This model gains the following condition for one round: <i>Armor Stance<\/i> - This model gets +2 ARM\n"}]}]},
-    {"_id":"M0003",template: true,"name":"Templar Paladin","traits":"Templar","picture":"templar - paladin.jpg","cost":21,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"StarMaul","traits":null,"AP":1,"RNG":2,"HIT":8,"DMG":9,"ONCE":false,"specialRules":[{"_id": "S0002", "ruleType": "attack", "ruleCost": 2, "ruleName": "Stun", "ruleText": "Target model gets the following condition for one round (<i>Stunned<\/i>: This model gets -1 action point during its activation)"}]}]},
-    {"_id":"M0004",template: true,"name":"Templar Soulwarden","traits":"Templar, Hero","picture":"templar - soulwarden.jpg","cost":25,"SPD":5,"EV":5,"ARM":3,"HP":10,"specialRules":[{     "_id": "S0004",     "ruleType": "model",     "ruleCost": 3,     "ruleName": "Soul Collector",     "ruleText": "This model can gain <i>soul tokens<\/i>. When this model destroys a living enemy model with an attack, this model gains a soul token. This model can have up to three soul tokens at any time.<br><li> This model can spend a soul token to perform any <i>soul-powered<\/i> action with AP 1 for free.<br><li> This model can spend a soul token to focus or boost any <i>soul-powered<\/i> attack for free." }],"actions":[{"type":"MELEE","name":"Relic Hammer","traits":"","AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"RANGED","name":"Soul Fire","traits":"soul-powered","AP":1,"RNG":12,"HIT":6,"DMG":6,"ONCE":false,"specialRules":[{"_id": "S0003", "ruleType": "attack","ruleCost": 2, "ruleName": "Weaken", "ruleText": "Target model gets the following condition for one round (<i>Weakened<\/i>: This model gets -2 DMG on all attacks)" }]},{"type":"SPECIAL","name":"Reinforce Soul","traits":"soul-powered","AP":1,"ONCE":false,"specialRules":[{"_id": "S0012","ruleType": "special","ruleCost": 3,"ruleAP": 1,"ruleName": "Healing Touch","ruleText": "Target friendly model within 0\" receives a 6/0 heal test."}]}]},
-    {"_id":"M0005",template: true,"name":"Chaos Marauder","traits":"Chaos","picture":"chaos - marauder.jpg","cost":6,"SPD":6,"EV":5,"ARM":0,"HP":5,"specialRules":[],"actions":[{"type":"MELEE","name":"Reaver Blade","traits":"","AP":1,"RNG":1,"HIT":6,"DMG":6,"ONCE":false,"specialRules":[]}]},
-    {"_id":"M0007",template: true,"name":"Chaos Warrior","traits":"Chaos","picture":"chaos - warrior.jpg","cost":16,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"GoreAxe","traits":"","AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Frenzy","traits":"","AP":2,"ONCE":false,"specialRules":[{ "_id": "S0018", "ruleType": "special", "ruleCost": 2, "ruleName": "Rapid Strike", "ruleText": "This model may make up to 3 melee attacks with AP 1 against a single target", "ruleAP": 2}]}]},
-    {"_id":"M0008",template: true,"name":"Chaos Champion","traits":"Chaos","picture":"chaos - general.jpg","cost":25,"SPD":5,"EV":5,"ARM":3,"HP":10,"specialRules":[{ "_id": "S0028", "ruleType": "model", "ruleCost": 4, "ruleName": "Melee Expert", "ruleText": "This model gains 1 additional AP which may only be used to make melee attacks"},{ "_id": "S0014", "ruleType": "model", "ruleCost": 2, "ruleName": "Berserk", "ruleText": "If this model destroys an enemy model with an attack, it must make a second melee attack with an AP cost of 1 against another model, friendly or enemy, within melee range. This additional attack costs no AP."}],"actions":[{"type":"MELEE","name":"Demon Axe","traits":"","AP":1,"RNG":1,"HIT":9,"DMG":7,"ONCE":false,"specialRules":[{ "_id": "S0016", "ruleType": "attack", "ruleCost": 2, "ruleName": "Armor Piercing", "ruleText": "Target model gets -2 ARM against this attack"}]}]},
-    {"_id":"M0009",template: true,"name":"Templar (Basic)","traits":"Templar","picture":"basic.jpg","cost":14,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Templar Weapon","traits":null,"AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]}]},
-    {"_id":"M0021",template: false,"name":"Templar Soulwarden1","traits":"Templar, Hero","picture":"templar - soulwarden.jpg","cost":22,"SPD":5,"EV":5,"ARM":3,"HP":10,"specialRules":[],"actions":[{"type":"MELEE","name":"Relic Hammer","traits":"","AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"RANGED","name":"Soul Fire","traits":"soul-powered","AP":1,"RNG":12,"HIT":6,"DMG":6,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Reinforce Soul","traits":"soul-powered","AP":1,"ONCE":false,"specialRules":[{"_id": "S0012","ruleType": "special","ruleCost": 3,"ruleAP": 1,"ruleName": "Healing Touch","ruleText": "Target friendly model within 0\" receives a 6/0 heal test."}]}]},
-    {"_id":"M0022",template: false,"name":"Templar Knight","traits":"Templar","picture":"templar - knight.jpg","cost":16,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"Warhammer","traits":null,"AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Shield Wall","traits":"","AP":1,"specialRules":[{"_id": "S0001", "ruleType": "special", "ruleCost": 2, "ruleAP": 1, "ruleName": "Armor Stance", "ruleText": "This model gains the following condition for one round: <i>Armor Stance<\/i> - This model gets +2 ARM\n"}]}]},
-    {"_id":"M0023",template: false,"name":"Templar Paladin","traits":"Templar","picture":"templar - paladin.jpg","cost":21,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"StarMaul","traits":null,"AP":1,"RNG":2,"HIT":8,"DMG":9,"ONCE":false,"specialRules":[{"_id": "S0002", "ruleType": "attack", "ruleCost": 2, "ruleName": "Stun", "ruleText": "Target model gets the following condition for one round (<i>Stunned<\/i>: This model gets -1 action point during its activation)"}]}]},
-    {"_id":"M0031",template: false,"name":"Chaos Champion","traits":"Chaos","picture":"chaos - general.jpg","cost":25,"SPD":5,"EV":5,"ARM":3,"HP":10,"specialRules":[{ "_id": "S0028", "ruleType": "model", "ruleCost": 4, "ruleName": "Melee Expert", "ruleText": "This model gains 1 additional AP which may only be used to make melee attacks"},{ "_id": "S0014", "ruleType": "model", "ruleCost": 2, "ruleName": "Berserk", "ruleText": "If this model destroys an enemy model with an attack, it must make a second melee attack with an AP cost of 1 against another model, friendly or enemy, within melee range. This additional attack costs no AP."}],"actions":[{"type":"MELEE","name":"Demon Axe","traits":"","AP":1,"RNG":1,"HIT":9,"DMG":7,"ONCE":false,"specialRules":[{ "_id": "S0016", "ruleType": "attack", "ruleCost": 2, "ruleName": "Armor Piercing", "ruleText": "Target model gets -2 ARM against this attack"}]}]},
-    {"_id":"M0032",template: false,"name":"Chaos Warrior","traits":"Chaos","picture":"chaos - warrior.jpg","cost":16,"SPD":5,"EV":5,"ARM":3,"HP":8,"specialRules":[],"actions":[{"type":"MELEE","name":"GoreAxe","traits":"","AP":1,"RNG":1,"HIT":7,"DMG":7,"ONCE":false,"specialRules":[]},{"type":"SPECIAL","name":"Frenzy","traits":"","AP":2,"ONCE":false,"specialRules":[{ "_id": "S0018", "ruleType": "special", "ruleCost": 2, "ruleName": "Rapid Strike", "ruleText": "This model may make up to 3 melee attacks with AP 1 against a single target", "ruleAP": 2}]}]},
-    {"_id":"M0033",template: false,"name":"Chaos Marauder","traits":"Chaos","picture":"chaos - marauder.jpg","cost":6,"SPD":6,"EV":5,"ARM":0,"HP":5,"specialRules":[],"actions":[{"type":"MELEE","name":"Reaver Blade","traits":"","AP":1,"RNG":1,"HIT":6,"DMG":6,"ONCE":false,"specialRules":[]}]},
-  ];
-  private nextModelIdDB: number = 12;
-
+  private modelCache: ModelData[] = [];
 
   // These constant arrays are used to calculate the total cost of a model, and can be displayed in dropdowns
   public BASE_COST = 10;
@@ -73,142 +52,276 @@ export class ModelDataService {
 
   // default values for new models & actions
   public NEW_MODEL: ModelData = {_id:"NEW",template:true,name:"New Model",traits:null,picture:"basic.jpg",cost:0,SPD:5,EV:5,ARM:0,HP:5,specialRules:[],actions:[]};
-  public NEW_MELEE_ACTION: ModelActionData = { type: "MELEE", name: "NEW MELEE", AP:1, RNG:1, HIT:6, DMG:6, specialRules:[] };
-  public NEW_RANGED_ACTION: ModelActionData = { type: "RANGED", name: "NEW RANGED", AP:1, RNG:12, HIT:6, DMG:6, specialRules:[] };
 
-  constructor() { }
+  constructor(
+    private specialRuleDataService: SpecialRuleDataService,
+    private dbConnectService: DbConnectService
+  ) { }
 
+  /**
+   * Returns the list of all models in the database, templates and otherwise
+   */
   async getAllModels(): Promise<ModelData[]> {
-    // make a deep copy of the model list and then return it
-    let returnList: ModelData[] = [];
-    for ( let modelDB of this.modelDB ) {
-      let modelData: ModelData = JSON.parse(JSON.stringify( modelDB ));
-      returnList.push( this.updateCost(modelData) );
+    
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.modelCache.length == 0 ) {
+      await this.loadCache();
     }
+    
+    // sort the list of models in the cache
+    this.modelCache.sort(this.sortModelData);
 
-    // sort the list of models
-    returnList.sort(this.sortModelData);
-    return returnList;
+    // return all models in the cache
+    return this.modelCache;
   }
   
+  /**
+   * Returns the list of all models that are listed as templates
+   */
   async getAllTemplates(): Promise<ModelData[]> {
 
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.modelCache.length == 0 ) {
+      await this.loadCache();
+    }
+
     // make a deep copy of the model list and then return it
-    let returnList: ModelData[] = [];
-    for ( let modelDB of this.modelDB ) {
-      if ( modelDB.template ) {
-        let modelData: ModelData = JSON.parse(JSON.stringify( modelDB ));
-        returnList.push( this.updateCost(modelData) ); 
+    let templateList: ModelData[] = [];
+    for ( let model of this.modelCache ) {
+      if ( model.template ) {
+        templateList.push( model ); 
       }
     }
 
     // sort the list of models
-    returnList.sort(this.sortModelData);
-    return returnList;
+    templateList.sort(this.sortModelData);
+
+    return templateList;
   }
   
+  /**
+   * Returns a single model as identified by the given _id
+   * @param id the _id of the model to return
+   */
   async getModelById(id: string): Promise<ModelData> {
-    // find the model in the arrach (using the "find" function), and then return a deep copy of that model
-    let findModel: ModelData = this.modelDB.find( element => { return element._id == id;} );
-    let returnModel: ModelData = JSON.parse(JSON.stringify( findModel ));
-    return this.updateCost(returnModel);
+
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.modelCache.length == 0 ) {
+      await this.loadCache();
+    }
+
+    // return the model with the matching ID
+    return this.modelCache.find( element => element._id == id );    
   }
 
+  /**
+   * Returns an array of models, based on the given array of _id values. The return array will 
+   * be in the same order as the provided idList array
+   * @param idList array of _id values to return
+   */
   async getModelListById ( idList: string[] ): Promise<ModelData[]> {
     
     // get the list of models, and return a deep copy
-    let returnList: ModelData[] = [];
+    let modelList: ModelData[] = [];
     for ( let id of idList ) {
-      let returnModel: ModelData = JSON.parse(JSON.stringify( await this.getModelById(id) ));
-      returnList.push( this.updateCost(returnModel) );
+      modelList.push( await this.getModelById(id) );
     }
-    return returnList;
+    return modelList;
   }
 
+  /**
+   * Create a new "template" model. We will initialize the model with some basic stats
+   */
   async createTemplate(): Promise<ModelData> {
     
     // clone the "basic" model
     let newModel: ModelData = JSON.parse(JSON.stringify( this.NEW_MODEL ));
-    newModel.actions.push( JSON.parse(JSON.stringify( this.NEW_MELEE_ACTION )));
+    let newAction: ModelActionData = { 
+      type: "MELEE", 
+      name: "NEW MELEE", 
+      traits: "", 
+      ONCE: false, 
+      AP:1, 
+      RNG:1,
+      HIT:6, 
+      DMG:6, 
+      specialRules:[] 
+    };
+    newModel.actions.push(newAction);
     this.updateCost(newModel);
 
     // generate a new ID for the model
-    newModel._id = "M" + this.nextModelIdDB.toString().padStart(4,"0");
-    this.nextModelIdDB++;
+    newModel._id = await this.dbConnectService.getNextId("M");    
 
-    // add this new model to the fake database
-    this.modelDB.push(newModel);
+    // create the model in the database
+    await this.dbConnectService.createModel( this.convertModelDataToDB(newModel) );
 
-    // return a deep copy
-    return JSON.parse(JSON.stringify( newModel ));
+    // add this new model to the cache
+    this.modelCache.push(newModel);
+
+    // return the new model
+    return newModel;
   }
 
+  /**
+   * Updates the details of a particular model. The _id of the given parm will be used to 
+   * find the matching model
+   * @param updateModel the data for the updated model
+   */
   async updateModel( updateModel: ModelData ): Promise<ModelData> {
 
     // make sure that the cost of the updated model is correct
     this.updateCost(updateModel);
 
-    // find the model in the fake DB, and then update it
-    let findModelIndex: number = this.modelDB.findIndex( element => { return element._id == updateModel._id;} );
-    this.modelDB[findModelIndex] = updateModel;
+    // update the database with the new model
+    let updateDBModel = await this.dbConnectService.updateModel( this.convertModelDataToDB(updateModel) );
+    
+    // update the record in the cache
+    let newUpdateModel = await this.convertDBToModelData(updateDBModel);
+    let findModelIndex: number = this.modelCache.findIndex( element => element._id == newUpdateModel._id );
+    this.modelCache[findModelIndex] = newUpdateModel;
 
-    // return a deep copy of the model from the DB
-    let returnModel: ModelData = JSON.parse(JSON.stringify( this.modelDB[findModelIndex] ));
-    return returnModel;
+    // return the updated model
+    return newUpdateModel;
   }
 
-  async cloneModel( clonedModel: ModelData ): Promise<ModelData> {
+  /**
+   * Clones/duplicates an existing model. This creates a new model, and then 
+   * initializes it with all of the given model's values. A new _id will be 
+   * generated for the cloned model. This can be used to clone both a 
+   * force-model and a template
+   * @param clonedModel the model that will be cloned
+   * @param cloneFromTemplate true if you are trying to clone a normal model based on a template. Defaulted to false
+   */
+  async cloneModel( clonedModel: ModelData, cloneModelFromTemplate = false ): Promise<ModelData> {
+    
     // create a new copy of the model
     let newModel: ModelData = JSON.parse( JSON.stringify(clonedModel) );
-    newModel.template = false;
     this.updateCost(newModel);
 
+    // if this is being cloned from a template, then the new model should not be a template
+    if ( cloneModelFromTemplate ) {
+      newModel.template = false;
+    }
+
     // generate a new ID for the model
-    newModel._id = "M" + this.nextModelIdDB.toString().padStart(4,"0");
-    this.nextModelIdDB++;
+    newModel._id = await this.dbConnectService.getNextId("M");
 
     // give the new model a different name
     newModel.name = newModel.name + "-C"
 
-    // add this new model to the fake database
-    this.modelDB.push(newModel);
+    // add the new model to the database
+    let newDBModel = await this.dbConnectService.createModel(this.convertModelDataToDB(newModel));
 
-    // return a deep copy of the new model
-    let returnModel: ModelData = JSON.parse(JSON.stringify( newModel ));
-    return returnModel;
+    // add the new model to the cache
+    newModel = await this.convertDBToModelData(newDBModel);
+    this.modelCache.push(newModel);
+
+    // return the new model
+    return newModel;
   }
 
+  /**
+   * Creates a new model based on a template. A new _id will be 
+   * generated for the cloned model. 
+   * @param template the template that you are using to clone the model
+   */
   async cloneModelFromTemplate( template: ModelData ): Promise<ModelData> {
-
-    // make sure that this is a template
-    if ( !template.template ) {
-      return template;
-    }
-
-    // create a new copy of the model
-    let newModel: ModelData = JSON.parse( JSON.stringify(template) );
-    newModel.template = false;
-    this.updateCost(newModel);
-
-    // generate a new ID for the model
-    newModel._id = "M" + this.nextModelIdDB.toString().padStart(4,"0");
-    this.nextModelIdDB++;
-
-    // add this new model to the fake database
-    this.modelDB.push(newModel);
-
-    // return a deep copy of the new model
-    let returnModel: ModelData = JSON.parse(JSON.stringify( newModel ));
-    return returnModel;
+    return await this.cloneModel( template, true );
   }
 
+  /**
+   * Deletes the given model from the database
+   * @param deleteModel the model that will be removed from the DB
+   */
   async deleteModel( deleteModel: ModelData ): Promise<void> {
-    // delete the matching force from the DB
-    let modelIndex: number = this.modelDB.findIndex( element => element._id == deleteModel._id );
-    this.modelDB.splice( modelIndex, 1 );
+    
+    // delete the model from the database
+    await this.dbConnectService.deleteModel( this.convertModelDataToDB(deleteModel));
+
+    // remove the model from the cache
+    let modelIndex: number = this.modelCache.findIndex( element => element._id == deleteModel._id );
+    this.modelCache.splice( modelIndex, 1 );
   }
 
-  private updateCost( model: ModelData ): ModelData {
+  /**
+   * Adds a new default special action to the model and updates the database
+   * @param model the model to update
+   * @param rule the new special rule action to add to the model
+   */
+  async addSpecialAction( model: ModelData, rule: SpecialRuleData ): Promise<ModelData> {
+    
+    // add a new special action to the model
+    let newAction: ModelActionData = { 
+      type: "SPECIAL",
+      name: rule.ruleName,
+      traits: "",
+      AP: rule.ruleAP,
+      RNG: 0,
+      HIT: 0,
+      DMG: 0,
+      ONCE: false,
+      specialRules: [rule]
+    }
+    model.actions.push(newAction);
+
+    // update the database
+    return await this.updateModel(model);
+  }
+
+  /**
+   * Add a new default melee action to the model and update the database
+   * @param model the model to update
+   */
+  async addMeleeAction( model: ModelData ): Promise<ModelData> {
+
+    // add a new default melee action to the model
+    let newAction: ModelActionData = { 
+      type: "MELEE", 
+      name: "NEW MELEE", 
+      traits: "", 
+      ONCE: false, 
+      AP:1, 
+      RNG:1,
+      HIT:6, 
+      DMG:6, 
+      specialRules:[] 
+    };
+    model.actions.push(newAction);
+
+    // update the database
+    return await this.updateModel(model);
+  }
+
+  /**
+   * Add a new default ranged action to the model and update the database
+   * @param model the model to update
+   */
+  async addRangedAction( model: ModelData ): Promise<ModelData> {
+
+    // add a new default melee action to the model
+    let newAction: ModelActionData = { 
+      type: "RANGED", 
+      name: "NEW RANGED", 
+      traits: "", 
+      ONCE: false, 
+      AP:1, 
+      RNG:12, 
+      HIT:6, 
+      DMG:6, 
+      specialRules:[]
+    };
+    model.actions.push(newAction);
+
+    // update the database
+    return await this.updateModel(model);
+  }
+
+  /**
+   * Updates the ModelData.cost value of a given model based on all of the proper calculations
+   * @param model the model whose cost will be updated
+   */
+  private updateCost( model: ModelData ): void {
     model.cost = this.BASE_COST;
 
     // add the cost of model stats
@@ -262,9 +375,6 @@ export class ModelDataService {
         model.cost += actionCost;
       }
     }
-    
-    // return the updated model
-    return model;
   }
 
   /**
@@ -286,5 +396,123 @@ export class ModelDataService {
       return 0;
     }
   }
+
+  /**
+   * Converts the application ModelData structure into a ModelDBData used to store in the DB
+   * @param modelData the app model data to convert
+   */
+  private convertModelDataToDB( modelData: ModelData ): ModelDBData {
+
+    // initialize header
+    let modelDBData: ModelDBData = {
+      _id: modelData._id,
+      template: modelData.template,
+      name: modelData.name,
+      traits: modelData.traits,
+      picture: modelData.picture,
+      SPD: modelData.SPD,
+      EV: modelData.EV,
+      ARM: modelData.ARM,
+      HP: modelData.HP,
+      specialRuleIds: [],
+      actions: []
+    };
+
+    // initialize special rule IDs
+    for ( let rule of modelData.specialRules ) {
+      modelDBData.specialRuleIds.push( rule._id );
+    }
+
+    // initialize actions
+    for ( let action of modelData.actions ) {
+      let modelActionDBData: ModelActionDBData = {
+        type: action.type,
+        name: action.name,
+        traits: action.traits,
+        AP: action.AP,
+        RNG: action.RNG,
+        HIT: action.HIT,
+        DMG: action.DMG,
+        ONCE: action.ONCE,
+        specialRuleIds: []
+      }
+      for ( let rule of action.specialRules ) {
+        modelActionDBData.specialRuleIds.push( rule._id );
+      }
+      modelDBData.actions.push( modelActionDBData );
+    }
+
+    // return the new object
+    return modelDBData;
+  }
+  
+  /**
+   * Converts the database ModelDBData structure into a ModelData structure used by the application
+   * @param modelDBData the database structure to convert
+   */
+  private async convertDBToModelData( modelDBData: ModelDBData ): Promise<ModelData> {
+
+    let modelData: ModelData = {
+      _id: modelDBData._id,
+      template: modelDBData.template,
+      name: modelDBData.name,
+      traits: modelDBData.traits,
+      picture: modelDBData.picture,
+      cost: 0,
+      SPD: modelDBData.SPD,
+      EV: modelDBData.EV,
+      ARM: modelDBData.ARM,
+      HP: modelDBData.HP,
+      specialRules: [],
+      actions: []
+    }
+
+    // calculate the model's cost
+    this.updateCost( modelData );
+
+    // copy over the special rules
+    for ( let ruleId of modelDBData.specialRuleIds ) {
+      let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
+      modelData.specialRules.push( specialRuleData );
+    }
+
+    // copy over the actions
+    for ( let actionDB of modelDBData.actions ) {
+      let action: ModelActionData = {
+        type: actionDB.type,
+        name: actionDB.name,
+        traits: actionDB.traits,
+        AP: actionDB.AP,
+        RNG: actionDB.RNG,
+        HIT: actionDB.HIT,
+        DMG: actionDB.DMG,
+        ONCE: actionDB.ONCE,
+        specialRules: []              
+      }
+      for ( let ruleId of actionDB.specialRuleIds ) {
+        let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
+        action.specialRules.push( specialRuleData );
+      }
+      modelData.actions.push(action);
+    }
+
+    // return the prepared object
+    return modelData;
+  }
+
+  private async loadCache() {
+    
+    // clear out the rule cache
+    this.modelCache = [];
+
+    // load the rule objects form the DB
+    let modelDBList: ModelDBData[] = await this.dbConnectService.getModels();
+    
+    // convert everything to a SpecialRuleData and add it to the cache
+    for ( let modelDB of modelDBList ) {
+      this.modelCache.push( await this.convertDBToModelData(modelDB) );
+    }
+  }
+  
   
 }

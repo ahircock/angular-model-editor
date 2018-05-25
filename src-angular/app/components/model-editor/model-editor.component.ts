@@ -74,22 +74,22 @@ export class ModelEditorComponent implements OnInit {
     this.saveModelData();
   }
 
-  addMeleeAction() : void {
-    let newAction = JSON.parse( JSON.stringify(this.modelDataService.NEW_MELEE_ACTION));
-    this.model.actions.push(newAction);
-    this.saveModelData();
+  async addMeleeAction() {
+    let updatedModel = await this.modelDataService.addMeleeAction( this.model );
+    this.model = updatedModel;
+    this.updated.emit();
   }
 
-  addRangedAction(): void {
-    let newAction = JSON.parse( JSON.stringify(this.modelDataService.NEW_RANGED_ACTION));
-    this.model.actions.push(newAction);
-    this.saveModelData();
+  async addRangedAction() {
+    let updatedModel = await this.modelDataService.addRangedAction( this.model );
+    this.model = updatedModel;
+    this.updated.emit();
   }
 
-  addSpecialAction( newSpecialRule: SpecialRuleData ): void {
-    let newAction: ModelActionData = { type:"SPECIAL", name:newSpecialRule.ruleName, AP:1, specialRules:[ newSpecialRule ] };
-    this.model.actions.push(newAction);
-    this.saveModelData();
+  async addSpecialAction( newSpecialRule: SpecialRuleData ) {
+    let updatedModel = await this.modelDataService.addSpecialAction( this.model, newSpecialRule );
+    this.model = updatedModel;
+    this.updated.emit();
   }
 
   addAttackSpecialRule( actionIndex: number, newRule: SpecialRuleData ): void {

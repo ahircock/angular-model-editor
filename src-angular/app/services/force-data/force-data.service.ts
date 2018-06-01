@@ -133,9 +133,6 @@ export class ForceDataService {
    */
   async updateForce( updateForce: ForceData ): Promise<ForceData> {
 
-    // make sure that the cost of the updated force is correct
-    updateForce = this.updateForceCost( updateForce );
-
     // update the database
     let updateDBForce = await this.dbConnectService.updateForce( this.convertForceDataToDB(updateForce) );
     
@@ -199,7 +196,7 @@ export class ForceDataService {
     }
 
     // calculate the force cost
-    forceData = this.updateForceCost( forceData );
+    forceData.cost = this.calculateForceCost( forceData );
 
     // return the prepared force info
     return forceData;
@@ -239,27 +236,16 @@ export class ForceDataService {
    * settings. It will then update the provided force object. Returns the updated force
    * @param forceData The force whose cost needs to be calculated. This object will be updated
    */
-  private updateForceCost( forceData: ForceData ): ForceData {
+  private calculateForceCost( forceData: ForceData ): number {
     
-    // load the cost information for the size
-    let forceSize: ForceSize = this.FORCE_SIZES.find( element => element.size == forceData.size );
-    forceData.maxCost = forceSize.maxCost;
-    forceData.stdMissionCost = forceSize.stdMissionCost;
-
     // get the total cost of models
-    forceData.modelCost = 0;
+    let totalCost = 0;
     for ( let model of forceData.models ) {
-      forceData.modelCost += model.cost * model.count;
+      totalCost += model.cost * model.count;
     }
 
-    // get the total cost of equipment
-    forceData.equipmentCost = 0;
-
-    // update the full cost
-    forceData.cost = forceData.modelCost + forceData.equipmentCost;
-
     // return the updated forceData
-    return forceData;
+    return totalCost;
   }
 
   /**

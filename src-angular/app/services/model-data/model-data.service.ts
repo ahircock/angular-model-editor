@@ -157,9 +157,6 @@ export class ModelDataService {
    */
   async updateModel( updateModel: ModelData ): Promise<ModelData> {
 
-    // make sure that the cost of the updated model is correct
-    this.updateCost(updateModel);
-
     // update the database with the new model
     let updateDBModel = await this.dbConnectService.updateModel( this.convertModelDataToDB(updateModel) );
     
@@ -184,7 +181,6 @@ export class ModelDataService {
     
     // create a new copy of the model
     let newModel: ModelData = JSON.parse( JSON.stringify(clonedModel) );
-    this.updateCost(newModel);
 
     // if this is being cloned from a template, then the new model should not be a template
     if ( cloneModelFromTemplate ) {
@@ -309,18 +305,20 @@ export class ModelDataService {
    * Updates the ModelData.cost value of a given model based on all of the proper calculations
    * @param model the model whose cost will be updated
    */
-  private updateCost( model: ModelData ): void {
-    model.cost = this.BASE_COST;
+  private calculateModelCost( model: ModelData ): number {
+    
+    // start with the base cost
+    let modelCost = this.BASE_COST;
 
     // add the cost of model stats
-    model.cost += this.SPD_COST.find( (element) => { return element.stat == model.SPD; } ).cost;
-    model.cost += this.EV_COST.find( (element) => { return element.stat == model.EV; } ).cost;
-    model.cost += this.ARM_COST.find( (element) => { return element.stat == model.ARM; } ).cost;
-    model.cost += this.HP_COST.find( (element) => { return element.stat == model.HP; } ).cost;
+    modelCost += this.SPD_COST.find( element => element.stat == model.SPD ).cost;
+    modelCost += this.EV_COST.find( element => element.stat == model.EV ).cost;
+    modelCost += this.ARM_COST.find( element => element.stat == model.ARM ).cost;
+    modelCost += this.HP_COST.find( element => element.stat == model.HP ).cost;
 
     // add the special rule costs
     for ( let specialRule of model.specialRules ) {
-      model.cost += specialRule.ruleCost;
+      modelCost += specialRule.ruleCost;
     }
     
     // add the action costs, based on the type of action
@@ -331,9 +329,9 @@ export class ModelDataService {
       switch ( action.type ) {
 
         case "MELEE":
-          actionCost += this.MELEE_RNG_COST.find( (element) => { return element.stat == action.RNG; } ).cost;
-          actionCost += this.HIT_COST.find( (element) => { return element.stat == action.HIT; } ).cost;
-          actionCost += this.DMG_COST.find( (element) => { return element.stat == action.DMG; } ).cost;
+          actionCost += this.MELEE_RNG_COST.find( element => element.stat == action.RNG ).cost;
+          actionCost += this.HIT_COST.find( element => element.stat == action.HIT ).cost;
+          actionCost += this.DMG_COST.find( element => element.stat == action.DMG ).cost;
           
           // add in the cost of all special rules
           for ( let specialRule of action.specialRules ) {
@@ -343,9 +341,9 @@ export class ModelDataService {
           break;
 
         case "RANGED":
-          actionCost += this.RANGED_RNG_COST.find( (element) => { return element.stat == action.RNG; } ).cost;
-          actionCost += this.HIT_COST.find( (element) => { return element.stat == action.HIT; } ).cost;
-          actionCost += this.DMG_COST.find( (element) => { return element.stat == action.DMG; } ).cost;
+          actionCost += this.RANGED_RNG_COST.find( element => element.stat == action.RNG ).cost;
+          actionCost += this.HIT_COST.find( element => element.stat == action.HIT ).cost;
+          actionCost += this.DMG_COST.find( element => element.stat == action.DMG ).cost;
 
           // add in the cost of all special rules
           for ( let specialRule of action.specialRules ) {
@@ -360,9 +358,17 @@ export class ModelDataService {
 
       // actions cannot have a negative cost
       if ( actionCost > 0 ) {
-        model.cost += actionCost;
+        modelCost += actionCost;
       }
     }
+
+    // a model cannot be lower than the base cost
+    if ( modelCost < this.BASE_COST ) {
+      modelCost = this.BASE_COST;
+    }
+
+    return modelCost;
+
   }
 
   /**
@@ -455,9 +461,6 @@ export class ModelDataService {
       actions: []
     }
 
-    // calculate the model's cost
-    this.updateCost( modelData );
-
     // copy over the special rules
     for ( let ruleId of modelDBData.specialRuleIds ) {
       let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
@@ -483,6 +486,9 @@ export class ModelDataService {
       }
       modelData.actions.push(action);
     }
+
+    // calculate the model's cost
+    modelData.cost = this.calculateModelCost( modelData );
 
     // return the prepared object
     return modelData;

@@ -26,6 +26,14 @@ npm run build
 ```
 The build artifacts will be stored in the `dist/` directory.
 
+Additionally, a production version will be built every time you 
+install the npm dependencies (such as after cloning the GIT 
+repository)
+
+```
+npm install
+```
+
 
 ## Run production
 

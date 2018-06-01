@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
     "start": "node ./dist/server.js",
     "start-dev-ng": "ng serve",
     "start-dev-node": "nodemon --inspect --watch dist ./dist/server.js",
+    "postinstall": "npm run build",
     "build": "npm run build-ng && npm run build-node",
     "build-ng": "ng build -prod",
     "build-node": "tsc -p src-node",
     "build-dev-node": "tsc -w -p src-node",
+    "ng": "ng",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

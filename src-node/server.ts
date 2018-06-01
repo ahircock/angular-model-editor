@@ -7,7 +7,7 @@ import * as bodyParser from 'body-parser';
 import modelRouter from './routers/modelRouter';
 
 // create the express application
-var app = express();
+const app = express();
 
 // load up the generic pre-processing middleware 
 app.use(bodyParser. json());
@@ -16,9 +16,10 @@ app.use(bodyParser. json());
 app.use(express.static( path.join(__dirname, 'static') ) );
 
 // API routers
-app.use('/api', modelRouter);
+app.use("/api", modelRouter);
 
-// start listening
-app.listen(3000, function () {
-    console.log('App listening on port 3000!');
+// start listening, port is configured using environment variables
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, function () {
+    console.log("App listening on port " + PORT + "!");
 });

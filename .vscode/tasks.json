@@ -32,6 +32,11 @@
             "type": "npm",
             "script": "start-dev-node",
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "build-node",
+            "problemMatcher": []
         }
     ]
 }

@@ -16,7 +16,7 @@ app.use(bodyParser. json());
 app.use(express.static( path.join(__dirname, 'static') ) );
 
 // API routers
-app.use("/api", modelRouter);
+app.use("/api/models", modelRouter);
 
 // start listening, port is configured using environment variables
 const PORT = process.env.PORT || 3000;

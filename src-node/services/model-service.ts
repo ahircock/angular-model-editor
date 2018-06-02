@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://admin:blix2400@ds237669.mlab.com:37669/model-editor";
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/model-editor";
 const MONGO_DB = "model-editor";
 const MONGO_COLLECTION = "models";
 

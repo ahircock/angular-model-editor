@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { DbConnector, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
 import { InternalDbConnector } from './internal-db-connector.class';
+import { RestAPIConnector } from './restapi-connector.class';
 
 // re-export the db interfaces
 export * from './db-connector.interface';
@@ -11,8 +13,10 @@ export class DbConnectService implements DbConnector {
 
   private dbConnector: DbConnector;
   
-  constructor() { 
-    this.dbConnector = new InternalDbConnector();
+  constructor(
+    private httpClient: HttpClient
+  ) { 
+    this.dbConnector = new RestAPIConnector( this.httpClient );
   }
 
   getRules(): Promise<RuleDBData[]>{

@@ -11,7 +11,7 @@
         "noImplicitThis": true,
         "strictNullChecks": true,
         "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        "noUnusedParameters": false,
         "pretty": true,
         "lib": [
             "es2015"

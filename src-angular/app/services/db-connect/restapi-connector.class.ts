@@ -1,15 +1,8 @@
 import { DbConnector, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
-import { MongoClient } from 'mongodb';
+import { HttpClient } from '@angular/common/http'
+import { environment } from '../../../environments/environment'
 
-// constants used to connect to Mongo
-const MONGO_URL = "mongodb://localhost:27017/model-editor";
-const MONGO_DB = "model-editor";
-const MONGO_COLLECTION_RULES = "rules";
-const MONGO_COLLECTION_MODELS = "models";
-const MONGO_COLLECTION_FORCES = "forces";
-const MONGO_COLLECTION_CONFIG = "config";
-
-export class MongoDbConnector implements DbConnector {
+export class RestAPIConnector implements DbConnector {
 
   // this array will simulate the data that comes back from a database
   private ruleDB: RuleDBData[] = [
@@ -62,11 +55,12 @@ export class MongoDbConnector implements DbConnector {
 
   private nextId: number = 100;
 
-
-    constructor() {}
+    constructor(
+        private httpClient: HttpClient
+    ) {}
 
     async getRules(): Promise<RuleDBData[]>{
-      return this.getCollectionData(MONGO_COLLECTION_RULES);
+        return JSON.parse(JSON.stringify(this.ruleDB));
     }
     async createRule( newRule: RuleDBData ): Promise<RuleDBData> {
         this.ruleDB.push( JSON.parse(JSON.stringify(newRule)) );
@@ -84,25 +78,24 @@ export class MongoDbConnector implements DbConnector {
     }
 
     async getModels(): Promise<ModelDBData[]> {
-      return this.getCollectionData(MONGO_COLLECTION_MODELS);
+        try {
+            return ( this.httpClient.get(environment.apiUrl).toPromise() as Promise<ModelDBData[]>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
     async createModel( newModel: ModelDBData ): Promise<ModelDBData> {
-        this.modelDB.push( JSON.parse(JSON.stringify(newModel)) );
         return JSON.parse(JSON.stringify(newModel));
     }
     updateModel( updateModel: ModelDBData ): Promise<ModelDBData> {
-        let findRuleIndex: number = this.modelDB.findIndex( element => element._id == updateModel._id );
-        this.modelDB[findRuleIndex] = JSON.parse(JSON.stringify(updateModel));
         return JSON.parse(JSON.stringify(updateModel));
     }
     deleteModel( deleteModel: ModelDBData ): Promise<void> {
-        let findRuleIndex: number = this.modelDB.findIndex( element => element._id == deleteModel._id );
-        this.modelDB.splice(findRuleIndex, 1 );
         return;
     }
 
     async getForces(): Promise<ForceDBData[]> {
-      return this.getCollectionData(MONGO_COLLECTION_FORCES);
+        return JSON.parse(JSON.stringify(this.forceDB));
     }
     async createForce( newForce: ForceDBData ): Promise<ForceDBData> {
         this.forceDB.push( JSON.parse(JSON.stringify(newForce)) );
@@ -125,64 +118,7 @@ export class MongoDbConnector implements DbConnector {
      * @param prefix this is an optional  prefix to add to the beginning of the ID. Defaulted to blank
      */
     async getNextId( prefix: string ): Promise<string> {
-
-        // connect to the Mongo database
-        let client = await MongoClient.connect(MONGO_URL);
-
-        // get the next model ID
-        let sequenceDocument = await client.db(MONGO_DB).collection(MONGO_COLLECTION_CONFIG).findOneAndUpdate( {_id:"idSequence"}, {$inc:{sequenceValue:1}} );
-        
-        // return the sequence value
-        return sequenceDocument.value.sequenceValue;
-    }
-
-    /**
-     * Getting information from Mongo is the same, regardless of collection
-     * @param collection the Mongo collection to search
-     */
-    private async getCollectionData( collection: string ): Promise<any[]> {
-
-       // connect to the Mongo database
-       let client = await MongoClient.connect(MONGO_URL);
-      
-       // find the query and return the results as an array
-       let results = await client.db(MONGO_DB).collection(collection).find({}).toArray();
- 
-       // close the database
-       client.close();
-       
-       // return the found array
-       return results;
-    }
-
-    private async createCollectionRecord( collection: string, newRecord: any ): Promise<any> {
-
-        // connect to the Mongo database
-        let client = await MongoClient.connect(MONGO_URL);
-        
-        // insert the special rule into the database, then get the new record
-        await client.db(MONGO_DB).collection(collection).insertOne(newRecord);
-
-        // close the database
-        client.close();
-
-        // return the new id
-        return newRecord;
-    }
-
-    private async updateCollectionRecord( collection: string, updateRecord: any ): Promise<any> {
-
-        // connect to the Mongo database
-        let client = await MongoClient.connect(MONGO_URL);
-        
-        // insert the special rule into the database, then get the new record
-        await client.db(MONGO_DB).collection(collection).findOneAndUpdate({_id:updateRecord._id}, updateRecord );
-        
-        // close the database
-        client.close();
-
-        // return the updated record
-        return updateRecord;
+        return prefix + this.nextId++;
     }
         
 }

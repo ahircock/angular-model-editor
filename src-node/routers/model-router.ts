@@ -15,7 +15,7 @@ router.get('/', getAllModelsHandler);
 async function getAllModelsHandler(req: Request, res: Response) {
 
     try {
-        const modelService: ModelService = ServiceManager.getService("ModelService");
+        const modelService: ModelService = ServiceManager.getService("model-service");
         let modelList = await modelService.getAllModels();
         res.status(200).send(modelList);
     } catch (err) {

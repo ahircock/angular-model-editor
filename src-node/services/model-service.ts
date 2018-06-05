@@ -3,7 +3,7 @@ import { MongoDbService } from './mongo-db-service';
 
 export class ModelService {
 
-    private mongoDBService: MongoDbService = ServiceManager.getService("MongoDbService");
+    private mongoDBService: MongoDbService = ServiceManager.getService("mongo-service");
     
     private collection: string = 'models';
 

@@ -4,9 +4,8 @@ import * as path from 'path'; // HTTP request path parser
 import * as bodyParser from 'body-parser'; // HTTP request body parse
 import * as cors from 'cors'; // HTTP cross-origin resource sharing for API
 import * as morgan from 'morgan'; // HTTP request logging
-
-// load the various application routers
 import modelRouter from './routers/model-router';
+import ruleRouter from './routers/rule-router';
 
 // create the express application
 const app = express();
@@ -21,6 +20,7 @@ app.use(express.static( path.join(__dirname, 'static') ) );
 app.use("/api", bodyParser.json()); // parses the body of the HTTP request
 app.use("/api", cors()); // allows access to API endpoints from any site
 app.use("/api/models", modelRouter);
+app.use("/api/rules", ruleRouter);
 
 // start listening, port is configured using environment variables
 const PORT = process.env.PORT || 3000;

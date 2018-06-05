@@ -1,4 +1,5 @@
 import { ModelService } from './services/model-service';
+import { RuleService } from './services/rule-service';
 import { MongoDbService } from './services/mongo-db-service';
 
 /**
@@ -6,8 +7,9 @@ import { MongoDbService } from './services/mongo-db-service';
  * and the class of the service. The class can be anything. No restrictions.
  */
 const SERVICE_DEFINITIONS: ServiceDefinition[] = [
-  { name: "ModelService", class: ModelService },
-  { name: "MongoDbService", class: MongoDbService }
+  { name: "model-service", class: ModelService },
+  { name: "rule-service", class: RuleService },
+  { name: "mongo-service", class: MongoDbService }
 ]
 
 /**
@@ -45,6 +47,8 @@ export class ServiceManager {
       let newService = { name: foundServiceDefn.name, singleton: new foundServiceDefn.class() };
       this.serviceList.push(newService);
       return newService.singleton;
+    } else {
+      console.log( "ERROR: Service " + name + " not found!")
     }
   }
 }

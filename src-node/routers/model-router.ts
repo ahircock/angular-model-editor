@@ -1,7 +1,8 @@
-import * as modelService from '../services/model-service';
+import { ServiceManager } from '../service-manager';
+import { ModelService } from '../services/model-service';
 import { Router, Request, Response } from 'express';
 
-// This module will create a router that is exported
+// Create a router object and export it
 const router = Router();
 export default router;
 
@@ -14,11 +15,14 @@ router.get('/', getAllModelsHandler);
 async function getAllModelsHandler(req: Request, res: Response) {
 
     try {
+        const modelService: ModelService = ServiceManager.getService("ModelService");
         let modelList = await modelService.getAllModels();
-        res.status(200).send(JSON.stringify(modelList));
+        res.status(200).send(modelList);
     } catch (err) {
         res.status(500).send(err.toString()); 
     }
     
 };
+
+
 

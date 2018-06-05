@@ -1,24 +1,17 @@
-import { MongoClient } from "mongodb";
+import { ServiceManager } from '../service-manager';
+import { MongoDbService } from './mongo-db-service';
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/model-editor";
-const MONGO_DB = "model-editor";
-const MONGO_COLLECTION = "models";
+export class ModelService {
 
-/**
- * This method is used to retrieve the list of all models in the database. It will return an array 
- * of model objects
- */
-export async function getAllModels() {
+    private mongoDBService: MongoDbService;
     
-    // connect to the Mongo database
-    let client = await MongoClient.connect(MONGO_URI);
-    
-    // find the query and return the results as an array
-    let docs = await client.db(MONGO_DB).collection(MONGO_COLLECTION).find().toArray();
-    
-    // close the database
-    await client.close();
-    
-    // return the found array
-    return docs;
+    initService() {
+        this.mongoDBService = ServiceManager.getService("MongoDbService");
+    }
+
+    private collection: string = 'models';
+
+    async getAllModels(): Promise<any[]> {
+        return await this.mongoDBService.getAllDocuments(this.collection);
+    }
 }

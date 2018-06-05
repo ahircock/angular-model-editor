@@ -3,12 +3,8 @@ import { MongoDbService } from './mongo-db-service';
 
 export class ModelService {
 
-    private mongoDBService: MongoDbService;
+    private mongoDBService: MongoDbService = ServiceManager.getService("MongoDbService");
     
-    initService() {
-        this.mongoDBService = ServiceManager.getService("MongoDbService");
-    }
-
     private collection: string = 'models';
 
     async getAllModels(): Promise<any[]> {

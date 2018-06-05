@@ -1,43 +1,39 @@
 import { ModelService } from './services/model-service';
 import { MongoDbService } from './services/mongo-db-service';
 
-const SERVICES = [
+const SERVICE_DEFINITIONS: ServiceDefinition[] = [
   { name: "ModelService", class: ModelService },
   { name: "MongoDbService", class: MongoDbService }
 ]
 
 export class ServiceManager {
+  
+  static serviceList: ServiceRegistry[] = [];
 
-  static serviceList: any[] = [];
+  public static getService(name:string): any {
 
-  static init() {
-
-    // if already initialized, then do nothing
-    if ( this.serviceList.length > 0 ) {
-      return;
+    // see if this service has already been initialized
+    let foundService = this.serviceList.find( element => element.name == name );
+    if ( foundService ) {
+      return foundService.singleton;
     }
 
-    // create an instance of every service class
-    for ( let serviceEntry of SERVICES ) {
-      let newService = { name: serviceEntry.name, singleton: new serviceEntry.class() };
+    // if this service hasn't been initialized yet, then initialize it
+    let foundServiceDefn = SERVICE_DEFINITIONS.find( element => element.name == name );
+    if ( foundServiceDefn ) {
+      let newService = { name: foundServiceDefn.name, singleton: new foundServiceDefn.class() };
       this.serviceList.push(newService);
-    }
-
-    // run the initService() method on each of the services
-    for ( let serviceEntry of this.serviceList ) {
-      if ( typeof serviceEntry.singleton.initService != "undefined" ) {
-        serviceEntry.singleton.initService();
-      }
+      return newService.singleton;
     }
   }
+}
 
-  static getService(name:string): any {
+interface ServiceDefinition {
+  name: string,
+  class: any
+}
 
-    // make sure that the services have all been started
-    if ( this.serviceList.length == 0 ) {
-      this.init();
-    }
-
-    return this.serviceList.find( element => element.name == name ).singleton;
-  }
+interface ServiceRegistry {
+  name: string,
+  singleton: any
 }

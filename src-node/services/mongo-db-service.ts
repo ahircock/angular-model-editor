@@ -29,6 +29,11 @@ export class MongoDbService {
     return await this.mongoDb.collection(collection).find().toArray();
   }
 
+  async getDocumentById(collection: string, getId: string): Promise<any> {
+    await this.connect();
+    return await this.mongoDb.collection(collection).findOne({_id:getId});
+  }
+
   async updateDocment( collection: string, updateDoc: any ): Promise<any> {
     await this.connect();
     await this.mongoDb.collection(collection).findOneAndReplace( {_id: updateDoc._id}, updateDoc );

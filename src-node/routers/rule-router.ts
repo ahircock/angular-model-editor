@@ -8,6 +8,7 @@ export default router;
 
 // map the URL to the handlers
 router.get('/', getAllHandler);
+router.get('/:id', getByIdHandler);
 router.post('', createHandler);
 router.put('/:id', updateHandler);
 router.delete('/:id', deleteHandler);
@@ -19,6 +20,18 @@ async function getAllHandler(req: Request, res: Response) {
 
     try {
         let docs = await ruleService.getAllRules();
+        res.status(200).send(docs);
+    } catch (err) {
+        res.status(500).send(err.toString()); 
+    }
+    
+};
+
+async function getByIdHandler(req: Request, res: Response) {
+
+    try {
+        let getId = req.params.id;
+        let docs = await ruleService.getRuleById(getId);
         res.status(200).send(docs);
     } catch (err) {
         res.status(500).send(err.toString()); 

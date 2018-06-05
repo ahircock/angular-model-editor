@@ -11,6 +11,10 @@ export class RuleService {
         return await this.mongoDBService.getAllDocuments(this.collection);
     }
 
+    async getRuleById( getId: string ): Promise<any> {
+        return await this.mongoDBService.getDocumentById(this.collection, getId );
+    }
+
     async createRule( newRule: any ): Promise<any> {
         return await this.mongoDBService.createDocument(this.collection, newRule );
     }

@@ -52,6 +52,14 @@ export class MongoDbService {
     await this.mongoDb.collection(collection).deleteOne({_id: deleteId});
   }
 
+  async getNextId(): Promise<string> {
+    await this.connect();
+    
+    // get the next ID from the sequence
+    let sequenceDoc = await this.mongoDb.collection("config").findOneAndUpdate( {_id:"idSequence"}, {$inc:{sequenceValue:1}} );
+    return sequenceDoc.value.sequenceValue.toString();
+  }
+
 }
 
 

@@ -1,5 +1,3 @@
-import { ModelService } from './services/model-service';
-import { RuleService } from './services/rule-service';
 import { MongoDbService } from './services/mongo-db-service';
 
 /**
@@ -7,9 +5,7 @@ import { MongoDbService } from './services/mongo-db-service';
  * and the class of the service. The class can be anything. No restrictions.
  */
 const SERVICE_DEFINITIONS: ServiceDefinition[] = [
-  { name: "model-service", class: ModelService },
-  { name: "rule-service", class: RuleService },
-  { name: "mongo-service", class: MongoDbService }
+  { name: "db-service", class: MongoDbService }
 ]
 
 /**

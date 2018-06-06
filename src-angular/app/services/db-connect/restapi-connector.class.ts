@@ -88,7 +88,11 @@ export class RestAPIConnector implements DbConnector {
     }
 
     async getForces(): Promise<ForceDBData[]> {
-        return JSON.parse(JSON.stringify(this.forceDB));
+        try {
+            return ( this.httpClient.get(this.apiUrlForces).toPromise() as Promise<ForceDBData[]>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
     async createForce( newForce: ForceDBData ): Promise<ForceDBData> {
         this.forceDB.push( JSON.parse(JSON.stringify(newForce)) );

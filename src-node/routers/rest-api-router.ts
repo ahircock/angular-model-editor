@@ -2,7 +2,7 @@ import { ServiceManager } from '../service-manager';
 import { MongoDbService } from '../services/mongo-db-service';
 import { Router, Request, Response } from 'express';
 
-export class RestApiRouter {
+export default class RestApiRouter {
 
     // Create a router object and export it
     private expressRouter: Router = Router();

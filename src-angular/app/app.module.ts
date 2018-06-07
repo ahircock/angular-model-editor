@@ -22,7 +22,8 @@ import { ModelTileComponent } from './components/model-tile/model-tile.component
 import { ForceTileComponent } from './components/force-tile/force-tile.component';
 import { ForceDetailsComponent } from './components/force-details/force-details.component';
 import { ForcePrintComponent } from './components/force-print/force-print.component';
-import { DbConnectService } from './services/db-connect/db-connect.service';
+import { DbConnectService } from './services/db-connector/db-connector.interface';
+import { RestAPIConnector } from './services/db-connector/restapi-connector.service';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { DbConnectService } from './services/db-connect/db-connect.service';
     ModelDataService,
     SpecialRuleDataService,
     ForceDataService,
-    DbConnectService
+    { provide: DbConnectService, useClass: RestAPIConnector }
   ],
   bootstrap: [AppComponent]
 })

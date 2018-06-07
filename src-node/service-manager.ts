@@ -1,11 +1,13 @@
 import { MongoDbService } from './services/mongo-db-service';
+import { RestApiService } from './services/rest-api-service';
 
 /**
  * The array of services that can be accessed. Provide a "name" for the service,
  * and the class of the service. The class can be anything. No restrictions.
  */
 const SERVICE_DEFINITIONS: ServiceDefinition[] = [
-  { name: "db-service", class: MongoDbService }
+  { name: "db-service", class: MongoDbService },
+  { name: "rest-api-service", class: RestApiService }
 ]
 
 /**

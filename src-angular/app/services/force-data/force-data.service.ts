@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbConnectService, ForceDBData, ForceModelDBData } from '../db-connect/db-connect.service';
+import { DbConnectService, ForceDBData, ForceModelDBData } from '../db-connector/db-connector.interface';
 import { ModelData, ModelDataService } from '../model-data/model-data.service';
 
 /**

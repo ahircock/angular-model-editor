@@ -4,7 +4,10 @@ import * as path from 'path'; // HTTP request path parser
 import * as bodyParser from 'body-parser'; // HTTP request body parse
 import * as cors from 'cors'; // HTTP cross-origin resource sharing for API
 import * as morgan from 'morgan'; // HTTP request logging
-import RestApiRouter from './routers/rest-api-router'
+import modelsRouter from './routers/models-router';
+import rulesRouter from './routers/rules-router';
+import forcesRouter from './routers/forces-router';
+import servicesRouter from './routers/services-router';
 
 // create the express application
 const app = express();
@@ -15,9 +18,10 @@ app.use(morgan("tiny"));
 // setup API routers
 app.use("/api", bodyParser.json()); // parses the body of the HTTP request
 app.use("/api", cors()); // allows access to API endpoints from any site
-app.use("/api/models", new RestApiRouter("models").getExpressRouter() );
-app.use("/api/rules", new RestApiRouter("rules").getExpressRouter() );
-app.use("/api/forces", new RestApiRouter("forces").getExpressRouter() );
+app.use("/api/models", modelsRouter );
+app.use("/api/rules", rulesRouter );
+app.use("/api/forces", forcesRouter );
+app.use("/api/services", servicesRouter );
 
 // setup router for the static assets (images, icons, etc.)
 app.use(express.static( path.join(__dirname, 'static') ) );

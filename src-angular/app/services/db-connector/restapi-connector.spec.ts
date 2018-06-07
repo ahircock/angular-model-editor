@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { DbConnectService } from './db-connect.service';
+import { RestAPIConnector } from './restapi-connector.service';
 
 describe('DbConnectService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DbConnectService]
+      providers: [RestAPIConnector]
     });
   });
 
-  it('should be created', inject([DbConnectService], (service: DbConnectService) => {
+  it('should be created', inject([RestAPIConnector], (service: RestAPIConnector) => {
     expect(service).toBeTruthy();
   }));
 });

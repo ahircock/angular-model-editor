@@ -1,8 +1,10 @@
-import { DbConnector, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
+import { Injectable } from '@angular/core'
+import { DbConnectService, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../environments/environment'
 
-export class RestAPIConnector implements DbConnector {
+@Injectable()
+export class RestAPIConnector extends DbConnectService {
 
   // this array will simulate the data that comes back from a database
 
@@ -34,10 +36,11 @@ export class RestAPIConnector implements DbConnector {
     private apiUrlModels = environment.apiUrl + "/models";
     private apiUrlRules  = environment.apiUrl + "/rules";
     private apiUrlForces = environment.apiUrl + "/forces";
+    private apiUrlGetNextId = environment.apiUrl + "/services/getnextid";
 
     constructor(
         private httpClient: HttpClient
-    ) {}
+    ) { super() }
 
     async getRules(): Promise<RuleDBData[]>{
         try {
@@ -48,7 +51,7 @@ export class RestAPIConnector implements DbConnector {
     }
     async createRule( newRule: RuleDBData ): Promise<RuleDBData> {
         try {
-            return ( this.httpClient.post(this.apiUrlRules, newRule).toPromise() as Promise<RuleDBData>)
+            return ( this.httpClient.post(this.apiUrlRules, newRule).toPromise() as Promise<RuleDBData>);
         } catch (err) {
             console.log(err.toString());
         }
@@ -56,7 +59,7 @@ export class RestAPIConnector implements DbConnector {
     async updateRule( updateRule: RuleDBData ): Promise<RuleDBData> {
         try {
             let url = this.apiUrlRules + "/" + updateRule._id;
-            return ( this.httpClient.put(url, updateRule).toPromise() as Promise<RuleDBData>)
+            return ( this.httpClient.put(url, updateRule).toPromise() as Promise<RuleDBData>);
         } catch (err) {
             console.log(err.toString());
         }
@@ -78,13 +81,27 @@ export class RestAPIConnector implements DbConnector {
         }
     }
     async createModel( newModel: ModelDBData ): Promise<ModelDBData> {
-        return JSON.parse(JSON.stringify(newModel));
+        try {
+            return ( this.httpClient.post(this.apiUrlModels, newModel).toPromise() as Promise<ModelDBData>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
-    updateModel( updateModel: ModelDBData ): Promise<ModelDBData> {
-        return JSON.parse(JSON.stringify(updateModel));
+    async updateModel( updateModel: ModelDBData ): Promise<ModelDBData> {
+        try {
+            let url = this.apiUrlModels + "/" + updateModel._id;
+            return ( this.httpClient.put(url, updateModel).toPromise() as Promise<ModelDBData>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
-    deleteModel( deleteModel: ModelDBData ): Promise<void> {
-        return;
+    async deleteModel( deleteModel: ModelDBData ): Promise<void> {
+        try {
+            let url = this.apiUrlModels + "/" + deleteModel._id;
+            this.httpClient.delete(url).toPromise();
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
 
     async getForces(): Promise<ForceDBData[]> {
@@ -95,18 +112,27 @@ export class RestAPIConnector implements DbConnector {
         }
     }
     async createForce( newForce: ForceDBData ): Promise<ForceDBData> {
-        this.forceDB.push( JSON.parse(JSON.stringify(newForce)) );
-        return JSON.parse(JSON.stringify(newForce));
+        try {
+            return ( this.httpClient.post(this.apiUrlForces, newForce).toPromise() as Promise<ForceDBData>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
-    updateForce( updateForce: ForceDBData ): Promise<ForceDBData> {
-        let findRuleIndex: number = this.forceDB.findIndex( element => element._id == updateForce._id );
-        this.forceDB[findRuleIndex] = JSON.parse(JSON.stringify(updateForce));
-        return JSON.parse(JSON.stringify(updateForce));
+    async updateForce( updateForce: ForceDBData ): Promise<ForceDBData> {
+        try {
+            let url = this.apiUrlForces + "/" + updateForce._id;
+            return ( this.httpClient.put(url, updateForce).toPromise() as Promise<ForceDBData>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
-    deleteForce( deleteForce: ForceDBData ): Promise<void> {
-        let findRuleIndex: number = this.forceDB.findIndex( element => element._id == deleteForce._id );
-        this.forceDB.splice(findRuleIndex, 1 );
-        return;
+    async deleteForce( deleteForce: ForceDBData ): Promise<void> {
+        try {
+            let url = this.apiUrlForces + "/" + deleteForce._id;
+            this.httpClient.delete(url).toPromise();
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
        
 
@@ -115,7 +141,11 @@ export class RestAPIConnector implements DbConnector {
      * @param prefix this is an optional  prefix to add to the beginning of the ID. Defaulted to blank
      */
     async getNextId( prefix: string ): Promise<string> {
-        return prefix + this.nextId++;
+        try {
+            return prefix + ( this.httpClient.get(this.apiUrlGetNextId).toPromise() as Promise<string>);
+        } catch (err) {
+            console.log(err.toString());
+        }
     }
         
 }

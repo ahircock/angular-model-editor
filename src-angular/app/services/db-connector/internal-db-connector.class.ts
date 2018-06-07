@@ -1,6 +1,6 @@
-import { DbConnector, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
+import { DbConnectService, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
 
-export class InternalDbConnector implements DbConnector {
+export class InternalDbConnector extends DbConnectService {
 
   // this array will simulate the data that comes back from a database
   private ruleDB: RuleDBData[] = [
@@ -54,7 +54,7 @@ export class InternalDbConnector implements DbConnector {
   private nextId: number = 100;
 
 
-    constructor() {}
+    constructor() { super() }
 
     async getRules(): Promise<RuleDBData[]>{
         return JSON.parse(JSON.stringify(this.ruleDB));

@@ -9,13 +9,12 @@ import { ForceDetailsComponent } from './components/force-details/force-details.
 import { ForcePrintComponent } from './components/force-print/force-print.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "/forces", pathMatch: "full" },
   { path: "models", component: ModelListComponent },
   { path: "specialrules", component: SpecialRuleListComponent },
   { path: "forces/:id", component: ForceDetailsComponent },
   { path: "forces/print/:id", component: ForcePrintComponent },
-  { path: "forces", component: ForceListComponent }
-  
+  { path: "forces", component: ForceListComponent },
+  { path: "**", redirectTo: "/forces" }
 ]
 
 @NgModule({

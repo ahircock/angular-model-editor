@@ -1,10 +1,12 @@
 <div *ngIf="showHeader" class="header box-mid">
-  <div class="app-image"><img src="/assets/icons/age-of-sigmar.jpg"></div>
-  <div class="menu-bar">
-      <div class="menu-item box-mid-hover font-normal" routerLink="/forces" routerLinkActive="selected">Forces</div>
-      <div class="menu-item box-mid-hover font-normal" routerLink="/models" routerLinkActive="selected">Models</div>
-      <div class="menu-item box-mid-hover font-normal" routerLink="/specialrules" routerLinkActive="selected">Special Rules</div>
-  </div>
+  <div class="app-title"><img src="/assets/icons/spinning-sword-512.png"></div>
+  <div class="app-title font-title">Genesys</div>
+  <div class="app-separator"> </div>
+  <div class="menu-item box-mid-hover font-normal" routerLink="/forces" routerLinkActive="selected">Forces</div>
+  <div class="menu-item box-mid-hover font-normal" routerLink="/models" routerLinkActive="selected">Models</div>
+  <div class="menu-item box-mid-hover font-normal" routerLink="/specialrules" routerLinkActive="selected">Special Rules</div>
+  <div class="menu-item-right box-mid-hover font-normal" routerLink="/specialrules" routerLinkActive="selected">Sign Up</div>
+  <div class="menu-item-right box-mid-hover font-normal" routerLink="/specialrules" routerLinkActive="selected">Log In</div>
 </div>
 <div [class.middle]="showHeader">
   <router-outlet (activate)="routerOutletActivate($event)"></router-outlet>

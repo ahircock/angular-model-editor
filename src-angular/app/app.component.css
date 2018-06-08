@@ -11,24 +11,41 @@ div.middle {
 
 
 /* APPLICATION IMAGE */
-div.app-image {
-    position: absolute;
-    top: 0; left: 0; height: 64px; width: 192px;
+div.app-title {
+    float: left;
+    margin-top: 14px;
+    margin-right: 4px;
+    padding: 6px 8px 0px 0px;
+    height: 32px;
 }
-div.app-image img {
-    height: 64px; width:192px;
+div.app-title img {
+    margin-top: -4px;
+    margin-left: 4px;
+    height: 32px;
+}
+div.app-separator {
+    float: left;
+    border-left: 1px solid black;
+    margin-top: 14px;
+    height: 32px;
 }
 
 /* the menu bar */
-div.menu-bar {
-    position: absolute;
-    left: 192px; top: 0px; right: 0px; height: 62px;
-    z-index: 2;
-}
 div.menu-item {
     float: left;
     margin-top: 14px;
-    margin-left:16px;
+    margin-left:8px;
+    border-radius: 8px;
+    border: none;
+    padding: 6px 8px 0px 8px;
+    height: 32px;
+    box-sizing: border-box;
+    outline: none;
+}
+div.menu-item-right {
+    float: right;
+    margin-top: 14px;
+    margin-right:8px;
     border-radius: 8px;
     border: none;
     padding: 6px 16px 0px 16px;

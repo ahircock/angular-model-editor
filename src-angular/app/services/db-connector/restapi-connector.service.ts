@@ -142,7 +142,9 @@ export class RestAPIConnector extends DbConnectService {
      */
     async getNextId( prefix: string ): Promise<string> {
         try {
-            return prefix + ( this.httpClient.get(this.apiUrlGetNextId).toPromise() as Promise<string>);
+            let url = this.apiUrlGetNextId;
+            let nextId = await this.httpClient.get(url).toPromise();
+            return prefix + nextId;
         } catch (err) {
             console.log(err.toString());
         }

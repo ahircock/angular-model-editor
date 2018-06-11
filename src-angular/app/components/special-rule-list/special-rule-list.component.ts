@@ -54,7 +54,7 @@ export class SpecialRuleListComponent implements OnInit {
     this.selectedRuleIndex = ruleIndex;
   }
 
-  async newModelClick() {
+  async newRuleClick() {
     let newRule: SpecialRuleData = await this.specialRuleDataService.createNewRule( this.ruleType );
     await this.loadRuleList();
 

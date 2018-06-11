@@ -149,5 +149,5 @@ export class RestAPIConnector extends DbConnectService {
             console.log(err.toString());
         }
     }
-        
+
 }

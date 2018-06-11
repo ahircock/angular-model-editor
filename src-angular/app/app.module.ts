@@ -5,9 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 // services
+import { UserService } from './services/user/user.service';
 import { ModelDataService } from './services/model-data/model-data.service';
 import { SpecialRuleDataService } from './services/special-rule-data/special-rule-data.service';
 import { ForceDataService } from './services/force-data/force-data.service';
+import { DbConnectService } from './services/db-connector/db-connector.interface';
+import { RestAPIConnector } from './services/db-connector/restapi-connector.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -22,8 +25,8 @@ import { ModelTileComponent } from './components/model-tile/model-tile.component
 import { ForceTileComponent } from './components/force-tile/force-tile.component';
 import { ForceDetailsComponent } from './components/force-details/force-details.component';
 import { ForcePrintComponent } from './components/force-print/force-print.component';
-import { DbConnectService } from './services/db-connector/db-connector.interface';
-import { RestAPIConnector } from './services/db-connector/restapi-connector.service';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { UserSignupComponent } from './components/user-signup/user-signup.component';
 
 
 @NgModule({
@@ -38,7 +41,9 @@ import { RestAPIConnector } from './services/db-connector/restapi-connector.serv
     ModelTileComponent,
     ForceTileComponent,
     ForceDetailsComponent,
-    ForcePrintComponent
+    ForcePrintComponent,
+    UserLoginComponent,
+    UserSignupComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ import { RestAPIConnector } from './services/db-connector/restapi-connector.serv
     HttpClientModule
   ],
   providers: [
+    UserService,
     ModelDataService,
     SpecialRuleDataService,
     ForceDataService,

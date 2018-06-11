@@ -1,0 +1,28 @@
+<div class="layout-box">
+  <label class="input-title font-normal" for="username">Email</label>
+  <input 
+      [(ngModel)]="userEmail" 
+      class="input-field input-light font-normal" 
+      type="text" 
+      name="username" 
+      placeholder="Enter email address"
+      (keyup.enter)="signup(); $event.target.blur();">
+  <label class="input-title font-normal" for="password">Password</label>
+  <input 
+      [(ngModel)]="userPassword" 
+      class="input-field input-light font-normal" 
+      type="password" 
+      name="password" 
+      placeholder="Enter your password"
+      (keyup.enter)="signup(); $event.target.blur();">
+  <label class="input-title font-normal" for="confirm-password">Confirm Password</label>
+  <input 
+      [(ngModel)]="confirmPassword" 
+      class="input-field input-light font-normal" 
+      type="password" 
+      name="confirm-password" 
+      placeholder="Confirm your password" 
+      (keyup.enter)="signup(); $event.target.blur();">
+  <div *ngIf="errorText" class="error-text font-normal">{{errorText}}</div>
+  <div class="action-button box-mid-hover font-normal" (click)="signup()">Sign Up</div>
+</div>

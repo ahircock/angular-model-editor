@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,11 @@ export class AppComponent {
    * Used to show and hide the header band. By default the header is shown
    */
   public showHeader:boolean = true;
+  
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   /**
    * this method should be called whenever a new route is handled, and the 
@@ -26,5 +33,10 @@ export class AppComponent {
     } else {
       this.showHeader = true;
     }
+  }
+
+  logout() {
+    this.userService.logout();
+    this.router.navigateByUrl("/");
   }
 }

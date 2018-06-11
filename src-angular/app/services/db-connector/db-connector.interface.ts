@@ -21,6 +21,10 @@ export abstract class DbConnectService {
     abstract async deleteForce( deleteForce: ForceDBData ): Promise<void>;
 
     abstract async getNextId( prefix: string ): Promise<string>;
+
+    // abstract async login( email: string, password: string ): Promise<UserDBData>;
+    // abstract async signup( email: string, password: string ): Promise<UserDBData>;
+
 }
 
 // *** DB DATA STRUCTURES 
@@ -77,5 +81,12 @@ export interface ForceDBData {
 export interface ForceModelDBData {
     _id: string,
     count: number 
+}
+
+/**
+ * Structure of user & login data
+ */
+export interface UserDBData {
+    userId: string
 }
   

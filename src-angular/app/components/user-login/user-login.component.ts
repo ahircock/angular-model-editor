@@ -20,9 +20,9 @@ export class UserLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login() {
-    this.userService.login(this.userEmail, this.userPassword);
-    this.router.navigateByUrl("/");
+  async login() {
+    await this.userService.login(this.userEmail, this.userPassword);
+    this.router.navigateByUrl("/forces");
   }
 
 }

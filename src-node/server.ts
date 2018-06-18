@@ -2,8 +2,10 @@
 import * as express from 'express';
 import * as path from 'path'; // HTTP request path parser
 import * as bodyParser from 'body-parser'; // HTTP request body parse
+import * as cookieParser from 'cookie-parser'; // HTTP request body parse
 import * as cors from 'cors'; // HTTP cross-origin resource sharing for API
 import * as morgan from 'morgan'; // HTTP request logging
+import authRouter from './routers/auth-router';
 import modelsRouter from './routers/models-router';
 import rulesRouter from './routers/rules-router';
 import forcesRouter from './routers/forces-router';
@@ -17,7 +19,9 @@ app.use(morgan("tiny"));
 
 // setup API routers
 app.use("/api", bodyParser.json()); // parses the body of the HTTP request
-app.use("/api", cors()); // allows access to API endpoints from any site
+app.use("/api", cookieParser()); // parses the body of the HTTP request
+app.use("/api", cors({origin:true, credentials:true})); // allows access to API endpoints from any site
+app.use("/api", authRouter ); // login, signup and verification of every call
 app.use("/api/models", modelsRouter );
 app.use("/api/rules", rulesRouter );
 app.use("/api/forces", forcesRouter );

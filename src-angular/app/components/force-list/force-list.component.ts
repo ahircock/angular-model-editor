@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ForceDataService, ForceData  } from '../../services/force-data/force-data.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-force-list',
@@ -13,10 +14,17 @@ export class ForceListComponent implements OnInit {
 
   constructor( 
     private forceDataService: ForceDataService,
-    private router: Router 
+    private router: Router,
+    private userService: UserService
   ) { }
 
   async ngOnInit() {
+
+    // if not logged in, then go to login page
+    if ( !this.userService.isLoggedIn() ) {
+      this.router.navigateByUrl("/login");
+    }
+
     this.forces = await this.forceDataService.getAllForces();
   }
 

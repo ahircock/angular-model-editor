@@ -118,5 +118,8 @@ export class InternalDbConnector extends DbConnectService {
     async getNextId( prefix: string ): Promise<string> {
         return prefix + this.nextId++;
     }
+
+    async login( email: string, password: string ): Promise<void> {};
+    async signup( email: string, password: string ): Promise<void> {};
         
 }

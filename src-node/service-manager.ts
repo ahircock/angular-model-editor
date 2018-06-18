@@ -1,4 +1,5 @@
 import { MongoDbService } from './services/mongo-db-service';
+import { AuthService } from './services/auth-service';
 import { RestApiService } from './services/rest-api-service';
 
 /**
@@ -6,6 +7,7 @@ import { RestApiService } from './services/rest-api-service';
  * and the class of the service. The class can be anything. No restrictions.
  */
 const SERVICE_DEFINITIONS: ServiceDefinition[] = [
+  { name: "auth-service", class: AuthService },
   { name: "db-service", class: MongoDbService },
   { name: "rest-api-service", class: RestApiService }
 ]

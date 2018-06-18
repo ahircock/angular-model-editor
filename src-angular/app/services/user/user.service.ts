@@ -1,22 +1,46 @@
 import { Injectable } from '@angular/core';
+import { DbConnectService } from '../db-connector/db-connector.interface'
 
 @Injectable()
 export class UserService {
 
   public userName:string = "";
+  public loginError: string = "";
 
-  constructor() { }
+  constructor(
+    private dbConnectService: DbConnectService
+  ) { }
 
-  login( email: string, password: string ) {
-    this.userName = email;
+  async login( email: string, password: string ): Promise<boolean> {
+    try {
+      await this.dbConnectService.login(email, password );
+      this.userName = email;
+      return true;
+    } catch {
+      return false;
+    }
   }
 
-  signup( email: string, password: string ) {
-    this.userName = email;
+  async signup( email: string, password: string ): Promise<boolean> {
+    try {
+      await this.dbConnectService.signup(email, password );
+      this.userName = email;
+      return true;
+    } catch {
+      return false;
+    }
   }
 
-  logout() {
+  async logout() {
     this.userName = "";
+  }
+
+  public isLoggedIn(): boolean {
+    if ( this.userName != "" ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }

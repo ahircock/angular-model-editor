@@ -22,8 +22,8 @@ export abstract class DbConnectService {
 
     abstract async getNextId( prefix: string ): Promise<string>;
 
-    // abstract async login( email: string, password: string ): Promise<UserDBData>;
-    // abstract async signup( email: string, password: string ): Promise<UserDBData>;
+    abstract async login( email: string, password: string ): Promise<void>;
+    abstract async signup( email: string, password: string ): Promise<void>;
 
 }
 

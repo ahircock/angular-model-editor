@@ -22,12 +22,15 @@ export class UserSignupComponent implements OnInit {
   ngOnInit() {
   }
 
-  signup() {
+  async signup() {
+
+    // make sure that the password and confirmation match
     if ( this.userPassword != this.confirmPassword ) {
       this.errorText = "Password and confirmation password do not match"
-    } else {
-      this.userService.signup(this.userEmail, this.userPassword);
-      this.router.navigateByUrl("/");
+      return;
     }
+    
+    await this.userService.signup(this.userEmail, this.userPassword);
+    this.router.navigateByUrl("/");
   }
 }

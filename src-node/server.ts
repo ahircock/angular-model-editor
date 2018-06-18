@@ -1,6 +1,5 @@
 // load the generic node & express libraries
 import * as express from 'express';
-import * as path from 'path'; // HTTP request path parser
 import * as bodyParser from 'body-parser'; // HTTP request body parse
 import * as cookieParser from 'cookie-parser'; // HTTP request body parse
 import * as cors from 'cors'; // HTTP cross-origin resource sharing for API
@@ -28,7 +27,7 @@ app.use("/api/forces", forcesRouter );
 app.use("/api/services", servicesRouter );
 
 // setup router for the static assets (images, icons, etc.)
-app.use(express.static( path.join(__dirname, 'static') ) );
+app.use(express.static( __dirname + '/static' ) );
 
 // all other GET requests should go to index.html, which is the angular app
 app.get("/*", function(req, res){ res.sendFile(__dirname + '/static/index.html'); });

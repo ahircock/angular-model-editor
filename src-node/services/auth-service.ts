@@ -57,7 +57,7 @@ export class AuthService {
         }
 
         // create a new user
-        let newUser: UserData = { _id: userEmail, userPasswordEncrypted: userPassword };
+        let newUser: UserDBData = { _id: userEmail, userPasswordEncrypted: userPassword };
         await this.dbService.createDocument("usersdb", newUser );
 
         // create a JWT token that will be sent back to the client
@@ -68,6 +68,10 @@ export class AuthService {
         res.send( { sessionid: jwtBearerToken } );
     };
 
+    /**
+     * Express RequestHandler that will validate if the user has a valid session, ie. have they
+     * generated a valid sessionid token in the request header.
+     */
     public async checkIfAuthenticated(req: Request, res: Response, next: NextFunction ) {
 
         try {
@@ -78,8 +82,10 @@ export class AuthService {
                 res.status(401).send({ errCode: 101, error: "no sessionid provided in request header" });
             }
 
-            // validate that the sessionid is ok
-            jwt.verify(sessionId , this.JWT_SECRET);        
+            // validate that the sessionid is ok (throws an exception if invalid)
+            jwt.verify(sessionId , this.JWT_SECRET);  
+            
+            // this is middleware, so pass this to the next Express router
             next();
 
         } catch (err) {
@@ -87,7 +93,13 @@ export class AuthService {
         }
     }
 
-    private validateUserAndPassword( userData: UserData, password: string ): boolean {
+    /**
+     * Method to ensure that the provided password is valid for the 
+     * given user record from the DB
+     * @param userData 
+     * @param password 
+     */
+    private validateUserAndPassword( userData: UserDBData, password: string ): boolean {
         if ( userData.userPasswordEncrypted == password ) {
             return true;
         } else {
@@ -96,7 +108,10 @@ export class AuthService {
     }
 }
 
-interface UserData {
+/**
+ * An interface for the User record stored in the database
+ */
+interface UserDBData {
     _id: string,
     userPasswordEncrypted: string
 }

@@ -1,5 +1,9 @@
 import { MongoClient, Db } from "mongodb";
 
+/**
+ * This class is meant to provide an API for doing REST-ful services on 
+ * a Mongo Database. REST-ful services are GET, UPDATE, CREATE, DELETE
+ */
 export class MongoDbService {
 
   private MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
@@ -7,7 +11,7 @@ export class MongoDbService {
   private mongoDb: Db;
 
   /**
-   * Connect to the mongo database, and store the result in this.mongoConnection
+   * Connect to the mongo database, and store the connection in this.mongoDb
    */
   async connect(): Promise<void> {
 
@@ -20,38 +24,70 @@ export class MongoDbService {
   }
 
   /**
-   * This method is used to retrieve the list of all documents from one collection
-   * in the database. It will return an array of documents
-   * @param collection the collection that will be searched for documents
+   * Retrieve the list of all documents for one type of entity in the database.
+   * @param entity the type of document being returned
+   * @returns array of documents of the given entity type
    */
-  async getAllDocuments(collection: string): Promise<any[]> {
+  async getAllDocuments(entity: string): Promise<any[]> {
     await this.connect();
-    return await this.mongoDb.collection(collection).find().toArray();
+    return await this.mongoDb.collection(entity).find().toArray();
   }
 
-  async getDocumentById(collection: string, getId: string): Promise<any> {
+  /**
+   * Search for a single entity document in the databadse, using
+   * the document's ID. It will return a the matching document if found, or NULL if 
+   * the id does not exist
+   * @param entity the type of document being returned
+   * @param getId the id of the document 
+   * @returns a single document that matches the given getId
+   */
+  async getDocumentById(entity: string, getId: string): Promise<any> {
     await this.connect();
-    return await this.mongoDb.collection(collection).findOne({_id:getId});
+    return await this.mongoDb.collection(entity).findOne({_id:getId});
   }
 
-  async updateDocment( collection: string, updateDoc: any ): Promise<any> {
+  /**
+   * Update a single entity document in the database. This will use the 
+   * REPLACE technique and the existing document will be completely replaced 
+   * by the provided document
+   * @param entity the type of document being updated
+   * @param updateDoc the document that will be updated in the databaes
+   * @returns a copy of the document after the update
+   */
+  async updateDocment(entity: string, updateDoc: any): Promise<any> {
     await this.connect();
-    await this.mongoDb.collection(collection).findOneAndReplace( {_id: updateDoc._id}, updateDoc );
+    await this.mongoDb.collection(entity).findOneAndReplace( {_id: updateDoc._id}, updateDoc );
     return updateDoc;
   }
 
-  async createDocument( collection: string, newDoc: any ): Promise<any> {
+  /**
+   * Create a new entity document in the database.
+   * @param entity the type of document being created
+   * @param newDoc the new document that will be inserted in the database
+   * @returns a copy of the new document. The _id of the document will be the new identifier
+   */
+  async createDocument(entity: string, newDoc: any): Promise<any> {
     await this.connect();
-    let result = await this.mongoDb.collection(collection).insertOne(newDoc);
+    let result = await this.mongoDb.collection(entity).insertOne(newDoc);
     newDoc._id = result.insertedId;
     return newDoc;
   }
 
-  async deleteDocument( collection: string, deleteId: string ): Promise<void> {
+  /**
+   * Delete an existing entity document from the database. There is no return
+   * value
+   * @param entity the type of document being deleted
+   * @param deleteId the id of the document to be deleted
+   */
+  async deleteDocument(entity: string, deleteId: string): Promise<void> {
     await this.connect();
-    await this.mongoDb.collection(collection).deleteOne({_id: deleteId});
+    await this.mongoDb.collection(entity).deleteOne({_id: deleteId});
   }
 
+  /**
+   * Generate a new unique ID for a record in the database
+   * @returns returns a string representation of the new ID
+   */
   async getNextId(): Promise<string> {
     await this.connect();
     

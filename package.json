@@ -6,7 +6,7 @@
     "start": "node ./dist/server.js",
     "start-dev-ng": "ng serve",
     "start-dev-node": "nodemon --inspect --watch dist ./dist/server.js",
-    "postinstall": "npm run build",
+    "heroku-postbuild": "npm run build",
     "build": "npm run build-ng && npm run build-node",
     "build-ng": "ng build -prod",
     "build-node": "tsc -p src-node",

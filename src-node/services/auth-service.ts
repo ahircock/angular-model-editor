@@ -36,7 +36,7 @@ export class AuthService {
         }
 
         // create a JWT token that will be sent back to the client
-        let jwtPayload = {userEmail:userEmail};
+        let jwtPayload: JwtPayload = {userEmail:userEmail};
         const jwtBearerToken = jwt.sign( jwtPayload, this.JWT_SECRET, {expiresIn:60*60*24} )
 
         // set it in an HTTP Only + Secure Cookie
@@ -62,10 +62,10 @@ export class AuthService {
 
         // create a new user
         let newUser: UserDBData = { _id: userEmail, userPasswordEncrypted: userPassword };
-        await this.dbService.createDocument("usersdb", newUser );
+        await this.dbService.createDocument("users", newUser );
 
         // create a JWT token that will be sent back to the client
-        let jwtPayload = {userEmail:userEmail};
+        let jwtPayload: JwtPayload = {userEmail:userEmail};
         const jwtBearerToken = jwt.sign( jwtPayload, this.JWT_SECRET, {expiresIn:60*60*24} )
 
         // set it in an HTTP Only + Secure Cookie
@@ -88,7 +88,10 @@ export class AuthService {
             }
 
             // validate that the sessionid is ok (throws an exception if invalid)
-            jwt.verify(sessionId , this.JWT_SECRET);  
+            let jwtPayload: JwtPayload = ( jwt.verify(sessionId , this.JWT_SECRET) as JwtPayload );
+
+            // store the user id in the request header for future handlers
+            req.headers.userid = jwtPayload.userEmail;
             
             // this is middleware, so pass this to the next Express router
             next();
@@ -120,4 +123,8 @@ export class AuthService {
 interface UserDBData {
     _id: string,
     userPasswordEncrypted: string
+}
+
+interface JwtPayload {
+    userEmail: string
 }

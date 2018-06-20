@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpecialRuleDataService, SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
+import { Router } from '@angular/router';
+import { UserService } from '../../services/user/user.service';
+
 
 @Component({
   selector: 'app-special-rule-list',
@@ -24,10 +27,19 @@ export class SpecialRuleListComponent implements OnInit {
   public selectedRuleIndex: number = 0;
 
   constructor(
-    private specialRuleDataService: SpecialRuleDataService
+    private router: Router,
+    private specialRuleDataService: SpecialRuleDataService,
+    private userService: UserService
   ) { }
 
   async ngOnInit() {
+
+    // if not logged in, then go to login page
+    if ( !this.userService.isLoggedIn() ) {
+      this.router.navigateByUrl("/login");
+      return;
+    }
+
     await this.loadRuleList();
   }
 

@@ -214,4 +214,10 @@ export class SpecialRuleDataService {
     }
   }
     
+  /**
+   * This method should be called after login, in order to clear the cache
+   */
+  public clearCache() {
+    this.ruleCache = [];
+  }
 }

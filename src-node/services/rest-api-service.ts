@@ -14,7 +14,8 @@ export class RestApiService {
     public async getAllHandler(entity: string, req: Request, res: Response) {
 
         try {
-            let docs = await this.dbService.getAllDocuments( entity );
+            let userid = ( req.headers.userid as string );
+            let docs = await this.dbService.getAllDocuments( entity, userid );
             res.status(200).send(docs);
         } catch (err) {
             let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
@@ -30,7 +31,8 @@ export class RestApiService {
 
         try {
             let getId = req.params.id;
-            let docs = await this.dbService.getDocumentById( entity, getId );
+            let userid = ( req.headers.userid as string );
+            let docs = await this.dbService.getDocumentById( entity, getId, userid );
             res.status(200).send(docs);
         } catch (err) {
             let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
@@ -46,7 +48,8 @@ export class RestApiService {
 
         try {
             let passedDoc = req.body;
-            let newDoc = await this.dbService.createDocument( entity, passedDoc);
+            let userid = ( req.headers.userid as string );
+            let newDoc = await this.dbService.createDocument( entity, passedDoc, userid);
             res.status(200).send(newDoc);
         } catch (err) {
             let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
@@ -62,7 +65,8 @@ export class RestApiService {
 
         try {
             let passedDoc = req.body;
-            let updatedDoc = await this.dbService.updateDocment(entity, passedDoc);
+            let userid = ( req.headers.userid as string );
+            let updatedDoc = await this.dbService.updateDocment(entity, passedDoc, userid);
             res.status(200).send(updatedDoc);
         } catch (err) {
             let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
@@ -78,7 +82,8 @@ export class RestApiService {
 
         try {
             let deleteId = req.params.id;
-            let updatedDoc = await this.dbService.deleteDocument(entity, deleteId);
+            let userid = ( req.headers.userid as string );
+            let updatedDoc = await this.dbService.deleteDocument(entity, deleteId, userid);
             res.status(200).send(updatedDoc);
         } catch (err) {
             let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };

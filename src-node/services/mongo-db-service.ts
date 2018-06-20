@@ -28,9 +28,13 @@ export class MongoDbService {
    * @param entity the type of document being returned
    * @returns array of documents of the given entity type
    */
-  async getAllDocuments(entity: string): Promise<any[]> {
+  async getAllDocuments(entity: string, userId?: string): Promise<any[]> {
     await this.connect();
-    return await this.mongoDb.collection(entity).find().toArray();
+    let filter = {};
+    if ( userId ) {
+      filter = { userId:{ $in: ["GLOBAL", userId] } };
+    }
+    return await this.mongoDb.collection(entity).find(filter).toArray();
   }
 
   /**
@@ -41,9 +45,13 @@ export class MongoDbService {
    * @param getId the id of the document 
    * @returns a single document that matches the given getId
    */
-  async getDocumentById(entity: string, getId: string): Promise<any> {
+  async getDocumentById(entity: string, getId: string, userId?: string): Promise<any> {
     await this.connect();
-    return await this.mongoDb.collection(entity).findOne({_id:getId});
+    let filter: any = { _id: getId };
+    if ( userId ) { 
+      filter = { _id:getId, userId: { $in: ["GLOBAL", userId] } };
+    }
+    return await this.mongoDb.collection(entity).findOne(filter);
   }
 
   /**
@@ -51,12 +59,17 @@ export class MongoDbService {
    * REPLACE technique and the existing document will be completely replaced 
    * by the provided document
    * @param entity the type of document being updated
-   * @param updateDoc the document that will be updated in the databaes
+   * @param updateDoc the document that will be updated in the database
    * @returns a copy of the document after the update
    */
-  async updateDocment(entity: string, updateDoc: any): Promise<any> {
+  async updateDocment(entity: string, updateDoc: any, userId?: string): Promise<any> {
     await this.connect();
-    await this.mongoDb.collection(entity).findOneAndReplace( {_id: updateDoc._id}, updateDoc );
+    let filter: any = { _id: updateDoc._id };
+    if ( userId ) { 
+      filter = { _id:updateDoc._id, userId: { $in: ["GLOBAL", userId] } };
+      updateDoc.userId = userId;
+    }
+    await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc );
     return updateDoc;
   }
 
@@ -66,8 +79,9 @@ export class MongoDbService {
    * @param newDoc the new document that will be inserted in the database
    * @returns a copy of the new document. The _id of the document will be the new identifier
    */
-  async createDocument(entity: string, newDoc: any): Promise<any> {
+  async createDocument(entity: string, newDoc: any, userId?: string): Promise<any> {
     await this.connect();
+    if ( userId ) { newDoc.userId = userId; }
     let result = await this.mongoDb.collection(entity).insertOne(newDoc);
     newDoc._id = result.insertedId;
     return newDoc;
@@ -79,9 +93,13 @@ export class MongoDbService {
    * @param entity the type of document being deleted
    * @param deleteId the id of the document to be deleted
    */
-  async deleteDocument(entity: string, deleteId: string): Promise<void> {
+  async deleteDocument(entity: string, deleteId: string, userId?: string): Promise<void> {
     await this.connect();
-    await this.mongoDb.collection(entity).deleteOne({_id: deleteId});
+    let filter: any = { _id: deleteId };
+    if ( userId ) { 
+      filter = { _id:deleteId, userId: { $in: ["GLOBAL", userId] } };
+    }
+    await this.mongoDb.collection(entity).deleteOne(filter);
   }
 
   /**

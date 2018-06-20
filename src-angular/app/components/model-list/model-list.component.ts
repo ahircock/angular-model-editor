@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModelDataService, ModelData  } from '../../services/model-data/model-data.service';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-model-list',
@@ -11,9 +13,20 @@ export class ModelListComponent implements OnInit {
   public models: ModelData[];
   public selectedModelIndex: number;
 
-  constructor( private modelDataService: ModelDataService ) { }
+  constructor( 
+    private router: Router,
+    private modelDataService: ModelDataService,
+    private userService: UserService
+  ) { }
 
   async ngOnInit() {
+
+    // if not logged in, then go to login page
+    if ( !this.userService.isLoggedIn() ) {
+      this.router.navigateByUrl("/login");
+      return;
+    }
+
     this.models = await this.modelDataService.getAllTemplates();
 
     // select the first one

@@ -89,4 +89,12 @@ export interface ForceModelDBData {
 export interface UserDBData {
     userId: string
 }
+
+/**
+ * Structure of error codes that are thrown by this method
+ */
+export interface DBErrorData {
+    errorCode: number,
+    errorMessage: string
+}
   

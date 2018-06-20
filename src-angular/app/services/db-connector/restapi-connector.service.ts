@@ -20,96 +20,48 @@ export class RestAPIConnector extends DbConnectService {
     ) { super() }
 
     async getRules(): Promise<RuleDBData[]>{
-        try {
-            return ( this.httpClient.get(this.apiUrlRules, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData[]>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        return ( this.httpClient.get(this.apiUrlRules, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData[]>);
     }
     async createRule( newRule: RuleDBData ): Promise<RuleDBData> {
-        try {
-            return ( this.httpClient.post(this.apiUrlRules, newRule, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        return ( this.httpClient.post(this.apiUrlRules, newRule, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData>);
     }
     async updateRule( updateRule: RuleDBData ): Promise<RuleDBData> {
-        try {
-            let url = this.apiUrlRules + "/" + updateRule._id;
-            return ( this.httpClient.put(url, updateRule, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlRules + "/" + updateRule._id;
+        return ( this.httpClient.put(url, updateRule, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData>);
     }
     async deleteRule( deleteRule: RuleDBData ): Promise<void> {
-        try {
-            let url = this.apiUrlRules + "/" + deleteRule._id;
-            this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlRules + "/" + deleteRule._id;
+        this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
     }
 
     async getModels(): Promise<ModelDBData[]> {
-        try {
-            return ( this.httpClient.get(this.apiUrlModels, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ModelDBData[]>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        return ( this.httpClient.get(this.apiUrlModels, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ModelDBData[]>);
     }
     async createModel( newModel: ModelDBData ): Promise<ModelDBData> {
-        try {
-            return ( this.httpClient.post(this.apiUrlModels, newModel, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ModelDBData>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        return ( this.httpClient.post(this.apiUrlModels, newModel, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ModelDBData>);
     }
     async updateModel( updateModel: ModelDBData ): Promise<ModelDBData> {
-        try {
-            let url = this.apiUrlModels + "/" + updateModel._id;
-            return ( this.httpClient.put(url, updateModel, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ModelDBData>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlModels + "/" + updateModel._id;
+        return ( this.httpClient.put(url, updateModel, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ModelDBData>);
     }
     async deleteModel( deleteModel: ModelDBData ): Promise<void> {
-        try {
-            let url = this.apiUrlModels + "/" + deleteModel._id;
-            this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlModels + "/" + deleteModel._id;
+        this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
     }
 
     async getForces(): Promise<ForceDBData[]> {
-        try {
-            return ( this.httpClient.get(this.apiUrlForces, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ForceDBData[]>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        return ( this.httpClient.get(this.apiUrlForces, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ForceDBData[]>);
     }
     async createForce( newForce: ForceDBData ): Promise<ForceDBData> {
-        try {
-            return ( this.httpClient.post(this.apiUrlForces, newForce, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ForceDBData>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        return ( this.httpClient.post(this.apiUrlForces, newForce, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ForceDBData>);
     }
     async updateForce( updateForce: ForceDBData ): Promise<ForceDBData> {
-        try {
-            let url = this.apiUrlForces + "/" + updateForce._id;
-            return ( this.httpClient.put(url, updateForce, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ForceDBData>);
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlForces + "/" + updateForce._id;
+        return ( this.httpClient.put(url, updateForce, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ForceDBData>);
     }
     async deleteForce( deleteForce: ForceDBData ): Promise<void> {
-        try {
-            let url = this.apiUrlForces + "/" + deleteForce._id;
-            this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlForces + "/" + deleteForce._id;
+        this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
     }
 
     /**
@@ -117,33 +69,24 @@ export class RestAPIConnector extends DbConnectService {
      * @param prefix this is an optional  prefix to add to the beginning of the ID. Defaulted to blank
      */
     async getNextId( prefix: string ): Promise<string> {
-        try {
-            let url = this.apiUrlGetNextId;
-            let nextId = await this.httpClient.get(url, {headers: {"sessionid": this.sessionid}}).toPromise();
-            return prefix + nextId;
-        } catch (err) {
-            console.log(err.toString());
-        }
+        let url = this.apiUrlGetNextId;
+        let nextId = await this.httpClient.get(url, {headers: {"sessionid": this.sessionid}}).toPromise()
+                .catch( (reason) => { throw reason });
+        return prefix + nextId;
     }
 
     async login( email: string, password: string ): Promise<void> {
-        try {
-            let userInfo = { email: email, password: password };
-            let authResult = await ( this.httpClient.post(this.apiUrlLogin, userInfo).toPromise() as Promise<AuthResult>);
-            this.sessionid = authResult.sessionid;
-        } catch (err) {
-            throw(err.error);
-        }
+        let userInfo = { email: email, password: password };
+        let authResult = await this.httpClient.post(this.apiUrlLogin, userInfo).toPromise()
+            .catch( (reason) => { throw reason });
+        this.sessionid = (authResult as AuthResult).sessionid;
     }
 
     async signup( email: string, password: string ): Promise<void> {
-        try {
-            let userInfo = { email: email, password: password };
-            let authResult = await ( this.httpClient.post(this.apiUrlSignup, userInfo).toPromise() as Promise<AuthResult>);
-            this.sessionid = authResult.sessionid;
-        } catch (err) {
-            throw(err.error);
-        }
+        let userInfo = { email: email, password: password };
+        let authResult = await this.httpClient.post(this.apiUrlSignup, userInfo).toPromise()
+            .catch( (reason) => { throw reason });
+        this.sessionid = (authResult as AuthResult).sessionid;
     }
 
 }

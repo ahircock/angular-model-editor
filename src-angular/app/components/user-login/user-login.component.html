@@ -15,6 +15,6 @@
       name="password" 
       placeholder="Enter your password"
       (keyup.enter)="login(); $event.target.blur();">
-  <label class="input-title font-normal" for="confirm-password">Confirm Password</label>
+  <div *ngIf="errorText" class="error-text font-normal">{{errorText}}</div>
   <div class="action-button box-mid-hover font-normal" (click)="login()">Login</div>
 </div>

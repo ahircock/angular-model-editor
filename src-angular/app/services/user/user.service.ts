@@ -11,24 +11,16 @@ export class UserService {
     private dbConnectService: DbConnectService
   ) { }
 
-  async login( email: string, password: string ): Promise<boolean> {
-    try {
-      await this.dbConnectService.login(email, password );
-      this.userName = email;
-      return true;
-    } catch {
-      return false;
-    }
+  async login( email: string, password: string ): Promise<void> {
+    await this.dbConnectService.login(email, password )
+        .catch((reason)=> { throw reason });
+    this.userName = email;
   }
 
-  async signup( email: string, password: string ): Promise<boolean> {
-    try {
-      await this.dbConnectService.signup(email, password );
-      this.userName = email;
-      return true;
-    } catch {
-      return false;
-    }
+  async signup( email: string, password: string ): Promise<void> {
+    await this.dbConnectService.signup(email, password )
+        .catch((reason)=> { throw reason });
+    this.userName = email;
   }
 
   async logout() {

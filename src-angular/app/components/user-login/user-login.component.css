@@ -12,3 +12,7 @@ div.layout-box {
   border-radius: 4px;
   padding: 4px;
 }
+.error-text {
+  color: red;
+  margin-block-end: 16px;
+}

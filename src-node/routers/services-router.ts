@@ -1,5 +1,6 @@
 import { Router, Request, Response } from 'express';
 import { ServiceManager } from '../service-manager';
+import { HttpError } from '../utilities/http-error.class';
 import { MongoDbService } from '../services/mongo-db-service';
 
 // create an express router
@@ -12,7 +13,8 @@ router.get('/getnextid', async (req: Request, res: Response ) => {
     let id = await dbService.getNextId();
     res.status(200).send(id);
 } catch (err) {
-    res.status(500).send(err.toString()); 
+    let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+    res.status(500).send(httpError);
 }
 } );
 

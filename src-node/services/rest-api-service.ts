@@ -1,4 +1,5 @@
 import { ServiceManager } from '../service-manager';
+import { HttpError } from '../utilities/http-error.class';
 import { MongoDbService } from '../services/mongo-db-service';
 import { Request, Response } from 'express';
 
@@ -16,7 +17,8 @@ export class RestApiService {
             let docs = await this.dbService.getAllDocuments( entity );
             res.status(200).send(docs);
         } catch (err) {
-            res.status(500).send(err.toString()); 
+            let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+            res.status(500).send(httpError);
         }
         
     };
@@ -31,7 +33,8 @@ export class RestApiService {
             let docs = await this.dbService.getDocumentById( entity, getId );
             res.status(200).send(docs);
         } catch (err) {
-            res.status(500).send(err.toString()); 
+            let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+            res.status(500).send(httpError);
         }
         
     };
@@ -46,7 +49,8 @@ export class RestApiService {
             let newDoc = await this.dbService.createDocument( entity, passedDoc);
             res.status(200).send(newDoc);
         } catch (err) {
-            res.status(500).send(err.toString()); 
+            let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+            res.status(500).send(httpError);
         }
         
     };
@@ -61,7 +65,8 @@ export class RestApiService {
             let updatedDoc = await this.dbService.updateDocment(entity, passedDoc);
             res.status(200).send(updatedDoc);
         } catch (err) {
-            res.status(500).send(err.toString()); 
+            let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+            res.status(500).send(httpError);
         }
         
     };
@@ -76,7 +81,8 @@ export class RestApiService {
             let updatedDoc = await this.dbService.deleteDocument(entity, deleteId);
             res.status(200).send(updatedDoc);
         } catch (err) {
-            res.status(500).send(err.toString()); 
+            let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+            res.status(500).send(httpError);
         }
         
     };

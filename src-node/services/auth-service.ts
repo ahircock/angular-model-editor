@@ -1,5 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import { ServiceManager } from '../service-manager';
+import { HttpError } from '../utilities/http-error.class'
 import { MongoDbService } from '../services/mongo-db-service';
 import { Request, Response, NextFunction } from 'express';
 
@@ -22,13 +23,15 @@ export class AuthService {
         // make sure that the user exists
         let userData: any = await this.dbService.getDocumentById("users", userEmail )
         if ( !userData ) {
-            res.status(401).send({ errCode: 301, error: "user does not exist" });
+            let httpError: HttpError = { errorCode: 301, errorMessage: "user does not exist" };
+            res.status(401).send(httpError);
             return;
         }
 
         // make sure that the user provided a valid password
         if ( !this.validateUserAndPassword(userData, userPassword) ) {
-            res.status(401).send({ errCode: 302, error: "invalid password" });
+            let httpError: HttpError = { errorCode: 302, errorMessage: "invalid password" };
+            res.status(401).send(httpError);
             return;
         }
 
@@ -52,7 +55,8 @@ export class AuthService {
         // make sure that the user does not exist
         let userData: any = await this.dbService.getDocumentById("users", userEmail )
         if ( userData ) {
-            res.status(401).send({ errCode: 201, error: "email already exists" });
+            let httpError: HttpError = { errorCode: 201, errorMessage: "email already exists" };
+            res.status(401).send(httpError);
             return;
         }
 
@@ -79,7 +83,8 @@ export class AuthService {
             // make sure that the sessionid was provided in the header
             let sessionId = ( req.headers.sessionid as string );
             if ( !sessionId ) {
-                res.status(401).send({ errCode: 101, error: "no sessionid provided in request header" });
+                let httpError: HttpError = { errorCode: 101, errorMessage: "no sessionid provided in request header" };
+                res.status(401).send(httpError);
             }
 
             // validate that the sessionid is ok (throws an exception if invalid)
@@ -89,7 +94,8 @@ export class AuthService {
             next();
 
         } catch (err) {
-            res.status(401).send({ errCode: 102, error: "invalid sessionid provided in request header, use login to get a sessionid" });
+            let httpError: HttpError = { errorCode: 102, errorMessage: "invalid sessionid provided in request header, use login to get a sessionid" };
+            res.status(401).send(httpError);
         }
     }
 

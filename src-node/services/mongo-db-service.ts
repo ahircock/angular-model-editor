@@ -66,11 +66,15 @@ export class MongoDbService {
     await this.connect();
     let filter: any = { _id: updateDoc._id };
     if ( userId ) { 
-      filter = { _id:updateDoc._id, userId: { $in: ["GLOBAL", userId] } };
+      filter = { _id:updateDoc._id, userId: userId };
       updateDoc.userId = userId;
     }
-    await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc );
-    return updateDoc;
+    let result = await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc );
+    if ( result.value ) {
+      return result.value;
+    } else {
+      throw new Error("no document found with a matching _id")
+    }
   }
 
   /**
@@ -97,9 +101,12 @@ export class MongoDbService {
     await this.connect();
     let filter: any = { _id: deleteId };
     if ( userId ) { 
-      filter = { _id:deleteId, userId: { $in: ["GLOBAL", userId] } };
+      filter = { _id:deleteId, userId: userId };
     }
-    await this.mongoDb.collection(entity).deleteOne(filter);
+    let result = await this.mongoDb.collection(entity).deleteOne(filter);
+    if ( result.deletedCount == 0 ) {
+      throw new Error("no document found with a matching _id")
+    }
   }
 
   /**

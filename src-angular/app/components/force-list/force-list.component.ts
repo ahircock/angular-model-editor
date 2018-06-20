@@ -23,6 +23,7 @@ export class ForceListComponent implements OnInit {
     // if not logged in, then go to login page
     if ( !this.userService.isLoggedIn() ) {
       this.router.navigateByUrl("/login");
+      return;
     }
 
     this.forces = await this.forceDataService.getAllForces();

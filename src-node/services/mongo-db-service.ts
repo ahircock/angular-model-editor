@@ -69,7 +69,7 @@ export class MongoDbService {
       filter = { _id:updateDoc._id, userId: userId };
       updateDoc.userId = userId;
     }
-    let result = await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc );
+    let result = await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc, {returnOriginal: false} );
     if ( result.value ) {
       return result.value;
     } else {

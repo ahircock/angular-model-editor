@@ -15,6 +15,7 @@ export interface ModelData {
   HP: number;
   specialRules: SpecialRuleData[];
   actions: ModelActionData[];
+  global: boolean;
 }
 
 export interface ModelActionData {
@@ -458,8 +459,12 @@ export class ModelDataService {
       ARM: modelDBData.ARM,
       HP: modelDBData.HP,
       specialRules: [],
-      actions: []
+      actions: [],
+      global: false
     }
+
+    // if global
+    if ( modelDBData.userId == "GLOBAL" ) { modelData.global = true; }
 
     // copy over the special rules
     for ( let ruleId of modelDBData.specialRuleIds ) {

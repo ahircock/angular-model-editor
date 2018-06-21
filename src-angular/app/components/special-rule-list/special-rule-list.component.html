@@ -26,10 +26,11 @@
           (click)="selectRule(ruleIndex)">
         <div class="rule-text">
           <span class="font-title">{{rule.ruleName}}</span> ({{rule.ruleCost}} points) <span *ngIf="ruleType == 'special'">[{{rule.ruleAP}} AP]</span><br>
+          <span *ngIf="!rule.global" class="font-italic">Custom<br></span>
           <span [innerHTML]="rule.ruleText"></span>
         </div>
         <div class="rule-button-band">
-          <div class="icon-button box-light-hover" (click)="deleteRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
+          <div *ngIf="!rule.global" class="icon-button box-light-hover" (click)="deleteRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
         </div>
       </div>
     </div>

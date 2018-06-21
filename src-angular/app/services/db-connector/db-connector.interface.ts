@@ -39,6 +39,7 @@ export interface RuleDBData {
     text: string;
     cost: number;
     AP: number;
+    userId?: string;
 }
 
 /**
@@ -56,6 +57,7 @@ export interface ModelDBData {
     HP: number;
     specialRuleIds: string[];
     actions: ModelActionDBData[];
+    userId?: string;
 }
 export interface ModelActionDBData {
     type: string;

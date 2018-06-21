@@ -8,6 +8,7 @@ export interface SpecialRuleData {
   ruleText: string;
   ruleCost: number;
   ruleAP: number;
+  global: boolean;
 }
 
 @Injectable()
@@ -151,9 +152,13 @@ export class SpecialRuleDataService {
       ruleName: ruleDBData.name,
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
-      ruleAP: ruleDBData.AP
+      ruleAP: ruleDBData.AP,
+      global: false
     }
 
+    // if this is global
+    if ( ruleDBData.userId == "GLOBAL" ) { ruleData.global = true; }
+    
     // copy optional parameters
     if ( typeof ruleDBData.AP !== "undefined" ) {
       ruleData.ruleAP = ruleDBData.AP;
@@ -177,7 +182,6 @@ export class SpecialRuleDataService {
       text: ruleData.ruleText,
       cost: ruleData.ruleCost,
       AP: ruleData.ruleAP
-
     };
 
 

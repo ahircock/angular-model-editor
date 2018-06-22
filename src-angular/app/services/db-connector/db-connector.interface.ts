@@ -34,12 +34,12 @@ export abstract class DbConnectService {
  */
 export interface RuleDBData {
     _id: string;
+    userId: string;
     type: string;
     name: string;
     text: string;
     cost: number;
     AP: number;
-    userId?: string;
 }
 
 /**
@@ -47,6 +47,7 @@ export interface RuleDBData {
  */
 export interface ModelDBData {
     _id: string;
+    userId: string;
     template: boolean,
     name: string;
     traits: string;
@@ -57,7 +58,6 @@ export interface ModelDBData {
     HP: number;
     specialRuleIds: string[];
     actions: ModelActionDBData[];
-    userId?: string;
 }
 export interface ModelActionDBData {
     type: string;
@@ -76,6 +76,7 @@ export interface ModelActionDBData {
  */
 export interface ForceDBData {
     _id: string,
+    userId: string,
     name: string,
     size: string,
     models: ForceModelDBData[]

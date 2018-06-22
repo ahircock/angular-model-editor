@@ -8,13 +8,15 @@ export interface SpecialRuleData {
   ruleText: string;
   ruleCost: number;
   ruleAP: number;
-  global: boolean;
+  editable: boolean;
 }
 
 @Injectable()
 export class SpecialRuleDataService {
 
   private ruleCache: SpecialRuleData[] = [];
+
+  private loggedInUserId: string = "";
 
   constructor(
     private dbConnectService: DbConnectService
@@ -90,7 +92,7 @@ export class SpecialRuleDataService {
     let newRuleId = await this.dbConnectService.getNextId("S");
 
     // prepare a new rule object
-    let newRuleDB: RuleDBData = { _id: newRuleId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
+    let newRuleDB: RuleDBData = { _id: newRuleId, userId: this.loggedInUserId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
 
     // add the new rule to the DB
     newRuleDB = await this.dbConnectService.createRule( newRuleDB );
@@ -153,12 +155,9 @@ export class SpecialRuleDataService {
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
       ruleAP: ruleDBData.AP,
-      global: false
+      editable: ruleDBData.userId == this.loggedInUserId ? true : false
     }
 
-    // if this is global
-    if ( ruleDBData.userId == "GLOBAL" ) { ruleData.global = true; }
-    
     // copy optional parameters
     if ( typeof ruleDBData.AP !== "undefined" ) {
       ruleData.ruleAP = ruleDBData.AP;
@@ -177,6 +176,7 @@ export class SpecialRuleDataService {
     // initialize the return data
     let ruleDBData: RuleDBData = {
       _id: ruleData._id,
+      userId: this.loggedInUserId,
       type: ruleData.ruleType,
       name: ruleData.ruleName,
       text: ruleData.ruleText,
@@ -219,9 +219,17 @@ export class SpecialRuleDataService {
   }
     
   /**
-   * This method should be called after login, in order to clear the cache
+   * This method should be called after logout
    */
-  public clearCache() {
+  public logout() {
     this.ruleCache = [];
+    this.loggedInUserId = "";
   }
+
+  /**
+   * This method should be called after login
+   */
+  public login(userId: string) {
+    this.loggedInUserId = userId;
+  }  
 }

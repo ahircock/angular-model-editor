@@ -14,7 +14,7 @@
 
   <!-- MODEL DETAILS -->
   <div class="right">
-    <app-model-details *ngIf="models && models[selectedModelIndex].global" [model]="models[selectedModelIndex]"></app-model-details>
-    <app-model-editor *ngIf="models && !models[selectedModelIndex].global" [model]="models[selectedModelIndex]" (updated)="modelDetailsChanged(selectedModelIndex)"></app-model-editor>
+    <app-model-details *ngIf="models && !models[selectedModelIndex].editable" [model]="models[selectedModelIndex]"></app-model-details>
+    <app-model-editor *ngIf="models && models[selectedModelIndex].editable" [model]="models[selectedModelIndex]" (updated)="modelDetailsChanged(selectedModelIndex)"></app-model-editor>
   </div>
 </div>

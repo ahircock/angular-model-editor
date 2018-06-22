@@ -15,7 +15,8 @@ export interface ForceData {
   modelCost: number,
   equipmentCost: number,
   models: ForceModelData[],
-  equipment: ForceEquipmentData[]
+  equipment: ForceEquipmentData[],
+  editable: boolean
 }
 export interface ForceModelData extends ModelData {
   count: number
@@ -42,6 +43,7 @@ export class ForceDataService {
    */
   private forceCache: ForceData[] = [];
 
+  private loggedInUserId: string = "";
 
   /**
    * This is the hardcoded list of force sizes, their names and point costs
@@ -112,7 +114,7 @@ export class ForceDataService {
     let newForceId = await this.dbConnectService.getNextId("F");
     
     // create a new force DB Object
-    let newForceDB: ForceDBData = { _id: newForceId, name:"New Force", size:"standard", models:[] };
+    let newForceDB: ForceDBData = { _id: newForceId, userId: this.loggedInUserId, name:"New Force", size:"standard", models:[] };
 
     // create the model in the database
     newForceDB = await this.dbConnectService.createForce( newForceDB );
@@ -179,7 +181,8 @@ export class ForceDataService {
       modelCost: 0,
       equipmentCost: 0,
       models: [],
-      equipment: []
+      equipment: [],
+      editable: forceDBData.userId == this.loggedInUserId ? true : false
     };
 
     // retrieve the model information from its service
@@ -222,6 +225,7 @@ export class ForceDataService {
 
     let forceDBData: ForceDBData = {
       _id: forceData._id,
+      userId: this.loggedInUserId,
       name: forceData.name,
       size: forceData.size,
       models: modelList
@@ -281,9 +285,17 @@ export class ForceDataService {
   }
 
   /**
-   * This method should be called after login, in order to clear the cache
+   * This method should be called after logout
    */
-  public clearCache() {
+  public logout() {
     this.forceCache = [];
-  } 
+    this.loggedInUserId = "";
+  }
+
+  /**
+   * This method should be called after login
+   */
+  public login(userId: string) {
+    this.loggedInUserId = userId;
+  }  
 }

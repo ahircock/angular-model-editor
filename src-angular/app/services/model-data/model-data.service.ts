@@ -15,7 +15,7 @@ export interface ModelData {
   HP: number;
   specialRules: SpecialRuleData[];
   actions: ModelActionData[];
-  global: boolean;
+  editable: boolean;
 }
 
 export interface ModelActionData {
@@ -39,6 +39,8 @@ export interface StatCost {
 export class ModelDataService {
 
   private modelCache: ModelData[] = [];
+
+  private loggedInUserId: string = "";
 
   // These constant arrays are used to calculate the total cost of a model, and can be displayed in dropdowns
   public BASE_COST = 10;
@@ -136,7 +138,7 @@ export class ModelDataService {
     let newModelId = await this.dbConnectService.getNextId("M");    
 
     // clone the "basic" model
-    let newModelDB: ModelDBData = { _id:newModelId, template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
+    let newModelDB: ModelDBData = { _id:newModelId, userId: this.loggedInUserId, template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
     let newAction: ModelActionDBData = { type: "MELEE", name: "NEW MELEE", traits: "", ONCE: false, AP:1, RNG:1, HIT:6, DMG:6, specialRuleIds:[] };
     newModelDB.actions.push( newAction );
 
@@ -401,6 +403,7 @@ export class ModelDataService {
     // initialize header
     let modelDBData: ModelDBData = {
       _id: modelData._id,
+      userId: this.loggedInUserId,
       template: modelData.template,
       name: modelData.name,
       traits: modelData.traits,
@@ -460,11 +463,8 @@ export class ModelDataService {
       HP: modelDBData.HP,
       specialRules: [],
       actions: [],
-      global: false
+      editable: modelDBData.userId == this.loggedInUserId ? true : false
     }
-
-    // if global
-    if ( modelDBData.userId == "GLOBAL" ) { modelData.global = true; }
 
     // copy over the special rules
     for ( let ruleId of modelDBData.specialRuleIds ) {
@@ -517,10 +517,17 @@ export class ModelDataService {
   }
   
   /**
-   * This method should be called after login, in order to clear the cache
+   * This method should be called after logout
    */
-  public clearCache() {
+  public logout() {
     this.modelCache = [];
+    this.loggedInUserId = "";
   }
-  
+
+  /**
+   * This method should be called after login
+   */
+  public login(userId: string) {
+    this.loggedInUserId = userId;
+  }  
 }

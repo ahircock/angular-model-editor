@@ -74,12 +74,16 @@ export class SpecialRuleListComponent implements OnInit {
     this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == newRule._id );
   }
 
-  async updateRuleData( ruleIndex: number ) {
-    let updatedRule = await this.specialRuleDataService.updateRule( this.ruleData[ruleIndex]);
+  async ruleDetailsUpdated( ruleIndex: number ) {
+    
+    // remember the selected id
+    let previouslySelectedId = this.ruleData[ruleIndex]._id;
+
+    // reload the list
     await this.loadRuleList();
 
     // select the updated rule from the list
-    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == updatedRule._id );
+    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == previouslySelectedId );
   }
 
   async deleteRule( ruleIndex: number ) {

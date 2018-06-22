@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { ModelData, ModelDataService, ModelActionData } from '../../services/model-data/model-data.service';
-import { SpecialRuleData, SpecialRuleDataService } from '../../services/special-rule-data/special-rule-data.service';
+import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
+import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 
 interface StatCost {
   stat: number;
@@ -20,10 +18,7 @@ export class ModelEditorComponent implements OnInit {
   @Output() updated: EventEmitter<void> = new EventEmitter();
 
   constructor( 
-    private location: Location,
-    private route: ActivatedRoute,
-    private modelDataService: ModelDataService,
-    private specialRuleDataService: SpecialRuleDataService
+    private modelDataService: ModelDataService
    ) { }
 
   async ngOnInit() {

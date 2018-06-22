@@ -1,0 +1,25 @@
+/* RULE EDITOR */
+div.rule-editor .rule-name {
+  margin-bottom: 8px;
+}
+div.rule-editor .rule-cost {
+  margin-bottom: 8px;
+  display: inline-block;
+}
+div.rule-editor .rule-cost input {
+  width: 32px;
+  margin-right: 8px;
+}
+div.rule-editor .rule-ap {
+  display: inline-block;
+  margin-left: 64px;
+  margin-bottom: 8px;
+}
+div.rule-editor .rule-ap input {
+  width: 32px;
+  margin-right: 8px;
+}
+div.rule-editor .rule-text textarea {
+  height: 256px;
+  margin-right: 8px;    
+}

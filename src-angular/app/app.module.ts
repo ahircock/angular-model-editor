@@ -27,6 +27,7 @@ import { ForceDetailsComponent } from './components/force-details/force-details.
 import { ForcePrintComponent } from './components/force-print/force-print.component';
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { UserSignupComponent } from './components/user-signup/user-signup.component';
+import { SpecialRuleEditorComponent } from './components/special-rule-editor/special-rule-editor.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { UserSignupComponent } from './components/user-signup/user-signup.compon
     ForceDetailsComponent,
     ForcePrintComponent,
     UserLoginComponent,
-    UserSignupComponent
+    UserSignupComponent,
+    SpecialRuleEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,35 @@
+<div class="rule-editor" *ngIf="rule">
+  <div *ngIf="rule.editable">
+    <div class="rule-name"><input class="input-light font-title-big" 
+      [(ngModel)]="rule.ruleName" 
+      (focus)="$event.target.select(); origText = rule.ruleName" 
+      (blur)="updateRuleData()" 
+      (keyup.enter)="$event.target.blur()" 
+      (keyup.escape)="rule.ruleName = origText; $event.target.blur();"></div>
+    <div class="rule-cost font-normal"><input class="input-light font-normal" 
+      [(ngModel)]="rule.ruleCost" 
+      (focus)="$event.target.select(); origText = rule.ruleCost" 
+      (blur)="updateRuleData()" 
+      (keyup.enter)="$event.target.blur()" 
+      (keyup.escape)="rule.ruleCost = origText; $event.target.blur();">Points</div>
+    <div *ngIf="rule.ruleType == 'special'" class="rule-ap font-normal"><input class="input-light font-normal" 
+      [(ngModel)]="rule.ruleCost" 
+      (focus)="$event.target.select(); origText = rule.ruleCost" 
+      (blur)="updateRuleData()" 
+      (keyup.enter)="$event.target.blur()" 
+      (keyup.escape)="rule.ruleCost = origText; $event.target.blur();">AP</div>
+    <div class="rule-text"><textarea class="input-light font-normal" 
+      [(ngModel)]="rule.ruleText" 
+      (focus)="$event.target.select(); origText = rule.ruleText" 
+      (blur)="updateRuleData()" 
+      (keyup.control.enter)="$event.target.blur()" 
+      (keyup.escape)="rule.ruleText = origText; $event.target.blur();"></textarea></div>
+  </div>
+  <div *ngIf="!rule.editable">
+      <div class="rule-name font-title-big">{{rule.ruleName}}</div>
+      <div class="rule-cost font-normal">{{rule.ruleCost}} Points</div>
+      <div *ngIf="rule.ruleType == 'special'" class="rule-ap font-normal">{{rule.ruleCost}} AP</div>
+      <div class="rule-text font-normal">{{rule.ruleText}}</div>
+  
+  </div>
+</div>

@@ -23,21 +23,33 @@ export class UserService {
     
     // store the name of the user
     this.userName = email;
+
+    // notify all of the data services
+    this.forceDataService.login(email);
+    this.modelDataService.login(email);
+    this.specialRuleDataService.login(email);
   }
 
   async signup( email: string, password: string ): Promise<void> {
     await this.dbConnectService.signup(email, password )
         .catch((reason)=> { throw reason });
+    
+    // store the name of the user
     this.userName = email;
+
+    // notify all of the data services
+    this.forceDataService.login(email);
+    this.modelDataService.login(email);
+    this.specialRuleDataService.login(email);
   }
 
   async logout() {
     this.userName = "";
 
-    // clear all of the data caches
-    this.forceDataService.clearCache();
-    this.modelDataService.clearCache();
-    this.specialRuleDataService.clearCache();
+    // notify all of the data services
+    this.forceDataService.logout();
+    this.modelDataService.logout();
+    this.specialRuleDataService.logout();
   }
 
   public isLoggedIn(): boolean {

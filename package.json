@@ -5,12 +5,11 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "start-dev-ng": "ng serve",
-    "start-dev-node": "nodemon --inspect --watch dist ./dist/server.js",
+    "start-dev-node": "tsc -w -p src-node | nodemon --inspect --watch dist ./dist/server.js",
     "heroku-postbuild": "npm run build",
     "build": "npm run build-ng && npm run build-node",
     "build-ng": "ng build -prod",
     "build-node": "tsc -p src-node",
-    "build-dev-node": "tsc -w -p src-node",
     "ng": "ng",
     "test": "ng test",
     "lint": "ng lint",

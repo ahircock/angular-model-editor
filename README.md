@@ -5,17 +5,18 @@ Each of these is a separate WATCH process and will not stop. So you need 3 diffe
 Alternatively, you can use Visual Studio Code's "Tasks / Run Tasks" feature to launch these three processes
 
 ```
-npm run build-dev-node
 npm run start-dev-node
 npm run start-dev-ng
 ```
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+You can call the API calls directly (for testing) by opening `http://localhost:3000/`
+
 
 ## Debug development
 
-Assume you are using Visual Studio Code
-If you want to debug the angular client,  
+Assume you are using Visual Studio Code.
+
 
 ## Build production 
 
@@ -25,17 +26,6 @@ In order to build a production version, do the following
 npm run build
 ```
 The build artifacts will be stored in the `dist/` directory.
-
-Additionally, a production version will be built every time you 
-install the npm dependencies (such as after cloning the GIT 
-repository)
-
-```
-npm install
-```
-
-
-## Run production
 
 Once it is built, you can run a production environment by doing the following
 

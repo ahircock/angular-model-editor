@@ -4,13 +4,13 @@
         {
             "type": "node",
             "request": "attach",
-            "name": "Attach to node server",
+            "name": "Debug node server",
             "port": 9229
         },
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost:4200",
+            "name": "Launch Chrome and debug Angular",
             "url": "http://localhost:4200",
             "webRoot": "${workspaceFolder}"
         }

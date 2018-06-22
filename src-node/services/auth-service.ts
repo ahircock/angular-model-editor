@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+import * as bcrypt from 'bcrypt';
 import { ServiceManager } from '../service-manager';
 import { HttpError } from '../utilities/http-error.class'
 import { MongoDbService } from '../services/mongo-db-service';
@@ -10,6 +11,7 @@ export class AuthService {
     private dbService: MongoDbService = ServiceManager.getService("db-service");
 
     private JWT_SECRET = process.env.JWT_SECRET || "jwt-encryption-secret";
+    private BCRYPT_SALT_ROUNDS = 10;
     
     /**
      * Express RequestHandler to handle login requests
@@ -29,7 +31,8 @@ export class AuthService {
         }
 
         // make sure that the user provided a valid password
-        if ( !this.validateUserAndPassword(userData, userPassword) ) {
+        let validPassword = await this.validateUserAndPassword(userData, userPassword);
+        if ( !validPassword ) {
             let httpError: HttpError = { errorCode: 302, errorMessage: "invalid password" };
             res.status(401).send(httpError);
             return;
@@ -60,8 +63,11 @@ export class AuthService {
             return;
         }
 
+        // encrypt the password
+        let encryptedPassword = await bcrypt.hash(userPassword, this.BCRYPT_SALT_ROUNDS );
+
         // create a new user
-        let newUser: UserDBData = { _id: userEmail, userPasswordEncrypted: userPassword };
+        let newUser: UserDBData = { _id: userEmail, userPasswordEncrypted: encryptedPassword };
         await this.dbService.createDocument("users", newUser );
 
         // create a JWT token that will be sent back to the client
@@ -108,8 +114,9 @@ export class AuthService {
      * @param userData 
      * @param password 
      */
-    private validateUserAndPassword( userData: UserDBData, password: string ): boolean {
-        if ( userData.userPasswordEncrypted == password ) {
+    private async validateUserAndPassword( userData: UserDBData, password: string ): Promise<boolean> {
+        let match = await bcrypt.compare(password, userData.userPasswordEncrypted);
+        if ( match ) {
             return true;
         } else {
             return false;

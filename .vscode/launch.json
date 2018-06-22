@@ -2,24 +2,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
-            "request": "launch",
-            "name": "Launch Chrome against localhost:3000",
-            "url": "http://localhost:3000",
-            "webRoot": "${workspaceFolder}"
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to node server",
+            "port": 9229
         },
         {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost:4200",
             "url": "http://localhost:4200",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "type": "chrome",
-            "request": "attach",
-            "name": "Attach to Chrome",
-            "port": 9222,
             "webRoot": "${workspaceFolder}"
         }
     ]

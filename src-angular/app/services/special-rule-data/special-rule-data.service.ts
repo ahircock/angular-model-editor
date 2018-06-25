@@ -141,6 +141,36 @@ export class SpecialRuleDataService {
   }
 
   /**
+   * Clone an existing rule. 
+   */
+  async cloneRule( cloneRule: SpecialRuleData ): Promise<SpecialRuleData> {
+    
+    // generate a new ID for the cloned rule
+    let newRuleId = await this.dbConnectService.getNextId("S");
+
+    // prepare a new rule object
+    let newRuleDB: RuleDBData = { 
+      _id: newRuleId, 
+      userId: this.loggedInUserId, 
+      type: cloneRule.ruleType, 
+      name: cloneRule.ruleName + " (COPY)", 
+      text: cloneRule.ruleText, 
+      cost: cloneRule.ruleCost, 
+      AP: cloneRule.ruleAP 
+    };
+
+    // add the new rule to the DB
+    newRuleDB = await this.dbConnectService.createRule( newRuleDB );
+
+    // add the new rule to the cache
+    let newRule: SpecialRuleData = this.convertDBToRuleData( newRuleDB );
+    this.ruleCache.push(newRule);
+
+    // return the new force
+    return newRule;
+  }
+
+  /**
    * Converts a DB record into the externally-exposed SpecialRuleData entity. 
    * Returns the converted record
    * @param ruleDBData the DB data to be converted

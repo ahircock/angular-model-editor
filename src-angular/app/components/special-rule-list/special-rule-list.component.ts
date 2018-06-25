@@ -91,5 +91,13 @@ export class SpecialRuleListComponent implements OnInit {
     await this.loadRuleList();
   }
 
+  async cloneRule(ruleIndex: number) {
+    let newRule: SpecialRuleData = await this.specialRuleDataService.cloneRule( this.ruleData[ruleIndex]);
+    await this.loadRuleList();
+
+    // select the new rule from the list
+    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == newRule._id );
+  }
+
 
 }

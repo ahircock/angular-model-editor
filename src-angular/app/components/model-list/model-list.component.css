@@ -25,8 +25,7 @@ div.create-model-button {
     height: 50px;
     border-radius: 4px;
     position: relative;
-    margin-top: 16px;
-    margin-bottom: 16px;
+    margin: 16px 8px 8px 8px;
     box-sizing: border-box;
     padding: 8px;
 }

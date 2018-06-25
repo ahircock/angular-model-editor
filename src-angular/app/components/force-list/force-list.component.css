@@ -1,17 +1,41 @@
-div.force-action {
-    height: 136px; width: 212px;
+/* multi-column display */
+div.column-section {
+    position: relative;
+    top: 0; bottom: 0;
+    display: flex;
+    height: 100%;
+}
+div.column-section .left {
+    flex: 1 0 256px;
+    height: 100%;
+    overflow-y: auto;    
+}
+div.column-section .right {
+    flex: 0 0 551px;
+    padding: 16px;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;    
+}
+
+/* NEW FORCE BUTTON */
+div.create-force-button {
+    display: inline-block;
+    height: 50px;
     border-radius: 4px;
     position: relative;
-    margin: 8px;
-    text-align: center;
+    margin: 16px 8px 8px 8px;
     box-sizing: border-box;
+    padding: 8px;
 }
-div.force-action img {
-    width: 48px;
-    margin-top: 28px;
+div.create-force-button img {
+    width: 32px;
+    float: left;
 }
-div.force-action div {
-
+div.create-force-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
 }
 
 div.force-list {

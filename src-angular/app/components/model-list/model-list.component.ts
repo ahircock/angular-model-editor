@@ -47,4 +47,13 @@ export class ModelListComponent implements OnInit {
     let updatedModel = await this.modelDataService.getModelById( this.models[modelIndex]._id );
     this.models[modelIndex] = updatedModel;    
   }
+
+  async newModelClick() {
+    let newModel: ModelData = await this.modelDataService.createTemplate();
+    await this.refreshData();
+
+    // select the new rule from the list
+    this.selectedModelIndex = this.models.findIndex( element => element._id == newModel._id );
+
+  }
 }

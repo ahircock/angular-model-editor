@@ -19,6 +19,27 @@ div.column-section .right {
     overflow-y: auto;    
 }
 
+/* NEW MODEL BUTTON */
+div.create-model-button {
+    display: inline-block;
+    height: 50px;
+    border-radius: 4px;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+div.create-model-button img {
+    width: 32px;
+    float: left;
+}
+div.create-model-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
+}
+
+
 /* model list */
 div.model-list {
     display: flex;

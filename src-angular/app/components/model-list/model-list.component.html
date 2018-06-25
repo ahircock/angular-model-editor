@@ -2,6 +2,13 @@
     
   <!-- MODEL LIST -->
   <div class="left">
+
+    <!-- CREATE NEW MODEL BUTTON -->
+    <div class="create-model-button box-light-hover font-title" (click)="newModelClick();">
+      <img src="/assets/icons/icon-outline-plus-128.png">
+      <div class="button-text">New Model</div>
+    </div>
+
     <div *ngIf="models" class="model-list">
       <div *ngFor="let model of models; index as modelIndex" 
         (click)="onSelect(modelIndex)"

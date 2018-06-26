@@ -66,4 +66,9 @@ export class ModelTileComponent implements OnInit {
     this.change.emit();
   }
 
+  async deleteTemplate() {
+    await this.modelDataService.deleteModel( this.model );
+    this.change.emit();
+  }
+
 }

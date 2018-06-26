@@ -7,7 +7,7 @@ div.rule-editor .rule-cost {
   display: inline-block;
 }
 div.rule-editor .rule-cost input {
-  width: 32px;
+  width: 48px;
   margin-right: 8px;
 }
 div.rule-editor .rule-ap {
@@ -16,7 +16,7 @@ div.rule-editor .rule-ap {
   margin-bottom: 8px;
 }
 div.rule-editor .rule-ap input {
-  width: 32px;
+  width: 48px;
   margin-right: 8px;
 }
 div.rule-editor .rule-text textarea {

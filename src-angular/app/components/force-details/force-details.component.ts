@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data/force-data.service';
+import { UserService } from '../../services/user/user.service'
 import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
 
 @Component({
@@ -23,11 +24,18 @@ export class ForceDetailsComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private modelDataService: ModelDataService,
-    private forceDataService: ForceDataService
+    private forceDataService: ForceDataService,
+    private userService: UserService
   ) { }
 
   async ngOnInit() {
     
+    // if not logged in, then go to login page
+    if ( !this.userService.isLoggedIn() ) {
+      this.router.navigateByUrl("/login");
+      return;
+    }
+
     // load the forceData object
     let forceId = this.activatedRoute.snapshot.paramMap.get("id");
     this.force = await this.forceDataService.getForceById(forceId);

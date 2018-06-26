@@ -32,7 +32,7 @@ export class MongoDbService {
     await this.connect();
     let filter = {};
     if ( userId ) {
-      filter = { userId:{ $in: ["GLOBAL", userId] } };
+      filter = { userId:{ $in: ["GLOBAL", "global", userId] } };
     }
     return await this.mongoDb.collection(entity).find(filter).toArray();
   }
@@ -49,7 +49,7 @@ export class MongoDbService {
     await this.connect();
     let filter: any = { _id: getId };
     if ( userId ) { 
-      filter = { _id:getId, userId: { $in: ["GLOBAL", userId] } };
+      filter = { _id:getId, userId: { $in: ["GLOBAL", "global", userId] } };
     }
     return await this.mongoDb.collection(entity).findOne(filter);
   }

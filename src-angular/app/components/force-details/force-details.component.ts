@@ -85,7 +85,7 @@ export class ForceDetailsComponent implements OnInit {
 
   printForce() {
     // open the print page in a new window/tab
-    window.open("/forces/print/" + this.force._id);
+    this.router.navigateByUrl("/forces/print/" + this.force._id);
   }
 
 

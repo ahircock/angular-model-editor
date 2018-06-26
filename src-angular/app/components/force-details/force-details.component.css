@@ -65,29 +65,41 @@ div.column-section .right {
 }
 
 /* NEW MODEL BUTTON */
-div.force-action {
-    height: 82px; width: 264px;
+div.create-model-button-zone {
+    position: relative;
+    display: inline-block;
+    margin: 16px 8px 8px 16px;    
+}
+div.create-model-button {
+    display: inline-block;
+    height: 50px;
     border-radius: 4px;
     position: relative;
-    margin: 16px;
-    text-align: center;
     box-sizing: border-box;
+    padding: 8px;
 }
-img.create-model-button {
-    width: 48px;
-    margin-top: 4px;
+div.create-model-button img {
+    width: 32px;
+    float: left;
 }
-div.force-action .model-selector-box {
+div.create-model-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
+}
+
+/* MODEL DROPDOWN FOR NEW MODEL BUTTON */
+div.create-model-button-dropdown {
     position: absolute;
-    left: 268px; top: 0px;
+    top: 50px;
     width: 400px;
     z-index: 2;
 }
-div.force-action .model-selection {
+div.create-model-button-dropdown .model-selection {
     padding: 4px;
     height: 24px;
     border: none;    
 }
+
 div.model-image-box {
     position: absolute;
     width: 24px;

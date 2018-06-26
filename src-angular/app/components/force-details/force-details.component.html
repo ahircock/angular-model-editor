@@ -26,10 +26,12 @@
   <div class="left">
 
     <!-- ADD MODEL BUTTON -->
-    <div class="force-action box-light-hover font-title" (click)="newModelClick();">
-      <img class="create-model-button" src="/assets/icons/icon-outline-plus-128.png">
-      <div>New Model</div>
-      <div *ngIf="showModelListDropdown" class="model-selector-box box-white font-normal">
+    <div class="create-model-button-zone" (click)="newModelClick();">
+      <div class="create-model-button box-light-hover font-title">
+        <img src="/assets/icons/icon-outline-plus-128.png">
+        <div class="button-text">New Model</div>
+      </div>
+      <div *ngIf="showModelListDropdown" class="create-model-button-dropdown box-white font-normal">
         <div *ngFor="let model of modelTemplates" class="model-selection box-light-hover" (click)="addModel(model)">
           <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.picture"></div>
           <div class="model-text-box">{{model.name}} ({{model.cost}} Points)</div>

@@ -64,3 +64,11 @@ div.menu-item-image-right {
 div.menu-item-image-right img {
     height: 32px; width: 32px;
 }
+div.menu-item a:link {
+    text-decoration: none;
+    color: black;
+}
+div.menu-item a:visited {
+    text-decoration: none;
+    color: black;
+}

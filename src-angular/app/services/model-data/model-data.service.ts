@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { DbConnectService, ModelDBData, ModelActionDBData } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
+import { UserService } from '../user/user.service'
 
 export interface ModelData {
   _id: string;
@@ -42,6 +43,10 @@ export class ModelDataService {
 
   private loggedInUserId: string = "";
 
+  // these are events that other services can subscribe to
+  public modelUpdated: EventEmitter<ModelData> = new EventEmitter();
+  public modelDeleted: EventEmitter<ModelData> = new EventEmitter();
+
   // These constant arrays are used to calculate the total cost of a model, and can be displayed in dropdowns
   public BASE_COST = 10;
   public SPD_COST: StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:6} ];
@@ -55,8 +60,15 @@ export class ModelDataService {
 
   constructor(
     private specialRuleDataService: SpecialRuleDataService,
-    private dbConnectService: DbConnectService
-  ) { }
+    private dbConnectService: DbConnectService,
+    private userService: UserService
+  ) { 
+
+    // subscribe to events from the other services
+    this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
+    this.userService.logoutEvent.subscribe( () => this.logout() );
+    this.specialRuleDataService.ruleUpdated.subscribe( (updatedRule:any) => this.ruleUpdated(updatedRule) );
+  }
 
   /**
    * Returns the list of all models in the database, templates and otherwise
@@ -168,6 +180,9 @@ export class ModelDataService {
     let findModelIndex: number = this.modelCache.findIndex( element => element._id == newUpdateModel._id );
     this.modelCache[findModelIndex] = newUpdateModel;
 
+    // notify all subscribing services that change occurred
+    this.modelUpdated.emit(newUpdateModel);
+
     // return the updated model
     return newUpdateModel;
   }
@@ -229,6 +244,9 @@ export class ModelDataService {
     // remove the model from the cache
     let modelIndex: number = this.modelCache.findIndex( element => element._id == deleteModel._id );
     this.modelCache.splice( modelIndex, 1 );
+
+    // notify all subscribing services that change occurred
+    this.modelDeleted.emit(deleteModel);
   }
 
   /**
@@ -530,4 +548,41 @@ export class ModelDataService {
   public login(userId: string) {
     this.loggedInUserId = userId;
   }  
+
+  public ruleUpdated( updatedRule: SpecialRuleData) {
+
+    // loop through all models
+    for ( let model of this.modelCache ) {
+
+      // update different properties based on the rule type
+      switch ( updatedRule.ruleType ) {
+
+        case "model":
+
+          // if this rule is assigned to the model, update it
+          let cachedRule = model.specialRules.find( element => element._id == updatedRule._id );
+          if ( cachedRule ) {
+            Object.assign( cachedRule, updatedRule );
+            model.cost = this.calculateModelCost( model );
+            this.modelUpdated.emit(model);
+          }
+          break;
+
+        case "special":
+        case "attack":
+
+          // loop through all actions, if the special rule is used, update it
+          for ( let action of model.actions ) {
+            let cachedRule = action.specialRules.find( element => element._id == updatedRule._id );
+            if ( cachedRule ) {
+              Object.assign( cachedRule, updatedRule );
+              model.cost = this.calculateModelCost( model );
+              this.modelUpdated.emit(model);
+            }
+          }
+          break;
+      }
+    }
+  }
 }
+

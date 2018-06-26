@@ -1,8 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { DbConnectService } from '../db-connector/db-connector.interface'
-import { ForceDataService } from '../force-data/force-data.service'
-import { ModelDataService } from '../model-data/model-data.service'
-import { SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
 
 @Injectable()
 export class UserService {
@@ -10,11 +7,12 @@ export class UserService {
   public userName:string = "";
   public loginError: string = "";
 
+  // create event emitters that other services can subscribe to
+  public loginEvent: EventEmitter<string> = new EventEmitter();
+  public logoutEvent: EventEmitter<void> = new EventEmitter();
+
   constructor(
-    private dbConnectService: DbConnectService,
-    private forceDataService: ForceDataService,
-    private modelDataService: ModelDataService,
-    private specialRuleDataService: SpecialRuleDataService
+    private dbConnectService: DbConnectService
   ) { }
 
   async login( email: string, password: string ): Promise<void> {
@@ -25,9 +23,7 @@ export class UserService {
     this.userName = email;
 
     // notify all of the data services
-    this.forceDataService.login(email);
-    this.modelDataService.login(email);
-    this.specialRuleDataService.login(email);
+    this.loginEvent.emit(email);
   }
 
   async signup( email: string, password: string ): Promise<void> {
@@ -38,18 +34,14 @@ export class UserService {
     this.userName = email;
 
     // notify all of the data services
-    this.forceDataService.login(email);
-    this.modelDataService.login(email);
-    this.specialRuleDataService.login(email);
+    this.loginEvent.emit(email);
   }
 
   async logout() {
     this.userName = "";
 
     // notify all of the data services
-    this.forceDataService.logout();
-    this.modelDataService.logout();
-    this.specialRuleDataService.logout();
+    this.logoutEvent.emit();
   }
 
   public isLoggedIn(): boolean {

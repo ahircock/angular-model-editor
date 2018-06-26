@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DbConnectService, ForceDBData, ForceModelDBData } from '../db-connector/db-connector.interface';
 import { ModelData, ModelDataService } from '../model-data/model-data.service';
+import { UserService } from '../user/user.service'
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -56,8 +57,15 @@ export class ForceDataService {
 
   constructor(
     private modelDataService: ModelDataService,
-    private dbConnectService: DbConnectService
-  ) { }
+    private dbConnectService: DbConnectService,
+    private userService: UserService
+  ) { 
+
+    // subscribe to events from the other services
+    this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
+    this.userService.logoutEvent.subscribe( () => this.logout() );
+    this.modelDataService.modelUpdated.subscribe( (updatedModel:any) => this.modelUpdated(updatedModel) );
+  }
 
   /**
    * Returns the list of all forces in the database
@@ -88,7 +96,7 @@ export class ForceDataService {
     }
 
     // return the entry with the matching ID
-    return this.forceCache.find( element => element._id == id );    
+    return this.forceCache.find( element => element._id == id );
   }
 
   /**
@@ -278,7 +286,7 @@ export class ForceDataService {
     // load the rule objects form the DB
     let forceDBList: ForceDBData[] = await this.dbConnectService.getForces();
     
-    // convert everything to a SpecialRuleData and add it to the cache
+    // convert everything to a ForceData and add it to the cache
     for ( let forceDB of forceDBList ) {
       this.forceCache.push( await this.convertDBToForceData(forceDB) );
     }
@@ -298,4 +306,23 @@ export class ForceDataService {
   public login(userId: string) {
     this.loggedInUserId = userId;
   }  
+
+  /**
+   * This method will be called after a model is updated
+   * @param updatedModel the updated model
+   */
+  public modelUpdated( updatedModel: ModelData ) {
+
+    // loop through all forces
+    for ( let force of this.forceCache ) {
+
+      // if the model is assigned to this force, update it
+      let cachedModel = force.models.find( element => element._id == updatedModel._id );
+      if ( cachedModel ) {
+        Object.assign(cachedModel, updatedModel );
+
+        force.cost = this.calculateForceCost( force );
+      }
+    }
+  }
 }

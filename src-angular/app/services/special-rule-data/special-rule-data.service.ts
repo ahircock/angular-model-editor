@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { DbConnectService, RuleDBData } from '../db-connector/db-connector.interface';
+import { UserService } from '../user/user.service'
 
 export interface SpecialRuleData {
   _id: string;
@@ -18,9 +19,19 @@ export class SpecialRuleDataService {
 
   private loggedInUserId: string = "";
 
+  // these are events that other services can subscribe to
+  public ruleUpdated: EventEmitter<SpecialRuleData> = new EventEmitter();
+  public ruleDeleted: EventEmitter<SpecialRuleData> = new EventEmitter();
+
   constructor(
-    private dbConnectService: DbConnectService
-  ) { }
+    private dbConnectService: DbConnectService,
+    private userService: UserService
+  ) { 
+
+    // subscribe to events from the other services
+    this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
+    this.userService.logoutEvent.subscribe( () => this.logout() );
+  }
 
   /**
    * Retrieve all model special rules from the database. Returns a promise to provide an array of rules
@@ -122,6 +133,9 @@ export class SpecialRuleDataService {
     let findRuleIndex: number = this.ruleCache.findIndex( element => element._id == newUpdateRule._id );
     this.ruleCache[findRuleIndex] = newUpdateRule;
 
+    // notify all subscribers that the event has changed
+    this.ruleUpdated.emit(newUpdateRule);
+
     // return a deep copy of the updated record
     return newUpdateRule;
   }
@@ -138,6 +152,9 @@ export class SpecialRuleDataService {
     // find the model in the fake DB, and then remove it
     let findRuleIndex: number = this.ruleCache.findIndex( element => element._id == deleteRule._id );
     this.ruleCache.splice(findRuleIndex, 1 );
+
+    // notify all subscribers that the event has changed
+    this.ruleDeleted.emit(deleteRule);
   }
 
   /**

@@ -198,7 +198,7 @@ export class SpecialRuleDataService {
     let ruleData: SpecialRuleData = {
       _id: ruleDBData._id,
       ruleType: ruleDBData.type,
-      ruleName: ruleDBData.name,
+      ruleName: ruleDBData.name.toUpperCase(),
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
       ruleAP: ruleDBData.AP,

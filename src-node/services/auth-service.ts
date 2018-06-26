@@ -19,7 +19,7 @@ export class AuthService {
     public async loginHandler(req: Request, res: Response) {
 
         // get the email and password from the request body
-        const userEmail = req.body.email;
+        const userEmail: string = req.body.email.toLowerCase();
         const userPassword = req.body.password;
 
         // make sure that the user exists
@@ -52,7 +52,7 @@ export class AuthService {
     public async signupHandler(req: Request, res: Response) {
 
         // get the email and password from the request body
-        const userEmail = req.body.email;
+        const userEmail: string = req.body.email.toLowerCase();
         const userPassword = req.body.password;
 
         // make sure that the user does not exist

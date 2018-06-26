@@ -122,7 +122,7 @@ export class ForceDataService {
     let newForceId = await this.dbConnectService.getNextId("F");
     
     // create a new force DB Object
-    let newForceDB: ForceDBData = { _id: newForceId, userId: this.loggedInUserId, name:"New Force", size:"standard", models:[] };
+    let newForceDB: ForceDBData = { _id: newForceId, userId: this.loggedInUserId.toLowerCase(), name:"New Force", size:"standard", models:[] };
 
     // create the model in the database
     newForceDB = await this.dbConnectService.createForce( newForceDB );
@@ -190,7 +190,7 @@ export class ForceDataService {
       equipmentCost: 0,
       models: [],
       equipment: [],
-      editable: forceDBData.userId == this.loggedInUserId ? true : false
+      editable: forceDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     };
 
     // retrieve the model information from its service
@@ -233,7 +233,7 @@ export class ForceDataService {
 
     let forceDBData: ForceDBData = {
       _id: forceData._id,
-      userId: this.loggedInUserId,
+      userId: this.loggedInUserId.toLowerCase(),
       name: forceData.name,
       size: forceData.size,
       models: modelList

@@ -150,7 +150,7 @@ export class ModelDataService {
     let newModelId = await this.dbConnectService.getNextId("M");    
 
     // clone the "basic" model
-    let newModelDB: ModelDBData = { _id:newModelId, userId: this.loggedInUserId, template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
+    let newModelDB: ModelDBData = { _id:newModelId, userId: this.loggedInUserId.toLowerCase(), template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
     let newAction: ModelActionDBData = { type: "MELEE", name: "NEW MELEE", traits: "", ONCE: false, AP:1, RNG:1, HIT:6, DMG:6, specialRuleIds:[] };
     newModelDB.actions.push( newAction );
 
@@ -421,7 +421,7 @@ export class ModelDataService {
     // initialize header
     let modelDBData: ModelDBData = {
       _id: modelData._id,
-      userId: this.loggedInUserId,
+      userId: this.loggedInUserId.toLowerCase(),
       template: modelData.template,
       name: modelData.name,
       traits: modelData.traits,
@@ -481,7 +481,7 @@ export class ModelDataService {
       HP: modelDBData.HP,
       specialRules: [],
       actions: [],
-      editable: modelDBData.userId == this.loggedInUserId ? true : false
+      editable: modelDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     }
 
     // copy over the special rules

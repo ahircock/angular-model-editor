@@ -103,7 +103,7 @@ export class SpecialRuleDataService {
     let newRuleId = await this.dbConnectService.getNextId("S");
 
     // prepare a new rule object
-    let newRuleDB: RuleDBData = { _id: newRuleId, userId: this.loggedInUserId, type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
+    let newRuleDB: RuleDBData = { _id: newRuleId, userId: this.loggedInUserId.toLowerCase(), type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
 
     // add the new rule to the DB
     newRuleDB = await this.dbConnectService.createRule( newRuleDB );
@@ -168,7 +168,7 @@ export class SpecialRuleDataService {
     // prepare a new rule object
     let newRuleDB: RuleDBData = { 
       _id: newRuleId, 
-      userId: this.loggedInUserId, 
+      userId: this.loggedInUserId.toLowerCase(), 
       type: cloneRule.ruleType, 
       name: cloneRule.ruleName + " (COPY)", 
       text: cloneRule.ruleText, 
@@ -202,7 +202,7 @@ export class SpecialRuleDataService {
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
       ruleAP: ruleDBData.AP,
-      editable: ruleDBData.userId == this.loggedInUserId ? true : false
+      editable: ruleDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     }
 
     // copy optional parameters

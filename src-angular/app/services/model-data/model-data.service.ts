@@ -53,8 +53,8 @@ export class ModelDataService {
   public EV_COST:  StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:5} ];
   public ARM_COST: StatCost[] = [ {stat:0, cost:0 }, {stat:1, cost:1 }, {stat:2,  cost:2}, {stat:3, cost:4}, {stat:4, cost:6} ];
   public HP_COST:  StatCost[] = [ {stat:5, cost:0 }, {stat:8, cost:3 }, {stat:10, cost:5} ];
-  public HIT_COST: StatCost[] = [ {stat:4, cost:-2}, {stat:5, cost:-1}, {stat:6,  cost:0}, {stat:7, cost:1}, {stat:8, cost:2}, {stat:9, cost:3} ];
-  public DMG_COST: StatCost[] = [ {stat:4, cost:-2}, {stat:5, cost:-1}, {stat:6,  cost:0}, {stat:7, cost:1}, {stat:8, cost:2}, {stat:9, cost:3} ];
+  public HIT_COST: StatCost[] = [ {stat:4, cost:-2}, {stat:5, cost:-1}, {stat:6,  cost:0}, {stat:7, cost:1}, {stat:8, cost:2}, {stat:9, cost:3}, {stat:10, cost:4}, {stat:11, cost:5}, {stat:12, cost:6} ];
+  public DMG_COST: StatCost[] = [ {stat:4, cost:-2}, {stat:5, cost:-1}, {stat:6,  cost:0}, {stat:7, cost:1}, {stat:8, cost:2}, {stat:9, cost:3}, {stat:10, cost:4}, {stat:11, cost:5}, {stat:12, cost:6} ];
   public MELEE_RNG_COST:  StatCost[] = [ {stat:0, cost:-1 }, {stat:1, cost:0 }, {stat:2, cost:2} ];
   public RANGED_RNG_COST: StatCost[] = [ {stat:8, cost:2 }, {stat:12, cost:3 }, {stat:24, cost:5}, {stat:60, cost:7} ];
 

@@ -321,12 +321,20 @@ export class ModelDataService {
     // update the database
     return await this.updateModel(model);
   }
+  private calculateModelDetails( model: ModelData ): ModelData {
+
+    model = this.calculateModelCost( model );
+    model = this.calculateActionAP( model );
+
+    return model;
+
+  }
 
   /**
    * Updates the ModelData.cost value of a given model based on all of the proper calculations
    * @param model the model whose cost will be updated
    */
-  private calculateModelCost( model: ModelData ): number {
+  private calculateModelCost( model: ModelData ): ModelData {
     
     // start with the base cost
     let modelCost = this.BASE_COST;
@@ -388,8 +396,23 @@ export class ModelDataService {
       modelCost = this.BASE_COST;
     }
 
-    return modelCost;
+    // update the model and return it
+    model.cost = modelCost;
+    return model;
+  }
 
+  private calculateActionAP( model: ModelData ): ModelData {
+
+    // update action AP based on special rules
+    for ( let action of model.actions ) {
+      for ( let rule of action.specialRules ) {
+        if ( rule.ruleAP != 1 ) {
+          action.AP = rule.ruleAP;
+        }
+      }
+    }
+
+    return model;
   }
 
   /**
@@ -511,7 +534,7 @@ export class ModelDataService {
     }
 
     // calculate the model's cost
-    modelData.cost = this.calculateModelCost( modelData );
+    modelData = this.calculateModelDetails( modelData );
 
     // return the prepared object
     return modelData;
@@ -537,7 +560,7 @@ export class ModelDataService {
   /**
    * This method should be called after logout
    */
-  public logout() {
+  private logout() {
     this.modelCache = [];
     this.loggedInUserId = "";
   }
@@ -545,11 +568,15 @@ export class ModelDataService {
   /**
    * This method should be called after login
    */
-  public login(userId: string) {
+  private login(userId: string) {
     this.loggedInUserId = userId;
   }  
 
-  public ruleUpdated( updatedRule: SpecialRuleData) {
+  /**
+   * This method should be called whenever a special rule is updated. It will
+   * update the details of any models that use this rule
+   */
+  private ruleUpdated( updatedRule: SpecialRuleData) {
 
     // loop through all models
     for ( let model of this.modelCache ) {
@@ -557,31 +584,29 @@ export class ModelDataService {
       // update different properties based on the rule type
       switch ( updatedRule.ruleType ) {
 
+        // update the model's special rules
         case "model":
-
-          // if this rule is assigned to the model, update it
           let cachedRule = model.specialRules.find( element => element._id == updatedRule._id );
           if ( cachedRule ) {
             Object.assign( cachedRule, updatedRule );
-            model.cost = this.calculateModelCost( model );
-            this.modelUpdated.emit(model);
           }
           break;
 
+        // loop through all actions and update them
         case "special":
         case "attack":
-
-          // loop through all actions, if the special rule is used, update it
           for ( let action of model.actions ) {
             let cachedRule = action.specialRules.find( element => element._id == updatedRule._id );
             if ( cachedRule ) {
               Object.assign( cachedRule, updatedRule );
-              model.cost = this.calculateModelCost( model );
-              this.modelUpdated.emit(model);
             }
           }
           break;
       }
+
+      // recalculate the details of the model and inform people that it has changed
+      model = this.calculateModelDetails( model );
+      this.modelUpdated.emit(model);
     }
   }
 }

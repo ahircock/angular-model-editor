@@ -17,7 +17,7 @@
       (blur)="updateRuleData()" 
       (keyup.enter)="$event.target.blur()" 
       (keyup.escape)="rule.ruleCost = origText; $event.target.blur();">Points</div>
-    <div *ngIf="rule.ruleType == 'special'" class="rule-ap font-normal"><input 
+    <div *ngIf="rule.ruleType == 'special' || rule.ruleType == 'attack'" class="rule-ap font-normal"><input 
       id="ruleAP"
       type="number"
       class="input-light font-normal" 
@@ -25,7 +25,10 @@
       (focus)="$event.target.select(); origText = rule.ruleAP" 
       (blur)="updateRuleData()" 
       (keyup.enter)="$event.target.blur()" 
-      (keyup.escape)="rule.ruleAP = origText; $event.target.blur();">AP</div>
+      (keyup.escape)="rule.ruleAP = origText; $event.target.blur();">
+      <span *ngIf="rule.ruleType == 'special'">AP</span>
+      <span *ngIf="rule.ruleType == 'attack'">Adjust Attack AP</span>
+    </div>
     <div class="rule-text"><textarea 
       id="ruleText"
       class="input-light font-normal" 

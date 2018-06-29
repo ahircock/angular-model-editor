@@ -28,6 +28,10 @@ body {
     font-family: "Roboto", sans-serif; font-size: 16px;
     font-style: italic; text-transform: none;
 }
+.font-bold {
+    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-weight: bold; text-transform: none;
+}
 
 /* BOX COLORS (normally applied to DIV elements)
 

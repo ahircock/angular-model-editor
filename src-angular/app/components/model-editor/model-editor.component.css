@@ -88,17 +88,9 @@ input {
 .titleBox { 
     background-color: white; padding: 3px; border-style:solid; border-width: 2px; height: 154px;
 }
-.modelImageBox {
-    height: 150px; width: 150px;
-    float: right;
-}
-.modelImage {
-    height: 150px; margin-left: auto; margin-right: auto; display: block;
-}
 .modelTextBox {
-    display: inline-block; vertical-align: top;
+    display: inline-block; 
     margin-left: 6px;
-    width: 334px;
 }
 .modelName { 
     margin:4px; font-size: 1.75em; font-weight: bold; text-transform: uppercase;
@@ -113,6 +105,35 @@ input {
     font-style: italic;
     background-color: grey; color: white; font-weight: bold; border-radius: 3px;
 }
+
+/* MODEL PORTRAIT DISPLAY & SELECTION */
+.model-image-zone {
+    float: right;
+    position: relative;
+}
+.model-image-box {
+    height: 154px;
+}
+.model-image-box img {
+    width: 150px;
+}
+.model-image-dropdown {
+    position: absolute;
+    top: 155px; right: 0px;
+    width: 456px;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+}
+.model-image-selection {
+    padding: 4px;
+    width: 76px; height: 76px;
+    background: white;
+}
+.model-image-selection img {
+    width: 64px;
+}
+
 
 /* stats table */
 .statTable {

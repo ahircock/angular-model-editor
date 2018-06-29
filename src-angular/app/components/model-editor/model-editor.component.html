@@ -26,8 +26,15 @@
         </tr>
       </table>
     </div>
-    <div class="modelImageBox">
-      <img class="modelImage" [src]="'assets/portraits/' + model.picture">
+    <div class="model-image-zone">
+      <div class="model-image-box input-white" (click)="modelPortraitClicked()">
+        <img [src]="'assets/portraits/' + model.picture">
+      </div>
+      <div *ngIf="showModelPortraitsDropdown" class="model-image-dropdown box-light-hover">
+        <div *ngFor="let portrait of modelPortraits" class="model-image-selection input-white" (click)="selectPortrait(portrait)">
+          <img [src]="'assets/portraits/' + portrait">
+        </div>
+      </div>
     </div>
   </div>
 

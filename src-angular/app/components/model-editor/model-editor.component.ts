@@ -17,6 +17,30 @@ export class ModelEditorComponent implements OnInit {
   @Input() model: ModelData;
   @Output() updated: EventEmitter<void> = new EventEmitter();
 
+  modelPortraits: string[] = [
+    "basic.jpg",
+    "chaos - beast.jpg",
+    "chaos - beastmaster.jpg",
+    "chaos - champion.jpg",
+    "chaos - general.jpg",
+    "chaos - marauder.jpg",
+    "chaos - marauder-champion.jpg",
+    "chaos - marauder-horn.jpg",
+    "chaos - marauder-standard.jpg",
+    "chaos - warrior.jpg",
+    "chaos - warrior-standard.jpg",
+    "templar - angel.jpg",
+    "templar - general.jpg",
+    "templar - knight.jpg",
+    "templar - knight-captain.jpg",
+    "templar - paladin.jpg",
+    "templar - soulwarden.jpg",
+    "sylvaneth - branchwych.jpg",
+    "sylvaneth - dryad.jpg",
+    "sylvaneth - treelord.jpg"
+  ];
+  showModelPortraitsDropdown: boolean = false;
+
   constructor( 
     private modelDataService: ModelDataService
    ) { }
@@ -95,6 +119,15 @@ export class ModelEditorComponent implements OnInit {
   deleteAttackSpecialRule( actionIndex: number, ruleIndex: number ): void {
     this.model.actions[actionIndex].specialRules.splice( ruleIndex, 1 );
     this.saveModelData();
+  }
+
+  modelPortraitClicked() {
+    this.showModelPortraitsDropdown = !this.showModelPortraitsDropdown;
+  }
+  selectPortrait( portrait: string ) {
+    this.model.picture = portrait;
+    this.saveModelData();
+    this.showModelPortraitsDropdown = false;
   }
 
   async saveModelData() {

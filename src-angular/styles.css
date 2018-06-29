@@ -124,25 +124,19 @@ body {
 
 /* INPUT STYLES */
 input {
-    border: 2px solid transparent; border-radius: 4px;
-    width: 100%;
     padding: 0px 0px 0px 4px; 
-    outline: none; box-sizing: border-box;
 }
 select {
-    border: 2px solid transparent; border-radius: 4px;
-    width: 100%;
     padding: 0px 0px 0px 4px; 
-    outline: none; box-sizing: border-box;
 }
 textarea {
-    border: 2px solid transparent; border-radius: 4px;
-    width: 100%;
     padding: 4px; 
-    outline: none; box-sizing: border-box;
     resize: none;
 }
 .input-white {
+    border: 2px solid transparent; border-radius: 4px;
+    width: 100%;
+    outline: none; box-sizing: border-box;
     color: black;
     background-color: white;
 }
@@ -155,6 +149,9 @@ textarea {
     background-color: rgb(211,211,211);
 }
 .input-light {
+    border: 2px solid transparent; border-radius: 4px;
+    width: 100%;
+    outline: none; box-sizing: border-box;
     color: black;
     background-color: rgb(243,243,243);
 }
@@ -165,6 +162,9 @@ textarea {
     border-color: rgb(64,64,64);
 }
 .input-mid {
+    border: 2px solid transparent; border-radius: 4px;
+    width: 100%;
+    outline: none; box-sizing: border-box;
     color: black;
     background-color: rgb(210,210,210);
 }
@@ -175,6 +175,9 @@ textarea {
     border-color: rgb(64,64,64);
 }
 .input-dark {
+    border: 2px solid transparent; border-radius: 4px;
+    width: 100%;
+    outline: none; box-sizing: border-box;
     color: white;
     background-color: rgb(96,96,96);
 }

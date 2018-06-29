@@ -29,6 +29,9 @@ import { UserLoginComponent } from './components/user-login/user-login.component
 import { UserSignupComponent } from './components/user-signup/user-signup.component';
 import { SpecialRuleEditorComponent } from './components/special-rule-editor/special-rule-editor.component';
 
+//directives
+import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +48,8 @@ import { SpecialRuleEditorComponent } from './components/special-rule-editor/spe
     ForcePrintComponent,
     UserLoginComponent,
     UserSignupComponent,
-    SpecialRuleEditorComponent
+    SpecialRuleEditorComponent,
+    ClickElsewhereDirective
   ],
   imports: [
     BrowserModule,

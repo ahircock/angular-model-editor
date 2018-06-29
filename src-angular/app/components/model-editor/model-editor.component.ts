@@ -121,9 +121,6 @@ export class ModelEditorComponent implements OnInit {
     this.saveModelData();
   }
 
-  modelPortraitClicked() {
-    this.showModelPortraitsDropdown = !this.showModelPortraitsDropdown;
-  }
   selectPortrait( portrait: string ) {
     this.model.picture = portrait;
     this.saveModelData();

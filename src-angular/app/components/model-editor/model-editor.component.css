@@ -1,32 +1,3 @@
-* {
-    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
-}
-input {
-    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 16px;
-}
-
-/* dropdown display styles */
-.dropdownInput {
-    display: inline;
-}
-.dropdownContent {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    border: 1px solid;
-    background: white;
-}
-.dropdownInput:focus ~ .dropdownContent {
-    display: block;
-}
-.dropdownContent:hover {
-    display: block;
-}
-.dropdownContent div:hover {
-    background: darkslategrey;
-    color: white;
-}
-
 /* the main model box */
 .modelBox { 
     width:500px; padding:7px; 
@@ -34,62 +5,12 @@ input {
     background-color:lightgrey;
 }
 
-/* input box styling */
-.inputText {
-    border: 2px solid transparent; padding: 0px 0px 0px 4px; outline: none; width: 100%; box-sizing: border-box;
-}
-.inputText:hover {
-    border: 2px solid slategrey; border-radius: 4px;
-}
-.inputText:focus {
-    border: 2px solid darkslategrey; border-radius: 4px;
-}
-
-/* styling for the different text types */
-.titleFont {
-    font-size: 28px; font-weight: bold; text-transform: uppercase; 
-}
-.traitsFont {
-    font-style: italic; text-transform: capitalize; 
-}
-.actionFont {
-    font-weight: bold; text-transform: uppercase;
-}
-.actionTraitsFont {
-    text-transform: capitalize; font-style: italic; text-align: right;
-}
-.statFont {
-    font-weight: bold;
-}
-
-/* button styling */
-.textActionButton {
-    border-radius: 8px;
-    border: 1px solid;
-    text-align: center;
-    font:13px Arial;
-    padding-right: 4px;
-    background: lightgrey;
-}
-.textActionButton img {
-    width: 16px;
-    float: left;
-}
-.textActionButton div {
-    display: inline-block;
-    font-size: 12px;
-    padding-top: 1px;
-}
-.textActionButton:hover {
-    background-color: lightslategray;
-}
-
 /* title area */
 .titleBox { 
     background-color: white; padding: 3px; border-style:solid; border-width: 2px; height: 154px;
 }
 .modelTextBox {
-    display: inline-block; 
+    display: inline-block;
     margin-left: 6px;
 }
 .modelName { 
@@ -172,15 +93,6 @@ input {
     padding: 3px; margin-top: 5px; 
     border: solid 2px; background-color: white; 
 }
-.actionRemoveButton {
-    margin-right: 8px;
-    border: none;
-    height: 16px;
-    float: left;
-}
-.actionRemoveButton img {
-    width: 16px;
-}
 .actionAPCost {
     padding-left: 6px; padding-right: 6px;
     background-color: grey; color: white; text-align: center; font-weight: bold; border-radius: 3px;
@@ -189,9 +101,8 @@ input {
 .actionTitle {
     display: inline-block; margin-left: 3px;
 }
-.actionTraits {
+.action-traits {
     float: right;
-    text-transform: capitalize; font-style: italic;
     width: 180px;
 }
 
@@ -242,7 +153,7 @@ input {
     margin-left: 3px; width:441px; float: left;
 }
 
-/* add action buttons */ 
+/* ADD ACTION BUTTONS */ 
 .add-action-button {
     display: inline-block;
     margin-right: 8px;
@@ -258,3 +169,15 @@ div.add-action-button .button-text {
     padding-left: 36px;
     padding-top: 7px;
 }
+
+/* REMOVE BUTTONS */
+.remove-button {
+    margin-right: 8px;
+    border: none;
+    height: 18px;
+    float: left;
+}
+.remove-button img {
+    width: 18px;
+}
+

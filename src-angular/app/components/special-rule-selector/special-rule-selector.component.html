@@ -1,13 +1,11 @@
-<div class="specialRuleSelectorBox">
-  <img class="plusIcon" src="/assets/icons/icon-outline-plus-128.png">
-  <input 
-    [(ngModel)]="specialRuleInput"
-    class="dropdownInput"
-    [placeholder]="title"
-    (focus)="showDropdown()"
-    (blur)="hideDropdown()">
-  <div *ngIf="dropdownVisible" class="dropdownContent">
-    <div *ngFor="let specialRule of specialRules" (click)="selectSpecialRule(specialRule.ruleName);">
+<div class="selector-component-zone" (clickElsewhere)="dropdownVisible=flase">
+  <div class="select-button box-white-hover font-bold" (click)="dropdownVisible=true">
+    <img *ngIf="ruleType != 'action'" src="/assets/icons/icon-outline-plus-128.png">
+    <img *ngIf="ruleType == 'action'" src="/assets/icons/icon-star-invert.png">
+    <div class="button-text">{{title}}</div>
+  </div>
+  <div *ngIf="dropdownVisible" class="dropdown-content font-normal box-white">
+    <div *ngFor="let specialRule of specialRules" (click)="selectSpecialRule(specialRule.ruleName);" class="box-white-hover">
       ({{specialRule.ruleCost}} points) <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>      
     </div>
   </div>

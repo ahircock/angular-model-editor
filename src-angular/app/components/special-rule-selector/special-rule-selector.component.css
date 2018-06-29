@@ -1,60 +1,41 @@
-/* the main model box */
-* {
-    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 12px;
-}
-input {
-    font-family: "Trebuchet MS", Helvetica, sans-serif; font-size: 12px;
-}
-
-.specialRuleSelectorBox {
+.selector-component-zone {
     position: relative;
 }
 
-/* image in the selection box */
-.plusIcon {
-    width: 16px;
-    position:absolute;
-    top: 1px; left: 1px;
+/* rule selection button */
+.select-button {
+    display: inline-block;
+    margin-right: 8px;
+    border-radius: 4px;
+    padding: 4px;
+}
+.select-button img {
+    width: 32px;
+    float: left;
+}
+div.select-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
 }
 
+
 /* dropdown display styles */
-.dropdownInput {
-    width: auto;
-    background-color: lightgrey;
-    padding-left:18px;
-    border: 1px solid black; border-radius: 8px;
-    outline: darkslategrey;
-    -webkit-transition: width 0.5s; /* Safari */
-    transition: width 0.5s;
-    box-sizing: border-box;
-}
-.dropdownInput:hover {
-    background-color: lightslategray;
-}
-.dropdownInput:focus {
-    border-color:darkslategray;
-    background-color: white;
-    width: 100%;
-    border-radius: 8px 8px 0px 0px;
-}
-.dropdownInput::placeholder {
-    color: black;
-}
-.dropdownContent {
+.dropdown-content {
     position: absolute;
-    z-index: 1;
-    border: 1px solid;
-    background-color: white;
-    border-radius: 0px 0px 8px 8px;
+    z-index: 2;
     width: 100%;
     left: 0px;
     box-sizing: border-box;
 }
-.dropdownContent div {
-    padding: 2px;
+.dropdown-content div {
+    padding: 4px;
     display: block;
+    border-bottom: 1px solid lightgrey;
+    border-top: none;
+    border-right: none;
+    border-left: none;
 }
-.dropdownContent div:hover {
+.dropdown-content div:hover {
     background: darkslategrey;
     color: white;
 }

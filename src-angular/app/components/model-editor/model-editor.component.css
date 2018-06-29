@@ -174,7 +174,12 @@ input {
 }
 .actionRemoveButton {
     margin-right: 8px;
+    border: none;
+    height: 16px;
     float: left;
+}
+.actionRemoveButton img {
+    width: 16px;
 }
 .actionAPCost {
     padding-left: 6px; padding-right: 6px;

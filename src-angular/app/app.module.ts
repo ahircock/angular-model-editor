@@ -30,7 +30,7 @@ import { UserSignupComponent } from './components/user-signup/user-signup.compon
 import { SpecialRuleEditorComponent } from './components/special-rule-editor/special-rule-editor.component';
 
 //directives
-import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
+import { ClickElsewhereDirective } from './directives/click-elsewhere/click-elsewhere.directive';
 
 
 @NgModule({

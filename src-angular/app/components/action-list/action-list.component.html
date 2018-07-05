@@ -1,0 +1,44 @@
+<div class="column-section">
+    
+  <!-- RULE LIST -->
+  <div class="left">
+
+    <!-- BUTTON BAND -->
+    <div class="type-button-band">
+      <div class="type-button-left box-mid-hover font-normal" [class.selected]="ruleType == 'model'" (click)="selectType('model')">Model Rule</div>
+      <div class="type-button-middle box-mid-hover font-normal" [class.selected]="ruleType == 'attack'" (click)="selectType('attack')">Attack Rule</div>
+      <div class="type-button-right box-mid-hover font-normal" [class.selected]="ruleType == 'special'" (click)="selectType('special')">Special Action</div>
+    </div>
+
+    <div>
+      
+      <!-- CREATE NEW RULE BUTTON -->
+      <div class="create-rule-button box-light-hover font-title" (click)="newRuleClick();">
+        <img src="/assets/icons/icon-outline-plus-128.png">
+        <div class="button-text">New Rule</div>
+      </div>
+
+
+      <!-- LIST OF RULES -->
+      <div *ngFor="let rule of ruleData; index as ruleIndex" 
+          class="rule-tile box-light-hover font-normal" 
+          [class.selected]="ruleIndex == selectedRuleIndex" 
+          (click)="selectRule(ruleIndex)">
+        <div class="rule-text">
+          <span class="font-title">{{rule.ruleName}}</span> ({{rule.ruleCost}} points) <span *ngIf="ruleType == 'special'">[{{rule.ruleAP}} AP]</span><br>
+          <span *ngIf="rule.editable" class="font-italic">Custom<br></span>
+          <span [innerHTML]="rule.ruleText"></span>
+        </div>
+        <div class="rule-button-band">
+          <div *ngIf="rule.editable" class="icon-button box-light-hover" (click)="deleteRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
+          <div class="icon-button box-light-hover" (click)="cloneRule(ruleIndex)"><img src="/assets/icons/icon-clone-128.png"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RULE DETAILS -->
+  <div class="right">
+      <app-special-rule-editor [rule]="ruleData[selectedRuleIndex]" (updated)="ruleDetailsUpdated(selectedRuleIndex)"></app-special-rule-editor>
+  </div>
+</div>

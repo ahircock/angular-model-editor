@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { DbConnectService, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
+import { DbConnectService, RuleDBData, ModelDBData, ForceDBData, ActionDBData } from './db-connector.interface';
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../environments/environment'
 
@@ -9,6 +9,7 @@ export class RestAPIConnector extends DbConnectService {
     private apiUrlModels = environment.apiUrl + "/models";
     private apiUrlRules  = environment.apiUrl + "/rules";
     private apiUrlForces = environment.apiUrl + "/forces";
+    private apiUrlActions = environment.apiUrl + "/actions";
     private apiUrlGetNextId = environment.apiUrl + "/services/getnextid";
     private apiUrlLogin = environment.apiUrl + "/login";
     private apiUrlSignup = environment.apiUrl + "/signup";
@@ -61,6 +62,21 @@ export class RestAPIConnector extends DbConnectService {
     }
     async deleteForce( deleteForce: ForceDBData ): Promise<void> {
         let url = this.apiUrlForces + "/" + deleteForce._id;
+        this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
+    }
+
+    async getActions(): Promise<ActionDBData[]> {
+        return ( this.httpClient.get(this.apiUrlActions, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ActionDBData[]>);
+    }
+    async createAction( newAction: ActionDBData ): Promise<ActionDBData> {
+        return ( this.httpClient.post(this.apiUrlActions, newAction, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ActionDBData>);
+    }
+    async updateAction( updateAction: ActionDBData ): Promise<ActionDBData> {
+        let url = this.apiUrlActions + "/" + updateAction._id;
+        return ( this.httpClient.put(url, updateAction, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<ActionDBData>);
+    }
+    async deleteAction( deleteAction: ActionDBData ): Promise<void> {
+        let url = this.apiUrlActions + "/" + deleteAction._id;
         this.httpClient.delete(url, {headers: {"sessionid": this.sessionid}}).toPromise();
     }
 

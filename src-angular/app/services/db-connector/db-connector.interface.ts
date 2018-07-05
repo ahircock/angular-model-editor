@@ -20,6 +20,11 @@ export abstract class DbConnectService {
     abstract async updateForce( updateForce: ForceDBData ): Promise<ForceDBData>;
     abstract async deleteForce( deleteForce: ForceDBData ): Promise<void>;
 
+    abstract async getActions(): Promise<ActionDBData[]>;
+    abstract async createAction( newAction: ActionDBData ): Promise<ActionDBData>;
+    abstract async updateAction( updateAction: ActionDBData ): Promise<ActionDBData>;
+    abstract async deleteAction( deleteAction: ActionDBData ): Promise<void>;
+
     abstract async getNextId( prefix: string ): Promise<string>;
 
     abstract async login( email: string, password: string ): Promise<void>;
@@ -84,6 +89,22 @@ export interface ForceDBData {
 export interface ForceModelDBData {
     _id: string,
     count: number 
+}
+
+/**
+ * Structure of Action data, as stored in the database
+ */
+export interface ActionDBData {
+    _id: string;
+    type: string;
+    name: string;
+    traits: string;
+    AP: number;
+    RNG: number;
+    HIT: number;
+    DMG: number;
+    ONCE: boolean;
+    specialRuleIds: string[];
 }
 
 /**

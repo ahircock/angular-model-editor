@@ -1,4 +1,4 @@
-import { DbConnectService, RuleDBData, ModelDBData, ForceDBData } from './db-connector.interface';
+import { DbConnectService, RuleDBData, ModelDBData, ForceDBData, ActionDBData } from './db-connector.interface';
 
 export class InternalDbConnector extends DbConnectService {
 
@@ -50,6 +50,8 @@ export class InternalDbConnector extends DbConnectService {
     { _id:"F0001", userId:"andrew.hircock@gmail.com", name:"Templar Attack!", size:"standard", models:[{_id:"M0021",count:1},{_id:"M0023",count:2},{_id:"M0022",count:3}] },
     { _id:"F0002", userId:"andrew.hircock@gmail.com", name:"Khorne Bloodbound", size:"standard", models:[{_id:"M0031",count:1},{_id:"M0032",count:3},{_id:"M0033",count:6}] }
   ];
+
+  private actionDB: ActionDBData[] = [];
 
   private nextId: number = 100;
 
@@ -110,6 +112,23 @@ export class InternalDbConnector extends DbConnectService {
         return;
     }
        
+    async getActions(): Promise<ActionDBData[]> {
+        return JSON.parse(JSON.stringify(this.actionDB));
+    }
+    async createAction( newAction: ActionDBData ): Promise<ActionDBData> {
+        this.actionDB.push( JSON.parse(JSON.stringify(newAction)) );
+        return JSON.parse(JSON.stringify(newAction));
+    }
+    updateAction( updateAction: ActionDBData ): Promise<ActionDBData> {
+        let findRuleIndex: number = this.actionDB.findIndex( element => element._id == updateAction._id );
+        this.actionDB[findRuleIndex] = JSON.parse(JSON.stringify(updateAction));
+        return JSON.parse(JSON.stringify(updateAction));
+    }
+    deleteAction( deleteAction: ActionDBData ): Promise<void> {
+        let findRuleIndex: number = this.actionDB.findIndex( element => element._id == deleteAction._id );
+        this.actionDB.splice(findRuleIndex, 1 );
+        return;
+    }
 
     /**
      * Generate the next ID in the sequence

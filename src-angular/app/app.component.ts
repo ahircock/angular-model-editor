@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -14,14 +12,14 @@ export class AppComponent {
    */
   public showHeader:boolean = true;
   
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) {}
+  constructor() {}
 
   /**
-   * this method should be called whenever a new route is handled, and the 
-   * router-outlet activates a new compoennt
+   * Angular calls this method whenever a new route is handled, and the 
+   * router-outlet activates a new component. Components are able to hide the 
+   * header by creating an instance variable named showHeader and setting it to 
+   * false.
+   * 
    * @param component the component that was activated in the router-outlet 
    */
   routerOutletActivate( component: any ) {
@@ -33,10 +31,5 @@ export class AppComponent {
     } else {
       this.showHeader = true;
     }
-  }
-
-  logout() {
-    this.userService.logout();
-    this.router.navigateByUrl("/login");
   }
 }

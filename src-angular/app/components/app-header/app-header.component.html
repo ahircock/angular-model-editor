@@ -1,0 +1,40 @@
+<div class="app-title-img"><img src="/assets/icons/spinning-sword-512.png"></div>
+<div class="app-title font-title">Genesys</div>
+<div class="app-separator"> </div>
+
+<!-- MAIN MENU DROPDOWN -->
+<div class="menu-dropdown-zone" (clickElsewhere)="showMenuDropdown = false">
+  <div class="menu-dropdown-button box-mid-hover" (click)="showMenuDropdown = !showMenuDropdown"><img src="/assets/icons/icon-menu-128.png"></div>
+  <div *ngIf="showMenuDropdown" class="menu-dropdown box-white">
+    <div *ngIf="!userService.userName">
+        <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/login" routerLinkActive="selected">Log In</div>
+        <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/signup" routerLinkActive="selected">Sign Up</div>
+    </div>
+    <div *ngIf="userService.userName">
+      <div class="menu-dropdown-item box-white-hover font-normal"><a href="/assets/files/Genesys - Core Rules.pdf" download>Download Rules</a></div>
+      <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/forces" routerLinkActive="selected" (click)="showMenuDropdown = false">Force Builder</div>
+      <div class="menu-dropdown-separator"></div>
+      <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/models" routerLinkActive="selected" (click)="showMenuDropdown = false">Template - Models</div>
+      <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/specialrules" routerLinkActive="selected" (click)="showMenuDropdown = false">Template - Model Rules</div>
+      <div class="menu-dropdown-separator"></div>
+      <div class="menu-dropdown-item box-white-hover font-normal" (click)="logout()">Log Out</div>
+    </div>
+  </div>
+</div>
+
+<!-- USER MENU DROPDOWN -->
+<div class="menu-dropdown-zone-right" (clickElsewhere)="showUserMenuDropdown = false">
+  <div class="menu-dropdown-button-right box-mid-hover" (click)="showUserMenuDropdown = !showUserMenuDropdown">
+    <img src="/assets/icons/icon-user-128.png">
+  </div>
+  <div *ngIf="showUserMenuDropdown" class="menu-dropdown-right box-white">
+    <div *ngIf="!userService.userName">
+        <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/login" routerLinkActive="selected">Log In</div>
+        <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/signup" routerLinkActive="selected">Sign Up</div>
+    </div>
+    <div *ngIf="userService.userName">
+      <div class="menu-dropdown-item box-white font-normal">{{userService.userName}}</div>
+      <div class="menu-dropdown-separator"></div>
+      <div class="menu-dropdown-item box-white-hover font-normal" (click)="logout()">Log Out</div>
+    </div>   
+  </div>

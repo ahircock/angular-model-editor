@@ -1,0 +1,121 @@
+/* HYPERLINKS */
+a:link {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+/* APPLICATION IMAGE */
+div.app-title {
+  float: left;
+  margin-top: 14px;
+  margin-right: 4px;
+  padding: 6px 8px 0px 0px;
+  height: 32px;
+}
+div.app-title-img {
+  float: left;
+  margin-top: 14px;
+  margin-right: 8px;
+  margin-left: 4px;
+}
+div.app-title-img img {
+  height: 32px; width: 32px;
+}
+div.app-separator {
+  float: left;
+  border-left: 1px solid black;
+  margin-top: 14px;
+  margin-right: 12px;
+  height: 32px;
+}
+
+/* DROPDOWN MENU BUTTON */
+div.menu-dropdown-zone {
+  float: left;
+  position: relative;
+  margin-top: 10px;
+}
+div.menu-dropdown-button {
+  position: relative;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+}
+div.menu-dropdown-button img {
+  height: 32px; width: 32px;
+  margin: 4px;
+}
+div.menu-dropdown {
+  position: absolute;
+}
+div.menu-dropdown-item {
+  border: none;
+  padding: 4px;
+  white-space: nowrap;
+}
+div.menu-dropdown-separator {
+  border-top: 1px solid grey;
+  margin: 4px;
+}
+
+/* USER MENU DROPDOWN */
+div.menu-dropdown-zone-right {
+  float: right;
+  margin-right: 16px;
+  position: relative;
+  margin-top: 10px;
+}
+div.menu-dropdown-button-right {
+  position: relative;
+  float: right;
+  border: none;
+  border-radius: 4px;
+  height: 40px;
+}
+div.menu-dropdown-button-right img {
+  height: 32px; width: 32px;
+  margin: 4px;
+}
+div.menu-dropdown-right {
+  position: absolute;
+  right: 0px;
+  margin-top: 40px;
+}
+
+
+/* left alighed menu items */
+div.menu-item {
+  float: left;
+  margin-top: 14px;
+  margin-left:8px;
+  border-radius: 8px;
+  border: none;
+  padding: 6px 8px 0px 8px;
+  height: 32px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+/* right aligned menu items */
+div.menu-item-right {
+  float: right;
+  margin-top: 14px;
+  margin-right:8px;
+  border-radius: 8px;
+  border: none;
+  padding: 6px 8px 0px 8px;
+  height: 32px;
+  box-sizing: border-box;
+  outline: none;
+}
+div.menu-item-image-right {
+  float: right;
+  margin-top: 14px;
+}
+div.menu-item-image-right img {
+  height: 32px; width: 32px;
+}

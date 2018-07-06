@@ -1,21 +1,7 @@
 <div *ngIf="showHeader" class="header box-mid">
-  <div class="app-title-img"><img src="/assets/icons/spinning-sword-512.png"></div>
-  <div class="app-title font-title">Genesys</div>
-  <div class="app-separator"> </div>
-  <div class="menu-item box-mid-hover font-normal" routerLink="/forces" routerLinkActive="selected">Forces</div>
-  <div class="menu-item box-mid-hover font-normal" routerLink="/models" routerLinkActive="selected">Models</div>
-  <div class="menu-item box-mid-hover font-normal" routerLink="/specialrules" routerLinkActive="selected">Special Rules</div>
-  <div class="menu-item box-mid-hover font-normal"><a href="/assets/files/Genesys - Core Rules.pdf" download>Download Rules</a></div>
-  <div *ngIf="!userService.userName">
-    <div class="menu-item-right box-mid-hover font-normal" routerLink="/signup" routerLinkActive="selected">Sign Up</div>
-    <div class="menu-item-right box-mid-hover font-normal" routerLink="/login" routerLinkActive="selected">Log In</div>
-  </div>
-  <div *ngIf="userService.userName">
-      <div class="menu-item-right box-mid-hover font-normal" (click)="logout()">Log Out</div>
-      <div class="menu-item-right font-normal">{{userService.userName}}</div>
-  </div>
-  <div class="menu-item-image-right"><img src="/assets/icons/icon-user-128.png"></div>
+    <app-app-header></app-app-header>
 </div>
+
 <div [class.middle]="showHeader">
   <router-outlet (activate)="routerOutletActivate($event)"></router-outlet>
 </div>

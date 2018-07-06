@@ -14,6 +14,7 @@ import { RestAPIConnector } from './services/db-connector/restapi-connector.serv
 
 // components
 import { AppComponent } from './app.component';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { ModelListComponent } from './components/model-list/model-list.component';
 import { ModelDetailsComponent } from './components/model-details/model-details.component';
 import { ModelEditorComponent } from './components/model-editor/model-editor.component';
@@ -51,7 +52,8 @@ import { ActionListComponent } from './components/action-list/action-list.compon
     UserSignupComponent,
     SpecialRuleEditorComponent,
     ClickElsewhereDirective,
-    ActionListComponent
+    ActionListComponent,
+    AppHeaderComponent
   ],
   imports: [
     BrowserModule,

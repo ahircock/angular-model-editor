@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { DbConnectService, ActionDBData } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
+import { Action } from 'rxjs/scheduler/Action';
 
 export interface ActionData {
   _id: string;
+  userId: string;
   type: string;
   name: string;
   traits: string;
@@ -26,15 +28,67 @@ export class ActionDataService {
     private specialRuleDataService: SpecialRuleDataService
   ) { }
 
-  async getAllActions() {
+  async getMeleeActions(): Promise<ActionData[]> {
+    return this.getActionsByType( "melee" );
+  }
+
+  async getRangedActions(): Promise<ActionData[]> {
+    return this.getActionsByType( "ranged" );
+  }
+
+  async getSpecialActions(): Promise<ActionData[]> {
+    return this.getActionsByType( "special" );
+  }
+
+  private async getActionsByType( type: string ): Promise<ActionData[]> {
     
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.actionCache.length == 0 ) {
       await this.loadCache();
     }
 
+    // filter down the array to only include those with the correct type
+    let returnList: ActionData[] = [];
+    for ( let action of this.actionCache ) {
+      if ( action.type == type ) {
+        returnList.push( action );
+      }
+    }
+
     // return the array of actions
-    return this.actionCache;
+    return returnList;
+  }
+
+  async createNewAction( actionType: string ): Promise<ActionData> {
+
+    // generate a new ID
+    let newActionId = await this.dbConnectService.getNextId("S");
+
+    // prepare a new rule object
+    let newActionDb: ActionDBData = { 
+      _id: newActionId, 
+      userId: this.loggedInUserId.toLowerCase(), 
+      type: actionType, 
+      name:"NEW " + actionType.toUpperCase() + " ACTION", 
+      traits: "",
+      AP: 1,
+      RNG: 1,
+      HIT: 1,
+      DMG: 1,
+      ONCE: false,
+      specialRuleIds: []
+    };
+
+    // add the new rule to the DB
+    newActionDb = await this.dbConnectService.createAction( newActionDb );
+
+    // add the new rule to the cache
+    let newAction: ActionData = await this.convertDBToAppData( newActionDb );
+    this.actionCache.push(newAction);
+
+    // return the new force
+    return newAction;
+
   }
 
   private async loadCache() {
@@ -58,6 +112,7 @@ export class ActionDataService {
     
     let appData: ActionData = {
       _id: dbData._id,
+      userId: dbData.userId,
       type: dbData.type,
       name: dbData.name,
       traits: dbData.traits,
@@ -82,6 +137,7 @@ export class ActionDataService {
     
     let dbData: ActionDBData = {
       _id: appData._id,
+      userId: appData.userId,
       type: appData.type,
       name: appData.name,
       traits: appData.traits,

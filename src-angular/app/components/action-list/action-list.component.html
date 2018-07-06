@@ -1,44 +1,33 @@
 <div class="column-section">
     
-  <!-- RULE LIST -->
+  <!-- ACTION LIST -->
   <div class="left">
 
-    <!-- BUTTON BAND -->
-    <div class="type-button-band">
-      <div class="type-button-left box-mid-hover font-normal" [class.selected]="ruleType == 'model'" (click)="selectType('model')">Model Rule</div>
-      <div class="type-button-middle box-mid-hover font-normal" [class.selected]="ruleType == 'attack'" (click)="selectType('attack')">Attack Rule</div>
-      <div class="type-button-right box-mid-hover font-normal" [class.selected]="ruleType == 'special'" (click)="selectType('special')">Special Action</div>
+    <!-- CREATE NEW ACTION BUTTON -->
+    <div class="create-action-button box-light-hover font-title" (click)="newActionClick();">
+      <img src="/assets/icons/icon-outline-plus-128.png">
+      <div class="button-text">New Action</div>
     </div>
 
-    <div>
-      
-      <!-- CREATE NEW RULE BUTTON -->
-      <div class="create-rule-button box-light-hover font-title" (click)="newRuleClick();">
-        <img src="/assets/icons/icon-outline-plus-128.png">
-        <div class="button-text">New Rule</div>
+    <!-- LIST OF ACTIONS -->
+    <div *ngFor="let action of actionData; index as actionIndex" 
+        class="action-tile box-light-hover font-normal" 
+        [class.selected]="actionIndex == selectedDataIndex" 
+        (click)="selectAction(actionIndex)">
+      <div class="action-text">
+        <span class="font-title">{{action.name}}</span> ({{action.cost}} points) <span *ngIf="actionType == 'special'">[{{action.actionAP}} AP]</span><br>
+        <span *ngIf="action.editable" class="font-italic">Custom<br></span>
+        <span [innerHTML]="action.actionText"></span>
       </div>
-
-
-      <!-- LIST OF RULES -->
-      <div *ngFor="let rule of ruleData; index as ruleIndex" 
-          class="rule-tile box-light-hover font-normal" 
-          [class.selected]="ruleIndex == selectedRuleIndex" 
-          (click)="selectRule(ruleIndex)">
-        <div class="rule-text">
-          <span class="font-title">{{rule.ruleName}}</span> ({{rule.ruleCost}} points) <span *ngIf="ruleType == 'special'">[{{rule.ruleAP}} AP]</span><br>
-          <span *ngIf="rule.editable" class="font-italic">Custom<br></span>
-          <span [innerHTML]="rule.ruleText"></span>
-        </div>
-        <div class="rule-button-band">
-          <div *ngIf="rule.editable" class="icon-button box-light-hover" (click)="deleteRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
-          <div class="icon-button box-light-hover" (click)="cloneRule(ruleIndex)"><img src="/assets/icons/icon-clone-128.png"></div>
-        </div>
+      <div class="action-button-band">
+        <div *ngIf="action.editable" class="icon-button box-light-hover" (click)="deleteaction(actionIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
+        <div class="icon-button box-light-hover" (click)="cloneaction(actionIndex)"><img src="/assets/icons/icon-clone-128.png"></div>
       </div>
     </div>
   </div>
 
-  <!-- RULE DETAILS -->
+  <!-- ACTION DETAILS -->
   <div class="right">
-      <app-special-rule-editor [rule]="ruleData[selectedRuleIndex]" (updated)="ruleDetailsUpdated(selectedRuleIndex)"></app-special-rule-editor>
+      <!-- <app-special-action-editor [action]="actionData[selectedactionIndex]" (updated)="actionDetailsUpdated(selectedactionIndex)"></app-special-action-editor> -->
   </div>
 </div>

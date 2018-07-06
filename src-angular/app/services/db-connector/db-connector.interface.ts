@@ -96,6 +96,7 @@ export interface ForceModelDBData {
  */
 export interface ActionDBData {
     _id: string;
+    userId: string;
     type: string;
     name: string;
     traits: string;

@@ -7,6 +7,7 @@ import * as cors from 'cors'; // HTTP cross-origin resource sharing for API
 import * as morgan from 'morgan'; // HTTP request logging
 import authRouter from './routers/auth-router';
 import modelsRouter from './routers/models-router';
+import actionsRouter from './routers/actions-router';
 import rulesRouter from './routers/rules-router';
 import forcesRouter from './routers/forces-router';
 import servicesRouter from './routers/services-router';
@@ -25,6 +26,7 @@ app.use("/api", authRouter ); // login, signup and verification of every call
 app.use("/api/models", modelsRouter );
 app.use("/api/rules", rulesRouter );
 app.use("/api/forces", forcesRouter );
+app.use("/api/actions", actionsRouter );
 app.use("/api/services", servicesRouter );
 
 // setup router for the static assets (images, icons, etc.)

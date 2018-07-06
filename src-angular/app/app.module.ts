@@ -9,6 +9,7 @@ import { UserService } from './services/user/user.service';
 import { ModelDataService } from './services/model-data/model-data.service';
 import { SpecialRuleDataService } from './services/special-rule-data/special-rule-data.service';
 import { ForceDataService } from './services/force-data/force-data.service';
+import { ActionDataService } from './services/action-data/action-data.service';
 import { DbConnectService } from './services/db-connector/db-connector.interface';
 import { RestAPIConnector } from './services/db-connector/restapi-connector.service';
 
@@ -66,6 +67,7 @@ import { ActionListComponent } from './components/action-list/action-list.compon
     ModelDataService,
     SpecialRuleDataService,
     ForceDataService,
+    ActionDataService,
     { provide: DbConnectService, useClass: RestAPIConnector }
   ],
   bootstrap: [AppComponent]

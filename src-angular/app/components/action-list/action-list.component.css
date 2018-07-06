@@ -21,7 +21,7 @@ div.column-section .right {
   overflow-y: auto;    
 }
 
-/* rule type buttons */
+/* action type buttons */
 div.type-button-band {
   height: 30px;
   margin-bottom: 16px;
@@ -44,7 +44,7 @@ div.type-button-right {
 }
 
 /* NEW MODEL BUTTON */
-div.create-rule-button {
+div.create-action-button {
   height: 50px;
   display: inline-block;
   border-radius: 4px;
@@ -53,27 +53,27 @@ div.create-rule-button {
   box-sizing: border-box;
   padding: 8px;
 }
-div.create-rule-button img {
+div.create-action-button img {
   width: 32px;
   float: left;
 }
-div.create-rule-button .button-text {
+div.create-action-button .button-text {
   padding-left: 36px;
   padding-top: 7px;
 }
 
-/* RULE LIST */
-div.rule-tile {
+/* action LIST */
+div.action-tile {
   display: flex;
   align-items: flex-end;
   border-radius: 4px;
   margin-bottom: 8px;
   padding: 8px;
 }
-div.rule-tile .rule-text {
+div.action-tile .action-text {
   flex: 1 0 128px;
 }
-div.rule-tile .rule-button-band {
+div.action-tile .action-button-band {
   flex: 0 0 76px;
   height: min-content
 }

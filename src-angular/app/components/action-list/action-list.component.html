@@ -9,20 +9,20 @@
       <div class="button-text">New Action</div>
     </div>
 
-    <!-- LIST OF ACTIONS -->
+    <!-- ACTION TILES -->
     <div *ngFor="let action of actionData; index as actionIndex" 
         class="action-tile box-light-hover font-normal" 
         [class.selected]="actionIndex == selectedDataIndex" 
-        (click)="selectAction(actionIndex)">
-      <div class="action-text">
-        <span class="font-title">{{action.name}}</span> ({{action.cost}} points) <span *ngIf="actionType == 'special'">[{{action.actionAP}} AP]</span><br>
-        <span *ngIf="action.editable" class="font-italic">Custom<br></span>
-        <span [innerHTML]="action.actionText"></span>
-      </div>
-      <div class="action-button-band">
-        <div *ngIf="action.editable" class="icon-button box-light-hover" (click)="deleteaction(actionIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
-        <div class="icon-button box-light-hover" (click)="cloneaction(actionIndex)"><img src="/assets/icons/icon-clone-128.png"></div>
-      </div>
+        (click)="selectedDataIndex = actionIndex">
+      
+        <app-action-view style="width:100%" [action]="action"></app-action-view>
+
+        <!-- BUTTON BAND  -->
+        <div class="action-button-band">
+          <div class="action-button box-light-hover" (click)="cloneAction()"><img src="/assets/icons/icon-clone-128.png"></div>
+          <div class="action-button box-light-hover" (click)="deleteAction()"><img src="/assets/icons/icon-delete-128.png"></div>    
+        </div>
+
     </div>
   </div>
 

@@ -34,6 +34,7 @@ import { SpecialRuleEditorComponent } from './components/special-rule-editor/spe
 //directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere/click-elsewhere.directive';
 import { ActionListComponent } from './components/action-list/action-list.component';
+import { ActionViewComponent } from './components/action-view/action-view.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { ActionListComponent } from './components/action-list/action-list.compon
     SpecialRuleEditorComponent,
     ClickElsewhereDirective,
     ActionListComponent,
-    AppHeaderComponent
+    AppHeaderComponent,
+    ActionViewComponent
   ],
   imports: [
     BrowserModule,

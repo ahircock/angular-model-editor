@@ -1,18 +1,18 @@
-/* multi-column display */
-div.column-section {
+/* MULTI-COLUMN DISPLAY */
+.column-section {
   position: relative;
   top: 0;
   height: 100%;
   display: flex;
 }
-div.column-section .left {
+.column-section .left {
   flex: 1 0 128px;
   box-sizing: border-box;
   height: 100%;
   overflow-y: auto;
   padding: 16px 8px;    
 }
-div.column-section .right {
+.column-section .right {
   flex: 0 0 551px;
   padding: 16px;
   background-color: lightgrey;
@@ -21,30 +21,8 @@ div.column-section .right {
   overflow-y: auto;    
 }
 
-/* action type buttons */
-div.type-button-band {
-  height: 30px;
-  margin-bottom: 16px;
-}
-div.type-button-left {
-  float: left;
-  padding: 4px 16px 4px 16px;
-  border-radius: 8px 0px 0px 8px;
-}
-div.type-button-middle {
-  float: left;
-  border-right: 0px;
-  border-left: 0px;
-  padding: 4px 16px 4px 16px;
-}
-div.type-button-right {
-  float: left;
-  padding: 4px 16px 4px 16px;
-  border-radius: 0px 8px 8px 0px;
-}
-
-/* NEW MODEL BUTTON */
-div.create-action-button {
+/* CREATE ACTION BUTTON */
+.create-action-button {
   height: 50px;
   display: inline-block;
   border-radius: 4px;
@@ -53,39 +31,33 @@ div.create-action-button {
   box-sizing: border-box;
   padding: 8px;
 }
-div.create-action-button img {
+.create-action-button img {
   width: 32px;
   float: left;
 }
-div.create-action-button .button-text {
+.create-action-button .button-text {
   padding-left: 36px;
   padding-top: 7px;
 }
 
-/* action LIST */
-div.action-tile {
-  display: flex;
-  align-items: flex-end;
+/* ACTION TILES */
+.action-tile {
+  min-width: 212px;
   border-radius: 4px;
   margin-bottom: 8px;
   padding: 8px;
 }
-div.action-tile .action-text {
-  flex: 1 0 128px;
-}
-div.action-tile .action-button-band {
-  flex: 0 0 76px;
-  height: min-content
-}
-
-/* ICON BUTTONS */
-.icon-button {
-  float: right;
-  border-radius: 4px;
-  margin-left: 8px;
+.action-button-band {
   height: 28px;
+  margin-top: 4px;
 }
-.icon-button img {
+.action-button {
+  float: right;
+  margin-left: 4px;
+  padding: 4px;
+  font-size: 0px;
+  border-radius: 4px;
+}
+.action-button img {
   width: 20px;
-  margin: 4px;
 }

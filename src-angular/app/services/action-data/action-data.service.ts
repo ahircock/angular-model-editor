@@ -29,15 +29,15 @@ export class ActionDataService {
   ) { }
 
   async getMeleeActions(): Promise<ActionData[]> {
-    return this.getActionsByType( "melee" );
+    return this.getActionsByType( "MELEE" );
   }
 
   async getRangedActions(): Promise<ActionData[]> {
-    return this.getActionsByType( "ranged" );
+    return this.getActionsByType( "RANGED" );
   }
 
   async getSpecialActions(): Promise<ActionData[]> {
-    return this.getActionsByType( "special" );
+    return this.getActionsByType( "SPECIAL" );
   }
 
   private async getActionsByType( type: string ): Promise<ActionData[]> {

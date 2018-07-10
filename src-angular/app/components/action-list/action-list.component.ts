@@ -43,14 +43,15 @@ export class ActionListComponent implements OnInit {
     }
 
     // get the action type from the URL
-    this.actionType = this.activatedRoute.snapshot.paramMap.get("type");
+    this.actionType = this.activatedRoute.snapshot.paramMap.get("type").toUpperCase();
 
     // load the list of actions
     await this.loadActionList();
   }
 
   async newActionClick() {
-    let newAction: ActionData = await this.actionDataService.createNewAction( this.actionType );
+    let newActionType = this.actionType == "ALL" ? "MELEE" : this.actionType;
+    let newAction: ActionData = await this.actionDataService.createNewAction( newActionType );
     await this.loadActionList();
 
     // select the new rule from the list
@@ -59,15 +60,21 @@ export class ActionListComponent implements OnInit {
 
   private async loadActionList() {
     switch ( this.actionType ) {
-      case "melee":
+      case "MELEE":
         this.actionData = await this.actionDataService.getMeleeActions();
         break;
-      case "ranged":
+      case "RANGED":
         this.actionData = await this.actionDataService.getRangedActions();
         break;
-      case "special":
+      case "SPECIAL":
         this.actionData = await this.actionDataService.getSpecialActions();
         break;
+      case "ALL":
+        let meleeActions = await this.actionDataService.getMeleeActions();
+        let rangedActions = await this.actionDataService.getRangedActions();
+        let specialActions = await this.actionDataService.getSpecialActions();
+
+        this.actionData = [].concat( meleeActions, rangedActions, specialActions );
     }
 
   }

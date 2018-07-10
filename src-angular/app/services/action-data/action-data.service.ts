@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DbConnectService, ActionDBData } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
+import { UserService } from '../user/user.service'
 import { Action } from 'rxjs/scheduler/Action';
 
 export interface ActionData {
@@ -15,6 +16,7 @@ export interface ActionData {
   DMG: number;
   ONCE: boolean;
   specialRules: SpecialRuleData[];
+  editable: boolean;
 }
 
 @Injectable()
@@ -25,8 +27,13 @@ export class ActionDataService {
 
   constructor(
     private dbConnectService: DbConnectService,
-    private specialRuleDataService: SpecialRuleDataService
-  ) { }
+    private specialRuleDataService: SpecialRuleDataService,
+    private userService: UserService
+  ) { 
+    // subscribe to events from the other services
+    this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
+    this.userService.logoutEvent.subscribe( () => this.logout() );
+  }
 
   async getMeleeActions(): Promise<ActionData[]> {
     return this.getActionsByType( "MELEE" );
@@ -164,7 +171,8 @@ export class ActionDataService {
       HIT: dbData.HIT,
       DMG: dbData.DMG,
       ONCE: dbData.ONCE,
-      specialRules: []
+      specialRules: [],
+      editable: dbData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     };
 
     // copy over the special rules
@@ -215,5 +223,18 @@ export class ActionDataService {
     }
   }
 
+  /**
+   * This method should be called after logout
+   */
+  private logout() {
+    this.actionCache = [];
+    this.loggedInUserId = "";
+  }
 
+  /**
+   * This method should be called after login
+   */
+  private login(userId: string) {
+    this.loggedInUserId = userId;
+  }  
 }

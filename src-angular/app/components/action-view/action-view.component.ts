@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
 import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 import { ModelDataService } from '../../services/model-data/model-data.service'
@@ -8,10 +8,11 @@ import { ModelDataService } from '../../services/model-data/model-data.service'
   templateUrl: './action-view.component.html',
   styleUrls: ['./action-view.component.css']
 })
-export class ActionViewComponent implements OnInit {
+export class ActionViewComponent implements OnInit, OnChanges {
 
   @Input() action: ActionData;
-  @Input() editable: boolean = false;
+  @Input() allowEdit: boolean = false;
+  editable: boolean = false;
 
   showAPDropdown: boolean = false;
 
@@ -23,6 +24,16 @@ export class ActionViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges() {
+
+    // if the action changes, then make sure this one is editable
+    if ( this.allowEdit && this.action.editable ) {
+      this.editable = true;
+    } else {
+      this.editable = false;
+    }
   }
 
   updateAction() {

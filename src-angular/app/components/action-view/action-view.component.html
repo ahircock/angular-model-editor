@@ -49,10 +49,12 @@
         </table>
       </div>
     </div>
-    <div *ngIf="action.specialRules.length > 0" class="attack-action-special-rules-box" >
-      <div *ngFor="let specialRule of action.specialRules" class="special-action-rule font-normal">
+    <div *ngIf="action.specialRules.length > 0 || editable" class="attack-action-special-rules-box" >
+      <div *ngFor="let specialRule of action.specialRules; index as ruleIndex" class="special-action-rule font-normal">
+        <div class="remove-button box-white-hover" (click)="deleteAttackRule(ruleIndex)"><img src="assets/icons/icon-delete-128.png"><div></div></div>
         <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
       </div>
+      <app-special-rule-selector *ngIf="editable" [ruleType]="'attack'" (ruleSelected)="addAttackRule($event)"></app-special-rule-selector>
     </div>
   </div>
 

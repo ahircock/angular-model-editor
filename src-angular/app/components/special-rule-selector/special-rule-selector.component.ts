@@ -39,6 +39,7 @@ export class SpecialRuleSelectorComponent implements OnInit {
     let selectedSpecialRule: SpecialRuleData = this.specialRules.find( (element) => { return element.ruleName == ruleName; } );
     this.ruleSelected.emit( selectedSpecialRule );
     this.specialRuleInput = "";
+    this.dropdownVisible = false;
   }
 
   showDropdown() {

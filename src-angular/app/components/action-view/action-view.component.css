@@ -90,6 +90,15 @@
 .attack-action-special-rule {
   margin-bottom: 4px;
 }
+.remove-button {
+  margin-right: 8px;
+  border: none;
+  height: 18px;
+  float: left;
+}
+.remove-button img {
+  width: 18px;
+}
 
 /* SPECIAL ACTION */
 .special-action-details {

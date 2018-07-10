@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
+import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 
 @Component({
   selector: 'app-action-view',
@@ -28,8 +29,17 @@ export class ActionViewComponent implements OnInit {
     this.action.AP = ap;
     this.action.ONCE = once;
     this.updateAction();
-
     this.showAPDropdown = false;
+  }
+
+  addAttackRule( rule: SpecialRuleData ) {
+    this.action.specialRules.push(rule);
+    this.updateAction();
+  }
+
+  deleteAttackRule( ruleIndex: number ) {
+    this.action.specialRules.splice( ruleIndex, 1 );
+    this.updateAction();
   }
 
 }

@@ -4,7 +4,7 @@
   <div class="left">
 
     <!-- CREATE NEW ACTION BUTTON -->
-    <div class="create-action-button box-light-hover font-title" (click)="newActionClick();">
+    <div class="create-action-button box-light-hover font-title" (click)="newAction()">
       <img src="/assets/icons/icon-outline-plus-128.png">
       <div class="button-text">New Action</div>
     </div>
@@ -19,8 +19,8 @@
 
         <!-- BUTTON BAND  -->
         <div class="action-button-band">
-          <div class="action-button box-light-hover" (click)="cloneAction()"><img src="/assets/icons/icon-clone-128.png"></div>
-          <div class="action-button box-light-hover" (click)="deleteAction()"><img src="/assets/icons/icon-delete-128.png"></div>    
+          <div class="action-button box-light-hover" (click)="cloneAction(action)"><img src="/assets/icons/icon-clone-128.png"></div>
+          <div class="action-button box-light-hover" (click)="deleteAction(action)"><img src="/assets/icons/icon-delete-128.png"></div>    
         </div>
 
     </div>

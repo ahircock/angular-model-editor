@@ -62,7 +62,7 @@ export class ActionDataService {
   async createNewAction( actionType: string ): Promise<ActionData> {
 
     // generate a new ID
-    let newActionId = await this.dbConnectService.getNextId("S");
+    let newActionId = await this.dbConnectService.getNextId("A");
 
     // prepare a new rule object
     let newActionDb: ActionDBData = { 
@@ -88,7 +88,36 @@ export class ActionDataService {
 
     // return the new force
     return newAction;
+  }
 
+  async deleteAction( deleteAction: ActionData ) {
+    
+    // delete the model from the database
+    await this.dbConnectService.deleteAction( this.convertAppToDBData(deleteAction));
+
+    // remove the model from the cache
+    let index: number = this.actionCache.findIndex( element => element._id == deleteAction._id );
+    this.actionCache.splice( index, 1 );
+  }
+
+  async cloneAction( cloneAction: ActionData ) {
+    
+    // create a new copy of the model
+    let newAction: ActionData = JSON.parse( JSON.stringify(cloneAction) );
+    newAction.name = newAction.name + " (C)"
+
+    // generate a new ID for the model
+    newAction._id = await this.dbConnectService.getNextId("A");
+
+    // add the new model to the database
+    let newDBAction = await this.dbConnectService.createAction(this.convertAppToDBData(newAction));
+
+    // add the new model to the cache
+    newAction = await this.convertDBToAppData(newDBAction);
+    this.actionCache.push(newAction);
+
+    // return the new model
+    return newAction;
   }
 
   private async loadCache() {

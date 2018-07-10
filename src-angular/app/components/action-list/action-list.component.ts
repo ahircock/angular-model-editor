@@ -49,9 +49,22 @@ export class ActionListComponent implements OnInit {
     await this.loadActionList();
   }
 
-  async newActionClick() {
+  async newAction() {
     let newActionType = this.actionType == "ALL" ? "MELEE" : this.actionType;
     let newAction: ActionData = await this.actionDataService.createNewAction( newActionType );
+    await this.loadActionList();
+
+    // select the new rule from the list
+    this.selectedDataIndex = this.actionData.findIndex( element => element._id == newAction._id );
+  }
+
+  async deleteAction( deleteAction: ActionData ) {
+    await this.actionDataService.deleteAction( deleteAction );
+    await this.loadActionList();
+  }
+
+  async cloneAction( cloneAction: ActionData ) {
+    let newAction: ActionData = await this.actionDataService.cloneAction( cloneAction );
     await this.loadActionList();
 
     // select the new rule from the list

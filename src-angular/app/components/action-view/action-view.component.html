@@ -6,21 +6,25 @@
       <div class="action-ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
     </div>
 
-    <div *ngIf="editable" class="action-ap-dropdown-zone">
+    <!-- AP -->
+    <div *ngIf="editable" class="action-ap-dropdown-zone" (clickElsewhere)="showAPDropdown = false">
       <div class="action-ap-dropdown-button font-bold" (click)="showAPDropdown = true">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
       <div *ngIf="showAPDropdown" class="action-ap-dropdown box-white font-normal">
-        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(0, false)" >0 AP</div>
-        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(1, false)" >1 AP</div>
-        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(2, false)" >2 AP</div>
-        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(0, true)" >0 AP - ONCE</div>
-        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(1, true)" >1 AP - ONCE</div>
-        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(2, true)" >2 AP - ONCE</div>
+        <div *ngFor="let value of AP_VALUES" 
+            class="action-ap-dropdown-item box-white-hover" 
+            (click)="selectAP(value.ap, value.once)">
+          {{value.ap}} AP<span *ngIf="value.once"> - ONCE</span>
+        </div>
       </div>
     </div>
+
+    <!-- NAME -->
     <div class="action-name font-bold">
         <input *ngIf="editable" class="input-white font-bold" [(ngModel)]="action.name" (blur)="updateAction()">
         <span *ngIf="!editable">{{action.name}}</span>
     </div>
+
+    <!-- TRAITS -->
     <div class="action-traits font-italic">
       <input *ngIf="editable" class="input-white font-italic" [(ngModel)]="action.traits" (blur)="updateAction()">
       <span *ngIf="!editable">{{action.traits}}</span>
@@ -34,6 +38,8 @@
         <img *ngIf="action.type == 'MELEE'" src="assets/icons/icon-sword-invert.png">
         <img *ngIf="action.type == 'RANGED'" src="assets/icons/icon-bow-invert.png">
       </div>
+
+      <!-- STATS -->
       <div class="attack-action-table-div">
         <table class="attack-action-table font-bold">
           <tr class="stat-header">
@@ -41,20 +47,40 @@
             <th>HIT</th>
             <th>DMG</th>
           </tr>
-          <tr class="stat-data">
+          <tr *ngIf="!editable" class="stat-data">
             <td>{{action.RNG}}</td>
             <td>{{action.HIT}}</td>
             <td>{{action.DMG}}</td>
           </tr>
-        </table>
+          <tr *ngIf="editable" class="stat-data">
+            <td *ngIf="action.type == 'MELEE'">
+              <select [(ngModel)]="action.RNG" class="input-white font-bold" (change)="selectStat($event.target.value, 'RNG-MELEE')">
+                <option *ngFor="let RNG of modelDataService.MELEE_RNG_COST;" class="input-white" [value]="RNG.stat">{{RNG.stat}}</option></select>
+            </td>
+            <td *ngIf="action.type == 'RANGED'">
+              <select [(ngModel)]="action.RNG" class="input-white font-bold" (change)="selectStat($event.target.value, 'RNG-RANGED')">
+                <option *ngFor="let RNG of modelDataService.RANGED_RNG_COST;" class="input-white" [value]="RNG.stat">{{RNG.stat}}</option></select>
+            </td>
+            <td >
+              <select [(ngModel)]="action.HIT" class="input-white font-bold" (change)="selectStat($event.target.value, 'HIT')">
+                <option *ngFor="let HIT of modelDataService.HIT_COST;" class="input-white" [value]="HIT.stat">{{HIT.stat}}</option></select>
+            </td>
+            <td >
+              <select [(ngModel)]="action.DMG" class="input-white font-bold" (change)="selectStat($event.target.value, 'DMG')">
+                <option *ngFor="let DMG of modelDataService.DMG_COST;" class="input-white" [value]="DMG.stat">{{DMG.stat}}</option></select>
+            </td>
+            </tr>
+          </table>
       </div>
     </div>
+
+    <!-- SPECIAL RULES -->
     <div *ngIf="action.specialRules.length > 0 || editable" class="attack-action-special-rules-box" >
       <div *ngFor="let specialRule of action.specialRules; index as ruleIndex" class="special-action-rule font-normal">
-        <div class="remove-button box-white-hover" (click)="deleteAttackRule(ruleIndex)"><img src="assets/icons/icon-delete-128.png"><div></div></div>
+        <div *ngIf="editable" class="remove-button box-white-hover" (click)="deleteRule(ruleIndex)"><img src="assets/icons/icon-delete-128.png"><div></div></div>
         <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
       </div>
-      <app-special-rule-selector *ngIf="editable" [ruleType]="'attack'" (ruleSelected)="addAttackRule($event)"></app-special-rule-selector>
+      <app-special-rule-selector *ngIf="editable" [ruleType]="'attack'" (ruleSelected)="addRule($event)"></app-special-rule-selector>
     </div>
   </div>
 
@@ -62,9 +88,11 @@
   <div *ngIf="action.type == 'SPECIAL'" class="special-action-details">
     <div class="special-action-rules-box">
       <div class="special-action-icon"><img src="assets/icons/icon-star-invert.png"></div>
-      <div *ngFor="let specialRule of action.specialRules" class="special-action-rule font-normal">
+      <div *ngFor="let specialRule of action.specialRules; index as ruleIndex" class="special-action-rule font-normal">
+        <div *ngIf="editable" class="remove-button box-white-hover" (click)="deleteRule(ruleIndex)"><img src="assets/icons/icon-delete-128.png"><div></div></div>
         <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
       </div>
+      <app-special-rule-selector *ngIf="editable" [ruleType]="'action'" (ruleSelected)="addRule($event)"></app-special-rule-selector>
     </div>      
   </div>
 </div>

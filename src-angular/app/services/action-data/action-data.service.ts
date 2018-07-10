@@ -73,8 +73,8 @@ export class ActionDataService {
       traits: "",
       AP: 1,
       RNG: 1,
-      HIT: 1,
-      DMG: 1,
+      HIT: 6,
+      DMG: 6,
       ONCE: false,
       specialRuleIds: []
     };

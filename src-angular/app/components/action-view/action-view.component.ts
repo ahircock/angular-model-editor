@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
 import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
+import { ModelDataService } from '../../services/model-data/model-data.service'
 
 @Component({
   selector: 'app-action-view',
@@ -14,8 +15,11 @@ export class ActionViewComponent implements OnInit {
 
   showAPDropdown: boolean = false;
 
+  public AP_VALUES = [ {ap:0, once:false}, {ap:1, once:false}, {ap:2, once:false}, {ap:0, once:true}, {ap:1, once:true}, {ap:2, once:true} ];
+
   constructor(
-    private actionDataService: ActionDataService
+    private actionDataService: ActionDataService,
+    public modelDataService: ModelDataService
   ) { }
 
   ngOnInit() {
@@ -32,13 +36,28 @@ export class ActionViewComponent implements OnInit {
     this.showAPDropdown = false;
   }
 
-  addAttackRule( rule: SpecialRuleData ) {
+  addRule( rule: SpecialRuleData ) {
     this.action.specialRules.push(rule);
     this.updateAction();
   }
 
-  deleteAttackRule( ruleIndex: number ) {
+  deleteRule( ruleIndex: number ) {
     this.action.specialRules.splice( ruleIndex, 1 );
+    this.updateAction();
+  }
+
+  selectStat( value: any, type: string ): void {
+    
+    let newStat = Number(value);
+
+    switch ( type ) {
+      case "RNG-MELEE": this.action.RNG = newStat; break;
+      case "RNG-RANGED":this.action.RNG = newStat; break;
+      case "HIT": this.action.HIT = newStat; break;
+      case "DMG": this.action.DMG = newStat; break;
+    }
+
+    // update the cost of the model
     this.updateAction();
   }
 

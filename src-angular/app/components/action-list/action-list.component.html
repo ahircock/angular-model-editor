@@ -19,15 +19,14 @@
 
         <!-- BUTTON BAND  -->
         <div class="action-button-band">
-          <div class="action-button box-light-hover" (click)="cloneAction(action)"><img src="/assets/icons/icon-clone-128.png"></div>
           <div class="action-button box-light-hover" (click)="deleteAction(action)"><img src="/assets/icons/icon-delete-128.png"></div>    
+          <div class="action-button box-light-hover" (click)="cloneAction(action)"><img src="/assets/icons/icon-clone-128.png"></div>
         </div>
-
     </div>
   </div>
 
   <!-- ACTION DETAILS -->
-  <div class="right">
-      <!-- <app-special-action-editor [action]="actionData[selectedactionIndex]" (updated)="actionDetailsUpdated(selectedactionIndex)"></app-special-action-editor> -->
+  <div class="right box-mid">
+    <app-action-view [action]="actionData[selectedDataIndex]" [editable]="true"></app-action-view>
   </div>
 </div>

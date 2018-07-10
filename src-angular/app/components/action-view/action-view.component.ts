@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActionData } from '../../services/action-data/action-data.service'
+import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
 
 @Component({
   selector: 'app-action-view',
@@ -9,11 +9,17 @@ import { ActionData } from '../../services/action-data/action-data.service'
 export class ActionViewComponent implements OnInit {
 
   @Input() action: ActionData;
+  @Input() editable: boolean = false;
 
-  constructor() { }
+  constructor(
+    private actionDataService: ActionDataService
+  ) { }
 
   ngOnInit() {
-    console.log( this.action.toString() )
+  }
+
+  updateAction() {
+    this.actionDataService.updateAction(this.action);
   }
 
 }

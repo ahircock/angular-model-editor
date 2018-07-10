@@ -6,19 +6,25 @@
 
 /* ACTION TITLE */
 .action-title-box {
+  display: flex;
   padding:4px; 
   border: solid 2px black; background-color: white;
 }
 .action-ap {
-  display: inline-block; 
+  flex: 0 0 8px;
   padding: 0px 6px 0px 6px; 
-  border-radius: 4px; background-color: grey; color: white; text-align: center;
+  border-radius: 4px; background-color: grey; color: white;
 }
 .action-name {
-  display: inline-block; margin-left: 4px;
+  flex: 3 3 1px;
+  margin-left: 4px;
 }
 .action-traits {
-  float: right;
+  flex: 1 1 1px;
+  text-align: right;
+}
+.action-traits-input {
+  text-align: right;
 }
 
 /* ATTACK ACTION */
@@ -52,20 +58,26 @@
 .stat-data {
   background-color: white;
 }
-.attack-action-special-rules {
+.attack-action-special-rules-box {
   margin-top: 0px; padding: 4px;
   border: solid 2px black;
   background-color: white; 
+}
+.attack-action-special-rule {
+  margin-bottom: 4px;
 }
 
 /* SPECIAL ACTION */
 .special-action-details {
   padding-left: 8px;
 }
-.special-action-rules {
+.special-action-rules-box {
   min-height: 34px;
   padding: 4px;
   border-style: none solid solid solid; border-width: 2px; background-color: white; 
+}
+.special-action-rule {
+  margin-bottom: 4px;
 }
 .special-action-icon {
   float: left; 

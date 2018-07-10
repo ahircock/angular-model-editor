@@ -3,8 +3,14 @@
   <!-- ACTION TITLE -->
   <div class="action-title-box">
     <div class="action-ap font-bold">{{action.AP}}</div>
-    <div class="action-name font-bold">{{action.name}}</div>
-    <div class="action-traits font-italic">{{action.traits}}</div>
+    <div class="action-name font-bold">
+        <input *ngIf="editable" class="input-white font-bold" [(ngModel)]="action.name" (blur)="updateAction()">
+        <span *ngIf="!editable">{{action.name}}</span>
+    </div>
+    <div class="action-traits font-italic">
+      <input *ngIf="editable" class="input-white font-italic" [(ngModel)]="action.traits" (blur)="updateAction()">
+      <span *ngIf="!editable">{{action.traits}}</span>
+    </div>
   </div>
 
   <!-- ATTACK ACION -->
@@ -29,8 +35,8 @@
         </table>
       </div>
     </div>
-    <div *ngIf="action.specialRules.length > 0" class="attack-action-special-rules font-normal" >
-      <div *ngFor="let specialRule of action.specialRules">
+    <div *ngIf="action.specialRules.length > 0" class="attack-action-special-rules-box" >
+      <div *ngFor="let specialRule of action.specialRules" class="special-action-rule font-normal">
         <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
       </div>
     </div>
@@ -38,12 +44,10 @@
 
   <!-- SPECIAL ACION -->
   <div *ngIf="action.type == 'SPECIAL'" class="special-action-details">
-    <div class="special-action-rules">
+    <div class="special-action-rules-box">
       <div class="special-action-icon"><img src="assets/icons/icon-star-invert.png"></div>
-      <div class="special-action-rule">
-        <div *ngFor="let specialRule of action.specialRules">
-          <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
-        </div>
+      <div *ngFor="let specialRule of action.specialRules" class="special-action-rule font-normal">
+        <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
       </div>
     </div>      
   </div>

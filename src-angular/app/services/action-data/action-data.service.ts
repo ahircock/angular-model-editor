@@ -120,6 +120,20 @@ export class ActionDataService {
     return newAction;
   }
 
+  async updateAction( updateAction: ActionData ) {
+
+    // update the database with the new model
+    let updateDBAction = await this.dbConnectService.updateAction( this.convertAppToDBData(updateAction) );
+    
+    // update the record in the cache
+    let newUpdateAction = await this.convertDBToAppData(updateDBAction);
+    let findModelIndex: number = this.actionCache.findIndex( element => element._id == newUpdateAction._id );
+    this.actionCache[findModelIndex] = newUpdateAction;
+
+    // return the updated model
+    return newUpdateAction;
+  }
+
   private async loadCache() {
     
     // clear out the rule cache

@@ -26,7 +26,6 @@ export class ActionListComponent implements OnInit {
    */
   public selectedDataIndex: number = 0;
 
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,

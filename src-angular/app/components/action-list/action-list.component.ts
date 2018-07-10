@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { UserService } from '../../services/user/user.service'
 import { ActionDataService, ActionData } from '../../services/action-data/action-data.service'
 
@@ -14,7 +14,7 @@ export class ActionListComponent implements OnInit {
   /**
    * Controls the type of rule that is being displayed
    */
-  public actionType: string = "melee";
+  public actionType: string = "ALL";
 
   /**
    * The list of special rules being displayed
@@ -41,10 +41,12 @@ export class ActionListComponent implements OnInit {
       return;
     }
 
-    // get the action type from the URL
-    this.actionType = this.activatedRoute.snapshot.paramMap.get("type").toUpperCase();
+    // setup a callback that is triggered whenever the :type parameter of the URL changes
+    this.activatedRoute.paramMap.subscribe( (paramMap:ParamMap) => { this.urlChanged( paramMap.get("type") ) })
+  }
 
-    // load the list of actions
+  private async urlChanged( actionType: string ) {
+    this.actionType = actionType.toUpperCase();
     await this.loadActionList();
   }
 

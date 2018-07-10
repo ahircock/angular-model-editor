@@ -12,8 +12,32 @@
 }
 .action-ap {
   flex: 0 0 8px;
+}
+.action-ap-text {
   padding: 0px 6px 0px 6px; 
   border-radius: 4px; background-color: grey; color: white;
+  width: max-content;
+}
+.action-ap-dropdown-zone {
+  position: relative;
+  flex: 0 0 8px;  
+}
+.action-ap-dropdown-button {
+  padding: 0px 6px 0px 6px; 
+  border-radius: 4px; background-color: grey; color: white;
+  width: max-content;
+  border: 2px solid transparent;
+}
+.action-ap-dropdown-button:hover {
+  border: 2px solid black;
+}
+.action-ap-dropdown {
+  position: absolute;
+  width: max-content;
+}
+.action-ap-dropdown-item {
+  border: none;
+  padding: 0px 4px;
 }
 .action-name {
   flex: 3 3 1px;
@@ -23,7 +47,7 @@
   flex: 1 1 1px;
   text-align: right;
 }
-.action-traits-input {
+.action-traits input {
   text-align: right;
 }
 

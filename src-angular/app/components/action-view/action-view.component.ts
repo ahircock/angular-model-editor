@@ -11,6 +11,8 @@ export class ActionViewComponent implements OnInit {
   @Input() action: ActionData;
   @Input() editable: boolean = false;
 
+  showAPDropdown: boolean = false;
+
   constructor(
     private actionDataService: ActionDataService
   ) { }
@@ -20,6 +22,14 @@ export class ActionViewComponent implements OnInit {
 
   updateAction() {
     this.actionDataService.updateAction(this.action);
+  }
+
+  selectAP(ap: number, once: boolean) {
+    this.action.AP = ap;
+    this.action.ONCE = once;
+    this.updateAction();
+
+    this.showAPDropdown = false;
   }
 
 }

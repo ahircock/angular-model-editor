@@ -2,7 +2,21 @@
 
   <!-- ACTION TITLE -->
   <div class="action-title-box">
-    <div class="action-ap font-bold">{{action.AP}}</div>
+    <div *ngIf="!editable" class="action-ap font-bold">
+      <div class="action-ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
+    </div>
+
+    <div *ngIf="editable" class="action-ap-dropdown-zone">
+      <div class="action-ap-dropdown-button font-bold" (click)="showAPDropdown = true">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
+      <div *ngIf="showAPDropdown" class="action-ap-dropdown box-white font-normal">
+        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(0, false)" >0 AP</div>
+        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(1, false)" >1 AP</div>
+        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(2, false)" >2 AP</div>
+        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(0, true)" >0 AP - ONCE</div>
+        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(1, true)" >1 AP - ONCE</div>
+        <div class="action-ap-dropdown-item box-white-hover" (click)="selectAP(2, true)" >2 AP - ONCE</div>
+      </div>
+    </div>
     <div class="action-name font-bold">
         <input *ngIf="editable" class="input-white font-bold" [(ngModel)]="action.name" (blur)="updateAction()">
         <span *ngIf="!editable">{{action.name}}</span>

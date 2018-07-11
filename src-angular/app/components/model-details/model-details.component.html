@@ -34,52 +34,6 @@
   </div>
 
   <!-- ACTIONS -->
-  <div *ngFor="let action of model.actions" class="actionBox">
-    <div class="actionTitleBox">
-      <div class="actionAPCost">{{action.AP}}</div>
-      <div class="actionTitle">{{action.name}}</div>
-      <div class="actionTraits">{{action.traits}}</div>
-    </div>
-
-    <!-- ATTACK ACION -->
-    <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'" class="attackActionBox">
-      <div class="attackActionStatBar">
-        <div class="attackActionIconDiv">
-          <img *ngIf="action.type == 'MELEE'" class="attackActionIcon" src="assets/icons/icon-sword-invert.png">
-          <img *ngIf="action.type == 'RANGED'" class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
-        </div>
-        <div class="attackActionTableDiv">
-          <table class="attackActionTable">
-            <tr class="statHeader">
-              <th>RNG</th>
-              <th>HIT</th>
-              <th>DMG</th>
-            </tr>
-            <tr class="statData">
-              <td>{{action.RNG}}</td>
-              <td>{{action.HIT}}</td>
-              <td>{{action.DMG}}</td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div *ngIf="action.specialRules.length > 0" class="attackActionSpecialRulesBox">
-        <div *ngFor="let specialRule of action.specialRules" class="specialRule">
-          <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
-        </div>
-      </div>
-    </div>
-
-    <!-- SPECIAL ACION -->
-    <div *ngIf="action.type == 'SPECIAL'" class="specialActionBox">
-      <div class="specialActionRulesBox">
-        <div class="specialActionIconDiv">
-          <img class="specialActionIcon" src="assets/icons/icon-star-invert.png">
-        </div>
-        <div class="specialActionRule">
-          <b>{{action.specialRules[0].ruleName}}</b> - <span [innerHTML]="action.specialRules[0].ruleText"></span>
-        </div>
-      </div>      
-    </div>
-  
+  <div *ngFor="let action of model.actions" class="action-box">
+      <app-action-view [action]="action"></app-action-view>  
   </div>

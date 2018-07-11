@@ -39,7 +39,11 @@ export class ActionViewComponent implements OnInit, OnChanges {
   }
 
   updateAction() {
-    this.actionDataService.updateAction(this.action);
+
+    // as long as this action has an _id, then update it
+    if ( this.action._id ) {
+      this.actionDataService.updateAction(this.action);
+    }
   }
 
   selectAP(ap: number, once: boolean) {

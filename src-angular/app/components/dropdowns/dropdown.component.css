@@ -1,0 +1,25 @@
+/* DROPDOWN CONTAINER */
+.select-dropdown-zone {
+  position: relative;
+}
+
+/* SELECTION BUTTON */
+.select-button {
+  display: inline-block;
+  margin-right: 8px;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* DROPDOWN */
+.dropdown-content {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+}
+.dropdown-content-item {
+  display: block;
+  padding: 4px;
+  border-color: lightgrey;
+  border-style: none none solid none;
+}

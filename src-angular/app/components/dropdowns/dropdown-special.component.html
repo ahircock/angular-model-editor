@@ -1,0 +1,23 @@
+<div class="select-dropdown-zone" (clickElsewhere)="dropdownVisible=false ">
+
+  <!-- BUTTON -->
+  <div class="select-button box-white-hover" (click)="dropdownVisible=true">
+
+    <!-- customize the contents of the button -->
+    <img class="special-button-icon" src="/assets/icons/icon-star-invert.png">
+    <div class="special-button-text font-bold">Add Special Action</div>
+    <!-- end customization -->
+  
+  </div>
+
+  <!-- DROPDOWN -->
+  <div *ngIf="dropdownVisible" class="dropdown-content box-white">
+    <div *ngFor="let item of itemList" (click)="selectItem(item);" class="dropdown-content-item box-white-hover font-normal">
+
+      <!-- customize the display of the items in the dropdown -->
+      {{item.name}}
+      <!-- end customization -->
+      
+    </div>
+  </div>
+</div>

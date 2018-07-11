@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DbConnectService, ModelDBData, ModelActionDBData } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
+import { ActionData } from '../action-data/action-data.service'
 import { UserService } from '../user/user.service'
 
 export interface ModelData {
@@ -254,87 +255,45 @@ export class ModelDataService {
   }
 
   /**
-   * Adds a new default special action to the model and updates the database
+   * Adds a baselined action to the model and updates the database
    * @param model the model to update
-   * @param rule the new special rule action to add to the model
+   * @param action the action to add to the model
    */
-  async addSpecialAction( model: ModelData, rule: SpecialRuleData ): Promise<ModelData> {
+  async addAction( model: ModelData, action: ActionData ): Promise<ModelData> {
     
     // add a new special action to the model
     let newAction: ModelActionData = { 
-      type: "SPECIAL",
-      name: rule.ruleName,
-      traits: "",
-      AP: rule.ruleAP,
-      RNG: 0,
-      HIT: 0,
-      DMG: 0,
-      ONCE: false,
-      specialRules: [rule],
+      type: action.type,
+      name: action.name,
+      traits: action.traits,
+      AP: action.AP,
+      RNG: action.RNG,
+      HIT: action.HIT,
+      DMG: action.DMG,
+      ONCE: action.ONCE,
+      specialRules: [],
       editable: true
     }
+
+    // copy over the special rules
+    for ( let actionRule of action.specialRules ) {
+      let newRule: SpecialRuleData = {
+        _id: actionRule._id,
+        ruleType: actionRule.ruleType,
+        ruleName: actionRule.ruleName,
+        ruleText: actionRule.ruleText,
+        ruleCost: actionRule.ruleCost,
+        ruleAP: actionRule.ruleAP,
+        editable: true
+      }
+      newAction.specialRules.push( newRule );
+    }
+
+    // add the new action to the model
     model.actions.push(newAction);
 
     // update the database
     return await this.updateModel(model);
-  }
-
-  /**
-   * Add a new default melee action to the model and update the database
-   * @param model the model to update
-   */
-  async addMeleeAction( model: ModelData ): Promise<ModelData> {
-
-    // add a new default melee action to the model
-    let newAction: ModelActionData = { 
-      type: "MELEE", 
-      name: "NEW MELEE", 
-      traits: "", 
-      ONCE: false, 
-      AP:1, 
-      RNG:1,
-      HIT:6, 
-      DMG:6, 
-      specialRules:[],
-      editable: true
-    };
-    model.actions.push(newAction);
-
-    // update the database
-    return await this.updateModel(model);
-  }
-
-  /**
-   * Add a new default ranged action to the model and update the database
-   * @param model the model to update
-   */
-  async addRangedAction( model: ModelData ): Promise<ModelData> {
-
-    // add a new default melee action to the model
-    let newAction: ModelActionData = { 
-      type: "RANGED", 
-      name: "NEW RANGED", 
-      traits: "", 
-      ONCE: false, 
-      AP:1, 
-      RNG:12, 
-      HIT:6, 
-      DMG:6, 
-      specialRules:[],
-      editable: true
-    };
-    model.actions.push(newAction);
-
-    // update the database
-    return await this.updateModel(model);
-  }
-  private calculateModelDetails( model: ModelData ): ModelData {
-
-    model = this.calculateModelCost( model );
-    model = this.calculateActionAP( model );
-
-    return model;
-
   }
 
   /**
@@ -405,20 +364,6 @@ export class ModelDataService {
 
     // update the model and return it
     model.cost = modelCost;
-    return model;
-  }
-
-  private calculateActionAP( model: ModelData ): ModelData {
-
-    // update action AP based on special rules
-    for ( let action of model.actions ) {
-      for ( let rule of action.specialRules ) {
-        if ( rule.ruleAP != 1 ) {
-          action.AP = rule.ruleAP;
-        }
-      }
-    }
-
     return model;
   }
 
@@ -542,7 +487,7 @@ export class ModelDataService {
     }
 
     // calculate the model's cost
-    modelData = this.calculateModelDetails( modelData );
+    modelData = this.calculateModelCost( modelData );
 
     // return the prepared object
     return modelData;
@@ -613,7 +558,7 @@ export class ModelDataService {
       }
 
       // recalculate the details of the model and inform people that it has changed
-      model = this.calculateModelDetails( model );
+      model = this.calculateModelCost( model );
       this.modelUpdated.emit(model);
     }
   }

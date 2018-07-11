@@ -30,11 +30,14 @@ import { ForcePrintComponent } from './components/force-print/force-print.compon
 import { UserLoginComponent } from './components/user-login/user-login.component';
 import { UserSignupComponent } from './components/user-signup/user-signup.component';
 import { SpecialRuleEditorComponent } from './components/special-rule-editor/special-rule-editor.component';
+import { ActionListComponent } from './components/action-list/action-list.component';
+import { ActionViewComponent } from './components/action-view/action-view.component';
+import { DropdownMeleeComponent } from './components/dropdowns/dropdown-melee.component';
+import { DropdownRangedComponent } from './components/dropdowns/dropdown-ranged.component';
+import { DropdownSpecialComponent } from './components/dropdowns/dropdown-special.component';
 
 //directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere/click-elsewhere.directive';
-import { ActionListComponent } from './components/action-list/action-list.component';
-import { ActionViewComponent } from './components/action-view/action-view.component';
 import { TextControllerDirective } from './directives/text-controller/text-controller.directive';
 
 
@@ -58,7 +61,10 @@ import { TextControllerDirective } from './directives/text-controller/text-contr
     ActionListComponent,
     AppHeaderComponent,
     ActionViewComponent,
-    TextControllerDirective
+    TextControllerDirective,
+    DropdownMeleeComponent,
+    DropdownRangedComponent,
+    DropdownSpecialComponent
   ],
   imports: [
     BrowserModule,

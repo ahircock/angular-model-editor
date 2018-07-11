@@ -83,7 +83,7 @@ export class ActionDataService {
       name:"NEW " + actionType.toUpperCase() + " ACTION", 
       traits: "",
       AP: 1,
-      RNG: 1,
+      RNG: actionType == "RANGED"? 12: 1,
       HIT: 6,
       DMG: 6,
       ONCE: false,
@@ -113,6 +113,9 @@ export class ActionDataService {
 
   async cloneAction( cloneAction: ActionData ) {
     
+    // prepare the action data for cloning
+    cloneAction = this.prepareDataForUpdate( cloneAction );
+
     // create a new copy of the model
     let newAction: ActionData = JSON.parse( JSON.stringify(cloneAction) );
     newAction.name = newAction.name + " (C)"
@@ -133,6 +136,9 @@ export class ActionDataService {
 
   async updateAction( updateAction: ActionData ) {
 
+    // prepare the action data for saving
+    updateAction = this.prepareDataForUpdate( updateAction );
+
     // update the database with the new model
     let updateDBAction = await this.dbConnectService.updateAction( this.convertAppToDBData(updateAction) );
     
@@ -148,18 +154,21 @@ export class ActionDataService {
   private async loadCache() {
     
     // clear out the rule cache
-    this.actionCache = [];
+    let prepareCache: ActionData[] = [];
 
     // load the rule objects form the DB
     let actionDBList: ActionDBData[] = await this.dbConnectService.getActions();
     
     // convert everything to the application objects and add it to the cache
     for ( let actionDB of actionDBList ) {
-      this.actionCache.push( await this.convertDBToAppData(actionDB) );
+      prepareCache.push( await this.convertDBToAppData(actionDB) );
     }
 
     // sort the cache
-    this.actionCache.sort(this.sortActionData);
+    prepareCache.sort(this.sortActionData);
+
+    // store the prepared cache
+    this.actionCache = prepareCache;
   }
 
   private async convertDBToAppData( dbData: ActionDBData ): Promise<ActionData> {
@@ -225,6 +234,11 @@ export class ActionDataService {
     } else {
       return 0;
     }
+  }
+
+  private prepareDataForUpdate( appData: ActionData ) {
+    appData.name = appData.name.toUpperCase();
+    return appData;
   }
 
   /**

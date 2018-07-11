@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
 import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
+import { ActionData } from '../../services/action-data/action-data.service'
 
 interface StatCost {
   stat: number;
@@ -108,20 +109,8 @@ export class ModelEditorComponent implements OnInit {
     this.saveModelData();
   }
 
-  async addMeleeAction() {
-    let updatedModel = await this.modelDataService.addMeleeAction( this.model );
-    this.model = updatedModel;
-    this.updated.emit();
-  }
-
-  async addRangedAction() {
-    let updatedModel = await this.modelDataService.addRangedAction( this.model );
-    this.model = updatedModel;
-    this.updated.emit();
-  }
-
-  async addSpecialAction( newSpecialRule: SpecialRuleData ) {
-    let updatedModel = await this.modelDataService.addSpecialAction( this.model, newSpecialRule );
+  async addAction( action: ActionData ) {
+    let updatedModel = await this.modelDataService.addAction( this.model, action );
     this.model = updatedModel;
     this.updated.emit();
   }

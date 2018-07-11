@@ -158,19 +158,7 @@
 
 /* ADD ACTION BUTTONS */ 
 .add-action-button {
-    display: inline-block;
-    margin-right: 8px;
     margin-bottom: 4px;
-    border-radius: 4px;
-    padding: 4px;
-}
-.add-action-button img {
-    width: 32px;
-    float: left;
-}
-div.add-action-button .button-text {
-    padding-left: 36px;
-    padding-top: 7px;
 }
 
 /* REMOVE BUTTONS */

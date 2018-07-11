@@ -52,23 +52,21 @@
 
   <!-- ACTIONS -->
   <div *ngFor="let action of model.actions; index as actionIndex" class="action-box">
-    <app-action-view [action]="action" [allowEdit]="true" [allowDelete]="true" (deleteAction)="deleteAction(actionIndex)"></app-action-view>
+    <app-action-view [action]="action" [allowEdit]="false" [allowDelete]="true" (deleteAction)="deleteAction(actionIndex)"></app-action-view>
   </div>
 
   <!-- BUTTONS TO ADD ACTIONS -->
   <br>
   <div>
-    <div class="add-action-button box-white-hover font-bold" (click)="addMeleeAction()">
-      <img src="assets/icons/icon-sword-invert.png">
-      <div class="button-text">Add Melee Attack Action</div>
+    <div class="add-action-button">
+      <app-dropdown-melee (itemSelected)="addAction($event)"></app-dropdown-melee>
     </div>
-    <br>
-    <div class="add-action-button box-white-hover font-bold" (click)="addRangedAction()">
-      <img src="assets/icons/icon-bow-invert.png">
-      <div class="button-text">Add Ranged Attack Action</div>
+    <div class="add-action-button">
+      <app-dropdown-ranged (itemSelected)="addAction($event)"></app-dropdown-ranged>
     </div>
-    <br>
-    <app-special-rule-selector [ruleType]="'action'" (ruleSelected)="addSpecialAction($event)" title="Add Special Action"></app-special-rule-selector>
+    <div class="add-action-button">
+      <app-dropdown-special (itemSelected)="addAction($event)"></app-dropdown-special>
+    </div>
   </div>
 </div>
 

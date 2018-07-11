@@ -20,13 +20,13 @@
 
     <!-- NAME -->
     <div class="action-name font-title">
-        <input *ngIf="editable" class="input-white font-title" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
+        <input *ngIf="editable" textController class="input-white font-title" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
         <span *ngIf="!editable">{{action.name}}</span>
     </div>
 
     <!-- TRAITS -->
     <div class="action-traits font-traits">
-      <input *ngIf="editable" class="input-white font-traits" [(ngModel)]="action.traits" (blur)="updateAction()" placeholder="Model Traits">
+      <input *ngIf="editable" textController class="input-white font-traits" [(ngModel)]="action.traits" (blur)="updateAction()" placeholder="Model Traits">
       <span *ngIf="!editable">{{action.traits}}</span>
     </div>
 

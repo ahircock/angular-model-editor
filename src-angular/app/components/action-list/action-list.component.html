@@ -15,7 +15,7 @@
         [class.selected]="actionIndex == selectedDataIndex" 
         (click)="selectedDataIndex = actionIndex">
       
-        <app-action-view style="width:100%" [action]="action"></app-action-view>
+        <app-action-view style="width:100%" [action]="action" [showMetaInfo]="true"></app-action-view>
 
         <!-- BUTTON BAND  -->
         <div class="action-button-band">
@@ -27,6 +27,6 @@
 
   <!-- ACTION DETAILS -->
   <div class="right box-mid">
-    <app-action-view *ngIf="actionData[selectedDataIndex]" [action]="actionData[selectedDataIndex]" [allowEdit]="true"></app-action-view>
+    <app-action-view *ngIf="actionData[selectedDataIndex]" [action]="actionData[selectedDataIndex]" [allowEdit]="true" [showMetaInfo]="true"></app-action-view>
   </div>
 </div>

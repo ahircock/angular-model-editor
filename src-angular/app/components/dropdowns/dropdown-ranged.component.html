@@ -15,7 +15,8 @@
     <div *ngFor="let item of itemList" (click)="selectItem(item);" class="dropdown-content-item box-white-hover font-normal">
 
       <!-- customize the display of the items in the dropdown -->
-      {{item.name}}
+      ({{item.cost}} points) <span class="font-bold">{{item.name}}</span> [AP: {{item.AP}} | <span *ngIf="item.ONCE">ONCE | </span>RNG: {{item.RNG}} | HIT: {{item.HIT}} | DMG: {{item.DMG}}]
+      <div *ngFor="let rule of item.specialRules" class="font-normal">{{rule.ruleName}} - <span [innerHTML]="rule.ruleText"></span></div>
       <!-- end customization -->
       
     </div>

@@ -4,6 +4,24 @@
   min-width: 212px;
 }
 
+/* ACTION COST */
+.action-cost {
+  display: inline-block;
+  margin-top: 8px;
+}
+.action-cost input {
+  width: 48px;
+  margin-right: 8px;
+}
+.action-cost-box {
+  display: inline-block;
+  border-radius: 4px;
+  width: 42px;
+  margin-right: 4px;
+  border: none;
+  padding: 2px 2px 2px 4px;
+}
+
 /* ACTION TITLE */
 .action-title-box {
   display: flex;

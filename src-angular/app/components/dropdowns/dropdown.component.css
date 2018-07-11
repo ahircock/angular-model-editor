@@ -16,6 +16,7 @@
   position: absolute;
   z-index: 2;
   width: 100%;
+  margin-bottom: 32px;
 }
 .dropdown-content-item {
   display: block;

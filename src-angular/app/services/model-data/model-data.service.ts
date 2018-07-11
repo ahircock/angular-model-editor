@@ -29,6 +29,7 @@ export interface ModelActionData {
   HIT: number;
   DMG: number;
   ONCE: boolean;
+  cost: number;
   specialRules: SpecialRuleData[];
   editable: boolean;
 }
@@ -155,9 +156,20 @@ export class ModelDataService {
     let newModelId = await this.dbConnectService.getNextId("M");    
 
     // clone the "basic" model
-    let newModelDB: ModelDBData = { _id:newModelId, userId: this.loggedInUserId.toLowerCase(), template:true, name:"New Model", traits:null, picture:"basic.jpg", SPD:5,EV:5,ARM:0,HP:5,specialRuleIds:[],actions:[]};
-    let newAction: ModelActionDBData = { type: "MELEE", name: "NEW MELEE", traits: "", ONCE: false, AP:1, RNG:1, HIT:6, DMG:6, specialRuleIds:[] };
-    newModelDB.actions.push( newAction );
+    let newModelDB: ModelDBData = { 
+      _id:newModelId, 
+      userId: this.loggedInUserId.toLowerCase(), 
+      template:true, 
+      name:"New Model", 
+      traits:null, 
+      picture:"basic.jpg", 
+      SPD:5,
+      EV:5,
+      ARM:0,
+      HP:5,
+      specialRuleIds:[],
+      actions:[]
+    };
 
     // create the model in the database
     newModelDB = await this.dbConnectService.createModel( newModelDB );
@@ -271,6 +283,7 @@ export class ModelDataService {
       HIT: action.HIT,
       DMG: action.DMG,
       ONCE: action.ONCE,
+      cost: action.cost,
       specialRules: [],
       editable: true
     }
@@ -318,43 +331,7 @@ export class ModelDataService {
     
     // add the action costs, based on the type of action
     for ( let action of model.actions ) {
-
-      let actionCost = 0;
-
-      switch ( action.type ) {
-
-        case "MELEE":
-          actionCost += this.MELEE_RNG_COST.find( element => element.stat == action.RNG ).cost;
-          actionCost += this.HIT_COST.find( element => element.stat == action.HIT ).cost;
-          actionCost += this.DMG_COST.find( element => element.stat == action.DMG ).cost;
-          
-          // add in the cost of all special rules
-          for ( let specialRule of action.specialRules ) {
-            actionCost += specialRule.ruleCost;
-          }
-
-          break;
-
-        case "RANGED":
-          actionCost += this.RANGED_RNG_COST.find( element => element.stat == action.RNG ).cost;
-          actionCost += this.HIT_COST.find( element => element.stat == action.HIT ).cost;
-          actionCost += this.DMG_COST.find( element => element.stat == action.DMG ).cost;
-
-          // add in the cost of all special rules
-          for ( let specialRule of action.specialRules ) {
-            actionCost += specialRule.ruleCost;
-          }
-
-          break;
-
-        case "SPECIAL":
-          actionCost += action.specialRules[0].ruleCost;
-      }
-
-      // actions cannot have a negative cost
-      if ( actionCost > 0 ) {
-        modelCost += actionCost;
-      }
+      modelCost += action.cost;
     }
 
     // a model cannot be lower than the base cost
@@ -425,6 +402,7 @@ export class ModelDataService {
         HIT: action.HIT,
         DMG: action.DMG,
         ONCE: action.ONCE,
+        cost: action.cost,
         specialRuleIds: []
       }
       for ( let rule of action.specialRules ) {
@@ -476,6 +454,7 @@ export class ModelDataService {
         HIT: actionDB.HIT,
         DMG: actionDB.DMG,
         ONCE: actionDB.ONCE,
+        cost: actionDB.cost? actionDB.cost : 0,
         specialRules: [],
         editable: true             
       }

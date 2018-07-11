@@ -108,4 +108,16 @@
       <app-special-rule-selector *ngIf="editable" [ruleType]="'action'" (ruleSelected)="addRule($event)"></app-special-rule-selector>
     </div>      
   </div>
+
+  <!-- META INFO (COST) -->
+  <div *ngIf="showMetaInfo">
+    <div class="action-cost font-normal">
+      <div *ngIf="editable">
+        <input type="number" class="input-light font-normal" [(ngModel)]="action.cost" (blur)="updateAction()">Points
+      </div>
+      <!-- <div *ngIf="!editable"><div class="action-cost-box box-light">{{action.cost}}</div> Points</div> -->
+      <div *ngIf="!editable">({{action.cost}} Points)
+    </div>
+  </div>  
+  
 </div>

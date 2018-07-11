@@ -73,6 +73,7 @@ export interface ModelActionDBData {
     HIT: number;
     DMG: number;
     ONCE: boolean;
+    cost: number;
     specialRuleIds: string[];
 }
 
@@ -105,6 +106,7 @@ export interface ActionDBData {
     HIT: number;
     DMG: number;
     ONCE: boolean;
+    cost: number;
     specialRuleIds: string[];
 }
 

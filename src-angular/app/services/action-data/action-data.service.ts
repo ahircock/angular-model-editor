@@ -15,6 +15,7 @@ export interface ActionData {
   HIT: number;
   DMG: number;
   ONCE: boolean;
+  cost: number;
   specialRules: SpecialRuleData[];
   editable: boolean;
 }
@@ -87,6 +88,7 @@ export class ActionDataService {
       HIT: 6,
       DMG: 6,
       ONCE: false,
+      cost: 1,
       specialRuleIds: []
     };
 
@@ -184,6 +186,7 @@ export class ActionDataService {
       HIT: dbData.HIT,
       DMG: dbData.DMG,
       ONCE: dbData.ONCE,
+      cost: dbData.cost,
       specialRules: [],
       editable: dbData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     };
@@ -210,6 +213,7 @@ export class ActionDataService {
       HIT: appData.HIT,
       DMG: appData.DMG,
       ONCE: appData.ONCE,
+      cost: appData.cost,
       specialRuleIds: []
     };
 

@@ -20,13 +20,13 @@
 
     <!-- NAME -->
     <div class="action-name font-bold">
-        <input *ngIf="editable" class="input-white font-bold" [(ngModel)]="action.name" (blur)="updateAction()">
+        <input *ngIf="editable" class="input-white font-bold" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
         <span *ngIf="!editable">{{action.name}}</span>
     </div>
 
     <!-- TRAITS -->
     <div class="action-traits font-italic">
-      <input *ngIf="editable" class="input-white font-italic" [(ngModel)]="action.traits" (blur)="updateAction()">
+      <input *ngIf="editable" class="input-white font-italic" [(ngModel)]="action.traits" (blur)="updateAction()" placeholder="Model Traits">
       <span *ngIf="!editable">{{action.traits}}</span>
     </div>
   </div>
@@ -69,9 +69,10 @@
               <select [(ngModel)]="action.DMG" class="input-white font-bold" (change)="selectStat($event.target.value, 'DMG')">
                 <option *ngFor="let DMG of modelDataService.DMG_COST;" class="input-white" [value]="DMG.stat">{{DMG.stat}}</option></select>
             </td>
-            </tr>
-          </table>
+          </tr>
+        </table>
       </div>
+      <div style="clear: both"></div> <!-- This will make sure that the div's height is set properly -->
     </div>
 
     <!-- SPECIAL RULES -->

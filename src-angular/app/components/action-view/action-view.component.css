@@ -57,14 +57,14 @@
   padding-left: 8px;
 }
 .attack-action-stat-bar {
-  width: 200px; height: 42px;
-  border-left-style: solid; border-right-style: solid; border-width: 2px;
+  width: 200px;
+  border-left-style: solid; border-right-style: solid; border-width: 2px; background-color: black; 
 }
 .attack-action-stat-bar:last-child {
   border-bottom-style: solid;
 }
 .attack-action-icon {
-  float: left; padding: 3px; background-color: black; font-size: 0px; 
+  float: left; padding: 3px; font-size: 0px; 
 }
 .attack-action-icon img {
   width: 36px;

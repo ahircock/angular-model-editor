@@ -2,11 +2,11 @@
 
   <!-- ACTION TITLE -->
   <div class="action-title-box">
+
+    <!-- AP -->
     <div *ngIf="!editable" class="action-ap font-bold">
       <div class="action-ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
     </div>
-
-    <!-- AP -->
     <div *ngIf="editable" class="action-ap-dropdown-zone" (clickElsewhere)="showAPDropdown = false">
       <div class="action-ap-dropdown-button font-bold" (click)="showAPDropdown = true">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
       <div *ngIf="showAPDropdown" class="action-ap-dropdown box-white font-normal">
@@ -29,11 +29,16 @@
       <input *ngIf="editable" class="input-white font-traits" [(ngModel)]="action.traits" (blur)="updateAction()" placeholder="Model Traits">
       <span *ngIf="!editable">{{action.traits}}</span>
     </div>
+
   </div>
 
   <!-- ATTACK ACION -->
   <div class="attack-action-details" *ngIf="action.type == 'MELEE' || action.type == 'RANGED'">
+
+    <!-- STAT BAR -->
     <div class="attack-action-stat-bar">
+
+      <!-- ICON -->
       <div class="attack-action-icon">
         <img *ngIf="action.type == 'MELEE'" src="assets/icons/icon-sword-invert.png">
         <img *ngIf="action.type == 'RANGED'" src="assets/icons/icon-bow-invert.png">
@@ -72,10 +77,12 @@
           </tr>
         </table>
       </div>
-      <div style="clear: both"></div> <!-- This will make sure that the div's height is set properly -->
+
+      <div style="clear: both"></div> <!-- This is an HTML technique to make sure that the div's height is set properly -->
+      
     </div>
 
-    <!-- SPECIAL RULES -->
+    <!-- ATTACK SPECIAL RULES -->
     <div *ngIf="action.specialRules.length > 0 || editable" class="attack-action-special-rules-box" >
       <div *ngFor="let specialRule of action.specialRules; index as ruleIndex" class="special-action-rule font-normal">
         <div *ngIf="editable" class="remove-button box-white-hover" (click)="deleteRule(ruleIndex)"><img src="assets/icons/icon-delete-128.png"><div></div></div>

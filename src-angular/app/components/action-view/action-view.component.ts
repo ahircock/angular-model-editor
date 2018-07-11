@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
 import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 import { ModelDataService } from '../../services/model-data/model-data.service'
@@ -12,6 +12,8 @@ export class ActionViewComponent implements OnInit, OnChanges {
 
   @Input() action: ActionData;
   @Input() allowEdit: boolean = false;
+  @Input() allowDelete: boolean = false;
+  @Output() deleteAction = new EventEmitter<ActionData>();
   editable: boolean = false;
 
   showAPDropdown: boolean = false;

@@ -29,6 +29,7 @@ export interface ModelActionData {
   DMG: number;
   ONCE: boolean;
   specialRules: SpecialRuleData[];
+  editable: boolean;
 }
 
 export interface StatCost {
@@ -269,7 +270,8 @@ export class ModelDataService {
       HIT: 0,
       DMG: 0,
       ONCE: false,
-      specialRules: [rule]
+      specialRules: [rule],
+      editable: true
     }
     model.actions.push(newAction);
 
@@ -293,7 +295,8 @@ export class ModelDataService {
       RNG:1,
       HIT:6, 
       DMG:6, 
-      specialRules:[] 
+      specialRules:[],
+      editable: true
     };
     model.actions.push(newAction);
 
@@ -317,7 +320,8 @@ export class ModelDataService {
       RNG:12, 
       HIT:6, 
       DMG:6, 
-      specialRules:[]
+      specialRules:[],
+      editable: true
     };
     model.actions.push(newAction);
 
@@ -527,7 +531,8 @@ export class ModelDataService {
         HIT: actionDB.HIT,
         DMG: actionDB.DMG,
         ONCE: actionDB.ONCE,
-        specialRules: []              
+        specialRules: [],
+        editable: true             
       }
       for ( let ruleId of actionDB.specialRuleIds ) {
         let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);

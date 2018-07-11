@@ -3,6 +3,11 @@
   <!-- ACTION TITLE -->
   <div class="action-title-box">
 
+    <!-- REMOVE BUTTON -->
+    <div *ngIf="allowDelete" class="remove-button box-white-hover" (click)="deleteAction.emit(action)">
+        <img src="assets/icons/icon-delete-128.png">
+    </div>
+  
     <!-- AP -->
     <div *ngIf="!editable" class="action-ap font-bold">
       <div class="action-ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>

@@ -51,68 +51,11 @@
   </div>
 
   <!-- ACTIONS -->
-  <div *ngFor="let action of model.actions; index as actionIndex" class="actionBox">
-    <div class="actionTitleBox">
-      <div class="remove-button box-white-hover" style="margin-top:2px;" (click)="deleteAction(actionIndex)">
-        <img src="assets/icons/icon-delete-128.png"><div></div></div>
-      <div class="actionAPCost font-normal">{{action.AP}}</div>
-      <div class="actionTitle"><input class="input-white font-title" [(ngModel)]="action.name" (blur)="saveModelData()" ></div>
-      <div class="action-traits"><input class="input-align-right input-white font-subtitle" [(ngModel)]="action.traits" (blur)="saveModelData()" ></div>
-    </div>
-
-    <!-- ATTACK ACION -->
-    <div *ngIf="action.type == 'MELEE' || action.type == 'RANGED'" class="attackActionBox">
-      <div class="attackActionStatBar">
-        <div class="attackActionIconDiv">
-          <img *ngIf="action.type == 'MELEE'" class="attackActionIcon" src="assets/icons/icon-sword-invert.png">
-          <img *ngIf="action.type == 'RANGED'" class="attackActionIcon" src="assets/icons/icon-bow-invert.png">
-        </div>
-        <div class="attackActionTableDiv">
-          <table class="attackActionTable statTable">
-            <tr class="statHeader font-bold">
-              <th>RNG</th>
-              <th>HIT</th>
-              <th>DMG</th>
-            </tr>
-            <tr class="statData">
-              <td *ngIf="action.type == 'MELEE'">
-                <select [(ngModel)]="action.RNG" class="input-white font-bold" (change)="selectActionStat(actionIndex, $event.target.value, 'RNG-MELEE')">
-                  <option *ngFor="let RNG of modelDataService.MELEE_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
-              <td *ngIf="action.type == 'RANGED'">
-                <select [(ngModel)]="action.RNG" class="input-white font-bold" (change)="selectActionStat(actionIndex, $event.target.value, 'RNG-RANGED')">
-                  <option *ngFor="let RNG of modelDataService.RANGED_RNG_COST;" [value]="RNG.stat">{{RNG.stat}}</option></select></td>
-              <td >
-                <select [(ngModel)]="action.HIT" class="input-white font-bold" (change)="selectActionStat(actionIndex, $event.target.value, 'HIT')">
-                  <option *ngFor="let HIT of modelDataService.HIT_COST;" [value]="HIT.stat">{{HIT.stat}}</option></select></td>
-              <td >
-                <select [(ngModel)]="action.DMG" class="input-white font-bold" (change)="selectActionStat(actionIndex, $event.target.value, 'DMG')">
-                  <option *ngFor="let DMG of modelDataService.DMG_COST;" [value]="DMG.stat">{{DMG.stat}}</option></select></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-      <div class="attackActionSpecialRulesBox">
-        <div *ngFor="let specialRule of action.specialRules; index as ruleIndex;" class="specialRule font-normal">
-          <div class="remove-button box-white-hover" (click)="deleteAttackSpecialRule(actionIndex, ruleIndex)"><img src="assets/icons/icon-delete-128.png"><div></div></div>
-          <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
-        </div>
-        <app-special-rule-selector [ruleType]="'attack'" (ruleSelected)="addAttackSpecialRule(actionIndex, $event)"></app-special-rule-selector>
-      </div>
-    </div>
-
-    <!-- SPECIAL ACION -->
-    <div *ngIf="action.type == 'SPECIAL'" class="specialActionBox">
-      <div class="specialActionRulesBox">
-        <div class="specialActionIconDiv">
-          <img class="specialActionIcon" src="assets/icons/icon-star-invert.png">
-        </div>
-        <div class="specialActionRule font-normal">
-          <b>{{action.specialRules[0].ruleName}}</b> - <span [innerHTML]="action.specialRules[0].ruleText"></span>
-        </div>
-      </div>      
-    </div>
+  <div *ngFor="let action of model.actions; index as actionIndex" class="action-box">
+    <app-action-view [action]="action" [allowEdit]="true" [allowDelete]="true" (deleteAction)="deleteAction(actionIndex)"></app-action-view>
   </div>
 
+  <!-- BUTTONS TO ADD ACTIONS -->
   <br>
   <div>
     <div class="add-action-button box-white-hover font-bold" (click)="addMeleeAction()">

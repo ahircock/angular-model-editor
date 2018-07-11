@@ -41,7 +41,7 @@ export class ModelDataService {
 
   private modelCache: ModelData[] = [];
 
-  private loggedInUserId: string = "";
+  private loggedInUserId: string;
 
   // these are events that other services can subscribe to
   public modelUpdated: EventEmitter<ModelData> = new EventEmitter();
@@ -63,6 +63,9 @@ export class ModelDataService {
     private dbConnectService: DbConnectService,
     private userService: UserService
   ) { 
+
+    // initialize the user id
+    this.loggedInUserId = this.userService.userName;
 
     // subscribe to events from the other services
     this.userService.loginEvent.subscribe( (email:any) => this.login(email) );

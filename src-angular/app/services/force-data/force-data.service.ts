@@ -44,7 +44,7 @@ export class ForceDataService {
    */
   private forceCache: ForceData[] = [];
 
-  private loggedInUserId: string = "";
+  private loggedInUserId: string;
 
   /**
    * This is the hardcoded list of force sizes, their names and point costs
@@ -60,6 +60,9 @@ export class ForceDataService {
     private dbConnectService: DbConnectService,
     private userService: UserService
   ) { 
+
+    // initialize the user id
+    this.loggedInUserId = this.userService.userName;
 
     // subscribe to events from the other services
     this.userService.loginEvent.subscribe( (email:any) => this.login(email) );

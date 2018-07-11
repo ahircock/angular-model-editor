@@ -23,13 +23,17 @@ export interface ActionData {
 export class ActionDataService {
 
   private actionCache: ActionData[] = [];
-  private loggedInUserId: string = "";
+  private loggedInUserId: string;
 
   constructor(
     private dbConnectService: DbConnectService,
     private specialRuleDataService: SpecialRuleDataService,
     private userService: UserService
   ) { 
+
+    // initialize the user id
+    this.loggedInUserId = this.userService.userName;
+
     // subscribe to events from the other services
     this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
     this.userService.logoutEvent.subscribe( () => this.logout() );

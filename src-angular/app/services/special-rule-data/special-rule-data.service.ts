@@ -17,7 +17,7 @@ export class SpecialRuleDataService {
 
   private ruleCache: SpecialRuleData[] = [];
 
-  private loggedInUserId: string = "";
+  private loggedInUserId: string;
 
   // these are events that other services can subscribe to
   public ruleUpdated: EventEmitter<SpecialRuleData> = new EventEmitter();
@@ -27,6 +27,9 @@ export class SpecialRuleDataService {
     private dbConnectService: DbConnectService,
     private userService: UserService
   ) { 
+
+    // initialize the user id
+    this.loggedInUserId = this.userService.userName;
 
     // subscribe to events from the other services
     this.userService.loginEvent.subscribe( (email:any) => this.login(email) );

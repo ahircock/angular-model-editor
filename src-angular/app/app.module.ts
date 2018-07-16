@@ -1,6 +1,6 @@
 // modules
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
@@ -12,6 +12,7 @@ import { ForceDataService } from './services/force-data/force-data.service';
 import { ActionDataService } from './services/action-data/action-data.service';
 import { DbConnectService } from './services/db-connector/db-connector.interface';
 import { RestAPIConnector } from './services/db-connector/restapi-connector.service';
+import { AppErrorHandler } from './services/error-handler/error-handler.service'
 
 // components
 import { AppComponent } from './app.component';
@@ -73,6 +74,7 @@ import { TextControllerDirective } from './directives/text-controller/text-contr
     HttpClientModule
   ],
   providers: [
+    { provide: ErrorHandler, useClass: AppErrorHandler },
     UserService,
     ModelDataService,
     SpecialRuleDataService,

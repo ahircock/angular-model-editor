@@ -66,7 +66,7 @@ export class MongoDbService {
     await this.connect();
     let filter: any = { _id: updateDoc._id };
     if ( userId ) { 
-      filter = { _id:updateDoc._id, userId: userId };
+      filter = { _id:updateDoc._id, userId: userId.toLowerCase() };
       updateDoc.userId = userId;
     }
     let result = await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc, {returnOriginal: false} );
@@ -85,7 +85,7 @@ export class MongoDbService {
    */
   async createDocument(entity: string, newDoc: any, userId?: string): Promise<any> {
     await this.connect();
-    if ( userId ) { newDoc.userId = userId; }
+    if ( userId ) { newDoc.userId = userId.toLowerCase() }
     let result = await this.mongoDb.collection(entity).insertOne(newDoc);
     newDoc._id = result.insertedId;
     return newDoc;
@@ -101,7 +101,7 @@ export class MongoDbService {
     await this.connect();
     let filter: any = { _id: deleteId };
     if ( userId ) { 
-      filter = { _id:deleteId, userId: userId };
+      filter = { _id:deleteId, userId: userId.toLowerCase() };
     }
     let result = await this.mongoDb.collection(entity).deleteOne(filter);
     if ( result.deletedCount == 0 ) {

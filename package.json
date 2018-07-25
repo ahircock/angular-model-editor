@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./dist/server.js",
     "start-dev-ng": "ng serve",
-    "start-dev-node": "tsc -w -p src-node | nodemon --inspect --watch dist ./dist/server.js | ng serve",
+    "start-dev-node": "tsc -w -p src-node | nodemon --inspect --watch dist ./dist/server.js",
     "start-dev-all": "npm run start-dev-node | npm run start-dev-ng",
     "heroku-postbuild": "npm run build",
     "build": "npm run build-ng && npm run build-node",

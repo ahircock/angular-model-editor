@@ -21,7 +21,11 @@
         {
             "type": "npm",
             "script": "start-dev-ng",
-            "problemMatcher": []
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "type": "npm",

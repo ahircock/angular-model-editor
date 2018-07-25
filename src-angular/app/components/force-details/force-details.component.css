@@ -51,18 +51,25 @@ div.column-section {
     display: flex;    
 }
 div.column-section .left {
-    flex: 1 0 128px;
+    flex: 1 1 50%;
     height: 100%;
     overflow-y: auto;    
 }
 div.column-section .right {
-    flex: 0 0 551px;
+    flex: 1 1 50%;
     padding: 16px;
     background-color: lightgrey;
     box-sizing: border-box;
     height: 100%;
     overflow-y: auto;    
 }
+
+@media only screen and ( max-width: 600px ) {
+    div.column-section .right {
+        display: none;
+    }
+}
+
 
 /* NEW MODEL BUTTON */
 div.create-model-button-zone {

@@ -42,16 +42,6 @@
 }
 
 /* ACTION TABLE */
-.action-table {
-  border-spacing: 0px;
-}
-.action-table th {
-  border: none;
-  padding: 4px 8px;
-}
-.action-table td {
-  padding: 4px 8px;
-}
 .ap-box {
   flex: 0 0 8px;
 }
@@ -62,11 +52,32 @@
 }
 .text-data {
   text-align: left;
+  padding: 4px 8px;
 }
 .num-data {
   text-align: center;
+  padding: 4px 8px;
 }
-
+.rule-data {
+  text-align: left;
+  padding: 0px 4px 4px 32px;
+}
+tr.hover-row {
+  background-color: rgb(211,211,211);
+}
+tr.selected-row {
+  background-color: rgb(128,128,128);
+  color: white;
+}
+tr.shade-row {
+  background-color: #e8e8e8;
+}
+.action-table {
+  border-spacing: 0px;
+}
+.action-table th {
+  border: none;
+}
 
 /* ACTION TILES */
 .action-tile {

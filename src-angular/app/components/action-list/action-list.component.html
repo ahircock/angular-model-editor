@@ -13,25 +13,33 @@
     <div class="action-table-view">
       <table class="action-table font-normal">
         <tr class="box-dark">
+          <th class="text-data">NAME</th>
           <th class="num-data">AP</th>
-          <th class="text-data">Name</th>
-          <th class="text-data">Traits</th>
-          <th class="num-data">RNG</th>
-          <th class="num-data">HIT</th>
-          <th class="num-data">DMG</th>
+          <th class="num-data" *ngIf="actionType != 'SPECIAL'">RNG</th>
+          <th class="num-data" *ngIf="actionType != 'SPECIAL'">HIT</th>
+          <th class="num-data" *ngIf="actionType != 'SPECIAL'">DMG</th>
+          <th class="num-data">COST</th>
+          <th class="text-data">TRAITS</th>
         </tr>
-        <tr *ngFor="let action of actionData; index as actionIndex" 
-            class="box-white-hover"
-            [class.selected]="actionIndex == selectedDataIndex" 
-            (click)="selectedDataIndex = actionIndex">
-          <td class="num_data">
-            <div class="ap-box font-bold"><div class="ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div></div>
+        <tr *ngFor="let row of actionTableDisplay; index as rowIndex" 
+            class="box-white"
+            [class.selected-row]="row.action._id == selectedAction._id" 
+            [class.hover-row]="row.action._id == hoverActionId && row.action._id != selectedAction._id" 
+            [class.shade-row]="row.shadeRow && row.action._id != hoverActionId && row.action._id != selectedAction._id"
+            (click)="selectedAction = row.action"
+            (mouseover)="hoverActionId = row.action._id"
+            (mouseleave)="hoverActionId = ''"
+            >
+          <td *ngIf="row.ruleName" class="rule-data font-normal" colspan="7">
+            <i>{{row.ruleName}}</i> - {{row.ruleText}}
           </td>
-          <td class="text-data font-bold">{{action.name}}</td>
-          <td class="text-data">{{action.traits}}</td>
-          <td class="num-data">{{action.RNG}}</td>
-          <td class="num-data">{{action.HIT}}</td>
-          <td class="num-data">{{action.DMG}}</td>
+          <td *ngIf="!row.ruleName" class="text-data font-bold">{{row.action.name}}</td>
+          <td *ngIf="!row.ruleName" class="num-data">{{row.action.AP}}<span *ngIf="row.action.ONCE"> - ONCE</span></td>
+          <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.RNG}}</td>
+          <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.HIT}}</td>
+          <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.DMG}}</td>
+          <td *ngIf="!row.ruleName" class="num-data">{{row.action.cost}}</td>
+          <td *ngIf="!row.ruleName" class="text-data">{{row.action.traits}}</td>
         </tr>
       </table>
     </div>
@@ -40,6 +48,6 @@
 
   <!-- ACTION DETAILS -->
   <div class="right box-mid">
-    <app-action-view *ngIf="actionData[selectedDataIndex]" [action]="actionData[selectedDataIndex]" [allowEdit]="true" [showMetaInfo]="true"></app-action-view>
+    <app-action-view *ngIf="selectedAction" [action]="selectedAction" [allowEdit]="true" [showMetaInfo]="true"></app-action-view>
   </div>
 </div>

@@ -17,16 +17,19 @@ export class ActionListComponent implements OnInit {
   public actionType: string = "ALL";
 
   /**
-   * The list of special rules being displayed
+   * Used to format the rows that will be displayed in the table
    */
-  public actionData: ActionData[] = [];
-
   public actionTableDisplay: any[] = [];
 
   /**
    * The index of the selected rule in actionData
    */
-  public selectedDataIndex: number = 0;
+  public selectedAction: ActionData;
+
+  /**
+   * The action that is being hovered over
+   */
+  public hoverActionId: string = "";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -58,7 +61,7 @@ export class ActionListComponent implements OnInit {
     await this.loadActionList();
 
     // select the new rule from the list
-    this.selectedDataIndex = this.actionData.findIndex( element => element._id == newAction._id );
+    this.selectedAction = this.actionTableDisplay.find( element => element.action._id == newAction._id );
   }
 
   async deleteAction( deleteAction: ActionData ) {
@@ -71,26 +74,71 @@ export class ActionListComponent implements OnInit {
     await this.loadActionList();
 
     // select the new rule from the list
-    this.selectedDataIndex = this.actionData.findIndex( element => element._id == newAction._id );
+    this.selectedAction = this.actionTableDisplay.find( element => element.action._id == newAction._id );
   }
 
   private async loadActionList() {
+
+    // get the list of actions
+    let actionList: ActionData[] = [];
     switch ( this.actionType ) {
       case "MELEE":
-        this.actionData = await this.actionDataService.getMeleeActions();
+        actionList = await this.actionDataService.getMeleeActions();
         break;
       case "RANGED":
-        this.actionData = await this.actionDataService.getRangedActions();
+        actionList = await this.actionDataService.getRangedActions();
         break;
       case "SPECIAL":
-        this.actionData = await this.actionDataService.getSpecialActions();
+        actionList = await this.actionDataService.getSpecialActions();
         break;
       case "ALL":
         let meleeActions = await this.actionDataService.getMeleeActions();
         let rangedActions = await this.actionDataService.getRangedActions();
         let specialActions = await this.actionDataService.getSpecialActions();
+        actionList = [].concat( meleeActions, rangedActions, specialActions );
+    }
 
-        this.actionData = [].concat( meleeActions, rangedActions, specialActions );
+    
+    // loop through the actions and prepare the table display
+    let actionTableIndex = 0;
+    let shadeRow = false;
+    for ( let action of actionList ) {
+
+      let rowData = { shadeRow: shadeRow, action: action }
+      this.actionTableDisplay[actionTableIndex] = rowData;
+      actionTableIndex++;
+
+      // add a row for each special rule
+      for ( let rule of action.specialRules ) {
+
+        let rowData = { shadeRow: shadeRow, ruleName: rule.ruleName, ruleText: rule.ruleText, action: action };
+        this.actionTableDisplay[actionTableIndex] = rowData;
+        actionTableIndex++;
+
+      }
+
+      shadeRow = !shadeRow;
+    }
+
+    // select the first item in the list
+    if ( this.actionTableDisplay.length > 0 ) {
+      this.selectedAction = this.actionTableDisplay[0].action;
+    }
+  }
+
+  selectRow( tableIndex: number ) {
+    if ( this.actionTableDisplay[tableIndex].ruleName ) {
+      this.selectedAction = this.actionTableDisplay[tableIndex].ruleAction;
+    } else {
+      this.selectedAction = this.actionTableDisplay[tableIndex];
+    }
+  }
+
+  hoverRow(tableIndex: number) {
+    if ( this.actionTableDisplay[tableIndex].ruleName ) {
+      this.hoverActionId = this.actionTableDisplay[tableIndex].ruleAction;
+    } else {
+      this.hoverActionId = this.actionTableDisplay[tableIndex];
     }
 
   }

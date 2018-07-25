@@ -21,11 +21,7 @@
         {
             "type": "npm",
             "script": "start-dev-ng",
-            "problemMatcher": [],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "problemMatcher": []
         },
         {
             "type": "npm",
@@ -41,6 +37,15 @@
             "type": "npm",
             "script": "build-node",
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "start-dev-all",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

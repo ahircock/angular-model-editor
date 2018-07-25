@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DbConnectService, ModelDBData, ModelActionDBData } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
-import { ActionData } from '../action-data/action-data.service'
+import { ActionData, ActionDataService } from '../action-data/action-data.service'
 import { UserService } from '../user/user.service'
 
 export interface ModelData {
@@ -20,18 +20,8 @@ export interface ModelData {
   editable: boolean;
 }
 
-export interface ModelActionData {
-  type: string;
-  name: string;
-  traits: string;
-  AP: number;
-  RNG: number;
-  HIT: number;
-  DMG: number;
-  ONCE: boolean;
-  cost: number;
-  specialRules: SpecialRuleData[];
-  editable: boolean;
+export interface ModelActionData extends ActionData {
+  modelActionName: string;
 }
 
 export interface StatCost {
@@ -63,6 +53,7 @@ export class ModelDataService {
 
   constructor(
     private specialRuleDataService: SpecialRuleDataService,
+    private actionDataService: ActionDataService,
     private dbConnectService: DbConnectService,
     private userService: UserService
   ) { 
@@ -275,6 +266,9 @@ export class ModelDataService {
     
     // add a new special action to the model
     let newAction: ModelActionData = { 
+      modelActionName: action.name,
+      _id: action._id,
+      userId: action.userId,
       type: action.type,
       name: action.name,
       traits: action.traits,
@@ -394,19 +388,8 @@ export class ModelDataService {
     // initialize actions
     for ( let action of modelData.actions ) {
       let modelActionDBData: ModelActionDBData = {
-        type: action.type,
-        name: action.name,
-        traits: action.traits,
-        AP: action.AP,
-        RNG: action.RNG,
-        HIT: action.HIT,
-        DMG: action.DMG,
-        ONCE: action.ONCE,
-        cost: action.cost,
-        specialRuleIds: []
-      }
-      for ( let rule of action.specialRules ) {
-        modelActionDBData.specialRuleIds.push( rule._id );
+        modelActionName: action.modelActionName,
+        actionId: action._id
       }
       modelDBData.actions.push( modelActionDBData );
     }
@@ -437,7 +420,7 @@ export class ModelDataService {
       editable: modelDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     }
 
-    // copy over the special rules
+    // copy over the model special rules
     for ( let ruleId of modelDBData.specialRuleIds ) {
       let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
       modelData.specialRules.push( specialRuleData );
@@ -445,24 +428,29 @@ export class ModelDataService {
 
     // copy over the actions
     for ( let actionDB of modelDBData.actions ) {
-      let action: ModelActionData = {
-        type: actionDB.type,
-        name: actionDB.name,
-        traits: actionDB.traits,
-        AP: actionDB.AP,
-        RNG: actionDB.RNG,
-        HIT: actionDB.HIT,
-        DMG: actionDB.DMG,
-        ONCE: actionDB.ONCE,
-        cost: actionDB.cost? actionDB.cost : 0,
-        specialRules: [],
-        editable: true             
+
+      let action: ActionData = await this.actionDataService.getActionById( actionDB.actionId );
+
+      let modelAction: ModelActionData = {
+        modelActionName: actionDB.modelActionName,
+        _id: action._id,
+        userId: action.userId,
+        type: action.type,
+        name: action.name,
+        traits: action.traits,
+        AP: action.AP,
+        RNG: action.RNG,
+        HIT: action.HIT,
+        DMG: action.DMG,
+        ONCE: action.ONCE,
+        cost: action.cost? action.cost : 0,
+        specialRules: action.specialRules,
+        editable: modelData.editable
       }
-      for ( let ruleId of actionDB.specialRuleIds ) {
-        let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
-        action.specialRules.push( specialRuleData );
-      }
-      modelData.actions.push(action);
+      // for ( let rule of action.specialRules ) {
+      //   modelAction.specialRules.push( rule );
+      // }
+      modelData.actions.push( modelAction );
     }
 
     // calculate the model's cost

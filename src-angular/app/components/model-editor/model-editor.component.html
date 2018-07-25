@@ -52,7 +52,7 @@
 
   <!-- ACTIONS -->
   <div *ngFor="let action of model.actions; index as actionIndex" class="action-box">
-    <app-action-view [action]="action" [allowEdit]="false" [allowDelete]="true" (deleteAction)="deleteAction(actionIndex)"></app-action-view>
+    <app-action-view [action]="action" [allowEdit]="true" [allowDelete]="true" (deleteAction)="deleteAction(actionIndex)"></app-action-view>
   </div>
 
   <!-- BUTTONS TO ADD ACTIONS -->

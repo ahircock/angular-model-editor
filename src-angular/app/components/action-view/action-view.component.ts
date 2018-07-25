@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
 import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
-import { ModelDataService } from '../../services/model-data/model-data.service'
+import { ModelDataService, ModelActionData } from '../../services/model-data/model-data.service'
 
 @Component({
   selector: 'app-action-view',
@@ -18,6 +18,8 @@ export class ActionViewComponent implements OnInit, OnChanges {
   editable: boolean = false;
 
   showAPDropdown: boolean = false;
+  isModelAction: boolean = false;
+  modelActionEditable: boolean = false;
 
   public AP_VALUES = [ {ap:0, once:false}, {ap:1, once:false}, {ap:2, once:false}, {ap:0, once:true}, {ap:1, once:true}, {ap:2, once:true} ];
 
@@ -31,11 +33,26 @@ export class ActionViewComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
 
+    // if this action is on a model
+    let modelAction: ModelActionData = ( this.action as ModelActionData );
+    if ( typeof modelAction.modelActionName != "undefined" ) {
+      this.isModelAction = true;
+    } else {
+      this.isModelAction = false;
+    }
+
     // if the action changes, then make sure this one is editable
-    if ( this.allowEdit && this.action.editable ) {
+    if ( this.allowEdit && this.action.editable && !this.isModelAction ) {
       this.editable = true;
     } else {
       this.editable = false;
+    }
+
+    // can you edit the model action name
+    if ( this.isModelAction && this.allowEdit ) {
+      this.modelActionEditable = true;
+    } else {
+      this.modelActionEditable = false;
     }
   }
 

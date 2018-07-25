@@ -25,8 +25,10 @@
 
     <!-- NAME -->
     <div class="action-name font-title">
-        <input *ngIf="editable" textController class="input-white font-title" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
-        <span *ngIf="!editable">{{action.name}}</span>
+      <input *ngIf="isModelAction && modelActionEditable" textController class="input-white font-title" [(ngModel)]="action.modelActionName" (blur)="updateAction()" placeholder="Model Name">
+      <span  *ngIf="isModelAction && !modelActionEditable">{{action.modelActionName}}</span>
+      <input *ngIf="!isModelAction && editable" textController class="input-white font-title" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
+      <span  *ngIf="!isModelAction && !editable">{{action.name}}</span>
     </div>
 
     <!-- TRAITS -->

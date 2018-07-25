@@ -52,6 +52,18 @@ export class ActionDataService {
     return this.getActionsByType( "SPECIAL" );
   }
 
+  async getActionById( actionId: string ): Promise<ActionData> {
+
+    // if the cache has not been loaded yet, then refresh it from the DB
+    if ( this.actionCache.length == 0 ) {
+      await this.loadCache();
+    }
+
+    // return the model with the matching ID
+    return this.actionCache.find( element => element._id == actionId );    
+
+  }
+
   private async getActionsByType( type: string ): Promise<ActionData[]> {
     
     // if the cache has not been loaded yet, then refresh it from the DB

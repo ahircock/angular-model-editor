@@ -65,16 +65,8 @@ export interface ModelDBData {
     actions: ModelActionDBData[];
 }
 export interface ModelActionDBData {
-    type: string;
-    name: string;
-    traits: string;
-    AP: number;
-    RNG: number;
-    HIT: number;
-    DMG: number;
-    ONCE: boolean;
-    cost: number;
-    specialRuleIds: string[];
+    modelActionName: string;
+    actionId: string;
 }
 
 /**

@@ -53,10 +53,6 @@ export class ForceDetailsComponent implements OnInit {
     this.selectedModelIndex = selectedModelIndex;
   }
 
-  async newModelClick() {
-    this.showModelListDropdown = !this.showModelListDropdown;
-  }
-
   async addModel( template: ModelData ) {
     
     // create a new model based on the selected one

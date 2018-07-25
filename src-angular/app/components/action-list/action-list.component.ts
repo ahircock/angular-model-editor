@@ -21,6 +21,8 @@ export class ActionListComponent implements OnInit {
    */
   public actionData: ActionData[] = [];
 
+  public actionTableDisplay: any[] = [];
+
   /**
    * The index of the selected rule in actionData
    */

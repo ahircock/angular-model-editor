@@ -9,20 +9,33 @@
       <div class="button-text">New {{actionType}} Action</div>
     </div>
 
-    <!-- ACTION TILES -->
-    <div *ngFor="let action of actionData; index as actionIndex" 
-        class="action-tile box-light-hover font-normal" 
-        [class.selected]="actionIndex == selectedDataIndex" 
-        (click)="selectedDataIndex = actionIndex">
-      
-        <app-action-view style="width:100%" [action]="action" [showMetaInfo]="true"></app-action-view>
-
-        <!-- BUTTON BAND  -->
-        <div class="action-button-band">
-          <div *ngIf="action.editable" class="action-button box-light-hover" (click)="deleteAction(action)"><img src="/assets/icons/icon-delete-128.png"></div>    
-          <div class="action-button box-light-hover" (click)="cloneAction(action)"><img src="/assets/icons/icon-clone-128.png"></div>
-        </div>
+    <!-- ACTION TABLE -->
+    <div class="action-table-view">
+      <table class="action-table font-normal">
+        <tr class="box-dark">
+          <th class="num-data">AP</th>
+          <th class="text-data">Name</th>
+          <th class="text-data">Traits</th>
+          <th class="num-data">RNG</th>
+          <th class="num-data">HIT</th>
+          <th class="num-data">DMG</th>
+        </tr>
+        <tr *ngFor="let action of actionData; index as actionIndex" 
+            class="box-white-hover"
+            [class.selected]="actionIndex == selectedDataIndex" 
+            (click)="selectedDataIndex = actionIndex">
+          <td class="num_data">
+            <div class="ap-box font-bold"><div class="ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div></div>
+          </td>
+          <td class="text-data font-bold">{{action.name}}</td>
+          <td class="text-data">{{action.traits}}</td>
+          <td class="num-data">{{action.RNG}}</td>
+          <td class="num-data">{{action.HIT}}</td>
+          <td class="num-data">{{action.DMG}}</td>
+        </tr>
+      </table>
     </div>
+  
   </div>
 
   <!-- ACTION DETAILS -->

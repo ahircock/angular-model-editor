@@ -41,6 +41,33 @@
   padding-top: 7px;
 }
 
+/* ACTION TABLE */
+.action-table {
+  border-spacing: 0px;
+}
+.action-table th {
+  border: none;
+  padding: 4px 8px;
+}
+.action-table td {
+  padding: 4px 8px;
+}
+.ap-box {
+  flex: 0 0 8px;
+}
+.ap-text {
+  padding: 0px 6px 0px 6px; 
+  border-radius: 4px; background-color: grey; color: white;
+  width: max-content;
+}
+.text-data {
+  text-align: left;
+}
+.num-data {
+  text-align: center;
+}
+
+
 /* ACTION TILES */
 .action-tile {
   min-width: 212px;

@@ -5,8 +5,8 @@
 
     <!-- MODEL TITLE INFO -->
     <div class="modelTextBox">
-      <div><input class="input-white font-title-big" [(ngModel)]="model.name" (blur)="saveModelData()" placeholder="Model name"></div>
-      <div><input class="input-white font-traits" [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
+      <div><input class="input-white font-title-big" textController [(ngModel)]="model.name" (blur)="saveModelData()" placeholder="Model name"></div>
+      <div><input class="input-white font-traits" textController [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
       <div class="modelCost font-normal">{{model.cost}} points</div>
       <table class="statTable font-bold">
         <tr>

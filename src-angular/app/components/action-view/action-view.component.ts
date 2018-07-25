@@ -12,9 +12,8 @@ export class ActionViewComponent implements OnInit, OnChanges {
 
   @Input() action: ActionData;
   @Input() allowEdit: boolean = false;
-  @Input() allowDelete: boolean = false;
   @Input() showMetaInfo: boolean = false;
-  @Output() deleteAction = new EventEmitter<ActionData>();
+  @Output() deleteModelAction = new EventEmitter<ActionData>();
   @Output() updateModelAction = new EventEmitter<ActionData>();
   editable: boolean = false;
 

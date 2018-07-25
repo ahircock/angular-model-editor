@@ -4,7 +4,7 @@
   <div class="action-title-box">
 
     <!-- REMOVE BUTTON -->
-    <div *ngIf="allowDelete" class="remove-button box-white-hover" (click)="deleteAction.emit(action)">
+    <div *ngIf="isModelAction && modelActionEditable" class="remove-button box-white-hover" (click)="deleteModelAction.emit(action)">
         <img src="assets/icons/icon-delete-128.png">
     </div>
   

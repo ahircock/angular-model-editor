@@ -127,3 +127,8 @@
 .specialActionRule {
     margin-left: 3px; width:441px; float: left;
 }
+
+/* Used to hide an element */
+.hidden {
+    display: none;
+}

@@ -20,8 +20,10 @@
       (blur)="updateRuleData()"></textarea>
     </div>
     
-    <!-- RULE COST -->
+    <!-- MODEL RULE INFO -->
     <div *ngIf="rule.ruleType == 'model'">
+      
+      <!-- RULE COST -->
       <div class="rule-num-edit font-normal">
         <input 
           type="number"
@@ -30,6 +32,16 @@
           (blur)="updateRuleData()">
         Points
       </div>
+
+      <!-- Print Visible -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="checkbox"
+          [(ngModel)]="rule.printVisible" 
+          (blur)="updateRuleData()">
+        Visible When Printing
+      </div>
+        
     </div>
 
     <!-- MODEL STAT MODIFIERS -->

@@ -28,7 +28,7 @@
 
   <!-- MODEL SPECIAL RULES -->
   <div *ngIf="model.specialRules.length > 0" class="modelSpecialRulesBox">
-    <div *ngFor="let specialRule of model.specialRules" class="specialRule">
+    <div *ngFor="let specialRule of model.specialRules" class="specialRule" [class.hidden]="!specialRule.printVisible">
       <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
     </div>
   </div>

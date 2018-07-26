@@ -19,7 +19,7 @@
   display: inline-block;
   margin-bottom: 8px;
 }
-.rule-num-edit input {
+.rule-num-edit input[type="number"] {
   width: 48px;
   margin-right: 8px;
 }

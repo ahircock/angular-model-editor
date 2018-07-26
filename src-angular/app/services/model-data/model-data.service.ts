@@ -297,6 +297,7 @@ export class ModelDataService {
         ruleType: actionRule.ruleType,
         ruleName: actionRule.ruleName,
         ruleText: actionRule.ruleText,
+        printVisible: actionRule.printVisible,
         editable: true
       }
       newAction.specialRules.push( newRule );

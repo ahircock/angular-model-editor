@@ -8,6 +8,7 @@ export interface SpecialRuleData {
   ruleType: RuleType;
   ruleName: string;
   ruleText: string;
+  printVisible: boolean;
   ruleCost?: number;
   modSPD?: number;
   modEV?: number;
@@ -117,7 +118,8 @@ export class SpecialRuleDataService {
       userId: this.loggedInUserId.toLowerCase(), 
       type: ruleType, 
       name:"NEW RULE", 
-      text: "Enter text for new rule"
+      text: "Enter text for new rule",
+      printVisible: true
     };
 
     // if this is a model-rule, copy the attributes
@@ -199,7 +201,8 @@ export class SpecialRuleDataService {
       userId: this.loggedInUserId.toLowerCase(), 
       type: cloneRule.ruleType, 
       name: cloneRule.ruleName + " (COPY)", 
-      text: cloneRule.ruleText
+      text: cloneRule.ruleText,
+      printVisible: cloneRule.printVisible
     };
 
     // if this is a model-rule, copy the attributes
@@ -239,6 +242,7 @@ export class SpecialRuleDataService {
       ruleName: ruleDBData.name.toUpperCase(),
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
+      printVisible: typeof ruleDBData.printVisible == "undefined" ? true : ruleDBData.printVisible,
       editable: ruleDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false,
       modSPD: ruleDBData.modSPD ? ruleDBData.modSPD : 0,
       modEV: ruleDBData.modEV ? ruleDBData.modEV : 0,
@@ -266,6 +270,7 @@ export class SpecialRuleDataService {
       type: appData.ruleType,
       name: appData.ruleName,
       text: appData.ruleText,
+      printVisible: appData.printVisible
     };
 
     // initialize the special attributes of model rules

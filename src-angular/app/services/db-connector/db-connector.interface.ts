@@ -52,6 +52,7 @@ export interface RuleDBData {
     type: RuleType;
     name: string;
     text: string;
+    printVisible: boolean;
     cost?: number;
     modSPD?: number;
     modEV?: number;

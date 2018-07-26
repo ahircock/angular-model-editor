@@ -56,6 +56,6 @@
 
   <!-- ACTION DETAILS -->
   <div class="right box-mid">
-    <app-action-view *ngIf="selectedAction" [action]="selectedAction" [allowEdit]="true" [showMetaInfo]="true"></app-action-view>
+    <app-action-view *ngIf="selectedAction" [action]="selectedAction" [allowEdit]="true" [showMetaInfo]="true" (updated)="loadActionList()"></app-action-view>
   </div>
 </div>

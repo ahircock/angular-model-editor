@@ -14,7 +14,7 @@ export class ActionViewComponent implements OnInit, OnChanges {
   @Input() allowEdit: boolean = false;
   @Input() showMetaInfo: boolean = false;
   @Output() deleteModelAction = new EventEmitter<ActionData>();
-  @Output() updateModelAction = new EventEmitter<ActionData>();
+  @Output() updated = new EventEmitter<ActionData>();
   editable: boolean = false;
 
   showAPDropdown: boolean = false;
@@ -56,12 +56,15 @@ export class ActionViewComponent implements OnInit, OnChanges {
     }
   }
 
-  updateAction() {
+  async updateAction() {
 
     // as long as this action has an _id, then update it
     if ( this.action._id ) {
-      this.actionDataService.updateAction(this.action);
+      await this.actionDataService.updateAction(this.action);
     }
+
+    // notify parents that this changed
+    this.updated.emit();
   }
 
   selectAP(ap: number, once: boolean) {

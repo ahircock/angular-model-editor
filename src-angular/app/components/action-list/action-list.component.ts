@@ -76,7 +76,7 @@ export class ActionListComponent implements OnInit {
     await this.loadActionList();
 
     // select the new rule from the list
-    this.selectedAction = this.actionTableDisplay.find( element => element.action._id == newAction._id );
+    this.selectedAction = newAction;
   }
 
   async deleteAction( deleteAction: ActionData ) {
@@ -101,14 +101,13 @@ export class ActionListComponent implements OnInit {
     await this.loadActionList();
 
     // select the new rule from the list
-    this.selectedAction = this.actionTableDisplay.find( element => element.action._id == newAction._id );
+    this.selectedAction = newAction;
   }
 
-  private async loadActionList() {
+  public async loadActionList() {
 
     // get the list of actions
     let actionList: ActionData[] = [];
-
 
     switch ( this.actionType ) {
       case "MELEE":
@@ -147,7 +146,7 @@ export class ActionListComponent implements OnInit {
     }
 
     // select the first item in the list
-    if ( this.actionTableDisplay.length > 0 ) {
+    if ( this.actionTableDisplay.length > 0 && !this.selectedAction ) {
       this.selectedAction = this.actionTableDisplay[0].action;
     }
   }

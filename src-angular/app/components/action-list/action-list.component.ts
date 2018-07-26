@@ -98,6 +98,8 @@ export class ActionListComponent implements OnInit {
         actionList = [].concat( meleeActions, rangedActions, specialActions );
     }
 
+    // clear the display
+    this.actionTableDisplay = [];
     
     // loop through the actions and prepare the table display
     let actionTableIndex = 0;

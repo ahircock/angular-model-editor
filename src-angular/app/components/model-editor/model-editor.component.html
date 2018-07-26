@@ -16,14 +16,10 @@
           <th>HP</th>
         </tr>
         <tr>
-          <td><select [(ngModel)]="model.SPD" class="input-white font-bold" (change)="selectModelStat($event.target.value, 'SPD')">
-            <option *ngFor="let SPD of modelDataService.SPD_COST;" [value]="SPD.stat">{{SPD.stat}}</option></select></td>
-          <td><select [(ngModel)]="model.EV" class="input-white font-bold" (change)="selectModelStat($event.target.value, 'EV')">
-            <option *ngFor="let EV of modelDataService.EV_COST;" [value]="EV.stat">{{EV.stat}}</option></select></td>
-          <td><select [(ngModel)]="model.ARM" class="input-white font-bold" (change)="selectModelStat($event.target.value, 'ARM')">
-            <option *ngFor="let ARM of modelDataService.ARM_COST;" [value]="ARM.stat">{{ARM.stat}}</option></select></td>
-          <td><select [(ngModel)]="model.HP" class="input-white font-bold" (change)="selectModelStat($event.target.value, 'HP')">
-            <option *ngFor="let HP of modelDataService.HP_COST;" [value]="HP.stat">{{HP.stat}}</option></select></td>
+          <td>{{model.SPD}}</td>
+          <td>{{model.EV}}</td>
+          <td>{{model.ARM}}</td>
+          <td>{{model.HP}}</td>
         </tr>
       </table>
     </div>

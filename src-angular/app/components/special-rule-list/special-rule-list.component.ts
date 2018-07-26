@@ -44,8 +44,10 @@ export class SpecialRuleListComponent implements OnInit {
     await this.loadRuleList();
   }
 
-  async selectType( newType: RuleType ) {
-    this.ruleType = newType;
+  async selectType( newType: string ) {
+    if ( newType == 'special' ) this.ruleType = RuleType.Special;
+    if ( newType == 'attack' ) this.ruleType = RuleType.Attack;
+    if ( newType == 'model' ) this.ruleType = RuleType.Model;
     await this.loadRuleList();
   }
 

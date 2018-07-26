@@ -122,7 +122,10 @@
 
   <!-- NON-EDITABLE RULE -->
   <div *ngIf="!rule.editable">
-      <div class="rule-name font-title-big">{{rule.ruleName}}</div>
-      <div class="rule-text font-normal">{{rule.ruleText}}</div>  
+    <div class="rule-name font-title-big">{{rule.ruleName}}</div>
+    <div class="rule-text font-normal">{{rule.ruleText}}</div><br>
+    <div *ngIf="rule.ruleType == 'model'" class="font-normal">
+      {{rule.ruleCost}} Points<span *ngIf="!rule.printVisible"><br>Not Visible When Printing</span><br>
+    </div>
   </div>
 </div>

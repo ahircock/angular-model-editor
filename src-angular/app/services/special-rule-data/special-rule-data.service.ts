@@ -117,9 +117,20 @@ export class SpecialRuleDataService {
       userId: this.loggedInUserId.toLowerCase(), 
       type: ruleType, 
       name:"NEW RULE", 
-      text: "Enter text for new rule", 
-      cost: 1
+      text: "Enter text for new rule"
     };
+
+    // if this is a model-rule, copy the attributes
+    if ( ruleType == RuleType.Model ) {
+      newRuleDB.cost = 1;
+      newRuleDB.modSPD = 0;
+      newRuleDB.modEV = 0;
+      newRuleDB.modARM = 0;
+      newRuleDB.modHP = 0;
+      newRuleDB.modStrDMG = 0;
+      newRuleDB.modMHIT = 0;
+      newRuleDB.modRHIT = 0;
+    }
 
     // add the new rule to the DB
     newRuleDB = await this.dbConnectService.createRule( newRuleDB );
@@ -188,9 +199,20 @@ export class SpecialRuleDataService {
       userId: this.loggedInUserId.toLowerCase(), 
       type: cloneRule.ruleType, 
       name: cloneRule.ruleName + " (COPY)", 
-      text: cloneRule.ruleText, 
-      cost: cloneRule.ruleCost
+      text: cloneRule.ruleText
     };
+
+    // if this is a model-rule, copy the attributes
+    if ( cloneRule.ruleType == RuleType.Model ) {
+      newRuleDB.cost = cloneRule.ruleCost;
+      newRuleDB.modSPD = cloneRule.modSPD;
+      newRuleDB.modEV = cloneRule.modEV;
+      newRuleDB.modARM = cloneRule.modARM;
+      newRuleDB.modHP = cloneRule.modHP;
+      newRuleDB.modStrDMG = cloneRule.modStrDMG;
+      newRuleDB.modMHIT = cloneRule.modMHIT;
+      newRuleDB.modRHIT = cloneRule.modRHIT;
+    }
 
     // add the new rule to the DB
     newRuleDB = await this.dbConnectService.createRule( newRuleDB );
@@ -252,7 +274,7 @@ export class SpecialRuleDataService {
       ruleDBData.modSPD = appData.modSPD;
       ruleDBData.modEV = appData.modEV;
       ruleDBData.modARM = appData.modARM;
-      ruleDBData.modHP = appData.modSPD;
+      ruleDBData.modHP = appData.modHP;
       ruleDBData.modStrDMG = appData.modStrDMG;
       ruleDBData.modMHIT = appData.modMHIT;
       ruleDBData.modRHIT = appData.modRHIT;

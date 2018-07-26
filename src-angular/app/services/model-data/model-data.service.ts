@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService, ModelDBData, ModelActionDBData } from '../db-connector/db-connector.interface';
+import { DbConnectService, ModelDBData, ModelActionDBData, ActionType } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
 import { ActionData, ActionDataService } from '../action-data/action-data.service'
 import { UserService } from '../user/user.service'
@@ -29,6 +29,14 @@ export interface StatCost {
   cost: number;
 }
 
+export const BaseModelValues = {
+  cost: 10,
+  SPD: 5,
+  EV: 5,
+  ARM: 0,
+  HP: 5
+}
+
 @Injectable()
 export class ModelDataService {
 
@@ -41,7 +49,6 @@ export class ModelDataService {
   public modelDeleted: EventEmitter<ModelData> = new EventEmitter();
 
   // These constant arrays are used to calculate the total cost of a model, and can be displayed in dropdowns
-  public BASE_COST = 10;
   public SPD_COST: StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:6} ];
   public EV_COST:  StatCost[] = [ {stat:3, cost:-2}, {stat:4, cost:-1}, {stat:5,  cost:0}, {stat:6, cost:1}, {stat:7, cost:3}, {stat:8, cost:5} ];
   public ARM_COST: StatCost[] = [ {stat:0, cost:0 }, {stat:1, cost:1 }, {stat:2,  cost:2}, {stat:3, cost:4}, {stat:4, cost:6} ];
@@ -146,18 +153,18 @@ export class ModelDataService {
     // generate a new ID for the model
     let newModelId = await this.dbConnectService.getNextId("M");    
 
-    // clone the "basic" model
+    // create a new object to save
     let newModelDB: ModelDBData = { 
-      _id:newModelId, 
+      _id: newModelId, 
       userId: this.loggedInUserId.toLowerCase(), 
-      template:true, 
-      name:"New Model", 
-      traits:null, 
-      picture:"basic.jpg", 
-      SPD:5,
-      EV:5,
-      ARM:0,
-      HP:5,
+      template: true, 
+      name: "New Model", 
+      traits: "", 
+      picture: "basic.jpg", 
+      SPD: BaseModelValues.SPD,
+      EV: BaseModelValues.EV,
+      ARM: BaseModelValues.ARM,
+      HP: BaseModelValues.HP,
       specialRuleIds:[],
       actions:[]
     };
@@ -276,6 +283,7 @@ export class ModelDataService {
       RNG: action.RNG,
       HIT: action.HIT,
       DMG: action.DMG,
+      strengthBased: action.strengthBased,
       ONCE: action.ONCE,
       cost: action.cost,
       specialRules: [],
@@ -289,7 +297,6 @@ export class ModelDataService {
         ruleType: actionRule.ruleType,
         ruleName: actionRule.ruleName,
         ruleText: actionRule.ruleText,
-        ruleCost: actionRule.ruleCost,
         editable: true
       }
       newAction.specialRules.push( newRule );
@@ -306,34 +313,44 @@ export class ModelDataService {
    * Updates the ModelData.cost value of a given model based on all of the proper calculations
    * @param model the model whose cost will be updated
    */
-  private calculateModelCost( model: ModelData ): ModelData {
+  private calculateModelStats( model: ModelData ): ModelData {
     
-    // start with the base cost
-    let modelCost = this.BASE_COST;
-
-    // add the cost of model stats
-    modelCost += this.SPD_COST.find( element => element.stat == model.SPD ).cost;
-    modelCost += this.EV_COST.find( element => element.stat == model.EV ).cost;
-    modelCost += this.ARM_COST.find( element => element.stat == model.ARM ).cost;
-    modelCost += this.HP_COST.find( element => element.stat == model.HP ).cost;
+    // start with the base values for the calculated fields
+    model.cost = BaseModelValues.cost;
+    model.SPD = BaseModelValues.SPD;
+    model.EV = BaseModelValues.EV;
+    model.ARM = BaseModelValues.ARM;
+    model.HP = BaseModelValues.HP;
 
     // add the special rule costs
     for ( let specialRule of model.specialRules ) {
-      modelCost += specialRule.ruleCost;
+      model.cost += specialRule.ruleCost;
+
+      // update the stats based on the model rules
+      model.HP += specialRule.modHP;
+      model.SPD += specialRule.modSPD;
+      model.EV += specialRule.modEV;
+      model.ARM += specialRule.modARM;
+
+      // update the action stats based on the model rule
+      for ( let action of model.actions ) {
+
+        if ( action.type == ActionType.Melee ) action.HIT += specialRule.modMHIT;
+        if ( action.type == ActionType.Ranged ) action.HIT += specialRule.modRHIT;
+        if ( action.type == ActionType.Melee && action.strengthBased ) action.DMG += specialRule.modStrDMG;
+        if ( action.type == ActionType.Ranged && action.strengthBased ) action.DMG += specialRule.modStrDMG;
+      }
     }
     
-    // add the action costs, based on the type of action
+    // add the action costs, and update the action stats
     for ( let action of model.actions ) {
-      modelCost += action.cost;
+      model.cost += action.cost;
     }
 
     // a model cannot be lower than the base cost
-    if ( modelCost < this.BASE_COST ) {
-      modelCost = this.BASE_COST;
-    }
+    if ( model.cost < BaseModelValues.cost ) model.cost = BaseModelValues.cost;
 
     // update the model and return it
-    model.cost = modelCost;
     return model;
   }
 
@@ -441,6 +458,7 @@ export class ModelDataService {
         RNG: action.RNG,
         HIT: action.HIT,
         DMG: action.DMG,
+        strengthBased: action.strengthBased,
         ONCE: action.ONCE,
         cost: action.cost? action.cost : 0,
         specialRules: action.specialRules,
@@ -453,7 +471,7 @@ export class ModelDataService {
     }
 
     // calculate the model's cost
-    modelData = this.calculateModelCost( modelData );
+    modelData = this.calculateModelStats( modelData );
 
     // return the prepared object
     return modelData;
@@ -524,7 +542,7 @@ export class ModelDataService {
       }
 
       // recalculate the details of the model and inform people that it has changed
-      model = this.calculateModelCost( model );
+      model = this.calculateModelStats( model );
       this.modelUpdated.emit(model);
     }
   }

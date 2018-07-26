@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { UserService } from '../../services/user/user.service'
 import { ActionDataService, ActionData } from '../../services/action-data/action-data.service'
 import { ModelDataService } from '../../services/model-data/model-data.service';
+import { ActionType } from '../../services/db-connector/db-connector.interface';
 
   
 @Component({
@@ -15,7 +16,7 @@ export class ActionListComponent implements OnInit {
   /**
    * Controls the type of rule that is being displayed
    */
-  public actionType: string = "ALL";
+  public actionType: ActionType = ActionType.Melee;
 
   /**
    * Used to format the rows that will be displayed in the table
@@ -53,12 +54,24 @@ export class ActionListComponent implements OnInit {
   }
 
   private async urlChanged( actionType: string ) {
-    this.actionType = actionType.toUpperCase();
+
+    // set the action type based on the URL
+    switch ( actionType.toUpperCase() ) {
+      case ActionType.Melee:
+        this.actionType = ActionType.Melee;
+        break;
+      case ActionType.Ranged:
+        this.actionType = ActionType.Ranged;
+        break;
+      case ActionType.Special:
+        this.actionType = ActionType.Special;
+        break;
+    }
     await this.loadActionList();
   }
 
   async newAction() {
-    let newActionType = this.actionType == "ALL" ? "MELEE" : this.actionType;
+    let newActionType = this.actionType;
     let newAction: ActionData = await this.actionDataService.createNewAction( newActionType );
     await this.loadActionList();
 
@@ -95,6 +108,8 @@ export class ActionListComponent implements OnInit {
 
     // get the list of actions
     let actionList: ActionData[] = [];
+
+
     switch ( this.actionType ) {
       case "MELEE":
         actionList = await this.actionDataService.getMeleeActions();
@@ -105,11 +120,6 @@ export class ActionListComponent implements OnInit {
       case "SPECIAL":
         actionList = await this.actionDataService.getSpecialActions();
         break;
-      case "ALL":
-        let meleeActions = await this.actionDataService.getMeleeActions();
-        let rangedActions = await this.actionDataService.getRangedActions();
-        let specialActions = await this.actionDataService.getSpecialActions();
-        actionList = [].concat( meleeActions, rangedActions, specialActions );
     }
 
     // clear the display

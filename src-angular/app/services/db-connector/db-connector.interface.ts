@@ -34,6 +34,9 @@ export abstract class DbConnectService {
 
 // *** DB DATA STRUCTURES 
 
+/**
+ * List of possible rule types
+ */
 export const enum RuleType {
     Special = "special",
     Attack = "attack",
@@ -97,18 +100,28 @@ export interface ForceModelDBData {
 }
 
 /**
+ * List of possible action types
+ */
+export const enum ActionType {
+    Special = "SPECIAL",
+    Melee = "MELEE",
+    Ranged = "RANGED"
+}
+  
+/**
  * Structure of Action data, as stored in the database
  */
 export interface ActionDBData {
     _id: string;
     userId: string;
-    type: string;
+    type: ActionType;
     name: string;
     traits: string;
     AP: number;
     RNG: number;
     HIT: number;
     DMG: number;
+    strengthBased: boolean;
     ONCE: boolean;
     cost: number;
     specialRuleIds: string[];

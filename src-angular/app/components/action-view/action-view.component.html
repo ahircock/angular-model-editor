@@ -112,14 +112,22 @@
   </div>
 
   <!-- META INFO (COST) -->
-  <div *ngIf="showMetaInfo">
+  <div *ngIf="showMetaInfo" class="meta-info">
+
+    <!-- COST / POINTS -->
     <div class="action-cost font-normal">
-      <div *ngIf="editable">
+      <span *ngIf="editable">
         <input type="number" class="input-light font-normal" [(ngModel)]="action.cost" (blur)="updateAction()">Points
-      </div>
-      <!-- <div *ngIf="!editable"><div class="action-cost-box box-light">{{action.cost}}</div> Points</div> -->
-      <div *ngIf="!editable">({{action.cost}} Points)
+      </span>
+      <span *ngIf="!editable">{{action.cost}} Points</span>
     </div>
-  </div>  
-  
+
+    <!-- STRENGTH BASED -->
+    <div class="action-cost font-normal" *ngIf="action.type != 'SPECIAL'">
+      <span *ngIf="editable">
+        <input type="checkbox" [(ngModel)]="action.strengthBased" (blur)="updateAction()">Strength Based
+      </span>
+      <span *ngIf="!editable && action.strengthBased">[Strength Based]</span>
+    </div>  
+  </div>
 </div>

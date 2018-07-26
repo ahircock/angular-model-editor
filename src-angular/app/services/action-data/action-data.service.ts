@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DbConnectService, ActionDBData } from '../db-connector/db-connector.interface';
+import { DbConnectService, ActionDBData, ActionType } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
 import { UserService } from '../user/user.service'
 import { Action } from 'rxjs/scheduler/Action';
@@ -7,13 +7,14 @@ import { Action } from 'rxjs/scheduler/Action';
 export interface ActionData {
   _id: string;
   userId: string;
-  type: string;
+  type: ActionType;
   name: string;
   traits: string;
   AP: number;
   RNG: number;
   HIT: number;
   DMG: number;
+  strengthBased: boolean;
   ONCE: boolean;
   cost: number;
   specialRules: SpecialRuleData[];
@@ -83,7 +84,7 @@ export class ActionDataService {
     return returnList;
   }
 
-  async createNewAction( actionType: string ): Promise<ActionData> {
+  async createNewAction( actionType: ActionType ): Promise<ActionData> {
 
     // generate a new ID
     let newActionId = await this.dbConnectService.getNextId("A");
@@ -96,9 +97,10 @@ export class ActionDataService {
       name:"NEW " + actionType.toUpperCase() + " ACTION", 
       traits: "",
       AP: 1,
-      RNG: actionType == "RANGED"? 12: 1,
+      RNG: actionType == ActionType.Ranged ? 12 : 1,
       HIT: 6,
       DMG: 6,
+      strengthBased: actionType == ActionType.Ranged ? false : true,
       ONCE: false,
       cost: 1,
       specialRuleIds: []
@@ -187,6 +189,14 @@ export class ActionDataService {
 
   private async convertDBToAppData( dbData: ActionDBData ): Promise<ActionData> {
     
+    // get the default strength-based
+    let strengthBased: boolean = true;
+    if ( typeof dbData.strengthBased == "undefined" ) {
+      if ( dbData.type == ActionType.Ranged ) strengthBased = false; // by default ranged attacks are not strength based
+    } else {
+      strengthBased = dbData.strengthBased;
+    }
+
     let appData: ActionData = {
       _id: dbData._id,
       userId: dbData.userId,
@@ -194,10 +204,11 @@ export class ActionDataService {
       name: dbData.name,
       traits: dbData.traits,
       AP: dbData.AP,
+      ONCE: dbData.ONCE,
       RNG: dbData.RNG,
       HIT: dbData.HIT,
       DMG: dbData.DMG,
-      ONCE: dbData.ONCE,
+      strengthBased: strengthBased,
       cost: dbData.cost ? dbData.cost : 1, // default to 1 if it doesn't exist
       specialRules: [],
       editable: dbData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
@@ -224,6 +235,7 @@ export class ActionDataService {
       RNG: appData.RNG,
       HIT: appData.HIT,
       DMG: appData.DMG,
+      strengthBased: appData.strengthBased,
       ONCE: appData.ONCE,
       cost: appData.cost,
       specialRuleIds: []

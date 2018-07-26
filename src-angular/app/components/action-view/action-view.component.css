@@ -4,22 +4,20 @@
   min-width: 212px;
 }
 
-/* ACTION COST */
+/* META INFO */
 .action-cost {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 4px;
 }
-.action-cost input {
+.action-cost input[type="number"] {
   width: 48px;
   margin-right: 8px;
 }
-.action-cost-box {
-  display: inline-block;
-  border-radius: 4px;
-  width: 42px;
-  margin-right: 4px;
-  border: none;
-  padding: 2px 2px 2px 4px;
+.action-cost:first-child {
+  margin-left: 8px;
+}
+.action-cost:not(:first-child) {
+  margin-left: 32px;
 }
 
 /* ACTION TITLE */

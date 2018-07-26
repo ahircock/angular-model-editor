@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpecialRuleDataService, SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 import { Router } from '@angular/router';
 import { UserService } from '../../services/user/user.service';
+import { RuleType } from '../../services/db-connector/db-connector.interface';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class SpecialRuleListComponent implements OnInit {
   /**
    * Controls the type of rule that is being displayed
    */
-  public ruleType: string = "model";
+  public ruleType: RuleType = RuleType.Model;
 
   /**
    * The list of special rules being displayed
@@ -43,7 +44,7 @@ export class SpecialRuleListComponent implements OnInit {
     await this.loadRuleList();
   }
 
-  async selectType( newType: string ) {
+  async selectType( newType: RuleType ) {
     this.ruleType = newType;
     await this.loadRuleList();
   }

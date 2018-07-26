@@ -1,15 +1,21 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService, RuleDBData } from '../db-connector/db-connector.interface';
+import { DbConnectService, RuleDBData, RuleType } from '../db-connector/db-connector.interface';
 import { UserService } from '../user/user.service'
 
 export interface SpecialRuleData {
   _id: string;
-  ruleType: string;
+  editable: boolean;
+  ruleType: RuleType;
   ruleName: string;
   ruleText: string;
-  ruleCost: number;
-  ruleAP: number;
-  editable: boolean;
+  ruleCost?: number;
+  modSPD?: number;
+  modEV?: number;
+  modARM?: number;
+  modHP?: number;
+  modStrDMG?: number;
+  modMHIT?: number;
+  modRHIT?: number
 }
 
 @Injectable()
@@ -40,28 +46,28 @@ export class SpecialRuleDataService {
    * Retrieve all model special rules from the database. Returns a promise to provide an array of rules
    */
   async getModelSpecialRules(): Promise<SpecialRuleData[]> {
-    return await this.getSpecialRuleByType("model");
+    return await this.getSpecialRuleByType(RuleType.Model);
   }
 
   /**
    * Retrieve all action special rules from the database. Returns a promise to provide an array of rules
    */
   async getActionSpecialRules(): Promise<SpecialRuleData[]> {
-    return await this.getSpecialRuleByType("special");
+    return await this.getSpecialRuleByType(RuleType.Special);
   }
 
   /**
    * Retrieve all attack special rules from the database. Returns a promise to provide an array of rules
    */
   async getAttackSpecialRules(): Promise<SpecialRuleData[]> {
-    return await this.getSpecialRuleByType("attack");
+    return await this.getSpecialRuleByType(RuleType.Attack);
   }
 
   /**
    * Internal method that will return an arracy of special rules based on the type (model, special or attack)
    * @param type must be one of the official rule types: "model", "special", or "action" 
    */
-  private async getSpecialRuleByType( type:string ): Promise<SpecialRuleData[]> {
+  private async getSpecialRuleByType( type:RuleType ): Promise<SpecialRuleData[]> {
     
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.ruleCache.length == 0 ) {
@@ -100,13 +106,20 @@ export class SpecialRuleDataService {
    * Create a new rule with default settings. Returns the new rule
    * @param ruleType the type of the new rule. Must be "attack", "model", or "special"
    */
-  async createNewRule( ruleType: string ): Promise<SpecialRuleData> {
+  async createNewRule( ruleType: RuleType ): Promise<SpecialRuleData> {
     
     // generate a new ID for the rule
     let newRuleId = await this.dbConnectService.getNextId("S");
 
     // prepare a new rule object
-    let newRuleDB: RuleDBData = { _id: newRuleId, userId: this.loggedInUserId.toLowerCase(), type: ruleType, name:"NEW RULE", text: "Enter text for new rule", cost: 1, AP: 1 };
+    let newRuleDB: RuleDBData = { 
+      _id: newRuleId, 
+      userId: this.loggedInUserId.toLowerCase(), 
+      type: ruleType, 
+      name:"NEW RULE", 
+      text: "Enter text for new rule", 
+      cost: 1
+    };
 
     // add the new rule to the DB
     newRuleDB = await this.dbConnectService.createRule( newRuleDB );
@@ -129,7 +142,8 @@ export class SpecialRuleDataService {
     updateRule.ruleName = updateRule.ruleName.toUpperCase();
     
     // update the database
-    let updateDBRule = await this.dbConnectService.updateRule(this.convertRuleDataToDB(updateRule));
+    let updateDBRule = this.convertRuleDataToDB(updateRule);
+    updateDBRule = await this.dbConnectService.updateRule(updateDBRule);
     let newUpdateRule = this.convertDBToRuleData(updateDBRule);
     
     // find the entry in the fake DB, and then update it
@@ -175,8 +189,7 @@ export class SpecialRuleDataService {
       type: cloneRule.ruleType, 
       name: cloneRule.ruleName + " (COPY)", 
       text: cloneRule.ruleText, 
-      cost: cloneRule.ruleCost, 
-      AP: cloneRule.ruleAP 
+      cost: cloneRule.ruleCost
     };
 
     // add the new rule to the DB
@@ -204,13 +217,14 @@ export class SpecialRuleDataService {
       ruleName: ruleDBData.name.toUpperCase(),
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
-      ruleAP: ruleDBData.AP,
-      editable: ruleDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
-    }
-
-    // copy optional parameters
-    if ( typeof ruleDBData.AP !== "undefined" ) {
-      ruleData.ruleAP = ruleDBData.AP;
+      editable: ruleDBData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false,
+      modSPD: ruleDBData.modSPD ? ruleDBData.modSPD : 0,
+      modEV: ruleDBData.modEV ? ruleDBData.modEV : 0,
+      modARM: ruleDBData.modARM ? ruleDBData.modARM : 0,
+      modHP: ruleDBData.modHP ? ruleDBData.modHP : 0,
+      modStrDMG: ruleDBData.modStrDMG ? ruleDBData.modStrDMG : 0,
+      modMHIT: ruleDBData.modMHIT ? ruleDBData.modMHIT : 0,
+      modRHIT: ruleDBData.modRHIT ? ruleDBData.modRHIT : 0
     }
 
     return ruleData;
@@ -221,19 +235,28 @@ export class SpecialRuleDataService {
    * Returns the converted record
    * @param ruleData the data to be converted
    */
-  private convertRuleDataToDB( ruleData: SpecialRuleData ): RuleDBData {
+  private convertRuleDataToDB( appData: SpecialRuleData ): RuleDBData {
     
     // initialize the return data
     let ruleDBData: RuleDBData = {
-      _id: ruleData._id,
+      _id: appData._id,
       userId: this.loggedInUserId,
-      type: ruleData.ruleType,
-      name: ruleData.ruleName,
-      text: ruleData.ruleText,
-      cost: ruleData.ruleCost,
-      AP: ruleData.ruleAP
+      type: appData.ruleType,
+      name: appData.ruleName,
+      text: appData.ruleText,
     };
 
+    // initialize the special attributes of model rules
+    if ( appData.ruleType == RuleType.Model ) {
+      ruleDBData.cost = appData.ruleCost;
+      ruleDBData.modSPD = appData.modSPD;
+      ruleDBData.modEV = appData.modEV;
+      ruleDBData.modARM = appData.modARM;
+      ruleDBData.modHP = appData.modSPD;
+      ruleDBData.modStrDMG = appData.modStrDMG;
+      ruleDBData.modMHIT = appData.modMHIT;
+      ruleDBData.modRHIT = appData.modRHIT;
+    }
 
     return ruleDBData;    
   }

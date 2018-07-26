@@ -34,17 +34,29 @@ export abstract class DbConnectService {
 
 // *** DB DATA STRUCTURES 
 
-/**
+export const enum RuleType {
+    Special = "special",
+    Attack = "attack",
+    Model = "model"
+}
+  
+  /**
  * Structure of Rule data, as stored in the database
  */
 export interface RuleDBData {
     _id: string;
     userId: string;
-    type: string;
+    type: RuleType;
     name: string;
     text: string;
-    cost: number;
-    AP: number;
+    cost?: number;
+    modSPD?: number;
+    modEV?: number;
+    modARM?: number;
+    modHP?: number;
+    modStrDMG?: number;
+    modMHIT?: number;
+    modRHIT?: number
 }
 
 /**

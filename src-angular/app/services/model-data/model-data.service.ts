@@ -290,7 +290,6 @@ export class ModelDataService {
         ruleName: actionRule.ruleName,
         ruleText: actionRule.ruleText,
         ruleCost: actionRule.ruleCost,
-        ruleAP: actionRule.ruleAP,
         editable: true
       }
       newAction.specialRules.push( newRule );

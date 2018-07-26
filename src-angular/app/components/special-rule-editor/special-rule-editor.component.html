@@ -1,34 +1,116 @@
 <div class="rule-editor" *ngIf="rule">
+
+  <!-- EDITABLE RULE -->
   <div *ngIf="rule.editable">
-    <div class="rule-name"><input 
-      textController
-      class="input-light font-title-big" 
-      [(ngModel)]="rule.ruleName" 
-      (blur)="updateRuleData()"></div>
-    <div class="rule-cost font-normal"><input 
-      type="number"
-      class="input-light font-normal" 
-      [(ngModel)]="rule.ruleCost" 
-      (blur)="updateRuleData()">Points</div>
-    <div *ngIf="rule.ruleType == 'special' || rule.ruleType == 'attack'" class="rule-ap font-normal"><input 
-      type="number"
-      class="input-light font-normal" 
-      [(ngModel)]="rule.ruleAP" 
-      (blur)="updateRuleData()">
-      <span *ngIf="rule.ruleType == 'special'">AP</span>
-      <span *ngIf="rule.ruleType == 'attack'">Adjust Attack AP</span>
+    
+    <!-- RULE NAME -->
+    <div class="rule-name">
+      <input 
+        textController
+        class="input-light font-title-big" 
+        [(ngModel)]="rule.ruleName" 
+        (blur)="updateRuleData()">
     </div>
+    
+    <!-- RULE TEXT -->
     <div class="rule-text"><textarea 
       textController
       class="input-light font-normal" 
       [(ngModel)]="rule.ruleText" 
-      (blur)="updateRuleData()"></textarea></div>
+      (blur)="updateRuleData()"></textarea>
+    </div>
+    
+    <!-- RULE COST -->
+    <div *ngIf="rule.ruleType == 'model'">
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.ruleCost" 
+          (blur)="updateRuleData()">
+        Points
+      </div>
+    </div>
+
+    <!-- MODEL STAT MODIFIERS -->
+    <div *ngIf="rule.ruleType == 'model'">
+      <!-- MOD SPD -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modSPD" 
+          (blur)="updateRuleData()">
+        Mod SPD
+      </div>
+  
+      <!-- MOD EV -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modEV" 
+          (blur)="updateRuleData()">
+        Mod EV
+      </div>
+
+      <!-- MOD ARM -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modARM" 
+          (blur)="updateRuleData()">
+        Mod ARM
+      </div>
+
+      <!-- MOD HP -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modHP" 
+          (blur)="updateRuleData()">
+        Mod HP
+      </div>
+
+    </div>
+
+    <!-- ATTACK STAT MODIFIERS -->
+    <div *ngIf="rule.ruleType == 'model'">
+      <!-- MOD STR-BASED DAMAGE -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modStrDMG" 
+          (blur)="updateRuleData()">
+        Mod Str-based DMG
+      </div>
+      <!-- MOD MELEE HIT -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modMHIT" 
+          (blur)="updateRuleData()">
+        Mod Melee HIT
+      </div>
+      <!-- MOD RANGED HIT -->
+      <div class="rule-num-edit font-normal">
+        <input 
+          type="number"
+          class="input-light font-normal" 
+          [(ngModel)]="rule.modRHIT" 
+          (blur)="updateRuleData()">
+        Mod Ranged HIT
+      </div>
+    </div>
   </div>
+
+  <!-- NON-EDITABLE RULE -->
   <div *ngIf="!rule.editable">
       <div class="rule-name font-title-big">{{rule.ruleName}}</div>
-      <div class="rule-cost font-normal">{{rule.ruleCost}} Points</div>
-      <div *ngIf="rule.ruleType == 'special'" class="rule-ap font-normal">{{rule.ruleCost}} AP</div>
-      <div class="rule-text font-normal">{{rule.ruleText}}</div>
-  
+      <div class="rule-text font-normal">{{rule.ruleText}}</div>  
   </div>
 </div>

@@ -25,7 +25,7 @@
           [class.selected]="ruleIndex == selectedRuleIndex" 
           (click)="selectRule(ruleIndex)">
         <div class="rule-text">
-          <span class="font-title">{{rule.ruleName}}</span> ({{rule.ruleCost}} points) <span *ngIf="ruleType == 'special'">[{{rule.ruleAP}} AP]</span><br>
+          <span class="font-title">{{rule.ruleName}}</span><span *ngIf="ruleType == 'model'"> ({{rule.ruleCost}} points)</span><br>
           <span [innerHTML]="rule.ruleText"></span>
         </div>
         <div class="rule-button-band">

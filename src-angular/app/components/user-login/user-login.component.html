@@ -1,20 +1,22 @@
 <div class="layout-box">
-  <label class="input-title font-normal" for="username">Email</label>
-  <input 
-      [(ngModel)]="userEmail" 
-      class="input-field input-light font-normal" 
-      type="text" 
-      name="username" 
-      placeholder="Enter email address"
-      (keyup.enter)="login(); $event.target.blur();">
-  <label class="input-title font-normal" for="password">Password</label>
-  <input 
-      [(ngModel)]="userPassword" 
-      class="input-field input-light font-normal" 
-      type="password" 
-      name="password" 
-      placeholder="Enter your password"
-      (keyup.enter)="login(); $event.target.blur();">
-  <div *ngIf="errorText" class="error-text font-normal">{{errorText}}</div>
-  <div class="action-button box-mid-hover font-normal" (click)="login()">Login</div>
+    <form id="login-form">
+        <label class="input-title font-normal" for="username">Email</label>
+        <input 
+            [(ngModel)]="userEmail" 
+            class="input-field input-light font-normal" 
+            type="text" 
+            name="username" 
+            placeholder="Enter email address"
+            (keyup.enter)="login(); $event.target.blur();">
+        <label class="input-title font-normal" for="password">Password</label>
+        <input 
+            [(ngModel)]="userPassword" 
+            class="input-field input-light font-normal" 
+            type="password" 
+            name="password" 
+            placeholder="Enter your password"
+            (keyup.enter)="login(); $event.target.blur();">
+        <div *ngIf="errorText" class="error-text font-normal">{{errorText}}</div>
+        <div class="action-button box-mid-hover font-normal" (click)="login()">Login</div>
+    </form>
 </div>

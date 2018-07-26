@@ -86,13 +86,11 @@ tr.shade-row {
   margin-bottom: 8px;
   padding: 8px;
 }
-.action-button-band {
-  height: 28px;
-  margin-top: 4px;
+.action-button-column {
+  width: 34px;
 }
 .action-button {
   float: right;
-  margin-left: 4px;
   padding: 4px;
   font-size: 0px;
   border-radius: 4px;

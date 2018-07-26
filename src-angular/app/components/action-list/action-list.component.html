@@ -20,6 +20,8 @@
           <th class="num-data" *ngIf="actionType != 'SPECIAL'">DMG</th>
           <th class="num-data">COST</th>
           <th class="text-data">TRAITS</th>
+          <th></th>
+          <th></th>
         </tr>
         <tr *ngFor="let row of actionTableDisplay; index as rowIndex" 
             class="box-white"
@@ -30,7 +32,7 @@
             (mouseover)="hoverActionId = row.action._id"
             (mouseleave)="hoverActionId = ''"
             >
-          <td *ngIf="row.ruleName" class="rule-data font-normal" colspan="7">
+          <td *ngIf="row.ruleName" class="rule-data font-normal" colspan="9">
             <i>{{row.ruleName}}</i> - {{row.ruleText}}
           </td>
           <td *ngIf="!row.ruleName" class="text-data font-bold">{{row.action.name}}</td>
@@ -40,6 +42,12 @@
           <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.DMG}}</td>
           <td *ngIf="!row.ruleName" class="num-data">{{row.action.cost}}</td>
           <td *ngIf="!row.ruleName" class="text-data">{{row.action.traits}}</td>
+          <td *ngIf="!row.ruleName" class="action-button-column">
+            <div *ngIf="row.action.editable" class="action-button box-light-hover" (click)="deleteAction(row.action)"><img src="/assets/icons/icon-delete-128.png"></div>
+          </td>
+          <td *ngIf="!row.ruleName" class="action-button-column">
+            <div class="action-button box-light-hover" (click)="cloneAction(row.action)"><img src="/assets/icons/icon-clone-128.png"></div>
+          </td>
         </tr>
       </table>
     </div>

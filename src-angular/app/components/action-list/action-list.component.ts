@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { UserService } from '../../services/user/user.service'
 import { ActionDataService, ActionData } from '../../services/action-data/action-data.service'
+import { ModelDataService } from '../../services/model-data/model-data.service';
 
   
 @Component({
@@ -35,6 +36,7 @@ export class ActionListComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private actionDataService: ActionDataService,
+    private modelDataService: ModelDataService,
     private userService: UserService
   ) { }
 
@@ -65,6 +67,18 @@ export class ActionListComponent implements OnInit {
   }
 
   async deleteAction( deleteAction: ActionData ) {
+
+    // make sure that this action is not in use by any models
+    let modelList = await this.modelDataService.getAllModels();
+    for ( let model of modelList ) {
+      for ( let action of model.actions ) {
+        if ( action._id == deleteAction._id ) {
+          window.alert("This action is in use by a model and cannot be deleted")
+          return;
+        }
+      }
+    }
+
     await this.actionDataService.deleteAction( deleteAction );
     await this.loadActionList();
   }
@@ -100,7 +114,7 @@ export class ActionListComponent implements OnInit {
 
     // clear the display
     this.actionTableDisplay = [];
-    
+
     // loop through the actions and prepare the table display
     let actionTableIndex = 0;
     let shadeRow = false;

@@ -80,6 +80,9 @@ export class ActionDataService {
       }
     }
 
+    // sort the list
+    returnList.sort(this.sortActionData);
+
     // return the array of actions
     return returnList;
   }

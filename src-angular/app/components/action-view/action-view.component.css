@@ -99,6 +99,9 @@
 .stat-data {
   background-color: white;
 }
+.stat-data input {
+  text-align: center;
+}
 .attack-action-special-rules-box {
   margin-top: 0px; padding: 4px;
   border: solid 2px black;

@@ -220,7 +220,7 @@ export class ActionDataService {
       HIT: dbData.HIT,
       DMG: dbData.DMG,
       strengthBased: strengthBased,
-      cost: dbData.cost ? dbData.cost : 1, // default to 1 if it doesn't exist
+      cost: typeof dbData.cost == "undefined" ? 1 : dbData.cost, // default to 1 if it doesn't exist
       specialRules: [],
       editable: dbData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
     };

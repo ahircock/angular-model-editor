@@ -65,22 +65,9 @@
             <td>{{action.DMG}}</td>
           </tr>
           <tr *ngIf="editable" class="stat-data">
-            <td *ngIf="action.type == 'MELEE'">
-              <select [(ngModel)]="action.RNG" class="input-white font-bold" (change)="selectStat($event.target.value, 'RNG-MELEE')">
-                <option *ngFor="let RNG of modelDataService.MELEE_RNG_COST;" class="input-white" [value]="RNG.stat">{{RNG.stat}}</option></select>
-            </td>
-            <td *ngIf="action.type == 'RANGED'">
-              <select [(ngModel)]="action.RNG" class="input-white font-bold" (change)="selectStat($event.target.value, 'RNG-RANGED')">
-                <option *ngFor="let RNG of modelDataService.RANGED_RNG_COST;" class="input-white" [value]="RNG.stat">{{RNG.stat}}</option></select>
-            </td>
-            <td >
-              <select [(ngModel)]="action.HIT" class="input-white font-bold" (change)="selectStat($event.target.value, 'HIT')">
-                <option *ngFor="let HIT of modelDataService.HIT_COST;" class="input-white" [value]="HIT.stat">{{HIT.stat}}</option></select>
-            </td>
-            <td >
-              <select [(ngModel)]="action.DMG" class="input-white font-bold" (change)="selectStat($event.target.value, 'DMG')">
-                <option *ngFor="let DMG of modelDataService.DMG_COST;" class="input-white" [value]="DMG.stat">{{DMG.stat}}</option></select>
-            </td>
+            <td><input type="number" textController [(ngModel)]="action.RNG" class="input-white font-bold" (blur)="updateAction()"></td>
+            <td><input type="number" textController [(ngModel)]="action.HIT" class="input-white font-bold" (blur)="updateAction()"></td>
+            <td><input type="number" textController [(ngModel)]="action.DMG" class="input-white font-bold" (blur)="updateAction()"></td>
           </tr>
         </table>
       </div>
@@ -117,7 +104,7 @@
     <!-- COST / POINTS -->
     <div class="action-cost font-normal">
       <span *ngIf="editable">
-        <input type="number" class="input-light font-normal" [(ngModel)]="action.cost" (blur)="updateAction()">Points
+        <input type="number" textController class="input-light font-normal" [(ngModel)]="action.cost" (blur)="updateAction()">Points
       </span>
       <span *ngIf="!editable">{{action.cost}} Points</span>
     </div>

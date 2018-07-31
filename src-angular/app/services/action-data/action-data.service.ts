@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
-import { DbConnectService, ActionDBData, ActionType } from '../db-connector/db-connector.interface';
+import { Injectable, EventEmitter } from '@angular/core';
+import { DbConnectService, ActionDBData, ActionType, RuleType } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
 import { UserService } from '../user/user.service'
-import { Action } from 'rxjs/scheduler/Action';
 
 export interface ActionData {
   _id: string;
@@ -27,6 +26,10 @@ export class ActionDataService {
   private actionCache: ActionData[] = [];
   private loggedInUserId: string;
 
+  // these are events that other services can subscribe to
+  public actionUpdated: EventEmitter<ActionData> = new EventEmitter();
+  public actionDeleted: EventEmitter<ActionData> = new EventEmitter();
+
   constructor(
     private dbConnectService: DbConnectService,
     private specialRuleDataService: SpecialRuleDataService,
@@ -39,6 +42,7 @@ export class ActionDataService {
     // subscribe to events from the other services
     this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
     this.userService.logoutEvent.subscribe( () => this.logout() );
+    this.specialRuleDataService.ruleUpdated.subscribe( (updatedRule:any) => this.ruleUpdated(updatedRule) );
   }
 
   async getMeleeActions(): Promise<ActionData[]> {
@@ -128,6 +132,8 @@ export class ActionDataService {
     // remove the model from the cache
     let index: number = this.actionCache.findIndex( element => element._id == deleteAction._id );
     this.actionCache.splice( index, 1 );
+
+    this.actionDeleted.emit(deleteAction);
   }
 
   async cloneAction( cloneAction: ActionData ) {
@@ -162,12 +168,14 @@ export class ActionDataService {
     let updateDBAction = await this.dbConnectService.updateAction( this.convertAppToDBData(updateAction) );
     
     // update the record in the cache
-    let newUpdateAction = await this.convertDBToAppData(updateDBAction);
-    let findModelIndex: number = this.actionCache.findIndex( element => element._id == newUpdateAction._id );
-    this.actionCache[findModelIndex] = newUpdateAction;
+    let newUpdatedAction = await this.convertDBToAppData(updateDBAction);
+    let findModelIndex: number = this.actionCache.findIndex( element => element._id == newUpdatedAction._id );
+    this.actionCache[findModelIndex] = newUpdatedAction;
+
+    this.actionUpdated.emit(newUpdatedAction)
 
     // return the updated model
-    return newUpdateAction;
+    return newUpdatedAction;
   }
 
   private async loadCache() {
@@ -286,4 +294,26 @@ export class ActionDataService {
   private login(userId: string) {
     this.loggedInUserId = userId;
   }  
+
+  private ruleUpdated(updatedRule: SpecialRuleData ) {
+
+    // we don't need to do an update if this is a model rule
+    if ( updatedRule.ruleType == RuleType.Model ) {
+      return;      
+    }
+
+    // loop through all actions
+    for ( let action of this.actionCache ) {
+
+      // if this rule is used on this model, then update it
+      let ruleIndex = action.specialRules.findIndex( element => element._id == updatedRule._id );
+      if ( ruleIndex >= 0 ) {
+        action.specialRules[ruleIndex] = updatedRule;
+      }
+
+      // recalculate the details of the model and inform people that it has changed
+      this.actionUpdated.emit(action);
+    }
+    
+  }
 }

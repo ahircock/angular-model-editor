@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService, ModelDBData, ModelActionDBData, ActionType } from '../db-connector/db-connector.interface';
+import { DbConnectService, ModelDBData, ModelActionDBData, ActionType, RuleType } from '../db-connector/db-connector.interface';
 import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
 import { ActionData, ActionDataService } from '../action-data/action-data.service'
 import { UserService } from '../user/user.service'
@@ -72,6 +72,7 @@ export class ModelDataService {
     this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
     this.userService.logoutEvent.subscribe( () => this.logout() );
     this.specialRuleDataService.ruleUpdated.subscribe( (updatedRule:any) => this.ruleUpdated(updatedRule) );
+    this.actionDataService.actionUpdated.subscribe( (updateAction:any) => this.actionUpdated(updateAction) );
   }
 
   /**
@@ -314,7 +315,7 @@ export class ModelDataService {
    * Updates the ModelData.cost value of a given model based on all of the proper calculations
    * @param model the model whose cost will be updated
    */
-  private calculateModelStats( model: ModelData ): ModelData {
+  private async calculateModelStats( model: ModelData ): Promise<ModelData> {
     
     // start with the base values for the calculated fields
     model.cost = BaseModelValues.cost;
@@ -322,6 +323,16 @@ export class ModelDataService {
     model.EV = BaseModelValues.EV;
     model.ARM = BaseModelValues.ARM;
     model.HP = BaseModelValues.HP;
+
+    // add the action costs, and reset the action stats
+    for ( let action of model.actions ) {
+      model.cost += action.cost;
+
+      // we want to reset the action stats to their base value
+      let baseAction = await this.actionDataService.getActionById( action._id );
+      action.HIT = baseAction.HIT;
+      action.DMG = baseAction.DMG;
+    }
 
     // add the special rule costs
     for ( let specialRule of model.specialRules ) {
@@ -342,12 +353,7 @@ export class ModelDataService {
         if ( action.type == ActionType.Ranged && action.strengthBased ) action.DMG += specialRule.modStrDMG;
       }
     }
-    
-    // add the action costs, and update the action stats
-    for ( let action of model.actions ) {
-      model.cost += action.cost;
-    }
-
+       
     // a model cannot be lower than the base cost
     if ( model.cost < BaseModelValues.cost ) model.cost = BaseModelValues.cost;
 
@@ -472,7 +478,7 @@ export class ModelDataService {
     }
 
     // calculate the model's cost
-    modelData = this.calculateModelStats( modelData );
+    modelData = await this.calculateModelStats( modelData );
 
     // return the prepared object
     return modelData;
@@ -511,41 +517,52 @@ export class ModelDataService {
   }  
 
   /**
-   * This method should be called whenever a special rule is updated. It will
+   * This method will be called whenever a special rule is updated. It will
    * update the details of any models that use this rule
    */
-  private ruleUpdated( updatedRule: SpecialRuleData) {
+  private async ruleUpdated( updatedRule: SpecialRuleData) {
+
+    // we only need to do an update if this is a model rule
+    if ( updatedRule.ruleType != RuleType.Model ) {
+      return;      
+    }
 
     // loop through all models
     for ( let model of this.modelCache ) {
 
-      // update different properties based on the rule type
-      switch ( updatedRule.ruleType ) {
-
-        // update the model's special rules
-        case "model":
-          let cachedRule = model.specialRules.find( element => element._id == updatedRule._id );
-          if ( cachedRule ) {
-            Object.assign( cachedRule, updatedRule );
-          }
-          break;
-
-        // loop through all actions and update them
-        case "special":
-        case "attack":
-          for ( let action of model.actions ) {
-            let cachedRule = action.specialRules.find( element => element._id == updatedRule._id );
-            if ( cachedRule ) {
-              Object.assign( cachedRule, updatedRule );
-            }
-          }
-          break;
+      // if this rule is used on this model, then update it
+      let ruleIndex = model.specialRules.findIndex( element => element._id == updatedRule._id );
+      if ( ruleIndex >= 0 ) {
+        model.specialRules[ruleIndex] = updatedRule;
       }
 
       // recalculate the details of the model and inform people that it has changed
-      model = this.calculateModelStats( model );
+      model = await this.calculateModelStats( model );
       this.modelUpdated.emit(model);
     }
+  }
+
+  /**
+   * This method will be called whenever an action is updated. It will
+   * update the details of any models that use this rule
+   */
+  private async actionUpdated( updatedAction: ActionData ) {
+    
+    // loop through all models
+    for ( let model of this.modelCache ) {
+
+      // if this action is used on this model, then update it
+      let actionIndex = model.actions.findIndex( element => element._id == updatedAction._id );
+      if ( actionIndex >= 0 ) {
+        let modelAction: ModelActionData = Object.assign( { modelActionName: model.actions[actionIndex].modelActionName }, updatedAction );
+        model.actions[actionIndex] = modelAction;
+      }
+
+      // recalculate the details of the model and inform people that it has changed
+      model = await this.calculateModelStats( model );
+      this.modelUpdated.emit(model);
+    }
+
   }
 }
 

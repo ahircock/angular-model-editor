@@ -10,9 +10,17 @@ export class ModelDetailsComponent implements OnInit {
 
   @Input() model: ModelData;
 
+  visibleModelRules: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+
+    // loop through and find out if there are any visible model rules
+    for ( let rule of this.model.specialRules ) {
+      if ( rule.printVisible ) this.visibleModelRules = true;
+    }
+
   }
 
 }

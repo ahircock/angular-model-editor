@@ -6,7 +6,7 @@
   </div>
   <div *ngIf="dropdownVisible" class="dropdown-content font-normal box-white">
     <div *ngFor="let specialRule of specialRules" (click)="selectSpecialRule(specialRule.ruleName);" class="box-white-hover">
-      ({{specialRule.ruleCost}} points) <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>      
+      <span *ngIf="specialRule.ruleType == 'model'">({{specialRule.ruleCost}} points) </span><b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>      
     </div>
   </div>
 </div>

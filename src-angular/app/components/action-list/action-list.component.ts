@@ -67,7 +67,13 @@ export class ActionListComponent implements OnInit {
         this.actionType = ActionType.Special;
         break;
     }
+    
     await this.loadActionList();
+
+    // select the first item in the list
+    if ( this.actionTableDisplay.length > 0 ) {
+      this.selectedAction = this.actionTableDisplay[0].action;
+    }
   }
 
   async newAction() {
@@ -143,11 +149,6 @@ export class ActionListComponent implements OnInit {
       }
 
       shadeRow = !shadeRow;
-    }
-
-    // select the first item in the list
-    if ( this.actionTableDisplay.length > 0 && !this.selectedAction ) {
-      this.selectedAction = this.actionTableDisplay[0].action;
     }
   }
 

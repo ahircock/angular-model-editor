@@ -20,17 +20,17 @@
 
 
       <!-- LIST OF RULES -->
-      <div *ngFor="let rule of ruleData; index as ruleIndex" 
+      <div *ngFor="let rule of ruleData" 
           class="rule-tile box-light-hover font-normal" 
-          [class.selected]="ruleIndex == selectedRuleIndex" 
-          (click)="selectRule(ruleIndex)">
+          [class.selected]="rule._id == selectedRule._id" 
+          (click)="selectedRule = rule">
         <div class="rule-text">
           <span class="font-title">{{rule.ruleName}}</span><span *ngIf="ruleType == 'model'"> ({{rule.ruleCost}} points)</span><br>
           <span [innerHTML]="rule.ruleText"></span>
         </div>
         <div class="rule-button-band">
-          <div *ngIf="rule.editable" class="icon-button box-light-hover" (click)="deleteRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
-          <div class="icon-button box-light-hover" (click)="cloneRule(ruleIndex)"><img src="/assets/icons/icon-clone-128.png"></div>
+          <div *ngIf="rule.editable" class="icon-button box-light-hover" (click)="deleteRule(rule)"><img src="/assets/icons/icon-delete-128.png"></div>
+          <div class="icon-button box-light-hover" (click)="cloneRule(rule)"><img src="/assets/icons/icon-clone-128.png"></div>
         </div>
       </div>
     </div>
@@ -38,6 +38,6 @@
 
   <!-- RULE DETAILS -->
   <div class="right">
-      <app-special-rule-editor [rule]="ruleData[selectedRuleIndex]" (updated)="ruleDetailsUpdated(selectedRuleIndex)"></app-special-rule-editor>
+      <app-special-rule-editor [rule]="selectedRule" (updated)="ruleDetailsUpdated(selectedRule)"></app-special-rule-editor>
   </div>
 </div>

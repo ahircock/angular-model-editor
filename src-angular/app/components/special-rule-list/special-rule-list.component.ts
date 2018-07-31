@@ -25,7 +25,7 @@ export class SpecialRuleListComponent implements OnInit {
   /**
    * The index of the selected rule in ruleData
    */
-  public selectedRuleIndex: number = 0;
+  public selectedRule: SpecialRuleData;
 
   constructor(
     private router: Router,
@@ -42,6 +42,11 @@ export class SpecialRuleListComponent implements OnInit {
     }
 
     await this.loadRuleList();
+
+    // select the first rule in the list
+    if ( this.ruleData.length > 0 ) {
+      this.selectedRule = this.ruleData[0];
+    }
   }
 
   async selectType( newType: string ) {
@@ -65,41 +70,36 @@ export class SpecialRuleListComponent implements OnInit {
     }
   }
 
-  public selectRule( ruleIndex: number ) {
-    this.selectedRuleIndex = ruleIndex;
-  }
-
   async newRuleClick() {
     let newRule: SpecialRuleData = await this.specialRuleDataService.createNewRule( this.ruleType );
     await this.loadRuleList();
 
     // select the new rule from the list
-    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == newRule._id );
+    this.selectedRule = newRule;
   }
 
-  async ruleDetailsUpdated( ruleIndex: number ) {
+  async ruleDetailsUpdated( updatedRule: SpecialRuleData ) {
     
-    // remember the selected id
-    let previouslySelectedId = this.ruleData[ruleIndex]._id;
-
     // reload the list
     await this.loadRuleList();
-
-    // select the updated rule from the list
-    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == previouslySelectedId );
   }
 
-  async deleteRule( ruleIndex: number ) {
-    await this.specialRuleDataService.deleteRule( this.ruleData[ruleIndex] );
+  async deleteRule( deleteRule: SpecialRuleData ) {
+    await this.specialRuleDataService.deleteRule( deleteRule );
     await this.loadRuleList();
+
+    // select the first rule in the list
+    if ( this.ruleData.length > 0 ) {
+      this.selectedRule = this.ruleData[0];
+    }
   }
 
-  async cloneRule(ruleIndex: number) {
-    let newRule: SpecialRuleData = await this.specialRuleDataService.cloneRule( this.ruleData[ruleIndex]);
+  async cloneRule( cloneRule: SpecialRuleData ) {
+    let newRule: SpecialRuleData = await this.specialRuleDataService.cloneRule( cloneRule );
     await this.loadRuleList();
 
     // select the new rule from the list
-    this.selectedRuleIndex = this.ruleData.findIndex( element => element._id == newRule._id );
+    this.selectedRule = newRule;
   }
 
 

@@ -33,6 +33,9 @@ export class UserSignupComponent implements OnInit {
       this.displayError({ errorCode: -1, errorMessage: "Password and confirmation do not match" });
       return;
     }
+
+    // convert the email to lowercase
+    this.userEmail = this.userEmail.toLowerCase();
     
     // run the signup procedure
     await this.userService.signup(this.userEmail, this.userPassword)

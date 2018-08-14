@@ -26,6 +26,10 @@ export class UserLoginComponent implements OnInit {
    * called from the login button
    */
   async login() {
+
+    // convert the email to lowercase
+    this.userEmail = this.userEmail.toLowerCase();
+    
     await this.userService.login(this.userEmail, this.userPassword)
         .then( () => this.router.navigateByUrl("/") ) // if successful, then open the main page
         .catch( (reason)=> { this.displayError(reason.error); }); // if unsuccssful, then display error message

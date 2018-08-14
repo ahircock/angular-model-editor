@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core'
-import { DbConnectService, RuleDBData, ModelDBData, ForceDBData, ActionDBData } from './db-connector.interface';
 import { HttpClient } from '@angular/common/http'
-import { environment } from '../../../environments/environment'
+import { environment } from '../../environments/environment'
 
 @Injectable()
-export class RestAPIConnector extends DbConnectService {
+export class DataAccessService {
 
     private apiUrlModels = environment.apiUrl + "/models";
     private apiUrlRules  = environment.apiUrl + "/rules";
@@ -18,7 +17,7 @@ export class RestAPIConnector extends DbConnectService {
 
     constructor(
         private httpClient: HttpClient
-    ) { super() }
+    ) {}
 
     async getRules(): Promise<RuleDBData[]>{
         return ( this.httpClient.get(this.apiUrlRules, {headers: {"sessionid": this.sessionid}}).toPromise() as Promise<RuleDBData[]>);
@@ -110,3 +109,115 @@ export class RestAPIConnector extends DbConnectService {
 interface AuthResult {
     sessionid: string
 }
+
+// *** DB DATA STRUCTURES 
+
+/**
+ * List of possible rule types
+ */
+export const enum RuleType {
+    Special = "special",
+    Attack = "attack",
+    Model = "model"
+}
+  
+  /**
+ * Structure of Rule data, as stored in the database
+ */
+export interface RuleDBData {
+    _id: string;
+    userId: string;
+    type: RuleType;
+    name: string;
+    text: string;
+    printVisible: boolean;
+    cost?: number;
+    modSPD?: number;
+    modEV?: number;
+    modARM?: number;
+    modHP?: number;
+    modStrDMG?: number;
+    modMHIT?: number;
+    modRHIT?: number
+}
+
+/**
+ * Structure of Model data, as stored in the database
+ */
+export interface ModelDBData {
+    _id: string;
+    userId: string;
+    template: boolean,
+    name: string;
+    traits: string;
+    picture: string;
+    SPD: number;
+    EV: number;
+    ARM: number;
+    HP: number;
+    specialRuleIds: string[];
+    actions: ModelActionDBData[];
+}
+export interface ModelActionDBData {
+    modelActionName: string;
+    actionId: string;
+}
+
+/**
+ * Structure of Force data, as stored in the database
+ */
+export interface ForceDBData {
+    _id: string,
+    userId: string,
+    name: string,
+    size: string,
+    models: ForceModelDBData[]
+} 
+export interface ForceModelDBData {
+    _id: string,
+    count: number 
+}
+
+/**
+ * List of possible action types
+ */
+export const enum ActionType {
+    Special = "SPECIAL",
+    Melee = "MELEE",
+    Ranged = "RANGED"
+}
+  
+/**
+ * Structure of Action data, as stored in the database
+ */
+export interface ActionDBData {
+    _id: string;
+    userId: string;
+    type: ActionType;
+    name: string;
+    traits: string;
+    AP: number;
+    RNG: number;
+    HIT: number;
+    DMG: number;
+    strengthBased: boolean;
+    ONCE: boolean;
+    cost: number;
+    specialRuleIds: string[];
+}
+
+/**
+ * Structure of user & login data
+ */
+export interface UserDBData {
+    userId: string
+}
+
+/**
+ * Structure of error codes that are thrown by this method
+ */
+export interface DBErrorData {
+    errorCode: number,
+    errorMessage: string
+}
+  

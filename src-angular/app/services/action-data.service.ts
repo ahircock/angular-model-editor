@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService, ActionDBData, ActionType, RuleType } from '../db-connector/db-connector.interface';
-import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
-import { UserService } from '../user/user.service'
+import { DataAccessService, ActionDBData, ActionType, RuleType } from './data-access.service';
+import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service'
+import { UserService } from './user.service'
 
 export interface ActionData {
   _id: string;
@@ -20,6 +20,8 @@ export interface ActionData {
   editable: boolean;
 }
 
+export {ActionType};
+
 @Injectable()
 export class ActionDataService {
 
@@ -31,7 +33,7 @@ export class ActionDataService {
   public actionDeleted: EventEmitter<ActionData> = new EventEmitter();
 
   constructor(
-    private dbConnectService: DbConnectService,
+    private dbConnectService: DataAccessService,
     private specialRuleDataService: SpecialRuleDataService,
     private userService: UserService
   ) { 

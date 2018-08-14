@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService, RuleDBData, RuleType } from '../db-connector/db-connector.interface';
-import { UserService } from '../user/user.service'
+import { DataAccessService, RuleDBData, RuleType } from './data-access.service';
+import { UserService } from './user.service'
 
 export interface SpecialRuleData {
   _id: string;
@@ -19,6 +19,8 @@ export interface SpecialRuleData {
   modRHIT?: number
 }
 
+export { RuleType };
+
 @Injectable()
 export class SpecialRuleDataService {
 
@@ -31,7 +33,7 @@ export class SpecialRuleDataService {
   public ruleDeleted: EventEmitter<SpecialRuleData> = new EventEmitter();
 
   constructor(
-    private dbConnectService: DbConnectService,
+    private dbConnectService: DataAccessService,
     private userService: UserService
   ) { 
 

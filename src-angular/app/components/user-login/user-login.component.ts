@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service';
-import { DBErrorData } from '../../services/db-connector/db-connector.interface';
+import { UserService } from '../../services/user.service';
+import { DBErrorData } from '../../services/data-access.service';
 
 @Component({
   selector: 'app-user-login',
@@ -26,9 +26,9 @@ export class UserLoginComponent implements OnInit {
    * called from the login button
    */
   async login() {
-      await this.userService.login(this.userEmail, this.userPassword)
-          .catch((reason)=> { this.displayError(reason.error); throw reason; });
-      this.router.navigateByUrl("/");
+    await this.userService.login(this.userEmail, this.userPassword)
+        .then( () => this.router.navigateByUrl("/") ) // if successful, then open the main page
+        .catch( (reason)=> { this.displayError(reason.error); }); // if unsuccssful, then display error message
   }
 
   /**

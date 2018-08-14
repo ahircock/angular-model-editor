@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActionDataService } from '../../services/action-data/action-data.service';
+import { ActionDataService } from '../../services/action-data.service';
 import { DropdownComponent } from './dropdown.component';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
-import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
-import { ActionData } from '../../services/action-data/action-data.service'
+import { ModelData, ModelDataService } from '../../services/model-data.service';
+import { SpecialRuleData } from '../../services/special-rule-data.service';
+import { ActionData } from '../../services/action-data.service'
 import { PORTRAIT_LIST } from '../../../assets/portraits/portrait-list.const';
 
 interface StatCost {

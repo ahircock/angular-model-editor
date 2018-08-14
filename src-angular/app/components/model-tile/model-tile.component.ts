@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
-import { ForceData, ForceDataService, ForceModelData } from '../../services/force-data/force-data.service';
+import { ModelData, ModelDataService } from '../../services/model-data.service';
+import { ForceData, ForceDataService, ForceModelData } from '../../services/force-data.service';
 
 @Component({
   selector: 'app-model-tile',

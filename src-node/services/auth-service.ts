@@ -2,7 +2,7 @@ import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 import { ServiceManager } from '../service-manager';
 import { HttpError } from '../utilities/http-error.class'
-import { MongoDbService } from '../services/mongo-db-service';
+import { MongoDbService } from './mongo-db-service';
 import { Request, Response, NextFunction } from 'express';
 
 export class AuthService {

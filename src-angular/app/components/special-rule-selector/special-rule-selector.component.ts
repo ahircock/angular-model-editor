@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { SpecialRuleData, SpecialRuleDataService } from '../../services/special-rule-data/special-rule-data.service';
+import { SpecialRuleData, SpecialRuleDataService } from '../../services/special-rule-data.service';
 
 @Component({
   selector: 'app-special-rule-selector',

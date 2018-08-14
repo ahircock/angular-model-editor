@@ -1,12 +1,12 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService, ModelDBData, ModelActionDBData, ActionType, RuleType } from '../db-connector/db-connector.interface';
-import { SpecialRuleData, SpecialRuleDataService } from '../special-rule-data/special-rule-data.service'
-import { ActionData, ActionDataService } from '../action-data/action-data.service'
-import { UserService } from '../user/user.service'
+import { DataAccessService, ModelDBData, ModelActionDBData, ActionType, RuleType } from './data-access.service';
+import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service'
+import { ActionData, ActionDataService } from './action-data.service'
+import { UserService } from './user.service'
 
 export interface ModelData {
   _id: string;
-  template: boolean,
+  template: boolean;
   name: string;
   traits: string;
   picture: string;
@@ -46,7 +46,7 @@ export class ModelDataService {
   constructor(
     private specialRuleDataService: SpecialRuleDataService,
     private actionDataService: ActionDataService,
-    private dbConnectService: DbConnectService,
+    private dbConnectService: DataAccessService,
     private userService: UserService
   ) { 
 

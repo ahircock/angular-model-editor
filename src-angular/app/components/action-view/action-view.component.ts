@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { ActionData, ActionDataService } from '../../services/action-data/action-data.service'
-import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
-import { ModelDataService, ModelActionData } from '../../services/model-data/model-data.service'
+import { ActionData, ActionDataService } from '../../services/action-data.service'
+import { SpecialRuleData } from '../../services/special-rule-data.service';
+import { ModelDataService, ModelActionData } from '../../services/model-data.service'
 
 @Component({
   selector: 'app-action-view',

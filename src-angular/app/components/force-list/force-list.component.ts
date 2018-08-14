@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ForceDataService, ForceData  } from '../../services/force-data/force-data.service';
-import { UserService } from '../../services/user/user.service';
+import { ForceDataService, ForceData  } from '../../services/force-data.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-force-list',

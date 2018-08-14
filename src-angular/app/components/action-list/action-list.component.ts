@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { UserService } from '../../services/user/user.service'
-import { ActionDataService, ActionData } from '../../services/action-data/action-data.service'
-import { ModelDataService } from '../../services/model-data/model-data.service';
-import { ActionType } from '../../services/db-connector/db-connector.interface';
-
+import { UserService } from '../../services/user.service'
+import { ActionDataService, ActionData, ActionType } from '../../services/action-data.service'
+import { ModelDataService } from '../../services/model-data.service';
   
 @Component({
   selector: 'app-action-list',

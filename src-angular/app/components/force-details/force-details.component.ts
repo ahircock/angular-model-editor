@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data/force-data.service';
-import { UserService } from '../../services/user/user.service'
-import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
+import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
+import { UserService } from '../../services/user.service'
+import { ModelData, ModelDataService } from '../../services/model-data.service';
 
 @Component({
   selector: 'app-force-details',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SpecialRuleDataService, SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
+import { SpecialRuleDataService, SpecialRuleData, RuleType } from '../../services/special-rule-data.service';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service';
-import { RuleType } from '../../services/db-connector/db-connector.interface';
+import { UserService } from '../../services/user.service';
 
 
 @Component({

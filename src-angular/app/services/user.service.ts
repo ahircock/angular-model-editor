@@ -1,5 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DbConnectService } from '../db-connector/db-connector.interface'
+import { DataAccessService } from './data-access.service'
 
 @Injectable()
 export class UserService {
@@ -12,7 +12,7 @@ export class UserService {
   public logoutEvent: EventEmitter<void> = new EventEmitter();
 
   constructor(
-    private dbConnectService: DbConnectService
+    private dbConnectService: DataAccessService
   ) { }
 
   async login( email: string, password: string ): Promise<void> {

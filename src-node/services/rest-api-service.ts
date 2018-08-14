@@ -1,6 +1,6 @@
 import { ServiceManager } from '../service-manager';
 import { HttpError } from '../utilities/http-error.class';
-import { MongoDbService } from '../services/mongo-db-service';
+import { MongoDbService } from './mongo-db-service';
 import { Request, Response } from 'express';
 
 export class RestApiService {

@@ -5,14 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 // services
-import { UserService } from './services/user/user.service';
-import { ModelDataService } from './services/model-data/model-data.service';
-import { SpecialRuleDataService } from './services/special-rule-data/special-rule-data.service';
-import { ForceDataService } from './services/force-data/force-data.service';
-import { ActionDataService } from './services/action-data/action-data.service';
-import { DbConnectService } from './services/db-connector/db-connector.interface';
-import { RestAPIConnector } from './services/db-connector/restapi-connector.service';
-import { AppErrorHandler } from './services/error-handler/error-handler.service'
+import { UserService } from './services/user.service';
+import { ModelDataService } from './services/model-data.service';
+import { SpecialRuleDataService } from './services/special-rule-data.service';
+import { ForceDataService } from './services/force-data.service';
+import { ActionDataService } from './services/action-data.service';
+import { DataAccessService } from './services/data-access.service';
+import { AppErrorHandler } from './services/error-handler.service'
 
 // components
 import { AppComponent } from './app.component';
@@ -37,12 +36,14 @@ import { DropdownRangedComponent } from './components/dropdowns/dropdown-ranged.
 import { DropdownSpecialComponent } from './components/dropdowns/dropdown-special.component';
 
 //directives
-import { ClickElsewhereDirective } from './directives/click-elsewhere/click-elsewhere.directive';
-import { TextControllerDirective } from './directives/text-controller/text-controller.directive';
+import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
+import { TextControllerDirective } from './directives/text-controller.directive';
 
 
 @NgModule({
   declarations: [
+    ClickElsewhereDirective,
+    TextControllerDirective,
     AppComponent,
     ModelListComponent,
     ModelViewComponent,
@@ -56,11 +57,9 @@ import { TextControllerDirective } from './directives/text-controller/text-contr
     UserLoginComponent,
     UserSignupComponent,
     SpecialRuleEditorComponent,
-    ClickElsewhereDirective,
     ActionListComponent,
     AppHeaderComponent,
     ActionViewComponent,
-    TextControllerDirective,
     DropdownMeleeComponent,
     DropdownRangedComponent,
     DropdownSpecialComponent
@@ -78,7 +77,7 @@ import { TextControllerDirective } from './directives/text-controller/text-contr
     SpecialRuleDataService,
     ForceDataService,
     ActionDataService,
-    { provide: DbConnectService, useClass: RestAPIConnector }
+    DataAccessService
   ],
   bootstrap: [AppComponent]
 })

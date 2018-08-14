@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user/user.service';
-import { DBErrorData } from '../../services/db-connector/db-connector.interface';
+import { UserService } from '../../services/user.service';
+import { DBErrorData } from '../../services/data-access.service';
 
 @Component({
   selector: 'app-user-signup',
@@ -36,10 +36,8 @@ export class UserSignupComponent implements OnInit {
     
     // run the signup procedure
     await this.userService.signup(this.userEmail, this.userPassword)
-        .catch((reason)=> { this.displayError(reason.error); throw reason; });
-
-    // navigate to the home page
-    this.router.navigateByUrl("/");
+        .then( () => this.router.navigateByUrl("/") ) // if successful, then open the main page
+        .catch( (reason)=> { this.displayError(reason.error); }); // if unsuccssful, then display error message
   }
 
   /**

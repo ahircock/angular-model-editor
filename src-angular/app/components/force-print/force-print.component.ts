@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data/force-data.service';
+import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
 
 @Component({
   selector: 'app-force-print',

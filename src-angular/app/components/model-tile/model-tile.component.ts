@@ -41,7 +41,7 @@ export class ModelTileComponent implements OnInit {
 
     // if the count is now 0, then delete the model entirely
     if ( this.force.models[forceModelIndex].count <= 0 ) {
-      this.modelDataService.deleteModel( this.model );
+      await this.modelDataService.deleteModel( this.model );
       this.force.models.splice( forceModelIndex, 1 );
     }
 

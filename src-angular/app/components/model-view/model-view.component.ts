@@ -14,7 +14,7 @@ interface StatCost {
   templateUrl: './model-view.component.html',
   styleUrls: ['./model-view.component.css']
 })
-export class ModelEditorComponent implements OnInit, OnChanges {
+export class ModelViewComponent implements OnInit, OnChanges {
 
   @Input() model: ModelData;
   @Input() allowEdit: boolean;
@@ -38,6 +38,13 @@ export class ModelEditorComponent implements OnInit, OnChanges {
   }
 
   initViewSettings() {
+
+    // if no model is selected
+    if ( !this.model ) {
+      this.editable = false;
+      this.visibleModelRules = false;
+      return;
+    }
 
     // figure out if the model should be editable
     if ( this.model.editable && this.allowEdit ) {

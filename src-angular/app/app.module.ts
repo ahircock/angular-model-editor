@@ -18,7 +18,7 @@ import { AppErrorHandler } from './services/error-handler/error-handler.service'
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
 import { ModelListComponent } from './components/model-list/model-list.component';
-import { ModelEditorComponent } from './components/model-view/model-view.component';
+import { ModelViewComponent } from './components/model-view/model-view.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SpecialRuleSelectorComponent } from './components/special-rule-selector/special-rule-selector.component';
 import { SpecialRuleListComponent } from './components/special-rule-list/special-rule-list.component';
@@ -45,7 +45,7 @@ import { TextControllerDirective } from './directives/text-controller/text-contr
   declarations: [
     AppComponent,
     ModelListComponent,
-    ModelEditorComponent,
+    ModelViewComponent,
     SpecialRuleSelectorComponent,
     SpecialRuleListComponent,
     ForceListComponent,

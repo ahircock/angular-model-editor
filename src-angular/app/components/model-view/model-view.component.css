@@ -1,46 +1,62 @@
 /* the main model box */
-.modelBox { 
-    width:500px; padding:7px; 
+.model-box { 
+    padding:7px; 
     border:solid 2px black; 
     background-color:lightgrey;
 }
 
 /* title area */
-.titleBox { 
-    background-color: white; padding: 3px; border-style:solid; border-width: 2px; height: 154px;
+.title-box { 
+    display: flex;
+    padding: 4px 4px 8px 4px; 
+    background-color: white; border-style:solid; border-width: 2px;
 }
-.modelTextBox {
-    display: inline-block;
-    margin-left: 6px;
+.model-text-box {
+    position: relative;
+    margin-left: 8px;
 }
-.modelName { 
-    margin:4px; font-size: 1.75em; font-weight: bold; text-transform: uppercase;
+input.model-name {
+    position: relative;
+    top: -2px;
+    left: -6px;
 }
-.modelType { 
-    margin-left:4px; font-style: italic; text-transform: capitalize; 
+div.model-traits {
+    position: relative;
+    top: 4px;
+    margin-bottom: 8px;
 }
-.modelCost { 
-    margin-top:10px; margin-bottom: 10px; margin-left:4px;
-    padding-left: 6px; padding-right: 6px;
+input.model-traits {
+    position: relative;
+    top: -2px;
+    left: -6px;
+}
+.model-cost { 
+    margin-bottom: 8px;
+    padding: 2px 6px 2px 6px;
     width: max-content;
-    font-style: italic;
-    background-color: grey; color: white; font-weight: bold; border-radius: 3px;
+    background-color: grey; color: white; border-radius: 3px;
 }
 
 /* MODEL PORTRAIT DISPLAY & SELECTION */
 .model-image-zone {
-    float: right;
     position: relative;
 }
+.model-image-box-printable {
+    height: 136px;
+    margin: 2px 2px -2px 2px;
+}
+.model-image-box-printable  img {
+    height: 132px;
+}
 .model-image-box {
-    height: 154px;
+    height: 136px;
 }
 .model-image-box img {
-    width: 150px;
+    width: 132px;
 }
 .model-image-dropdown {
     position: absolute;
-    top: 155px; right: 0px;
+    top: 137px;
     width: 456px;
     z-index: 2;
     display: flex;
@@ -58,33 +74,25 @@
 
 
 /* stats table */
-.statTable {
+.stat-table {
     border-collapse: collapse; border: black solid 2px;
     font-weight: bold; text-align: center;
 }
-.statTable th {
+.stat-table th {
     background-color: grey; color: white;
 }
-.statTable td {
+.stat-table td {
     background-color: white;
-    width: 50px;
-}
-.statData input {
-    text-align: center;
-    width: 50px;
-}
-.statData select {
-    text-align: center;
     width: 50px;
 }
 
 /* model special rules */
-.modelSpecialRulesBox { 
+.model-special-rules-box { 
     margin-left: 10px; margin-top: 0px; padding: 3px;
     border-style: none solid solid solid; border-width: 2px;
     background-color: white; 
 }
-.specialRule {
+.special-rule {
     margin-bottom: 8px;
 }
 
@@ -92,7 +100,7 @@
 .action-box {
     margin-top: 8px;
 }
-.actionTitleBox {
+.actiontitle-box {
     padding: 3px; margin-top: 5px; 
     border: solid 2px; background-color: white; 
 }
@@ -134,7 +142,7 @@
     width: 100%; border-style: none; 
 }
 
-.attackActionSpecialRulesBox {
+.attackActionspecial-rulesBox {
     margin-left: 10px; margin-top: 0px; padding: 3px;
     border-style: solid; border-width: 2px; 
     background-color: white; 
@@ -172,3 +180,7 @@
     width: 18px;
 }
 
+/* Used to hide an element */
+.hidden {
+    display: none;
+}

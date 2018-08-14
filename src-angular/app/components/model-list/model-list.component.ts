@@ -12,6 +12,7 @@ export class ModelListComponent implements OnInit {
 
   public models: ModelData[];
   public selectedModelIndex: number;
+  public showPrintable: boolean = false; // controls whether model is shown as printable or not
 
   constructor( 
     private router: Router,

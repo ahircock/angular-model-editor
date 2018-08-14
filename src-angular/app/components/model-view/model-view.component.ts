@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { ModelData, ModelDataService } from '../../services/model-data/model-data.service';
 import { SpecialRuleData } from '../../services/special-rule-data/special-rule-data.service';
 import { ActionData } from '../../services/action-data/action-data.service'
@@ -10,23 +10,52 @@ interface StatCost {
 }
 
 @Component({
-  selector: 'app-model-editor',
-  templateUrl: './model-editor.component.html',
-  styleUrls: ['./model-editor.component.css']
+  selector: 'app-model-view',
+  templateUrl: './model-view.component.html',
+  styleUrls: ['./model-view.component.css']
 })
-export class ModelEditorComponent implements OnInit {
+export class ModelEditorComponent implements OnInit, OnChanges {
 
   @Input() model: ModelData;
+  @Input() allowEdit: boolean;
   @Output() updated: EventEmitter<void> = new EventEmitter();
-
+  
   modelPortraits: string[] = PORTRAIT_LIST;  
   showModelPortraitsDropdown: boolean = false;
+  visibleModelRules: boolean = false;
+  editable: boolean = false;
 
   constructor( 
     private modelDataService: ModelDataService
    ) { }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.initViewSettings();
+  }
+
+  ngOnChanges() {
+    this.initViewSettings();
+  }
+
+  initViewSettings() {
+
+    // figure out if the model should be editable
+    if ( this.model.editable && this.allowEdit ) {
+      this.editable = true;
+    } else {
+      this.editable = false;
+    }
+
+    // figure out if the Model Rules box should be shown
+    this.visibleModelRules = false;
+    if ( this.editable ) {
+      this.visibleModelRules = true; // show the box since there is an Add Model button
+    } else {
+      for ( let rule of this.model.specialRules ) {
+        if ( rule.printVisible ) this.visibleModelRules = true;
+      }
+    }
+
   }
 
   selectModelStat( value: any, statName: string ): void {

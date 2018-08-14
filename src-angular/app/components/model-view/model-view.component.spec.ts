@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModelEditorComponent } from './model-editor.component';
+import { ModelEditorComponent } from './model-view.component';
 
 describe('ModelEditorComponent', () => {
   let component: ModelEditorComponent;

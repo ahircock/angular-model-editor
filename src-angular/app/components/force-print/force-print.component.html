@@ -8,13 +8,13 @@
 
     <div class="left-column">
         <div *ngFor="let model of leftModels" class="model-detail">
-            <app-model-details [model]="model"></app-model-details>
+            <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
         </div>
     </div>
 
     <div class="right-column">
         <div *ngFor="let model of rightModels" class="model-detail">
-            <app-model-details [model]="model"></app-model-details>
+            <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
         </div>
     </div>
 

@@ -21,7 +21,7 @@
 
   <!-- MODEL DETAILS -->
   <div class="right">
-    <app-model-details *ngIf="models && !models[selectedModelIndex].editable" [model]="models[selectedModelIndex]"></app-model-details>
-    <app-model-editor *ngIf="models && models[selectedModelIndex].editable" [model]="models[selectedModelIndex]" (updated)="modelDetailsChanged(selectedModelIndex)"></app-model-editor>
+    <div class="font-normal"><input type="checkbox" [(ngModel)]="showPrintable">Show in print format</div>
+    <app-model-view *ngIf="models" [model]="models[selectedModelIndex]" [allowEdit]="!showPrintable" (updated)="modelDetailsChanged(selectedModelIndex)"></app-model-view>
   </div>
 </div>

@@ -15,6 +15,7 @@ export class ForceDetailsComponent implements OnInit {
   public selectedModelIndex: number;
   public modelTemplates: ModelData[];
   public showModelListDropdown: boolean = false;
+  public showPrint: boolean = false;
 
   // some cost counterse
   public modelCost: number = 0;

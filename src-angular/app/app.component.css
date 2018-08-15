@@ -6,6 +6,7 @@ div.header {
     z-index: 2;
 }
 div.middle {
-    position:fixed;  
+    position:fixed; 
+    overflow: auto;
     top:65px; bottom:0px; width:100%;
 }

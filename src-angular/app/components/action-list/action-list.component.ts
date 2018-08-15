@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap, UrlSegment } from '@angular/router';
 import { UserService } from '../../services/user.service'
 import { ActionDataService, ActionData, ActionType } from '../../services/action-data.service'
 import { ModelDataService } from '../../services/model-data.service';
@@ -16,20 +16,9 @@ export class ActionListComponent implements OnInit {
    */
   public actionType: ActionType = ActionType.Melee;
 
-  /**
-   * Used to format the rows that will be displayed in the table
-   */
-  public actionTableDisplay: any[] = [];
+  public actionList: ActionData[] = [];
 
-  /**
-   * The index of the selected rule in actionData
-   */
   public selectedAction: ActionData;
-
-  /**
-   * The action that is being hovered over
-   */
-  public hoverActionId: string = "";
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -37,7 +26,7 @@ export class ActionListComponent implements OnInit {
     private actionDataService: ActionDataService,
     private modelDataService: ModelDataService,
     private userService: UserService
-  ) { }
+  ) {}
 
   async ngOnInit() {
 
@@ -47,30 +36,45 @@ export class ActionListComponent implements OnInit {
       return;
     }
 
-    // setup a callback that is triggered whenever the :type parameter of the URL changes
-    this.activatedRoute.paramMap.subscribe( (paramMap:ParamMap) => { this.urlChanged( paramMap.get("type") ) })
+    // setup a callback that is triggered when the URL is initialized
+    this.activatedRoute.url.subscribe( (urlSegments:UrlSegment[]) => { this.initUrl( urlSegments[0].path ) })
   }
 
-  private async urlChanged( actionType: string ) {
-
-    // set the action type based on the URL
-    switch ( actionType.toUpperCase() ) {
-      case ActionType.Melee:
+  private async initUrl( url: string ) {
+    switch ( url ) {
+      case "melee-actions":
         this.actionType = ActionType.Melee;
         break;
-      case ActionType.Ranged:
+      case "ranged-actions":
         this.actionType = ActionType.Ranged;
         break;
-      case ActionType.Special:
+      case "special-actions":
         this.actionType = ActionType.Special;
         break;
     }
-    
+
+    // load the action list
     await this.loadActionList();
 
-    // select the first item in the list
-    if ( this.actionTableDisplay.length > 0 ) {
-      this.selectedAction = this.actionTableDisplay[0].action;
+    // select the first action in the list
+    if ( this.actionList.length > 0 ) {
+      this.selectedAction = this.actionList[0];
+    }
+  }
+
+  private async loadActionList() {
+
+    // set the action type based on the URL
+    switch ( this.actionType ) {
+      case ActionType.Melee:
+        this.actionList = await this.actionDataService.getMeleeActions();
+        break;
+      case ActionType.Ranged:
+        this.actionList = await this.actionDataService.getRangedActions();
+        break;
+      case ActionType.Special:
+        this.actionList = await this.actionDataService.getSpecialActions();
+        break;
     }
   }
 
@@ -79,7 +83,7 @@ export class ActionListComponent implements OnInit {
     let newAction: ActionData = await this.actionDataService.createNewAction( newActionType );
     await this.loadActionList();
 
-    // select the new rule from the list
+    // select the new action from the list
     this.selectedAction = newAction;
   }
 
@@ -108,63 +112,8 @@ export class ActionListComponent implements OnInit {
     this.selectedAction = newAction;
   }
 
-  public async loadActionList() {
-
-    // get the list of actions
-    let actionList: ActionData[] = [];
-
-    switch ( this.actionType ) {
-      case "MELEE":
-        actionList = await this.actionDataService.getMeleeActions();
-        break;
-      case "RANGED":
-        actionList = await this.actionDataService.getRangedActions();
-        break;
-      case "SPECIAL":
-        actionList = await this.actionDataService.getSpecialActions();
-        break;
-    }
-
-    // clear the display
-    this.actionTableDisplay = [];
-
-    // loop through the actions and prepare the table display
-    let actionTableIndex = 0;
-    let shadeRow = false;
-    for ( let action of actionList ) {
-
-      let rowData = { shadeRow: shadeRow, action: action }
-      this.actionTableDisplay[actionTableIndex] = rowData;
-      actionTableIndex++;
-
-      // add a row for each special rule
-      for ( let rule of action.specialRules ) {
-
-        let rowData = { shadeRow: shadeRow, ruleName: rule.ruleName, ruleText: rule.ruleText, action: action };
-        this.actionTableDisplay[actionTableIndex] = rowData;
-        actionTableIndex++;
-
-      }
-
-      shadeRow = !shadeRow;
-    }
-  }
-
-  selectRow( tableIndex: number ) {
-    if ( this.actionTableDisplay[tableIndex].ruleName ) {
-      this.selectedAction = this.actionTableDisplay[tableIndex].ruleAction;
-    } else {
-      this.selectedAction = this.actionTableDisplay[tableIndex];
-    }
-  }
-
-  hoverRow(tableIndex: number) {
-    if ( this.actionTableDisplay[tableIndex].ruleName ) {
-      this.hoverActionId = this.actionTableDisplay[tableIndex].ruleAction;
-    } else {
-      this.hoverActionId = this.actionTableDisplay[tableIndex];
-    }
-
+  selectRow( action: ActionData ) {
+    this.router.navigateByUrl("/actions/" + action._id );
   }
 
 }

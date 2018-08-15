@@ -1,61 +1,55 @@
-<div class="column-section">
-    
-  <!-- ACTION LIST -->
-  <div class="left">
+<!-- ACTION LIST -->
+<div class="panel">
 
-    <!-- CREATE NEW ACTION BUTTON -->
-    <div class="create-action-button box-light-hover font-title" (click)="newAction()">
-      <img src="/assets/icons/icon-outline-plus-128.png">
-      <div class="button-text">New {{actionType}} Action</div>
-    </div>
-
-    <!-- ACTION TABLE -->
-    <div class="action-table-view">
-      <table class="action-table font-normal">
-        <tr class="box-dark">
-          <th class="text-data">NAME</th>
-          <th class="num-data">AP</th>
-          <th class="num-data" *ngIf="actionType != 'SPECIAL'">RNG</th>
-          <th class="num-data" *ngIf="actionType != 'SPECIAL'">HIT</th>
-          <th class="num-data" *ngIf="actionType != 'SPECIAL'">DMG</th>
-          <th class="num-data">COST</th>
-          <th class="text-data">TRAITS</th>
-          <th></th>
-          <th></th>
-        </tr>
-        <tr *ngFor="let row of actionTableDisplay; index as rowIndex" 
-            class="box-white"
-            [class.selected-row]="row.action._id == selectedAction._id" 
-            [class.hover-row]="row.action._id == hoverActionId && row.action._id != selectedAction._id" 
-            [class.shade-row]="row.shadeRow && row.action._id != hoverActionId && row.action._id != selectedAction._id"
-            (click)="selectedAction = row.action"
-            (mouseover)="hoverActionId = row.action._id"
-            (mouseleave)="hoverActionId = ''"
-            >
-          <td *ngIf="row.ruleName" class="rule-data font-normal" colspan="9">
-            <i>{{row.ruleName}}</i> - {{row.ruleText}}
-          </td>
-          <td *ngIf="!row.ruleName" class="text-data font-bold">{{row.action.name}}</td>
-          <td *ngIf="!row.ruleName" class="num-data">{{row.action.AP}}<span *ngIf="row.action.ONCE"> - ONCE</span></td>
-          <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.RNG}}</td>
-          <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.HIT}}</td>
-          <td *ngIf="!row.ruleName && actionType != 'SPECIAL'" class="num-data">{{row.action.DMG}}</td>
-          <td *ngIf="!row.ruleName" class="num-data">{{row.action.cost}}</td>
-          <td *ngIf="!row.ruleName" class="text-data">{{row.action.traits}}</td>
-          <td *ngIf="!row.ruleName" class="action-button-column">
-            <div *ngIf="row.action.editable" class="action-button box-light-hover" (click)="deleteAction(row.action)"><img src="/assets/icons/icon-delete-128.png"></div>
-          </td>
-          <td *ngIf="!row.ruleName" class="action-button-column">
-            <div class="action-button box-light-hover" (click)="cloneAction(row.action)"><img src="/assets/icons/icon-clone-128.png"></div>
-          </td>
-        </tr>
-      </table>
-    </div>
-  
+  <!-- CREATE NEW ACTION BUTTON -->
+  <div class="create-action-button box-light-hover font-title" (click)="newAction()">
+    <img src="/assets/icons/icon-outline-plus-128.png">
+    <div class="button-text">New {{actionType}} Action</div>
   </div>
 
-  <!-- ACTION DETAILS -->
-  <div class="right box-mid">
-    <app-action-view *ngIf="selectedAction" [action]="selectedAction" [allowEdit]="true" [showMetaInfo]="true" (updated)="loadActionList()"></app-action-view>
+  <!-- ACTION TABLE -->
+  <div>
+    <table class="action-table font-normal">
+
+      <!-- TABLE HEADER -->
+      <tr class="box-dark">
+        <th class="num-data">COST</th>
+        <th class="text-data">NAME</th>
+        <th></th>
+        <th></th>
+        <th class="num-data">AP</th>
+        <th class="num-data" *ngIf="actionType != 'SPECIAL'">RNG</th>
+        <th class="num-data" *ngIf="actionType != 'SPECIAL'">HIT</th>
+        <th class="num-data" *ngIf="actionType != 'SPECIAL'">DMG</th>
+        <th class="text-data">ABILITIES</th>
+        <th class="text-data">TRAITS</th>
+      </tr>
+
+      <!-- TABLE DATA -->
+      <tr *ngFor="let action of actionList" 
+          class="box-white"
+          [class.not-selected-row]="action._id != selectedAction._id"
+          [class.selected-row]="action._id == selectedAction._id" 
+          (click)="selectRow(action)"
+          >
+        <td class="num-data">{{action.cost}}</td>
+        <td class="name-col text-data font-bold">{{action.name}}</td>
+        <td class="action-button-column">
+          <div *ngIf="action.editable" class="action-button box-light-hover" (click)="deleteAction(action)"><img src="/assets/icons/icon-delete-128.png"></div>
+        </td>
+        <td class="action-button-column">
+          <div class="action-button box-light-hover" (click)="cloneAction(action)"><img src="/assets/icons/icon-clone-128.png"></div>
+        </td>
+        <td class="num-data">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></td>
+        <td *ngIf="actionType != 'SPECIAL'" class="num-data">{{action.RNG}}</td>
+        <td *ngIf="actionType != 'SPECIAL'" class="num-data">{{action.HIT}}</td>
+        <td *ngIf="actionType != 'SPECIAL'" class="num-data">{{action.DMG}}</td>
+        <td class="text-data ability-col">
+          <div *ngFor="let rule of action.specialRules" class="text-data font-small"><i>{{rule.ruleName}}</i> - {{rule.ruleText}}</div>
+        </td>
+        <td class="text-data">{{action.traits}}</td>
+      </tr>
+    </table>
   </div>
+
 </div>

@@ -1,27 +1,6 @@
-/* MULTI-COLUMN DISPLAY */
-.column-section {
-  position: relative;
-  display: flex;
-  height: 100%;
-}
-.column-section .left {
-  flex: 1 1 50%;
-  padding: 8px;    
-  overflow-y: auto;
-}
-.column-section .right {
-  flex: 1 1 50%;
+.panel {
   padding: 8px;
-  overflow-y: auto;    
-  border: none;
 }
-
-@media only screen and ( max-width: 600px ) {
-  .column-section .right {
-    display: none;
-  }
-}
-
 /* CREATE ACTION BUTTON */
 .create-action-button {
   height: 50px;
@@ -42,13 +21,32 @@
 }
 
 /* ACTION TABLE */
-.ap-box {
-  flex: 0 0 8px;
+.action-table {
+  border-spacing: 0px;
 }
-.ap-text {
-  padding: 0px 6px 0px 6px; 
-  border-radius: 4px; background-color: grey; color: white;
-  width: max-content;
+.action-table th {
+  border: none;
+}
+tr.not-selected-row:nth-child(even) {
+  background-color: #e8e8e8;
+}
+tr.not-selected-row:hover {
+  background-color: rgb(211,211,211);
+}
+tr.selected-row {
+  background-color: rgb(128,128,128);
+  color: white;
+}
+tr.selected-row:hover {
+  background-color: rgb(211,211,211);
+}
+
+/* COLUMN FORMATTING */
+.name-col {
+  min-width: 164px;
+}
+.ability-col {
+  min-width: 400px;
 }
 .text-data {
   text-align: left;
@@ -56,36 +54,15 @@
 }
 .num-data {
   text-align: center;
+  width: 32px;
   padding: 4px 8px;
 }
 .rule-data {
   text-align: left;
   padding: 0px 4px 4px 32px;
 }
-tr.hover-row {
-  background-color: rgb(211,211,211);
-}
-tr.selected-row {
-  background-color: rgb(128,128,128);
-  color: white;
-}
-tr.shade-row {
-  background-color: #e8e8e8;
-}
-.action-table {
-  border-spacing: 0px;
-}
-.action-table th {
-  border: none;
-}
 
-/* ACTION TILES */
-.action-tile {
-  min-width: 212px;
-  border-radius: 4px;
-  margin-bottom: 8px;
-  padding: 8px;
-}
+/* ACTION BUTTONS */
 .action-button-column {
   width: 34px;
 }

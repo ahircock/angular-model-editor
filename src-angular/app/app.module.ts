@@ -34,6 +34,7 @@ import { ActionViewComponent } from './components/action-view/action-view.compon
 import { DropdownMeleeComponent } from './components/dropdowns/dropdown-melee.component';
 import { DropdownRangedComponent } from './components/dropdowns/dropdown-ranged.component';
 import { DropdownSpecialComponent } from './components/dropdowns/dropdown-special.component';
+import { ActionDetailsComponent } from './components/action-details/action-details.component';
 
 //directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
@@ -62,7 +63,8 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     ActionViewComponent,
     DropdownMeleeComponent,
     DropdownRangedComponent,
-    DropdownSpecialComponent
+    DropdownSpecialComponent,
+    ActionDetailsComponent
   ],
   imports: [
     BrowserModule,

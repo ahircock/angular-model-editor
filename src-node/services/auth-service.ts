@@ -25,6 +25,7 @@ export class AuthService {
         // make sure that the user exists
         let userData: any = await this.dbService.getDocumentById("users", userEmail )
         if ( !userData ) {
+            console.log("Invalid login attempt, unknown username: user=\"" + userEmail + "\"")
             let httpError: HttpError = { errorCode: 301, errorMessage: "user does not exist" };
             res.status(401).send(httpError);
             return;
@@ -33,6 +34,7 @@ export class AuthService {
         // make sure that the user provided a valid password
         let validPassword = await this.validateUserAndPassword(userData, userPassword);
         if ( !validPassword ) {
+            console.log("Invalid login attempt, bad password: user=\"" + userEmail + "\"")
             let httpError: HttpError = { errorCode: 302, errorMessage: "invalid password" };
             res.status(401).send(httpError);
             return;

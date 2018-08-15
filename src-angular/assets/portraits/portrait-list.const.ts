@@ -35,7 +35,10 @@ export const PORTRAIT_LIST: string[] = [
   "sylvaneth - dryad.jpg",
   "sylvaneth - treelord.jpg",
   "skitarii-ranger-alpha.jpg",
+  "skitarii-ranger-arquebus.jpg",
   "skitarii-ranger.jpg",
   "skitarii-vanguard-alpha.jpg",
+  "skitarii-vanguard-arcrifle.jpg",
+  "skitarii-vanguard-plasmacaliver.jpg",
   "skitarii-vanguard.jpg"
 ];

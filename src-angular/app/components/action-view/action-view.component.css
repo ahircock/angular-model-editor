@@ -73,7 +73,7 @@
   padding-left: 8px;
 }
 .attack-action-stat-bar {
-  width: 200px;
+  width: 196px;
   border-left-style: solid; border-right-style: solid; border-width: 2px; background-color: black; 
 }
 .attack-action-stat-bar:last-child {
@@ -83,7 +83,7 @@
   float: left; padding: 3px; font-size: 0px; 
 }
 .attack-action-icon img {
-  width: 36px;
+  width: 32px;
 }
 .attack-action-table-div {
   float: left; width:158px;
@@ -125,7 +125,7 @@
   padding-left: 8px;
 }
 .special-action-rules-box {
-  min-height: 34px;
+  min-height: 30px;
   padding: 4px;
   border-style: none solid solid solid; border-width: 2px; background-color: white; 
 }
@@ -138,5 +138,5 @@
   padding: 3px; background-color: black; font-size: 0px;
 }
 .special-action-icon img {
-  width:36px;
+  width:32px;
 }

@@ -5,35 +5,35 @@ body {
 
 /* FONTS */
 .font-normal {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  14px;
     font-weight: normal; text-transform: none;
 }
 .font-small {
-    font-family: "Roboto", sans-serif; font-size: 13px;
+    font-family: "Roboto", sans-serif; font-size: 12px;
     font-weight: normal; text-transform: none;
 }
 .font-title-big {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  16px;
     font-size: 28px; font-weight: bold; text-transform: uppercase; 
 }
 .font-title {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  14px;
     font-weight: bold; text-transform: uppercase; 
 }
 .font-subtitle {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  14px;
     text-transform: capitalize;
 }
 .font-traits {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  14px;
     font-style: italic; text-transform: capitalize; 
 }
 .font-italic {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  14px;
     font-style: italic; text-transform: none;
 }
 .font-bold {
-    font-family: "Roboto", sans-serif; font-size: 16px;
+    font-family: "Roboto", sans-serif; font-size:  14px;
     font-weight: bold; text-transform: none;
 }
 

@@ -4,7 +4,7 @@
   </div>
   <div class="model-details-box">
     <div class="model-name font-title">{{model.name}}</div>
-    <div class="model-cost font-normal">{{model.cost}} points <span *ngIf="!force && model.editable" class="model-cost font-italic"> (Custom)</span></div>
+    <div class="model-cost font-normal">{{model.cost}} points</div>
     <div class="model-button-band">
       <div class="model-button box-light-hover" (click)="cloneModel()"><img src="/assets/icons/icon-clone-128.png"></div>
       <div *ngIf="force" class="model-button box-light-hover" (click)="increaseForceCount()"><img src="/assets/icons/icon-plus-128.png"></div>

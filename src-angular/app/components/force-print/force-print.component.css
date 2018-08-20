@@ -3,11 +3,7 @@
 }
 .force-title {
     text-align: center;
-}
-.force-list {
-    margin-top: 16px;
     margin-bottom: 16px;
-    padding: 8px;
 }
 .left-column { 
     float:left; width: 518px; 
@@ -17,4 +13,14 @@
 }
 .model-detail { 
     margin-bottom: 20px; 
+    position: relative;
+}
+.model-count {
+    position: absolute;
+    z-index: 1;
+    border-radius: 32px;
+    margin: 0px;
+    padding: 8px;
+    top: 4px;
+    left: 4px;
 }

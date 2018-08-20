@@ -1,19 +1,17 @@
 <div *ngIf="force" class="main-page">
 
     <div class="force-title font-title-big">{{force.name}}</div>
-    <div class="force-title font-title">{{force.cost}} Points</div>
-    <div class="force-list box-light">
-        <div *ngFor="let model of force.models" class="font-normal" >{{model.count}}x {{model.name}}</div>
-    </div>
 
     <div class="left-column">
         <div *ngFor="let model of leftModels" class="model-detail">
+            <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
             <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
         </div>
     </div>
 
     <div class="right-column">
         <div *ngFor="let model of rightModels" class="model-detail">
+            <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
             <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
         </div>
     </div>

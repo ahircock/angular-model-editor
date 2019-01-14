@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
-import { UserService } from '../../services/user.service'
+import { UserService } from '../../services/user.service';
 import { ModelData, ModelDataService } from '../../services/model-data.service';
 
 @Component({
@@ -14,12 +14,12 @@ export class ForceDetailsComponent implements OnInit {
   public force: ForceData;
   public selectedModelIndex: number;
   public modelTemplates: ModelData[];
-  public showModelListDropdown: boolean = false;
-  public showPrint: boolean = false;
+  public showModelListDropdown = false;
+  public showPrint = false;
 
   // some cost counterse
-  public modelCost: number = 0;
-  public equipmentCost: number = 0;
+  public modelCost = 0;
+  public equipmentCost = 0;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,17 +30,17 @@ export class ForceDetailsComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    
+
     // if not logged in, then go to login page
     if ( !this.userService.isLoggedIn() ) {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
       return;
     }
 
     // load the forceData object
-    let forceId = this.activatedRoute.snapshot.paramMap.get("id");
+    const forceId = this.activatedRoute.snapshot.paramMap.get('id');
     this.force = await this.forceDataService.getForceById(forceId);
-    
+
     // mark the first model as selected
     if ( this.force.models.length > 0 ) {
       this.selectedModelIndex = 0;
@@ -55,14 +55,14 @@ export class ForceDetailsComponent implements OnInit {
   }
 
   async addModel( template: ModelData ) {
-    
+
     // create a new model based on the selected one
-    let newModelData = await this.modelDataService.cloneModelFromTemplate( template );
+    const newModelData = await this.modelDataService.cloneModelFromTemplate( template );
 
     // add the model to the force
-    let newForceModelData: ForceModelData = Object.assign( {}, {count:1}, newModelData );
+    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1}, newModelData );
     this.force.models.push ( newForceModelData );
-    
+
     // update the force in the DB
     this.force = await this.forceDataService.updateForce( this.force );
 
@@ -82,7 +82,7 @@ export class ForceDetailsComponent implements OnInit {
 
   printForce() {
     // open the print page in a new window/tab
-    this.router.navigateByUrl("/forces/print/" + this.force._id);
+    this.router.navigateByUrl('/forces/print/' + this.force._id);
   }
 
 

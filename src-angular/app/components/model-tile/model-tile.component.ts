@@ -13,7 +13,7 @@ export class ModelTileComponent implements OnInit {
   @Input() force: ForceData;
   @Input() selected: boolean;
   @Output() change: EventEmitter<void> = new EventEmitter();
-  
+
   constructor(
     private modelDataService: ModelDataService,
     private forceDataService: ForceDataService
@@ -23,9 +23,9 @@ export class ModelTileComponent implements OnInit {
   }
 
   async increaseForceCount() {
-    
+
     // increase the count on the force object
-    let forceModelIndex = this.force.models.findIndex( element => element._id == this.model._id );
+    const forceModelIndex = this.force.models.findIndex( element => element._id === this.model._id );
     this.force.models[forceModelIndex].count++;
 
     // save the changes and tell the parent component
@@ -36,7 +36,7 @@ export class ModelTileComponent implements OnInit {
   async decreaseForceCount() {
 
     // decrease the count on the force object
-    let forceModelIndex = this.force.models.findIndex( element => element._id == this.model._id );
+    const forceModelIndex = this.force.models.findIndex( element => element._id === this.model._id );
     this.force.models[forceModelIndex].count--;
 
     // if the count is now 0, then delete the model entirely
@@ -53,11 +53,11 @@ export class ModelTileComponent implements OnInit {
   async cloneModel() {
 
     // clone the model
-    let newModel: ModelData = await this.modelDataService.cloneModel( this.model );
+    const newModel: ModelData = await this.modelDataService.cloneModel( this.model );
 
     // if you are on a force, add this model to the force
     if ( this.force ) {
-      let forceModelData: ForceModelData = Object.assign( {}, newModel, { count: 1 });
+      const forceModelData: ForceModelData = Object.assign( {}, newModel, { count: 1 });
       this.force.models.push( forceModelData );
       this.force = await this.forceDataService.updateForce(this.force);
     }

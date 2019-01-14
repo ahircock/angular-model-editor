@@ -10,10 +10,10 @@ import { DBErrorData } from '../../services/data-access.service';
 })
 export class UserSignupComponent implements OnInit {
 
-  public userEmail: string = "";
-  public userPassword: string = "";
-  public confirmPassword: string = "";
-  public errorText: string = "";
+  public userEmail = '';
+  public userPassword = '';
+  public confirmPassword = '';
+  public errorText = '';
 
   constructor(
     private userService: UserService,
@@ -29,18 +29,18 @@ export class UserSignupComponent implements OnInit {
   async signup() {
 
     // make sure that the password and confirmation match
-    if ( this.userPassword != this.confirmPassword ) {
-      this.displayError({ errorCode: -1, errorMessage: "Password and confirmation do not match" });
+    if ( this.userPassword !== this.confirmPassword ) {
+      this.displayError({ errorCode: -1, errorMessage: 'Password and confirmation do not match' });
       return;
     }
 
     // convert the email to lowercase
     this.userEmail = this.userEmail.toLowerCase();
-    
+
     // run the signup procedure
     await this.userService.signup(this.userEmail, this.userPassword)
-        .then( () => this.router.navigateByUrl("/") ) // if successful, then open the main page
-        .catch( (reason)=> { this.displayError(reason.error); }); // if unsuccssful, then display error message
+        .then( () => this.router.navigateByUrl('/') ) // if successful, then open the main page
+        .catch( (reason) => { this.displayError(reason.error); }); // if unsuccssful, then display error message
   }
 
   /**
@@ -50,15 +50,15 @@ export class UserSignupComponent implements OnInit {
   private displayError(error: DBErrorData) {
     switch (error.errorCode ) {
       case 301: //  user does not exist
-        this.errorText = "Invalid email"
+        this.errorText = 'Invalid email';
         break;
       case 302: // password invalid
-        this.errorText = "Invalid password"
+        this.errorText = 'Invalid password';
         break;
       default:
         this.errorText = error.errorMessage;
         break;
-    }    
+    }
   }
 
 }

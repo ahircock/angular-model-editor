@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'
-import { Location } from '@angular/common'
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import { ActionDataService, ActionData } from '../../services/action-data.service';
 
@@ -25,13 +25,13 @@ export class ActionDetailsComponent implements OnInit {
 
     // if not logged in, then go to login page
     if ( !this.userService.isLoggedIn() ) {
-      this.router.navigateByUrl("/login");
-      return;      
+      this.router.navigateByUrl('/login');
+      return;
     }
 
     // load the action object
-    let actionId = this.activatedRoute.snapshot.paramMap.get("id");
-    this.action = await this.actionDataService.getActionById(actionId);    
+    const actionId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.action = await this.actionDataService.getActionById(actionId);
   }
 
 }

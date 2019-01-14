@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 // services
 import { UserService } from './services/user.service';
@@ -11,7 +11,7 @@ import { SpecialRuleDataService } from './services/special-rule-data.service';
 import { ForceDataService } from './services/force-data.service';
 import { ActionDataService } from './services/action-data.service';
 import { DataAccessService } from './services/data-access.service';
-import { AppErrorHandler } from './services/error-handler.service'
+import { AppErrorHandler } from './services/error-handler.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -36,7 +36,7 @@ import { DropdownRangedComponent } from './components/dropdowns/dropdown-ranged.
 import { DropdownSpecialComponent } from './components/dropdowns/dropdown-special.component';
 import { ActionDetailsComponent } from './components/action-details/action-details.component';
 
-//directives
+// directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
 import { TextControllerDirective } from './directives/text-controller.directive';
 

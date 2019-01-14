@@ -3,7 +3,7 @@
 <div class="app-separator"> </div>
 
 <!-- MAIN MENU DROPDOWN -->
-<div class="menu-dropdown-zone" (clickElsewhere)="showMenuDropdown = false">
+<div class="menu-dropdown-zone" (appClickElsewhere)="showMenuDropdown = false">
   <div class="menu-dropdown-button box-mid-hover" (click)="showMenuDropdown = !showMenuDropdown"><img src="/assets/icons/icon-menu-128.png"></div>
   <div *ngIf="showMenuDropdown" class="menu-dropdown box-white">
     <div *ngIf="!userService.userName">
@@ -26,7 +26,7 @@
 </div>
 
 <!-- USER MENU DROPDOWN -->
-<div class="menu-dropdown-zone-right" (clickElsewhere)="showUserMenuDropdown = false">
+<div class="menu-dropdown-zone-right" (appClickElsewhere)="showUserMenuDropdown = false">
   <div class="menu-dropdown-button-right box-mid-hover" (click)="showUserMenuDropdown = !showUserMenuDropdown">
     <img src="/assets/icons/icon-user-128.png">
   </div>

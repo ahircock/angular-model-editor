@@ -1,13 +1,13 @@
-import { MongoClient, Db } from "mongodb";
+import { MongoClient, Db } from 'mongodb';
 
 /**
- * This class is meant to provide an API for doing REST-ful services on 
+ * This class is meant to provide an API for doing REST-ful services on
  * a Mongo Database. REST-ful services are GET, UPDATE, CREATE, DELETE
  */
 export class MongoDbService {
 
-  private MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
-  private MONGO_DB = "model-editor";
+  private MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017';
+  private MONGO_DB = 'model-editor';
   private mongoDb: Db;
 
   /**
@@ -17,7 +17,7 @@ export class MongoDbService {
 
     // if we aren't connected yet, then connect
     if ( !this.mongoDb ) {
-      let mongoConnection = await MongoClient.connect(this.MONGO_URI);
+      const mongoConnection = await MongoClient.connect(this.MONGO_URI);
       this.mongoDb = mongoConnection.db(this.MONGO_DB);
     }
 
@@ -32,31 +32,31 @@ export class MongoDbService {
     await this.connect();
     let filter = {};
     if ( userId ) {
-      filter = { userId:{ $in: ["GLOBAL", "global", userId] } };
+      filter = { userId: { $in: ['GLOBAL', 'global', userId] } };
     }
     return await this.mongoDb.collection(entity).find(filter).toArray();
   }
 
   /**
    * Search for a single entity document in the databadse, using
-   * the document's ID. It will return a the matching document if found, or NULL if 
+   * the document's ID. It will return a the matching document if found, or NULL if
    * the id does not exist
    * @param entity the type of document being returned
-   * @param getId the id of the document 
+   * @param getId the id of the document
    * @returns a single document that matches the given getId
    */
   async getDocumentById(entity: string, getId: string, userId?: string): Promise<any> {
     await this.connect();
     let filter: any = { _id: getId };
-    if ( userId ) { 
-      filter = { _id:getId, userId: { $in: ["GLOBAL", "global", userId] } };
+    if ( userId ) {
+      filter = { _id: getId, userId: { $in: ['GLOBAL', 'global', userId] } };
     }
     return await this.mongoDb.collection(entity).findOne(filter);
   }
 
   /**
-   * Update a single entity document in the database. This will use the 
-   * REPLACE technique and the existing document will be completely replaced 
+   * Update a single entity document in the database. This will use the
+   * REPLACE technique and the existing document will be completely replaced
    * by the provided document
    * @param entity the type of document being updated
    * @param updateDoc the document that will be updated in the database
@@ -65,15 +65,15 @@ export class MongoDbService {
   async updateDocment(entity: string, updateDoc: any, userId?: string): Promise<any> {
     await this.connect();
     let filter: any = { _id: updateDoc._id };
-    if ( userId ) { 
-      filter = { _id:updateDoc._id, userId: userId.toLowerCase() };
+    if ( userId ) {
+      filter = { _id: updateDoc._id, userId: userId.toLowerCase() };
       updateDoc.userId = userId;
     }
-    let result = await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc, {returnOriginal: false} );
+    const result = await this.mongoDb.collection(entity).findOneAndReplace( filter, updateDoc, {returnOriginal: false} );
     if ( result.value ) {
       return result.value;
     } else {
-      throw new Error("no document found with a matching _id")
+      throw new Error('no document found with a matching _id');
     }
   }
 
@@ -85,8 +85,8 @@ export class MongoDbService {
    */
   async createDocument(entity: string, newDoc: any, userId?: string): Promise<any> {
     await this.connect();
-    if ( userId ) { newDoc.userId = userId.toLowerCase() }
-    let result = await this.mongoDb.collection(entity).insertOne(newDoc);
+    if ( userId ) { newDoc.userId = userId.toLowerCase(); }
+    const result = await this.mongoDb.collection(entity).insertOne(newDoc);
     newDoc._id = result.insertedId;
     return newDoc;
   }
@@ -100,12 +100,12 @@ export class MongoDbService {
   async deleteDocument(entity: string, deleteId: string, userId?: string): Promise<void> {
     await this.connect();
     let filter: any = { _id: deleteId };
-    if ( userId ) { 
-      filter = { _id:deleteId, userId: userId.toLowerCase() };
+    if ( userId ) {
+      filter = { _id: deleteId, userId: userId.toLowerCase() };
     }
-    let result = await this.mongoDb.collection(entity).deleteOne(filter);
-    if ( result.deletedCount == 0 ) {
-      throw new Error("no document found with a matching _id")
+    const result = await this.mongoDb.collection(entity).deleteOne(filter);
+    if ( result.deletedCount === 0 ) {
+      throw new Error('no document found with a matching _id');
     }
   }
 
@@ -115,9 +115,9 @@ export class MongoDbService {
    */
   async getNextId(): Promise<string> {
     await this.connect();
-    
+
     // get the next ID from the sequence
-    let sequenceDoc = await this.mongoDb.collection("config").findOneAndUpdate( {_id:"idSequence"}, {$inc:{sequenceValue:1}} );
+    const sequenceDoc = await this.mongoDb.collection('config').findOneAndUpdate( {_id: 'idSequence'}, {$inc: {sequenceValue: 1}} );
     return sequenceDoc.value.sequenceValue.toString();
   }
 

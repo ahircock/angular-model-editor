@@ -36,7 +36,7 @@ export class SpecialRuleListComponent implements OnInit {
 
     // if not logged in, then go to login page
     if ( !this.userService.isLoggedIn() ) {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
       return;
     }
 
@@ -49,28 +49,28 @@ export class SpecialRuleListComponent implements OnInit {
   }
 
   async selectType( newType: string ) {
-    if ( newType == 'special' ) this.ruleType = RuleType.Special;
-    if ( newType == 'attack' ) this.ruleType = RuleType.Attack;
-    if ( newType == 'model' ) this.ruleType = RuleType.Model;
+    if ( newType === 'special' ) { this.ruleType = RuleType.Special; }
+    if ( newType === 'attack' ) { this.ruleType = RuleType.Attack; }
+    if ( newType === 'model' ) { this.ruleType = RuleType.Model; }
     await this.loadRuleList();
   }
 
   async loadRuleList() {
     switch ( this.ruleType ) {
-      case "model":
+      case 'model':
         this.ruleData = await this.specialRuleDataService.getModelSpecialRules();
         break;
-      case "attack":
+      case 'attack':
         this.ruleData = await this.specialRuleDataService.getAttackSpecialRules();
         break;
-      case "special":
+      case 'special':
         this.ruleData = await this.specialRuleDataService.getActionSpecialRules();
         break;
     }
   }
 
   async newRuleClick() {
-    let newRule: SpecialRuleData = await this.specialRuleDataService.createNewRule( this.ruleType );
+    const newRule: SpecialRuleData = await this.specialRuleDataService.createNewRule( this.ruleType );
     await this.loadRuleList();
 
     // select the new rule from the list
@@ -78,7 +78,7 @@ export class SpecialRuleListComponent implements OnInit {
   }
 
   async ruleDetailsUpdated( updatedRule: SpecialRuleData ) {
-    
+
     // reload the list
     await this.loadRuleList();
   }
@@ -94,7 +94,7 @@ export class SpecialRuleListComponent implements OnInit {
   }
 
   async cloneRule( cloneRule: SpecialRuleData ) {
-    let newRule: SpecialRuleData = await this.specialRuleDataService.cloneRule( cloneRule );
+    const newRule: SpecialRuleData = await this.specialRuleDataService.cloneRule( cloneRule );
     await this.loadRuleList();
 
     // select the new rule from the list

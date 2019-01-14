@@ -1,11 +1,11 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DataAccessService } from './data-access.service'
+import { DataAccessService } from './data-access.service';
 
 @Injectable()
 export class UserService {
 
-  public userName:string = "";
-  public loginError: string = "";
+  public userName = '';
+  public loginError = '';
 
   // create event emitters that other services can subscribe to
   public loginEvent: EventEmitter<string> = new EventEmitter();
@@ -17,8 +17,8 @@ export class UserService {
 
   async login( email: string, password: string ): Promise<void> {
     await this.dbConnectService.login(email, password )
-        .catch((reason)=> { throw reason });
-    
+        .catch((reason) => { throw reason; });
+
     // store the name of the user
     this.userName = email;
 
@@ -28,8 +28,8 @@ export class UserService {
 
   async signup( email: string, password: string ): Promise<void> {
     await this.dbConnectService.signup(email, password )
-        .catch((reason)=> { throw reason });
-    
+        .catch((reason) => { throw reason; });
+
     // store the name of the user
     this.userName = email;
 
@@ -38,14 +38,14 @@ export class UserService {
   }
 
   async logout() {
-    this.userName = "";
+    this.userName = '';
 
     // notify all of the data services
     this.logoutEvent.emit();
   }
 
   public isLoggedIn(): boolean {
-    if ( this.userName != "" ) {
+    if ( this.userName !== '' ) {
       return true;
     } else {
       return false;

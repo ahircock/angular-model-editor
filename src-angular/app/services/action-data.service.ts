@@ -1,7 +1,7 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DataAccessService, ActionDBData, ActionType, RuleType } from './data-access.service';
-import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service'
-import { UserService } from './user.service'
+import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service';
+import { UserService } from './user.service';
 
 export interface ActionData {
   _id: string;
@@ -36,52 +36,52 @@ export class ActionDataService {
     private dbConnectService: DataAccessService,
     private specialRuleDataService: SpecialRuleDataService,
     private userService: UserService
-  ) { 
+  ) {
 
     // initialize the user id
     this.loggedInUserId = this.userService.userName;
 
     // subscribe to events from the other services
-    this.userService.loginEvent.subscribe( (email:any) => this.login(email) );
+    this.userService.loginEvent.subscribe( (email: any) => this.login(email) );
     this.userService.logoutEvent.subscribe( () => this.logout() );
-    this.specialRuleDataService.ruleUpdated.subscribe( (updatedRule:any) => this.ruleUpdated(updatedRule) );
+    this.specialRuleDataService.ruleUpdated.subscribe( (updatedRule: any) => this.ruleUpdated(updatedRule) );
   }
 
   async getMeleeActions(): Promise<ActionData[]> {
-    return this.getActionsByType( "MELEE" );
+    return this.getActionsByType( 'MELEE' );
   }
 
   async getRangedActions(): Promise<ActionData[]> {
-    return this.getActionsByType( "RANGED" );
+    return this.getActionsByType( 'RANGED' );
   }
 
   async getSpecialActions(): Promise<ActionData[]> {
-    return this.getActionsByType( "SPECIAL" );
+    return this.getActionsByType( 'SPECIAL' );
   }
 
   async getActionById( actionId: string ): Promise<ActionData> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.actionCache.length == 0 ) {
+    if ( this.actionCache.length === 0 ) {
       await this.loadCache();
     }
 
     // return the model with the matching ID
-    return this.actionCache.find( element => element._id == actionId );    
+    return this.actionCache.find( element => element._id === actionId );
 
   }
 
   private async getActionsByType( type: string ): Promise<ActionData[]> {
-    
+
     // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.actionCache.length == 0 ) {
+    if ( this.actionCache.length === 0 ) {
       await this.loadCache();
     }
 
     // filter down the array to only include those with the correct type
-    let returnList: ActionData[] = [];
-    for ( let action of this.actionCache ) {
-      if ( action.type == type ) {
+    const returnList: ActionData[] = [];
+    for ( const action of this.actionCache ) {
+      if ( action.type === type ) {
         returnList.push( action );
       }
     }
@@ -96,20 +96,20 @@ export class ActionDataService {
   async createNewAction( actionType: ActionType ): Promise<ActionData> {
 
     // generate a new ID
-    let newActionId = await this.dbConnectService.getNextId("A");
+    const newActionId = await this.dbConnectService.getNextId('A');
 
     // prepare a new rule object
-    let newActionDb: ActionDBData = { 
-      _id: newActionId, 
-      userId: this.loggedInUserId.toLowerCase(), 
-      type: actionType, 
-      name:"NEW " + actionType.toUpperCase() + " ACTION", 
-      traits: "",
+    let newActionDb: ActionDBData = {
+      _id: newActionId,
+      userId: this.loggedInUserId.toLowerCase(),
+      type: actionType,
+      name: 'NEW ' + actionType.toUpperCase() + ' ACTION',
+      traits: '',
       AP: 1,
-      RNG: actionType == ActionType.Ranged ? 12 : 1,
+      RNG: actionType === ActionType.Ranged ? 12 : 1,
       HIT: 6,
       DMG: 6,
-      strengthBased: actionType == ActionType.Ranged ? false : true,
+      strengthBased: actionType === ActionType.Ranged ? false : true,
       ONCE: false,
       cost: 1,
       specialRuleIds: []
@@ -119,7 +119,7 @@ export class ActionDataService {
     newActionDb = await this.dbConnectService.createAction( newActionDb );
 
     // add the new rule to the cache
-    let newAction: ActionData = await this.convertDBToAppData( newActionDb );
+    const newAction: ActionData = await this.convertDBToAppData( newActionDb );
     this.actionCache.push(newAction);
 
     // return the new force
@@ -127,31 +127,31 @@ export class ActionDataService {
   }
 
   async deleteAction( deleteAction: ActionData ) {
-    
+
     // delete the model from the database
     await this.dbConnectService.deleteAction( this.convertAppToDBData(deleteAction));
 
     // remove the model from the cache
-    let index: number = this.actionCache.findIndex( element => element._id == deleteAction._id );
+    const index: number = this.actionCache.findIndex( element => element._id === deleteAction._id );
     this.actionCache.splice( index, 1 );
 
     this.actionDeleted.emit(deleteAction);
   }
 
   async cloneAction( cloneAction: ActionData ) {
-    
+
     // prepare the action data for cloning
     cloneAction = this.prepareDataForUpdate( cloneAction );
 
     // create a new copy of the model
     let newAction: ActionData = JSON.parse( JSON.stringify(cloneAction) );
-    newAction.name = newAction.name + " (C)"
+    newAction.name = newAction.name + ' (C)';
 
     // generate a new ID for the model
-    newAction._id = await this.dbConnectService.getNextId("A");
+    newAction._id = await this.dbConnectService.getNextId('A');
 
     // add the new model to the database
-    let newDBAction = await this.dbConnectService.createAction(this.convertAppToDBData(newAction));
+    const newDBAction = await this.dbConnectService.createAction(this.convertAppToDBData(newAction));
 
     // add the new model to the cache
     newAction = await this.convertDBToAppData(newDBAction);
@@ -167,29 +167,29 @@ export class ActionDataService {
     updateAction = this.prepareDataForUpdate( updateAction );
 
     // update the database with the new model
-    let updateDBAction = await this.dbConnectService.updateAction( this.convertAppToDBData(updateAction) );
-    
+    const updateDBAction = await this.dbConnectService.updateAction( this.convertAppToDBData(updateAction) );
+
     // update the record in the cache
-    let newUpdatedAction = await this.convertDBToAppData(updateDBAction);
-    let findModelIndex: number = this.actionCache.findIndex( element => element._id == newUpdatedAction._id );
+    const newUpdatedAction = await this.convertDBToAppData(updateDBAction);
+    const findModelIndex: number = this.actionCache.findIndex( element => element._id === newUpdatedAction._id );
     this.actionCache[findModelIndex] = newUpdatedAction;
 
-    this.actionUpdated.emit(newUpdatedAction)
+    this.actionUpdated.emit(newUpdatedAction);
 
     // return the updated model
     return newUpdatedAction;
   }
 
   private async loadCache() {
-    
+
     // clear out the rule cache
-    let prepareCache: ActionData[] = [];
+    const prepareCache: ActionData[] = [];
 
     // load the rule objects form the DB
-    let actionDBList: ActionDBData[] = await this.dbConnectService.getActions();
-    
+    const actionDBList: ActionDBData[] = await this.dbConnectService.getActions();
+
     // convert everything to the application objects and add it to the cache
-    for ( let actionDB of actionDBList ) {
+    for ( const actionDB of actionDBList ) {
       prepareCache.push( await this.convertDBToAppData(actionDB) );
     }
 
@@ -201,16 +201,16 @@ export class ActionDataService {
   }
 
   private async convertDBToAppData( dbData: ActionDBData ): Promise<ActionData> {
-    
+
     // get the default strength-based
-    let strengthBased: boolean = true;
-    if ( typeof dbData.strengthBased == "undefined" ) {
-      if ( dbData.type == ActionType.Ranged ) strengthBased = false; // by default ranged attacks are not strength based
+    let strengthBased = true;
+    if ( typeof dbData.strengthBased === 'undefined' ) {
+      if ( dbData.type === ActionType.Ranged ) { strengthBased = false; } // by default ranged attacks are not strength based
     } else {
       strengthBased = dbData.strengthBased;
     }
 
-    let appData: ActionData = {
+    const appData: ActionData = {
       _id: dbData._id,
       userId: dbData.userId,
       type: dbData.type,
@@ -222,14 +222,14 @@ export class ActionDataService {
       HIT: dbData.HIT,
       DMG: dbData.DMG,
       strengthBased: strengthBased,
-      cost: typeof dbData.cost == "undefined" ? 1 : dbData.cost, // default to 1 if it doesn't exist
+      cost: typeof dbData.cost === 'undefined' ? 1 : dbData.cost, // default to 1 if it doesn't exist
       specialRules: [],
-      editable: dbData.userId.toLowerCase() == this.loggedInUserId.toLowerCase() ? true : false
+      editable: dbData.userId.toLowerCase() === this.loggedInUserId.toLowerCase() ? true : false
     };
 
     // copy over the special rules
-    for ( let ruleId of dbData.specialRuleIds ) {
-      let specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
+    for ( const ruleId of dbData.specialRuleIds ) {
+      const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
       appData.specialRules.push( specialRuleData );
     }
 
@@ -237,8 +237,8 @@ export class ActionDataService {
   }
 
   private convertAppToDBData( appData: ActionData ): ActionDBData {
-    
-    let dbData: ActionDBData = {
+
+    const dbData: ActionDBData = {
       _id: appData._id,
       userId: appData.userId,
       type: appData.type,
@@ -255,7 +255,7 @@ export class ActionDataService {
     };
 
     // copy over the special rules
-    for ( let rule of appData.specialRules ) {
+    for ( const rule of appData.specialRules ) {
       dbData.specialRuleIds.push( rule._id );
     }
 
@@ -287,7 +287,7 @@ export class ActionDataService {
    */
   private logout() {
     this.actionCache = [];
-    this.loggedInUserId = "";
+    this.loggedInUserId = '';
   }
 
   /**
@@ -295,20 +295,20 @@ export class ActionDataService {
    */
   private login(userId: string) {
     this.loggedInUserId = userId;
-  }  
+  }
 
   private ruleUpdated(updatedRule: SpecialRuleData ) {
 
     // we don't need to do an update if this is a model rule
-    if ( updatedRule.ruleType == RuleType.Model ) {
-      return;      
+    if ( updatedRule.ruleType === RuleType.Model ) {
+      return;
     }
 
     // loop through all actions
-    for ( let action of this.actionCache ) {
+    for ( const action of this.actionCache ) {
 
       // if this rule is used on this model, then update it
-      let ruleIndex = action.specialRules.findIndex( element => element._id == updatedRule._id );
+      const ruleIndex = action.specialRules.findIndex( element => element._id === updatedRule._id );
       if ( ruleIndex >= 0 ) {
         action.specialRules[ruleIndex] = updatedRule;
       }
@@ -316,6 +316,6 @@ export class ActionDataService {
       // recalculate the details of the model and inform people that it has changed
       this.actionUpdated.emit(action);
     }
-    
+
   }
 }

@@ -12,7 +12,7 @@
     <div *ngIf="!editable" class="action-ap font-bold">
       <div class="action-ap-text">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
     </div>
-    <div *ngIf="editable" class="action-ap-dropdown-zone" (clickElsewhere)="showAPDropdown = false">
+    <div *ngIf="editable" class="action-ap-dropdown-zone" (appClickElsewhere)="showAPDropdown = false">
       <div class="action-ap-dropdown-button font-bold" (click)="showAPDropdown = true">{{action.AP}}<span *ngIf="action.ONCE"> - ONCE</span></div>
       <div *ngIf="showAPDropdown" class="action-ap-dropdown box-white font-normal">
         <div *ngFor="let value of AP_VALUES" 

@@ -5,7 +5,7 @@
 
     <!-- MODEL PORTRAIT -->
     <div *ngIf="!editable" class="model-image-box-printable"><img [src]="'assets/portraits/' + model.picture"></div>
-    <div *ngIf="editable" class="model-image-zone" (clickElsewhere)="showModelPortraitsDropdown=false">
+    <div *ngIf="editable" class="model-image-zone" (appClickElsewhere)="showModelPortraitsDropdown=false">
       <div class="model-image-box input-white" (click)="showModelPortraitsDropdown = true">
         <img [src]="'assets/portraits/' + model.picture">
       </div>

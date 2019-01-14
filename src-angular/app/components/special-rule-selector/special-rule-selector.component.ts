@@ -9,36 +9,36 @@ import { SpecialRuleData, SpecialRuleDataService } from '../../services/special-
 export class SpecialRuleSelectorComponent implements OnInit {
 
   @Input() ruleType: string;
-  @Input() title: string = "Select new special rule";
+  @Input() title = 'Select new special rule';
   @Output() ruleSelected = new EventEmitter<SpecialRuleData>();
 
   public specialRules: SpecialRuleData[] = [];
-  public specialRuleInput: string = "";
+  public specialRuleInput = '';
 
-  public dropdownVisible: boolean = false;
+  public dropdownVisible = false;
 
   constructor(
     private specialRuleDataService: SpecialRuleDataService
   ) { }
 
   async ngOnInit() {
-    
-    let newval = 1;
+
+    const newval = 1;
 
     // load the correct type of rule
     switch ( this.ruleType ) {
-      case "model": this.specialRules  = await this.specialRuleDataService.getModelSpecialRules(); break;
-      case "action": this.specialRules  = await this.specialRuleDataService.getActionSpecialRules(); break;
-      case "attack": this.specialRules  = await this.specialRuleDataService.getAttackSpecialRules(); break;
+      case 'model': this.specialRules  = await this.specialRuleDataService.getModelSpecialRules(); break;
+      case 'action': this.specialRules  = await this.specialRuleDataService.getActionSpecialRules(); break;
+      case 'attack': this.specialRules  = await this.specialRuleDataService.getAttackSpecialRules(); break;
       default: this.specialRules  = await this.specialRuleDataService.getModelSpecialRules();
     }
-    
+
   }
 
-  selectSpecialRule( ruleName: string ) : void {
-    let selectedSpecialRule: SpecialRuleData = this.specialRules.find( (element) => { return element.ruleName == ruleName; } );
+  selectSpecialRule( ruleName: string ): void {
+    const selectedSpecialRule: SpecialRuleData = this.specialRules.find( (element) => element.ruleName === ruleName );
     this.ruleSelected.emit( selectedSpecialRule );
-    this.specialRuleInput = "";
+    this.specialRuleInput = '';
     this.dropdownVisible = false;
   }
 
@@ -47,6 +47,6 @@ export class SpecialRuleSelectorComponent implements OnInit {
   }
 
   hideDropdown() {
-    setTimeout( () => { this.dropdownVisible = false;}, 200 );
+    setTimeout( () => { this.dropdownVisible = false; }, 200 );
   }
 }

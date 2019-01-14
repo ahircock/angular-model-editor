@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
-import { ActionData, ActionDataService } from '../../services/action-data.service'
+import { ActionData, ActionDataService } from '../../services/action-data.service';
 import { SpecialRuleData } from '../../services/special-rule-data.service';
-import { ModelDataService, ModelActionData } from '../../services/model-data.service'
+import { ModelDataService, ModelActionData } from '../../services/model-data.service';
 
 @Component({
   selector: 'app-action-view',
@@ -11,17 +11,24 @@ import { ModelDataService, ModelActionData } from '../../services/model-data.ser
 export class ActionViewComponent implements OnInit, OnChanges {
 
   @Input() action: ActionData;
-  @Input() allowEdit: boolean = false;
-  @Input() showMetaInfo: boolean = false;
+  @Input() allowEdit = false;
+  @Input() showMetaInfo = false;
   @Output() deleteModelAction = new EventEmitter<ActionData>();
   @Output() updated = new EventEmitter<ActionData>();
-  editable: boolean = false;
+  editable = false;
 
-  showAPDropdown: boolean = false;
-  isModelAction: boolean = false;
-  modelActionEditable: boolean = false;
+  showAPDropdown = false;
+  isModelAction = false;
+  modelActionEditable = false;
 
-  public AP_VALUES = [ {ap:0, once:false}, {ap:1, once:false}, {ap:2, once:false}, {ap:0, once:true}, {ap:1, once:true}, {ap:2, once:true} ];
+  public AP_VALUES = [
+    {ap: 0, once: false},
+    {ap: 1, once: false},
+    {ap: 2, once: false},
+    {ap: 0, once: true},
+    {ap: 1, once: true},
+    {ap: 2, once: true}
+  ];
 
   constructor(
     private actionDataService: ActionDataService,
@@ -34,8 +41,8 @@ export class ActionViewComponent implements OnInit, OnChanges {
   ngOnChanges() {
 
     // if this action is on a model
-    let modelAction: ModelActionData = ( this.action as ModelActionData );
-    if ( typeof modelAction.modelActionName != "undefined" ) {
+    const modelAction: ModelActionData = ( this.action as ModelActionData );
+    if ( typeof modelAction.modelActionName !== 'undefined' ) {
       this.isModelAction = true;
     } else {
       this.isModelAction = false;
@@ -85,14 +92,14 @@ export class ActionViewComponent implements OnInit, OnChanges {
   }
 
   selectStat( value: any, type: string ): void {
-    
-    let newStat = Number(value);
+
+    const newStat = Number(value);
 
     switch ( type ) {
-      case "RNG-MELEE": this.action.RNG = newStat; break;
-      case "RNG-RANGED":this.action.RNG = newStat; break;
-      case "HIT": this.action.HIT = newStat; break;
-      case "DMG": this.action.DMG = newStat; break;
+      case 'RNG-MELEE': this.action.RNG = newStat; break;
+      case 'RNG-RANGED': this.action.RNG = newStat; break;
+      case 'HIT': this.action.HIT = newStat; break;
+      case 'DMG': this.action.DMG = newStat; break;
     }
 
     // update the cost of the model

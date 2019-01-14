@@ -11,11 +11,11 @@ export abstract class DropdownComponent implements OnInit {
    * List of objects to display in the dropdown
    */
   itemList: any[] = [];
-  
+
   /**
    * controls whether the dropdown is visible
    */
-  dropdownVisible: boolean = false;
+  dropdownVisible = false;
 
   constructor() { }
 

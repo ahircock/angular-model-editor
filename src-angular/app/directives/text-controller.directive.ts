@@ -1,14 +1,14 @@
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 /**
- * 
+ *
  */
 @Directive({
   selector: '[textController]'
 })
 export class TextControllerDirective {
 
-  private origText: string = "";
+  private origText = '';
 
   constructor(
     private element: ElementRef
@@ -17,7 +17,7 @@ export class TextControllerDirective {
   /**
    * Whenever the control receives focus, select everything and store the original value
    */
-  @HostListener("focus")
+  @HostListener('focus')
   onFocus() {
     this.element.nativeElement.select();
     this.origText = this.element.nativeElement.value;
@@ -26,9 +26,9 @@ export class TextControllerDirective {
   /**
    * Whenever ENTER is pressed, lose focus
    */
-  @HostListener("keyup.enter")
+  @HostListener('keyup.enter')
   onKekupEnter() {
-    if ( this.element.nativeElement.type != "textarea" ) {
+    if ( this.element.nativeElement.type !== 'textarea' ) {
       this.element.nativeElement.blur();
     }
   }
@@ -36,21 +36,21 @@ export class TextControllerDirective {
   /**
    * Whenever CTRL+ENTER is pressed in a textarea, lose focus
    */
-  @HostListener("keyup.control.enter")
+  @HostListener('keyup.control.enter')
   onKekupControlEnter() {
-    if ( this.element.nativeElement.type == "textarea" ) {
+    if ( this.element.nativeElement.type === 'textarea' ) {
       this.element.nativeElement.blur();
     }
   }
   /**
    * Whenever ESC is pressed, revert the text and lose focus
    */
-  @HostListener("keyup.escape")
+  @HostListener('keyup.escape')
   onKekupEscape() {
-    
+
     // revert the value and then trigger an input event so that the [(ngModel)] works properly
     this.element.nativeElement.value = this.origText;
-    let inputEvent = new Event('input', { 'bubbles': true, 'cancelable': true });
+    const inputEvent = new Event('input', { 'bubbles': true, 'cancelable': true });
     this.element.nativeElement.dispatchEvent(inputEvent);
 
     // leave focus

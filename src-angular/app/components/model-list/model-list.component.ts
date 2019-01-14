@@ -12,9 +12,9 @@ export class ModelListComponent implements OnInit {
 
   public models: ModelData[];
   public selectedModelIndex: number;
-  public showPrintable: boolean = false; // controls whether model is shown as printable or not
+  public showPrintable = false; // controls whether model is shown as printable or not
 
-  constructor( 
+  constructor(
     private router: Router,
     private modelDataService: ModelDataService,
     private userService: UserService
@@ -24,7 +24,7 @@ export class ModelListComponent implements OnInit {
 
     // if not logged in, then go to login page
     if ( !this.userService.isLoggedIn() ) {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
       return;
     }
 
@@ -45,16 +45,16 @@ export class ModelListComponent implements OnInit {
   }
 
   async modelDetailsChanged( modelIndex: number ) {
-    let updatedModel = await this.modelDataService.getModelById( this.models[modelIndex]._id );
-    this.models[modelIndex] = updatedModel;    
+    const updatedModel = await this.modelDataService.getModelById( this.models[modelIndex]._id );
+    this.models[modelIndex] = updatedModel;
   }
 
   async newModelClick() {
-    let newModel: ModelData = await this.modelDataService.createTemplate();
+    const newModel: ModelData = await this.modelDataService.createTemplate();
     await this.refreshData();
 
     // select the new rule from the list
-    this.selectedModelIndex = this.models.findIndex( element => element._id == newModel._id );
+    this.selectedModelIndex = this.models.findIndex( element => element._id === newModel._id );
 
   }
 }

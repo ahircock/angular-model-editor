@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Output, HostListener, EventEmitter } from '@angular/core';
 
 @Directive({
-  selector: '[clickElsewhere]'
+  selector: '[appClickElsewhere]'
 })
 export class ClickElsewhereDirective {
 
@@ -11,7 +11,7 @@ export class ClickElsewhereDirective {
     private elementRef: ElementRef
   ) { }
 
-  @HostListener("document:click", ["$event"])
+  @HostListener('document:click', ['$event'])
   public onDocumentClick(event: MouseEvent) {
 
     // get the element that was clicked

@@ -18,10 +18,10 @@ export class ForcePrintComponent implements OnInit {
   public rightModels: ForceModelData[] = [];
 
   /**
-   * This property is checked by the parent component, and 
+   * This property is checked by the parent component, and
    * is used to show or hide the application header band
    */
-  public showHeader: boolean = false;
+  public showHeader = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -30,12 +30,12 @@ export class ForcePrintComponent implements OnInit {
 
   async ngOnInit() {
     // load the force object
-    let forceId = this.activatedRoute.snapshot.paramMap.get("id");
+    const forceId = this.activatedRoute.snapshot.paramMap.get('id');
     this.force = await this.forceDataService.getForceById(forceId);
 
     // add the first half of the models to the left array, and the second half to the right
-    for ( let i=0; i < this.force.models.length; i++ ) {
-      if ( i >= this.force.models.length/2 ) {
+    for ( let i = 0; i < this.force.models.length; i++ ) {
+      if ( i >= this.force.models.length / 2 ) {
         this.rightModels.push( this.force.models[i] );
       } else {
         this.leftModels.push( this.force.models[i] );

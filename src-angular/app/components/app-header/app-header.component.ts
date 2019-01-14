@@ -9,8 +9,8 @@ import { UserService } from '../../services/user.service';
 })
 export class AppHeaderComponent implements OnInit {
 
-  public showMenuDropdown: boolean = false;
-  public showUserMenuDropdown: boolean = false;
+  public showMenuDropdown = false;
+  public showUserMenuDropdown = false;
 
   constructor(
     private userService: UserService,
@@ -26,7 +26,7 @@ export class AppHeaderComponent implements OnInit {
 
   logout() {
     this.userService.logout();
-    this.router.navigateByUrl("/login");
+    this.router.navigateByUrl('/login');
   }
 
 }

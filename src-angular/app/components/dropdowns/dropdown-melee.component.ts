@@ -11,12 +11,12 @@ export class DropdownMeleeComponent extends DropdownComponent {
 
   constructor(
     private actionDataService: ActionDataService
-  ) { 
+  ) {
     super();
   }
 
   async loadItemList() {
-    let returnVal = await this.actionDataService.getMeleeActions();
+    const returnVal = await this.actionDataService.getMeleeActions();
     return returnVal;
   }
 

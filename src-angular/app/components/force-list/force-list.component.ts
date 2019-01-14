@@ -12,7 +12,7 @@ export class ForceListComponent implements OnInit {
 
   public forces: ForceData[];
 
-  constructor( 
+  constructor(
     private forceDataService: ForceDataService,
     private router: Router,
     private userService: UserService
@@ -22,7 +22,7 @@ export class ForceListComponent implements OnInit {
 
     // if not logged in, then go to login page
     if ( !this.userService.isLoggedIn() ) {
-      this.router.navigateByUrl("/login");
+      this.router.navigateByUrl('/login');
       return;
     }
 
@@ -30,12 +30,12 @@ export class ForceListComponent implements OnInit {
   }
 
   async newForce() {
-    let newForce: ForceData = await this.forceDataService.createForce();
+    const newForce: ForceData = await this.forceDataService.createForce();
     this.openForce( newForce._id );
   }
 
   openForce( forceId: string ) {
-    this.router.navigateByUrl("/forces/" + forceId );
+    this.router.navigateByUrl('/forces/' + forceId );
   }
 
 }

@@ -10,23 +10,23 @@ export class AppComponent {
   /**
    * Used to show and hide the header band. By default the header is shown
    */
-  public showHeader:boolean = true;
-  
+  public showHeader = true;
+
   constructor() {}
 
   /**
-   * Angular calls this method whenever a new route is handled, and the 
-   * router-outlet activates a new component. Components are able to hide the 
-   * header by creating an instance variable named showHeader and setting it to 
+   * Angular calls this method whenever a new route is handled, and the
+   * router-outlet activates a new component. Components are able to hide the
+   * header by creating an instance variable named showHeader and setting it to
    * false.
-   * 
-   * @param component the component that was activated in the router-outlet 
+   *
+   * @param component the component that was activated in the router-outlet
    */
   routerOutletActivate( component: any ) {
 
-    // if the component in the router-outlet has a showHeader property, and 
+    // if the component in the router-outlet has a showHeader property, and
     // that property is set to false, then hide the header band
-    if ( typeof component.showHeader == "boolean" && !component.showHeader ) {
+    if ( typeof component.showHeader === 'boolean' && !component.showHeader ) {
       this.showHeader = false;
     } else {
       this.showHeader = true;

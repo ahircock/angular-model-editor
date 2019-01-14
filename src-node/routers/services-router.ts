@@ -7,13 +7,13 @@ import { MongoDbService } from '../services/mongo-db-service';
 const router: Router = Router();
 
 // GET /getnextid will return the next ID from the database
-router.get('/getnextid', async (req: Request, res: Response ) => { 
+router.get('/getnextid', async (req: Request, res: Response ) => {
   try {
-    let dbService: MongoDbService = ServiceManager.getService("db-service");
-    let id = await dbService.getNextId();
+    const dbService: MongoDbService = ServiceManager.getService('db-service');
+    const id = await dbService.getNextId();
     res.status(200).send(id);
 } catch (err) {
-    let httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
+    const httpError: HttpError = { errorCode: 100, errorMessage: err.toString() };
     res.status(500).send(httpError);
 }
 } );

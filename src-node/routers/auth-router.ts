@@ -6,7 +6,7 @@ import { AuthService } from '../services/auth-service';
 const router: Router = Router();
 
 // get the service that deals with authorization calls
-const authService: AuthService = ServiceManager.getService("auth-service");
+const authService: AuthService = ServiceManager.getService('auth-service');
 
 // map the urls to the handlers
 router.post('/login', async (req: Request, res: Response ) => { authService.loginHandler(req, res); } );

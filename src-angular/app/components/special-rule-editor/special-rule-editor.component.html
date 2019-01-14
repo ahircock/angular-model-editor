@@ -6,7 +6,7 @@
     <!-- RULE NAME -->
     <div class="rule-name">
       <input 
-        textController
+        appTextController
         class="input-light font-title-big" 
         [(ngModel)]="rule.ruleName" 
         (blur)="updateRuleData()">
@@ -14,7 +14,7 @@
     
     <!-- RULE TEXT -->
     <div class="rule-text"><textarea 
-      textController
+      appTextController
       class="input-light font-normal" 
       [(ngModel)]="rule.ruleText" 
       (blur)="updateRuleData()"></textarea>
@@ -26,7 +26,7 @@
       <!-- RULE COST -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.ruleCost" 
           (blur)="updateRuleData()">
@@ -49,7 +49,7 @@
       <!-- MOD SPD -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modSPD" 
           (blur)="updateRuleData()">
@@ -59,7 +59,7 @@
       <!-- MOD EV -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modEV" 
           (blur)="updateRuleData()">
@@ -69,7 +69,7 @@
       <!-- MOD ARM -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modARM" 
           (blur)="updateRuleData()">
@@ -79,7 +79,7 @@
       <!-- MOD HP -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modHP" 
           (blur)="updateRuleData()">
@@ -93,7 +93,7 @@
       <!-- MOD STR-BASED DAMAGE -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modStrDMG" 
           (blur)="updateRuleData()">
@@ -102,7 +102,7 @@
       <!-- MOD MELEE HIT -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modMHIT" 
           (blur)="updateRuleData()">
@@ -111,7 +111,7 @@
       <!-- MOD RANGED HIT -->
       <div class="rule-num-edit font-normal">
         <input 
-          type="number" textController
+          type="number" appTextController
           class="input-light font-normal" 
           [(ngModel)]="rule.modRHIT" 
           (blur)="updateRuleData()">

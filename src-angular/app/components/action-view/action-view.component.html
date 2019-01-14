@@ -25,15 +25,15 @@
 
     <!-- NAME -->
     <div class="action-name font-title">
-      <input *ngIf="isModelAction && modelActionEditable" textController class="input-white font-title" [(ngModel)]="action.modelActionName" (blur)="updated.emit()" placeholder="Model Name">
+      <input *ngIf="isModelAction && modelActionEditable" appTextController class="input-white font-title" [(ngModel)]="action.modelActionName" (blur)="updated.emit()" placeholder="Model Name">
       <span  *ngIf="isModelAction && !modelActionEditable">{{action.modelActionName}}</span>
-      <input *ngIf="!isModelAction && editable" textController class="input-white font-title" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
+      <input *ngIf="!isModelAction && editable" appTextController class="input-white font-title" [(ngModel)]="action.name" (blur)="updateAction()" placeholder="Model Name">
       <span  *ngIf="!isModelAction && !editable">{{action.name}}</span>
     </div>
 
     <!-- TRAITS -->
     <div class="action-traits font-traits">
-      <input *ngIf="editable" textController class="input-white font-traits" [(ngModel)]="action.traits" (blur)="updateAction()" placeholder="Model Traits">
+      <input *ngIf="editable" appTextController class="input-white font-traits" [(ngModel)]="action.traits" (blur)="updateAction()" placeholder="Model Traits">
       <span *ngIf="!editable">{{action.traits}}</span>
     </div>
 
@@ -65,9 +65,9 @@
             <td>{{action.DMG}}</td>
           </tr>
           <tr *ngIf="editable" class="stat-data">
-            <td><input type="number" textController [(ngModel)]="action.RNG" class="input-white font-bold" (blur)="updateAction()"></td>
-            <td><input type="number" textController [(ngModel)]="action.HIT" class="input-white font-bold" (blur)="updateAction()"></td>
-            <td><input type="number" textController [(ngModel)]="action.DMG" class="input-white font-bold" (blur)="updateAction()"></td>
+            <td><input type="number" appTextController [(ngModel)]="action.RNG" class="input-white font-bold" (blur)="updateAction()"></td>
+            <td><input type="number" appTextController [(ngModel)]="action.HIT" class="input-white font-bold" (blur)="updateAction()"></td>
+            <td><input type="number" appTextController [(ngModel)]="action.DMG" class="input-white font-bold" (blur)="updateAction()"></td>
           </tr>
         </table>
       </div>
@@ -104,7 +104,7 @@
     <!-- COST / POINTS -->
     <div class="action-cost font-normal">
       <span *ngIf="editable">
-        <input type="number" textController class="input-light font-normal" [(ngModel)]="action.cost" (blur)="updateAction()">Points
+        <input type="number" appTextController class="input-light font-normal" [(ngModel)]="action.cost" (blur)="updateAction()">Points
       </span>
       <span *ngIf="!editable">{{action.cost}} Points</span>
     </div>

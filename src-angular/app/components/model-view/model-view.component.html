@@ -22,12 +22,12 @@
       <!-- MODEL NAME -->
       <div>
         <span *ngIf="!editable" class="model-name font-title-big">{{model.name}}</span>
-        <input *ngIf="editable" class="model-name input-white font-title-big" textController [(ngModel)]="model.name" (blur)="saveModelData()" placeholder="Model name">
+        <input *ngIf="editable" class="model-name input-white font-title-big" appTextController [(ngModel)]="model.name" (blur)="saveModelData()" placeholder="Model name">
       </div>
 
       <!-- MODEL TRAITS -->
       <div *ngIf="!editable" class="model-traits font-traits">{{model.traits}}</div>
-      <div *ngIf="editable"><input *ngIf="editable" class="model-traits input-white font-traits" textController [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
+      <div *ngIf="editable"><input *ngIf="editable" class="model-traits input-white font-traits" appTextController [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
 
       <!-- MODEL COST -->
       <div class="model-cost font-italic font-bold">{{model.cost}} points</div>

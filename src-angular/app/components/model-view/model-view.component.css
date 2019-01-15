@@ -83,83 +83,39 @@ input.model-traits {
     width: 50px;
 }
 
-/* model special rules */
-.model-special-rules-box { 
-    margin-left: 10px; margin-top: 0px; padding: 3px;
-    border-style: none solid solid solid; border-width: 2px;
-    background-color: white; 
-}
+/* MODEL SPECIAL RULES */
 .special-rule {
-    margin-bottom: 8px;
+    padding: 4px;
 }
-
-/* action Title */
-.action-box {
-    margin-top: 8px;
+.special-rule:nth-child(even) {
+    background-color: lightgray; 
 }
-.actiontitle-box {
-    padding: 3px; margin-top: 5px; 
-    border: solid 2px; background-color: white; 
-}
-.actionAPCost {
-    padding-left: 6px; padding-right: 6px;
-    background-color: grey; color: white; text-align: center; font-weight: bold; border-radius: 3px;
-    display: inline-block;
-}
-.actionTitle {
-    display: inline-block; margin-left: 3px;
-}
-.action-traits {
-    float: right;
-    width: 180px;
-}
-
-/* attack actions */
-.attackActionStatBar {
-    width: 200px;
-    border-style: none solid none solid; border-width: 2px;
-    background-color: black;
-    margin-left:10px; font-size:0;
-}
-.attackActionStatBar:last-child {
-    border-bottom-style: solid;
-}
-
-.attackActionIconDiv {
-    width:42px; height:42px; display: inline-block; font-size:0%;
-    vertical-align: top;
-}
-.attackActionIcon {
-    width:36px; height:36px; border: 3px solid black; display: inline-block;
-}
-.attackActionTableDiv {
-    display: inline-block; width:158px; padding: 0px; font-size:0%;
-}
-.attackActionTable {
-    width: 100%; border-style: none; 
-}
-
-.attackActionspecial-rulesBox {
-    margin-left: 10px; margin-top: 0px; padding: 3px;
-    border-style: solid; border-width: 2px; 
+.special-rule:nth-child(odd) {
     background-color: white; 
 }
 
-/* special actions */
-.specialActionRulesBox {
-    margin-left: 10px; margin-top: 0px; padding: 0px; min-height: 40px;
-    border-style: none solid solid solid; border-width: 2px; background-color: white; 
+/* SECTIONS */
+.section-title {
+    font-weight: bold;
+    padding: 4px;
+    background: black;
+    color: white;
 }
-.specialActionIconDiv {
-    width:42px; height:42px; float: left;
-    background-color: black;
+
+/* ACTIONS */
+.action-box {
+    padding: 4px;
 }
-.specialActionIcon {
-    width:36px; height:36px; border: 3px solid black;
+.action-box:nth-child(even) {
+    background-color: lightgray;
 }
-.specialActionRule {
-    margin-left: 3px; width:441px; float: left;
+.action-box:nth-child(odd) {
+    background-color: white;
 }
+.action-rule-box {
+    padding: 4px 4px 0px 16px;
+}
+
 
 /* ADD ACTION BUTTONS */ 
 .add-action-button {

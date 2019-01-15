@@ -30,7 +30,7 @@
       <div *ngIf="editable"><input *ngIf="editable" class="model-traits input-white font-traits" appTextController [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
 
       <!-- MODEL COST -->
-      <div class="model-cost font-italic font-bold">{{model.cost}} points</div>
+      <div class="model-cost font-italic font-bold">{{model.cost}} points, Max 2</div>
 
       <!-- STAT TABLE -->
       <table class="stat-table font-bold">
@@ -54,11 +54,16 @@
   </div>
 
   <!-- ACTIONS -->
-  <div *ngFor="let action of model.actions; index as actionIndex" class="action-box">
-    <app-action-view [action]="action" [allowEdit]="editable" (deleteModelAction)="deleteAction(actionIndex)" (updateModelAction)="saveModelData()"></app-action-view>
+  <div class="section-title font-normal">WEAPONS</div>
+  <div *ngFor="let action of model.actions; index as actionIndex" class="action-box font-normal">
+    <b>{{action.modelActionName}}</b> (12", 2D6, HIT 4+, AP1, D1)
+    <div *ngFor="let actionRule of action.specialRules; index as actionRuleIndex" class="action-rule-box">
+        <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
+    </div>
   </div>
 
   <!-- MODEL SPECIAL RULES -->
+  <div class="section-title font-normal">ABILITIES</div>
   <div *ngIf="visibleModelRules" class="model-special-rules-box font-normal">
     <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule" [class.hidden]="!editable && !specialRule.printVisible">
       <div *ngIf="editable" class="remove-button box-white-hover" (click)="deleteModelSpecialRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>

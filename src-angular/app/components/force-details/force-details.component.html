@@ -45,7 +45,14 @@
         (click)="selectModel(modelIndex)"
         [class.selected]="modelIndex == selectedModelIndex">
         <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
-        <app-model-tile [model]="model" [force]="force" [selected]="modelIndex == selectedModelIndex" (change)="selectModel(modelIndex); forceDetailsChanged()"></app-model-tile>
+        <app-model-tile 
+              [model]="model" 
+              [force]="force" 
+              [selected]="modelIndex == selectedModelIndex" 
+              (increaseCount)="increaseModelCount(modelIndex)"
+              (decreaseCount)="decreaseModelCount(modelIndex)"
+              >
+        </app-model-tile>
       </div>
     </div>
   
@@ -54,7 +61,7 @@
   <!-- MODEL EDITOR -->
   <div class="right">
       <div class="font-normal"><input type="checkbox" [(ngModel)]="showPrint">Show in print format</div>
-      <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="!showPrint" (updated)="forceDetailsChanged()"></app-model-view>
+      <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="!showPrint" (updated)="saveForce()"></app-model-view>
   </div>
 
 </div>

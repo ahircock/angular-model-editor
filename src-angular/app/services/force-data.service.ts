@@ -20,6 +20,7 @@ export interface ForceData {
 }
 export interface ForceModelData extends ModelData {
   count: number;
+  forceModelName: string;
 }
 
 /**
@@ -35,7 +36,7 @@ interface ForceDBData {
 interface ForceModelDBData {
   _id: string;
   count: number;
-  name: string;
+  forceModelName: string;
 }
 
 
@@ -246,7 +247,7 @@ export class ForceDataService {
       const newModelDBData: ForceModelDBData = {
         _id: model._id,
         count: model.count,
-        name: model.name
+        forceModelName: model.forceModelName
       };
       modelList.push( newModelDBData );
     }
@@ -325,24 +326,5 @@ export class ForceDataService {
    */
   public login(userId: string) {
     this.loggedInUserId = userId;
-  }
-
-  /**
-   * This method will be called after a model is updated
-   * @param updatedModel the updated model
-   */
-  public modelUpdated( updatedModel: ModelData ) {
-
-    // loop through all forces
-    for ( const force of this.forceCache ) {
-
-      // if the model is assigned to this force, update it
-      const cachedModel = force.models.find( element => element._id === updatedModel._id );
-      if ( cachedModel ) {
-        Object.assign(cachedModel, updatedModel );
-
-        force.cost = this.calculateForceCost( force );
-      }
-    }
   }
 }

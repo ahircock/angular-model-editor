@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
-import { ModelData, ModelDataService } from '../../services/model-data.service';
-import { SpecialRuleData } from '../../services/special-rule-data.service';
-import { ActionData } from '../../services/action-data.service';
+import { ModelDataService } from '../../services/model-data.service';
 import { PORTRAIT_LIST } from '../../../assets/portraits/portrait-list.const';
 import { ForceModelData } from '../../services/force-data.service';
 
@@ -24,7 +22,7 @@ export class ModelViewComponent implements OnInit, OnChanges {
   modelPortraits: string[] = PORTRAIT_LIST;
   showModelPortraitsDropdown = false;
   visibleModelRules = false;
-  editable = false;
+  editable = true;
 
   constructor(
     private modelDataService: ModelDataService
@@ -52,7 +50,7 @@ export class ModelViewComponent implements OnInit, OnChanges {
 
     // figure out if the Model Rules box should be shown
     this.visibleModelRules = false;
-    if ( this.model.specialRules.length > 0) {
+    if ( this.model.specialRules.length > 0 ) {
       this.visibleModelRules = true; // show the box since there is an Add Model button
     }
 

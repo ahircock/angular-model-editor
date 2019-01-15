@@ -3,12 +3,12 @@
     <img class="model-image" [src]="'assets/portraits/' + model.picture">
   </div>
   <div class="model-details-box">
-    <div class="model-name font-title">{{model.name}}</div>
+    <div class="model-name font-title">{{model.forceModelName}}</div>
     <div class="model-cost font-normal">{{model.cost}} points</div>
     <div class="model-button-band">
       <div class="model-button box-light-hover" (click)="cloneModel()"><img src="/assets/icons/icon-clone-128.png"></div>
-      <div *ngIf="force" class="model-button box-light-hover" (click)="increaseForceCount()"><img src="/assets/icons/icon-plus-128.png"></div>
-      <div *ngIf="force" class="model-button box-light-hover" (click)="decreaseForceCount()"><img src="/assets/icons/icon-minus-128.png"></div>
+      <div *ngIf="force" class="model-button box-light-hover" (click)="increaseCount.emit()"><img src="/assets/icons/icon-plus-128.png"></div>
+      <div *ngIf="force" class="model-button box-light-hover" (click)="decreaseCount.emit()"><img src="/assets/icons/icon-minus-128.png"></div>
       <div *ngIf="!force && model.editable" class="model-button box-light-hover" (click)="deleteTemplate()"><img src="/assets/icons/icon-delete-128.png"></div>
     </div>
   </div>

@@ -15,7 +15,7 @@ export class ForceDetailsComponent implements OnInit {
   public selectedModelIndex: number;
   public modelTemplates: ModelData[];
   public showModelListDropdown = false;
-  public showPrint = true;
+  public showPrint = false;
 
   // some cost counterse
   public modelCost = 0;
@@ -57,7 +57,7 @@ export class ForceDetailsComponent implements OnInit {
   async addModel( model: ModelData ) {
 
     // add the model to the force
-    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1}, model );
+    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1, forceModelName: model.name}, model );
     this.force.models.push ( newForceModelData );
 
     // update the force in the DB
@@ -67,11 +67,33 @@ export class ForceDetailsComponent implements OnInit {
     this.selectedModelIndex = this.force.models.length - 1;
   }
 
-  async forceDetailsChanged() {
+  async increaseModelCount(modelIndex: number) {
 
-    this.force = await this.forceDataService.getForceById(this.force._id);
-    this.modelTemplates = await this.modelDataService.getAllModels();
+    // increase the count on the force object
+    this.force.models[modelIndex].count++;
+
+    // save the changes
+    await this.saveForce();
+
+    // select the model
+    this.selectModel(modelIndex);
   }
+
+  async decreaseModelCount(modelIndex: number) {
+
+    // decrease the count on the force object
+    this.force.models[modelIndex].count--;
+    if ( this.force.models[modelIndex].count <= 0) {
+      this.force.models.splice(modelIndex, 1);
+    }
+
+    // save the changes
+    await this.saveForce();
+
+    // select the model
+    this.selectModel(modelIndex);
+  }
+
 
   async saveForce() {
     this.force = await this.forceDataService.updateForce( this.force );

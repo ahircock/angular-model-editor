@@ -35,6 +35,7 @@ interface ForceDBData {
 interface ForceModelDBData {
   _id: string;
   count: number;
+  name: string;
 }
 
 
@@ -244,7 +245,8 @@ export class ForceDataService {
     for ( const model of forceData.models ) {
       const newModelDBData: ForceModelDBData = {
         _id: model._id,
-        count: model.count
+        count: model.count,
+        name: model.name
       };
       modelList.push( newModelDBData );
     }

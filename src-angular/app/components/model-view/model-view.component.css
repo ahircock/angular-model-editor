@@ -1,6 +1,5 @@
 /* the main model box */
 .model-box { 
-    padding:7px; 
     border:solid 2px black; 
     background-color:lightgrey;
 }
@@ -8,12 +7,12 @@
 /* title area */
 .title-box { 
     display: flex;
-    padding: 4px 4px 8px 4px; 
-    background-color: white; border-style:solid; border-width: 2px;
+    background-color: white; 
 }
 .model-text-box {
     position: relative;
     margin-left: 8px;
+    flex: 1 0;
 }
 input.model-name {
     position: relative;
@@ -41,12 +40,8 @@ input.model-traits {
 .model-image-zone {
     position: relative;
 }
-.model-image-box-printable {
-    height: 136px;
-    margin: 2px 2px -2px 2px;
-}
 .model-image-box-printable  img {
-    height: 132px;
+    height: 120px;
 }
 .model-image-box {
     height: 136px;
@@ -75,8 +70,10 @@ input.model-traits {
 
 /* stats table */
 .stat-table {
-    border-collapse: collapse; border: black solid 2px;
-    font-weight: bold; text-align: center;
+    border-collapse: collapse; 
+    font-weight: bold; 
+    text-align: center;
+    width: 100%;
 }
 .stat-table th {
     background-color: grey; color: white;

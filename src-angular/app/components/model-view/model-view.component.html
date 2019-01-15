@@ -35,20 +35,27 @@
       <!-- STAT TABLE -->
       <table class="stat-table font-bold">
         <tr>
-          <th>SPD</th>
-          <th>DG</th>
-          <th>ARM</th>
-          <th>HP</th>
+          <th>Pw</th>
+          <th>Sp</th>
+          <th>Ar</th>
+          <th>Wn</th>
+          <th>Ne</th>
         </tr>
         <tr>
-          <td>{{model.SPD}}</td>
-          <td>{{model.EV}}</td>
-          <td>{{model.ARM}}</td>
+          <td>1</td>
+          <td>{{model.SPD}}"</td>
+          <td>{{model.ARM}}+</td>
           <td>{{model.HP}}</td>
+          <td>{{model.EV}}+</td>          
         </tr>
       </table>
     </div>
 
+  </div>
+
+  <!-- ACTIONS -->
+  <div *ngFor="let action of model.actions; index as actionIndex" class="action-box">
+    <app-action-view [action]="action" [allowEdit]="editable" (deleteModelAction)="deleteAction(actionIndex)" (updateModelAction)="saveModelData()"></app-action-view>
   </div>
 
   <!-- MODEL SPECIAL RULES -->
@@ -58,11 +65,6 @@
       <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
     </div>
     <app-special-rule-selector *ngIf="editable" [ruleType]="'model'" [title]="'Add Model Rule'" (ruleSelected)="addModelSpecialRule($event)"></app-special-rule-selector>
-  </div>
-
-  <!-- ACTIONS -->
-  <div *ngFor="let action of model.actions; index as actionIndex" class="action-box">
-    <app-action-view [action]="action" [allowEdit]="editable" (deleteModelAction)="deleteAction(actionIndex)" (updateModelAction)="saveModelData()"></app-action-view>
   </div>
 
   <!-- BUTTONS TO ADD ACTIONS -->

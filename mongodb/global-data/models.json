@@ -1,0 +1,50 @@
+[
+    {
+        "_id": "40K.ADMIL.SERGEANT",
+        "userId": "global",
+        "name": "Guard Sergeant",
+        "traits": "",
+        "picture": "enforcer-commander.jpg",
+        "cost": 7,
+        "PW": 1,
+        "SP": 5,
+        "AR": 5,
+        "WN": 2,
+        "NE": 4,
+        "specialRuleIds": [],
+        "actions": [
+            {
+                "modelActionName": "Power Sword",
+                "actionId": "40K.POWERSWORD.2D6.4+"
+            },
+            {
+                "modelActionName": "Plasma Pistol",
+                "actionId": "40K.PLASMAPISTOL.4+"
+            }
+        ]
+    },
+    {
+        "_id": "40K.ADMIL.GUARDSMAN",
+        "userId": "global",
+        "name": "Guardsman",
+        "traits": "",
+        "picture": "enforcer-rifle.jpg",
+        "cost": 5,
+        "PW": 0,
+        "SP": 5,
+        "AR": 5,
+        "WN": 1,
+        "NE": 4,
+        "specialRuleIds": ["GRUNT"],
+        "actions": [
+            {
+                "modelActionName": "Guard Knife",
+                "actionId": "40K.STDMELEE.1D6,4+"
+            },
+            {
+                "modelActionName": "Lasgun",
+                "actionId": "40K.LASGUN.4+"
+            }
+        ]
+    }
+]

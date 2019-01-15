@@ -1,0 +1,20 @@
+[
+    {
+        "_id": "PISTOL",
+        "userId": "global",
+        "name": "Pistol",
+        "text": "You may make a Shoot action with this weapon, even if this model is engaged"
+    },
+    {
+        "_id": "PLASMA",
+        "userId": "global",
+        "name": "Plasma",
+        "text": "You may choose to supercharge whenever you make an attack. If you do, then this attack gains AP3 and D2, however if any hit dice rolls a 1 then this model is immediately removed from play."
+    },
+    {
+        "_id": "GRUNT",
+        "userId": "global",
+        "name": "Grunt",
+        "text": " This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."
+    }
+]

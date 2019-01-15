@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "40K.STDMELEE.1D6,4+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 1,
+        "HIT": 4,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.CHAINSWORD.3D6.4+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 3,
+        "HIT": 4,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.POWERSWORD.2D6.4+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 2,
+        "HIT": 4,
+        "AP": 3,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.LASPISTOL.4+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 1,
+        "HIT": 4,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": ["PISTOL"]
+    },
+    {
+        "_id": "40K.PLASMAPISTOL.4+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 1,
+        "HIT": 4,
+        "AP": 2,
+        "DMG": 1,
+        "specialRuleIds": ["PISTOL","PLASMA"]
+    },
+    {
+        "_id": "40K.LASGUN.4+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 24,
+        "DICE": 2,
+        "HIT": 4,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    }
+]

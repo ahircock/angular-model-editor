@@ -1,0 +1,122 @@
+[
+    {
+        "_id": "F0001",
+        "userId": "andrew.hircock@gmail.com",
+        "name": "Templar Attack!",
+        "size": "standard",
+        "models": [
+            {
+                "_id": "M0021",
+                "count": 1
+            },
+            {
+                "_id": "M0023",
+                "count": 2
+            },
+            {
+                "_id": "M0022",
+                "count": 3
+            },
+            {
+                "_id": "M201",
+                "count": 1
+            },
+            {
+                "_id": "M202",
+                "count": 1
+            }
+        ]
+    },
+    {
+        "_id": "F0002",
+        "name": "Khorne Bloodbound",
+        "size": "standard",
+        "models": [
+            {
+                "_id": "M0031",
+                "count": 1
+            },
+            {
+                "_id": "M0032",
+                "count": 3
+            },
+            {
+                "_id": "M0033",
+                "count": 5
+            }
+        ],
+        "userId": "andrew.hircock@gmail.com"
+    },
+    {
+        "_id": "F118",
+        "userId": "andrew.hircock@gmail.com",
+        "name": "AIDAN FORCE",
+        "size": "epic",
+        "models": [
+            {
+                "_id": "M133",
+                "count": 1
+            },
+            {
+                "_id": "M147",
+                "count": 4
+            },
+            {
+                "_id": "M149",
+                "count": 1
+            },
+            {
+                "_id": "M150",
+                "count": 1
+            },
+            {
+                "_id": "M151",
+                "count": 1
+            },
+            {
+                "_id": "M152",
+                "count": 2
+            },
+            {
+                "_id": "M158",
+                "count": 1
+            }
+        ]
+    },
+    {
+        "_id": "F160",
+        "userId": "andrew.hircock@gmail.com",
+        "name": "Enforcers",
+        "size": "standard",
+        "models": [
+            {
+                "_id": "M161",
+                "count": 1
+            },
+            {
+                "_id": "M165",
+                "count": 1
+            },
+            {
+                "_id": "M166",
+                "count": 1
+            },
+            {
+                "_id": "M167",
+                "count": 1
+            },
+            {
+                "_id": "M168",
+                "count": 1
+            },
+            {
+                "_id": "M169",
+                "count": 1
+            },
+            {
+                "_id": "M170",
+                "count": 1
+            }
+        ]
+    }
+]

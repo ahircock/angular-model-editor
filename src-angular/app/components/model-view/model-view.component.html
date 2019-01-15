@@ -26,8 +26,7 @@
       </div>
 
       <!-- MODEL TRAITS -->
-      <div *ngIf="!editable" class="model-traits font-traits">{{model.traits}}</div>
-      <div *ngIf="editable"><input *ngIf="editable" class="model-traits input-white font-traits" appTextController [(ngModel)]="model.traits" (blur)="saveModelData()" placeholder="Model traits"></div>
+      <div class="model-traits font-traits">{{model.traits}}</div>
 
       <!-- MODEL COST -->
       <div class="model-cost font-italic font-bold">{{model.cost}} points, Max 2</div>

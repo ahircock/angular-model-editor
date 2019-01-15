@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <!-- MODEL SPECIAL RULES -->
+  <!-- MODEL ABILITIES -->
   <div class="section-title font-normal">ABILITIES</div>
   <div *ngIf="visibleModelRules" class="model-special-rules-box font-normal">
     <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule" [class.hidden]="!editable && !specialRule.printVisible">

@@ -5,7 +5,7 @@ import { Directive, ElementRef, Output, HostListener, EventEmitter } from '@angu
 })
 export class ClickElsewhereDirective {
 
-  @Output() clickElsewhere = new EventEmitter<MouseEvent>();
+  @Output() appClickElsewhere = new EventEmitter<MouseEvent>();
 
   constructor(
     private elementRef: ElementRef
@@ -19,7 +19,7 @@ export class ClickElsewhereDirective {
 
     // check if the click was outside the element or one of its children
     if ( targetElement && !this.elementRef.nativeElement.contains(targetElement) ) {
-      this.clickElsewhere.emit();
+      this.appClickElsewhere.emit();
     }
   }
 

@@ -52,12 +52,8 @@ export class ModelViewComponent implements OnInit, OnChanges {
 
     // figure out if the Model Rules box should be shown
     this.visibleModelRules = false;
-    if ( this.editable ) {
+    if ( this.model.specialRules.length > 0) {
       this.visibleModelRules = true; // show the box since there is an Add Model button
-    } else {
-      for ( const rule of this.model.specialRules ) {
-        if ( rule.printVisible ) { this.visibleModelRules = true; }
-      }
     }
 
   }

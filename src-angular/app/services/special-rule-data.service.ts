@@ -5,27 +5,8 @@ import { UserService } from './user.service'
 
 export interface SpecialRuleData {
   _id: string;
-  ruleType: RuleType;
   ruleName: string;
   ruleText: string;
-  printVisible: boolean;
-  ruleCost?: number;
-  modSPD?: number;
-  modEV?: number;
-  modARM?: number;
-  modHP?: number;
-  modStrDMG?: number;
-  modMHIT?: number;
-  modRHIT?: number;
-}
-
-/**
- * List of possible rule types
- */
-export const enum RuleType {
-  Special = 'special',
-  Attack = 'attack',
-  Model = 'model'
 }
 
 /**
@@ -33,18 +14,8 @@ export const enum RuleType {
 */
 interface RuleDBData {
   _id: string;
-  type: RuleType;
   name: string;
   text: string;
-  printVisible: boolean;
-  cost?: number;
-  modSPD?: number;
-  modEV?: number;
-  modARM?: number;
-  modHP?: number;
-  modStrDMG?: number;
-  modMHIT?: number;
-  modRHIT?: number;
 }
 
 @Injectable()
@@ -66,31 +37,10 @@ export class SpecialRuleDataService {
   }
 
   /**
-   * Retrieve all model special rules from the database. Returns a promise to provide an array of rules
-   */
-  async getModelSpecialRules(): Promise<SpecialRuleData[]> {
-    return await this.getSpecialRuleByType(RuleType.Model);
-  }
-
-  /**
-   * Retrieve all action special rules from the database. Returns a promise to provide an array of rules
-   */
-  async getActionSpecialRules(): Promise<SpecialRuleData[]> {
-    return await this.getSpecialRuleByType(RuleType.Special);
-  }
-
-  /**
-   * Retrieve all attack special rules from the database. Returns a promise to provide an array of rules
-   */
-  async getAttackSpecialRules(): Promise<SpecialRuleData[]> {
-    return await this.getSpecialRuleByType(RuleType.Attack);
-  }
-
-  /**
    * Internal method that will return an arracy of special rules based on the type (model, special or attack)
    * @param type must be one of the official rule types: "model", "special", or "action"
    */
-  private async getSpecialRuleByType( type: RuleType ): Promise<SpecialRuleData[]> {
+  async getAllSpecialRules(): Promise<SpecialRuleData[]> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.ruleCache.length === 0 ) {
@@ -100,9 +50,7 @@ export class SpecialRuleDataService {
     // filter down the array to only include those with the correct type
     const returnList: SpecialRuleData[] = [];
     for ( const rule of this.ruleCache ) {
-      if ( rule.ruleType === type ) {
-        returnList.push( rule );
-      }
+      returnList.push( rule );
     }
 
     // sor the data and then return it
@@ -135,18 +83,8 @@ export class SpecialRuleDataService {
     // initialize the return data
     const ruleData: SpecialRuleData = {
       _id: ruleDBData._id,
-      ruleType: ruleDBData.type,
       ruleName: ruleDBData.name.toUpperCase(),
-      ruleText: ruleDBData.text,
-      ruleCost: ruleDBData.cost,
-      printVisible: typeof ruleDBData.printVisible === 'undefined' ? true : ruleDBData.printVisible,
-      modSPD: ruleDBData.modSPD ? ruleDBData.modSPD : 0,
-      modEV: ruleDBData.modEV ? ruleDBData.modEV : 0,
-      modARM: ruleDBData.modARM ? ruleDBData.modARM : 0,
-      modHP: ruleDBData.modHP ? ruleDBData.modHP : 0,
-      modStrDMG: ruleDBData.modStrDMG ? ruleDBData.modStrDMG : 0,
-      modMHIT: ruleDBData.modMHIT ? ruleDBData.modMHIT : 0,
-      modRHIT: ruleDBData.modRHIT ? ruleDBData.modRHIT : 0
+      ruleText: ruleDBData.text
     };
 
     return ruleData;

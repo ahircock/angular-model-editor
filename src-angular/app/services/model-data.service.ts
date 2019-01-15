@@ -6,7 +6,6 @@ import { UserService } from './user.service';
 
 export interface ModelData {
   _id: string;
-  template: boolean;
   name: string;
   picture: string;
   traits: string;
@@ -29,7 +28,6 @@ export interface ModelActionData extends ActionData {
  */
 interface ModelDBData {
   _id: string;
-  template: boolean;
   name: string;
   traits: string;
   picture: string;
@@ -135,7 +133,6 @@ export class ModelDataService {
 
     const modelData: ModelData = {
       _id: modelDBData._id,
-      template: modelDBData.template,
       name: modelDBData.name,
       traits: modelDBData.traits,
       picture: modelDBData.picture,
@@ -164,15 +161,12 @@ export class ModelDataService {
         modelActionName: actionDB.modelActionName,
         _id: action._id,
         type: action.type,
-        name: action.name,
         traits: action.traits,
-        AP: action.AP,
         RNG: action.RNG,
+        DICE: action.DICE,
         HIT: action.HIT,
+        AP: action.AP,
         DMG: action.DMG,
-        strengthBased: action.strengthBased,
-        ONCE: action.ONCE,
-        cost: action.cost ? action.cost : 0,
         specialRules: action.specialRules
       };
       // for ( let rule of action.specialRules ) {

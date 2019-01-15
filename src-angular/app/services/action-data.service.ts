@@ -18,15 +18,12 @@ export const enum ActionType {
 export interface ActionData {
   _id: string;
   type: ActionType;
-  name: string;
   traits: string;
-  AP: number;
   RNG: number;
+  DICE: number;
   HIT: number;
+  AP: number;
   DMG: number;
-  strengthBased: boolean;
-  ONCE: boolean;
-  cost: number;
   specialRules: SpecialRuleData[];
 }
 
@@ -36,15 +33,12 @@ export interface ActionData {
 interface ActionDBData {
   _id: string;
   type: ActionType;
-  name: string;
   traits: string;
-  AP: number;
   RNG: number;
+  DICE: number;
   HIT: number;
+  AP: number;
   DMG: number;
-  strengthBased: boolean;
-  ONCE: boolean;
-  cost: number;
   specialRuleIds: string[];
 }
 
@@ -102,9 +96,6 @@ export class ActionDataService {
       }
     }
 
-    // sort the list
-    returnList.sort(this.sortActionData);
-
     // return the array of actions
     return returnList;
   }
@@ -122,35 +113,22 @@ export class ActionDataService {
       prepareCache.push( await this.convertDBToAppData(actionDB) );
     }
 
-    // sort the cache
-    prepareCache.sort(this.sortActionData);
-
     // store the prepared cache
     this.actionCache = prepareCache;
   }
 
   private async convertDBToAppData( dbData: ActionDBData ): Promise<ActionData> {
 
-    // get the default strength-based
-    let strengthBased = true;
-    if ( typeof dbData.strengthBased === 'undefined' ) {
-      if ( dbData.type === ActionType.Ranged ) { strengthBased = false; } // by default ranged attacks are not strength based
-    } else {
-      strengthBased = dbData.strengthBased;
-    }
-
+    // create an application data object
     const appData: ActionData = {
       _id: dbData._id,
       type: dbData.type,
-      name: dbData.name,
       traits: dbData.traits,
-      AP: dbData.AP,
-      ONCE: dbData.ONCE,
       RNG: dbData.RNG,
+      DICE: dbData.DICE,
       HIT: dbData.HIT,
+      AP: dbData.AP,
       DMG: dbData.DMG,
-      strengthBased: strengthBased,
-      cost: typeof dbData.cost === 'undefined' ? 1 : dbData.cost, // default to 1 if it doesn't exist
       specialRules: []
     };
 
@@ -160,26 +138,6 @@ export class ActionDataService {
       appData.specialRules.push( specialRuleData );
     }
 
-    return appData;
-  }
-
-  /**
-   * The method used by Javascript to sort data
-   * @param a first action
-   * @param b second action
-   */
-  private sortActionData( a: ActionData, b: ActionData ): number {
-    if ( a.name < b.name ) {
-      return -1;
-    } else if ( a.name > b.name ) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
-  private prepareDataForUpdate( appData: ActionData ) {
-    appData.name = appData.name.toUpperCase();
     return appData;
   }
 

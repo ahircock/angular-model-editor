@@ -53,7 +53,7 @@
 
   </div>
 
-  <!-- ACTIONS -->
+  <!-- WEAPONS -->
   <div class="section-title font-normal">WEAPONS</div>
   <div *ngFor="let action of model.actions; index as actionIndex" class="action-box font-normal">
     <b>{{action.modelActionName}}</b> (12", 2D6, HIT 4+, AP1, D1)
@@ -62,28 +62,16 @@
     </div>
   </div>
 
-  <!-- MODEL ABILITIES2 -->
+  <!-- ACTIONS -->
+  
+  <!-- MODEL ABILITIES -->
   <div class="section-title font-normal">ABILITIES</div>
   <div *ngIf="visibleModelRules" class="model-special-rules-box font-normal">
     <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule" [class.hidden]="!editable && !specialRule.printVisible">
       <div *ngIf="editable" class="remove-button box-white-hover" (click)="deleteModelSpecialRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
       <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
     </div>
-    <app-special-rule-selector *ngIf="editable" [ruleType]="'model'" [title]="'Add Model Rule'" (ruleSelected)="addModelSpecialRule($event)"></app-special-rule-selector>
   </div>
 
-  <!-- BUTTONS TO ADD ACTIONS -->
-  <div *ngIf="editable">
-    <br>
-    <div class="add-action-button">
-      <app-dropdown-melee (itemSelected)="addAction($event)"></app-dropdown-melee>
-    </div>
-    <div class="add-action-button">
-      <app-dropdown-ranged (itemSelected)="addAction($event)"></app-dropdown-ranged>
-    </div>
-    <div class="add-action-button">
-      <app-dropdown-special (itemSelected)="addAction($event)"></app-dropdown-special>
-    </div>
-  </div>
 </div>
 

@@ -39,36 +39,8 @@ export class ModelTileComponent implements OnInit {
     const forceModelIndex = this.force.models.findIndex( element => element._id === this.model._id );
     this.force.models[forceModelIndex].count--;
 
-    // if the count is now 0, then delete the model entirely
-    if ( this.force.models[forceModelIndex].count <= 0 ) {
-      await this.modelDataService.deleteModel( this.model );
-      this.force.models.splice( forceModelIndex, 1 );
-    }
-
     // save the changes and tell the parent component
     this.force = await this.forceDataService.updateForce(this.force);
     this.change.emit();
   }
-
-  async cloneModel() {
-
-    // clone the model
-    const newModel: ModelData = await this.modelDataService.cloneModel( this.model );
-
-    // if you are on a force, add this model to the force
-    if ( this.force ) {
-      const forceModelData: ForceModelData = Object.assign( {}, newModel, { count: 1 });
-      this.force.models.push( forceModelData );
-      this.force = await this.forceDataService.updateForce(this.force);
-    }
-
-    // tell the parent that something changed
-    this.change.emit();
-  }
-
-  async deleteTemplate() {
-    await this.modelDataService.deleteModel( this.model );
-    this.change.emit();
-  }
-
 }

@@ -88,7 +88,7 @@ input.model-traits {
     padding: 4px;
 }
 .special-rule:nth-child(even) {
-    background-color: lightgray; 
+    background-color: #e8e8e8; 
 }
 .special-rule:nth-child(odd) {
     background-color: white; 
@@ -107,7 +107,7 @@ input.model-traits {
     padding: 4px;
 }
 .action-box:nth-child(even) {
-    background-color: lightgray;
+    background-color: #e8e8e8;
 }
 .action-box:nth-child(odd) {
     background-color: white;

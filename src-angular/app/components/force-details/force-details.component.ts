@@ -47,20 +47,17 @@ export class ForceDetailsComponent implements OnInit {
     }
 
     // load up the list of model templates
-    this.modelTemplates = await this.modelDataService.getAllTemplates();
+    this.modelTemplates = await this.modelDataService.getAllModels();
   }
 
   selectModel( selectedModelIndex: number ) {
     this.selectedModelIndex = selectedModelIndex;
   }
 
-  async addModel( template: ModelData ) {
-
-    // create a new model based on the selected one
-    const newModelData = await this.modelDataService.cloneModelFromTemplate( template );
+  async addModel( model: ModelData ) {
 
     // add the model to the force
-    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1}, newModelData );
+    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1}, model );
     this.force.models.push ( newForceModelData );
 
     // update the force in the DB
@@ -73,7 +70,7 @@ export class ForceDetailsComponent implements OnInit {
   async forceDetailsChanged() {
 
     this.force = await this.forceDataService.getForceById(this.force._id);
-    this.modelTemplates = await this.modelDataService.getAllTemplates();
+    this.modelTemplates = await this.modelDataService.getAllModels();
   }
 
   async saveForce() {

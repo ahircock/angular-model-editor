@@ -1,11 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { DataAccessService, RuleDBData, RuleType } from './data-access.service';
+import { DataAccessService } from './data-access.service';
 // tslint:disable-next-line: semicolon
 import { UserService } from './user.service'
 
 export interface SpecialRuleData {
   _id: string;
-  editable: boolean;
   ruleType: RuleType;
   ruleName: string;
   ruleText: string;
@@ -20,14 +19,38 @@ export interface SpecialRuleData {
   modRHIT?: number;
 }
 
-export { RuleType };
+/**
+ * List of possible rule types
+ */
+export const enum RuleType {
+  Special = 'special',
+  Attack = 'attack',
+  Model = 'model'
+}
+
+/**
+* Structure of Rule data, as stored in the database
+*/
+interface RuleDBData {
+  _id: string;
+  type: RuleType;
+  name: string;
+  text: string;
+  printVisible: boolean;
+  cost?: number;
+  modSPD?: number;
+  modEV?: number;
+  modARM?: number;
+  modHP?: number;
+  modStrDMG?: number;
+  modMHIT?: number;
+  modRHIT?: number;
+}
 
 @Injectable()
 export class SpecialRuleDataService {
 
   private ruleCache: SpecialRuleData[] = [];
-
-  private loggedInUserId: string;
 
   // these are events that other services can subscribe to
   public ruleUpdated: EventEmitter<SpecialRuleData> = new EventEmitter();
@@ -38,11 +61,7 @@ export class SpecialRuleDataService {
     private userService: UserService
   ) {
 
-    // initialize the user id
-    this.loggedInUserId = this.userService.userName;
-
     // subscribe to events from the other services
-    this.userService.loginEvent.subscribe( (email: any) => this.login(email) );
     this.userService.logoutEvent.subscribe( () => this.logout() );
   }
 
@@ -107,131 +126,6 @@ export class SpecialRuleDataService {
   }
 
   /**
-   * Create a new rule with default settings. Returns the new rule
-   * @param ruleType the type of the new rule. Must be "attack", "model", or "special"
-   */
-  async createNewRule( ruleType: RuleType ): Promise<SpecialRuleData> {
-
-    // generate a new ID for the rule
-    const newRuleId = await this.dbConnectService.getNextId('S');
-
-    // prepare a new rule object
-    let newRuleDB: RuleDBData = {
-      _id: newRuleId,
-      userId: this.loggedInUserId.toLowerCase(),
-      type: ruleType,
-      name: 'NEW RULE',
-      text: 'Enter text for new rule',
-      printVisible: true
-    };
-
-    // if this is a model-rule, copy the attributes
-    if ( ruleType === RuleType.Model ) {
-      newRuleDB.cost = 1;
-      newRuleDB.modSPD = 0;
-      newRuleDB.modEV = 0;
-      newRuleDB.modARM = 0;
-      newRuleDB.modHP = 0;
-      newRuleDB.modStrDMG = 0;
-      newRuleDB.modMHIT = 0;
-      newRuleDB.modRHIT = 0;
-    }
-
-    // add the new rule to the DB
-    newRuleDB = await this.dbConnectService.createRule( newRuleDB );
-
-    // add the new rule to the cache
-    const newRule: SpecialRuleData = this.convertDBToRuleData( newRuleDB );
-    this.ruleCache.push(newRule);
-
-    // return the new force
-    return newRule;
-  }
-
-  /**
-   * Update an existing rule with new details. Returns the updated rule
-   * @param specialRuleData the rule that is being updated
-   */
-  async updateRule( updateRule: SpecialRuleData ): Promise<SpecialRuleData> {
-
-    // make sure that the rule name is uppercase (for sorting)
-    updateRule.ruleName = updateRule.ruleName.toUpperCase();
-
-    // update the database
-    let updateDBRule = this.convertRuleDataToDB(updateRule);
-    updateDBRule = await this.dbConnectService.updateRule(updateDBRule);
-    const newUpdateRule = this.convertDBToRuleData(updateDBRule);
-
-    // find the entry in the fake DB, and then update it
-    const findRuleIndex: number = this.ruleCache.findIndex( element => element._id === newUpdateRule._id );
-    this.ruleCache[findRuleIndex] = newUpdateRule;
-
-    // notify all subscribers that the event has changed
-    this.ruleUpdated.emit(newUpdateRule);
-
-    // return a deep copy of the updated record
-    return newUpdateRule;
-  }
-
-  /**
-   * Delete an existing rule. Returns nothing
-   * @param deleteRule the rule that will be deleted
-   */
-  async deleteRule( deleteRule: SpecialRuleData ): Promise<void> {
-
-    // remove the entry from the DB
-    await this.dbConnectService.deleteRule( this.convertRuleDataToDB(deleteRule));
-
-    // find the model in the fake DB, and then remove it
-    const findRuleIndex: number = this.ruleCache.findIndex( element => element._id === deleteRule._id );
-    this.ruleCache.splice(findRuleIndex, 1 );
-
-    // notify all subscribers that the event has changed
-    this.ruleDeleted.emit(deleteRule);
-  }
-
-  /**
-   * Clone an existing rule.
-   */
-  async cloneRule( cloneRule: SpecialRuleData ): Promise<SpecialRuleData> {
-
-    // generate a new ID for the cloned rule
-    const newRuleId = await this.dbConnectService.getNextId('S');
-
-    // prepare a new rule object
-    let newRuleDB: RuleDBData = {
-      _id: newRuleId,
-      userId: this.loggedInUserId.toLowerCase(),
-      type: cloneRule.ruleType,
-      name: cloneRule.ruleName + ' (COPY)',
-      text: cloneRule.ruleText,
-      printVisible: cloneRule.printVisible
-    };
-
-    // if this is a model-rule, copy the attributes
-    if ( cloneRule.ruleType === RuleType.Model ) {
-      newRuleDB.cost = cloneRule.ruleCost;
-      newRuleDB.modSPD = cloneRule.modSPD;
-      newRuleDB.modEV = cloneRule.modEV;
-      newRuleDB.modARM = cloneRule.modARM;
-      newRuleDB.modHP = cloneRule.modHP;
-      newRuleDB.modStrDMG = cloneRule.modStrDMG;
-      newRuleDB.modMHIT = cloneRule.modMHIT;
-      newRuleDB.modRHIT = cloneRule.modRHIT;
-    }
-
-    // add the new rule to the DB
-    newRuleDB = await this.dbConnectService.createRule( newRuleDB );
-
-    // add the new rule to the cache
-    const newRule: SpecialRuleData = this.convertDBToRuleData( newRuleDB );
-    this.ruleCache.push(newRule);
-
-    // return the new force
-    return newRule;
-  }
-
-  /**
    * Converts a DB record into the externally-exposed SpecialRuleData entity.
    * Returns the converted record
    * @param ruleDBData the DB data to be converted
@@ -246,7 +140,6 @@ export class SpecialRuleDataService {
       ruleText: ruleDBData.text,
       ruleCost: ruleDBData.cost,
       printVisible: typeof ruleDBData.printVisible === 'undefined' ? true : ruleDBData.printVisible,
-      editable: ruleDBData.userId.toLowerCase() === this.loggedInUserId.toLowerCase() ? true : false,
       modSPD: ruleDBData.modSPD ? ruleDBData.modSPD : 0,
       modEV: ruleDBData.modEV ? ruleDBData.modEV : 0,
       modARM: ruleDBData.modARM ? ruleDBData.modARM : 0,
@@ -257,38 +150,6 @@ export class SpecialRuleDataService {
     };
 
     return ruleData;
-  }
-
-  /**
-   * Converts an externally-exposed SpecialRuleData entity into a record for DB storage.
-   * Returns the converted record
-   * @param ruleData the data to be converted
-   */
-  private convertRuleDataToDB( appData: SpecialRuleData ): RuleDBData {
-
-    // initialize the return data
-    const ruleDBData: RuleDBData = {
-      _id: appData._id,
-      userId: this.loggedInUserId,
-      type: appData.ruleType,
-      name: appData.ruleName,
-      text: appData.ruleText,
-      printVisible: appData.printVisible
-    };
-
-    // initialize the special attributes of model rules
-    if ( appData.ruleType === RuleType.Model ) {
-      ruleDBData.cost = appData.ruleCost;
-      ruleDBData.modSPD = appData.modSPD;
-      ruleDBData.modEV = appData.modEV;
-      ruleDBData.modARM = appData.modARM;
-      ruleDBData.modHP = appData.modHP;
-      ruleDBData.modStrDMG = appData.modStrDMG;
-      ruleDBData.modMHIT = appData.modMHIT;
-      ruleDBData.modRHIT = appData.modRHIT;
-    }
-
-    return ruleDBData;
   }
 
   /**
@@ -326,13 +187,5 @@ export class SpecialRuleDataService {
    */
   public logout() {
     this.ruleCache = [];
-    this.loggedInUserId = '';
-  }
-
-  /**
-   * This method should be called after login
-   */
-  public login(userId: string) {
-    this.loggedInUserId = userId;
   }
 }

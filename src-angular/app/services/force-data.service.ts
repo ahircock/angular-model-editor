@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataAccessService, ForceDBData, ForceModelDBData } from './data-access.service';
+import { DataAccessService } from './data-access.service';
 import { ModelData, ModelDataService } from './model-data.service';
 import { UserService } from './user.service';
 
@@ -16,16 +16,27 @@ export interface ForceData {
   modelCost: number;
   equipmentCost: number;
   models: ForceModelData[];
-  equipment: ForceEquipmentData[];
   editable: boolean;
 }
 export interface ForceModelData extends ModelData {
   count: number;
 }
-export interface ForceEquipmentData {
+
+/**
+ * Structure of Force data, as stored in the database
+ */
+interface ForceDBData {
+  _id: string;
+  userId: string;
+  name: string;
+  size: string;
+  models: ForceModelDBData[];
+}
+interface ForceModelDBData {
   _id: string;
   count: number;
 }
+
 
 /**
  * Used to store the table of size to cost conversions
@@ -67,7 +78,6 @@ export class ForceDataService {
     // subscribe to events from the other services
     this.userService.loginEvent.subscribe( (email: any) => this.login(email) );
     this.userService.logoutEvent.subscribe( () => this.logout() );
-    this.modelDataService.modelUpdated.subscribe( (updatedModel: any) => this.modelUpdated(updatedModel) );
   }
 
   /**
@@ -198,7 +208,6 @@ export class ForceDataService {
       modelCost: 0,
       equipmentCost: 0,
       models: [],
-      equipment: [],
       editable: forceDBData.userId.toLowerCase() === this.loggedInUserId.toLowerCase() ? true : false
     };
 

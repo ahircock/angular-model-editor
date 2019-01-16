@@ -46,7 +46,7 @@
   <div *ngFor="let action of model.actions; index as actionIndex" class="action-box font-normal">
     <b>{{action.modelActionName}}</b> ( 
       <span *ngIf="action.type==='RANGED'">{{action.RNG}}"</span>
-      <span *ngIf="action.type==='MELEE'">M</span>
+      <span *ngIf="action.type==='MELEE'">MELEE</span>
       , {{action.DICE}}D6, HIT {{action.HIT}}+, AP{{action.AP}}, D{{action.DMG}})
     <div *ngFor="let actionRule of action.specialRules; index as actionRuleIndex" class="action-rule-box">
         <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>

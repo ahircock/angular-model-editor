@@ -69,6 +69,6 @@
         "HIT": 4,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "specialRuleIds": [] 
     }
 ]

@@ -21,6 +21,11 @@ input.model-name {
     position: relative;
     left: -6px;
 }
+div.model-name {
+    white-space: nowrap;
+    overflow-x: hidden;
+    max-width: 250px;
+}
 div.model-traits {
     position: relative;
     top: 4px;

@@ -139,7 +139,7 @@ export class ModelDataService {
       cost: modelDBData.cost ? modelDBData.cost : 0,
       PW: modelDBData.PW ? modelDBData.PW : 0,
       SP: modelDBData.SP ? modelDBData.SP : 5,
-      AR: modelDBData.AR ? modelDBData.PW : 5,
+      AR: modelDBData.AR ? modelDBData.AR : 5,
       WN: modelDBData.WN ? modelDBData.WN : 2,
       NE: modelDBData.NE ? modelDBData.NE : 4,
       specialRules: [],

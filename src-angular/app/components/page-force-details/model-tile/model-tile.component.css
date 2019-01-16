@@ -19,7 +19,8 @@ div.model-details-box {
 div.model-details-box .model-name {
     width: 196px;
     height: 20px;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    white-space: nowrap;
 }
 div.model-details-box .model-cost { 
     margin-top:4px; margin-bottom: 4px;

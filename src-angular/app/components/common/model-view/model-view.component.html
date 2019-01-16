@@ -11,13 +11,13 @@
 
       <!-- MODEL NAME -->
       <div class="model-text-box-top">
-        <div>
-          <span *ngIf="!editable" class="model-name font-title-big">{{model.forceModelName}}</span>
-          <input *ngIf="editable" class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="saveModelData()" placeholder="Model name">
+        <div *ngIf="!editable" class="model-name font-title-big">{{model.forceModelName}}</div>
+        <div *ngIf="editable">
+          <input  class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="saveModelData()" placeholder="Model name">
         </div>
 
-        <!-- MODEL TRAITS -->
-        <div class="model-traits font-normal">{{model.traits}}</div>
+        <!-- MODEL TYPE -->
+        <div class="model-traits font-normal">{{model.name}}</div>
       </div>
 
       <!-- STAT TABLE -->

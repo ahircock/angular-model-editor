@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-force-print',
@@ -25,10 +26,19 @@ export class ForcePrintComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private forceDataService: ForceDataService
+    private forceDataService: ForceDataService,
+    private userService: UserService,
+    private router: Router
   ) { }
 
   async ngOnInit() {
+
+    // if not logged in, then go to login page
+    if ( !this.userService.isLoggedIn() ) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
+
     // load the force object
     const forceId = this.activatedRoute.snapshot.paramMap.get('id');
     this.force = await this.forceDataService.getForceById(forceId);

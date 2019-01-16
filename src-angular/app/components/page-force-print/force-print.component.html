@@ -2,17 +2,22 @@
 
     <div class="force-title font-title-big">{{force.name}}</div>
 
-    <div class="left-column">
-        <div *ngFor="let model of leftModels" class="model-detail">
-            <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
-            <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
-        </div>
-    </div>
+    <div class="model-list">
 
-    <div class="right-column">
-        <div *ngFor="let model of rightModels" class="model-detail">
-            <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
-            <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
+        <div class="left-column">
+            <div *ngFor="let model of leftModels" class="model-detail">
+                <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
+                <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
+            </div>
+        </div>
+
+        <div class="column-separator"></div>
+
+        <div class="right-column">
+            <div *ngFor="let model of rightModels" class="model-detail">
+                <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
+                <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
+            </div>
         </div>
     </div>
 

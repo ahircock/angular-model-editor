@@ -1,3 +1,4 @@
+/* HEADER LAYOUT */
 .force-header {
     width: 100%; 
     height:64px;
@@ -15,24 +16,24 @@
 .back-arrow img {
     width:64px;
 }
-div.force-cost {
+.force-cost {
     margin-left: 8px;
 }
 
 /* multi-column display */
-div.column-section {
+.column-section {
     position: absolute;
     width: 100%;
     top: 64px; 
     bottom: 0px;
     display: flex;    
 }
-div.column-section .left {
+.column-section .left {
     flex: 1 1 50%;
     height: 100%;
     overflow-y: auto;    
 }
-div.column-section .right {
+.column-section .right {
     flex: 1 1 50%;
     padding: 16px;
     background-color: lightgrey;
@@ -40,21 +41,23 @@ div.column-section .right {
     height: 100%;
     overflow-y: auto;    
 }
+.button-bar {
+    margin: 0px 0px 8px 0px;
+}
 
 @media only screen and ( max-width: 600px ) {
-    div.column-section .right {
+    .column-section .right {
         display: none;
     }
 }
 
-
 /* NEW MODEL BUTTON */
-div.create-model-button-zone {
+.create-model-button-zone {
     position: relative;
     display: inline-block;
     margin: 16px 8px 8px 16px;    
 }
-div.action-button {
+.action-button {
     display: inline-block;
     height: 50px;
     border-radius: 4px;
@@ -62,11 +65,11 @@ div.action-button {
     box-sizing: border-box;
     padding: 8px;
 }
-div.action-button img {
+.action-button img {
     width: 32px;
     float: left;
 }
-div.action-button .button-text {
+.action-button .button-text {
     padding-left: 36px;
     padding-top: 7px;
 } 

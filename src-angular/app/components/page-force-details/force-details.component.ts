@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
 import { ModelData, ModelDataService } from '../../services/model-data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-force-details',
@@ -15,18 +16,15 @@ export class ForceDetailsComponent implements OnInit {
   public selectedModelIndex: number;
   public modelTemplates: ModelData[];
   public showModelListDropdown = false;
-  public showPrint = false;
-
-  // some cost counterse
-  public modelCost = 0;
-  public equipmentCost = 0;
+  public smallScreen: boolean;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private modelDataService: ModelDataService,
     private forceDataService: ForceDataService,
-    private userService: UserService
+    private userService: UserService,
+    private location: Location
   ) { }
 
   async ngOnInit() {
@@ -100,9 +98,15 @@ export class ForceDetailsComponent implements OnInit {
   }
 
   printForce() {
-    // open the print page in a new window/tab
-    this.router.navigateByUrl('/forces/print/' + this.force._id);
+    this.router.navigateByUrl('/force/print/' + this.force._id);
   }
 
+  modelOptions() {
+    const forceModelId = this.force._id + ':' + this.selectedModelIndex;
+    this.router.navigateByUrl('/model/options/' + forceModelId);
+  }
 
+  backArrow() {
+    this.location.back();
+  }
 }

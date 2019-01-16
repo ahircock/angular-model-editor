@@ -6,14 +6,16 @@ import { ForceDetailsComponent } from './components/page-force-details/force-det
 import { ForcePrintComponent } from './components/page-force-print/force-print.component';
 import { UserLoginComponent } from './components/common-account/user-login/user-login.component';
 import { UserSignupComponent } from './components/common-account/user-signup/user-signup.component';
+import { ModelOptionsComponent } from './components/page-model-options/model-options.component';
 
 const routes: Routes = [
-  { path: 'forces/:id', component: ForceDetailsComponent },
-  { path: 'forces/print/:id', component: ForcePrintComponent },
-  { path: 'forces', component: ForceListComponent },
+  { path: 'force/:id', component: ForceDetailsComponent },
+  { path: 'force/print/:id', component: ForcePrintComponent },
+  { path: 'force-list', component: ForceListComponent },
+  { path: 'model/options/:id', component: ModelOptionsComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'signup', component: UserSignupComponent },
-  { path: '**', redirectTo: '/forces' }
+  { path: '**', redirectTo: '/force-list' }
 ];
 
 @NgModule({

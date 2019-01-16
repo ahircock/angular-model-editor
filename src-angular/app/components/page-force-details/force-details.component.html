@@ -1,6 +1,6 @@
 <!-- THE HEADER BAND -->
 <div *ngIf="force" class="force-header box-dark">
-  <div class="back-arrow box-dark-hover" routerLink="/forces"><img src="/assets/icons/icon-arrow-left-128.png"></div>
+  <div class="back-arrow box-dark-hover" (click)="backArrow()"><img src="/assets/icons/icon-arrow-left-128.png"></div>
   <div>
     <div class="force-name"><input class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
     <div class="force-cost font-subtitle">{{force.cost}} Points</div>
@@ -60,8 +60,17 @@
 
   <!-- RIGHT PANE, MODEL EDITOR -->
   <div class="right">
-      <div class="font-normal"><input type="checkbox" [(ngModel)]="showPrint">Show in print format</div>
-      <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="!showPrint" (updated)="saveForce()"></app-model-view>
+      
+    <!-- BUTTON BAR -->
+    <div class="button-bar">
+      <div class="action-button box-light-hover font-title" (click)="modelOptions()">
+        <img src="/assets/icons/icon-edit-128.png">
+        <div class="button-text">Options</div>
+      </div>
+    </div>
+
+    <!-- MODEL VIEW -->
+    <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="true" (updated)="saveForce()"></app-model-view>
   </div>
 
 </div>

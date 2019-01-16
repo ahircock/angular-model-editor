@@ -4,35 +4,24 @@
   <div class="title-box">
 
     <!-- MODEL PORTRAIT -->
-    <div *ngIf="!editable" class="model-image-box-printable"><img [src]="'assets/portraits/' + model.picture"></div>
-    <div *ngIf="editable" class="model-image-zone" (appClickElsewhere)="showModelPortraitsDropdown=false">
-      <div class="model-image-box input-white" (click)="showModelPortraitsDropdown = true">
-        <img [src]="'assets/portraits/' + model.picture">
-      </div>
-      <div *ngIf="showModelPortraitsDropdown" class="model-image-dropdown box-light-hover">
-        <div *ngFor="let portrait of modelPortraits" class="model-image-selection input-white" (click)="selectPortrait(portrait)">
-          <img [src]="'assets/portraits/' + portrait">
-        </div>
-      </div>
-    </div>
+    <div class="model-image-box-printable"><img [src]="'assets/portraits/' + model.picture"></div>
   
     <!-- MODEL TITLE INFO -->
     <div class="model-text-box">
 
       <!-- MODEL NAME -->
-      <div>
-        <span *ngIf="!editable" class="model-name font-title-big">{{model.forceModelName}}</span>
-        <input *ngIf="editable" class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="saveModelData()" placeholder="Model name">
+      <div class="model-text-box-top">
+        <div>
+          <span *ngIf="!editable" class="model-name font-title-big">{{model.forceModelName}}</span>
+          <input *ngIf="editable" class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="saveModelData()" placeholder="Model name">
+        </div>
+
+        <!-- MODEL TRAITS -->
+        <div class="model-traits font-normal">{{model.traits}}</div>
       </div>
 
-      <!-- MODEL TRAITS -->
-      <div class="model-traits font-traits">{{model.traits}}</div>
-
-      <!-- MODEL COST -->
-      <div class="model-cost font-italic font-bold">{{model.cost}} points, Max 2</div>
-
       <!-- STAT TABLE -->
-      <table class="stat-table font-bold">
+      <table class="stat-table font-normal">
         <tr>
           <th>Pw</th>
           <th>Sp</th>
@@ -41,11 +30,11 @@
           <th>Ne</th>
         </tr>
         <tr>
-          <td>1</td>
-          <td>{{model.SPD}}"</td>
-          <td>{{model.ARM}}+</td>
-          <td>{{model.HP}}</td>
-          <td>{{model.EV}}+</td>          
+          <td>{{model.PW}}</td>
+          <td>{{model.SP}}"</td>
+          <td>{{model.AR}}+</td>
+          <td>{{model.WN}}</td>
+          <td>{{model.NE}}+</td>          
         </tr>
       </table>
     </div>
@@ -55,7 +44,10 @@
   <!-- WEAPONS -->
   <div class="section-title font-normal">WEAPONS</div>
   <div *ngFor="let action of model.actions; index as actionIndex" class="action-box font-normal">
-    <b>{{action.modelActionName}}</b> (12", 2D6, HIT 4+, AP1, D1)
+    <b>{{action.modelActionName}}</b> ( 
+      <span *ngIf="action.type==='RANGED'">{{action.RNG}}"</span>
+      <span *ngIf="action.type==='MELEE'">M</span>
+      , {{action.DICE}}D6, HIT {{action.HIT}}+, AP{{action.AP}}, D{{action.DMG}})
     <div *ngFor="let actionRule of action.specialRules; index as actionRuleIndex" class="action-rule-box">
         <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
     </div>
@@ -66,8 +58,7 @@
   <!-- MODEL ABILITIES -->
   <div *ngIf="visibleModelRules" class="section-title font-normal">ABILITIES</div>
   <div *ngIf="visibleModelRules" class="model-special-rules-box font-normal">
-    <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule" [class.hidden]="!editable && !specialRule.printVisible">
-      <div *ngIf="editable" class="remove-button box-white-hover" (click)="deleteModelSpecialRule(ruleIndex)"><img src="/assets/icons/icon-delete-128.png"></div>
+    <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule">
       <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
     </div>
   </div>

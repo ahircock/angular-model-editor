@@ -14,6 +14,9 @@
     margin-left: 8px;
     flex: 1 0;
 }
+.model-text-box-top {
+    height: 86px;
+}
 input.model-name {
     position: relative;
     left: -6px;
@@ -22,17 +25,6 @@ div.model-traits {
     position: relative;
     top: 4px;
     margin-bottom: 8px;
-}
-input.model-traits {
-    position: relative;
-    top: -2px;
-    left: -6px;
-}
-.model-cost { 
-    margin-bottom: 8px;
-    padding: 2px 6px 2px 6px;
-    width: max-content;
-    background-color: grey; color: white; border-radius: 3px;
 }
 
 /* MODEL PORTRAIT DISPLAY & SELECTION */
@@ -70,12 +62,11 @@ input.model-traits {
 /* stats table */
 .stat-table {
     border-collapse: collapse; 
-    font-weight: bold; 
     text-align: center;
     width: 100%;
 }
 .stat-table th {
-    background-color: grey; color: white;
+    background-color: #606060; color: white;
 }
 .stat-table td {
     background-color: white;
@@ -95,9 +86,8 @@ input.model-traits {
 
 /* SECTIONS */
 .section-title {
-    font-weight: bold;
     padding: 4px;
-    background: black;
+    background: #606060;
     color: white;
 }
 

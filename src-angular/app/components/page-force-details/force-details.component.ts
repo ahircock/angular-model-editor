@@ -18,6 +18,7 @@ export class ForceDetailsComponent implements OnInit {
   public modelTemplates: ModelData[];
   public showModelListDropdown = false;
   public smallScreen: boolean;
+  public modelButtonPressed = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -42,7 +43,7 @@ export class ForceDetailsComponent implements OnInit {
     this.force = await this.forceDataService.getForceById(forceId);
 
     // mark the first model as selected
-    if ( this.force.models.length > 0 ) {
+    if ( this.force.models.length > 0 && !this.isWindowMobile() ) {
       this.selectedModelIndex = 0;
     }
 
@@ -53,9 +54,13 @@ export class ForceDetailsComponent implements OnInit {
   selectModel( selectedModelIndex: number ) {
     this.selectedModelIndex = selectedModelIndex;
 
+    // if this is a mobile device AND one of the buttons on the tile was not pressed
     if ( this.windowService.isWindowMobile() ) {
-      const forceModelId = this.force._id + ':' + this.selectedModelIndex;
-      this.router.navigateByUrl('/model/' + forceModelId);
+      if ( !this.modelButtonPressed ) {
+        const forceModelId = this.force._id + ':' + this.selectedModelIndex;
+        this.router.navigateByUrl('/model/' + forceModelId);
+      }
+      this.modelButtonPressed = false;
     }
   }
 
@@ -74,17 +79,20 @@ export class ForceDetailsComponent implements OnInit {
 
   async increaseModelCount(modelIndex: number) {
 
+    // record that a button was pressed
+    this.modelButtonPressed = true;
+
     // increase the count on the force object
     this.force.models[modelIndex].count++;
 
     // save the changes
     await this.saveForce();
-
-    // select the model
-    this.selectModel(modelIndex);
   }
 
   async decreaseModelCount(modelIndex: number) {
+
+    // record that a button was pressed
+    this.modelButtonPressed = true;
 
     // decrease the count on the force object
     this.force.models[modelIndex].count--;
@@ -94,9 +102,6 @@ export class ForceDetailsComponent implements OnInit {
 
     // save the changes
     await this.saveForce();
-
-    // select the model
-    this.selectModel(modelIndex);
   }
 
 

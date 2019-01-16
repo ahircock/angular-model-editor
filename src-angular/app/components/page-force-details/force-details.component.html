@@ -1,41 +1,41 @@
 <!-- THE HEADER BAND -->
 <div *ngIf="force" class="force-header box-dark">
   <div class="back-arrow box-dark-hover" routerLink="/forces"><img src="/assets/icons/icon-arrow-left-128.png"></div>
-  <div class="force-name"><input class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
-  <div class="force-size">
-    <select [(ngModel)]="force.size" class="input-dark font-subtitle" (change)="saveForce()">
-      <option *ngFor="let size of forceDataService.FORCE_SIZES;" [value]="size.size">{{size.size}} ({{size.maxCost}} Points)</option>
-    </select>
+  <div>
+    <div class="force-name"><input class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
+    <div class="force-cost font-subtitle">{{force.cost}} Points</div>
   </div>
-  <div class="force-model-summary font-normal">{{force.models.length}} Models ({{force.modelCost}} Points)</div>
-  <div class="force-total-cost font-subtitle">Total Cost ({{force.cost}} Points)</div>
-  <div class="force-points-remaining font-title-big">{{force.maxCost - force.cost}} Points Remaining</div>
-
-  <!-- Add the buttons to the title bar -->
-  <div class="header-button-bar">
-    <div class="model-button box-light-hover" (click)="printForce()"><img src="/assets/icons/icon-print-128.png"></div>
-  </div>
-
 </div>
 
 <!-- THE CONTENT AREA -->
 <div *ngIf="force" class="column-section">
 
-  <!-- MODEL TILES -->
+  <!-- LEFT PANE -->
   <div class="left">
 
-    <!-- ADD MODEL BUTTON -->
-    <div class="create-model-button-zone" (click)="showModelListDropdown = true" (appClickElsewhere)="showModelListDropdown = false">
-      <div class="create-model-button box-light-hover font-title">
-        <img src="/assets/icons/icon-outline-plus-128.png">
-        <div class="button-text">New Model</div>
-      </div>
-      <div *ngIf="showModelListDropdown" class="create-model-button-dropdown box-white font-normal">
-        <div *ngFor="let model of modelTemplates" class="model-selection box-light-hover" (click)="addModel(model); showModelListDropdown = false;">
-          <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.picture"></div>
-          <div class="model-text-box">{{model.name}} ({{model.cost}} Points)</div>
+    <!-- BUTTON LIST -->
+    <div>
+
+      <!-- ADD MODEL BUTTON -->
+      <div class="create-model-button-zone" (click)="showModelListDropdown = true" (appClickElsewhere)="showModelListDropdown = false">
+        <div class="action-button box-light-hover font-title">
+          <img src="/assets/icons/icon-outline-plus-128.png">
+          <div class="button-text">Add Model</div>
+        </div>
+        <div *ngIf="showModelListDropdown" class="create-model-button-dropdown box-white font-normal">
+          <div *ngFor="let model of modelTemplates" class="model-selection box-light-hover" (click)="addModel(model); showModelListDropdown = false;">
+            <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.picture"></div>
+            <div class="model-text-box">{{model.name}} ({{model.cost}} Points)</div>
+          </div>
         </div>
       </div>
+
+      <!-- PRINT FORCE BUTTON -->
+      <div class="action-button box-light-hover font-title" (click)="printForce()">
+        <img src="/assets/icons/icon-print-128.png">
+        <div class="button-text">Print Force</div>
+      </div>
+    
     </div>
 
     <!-- LIST OF MODELS IN FORCE -->
@@ -58,7 +58,7 @@
   
   </div>
 
-  <!-- MODEL EDITOR -->
+  <!-- RIGHT PANE, MODEL EDITOR -->
   <div class="right">
       <div class="font-normal"><input type="checkbox" [(ngModel)]="showPrint">Show in print format</div>
       <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="!showPrint" (updated)="saveForce()"></app-model-view>

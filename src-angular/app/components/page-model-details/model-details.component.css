@@ -1,0 +1,49 @@
+/* HEADER LAYOUT */
+.header-section {
+    width: 100%; 
+    height:64px;
+    position: relative;
+    box-sizing: border-box;
+    border-top: 0px;
+    display: flex;
+}
+.back-arrow {
+    width: 64px;
+    border: none;
+    vertical-align: center;
+    box-sizing: border-box;
+}
+.back-arrow img {
+    width:64px;
+}
+
+/* CONTENT */
+.content-section {
+    position: absolute;
+    top: 64px; 
+    bottom: 0px;
+    background-color: lightgrey;
+    overflow-y: auto;
+    padding: 8px; 
+}
+
+/* BUTTON BARS */
+.button-bar {
+    margin: 0px 0px 8px 0px;
+}
+.action-button {
+    display: inline-block;
+    height: 50px;
+    border-radius: 4px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 8px;
+}
+.action-button img {
+    width: 32px;
+    float: left;
+}
+.action-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
+} 

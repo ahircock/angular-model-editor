@@ -1,4 +1,4 @@
-<div *ngIf="showHeader" class="header box-mid">
+<div *ngIf="showHeader" class="header box-mid" (window:resize)="windowResized()">
     <app-app-header></app-app-header>
 </div>
 

@@ -1,5 +1,5 @@
 /* HEADER LAYOUT */
-.force-header {
+.header-section {
     width: 100%; 
     height:64px;
     position: relative;
@@ -15,4 +15,13 @@
 }
 .back-arrow img {
     width:64px;
+}
+
+/* CONTENT */
+.content-section {
+    position: absolute;
+    width: 100%;
+    top: 64px; 
+    bottom: 0px;
+    display: flex;    
 }

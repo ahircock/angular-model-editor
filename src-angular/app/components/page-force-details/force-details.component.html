@@ -31,7 +31,7 @@
       </div>
 
       <!-- PRINT FORCE BUTTON -->
-      <div class="action-button box-light-hover font-title" (click)="printForce()">
+      <div *ngIf="!isWindowMobile()" class="action-button box-light-hover font-title" (click)="printForce()">
         <img src="/assets/icons/icon-print-128.png">
         <div class="button-text">Print Force</div>
       </div>
@@ -59,7 +59,7 @@
   </div>
 
   <!-- RIGHT PANE, MODEL EDITOR -->
-  <div class="right">
+  <div *ngIf="!isWindowMobile()" class="right">
       
     <!-- BUTTON BAR -->
     <div class="button-bar">

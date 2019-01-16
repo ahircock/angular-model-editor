@@ -4,6 +4,7 @@ import { ForceDataService, ForceData, ForceModelData } from '../../services/forc
 import { UserService } from '../../services/user.service';
 import { ModelData, ModelDataService } from '../../services/model-data.service';
 import { Location } from '@angular/common';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-force-details',
@@ -24,7 +25,8 @@ export class ForceDetailsComponent implements OnInit {
     private modelDataService: ModelDataService,
     private forceDataService: ForceDataService,
     private userService: UserService,
-    private location: Location
+    private location: Location,
+    private windowService: WindowService
   ) { }
 
   async ngOnInit() {
@@ -50,6 +52,11 @@ export class ForceDetailsComponent implements OnInit {
 
   selectModel( selectedModelIndex: number ) {
     this.selectedModelIndex = selectedModelIndex;
+
+    if ( this.windowService.isWindowMobile() ) {
+      const forceModelId = this.force._id + ':' + this.selectedModelIndex;
+      this.router.navigateByUrl('/model/' + forceModelId);
+    }
   }
 
   async addModel( model: ModelData ) {
@@ -108,5 +115,9 @@ export class ForceDetailsComponent implements OnInit {
 
   backArrow() {
     this.location.back();
+  }
+
+  isWindowMobile() {
+    return this.windowService.isWindowMobile();
   }
 }

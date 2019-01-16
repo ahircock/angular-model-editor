@@ -33,6 +33,8 @@ import { ModelOptionsComponent } from './components/page-model-options/model-opt
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
 import { TextControllerDirective } from './directives/text-controller.directive';
+import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
+import { WindowService } from './services/window.service';
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     DropdownMeleeComponent,
     DropdownRangedComponent,
     DropdownSpecialComponent,
-    ModelOptionsComponent
+    ModelOptionsComponent,
+    ModelDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     SpecialRuleDataService,
     ForceDataService,
     ActionDataService,
-    DataAccessService
+    DataAccessService,
+    WindowService
   ],
   bootstrap: [AppComponent]
 })

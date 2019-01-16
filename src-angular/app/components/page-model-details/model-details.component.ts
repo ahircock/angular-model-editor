@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ForceDataService, ForceModelData } from '../../services/force-data.service';
+import { ForceDataService, ForceModelData, ForceData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-model-options',
-  templateUrl: './model-options.component.html',
-  styleUrls: ['./model-options.component.css']
+  selector: 'app-model-details',
+  templateUrl: './model-details.component.html',
+  styleUrls: ['./model-details.component.css']
 })
-export class ModelOptionsComponent implements OnInit {
+export class ModelDetailsComponent implements OnInit {
 
+  public force: ForceData;
+  public forceModelIndex: number;
   public model: ForceModelData;
 
   constructor(
@@ -32,13 +34,21 @@ export class ModelOptionsComponent implements OnInit {
     // load the forceData object
     const forceModelId = this.activatedRoute.snapshot.paramMap.get('id').split(':');
     const forceId = forceModelId[0];
-    const modelIndex = Number(forceModelId[1]);
-    const force = await this.forceDataService.getForceById(forceId);
-    this.model = force.models[modelIndex];
+    this.forceModelIndex = Number(forceModelId[1]);
+    this.force = await this.forceDataService.getForceById(forceId);
+    this.model = this.force.models[this.forceModelIndex];
   }
 
   backArrow() {
     this.location.back();
   }
 
+  async saveForce() {
+    this.force = await this.forceDataService.updateForce( this.force );
+  }
+
+  modelOptions() {
+    const forceModelId = this.force._id + ':' + this.forceModelIndex;
+    this.router.navigateByUrl('/model/options/' + forceModelId);
+  }
 }

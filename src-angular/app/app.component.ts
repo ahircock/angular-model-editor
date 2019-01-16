@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WindowService } from './services/window.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,9 @@ export class AppComponent {
    */
   public showHeader = true;
 
-  constructor() {}
+  constructor(
+    private windowService: WindowService
+  ) {}
 
   /**
    * Angular calls this method whenever a new route is handled, and the
@@ -31,5 +34,9 @@ export class AppComponent {
     } else {
       this.showHeader = true;
     }
+  }
+
+  windowResized() {
+    this.windowService.windowResized();
   }
 }

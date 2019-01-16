@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../services/user.service';
-import { DBErrorData } from '../../services/data-access.service';
+import { UserService } from '../../../services/user.service';
+import { DBErrorData } from '../../../services/data-access.service';
 
 @Component({
-  selector: 'app-user-signup',
-  templateUrl: './user-signup.component.html',
-  styleUrls: ['./user-signup.component.css']
+  selector: 'app-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.css']
 })
-export class UserSignupComponent implements OnInit {
+export class UserLoginComponent implements OnInit {
 
   public userEmail = '';
   public userPassword = '';
-  public confirmPassword = '';
   public errorText = '';
 
   constructor(
@@ -24,21 +23,14 @@ export class UserSignupComponent implements OnInit {
   }
 
   /**
-   * Called from the signup button
+   * called from the login button
    */
-  async signup() {
-
-    // make sure that the password and confirmation match
-    if ( this.userPassword !== this.confirmPassword ) {
-      this.displayError({ errorCode: -1, errorMessage: 'Password and confirmation do not match' });
-      return;
-    }
+  async login() {
 
     // convert the email to lowercase
     this.userEmail = this.userEmail.toLowerCase();
 
-    // run the signup procedure
-    await this.userService.signup(this.userEmail, this.userPassword)
+    await this.userService.login(this.userEmail, this.userPassword)
         .then( () => this.router.navigateByUrl('/') ) // if successful, then open the main page
         .catch( (reason) => { this.displayError(reason.error); }); // if unsuccssful, then display error message
   }

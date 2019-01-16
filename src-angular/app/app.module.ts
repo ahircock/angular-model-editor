@@ -15,19 +15,19 @@ import { AppErrorHandler } from './services/error-handler.service';
 
 // components
 import { AppComponent } from './app.component';
-import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { ModelViewComponent } from './components/model-view/model-view.component';
+import { AppHeaderComponent } from './components/common/app-header/app-header.component';
+import { ModelViewComponent } from './components/common/model-view/model-view.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ForceListComponent } from './components/force-list/force-list.component';
-import { ModelTileComponent } from './components/model-tile/model-tile.component';
-import { ForceTileComponent } from './components/force-tile/force-tile.component';
-import { ForceDetailsComponent } from './components/force-details/force-details.component';
-import { ForcePrintComponent } from './components/force-print/force-print.component';
-import { UserLoginComponent } from './components/user-login/user-login.component';
-import { UserSignupComponent } from './components/user-signup/user-signup.component';
-import { DropdownMeleeComponent } from './components/dropdowns/dropdown-melee.component';
-import { DropdownRangedComponent } from './components/dropdowns/dropdown-ranged.component';
-import { DropdownSpecialComponent } from './components/dropdowns/dropdown-special.component';
+import { ForceListComponent } from './components/page-force-list/force-list.component';
+import { ModelTileComponent } from './components/page-force-details/model-tile/model-tile.component';
+import { ForceTileComponent } from './components/page-force-list/force-tile/force-tile.component';
+import { ForceDetailsComponent } from './components/page-force-details/force-details.component';
+import { ForcePrintComponent } from './components/page-force-print/force-print.component';
+import { UserLoginComponent } from './components/common-account/user-login/user-login.component';
+import { UserSignupComponent } from './components/common-account/user-signup/user-signup.component';
+import { DropdownMeleeComponent } from './components/common/dropdowns/dropdown-melee.component';
+import { DropdownRangedComponent } from './components/common/dropdowns/dropdown-ranged.component';
+import { DropdownSpecialComponent } from './components/common/dropdowns/dropdown-special.component';
 
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';

@@ -1,0 +1,165 @@
+div.force-header {
+    width: 100%; height:80px;
+    position: relative;
+    box-sizing: border-box;
+    border-top: 0px;
+}
+div.back-arrow {
+    width: 64px;
+    border: none;
+    vertical-align: center;
+    box-sizing: border-box;
+}
+.back-arrow img {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width:64px;
+}
+div.force-name {
+    position:absolute;
+    left: 76px; top: 8px;
+    width: 327px; box-sizing: border-box;
+}
+div.force-size {
+    position:absolute;
+    left: 76px; top: 46px;
+    box-sizing: border-box;
+}
+div.force-model-summary {
+    position:absolute;
+    left: 416px; top: 8px;
+}
+div.force-equipment-summary {
+    position:absolute;
+    left: 416px; top: 28px;
+}
+div.force-total-cost {
+    position:absolute;
+    left: 416px; top: 48px;
+}
+div.force-points-remaining {
+    position:absolute;
+    left: 650px; top: 8px;
+    box-sizing: border-box;
+}
+
+/* multi-column display */
+div.column-section {
+    position: absolute;
+    width: 100%;
+    top: 80px; bottom: 0px;
+    display: flex;    
+}
+div.column-section .left {
+    flex: 1 1 50%;
+    height: 100%;
+    overflow-y: auto;    
+}
+div.column-section .right {
+    flex: 1 1 50%;
+    padding: 16px;
+    background-color: lightgrey;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: auto;    
+}
+
+@media only screen and ( max-width: 600px ) {
+    div.column-section .right {
+        display: none;
+    }
+}
+
+
+/* NEW MODEL BUTTON */
+div.create-model-button-zone {
+    position: relative;
+    display: inline-block;
+    margin: 16px 8px 8px 16px;    
+}
+div.create-model-button {
+    display: inline-block;
+    height: 50px;
+    border-radius: 4px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 8px;
+}
+div.create-model-button img {
+    width: 32px;
+    float: left;
+}
+div.create-model-button .button-text {
+    padding-left: 36px;
+    padding-top: 7px;
+} 
+
+/* MODEL DROPDOWN FOR NEW MODEL BUTTON */
+div.create-model-button-dropdown {
+    position: absolute;
+    top: 50px;
+    width: 400px;
+    z-index: 2;
+}
+div.create-model-button-dropdown .model-selection {
+    padding: 4px;
+    height: 24px;
+    border: none;    
+}
+
+div.model-image-box {
+    position: absolute;
+    width: 24px;
+}
+img.model-image {
+    height: 24px; margin-left: auto; margin-right: auto; display: block;
+}
+div.model-text-box {
+    float: left;
+    padding-left: 28px;
+    padding-top: 4px;
+}
+
+
+/* model list */
+div.model-list {
+    display: flex;
+    flex-flow: row wrap;
+}
+div.model-list div {
+    flex: 0 0 264px;
+    margin: 16px;
+}
+
+/* model-count */
+div.model-tile {
+    position: relative;
+}
+div.model-tile .model-count {
+    position: absolute;
+    z-index: 1;
+    border-radius: 32px;
+    margin: 0px;
+    padding: 8px;
+    top: -8px;
+    left: -8px;
+}
+
+/* buttons */
+.header-button-bar {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;    
+}
+.model-button {
+    float: right;
+    border-radius: 4px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    height: 28px;
+    z-index: 1;
+}
+.model-button img {
+    width: 20px;
+    margin: 4px;
+}

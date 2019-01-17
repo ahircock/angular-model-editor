@@ -77,7 +77,11 @@ export class ActionDataService {
     }
 
     // return the model with the matching ID
-    return this.actionCache.find( element => element._id === actionId );
+    const action = this.actionCache.find( element => element._id === actionId );
+    if ( typeof action === 'undefined' ) {
+      throw Error('actionId:' + actionId + ' does not exist');
+    }
+    return action;
 
   }
 

@@ -31,7 +31,6 @@ export interface ModelOptionData {
 }
 
 export interface ModelOptionChoiceData {
-  description: string;
   cost: number;
   attacks: ModelActionData[];
   actions: ModelActionData[];
@@ -69,7 +68,6 @@ interface ModelOptionDBData {
   choices: ModelOptionChoiceDBData[];
 }
 interface ModelOptionChoiceDBData {
-  description: string;
   cost: number;
   attacks: ModelActionDBData[];
   actions: ModelActionDBData[];
@@ -118,6 +116,10 @@ export class ModelDataService {
     }
 
     // return the model with the matching ID
+    const model = this.modelCache.find( element => element._id === id );
+    if ( typeof model === 'undefined' ) {
+      throw Error('modelId:' + id + ' does not exist');
+    }
     return this.modelCache.find( element => element._id === id );
   }
 
@@ -217,7 +219,6 @@ export class ModelDataService {
       for ( const choiceDB of optionDB.choices ) {
 
         const choice: ModelOptionChoiceData = {
-          description: choiceDB.description,
           cost: choiceDB.cost,
           attacks: [],
           actions: [],

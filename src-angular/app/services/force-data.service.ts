@@ -211,7 +211,7 @@ export class ForceDataService {
       const optionChoice: ForceModelOptionChoiceData = {
         optionId: option.id,
         choiceIndex: 0
-      }
+      };
       newForceModelData.optionChoices.push(optionChoice);
     }
 
@@ -276,7 +276,7 @@ export class ForceDataService {
   }
 
   /**
-   * This method will create a force model object using the information from the base model-type 
+   * This method will create a force model object using the information from the base model-type
    * and the options provided in the force-model information
    * @param model The model on which this force-model is based
    * @param forceModelDB The DB info needed to generate the force-model

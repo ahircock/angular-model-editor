@@ -70,7 +70,11 @@ export class SpecialRuleDataService {
     }
 
     // find the rule in the cache and return it
-    return this.ruleCache.find( element => element._id === ruleId );
+    const rule = this.ruleCache.find( element => element._id === ruleId );
+    if ( typeof rule === 'undefined' ) {
+      throw Error('ruleId:' + ruleId + ' does not exist');
+    }
+    return rule;
   }
 
   /**

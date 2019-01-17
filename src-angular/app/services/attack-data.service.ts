@@ -56,7 +56,7 @@ export class AttackDataService {
     this.userService.logoutEvent.subscribe( () => this.logout() );
   }
 
-  async getAttackById( actionId: string ): Promise<AttackData> {
+  async getAttackById( attackId: string ): Promise<AttackData> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.attackCache.length === 0 ) {
@@ -64,11 +64,11 @@ export class AttackDataService {
     }
 
     // return the model with the matching ID
-    const action = this.attackCache.find( element => element._id === actionId );
-    if ( typeof action === 'undefined' ) {
-      throw Error('actionId:' + actionId + ' does not exist');
+    const attack = this.attackCache.find( element => element._id === attackId );
+    if ( typeof attack === 'undefined' ) {
+      throw Error('attackId:' + attackId + ' does not exist');
     }
-    return action;
+    return attack;
 
   }
 
@@ -78,11 +78,11 @@ export class AttackDataService {
     const prepareCache: AttackData[] = [];
 
     // load the rule objects form the DB
-    const actionDBList: AttackDBData[] = await this.dbConnectService.getAttacks();
+    const attackDBList: AttackDBData[] = await this.dbConnectService.getAttacks();
 
     // convert everything to the application objects and add it to the cache
-    for ( const actionDB of actionDBList ) {
-      prepareCache.push( await this.convertDBToAppData(actionDB) );
+    for ( const attackDB of attackDBList ) {
+      prepareCache.push( await this.convertDBToAppData(attackDB) );
     }
 
     // store the prepared cache

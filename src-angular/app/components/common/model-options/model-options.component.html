@@ -9,7 +9,7 @@
       [class.selected]="isChoiceSelected(option.id, choiceIndex)"
       >
       <div *ngFor="let attack of choice.attacks">
-        <span class="cost-box">+{{choice.cost}}pts</span> <b>{{attack.modelActionName}}</b> ( 
+        <span class="cost-box">+{{choice.cost}}pts</span> <b>{{attack.modelAttackName}}</b> ( 
           <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
           <span *ngIf="attack.type==='MELEE'">MELEE</span>
           , {{attack.DICE}}D6, HIT {{attack.HIT}}+, AP{{attack.AP}}, D{{attack.DMG}})

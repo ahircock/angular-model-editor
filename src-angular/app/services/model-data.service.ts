@@ -21,7 +21,7 @@ export interface ModelData {
 }
 
 export interface ModelAttackData extends AttackData {
-  modelActionName: string;
+  modelAttackName: string;
 }
 
 export interface ModelOptionData {
@@ -33,7 +33,6 @@ export interface ModelOptionData {
 export interface ModelOptionChoiceData {
   cost: number;
   attacks: ModelAttackData[];
-  actions: ModelAttackData[];
   abilities: SpecialRuleData[];
 }
 
@@ -56,7 +55,7 @@ interface ModelDBData {
   options: ModelOptionDBData[];
 }
 interface ModelAttackDBData {
-  modelActionName: string;
+  modelAttackName: string;
   attackId: string;
 }
 interface ModelAbilityDBData {
@@ -70,7 +69,6 @@ interface ModelOptionDBData {
 interface ModelOptionChoiceDBData {
   cost: number;
   attacks: ModelAttackDBData[];
-  actions: ModelAttackDBData[];
   abilities: ModelAbilityDBData[];
 }
 
@@ -186,24 +184,24 @@ export class ModelDataService {
       modelData.specialRules.push( specialRuleData );
     }
 
-    // copy the actions onto the model
-    for ( const actionDB of modelDBData.attacks ) {
+    // copy the attacks onto the model
+    for ( const attackDB of modelDBData.attacks ) {
 
-      const action: AttackData = await this.attackDataService.getAttackById( actionDB.attackId );
+      const attack: AttackData = await this.attackDataService.getAttackById( attackDB.attackId );
 
-      const modelAction: ModelAttackData = {
-        modelActionName: actionDB.modelActionName,
-        _id: action._id,
-        type: action.type,
-        traits: action.traits,
-        RNG: action.RNG,
-        DICE: action.DICE,
-        HIT: action.HIT,
-        AP: action.AP,
-        DMG: action.DMG,
-        specialRules: action.specialRules
+      const modelAttack: ModelAttackData = {
+        modelAttackName: attackDB.modelAttackName,
+        _id: attack._id,
+        type: attack.type,
+        traits: attack.traits,
+        RNG: attack.RNG,
+        DICE: attack.DICE,
+        HIT: attack.HIT,
+        AP: attack.AP,
+        DMG: attack.DMG,
+        specialRules: attack.specialRules
       };
-      modelData.attacks.push( modelAction );
+      modelData.attacks.push( modelAttack );
     }
 
     // copy the options onto the model
@@ -221,44 +219,25 @@ export class ModelDataService {
         const choice: ModelOptionChoiceData = {
           cost: choiceDB.cost,
           attacks: [],
-          actions: [],
           abilities: []
         };
 
         // copy the attacks into the choice
         for ( const attackDB of choiceDB.attacks ) {
-          const action: AttackData = await this.attackDataService.getAttackById( attackDB.attackId );
-          const attack: ModelAttackData = {
-            modelActionName: attackDB.modelActionName,
-            _id: action._id,
-            type: action.type,
-            traits: action.traits,
-            RNG: action.RNG,
-            DICE: action.DICE,
-            HIT: action.HIT,
-            AP: action.AP,
-            DMG: action.DMG,
-            specialRules: action.specialRules
+          const attack: AttackData = await this.attackDataService.getAttackById( attackDB.attackId );
+          const modelAttack: ModelAttackData = {
+            modelAttackName: attackDB.modelAttackName,
+            _id: attack._id,
+            type: attack.type,
+            traits: attack.traits,
+            RNG: attack.RNG,
+            DICE: attack.DICE,
+            HIT: attack.HIT,
+            AP: attack.AP,
+            DMG: attack.DMG,
+            specialRules: attack.specialRules
           };
-          choice.attacks.push( attack );
-        }
-
-        // copy the actions into the choice
-        for ( const actionDB of choiceDB.actions ) {
-          const action: AttackData = await this.attackDataService.getAttackById( actionDB.attackId );
-          const actionModel: ModelAttackData = {
-            modelActionName: actionDB.modelActionName,
-            _id: action._id,
-            type: action.type,
-            traits: action.traits,
-            RNG: action.RNG,
-            DICE: action.DICE,
-            HIT: action.HIT,
-            AP: action.AP,
-            DMG: action.DMG,
-            specialRules: action.specialRules
-          };
-          choice.actions.push( actionModel );
+          choice.attacks.push( modelAttack );
         }
 
         // copy the special rules onto the model

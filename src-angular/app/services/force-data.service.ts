@@ -295,9 +295,6 @@ export class ForceDataService {
       for ( const attack of optionChoice.attacks ) {
         forceModelData.attacks.push( attack );
       }
-      for ( const action of optionChoice.actions ) {
-        forceModelData.attacks.push( action );
-      }
       for ( const ability of optionChoice.abilities ) {
         forceModelData.specialRules.push( ability );
       }

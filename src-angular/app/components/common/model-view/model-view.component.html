@@ -45,7 +45,7 @@
   <!-- ATTACKS -->
   <div class="section-title font-normal">ATTACKS</div>
   <div *ngFor="let attack of model.attacks" class="action-box font-normal">
-    <b>{{attack.modelActionName}}</b> ( 
+    <b>{{attack.modelAttackName}}</b> ( 
       <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
       <span *ngIf="attack.type==='MELEE'">MELEE</span>
       , {{attack.DICE}}D6, {{attack.HIT}}+, AP{{attack.AP}}, D{{attack.DMG}})

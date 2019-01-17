@@ -12,16 +12,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [
-            {
-                "modelActionName": "Power Sword",
-                "actionId": "40K.POWERSWORD.2D6.4+"
-            },
-            {
-                "modelActionName": "Plasma Pistol",
-                "actionId": "40K.PLASMAPISTOL.4+"
-            }
-        ],
+        "actions": [],
         "options": [
             {
                 "id": "MELEE",

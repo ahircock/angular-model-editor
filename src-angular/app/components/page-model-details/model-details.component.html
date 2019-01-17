@@ -10,16 +10,11 @@
 <!-- THE CONTENT AREA -->
 <div *ngIf="model" class="content-section">
 
-  <!-- BUTTON BAR -->
-  <div class="button-bar">
-    <div class="action-button box-light-hover font-title" (click)="modelOptions()">
-      <img src="/assets/icons/icon-edit-128.png">
-      <div class="button-text">Options</div>
-    </div>
-  </div>
-
   <!-- MODEL VIEW -->
   <app-model-view [model]="model" [allowEdit]="true" (updated)="saveForce()"></app-model-view>
+
+  <!-- OPTION SELECTOR -->
+  <app-model-options [force]="force" [model]="model" (updated)="saveForce()"></app-model-options>
 
 </div>
   

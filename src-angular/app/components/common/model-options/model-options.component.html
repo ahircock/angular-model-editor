@@ -1,14 +1,6 @@
-<!-- THE HEADER BAND -->
-<div *ngIf="model" class="header-section box-dark">
-  <div class="back-arrow box-dark-hover" (click)="backArrow()"><img src="/assets/icons/icon-arrow-left-128.png"></div>
-  <div>
-    <div class="header-title font-title-big">{{model.forceModelName}}</div>
-    <div class="header-subtitle font-subtitle">Choose Options</div>
-  </div>
-</div>
-
 <!-- THE CONTENT AREA -->
 <div *ngIf="model" class="content-section">
+
   <div *ngFor="let option of model.options">
     <div class="option-description box-white">{{option.description}}</div>
     <div *ngFor="let choice of option.choices; index as choiceIndex" 

@@ -45,10 +45,6 @@ export class ModelDetailsComponent implements OnInit {
 
   async saveForce() {
     this.force = await this.forceDataService.updateForce( this.force );
-  }
-
-  modelOptions() {
-    const forceModelId = this.force._id + ':' + this.forceModelIndex;
-    this.router.navigateByUrl('/model/options/' + forceModelId);
+    this.model = this.force.models[this.forceModelIndex];
   }
 }

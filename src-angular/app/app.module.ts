@@ -28,7 +28,7 @@ import { UserSignupComponent } from './components/common-account/user-signup/use
 import { DropdownMeleeComponent } from './components/common/dropdowns/dropdown-melee.component';
 import { DropdownRangedComponent } from './components/common/dropdowns/dropdown-ranged.component';
 import { DropdownSpecialComponent } from './components/common/dropdowns/dropdown-special.component';
-import { ModelOptionsComponent } from './components/page-model-options/model-options.component';
+import { ModelOptionsComponent } from './components/common/model-options/model-options.component';
 
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';

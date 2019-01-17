@@ -61,16 +61,12 @@
   <!-- RIGHT PANE, MODEL EDITOR -->
   <div *ngIf="!isWindowMobile()" class="right">
       
-    <!-- BUTTON BAR -->
-    <div class="button-bar">
-      <div class="action-button box-light-hover font-title" (click)="modelOptions()">
-        <img src="/assets/icons/icon-edit-128.png">
-        <div class="button-text">Options</div>
-      </div>
-    </div>
-
     <!-- MODEL VIEW -->
     <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="true" (updated)="saveForce()"></app-model-view>
+
+    <!-- OPTION SELECTOR -->
+    <app-model-options [force]="force" [model]="force.models[selectedModelIndex]" (updated)="saveForce()"></app-model-options>
+
   </div>
 
 </div>

@@ -19,11 +19,6 @@
 
 /* CONTENT */
 .content-section {
-    position: absolute;
-    top: 64px; 
-    bottom: 0px;
-    right: 0px;
-    left: 0px;
     padding: 4px;
 }
 

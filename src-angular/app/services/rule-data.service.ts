@@ -1,9 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-// tslint:disable-next-line: semicolon
-import { UserService } from './user.service'
+import { UserService } from './user.service';
 
-export interface SpecialRuleData {
+export interface RuleData {
   _id: string;
   ruleName: string;
   ruleText: string;
@@ -19,19 +18,18 @@ interface RuleDBData {
 }
 
 @Injectable()
-export class SpecialRuleDataService {
+export class RuleDataService {
 
-  private ruleCache: SpecialRuleData[] = [];
+  private ruleCache: RuleData[] = [];
 
   // these are events that other services can subscribe to
-  public ruleUpdated: EventEmitter<SpecialRuleData> = new EventEmitter();
-  public ruleDeleted: EventEmitter<SpecialRuleData> = new EventEmitter();
+  public ruleUpdated: EventEmitter<RuleData> = new EventEmitter();
+  public ruleDeleted: EventEmitter<RuleData> = new EventEmitter();
 
   constructor(
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
-
     // subscribe to events from the other services
     this.userService.logoutEvent.subscribe( () => this.logout() );
   }
@@ -40,7 +38,7 @@ export class SpecialRuleDataService {
    * Returns the special rule with the given ID
    * @param ruleId _id of the rule that you want to return
    */
-  async getSpecialRuleById( ruleId: string ): Promise<SpecialRuleData> {
+  async getSpecialRuleById( ruleId: string ): Promise<RuleData> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.ruleCache.length === 0 ) {
@@ -56,14 +54,14 @@ export class SpecialRuleDataService {
   }
 
   /**
-   * Converts a DB record into the externally-exposed SpecialRuleData entity.
+   * Converts a DB record into the externally-exposed RuleData entity.
    * Returns the converted record
    * @param ruleDBData the DB data to be converted
    */
-  private convertDBToRuleData( ruleDBData: RuleDBData ): SpecialRuleData {
+  private convertDBToRuleData( ruleDBData: RuleDBData ): RuleData {
 
     // initialize the return data
-    const ruleData: SpecialRuleData = {
+    const ruleData: RuleData = {
       _id: ruleDBData._id,
       ruleName: ruleDBData.name.toUpperCase(),
       ruleText: ruleDBData.text
@@ -77,7 +75,7 @@ export class SpecialRuleDataService {
    * @param a first rule
    * @param b second rule
    */
-  private sortRuleData( a: SpecialRuleData, b: SpecialRuleData ): number {
+  private sortRuleData( a: RuleData, b: RuleData ): number {
 
     // always return the basic model first
     if ( a.ruleName < b.ruleName ) {
@@ -96,7 +94,7 @@ export class SpecialRuleDataService {
     // load the rule objects form the DB
     const ruleDBList: RuleDBData[] = await this.dbConnectService.getRules();
 
-    // convert everything to a SpecialRuleData and add it to the cache
+    // convert everything to a RuleData and add it to the cache
     for ( const ruleDB of ruleDBList ) {
       this.ruleCache.push( this.convertDBToRuleData(ruleDB));
     }

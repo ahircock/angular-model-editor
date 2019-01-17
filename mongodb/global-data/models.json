@@ -233,7 +233,7 @@
         "NE": 4,
         "abilities": [
             {
-                "specialRuleId": "GRUNT"
+                "ruleId": "GRUNT"
             }
         ],
         "attacks": [

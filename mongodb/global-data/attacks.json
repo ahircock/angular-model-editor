@@ -9,7 +9,7 @@
         "HIT": 4,
         "AP": 2,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.ARCPISTOL.3+",
@@ -21,7 +21,7 @@
         "HIT": 3,
         "AP": 1,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.ARCRIFLE.3+",
@@ -33,7 +33,7 @@
         "HIT": 3,
         "AP": 1,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.CHAINSWORD.3D6.4+",
@@ -45,7 +45,7 @@
         "HIT": 4,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.GALVANICRIFLE.3+",
@@ -57,7 +57,7 @@
         "HIT": 3,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.LASGUN.4+",
@@ -69,7 +69,7 @@
         "HIT": 4,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.LASPISTOL.4+",
@@ -81,7 +81,7 @@
         "HIT": 4,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.PHOSPHORPISTOL.3+",
@@ -93,7 +93,7 @@
         "HIT": 3,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": [
+        "ruleIds": [
             "IGNORECOVER"
         ]
     },
@@ -107,7 +107,7 @@
         "HIT": 3,
         "AP": 2,
         "DMG": 1,
-        "specialRuleIds": [
+        "ruleIds": [
             "PLASMA"
         ]
     },
@@ -121,7 +121,7 @@
         "HIT": 3,
         "AP": 2,
         "DMG": 1,
-        "specialRuleIds": [
+        "ruleIds": [
             "PLASMA"
         ]
     },
@@ -135,7 +135,7 @@
         "HIT": 4,
         "AP": 2,
         "DMG": 1,
-        "specialRuleIds": [
+        "ruleIds": [
             "PLASMA"
         ]
     },
@@ -149,7 +149,7 @@
         "HIT": 4,
         "AP": 3,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.RADIUMCARBINE.3+",
@@ -161,7 +161,7 @@
         "HIT": 3,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.RADIUMPISTOL.3+",
@@ -173,7 +173,7 @@
         "HIT": 3,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.STDMELEE.1D6.3+",
@@ -185,7 +185,7 @@
         "HIT": 3,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.STDMELEE.1D6.4+",
@@ -197,7 +197,7 @@
         "HIT": 4,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": []
+        "ruleIds": []
     },
     {
         "_id": "40K.TASERGOAD.2D6.4+",
@@ -209,7 +209,7 @@
         "HIT": 4,
         "AP": 1,
         "DMG": 1,
-        "specialRuleIds": [
+        "ruleIds": [
             "CRITDMG2"
         ]
     },
@@ -223,7 +223,7 @@
         "HIT": 3,
         "AP": 2,
         "DMG": 2,
-        "specialRuleIds": [
+        "ruleIds": [
             "SLOWATTACK",
             "LONGRANGE",
             "SCOPED"

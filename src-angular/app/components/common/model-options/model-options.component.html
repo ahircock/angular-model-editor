@@ -13,7 +13,7 @@
           <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
           <span *ngIf="attack.type==='MELEE'">MELEE</span>
           , {{attack.DICE}}D6, HIT {{attack.HIT}}+, AP{{attack.AP}}, D{{attack.DMG}})
-        <div *ngFor="let actionRule of attack.specialRules; index as actionRuleIndex" class="attack-rule-box">
+        <div *ngFor="let actionRule of attack.rules; index as actionRuleIndex" class="attack-rule-box">
             <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
         </div>
       </div>

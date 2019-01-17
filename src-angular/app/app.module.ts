@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 // services
 import { UserService } from './services/user.service';
 import { ModelDataService } from './services/model-data.service';
-import { SpecialRuleDataService } from './services/special-rule-data.service';
+import { RuleDataService } from './services/rule-data.service';
 import { ForceDataService } from './services/force-data.service';
 import { AttackDataService } from './services/attack-data.service';
 import { DataAccessService } from './services/data-access.service';
@@ -61,7 +61,7 @@ import { WindowService } from './services/window.service';
     { provide: ErrorHandler, useClass: AppErrorHandler },
     UserService,
     ModelDataService,
-    SpecialRuleDataService,
+    RuleDataService,
     ForceDataService,
     AttackDataService,
     DataAccessService,

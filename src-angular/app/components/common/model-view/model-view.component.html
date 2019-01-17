@@ -49,7 +49,7 @@
       <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
       <span *ngIf="attack.type==='MELEE'">MELEE</span>
       , {{attack.DICE}}D6, {{attack.HIT}}+, AP{{attack.AP}}, D{{attack.DMG}})
-    <div *ngFor="let actionRule of attack.specialRules" class="action-rule-box">
+    <div *ngFor="let actionRule of attack.rules" class="action-rule-box">
         <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
     </div>
   </div>
@@ -58,8 +58,8 @@
   
   <!-- MODEL ABILITIES -->
   <div *ngIf="model.abilities.length > 0" class="section-title font-normal">ABILITIES</div>
-  <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule">
-    <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
+  <div *ngFor="let ability of model.abilities; index as ruleIndex" class="special-rule">
+    <b>{{ability.ruleName}}</b> - <span [innerHTML]="ability.ruleText"></span>
   </div>
 
 </div>

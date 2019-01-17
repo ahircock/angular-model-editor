@@ -1,6 +1,6 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service';
+import { RuleData, RuleDataService } from './rule-data.service';
 import { UserService } from './user.service';
 
 /**
@@ -23,7 +23,7 @@ export interface AttackData {
   HIT: number;
   AP: number;
   DMG: number;
-  specialRules: SpecialRuleData[];
+  rules: RuleData[];
 }
 
 /**
@@ -38,7 +38,7 @@ interface AttackDBData {
   HIT: number;
   AP: number;
   DMG: number;
-  specialRuleIds: string[];
+  ruleIds: string[];
 }
 
 @Injectable()
@@ -48,7 +48,7 @@ export class AttackDataService {
 
   constructor(
     private dbConnectService: DataAccessService,
-    private specialRuleDataService: SpecialRuleDataService,
+    private ruleDataService: RuleDataService,
     private userService: UserService
   ) {
 
@@ -101,13 +101,13 @@ export class AttackDataService {
       HIT: dbData.HIT,
       AP: dbData.AP,
       DMG: dbData.DMG,
-      specialRules: []
+      rules: []
     };
 
     // copy over the special rules
-    for ( const ruleId of dbData.specialRuleIds ) {
-      const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
-      appData.specialRules.push( specialRuleData );
+    for ( const ruleId of dbData.ruleIds ) {
+      const ruleData: RuleData = await this.ruleDataService.getSpecialRuleById(ruleId);
+      appData.rules.push( ruleData );
     }
 
     return appData;

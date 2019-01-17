@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service';
+import { RuleData, RuleDataService } from './rule-data.service';
 import { AttackData, AttackDataService } from './attack-data.service';
 import { UserService } from './user.service';
 
@@ -16,7 +16,7 @@ export interface ModelData {
   WN: number;
   NE: number;
   attacks: ModelAttackData[];
-  abilities: SpecialRuleData[];
+  abilities: RuleData[];
   options: ModelOptionData[];
 }
 
@@ -33,7 +33,7 @@ export interface ModelOptionData {
 export interface ModelOptionChoiceData {
   cost: number;
   attacks: ModelAttackData[];
-  abilities: SpecialRuleData[];
+  abilities: RuleData[];
 }
 
 /**
@@ -59,7 +59,7 @@ interface ModelAttackDBData {
   attackId: string;
 }
 interface ModelAbilityDBData {
-  specialRuleId: string;
+  ruleId: string;
 }
 interface ModelOptionDBData {
   id: string;
@@ -78,11 +78,13 @@ export class ModelDataService {
   private modelCache: ModelData[] = [];
 
   constructor(
-    private specialRuleDataService: SpecialRuleDataService,
+    private ruleDataService: RuleDataService,
     private attackDataService: AttackDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
+    // subscribe to events from the other services
+    this.userService.logoutEvent.subscribe( () => this.logout() );
   }
 
   /**
@@ -180,8 +182,8 @@ export class ModelDataService {
 
     // copy the special rules onto the model
     for ( const ability of modelDBData.abilities ) {
-      const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ability.specialRuleId);
-      modelData.abilities.push( specialRuleData );
+      const ruleData: RuleData = await this.ruleDataService.getSpecialRuleById(ability.ruleId);
+      modelData.abilities.push( ruleData );
     }
 
     // copy the attacks onto the model
@@ -199,7 +201,7 @@ export class ModelDataService {
         HIT: attack.HIT,
         AP: attack.AP,
         DMG: attack.DMG,
-        specialRules: attack.specialRules
+        rules: attack.rules
       };
       modelData.attacks.push( modelAttack );
     }
@@ -235,15 +237,15 @@ export class ModelDataService {
             HIT: attack.HIT,
             AP: attack.AP,
             DMG: attack.DMG,
-            specialRules: attack.specialRules
+            rules: attack.rules
           };
           choice.attacks.push( modelAttack );
         }
 
         // copy the special rules onto the model
         for ( const ability of choiceDB.abilities ) {
-          const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ability.specialRuleId);
-          choice.abilities.push( specialRuleData );
+          const ruleData: RuleData = await this.ruleDataService.getSpecialRuleById(ability.ruleId);
+          choice.abilities.push( ruleData );
         }
 
         modelOption.choices.push(choice);
@@ -267,7 +269,7 @@ export class ModelDataService {
     // load the rule objects form the DB
     const modelDBList: ModelDBData[] = await this.dbConnectService.getModels();
 
-    // convert everything to a SpecialRuleData and add it to the cache
+    // convert everything to a RuleData and add it to the cache
     for ( const modelDB of modelDBList ) {
       this.modelCache.push( await this.convertDBToModelData(modelDB) );
     }

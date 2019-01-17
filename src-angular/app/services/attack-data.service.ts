@@ -106,7 +106,7 @@ export class AttackDataService {
 
     // copy over the special rules
     for ( const ruleId of dbData.ruleIds ) {
-      const ruleData: RuleData = await this.ruleDataService.getSpecialRuleById(ruleId);
+      const ruleData: RuleData = await this.ruleDataService.getRuleById(ruleId);
       appData.rules.push( ruleData );
     }
 

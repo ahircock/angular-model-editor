@@ -38,7 +38,7 @@ export class RuleDataService {
    * Returns the special rule with the given ID
    * @param ruleId _id of the rule that you want to return
    */
-  async getSpecialRuleById( ruleId: string ): Promise<RuleData> {
+  async getRuleById( ruleId: string ): Promise<RuleData> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.ruleCache.length === 0 ) {

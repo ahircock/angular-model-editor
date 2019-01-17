@@ -186,7 +186,7 @@ export class ModelDataService {
 
     // copy the special rules onto the model
     for ( const ability of modelDBData.abilities ) {
-      const ruleData: RuleData = await this.ruleDataService.getSpecialRuleById(ability.ruleId);
+      const ruleData: RuleData = await this.ruleDataService.getRuleById(ability.ruleId);
       modelData.abilities.push( ruleData );
     }
 
@@ -250,7 +250,7 @@ export class ModelDataService {
 
         // copy the special rules onto the model
         for ( const ability of choiceDB.abilities ) {
-          const ruleData: RuleData = await this.ruleDataService.getSpecialRuleById(ability.ruleId);
+          const ruleData: RuleData = await this.ruleDataService.getRuleById(ability.ruleId);
           choice.abilities.push( ruleData );
         }
 

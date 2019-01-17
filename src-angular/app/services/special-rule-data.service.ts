@@ -37,28 +37,6 @@ export class SpecialRuleDataService {
   }
 
   /**
-   * Internal method that will return an arracy of special rules based on the type (model, special or attack)
-   * @param type must be one of the official rule types: "model", "special", or "action"
-   */
-  async getAllSpecialRules(): Promise<SpecialRuleData[]> {
-
-    // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.ruleCache.length === 0 ) {
-      await this.loadCache();
-    }
-
-    // filter down the array to only include those with the correct type
-    const returnList: SpecialRuleData[] = [];
-    for ( const rule of this.ruleCache ) {
-      returnList.push( rule );
-    }
-
-    // sor the data and then return it
-    returnList.sort(this.sortRuleData);
-    return returnList;
-  }
-
-  /**
    * Returns the special rule with the given ID
    * @param ruleId _id of the rule that you want to return
    */

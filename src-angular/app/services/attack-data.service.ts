@@ -4,7 +4,7 @@ import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.ser
 import { UserService } from './user.service';
 
 /**
- * List of possible action types
+ * List of possible attack types
  */
 export const enum AttackType {
   Melee = 'MELEE',
@@ -12,7 +12,7 @@ export const enum AttackType {
 }
 
 /**
- * Structure of action data
+ * Structure of attack data
  */
 export interface AttackData {
   _id: string;
@@ -27,9 +27,9 @@ export interface AttackData {
 }
 
 /**
-* Structure of Action data, as stored in the database
+* Structure of attack data, as stored in the database
 */
-interface ActionDBData {
+interface AttackDBData {
   _id: string;
   type: AttackType;
   traits: string;
@@ -56,19 +56,7 @@ export class AttackDataService {
     this.userService.logoutEvent.subscribe( () => this.logout() );
   }
 
-  async getMeleeActions(): Promise<AttackData[]> {
-    return this.getActionsByType( 'MELEE' );
-  }
-
-  async getRangedActions(): Promise<AttackData[]> {
-    return this.getActionsByType( 'RANGED' );
-  }
-
-  async getSpecialActions(): Promise<AttackData[]> {
-    return this.getActionsByType( 'SPECIAL' );
-  }
-
-  async getActionById( actionId: string ): Promise<AttackData> {
+  async getAttackById( actionId: string ): Promise<AttackData> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
     if ( this.attackCache.length === 0 ) {
@@ -84,32 +72,13 @@ export class AttackDataService {
 
   }
 
-  private async getActionsByType( type: string ): Promise<AttackData[]> {
-
-    // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.attackCache.length === 0 ) {
-      await this.loadCache();
-    }
-
-    // filter down the array to only include those with the correct type
-    const returnList: AttackData[] = [];
-    for ( const action of this.attackCache ) {
-      if ( action.type === type ) {
-        returnList.push( action );
-      }
-    }
-
-    // return the array of actions
-    return returnList;
-  }
-
   private async loadCache() {
 
     // clear out the rule cache
     const prepareCache: AttackData[] = [];
 
     // load the rule objects form the DB
-    const actionDBList: ActionDBData[] = await this.dbConnectService.getAttacks();
+    const actionDBList: AttackDBData[] = await this.dbConnectService.getAttacks();
 
     // convert everything to the application objects and add it to the cache
     for ( const actionDB of actionDBList ) {
@@ -120,7 +89,7 @@ export class AttackDataService {
     this.attackCache = prepareCache;
   }
 
-  private async convertDBToAppData( dbData: ActionDBData ): Promise<AttackData> {
+  private async convertDBToAppData( dbData: AttackDBData ): Promise<AttackData> {
 
     // create an application data object
     const appData: AttackData = {

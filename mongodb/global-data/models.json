@@ -23,7 +23,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Arc Maul",
-                                "actionId": "40K.ARCMAUL.2D6.4+"
+                                "attackId": "40K.ARCMAUL.2D6.4+"
                             }
                         ],
                         "actions": [],
@@ -34,7 +34,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Power Sword",
-                                "actionId": "40K.POWERSWORD.2D6.4+"
+                                "attackId": "40K.POWERSWORD.2D6.4+"
                             }
                         ],
                         "actions": [],
@@ -45,7 +45,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Taser Goad",
-                                "actionId": "40K.TASERGOAD.2D6.4+"
+                                "attackId": "40K.TASERGOAD.2D6.4+"
                             }
                         ],
                         "actions": [],
@@ -62,7 +62,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Radium Pistol",
-                                "actionId": "40K.RADIUMPISTOL.3+"
+                                "attackId": "40K.RADIUMPISTOL.3+"
                             }
                         ],
                         "actions": [],
@@ -73,7 +73,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Arc Pistol",
-                                "actionId": "40K.ARCPISTOL.3+"
+                                "attackId": "40K.ARCPISTOL.3+"
                             }
                         ],
                         "actions": [],
@@ -84,7 +84,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Phosphor Blast Pistol",
-                                "actionId": "40K.PHOSPHORPISTOL.3+"
+                                "attackId": "40K.PHOSPHORPISTOL.3+"
                             }
                         ],
                         "actions": [],
@@ -110,7 +110,7 @@
         "attacks": [
             {
                 "modelActionName": "Bionic Hand",
-                "actionId": "40K.STDMELEE.1D6.4+"
+                "attackId": "40K.STDMELEE.1D6.4+"
             }
         ],
         "options": [
@@ -123,7 +123,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Arc Rifle",
-                                "actionId": "40K.ARCRIFLE.3+"
+                                "attackId": "40K.ARCRIFLE.3+"
                             }
                         ],
                         "actions": [],
@@ -134,7 +134,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Plasma Caliver",
-                                "actionId": "40K.PLASMACALIVER.3+"
+                                "attackId": "40K.PLASMACALIVER.3+"
                             }
                         ],
                         "actions": [],
@@ -160,11 +160,11 @@
         "attacks": [
             {
                 "modelActionName": "Bionic Hand",
-                "actionId": "40K.STDMELEE.1D6.4+"
+                "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
                 "modelActionName": "Galvanic Rifle",
-                "actionId": "40K.GALVANICRIFLE.3+"
+                "attackId": "40K.GALVANICRIFLE.3+"
             }
         ],
         "options": []
@@ -185,11 +185,11 @@
         "attacks": [
             {
                 "modelActionName": "Bionic Hand",
-                "actionId": "40K.STDMELEE.1D6.4+"
+                "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
                 "modelActionName": "Radium Carbine",
-                "actionId": "40K.RADIUMCARBINE.3+"
+                "attackId": "40K.RADIUMCARBINE.3+"
             }
         ],
         "options": []
@@ -210,11 +210,11 @@
         "attacks": [
             {
                 "modelActionName": "Bionic Hand",
-                "actionId": "40K.STDMELEE.1D6.4+"
+                "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
                 "modelActionName": "Transuranic Arquebus",
-                "actionId": "40K.TRANSARQUE.3+"
+                "attackId": "40K.TRANSARQUE.3+"
             }
         ],
         "options": []
@@ -239,11 +239,11 @@
         "attacks": [
             {
                 "modelActionName": "Guard Knife",
-                "actionId": "40K.STDMELEE.1D6.4+"
+                "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
                 "modelActionName": "Lasgun",
-                "actionId": "40K.LASGUN.4+"
+                "attackId": "40K.LASGUN.4+"
             }
         ],
         "options": []
@@ -272,7 +272,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Chainsword",
-                                "actionId": "40K.CHAINSWORD.3D6.4+"
+                                "attackId": "40K.CHAINSWORD.3D6.4+"
                             }
                         ],
                         "actions": [],
@@ -283,7 +283,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Power Sword",
-                                "actionId": "40K.POWERSWORD.2D6.4+"
+                                "attackId": "40K.POWERSWORD.2D6.4+"
                             }
                         ],
                         "actions": [],
@@ -300,7 +300,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Laspistol",
-                                "actionId": "40K.LASPISTOL.4+"
+                                "attackId": "40K.LASPISTOL.4+"
                             }
                         ],
                         "actions": [],
@@ -311,7 +311,7 @@
                         "attacks": [
                             {
                                 "modelActionName": "Plasma Pistol",
-                                "actionId": "40K.PLASMAPISTOL.4+"
+                                "attackId": "40K.PLASMAPISTOL.4+"
                             }
                         ],
                         "actions": [],

@@ -57,7 +57,7 @@ interface ModelDBData {
 }
 interface ModelAttackDBData {
   modelActionName: string;
-  actionId: string;
+  attackId: string;
 }
 interface ModelAbilityDBData {
   specialRuleId: string;
@@ -81,7 +81,7 @@ export class ModelDataService {
 
   constructor(
     private specialRuleDataService: SpecialRuleDataService,
-    private AttackDataService: AttackDataService,
+    private attackDataService: AttackDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
@@ -189,7 +189,7 @@ export class ModelDataService {
     // copy the actions onto the model
     for ( const actionDB of modelDBData.attacks ) {
 
-      const action: AttackData = await this.AttackDataService.getActionById( actionDB.actionId );
+      const action: AttackData = await this.attackDataService.getAttackById( actionDB.attackId );
 
       const modelAction: ModelAttackData = {
         modelActionName: actionDB.modelActionName,
@@ -227,7 +227,7 @@ export class ModelDataService {
 
         // copy the attacks into the choice
         for ( const attackDB of choiceDB.attacks ) {
-          const action: AttackData = await this.AttackDataService.getActionById( attackDB.actionId );
+          const action: AttackData = await this.attackDataService.getAttackById( attackDB.attackId );
           const attack: ModelAttackData = {
             modelActionName: attackDB.modelActionName,
             _id: action._id,
@@ -245,7 +245,7 @@ export class ModelDataService {
 
         // copy the actions into the choice
         for ( const actionDB of choiceDB.actions ) {
-          const action: AttackData = await this.AttackDataService.getActionById( actionDB.actionId );
+          const action: AttackData = await this.attackDataService.getAttackById( actionDB.attackId );
           const actionModel: ModelAttackData = {
             modelActionName: actionDB.modelActionName,
             _id: action._id,

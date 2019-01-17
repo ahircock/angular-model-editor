@@ -27,6 +27,8 @@ export interface ModelAttackData extends AttackData {
 export interface ModelOptionData {
   id: string;
   description: string;
+  optional: boolean;
+  multiSelect: boolean;
   choices: ModelOptionChoiceData[];
 }
 
@@ -64,6 +66,8 @@ interface ModelAbilityDBData {
 interface ModelOptionDBData {
   id: string;
   description: string;
+  optional: boolean;
+  multiSelect: boolean;
   choices: ModelOptionChoiceDBData[];
 }
 interface ModelOptionChoiceDBData {
@@ -212,6 +216,8 @@ export class ModelDataService {
       const modelOption: ModelOptionData = {
         id: optionDB.id,
         description: optionDB.description,
+        optional: optionDB.optional ? optionDB.optional : false,
+        multiSelect : optionDB.multiSelect ? optionDB.multiSelect : false,
         choices: []
       };
 

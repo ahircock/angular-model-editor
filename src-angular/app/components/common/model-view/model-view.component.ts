@@ -29,12 +29,6 @@ export class ModelViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectPortrait( portrait: string ) {
-    this.model.picture = portrait;
-    this.saveModelData();
-    this.showModelPortraitsDropdown = false;
-  }
-
   async saveModelData() {
     this.updated.emit();
   }

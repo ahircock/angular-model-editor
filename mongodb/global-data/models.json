@@ -318,6 +318,34 @@
                         "abilities": []
                     }
                 ]
+            },
+            {
+                "id": "EQUIP",
+                "description": "Choose equipment",
+                "optional": true,
+                "multiSelect": true,
+                "choices": [
+                    {
+                        "cost": 1,
+                        "attacks": [],
+                        "actions": [],
+                        "abilities": [
+                            {
+                                "ruleId": "MEDKIT"
+                            }
+                        ]
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [],
+                        "actions": [],
+                        "abilities": [
+                            {
+                                "ruleId": "STIMPACK"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     }

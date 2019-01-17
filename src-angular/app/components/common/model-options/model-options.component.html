@@ -1,13 +1,18 @@
 <!-- THE CONTENT AREA -->
 <div *ngIf="model" class="content-section">
 
+  <!-- LIST OPTIONS -->
   <div *ngFor="let option of model.options">
     <div class="option-description">{{option.description}}</div>
+
+    <!-- LIST CHOICES FOR OPTION -->
     <div *ngFor="let choice of option.choices; index as choiceIndex" 
       class="option-choice box-light-hover" 
       (click)="selectChoice(option.id, choiceIndex)"
       [class.selected]="isChoiceSelected(option.id, choiceIndex)"
       >
+
+      <!-- LIST ATTACKS FOR CHOICE -->
       <div *ngFor="let attack of choice.attacks">
         <span class="cost-box">+{{choice.cost}}pts</span> <b>{{attack.modelAttackName}}</b> ( 
           <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
@@ -17,6 +22,12 @@
             <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
         </div>
       </div>
+
+      <!-- LIST ABILITIES FOR CHOICE -->
+      <div *ngFor="let ability of choice.abilities" class="special-rule-box">
+        <span class="cost-box">+{{choice.cost}}pts</span> <b>{{ability.ruleName}}</b> - <span [innerHTML]="ability.ruleText"></span>
+      </div>
+
     </div>
   </div>
 </div>

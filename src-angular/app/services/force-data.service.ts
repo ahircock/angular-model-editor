@@ -24,7 +24,7 @@ export interface ForceModelData extends ModelData {
 }
 export interface ForceModelOptionChoiceData {
   optionId: string;
-  choiceIndex: number;
+  choiceIndexes: number[];
 }
 
 /**
@@ -45,7 +45,7 @@ interface ForceModelDBData {
 }
 export interface ForceModelOptionChoiceDBData {
   optionId: string;
-  choiceIndex: number;
+  choiceIndexes: number[];
 }
 
 
@@ -208,9 +208,16 @@ export class ForceDataService {
 
     // default the options to the first choice in the list
     for ( const option of model.options ) {
+
+      // if the choice mandatory, then select the first choice
+      const choiceIndexes = [];
+      if ( !option.optional ) {
+        choiceIndexes.push(0);
+      }
+
       const optionChoice: ForceModelOptionChoiceData = {
         optionId: option.id,
-        choiceIndex: 0
+        choiceIndexes: choiceIndexes
       };
       newForceModelData.optionChoices.push(optionChoice);
     }
@@ -221,15 +228,6 @@ export class ForceDataService {
     // update the force in the DB
     return await this.updateForce( force );
   }
-
-  async updateModelOptionChoice( force: ForceData, model: ForceModelData, optionId: string, choiceIndex: number ) {
-    const optionChoice = model.optionChoices.find( element => element.optionId === optionId );
-    optionChoice.choiceIndex = choiceIndex;
-
-    // update the force in the DB
-    return await this.updateForce( force );
-  }
-
 
   /**
    * This method will convert a ForceDBData record (which is used internally) into a ForceData record (which
@@ -291,14 +289,16 @@ export class ForceDataService {
     // go through each option, and update the attacks, actions, abilities and cost
     for ( const modelOptionChoice of forceModelData.optionChoices ) {
       const option = forceModelData.options.find( element => element.id === modelOptionChoice.optionId );
-      const optionChoice = option.choices[modelOptionChoice.choiceIndex];
-      for ( const attack of optionChoice.attacks ) {
-        forceModelData.attacks.push( attack );
+      for ( const choiceIndex of modelOptionChoice.choiceIndexes ) {
+        const optionChoice = option.choices[choiceIndex];
+        for ( const attack of optionChoice.attacks ) {
+          forceModelData.attacks.push( attack );
+        }
+        for ( const ability of optionChoice.abilities ) {
+          forceModelData.abilities.push( ability );
+        }
+        forceModelData.cost += optionChoice.cost;
       }
-      for ( const ability of optionChoice.abilities ) {
-        forceModelData.abilities.push( ability );
-      }
-      forceModelData.cost += optionChoice.cost;
     }
 
     return forceModelData;

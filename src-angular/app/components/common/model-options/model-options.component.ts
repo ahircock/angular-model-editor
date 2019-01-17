@@ -32,13 +32,38 @@ export class ModelOptionsComponent implements OnInit {
 
   isChoiceSelected(optionId: string, choiceIndex: number) {
     const option = this.model.optionChoices.find( element => element.optionId === optionId );
-    return option.choiceIndex === choiceIndex ? true : false;
+    const value = option.choiceIndexes.find( element => element === choiceIndex );
+    return typeof value === 'undefined' ? false : true;
   }
 
   async selectChoice( optionId: string, choiceIndex: number ) {
-    const optionChoice = this.model.optionChoices.find( element => element.optionId === optionId );
-    optionChoice.choiceIndex = choiceIndex;
-    this.updated.emit();
+
+    // find out if the choice is optional
+    const option = this.model.options.find( element => element.id === optionId );
+    const optional = option.optional;
+
+    // get the list of possible choices for this option
+    const optionChoices = this.model.optionChoices.find( element => element.optionId === optionId );
+
+    // find out if this choice has already been selected
+    const indexChoiceIndexes = optionChoices.choiceIndexes.findIndex( element => element === choiceIndex );
+    const alreadySelected = indexChoiceIndexes !== -1;
+
+    // if the choice was previously selected, and it is optional, then de-select it
+    if ( alreadySelected && option.optional ) {
+      optionChoices.choiceIndexes.splice(indexChoiceIndexes, 1);
+      this.updated.emit();
+
+    // if the choice has changed and it is multi-select, then add a new selection
+    } else if ( !alreadySelected && option.multiSelect ) {
+      optionChoices.choiceIndexes.push(choiceIndex);
+      this.updated.emit();
+
+    // if the choice has changed but it is not multi-select, then simply replace the existing one
+    } else if ( !alreadySelected && !option.multiSelect ) {
+      optionChoices.choiceIndexes[0] = choiceIndex;
+      this.updated.emit();
+    }
   }
 
 }

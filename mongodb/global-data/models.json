@@ -1,14 +1,14 @@
 [
     {
-        "_id": "40K.ADMIL.SERGEANT",
+        "_id": "40K.ADMECH.SKITALPHA",
         "userId": "global",
-        "name": "Guard Sergeant",
+        "name": "Skitarri Alpha",
         "traits": "",
-        "picture": "enforcer-commander.jpg",
-        "cost": 7,
+        "picture": "skitarii-vanguard-alpha.jpg",
+        "cost": 10,
         "PW": 1,
         "SP": 5,
-        "AR": 5,
+        "AR": 4,
         "WN": 2,
         "NE": 4,
         "abilities": [],
@@ -19,24 +19,33 @@
                 "description": "Choose a melee weapon",
                 "choices": [
                     {
-                        "description": "Chainsword",
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelActionName": "Chainsword",
-                                "actionId": "40K.CHAINSWORD.3D6.4+"
+                                "modelActionName": "Arc Maul",
+                                "actionId": "40K.ARCMAUL.2D6.4+"
                             }
                         ],
                         "actions": [],
                         "abilities": []
                     },
                     {
-                        "description": "Power Sword",
                         "cost": 1,
                         "attacks": [
                             {
                                 "modelActionName": "Power Sword",
                                 "actionId": "40K.POWERSWORD.2D6.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelActionName": "Taser Goad",
+                                "actionId": "40K.TASERGOAD.2D6.4+"
                             }
                         ],
                         "actions": [],
@@ -49,24 +58,33 @@
                 "description": "Choose a ranged weapon",
                 "choices": [
                     {
-                        "description": "Laspistol",
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelActionName": "Laspistol",
-                                "actionId": "40K.LASPISTOL.4+"
+                                "modelActionName": "Radium Pistol",
+                                "actionId": "40K.RADIUMPISTOL.3+"
                             }
                         ],
                         "actions": [],
                         "abilities": []
                     },
                     {
-                        "description": "Plasma Pistol",
-                        "cost": 1,
+                        "cost": 0,
                         "attacks": [
                             {
-                                "modelActionName": "Plasma Pistol",
-                                "actionId": "40K.PLASMAPISTOL.4+"
+                                "modelActionName": "Arc Pistol",
+                                "actionId": "40K.ARCPISTOL.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelActionName": "Phosphor Blast Pistol",
+                                "actionId": "40K.PHOSPHORPISTOL.3+"
                             }
                         ],
                         "actions": [],
@@ -75,6 +93,131 @@
                 ]
             }
         ]
+    },
+    {
+        "_id": "40K.ADMECH.SKITGUNNER",
+        "userId": "global",
+        "name": "Skitarri Gunner",
+        "traits": "",
+        "picture": "skitarii-vanguard-plasmacaliver.jpg",
+        "cost": 10,
+        "PW": 0,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "actions": [
+            {
+                "modelActionName": "Bionic Hand",
+                "actionId": "40K.STDMELEE.1D6.4+"
+            }
+        ],
+        "options": [
+            {
+                "id": "RANGED",
+                "description": "Choose a ranged weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelActionName": "Arc Rifle",
+                                "actionId": "40K.ARCRIFLE.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 3,
+                        "attacks": [
+                            {
+                                "modelActionName": "Plasma Caliver",
+                                "actionId": "40K.PLASMACALIVER.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "40K.ADMECH.SKITRANGER",
+        "userId": "global",
+        "name": "Skitarii Ranger",
+        "traits": "",
+        "picture": "skitarii-ranger.jpg",
+        "cost": 9,
+        "PW": 0,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "actions": [
+            {
+                "modelActionName": "Bionic Hand",
+                "actionId": "40K.STDMELEE.1D6.4+"
+            },
+            {
+                "modelActionName": "Galvanic Rifle",
+                "actionId": "40K.GALVANICRIFLE.3+"
+            }
+        ],
+        "options": []
+    },
+    {
+        "_id": "40K.ADMECH.SKITVANGUARD",
+        "userId": "global",
+        "name": "Skitarii Vanguard",
+        "traits": "",
+        "picture": "skitarii-vanguard.jpg",
+        "cost": 9,
+        "PW": 0,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "actions": [
+            {
+                "modelActionName": "Bionic Hand",
+                "actionId": "40K.STDMELEE.1D6.4+"
+            },
+            {
+                "modelActionName": "Radium Carbine",
+                "actionId": "40K.RADIUMCARBINE.3+"
+            }
+        ],
+        "options": []
+    },
+    {
+        "_id": "40K.ADMECH.SKITSNIPER",
+        "userId": "global",
+        "name": "Skitarii Sniper",
+        "traits": "",
+        "picture": "skitarii-ranger-arquebus.jpg",
+        "cost": 15,
+        "PW": 0,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "actions": [
+            {
+                "modelActionName": "Bionic Hand",
+                "actionId": "40K.STDMELEE.1D6.4+"
+            },
+            {
+                "modelActionName": "Transuranic Arquebus",
+                "actionId": "40K.TRANSARQUE.3+"
+            }
+        ],
+        "options": []
     },
     {
         "_id": "40K.ADMIL.GUARDSMAN",
@@ -96,7 +239,7 @@
         "actions": [
             {
                 "modelActionName": "Guard Knife",
-                "actionId": "40K.STDMELEE.1D6,4+"
+                "actionId": "40K.STDMELEE.1D6.4+"
             },
             {
                 "modelActionName": "Lasgun",
@@ -104,5 +247,78 @@
             }
         ],
         "options": []
+    },
+    {
+        "_id": "40K.ADMIL.SERGEANT",
+        "userId": "global",
+        "name": "Guard Sergeant",
+        "traits": "",
+        "picture": "enforcer-commander.jpg",
+        "cost": 7,
+        "PW": 1,
+        "SP": 5,
+        "AR": 5,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "actions": [],
+        "options": [
+            {
+                "id": "MELEE",
+                "description": "Choose a melee weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelActionName": "Chainsword",
+                                "actionId": "40K.CHAINSWORD.3D6.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelActionName": "Power Sword",
+                                "actionId": "40K.POWERSWORD.2D6.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            },
+            {
+                "id": "RANGED",
+                "description": "Choose a ranged weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelActionName": "Laspistol",
+                                "actionId": "40K.LASPISTOL.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelActionName": "Plasma Pistol",
+                                "actionId": "40K.PLASMAPISTOL.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            }
+        ]
     }
 ]

@@ -1,13 +1,37 @@
 [
     {
-        "_id": "40K.STDMELEE.1D6,4+",
+        "_id": "40K.ARCMAUL.2D6.4+",
         "userId": "global",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
-        "DICE": 1,
+        "DICE": 2,
         "HIT": 4,
-        "AP": 0,
+        "AP": 2,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.ARCPISTOL.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 1,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.ARCRIFLE.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 24,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 1,
         "DMG": 1,
         "specialRuleIds": []
     },
@@ -24,40 +48,16 @@
         "specialRuleIds": []
     },
     {
-        "_id": "40K.POWERSWORD.2D6.4+",
-        "userId": "global",
-        "type": "MELEE",
-        "traits": "",
-        "RNG": 0,
-        "DICE": 2,
-        "HIT": 4,
-        "AP": 3,
-        "DMG": 1,
-        "specialRuleIds": []
-    },
-    {
-        "_id": "40K.LASPISTOL.4+",
+        "_id": "40K.GALVANICRIFLE.3+",
         "userId": "global",
         "type": "RANGED",
         "traits": "",
-        "RNG": 12,
-        "DICE": 1,
-        "HIT": 4,
+        "RNG": 30,
+        "DICE": 2,
+        "HIT": 3,
         "AP": 0,
         "DMG": 1,
-        "specialRuleIds": ["PISTOL"]
-    },
-    {
-        "_id": "40K.PLASMAPISTOL.4+",
-        "userId": "global",
-        "type": "RANGED",
-        "traits": "",
-        "RNG": 12,
-        "DICE": 1,
-        "HIT": 4,
-        "AP": 2,
-        "DMG": 1,
-        "specialRuleIds": ["PISTOL","PLASMA"]
+        "specialRuleIds": []
     },
     {
         "_id": "40K.LASGUN.4+",
@@ -70,5 +70,163 @@
         "AP": 0,
         "DMG": 1,
         "specialRuleIds": []
+    },
+    {
+        "_id": "40K.LASPISTOL.4+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 2,
+        "HIT": 4,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.PHOSPHORPISTOL.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": [
+            "IGNORECOVER"
+        ]
+    },
+    {
+        "_id": "40K.PLASMACALIVER.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 18,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 2,
+        "DMG": 1,
+        "specialRuleIds": [
+            "PLASMA"
+        ]
+    },
+    {
+        "_id": "40K.PLASMAPISTOL.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 2,
+        "DMG": 1,
+        "specialRuleIds": [
+            "PLASMA"
+        ]
+    },
+    {
+        "_id": "40K.PLASMAPISTOL.4+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 2,
+        "HIT": 4,
+        "AP": 2,
+        "DMG": 1,
+        "specialRuleIds": [
+            "PLASMA"
+        ]
+    },
+    {
+        "_id": "40K.POWERSWORD.2D6.4+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 2,
+        "HIT": 4,
+        "AP": 3,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.RADIUMCARBINE.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 18,
+        "DICE": 3,
+        "HIT": 3,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.RADIUMPISTOL.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 12,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.STDMELEE.1D6.3+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 1,
+        "HIT": 3,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.STDMELEE.1D6.4+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 1,
+        "HIT": 4,
+        "AP": 0,
+        "DMG": 1,
+        "specialRuleIds": []
+    },
+    {
+        "_id": "40K.TASERGOAD.2D6.4+",
+        "userId": "global",
+        "type": "MELEE",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 2,
+        "HIT": 4,
+        "AP": 1,
+        "DMG": 1,
+        "specialRuleIds": [
+            "CRITDMG2"
+        ]
+    },
+    {
+        "_id": "40K.TRANSARQUE.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 60,
+        "DICE": 1,
+        "HIT": 3,
+        "AP": 2,
+        "DMG": 2,
+        "specialRuleIds": [
+            "SLOWATTACK",
+            "LONGRANGE",
+            "SCOPED"
+        ]
     }
 ]

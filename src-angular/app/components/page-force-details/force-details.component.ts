@@ -67,11 +67,7 @@ export class ForceDetailsComponent implements OnInit {
   async addModel( model: ModelData ) {
 
     // add the model to the force
-    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1, forceModelName: model.name}, model );
-    this.force.models.push ( newForceModelData );
-
-    // update the force in the DB
-    this.force = await this.forceDataService.updateForce( this.force );
+    this.force = await this.forceDataService.addModel( this.force, model );
 
     // select the new model (which should be the last one in the list)
     this.selectedModelIndex = this.force.models.length - 1;

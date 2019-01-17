@@ -17,10 +17,25 @@ export interface ModelData {
   NE: number;
   specialRules: SpecialRuleData[];
   actions: ModelActionData[];
+  options: ModelOptionData[];
 }
 
 export interface ModelActionData extends ActionData {
   modelActionName: string;
+}
+
+export interface ModelOptionData {
+  id: string;
+  description: string;
+  choices: ModelOptionChoiceData[];
+}
+
+export interface ModelOptionChoiceData {
+  description: string;
+  cost: number;
+  attacks: ModelActionData[];
+  actions: ModelActionData[];
+  abilities: SpecialRuleData[];
 }
 
 /**
@@ -37,12 +52,28 @@ interface ModelDBData {
   AR: number;
   WN: number;
   NE: number;
-  specialRuleIds: string[];
   actions: ModelActionDBData[];
+  abilities: ModelAbilityDBData[];
+  options: ModelOptionDBData[];
 }
 interface ModelActionDBData {
   modelActionName: string;
   actionId: string;
+}
+interface ModelAbilityDBData {
+  specialRuleId: string;
+}
+interface ModelOptionDBData {
+  id: string;
+  description: string;
+  choices: ModelOptionChoiceDBData[];
+}
+interface ModelOptionChoiceDBData {
+  description: string;
+  cost: number;
+  attacks: ModelActionDBData[];
+  actions: ModelActionDBData[];
+  abilities: ModelAbilityDBData[];
 }
 
 @Injectable()
@@ -143,16 +174,17 @@ export class ModelDataService {
       WN: modelDBData.WN ? modelDBData.WN : 2,
       NE: modelDBData.NE ? modelDBData.NE : 4,
       specialRules: [],
-      actions: []
+      actions: [],
+      options: []
     };
 
-    // copy over the model special rules
-    for ( const ruleId of modelDBData.specialRuleIds ) {
-      const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ruleId);
+    // copy the special rules onto the model
+    for ( const ability of modelDBData.abilities ) {
+      const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ability.specialRuleId);
       modelData.specialRules.push( specialRuleData );
     }
 
-    // copy over the actions
+    // copy the actions onto the model
     for ( const actionDB of modelDBData.actions ) {
 
       const action: ActionData = await this.actionDataService.getActionById( actionDB.actionId );
@@ -169,10 +201,75 @@ export class ModelDataService {
         DMG: action.DMG,
         specialRules: action.specialRules
       };
-      // for ( let rule of action.specialRules ) {
-      //   modelAction.specialRules.push( rule );
-      // }
       modelData.actions.push( modelAction );
+    }
+
+    // copy the options onto the model
+    for ( const optionDB of modelDBData.options ) {
+
+      const modelOption: ModelOptionData = {
+        id: optionDB.id,
+        description: optionDB.description,
+        choices: []
+      };
+
+      // copy the choices into the option
+      for ( const choiceDB of optionDB.choices ) {
+
+        const choice: ModelOptionChoiceData = {
+          description: choiceDB.description,
+          cost: choiceDB.cost,
+          attacks: [],
+          actions: [],
+          abilities: []
+        };
+
+        // copy the attacks into the choice
+        for ( const attackDB of choiceDB.attacks ) {
+          const action: ActionData = await this.actionDataService.getActionById( attackDB.actionId );
+          const attack: ModelActionData = {
+            modelActionName: attackDB.modelActionName,
+            _id: action._id,
+            type: action.type,
+            traits: action.traits,
+            RNG: action.RNG,
+            DICE: action.DICE,
+            HIT: action.HIT,
+            AP: action.AP,
+            DMG: action.DMG,
+            specialRules: action.specialRules
+          };
+          choice.attacks.push( attack );
+        }
+
+        // copy the actions into the choice
+        for ( const actionDB of choiceDB.actions ) {
+          const action: ActionData = await this.actionDataService.getActionById( actionDB.actionId );
+          const actionModel: ModelActionData = {
+            modelActionName: actionDB.modelActionName,
+            _id: action._id,
+            type: action.type,
+            traits: action.traits,
+            RNG: action.RNG,
+            DICE: action.DICE,
+            HIT: action.HIT,
+            AP: action.AP,
+            DMG: action.DMG,
+            specialRules: action.specialRules
+          };
+          choice.actions.push( actionModel );
+        }
+
+        // copy the special rules onto the model
+        for ( const ability of choiceDB.abilities ) {
+          const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ability.specialRuleId);
+          choice.abilities.push( specialRuleData );
+        }
+
+        modelOption.choices.push(choice);
+      }
+
+      modelData.options.push(modelOption);
     }
 
     // return the prepared object

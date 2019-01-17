@@ -16,11 +16,15 @@ export interface ForceData {
   modelCost: number;
   equipmentCost: number;
   models: ForceModelData[];
-  editable: boolean;
 }
 export interface ForceModelData extends ModelData {
   count: number;
   forceModelName: string;
+  optionChoices: ForceModelOptionChoiceData[];
+}
+export interface ForceModelOptionChoiceData {
+  optionId: string;
+  choiceIndex: number;
 }
 
 /**
@@ -37,6 +41,11 @@ interface ForceModelDBData {
   _id: string;
   count: number;
   forceModelName: string;
+  optionChoices: ForceModelOptionChoiceDBData[];
+}
+export interface ForceModelOptionChoiceDBData {
+  optionId: string;
+  choiceIndex: number;
 }
 
 
@@ -189,6 +198,40 @@ export class ForceDataService {
   }
 
   /**
+   * Add a new model to the force
+   * @param model the model that you wanted added to your force
+   */
+  async addModel( force: ForceData, model: ModelData ) {
+
+    // create a new force model
+    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1, forceModelName: model.name, optionChoices: []}, model );
+
+    // default the options to the first choice in the list
+    for ( const option of model.options ) {
+      const optionChoice: ForceModelOptionChoiceData = {
+        optionId: option.id,
+        choiceIndex: 0
+      }
+      newForceModelData.optionChoices.push(optionChoice);
+    }
+
+    // add this new force model to the force
+    force.models.push ( newForceModelData );
+
+    // update the force in the DB
+    return await this.updateForce( force );
+  }
+
+  async updateModelOptionChoice( force: ForceData, model: ForceModelData, optionId: string, choiceIndex: number ) {
+    const optionChoice = model.optionChoices.find( element => element.optionId === optionId );
+    optionChoice.choiceIndex = choiceIndex;
+
+    // update the force in the DB
+    return await this.updateForce( force );
+  }
+
+
+  /**
    * This method will convert a ForceDBData record (which is used internally) into a ForceData record (which
    * is used externally). Returns the converted object
    *
@@ -209,8 +252,7 @@ export class ForceDataService {
       cost: 0, // will be calculated below
       modelCost: 0,
       equipmentCost: 0,
-      models: [],
-      editable: forceDBData.userId.toLowerCase() === this.loggedInUserId.toLowerCase() ? true : false
+      models: []
     };
 
     // retrieve the model information from its service
@@ -222,7 +264,7 @@ export class ForceDataService {
 
     // create an array of ForceModelData objects, and copy contents from ModelData and ForceDBData
     for ( let i = 0; i < forceDBData.models.length; i++ ) {
-      const forceModelData: ForceModelData = Object.assign( {}, modelDataList[i], forceDBData.models[i] );
+      const forceModelData: ForceModelData = this.generateForceModelData( modelDataList[i], forceDBData.models[i] );
       forceData.models.push(forceModelData);
     }
 
@@ -231,6 +273,38 @@ export class ForceDataService {
 
     // return the prepared force info
     return forceData;
+  }
+
+  /**
+   * This method will create a force model object using the information from the base model-type 
+   * and the options provided in the force-model information
+   * @param model The model on which this force-model is based
+   * @param forceModelDB The DB info needed to generate the force-model
+   */
+  private generateForceModelData(model: ModelData, forceModelDB: ForceModelDBData ) {
+
+    // copy all of the base model information and the base DB information into the force-model
+    const modelCopy: ModelData = JSON.parse(JSON.stringify(model));
+    const forceModelDBCopy: ForceModelDBData = JSON.parse(JSON.stringify(forceModelDB));
+    const forceModelData: ForceModelData = Object.assign( {}, modelCopy, forceModelDBCopy );
+
+    // go through each option, and update the attacks, actions, abilities and cost
+    for ( const modelOptionChoice of forceModelData.optionChoices ) {
+      const option = forceModelData.options.find( element => element.id === modelOptionChoice.optionId );
+      const optionChoice = option.choices[modelOptionChoice.choiceIndex];
+      for ( const attack of optionChoice.attacks ) {
+        forceModelData.actions.push( attack );
+      }
+      for ( const action of optionChoice.actions ) {
+        forceModelData.actions.push( action );
+      }
+      for ( const ability of optionChoice.abilities ) {
+        forceModelData.specialRules.push( ability );
+      }
+      forceModelData.cost += optionChoice.cost;
+    }
+
+    return forceModelData;
   }
 
   /**
@@ -247,7 +321,8 @@ export class ForceDataService {
       const newModelDBData: ForceModelDBData = {
         _id: model._id,
         count: model.count,
-        forceModelName: model.forceModelName
+        forceModelName: model.forceModelName,
+        optionChoices: model.optionChoices
       };
       modelList.push( newModelDBData );
     }

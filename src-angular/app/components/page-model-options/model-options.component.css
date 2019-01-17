@@ -20,8 +20,21 @@
 /* CONTENT */
 .content-section {
     position: absolute;
-    width: 100%;
     top: 64px; 
     bottom: 0px;
-    display: flex;    
+    right: 0px;
+    left: 0px;
+    padding: 4px;
+}
+
+/* OPTIONS */
+.option-description {
+    border: none;
+    padding: 4px;
+}
+.option-choice {
+    border: 1px solid;
+    padding: 4px;
+    margin: 2px 0px 2px 16px;
+    border-radius: 4px;
 }

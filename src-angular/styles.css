@@ -1,6 +1,11 @@
 /* for some reason angular puts a margin on the body tag */
+/* make default font for the app */
 body {
     margin:0px;
+    font-family: "Roboto", sans-serif; 
+    font-size:  14px;
+    font-weight: normal; 
+    text-transform: none;
 }
 
 /* FONTS */

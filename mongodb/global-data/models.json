@@ -11,7 +11,7 @@
         "AR": 5,
         "WN": 2,
         "NE": 4,
-        "specialRuleIds": [],
+        "abilities": [],
         "actions": [
             {
                 "modelActionName": "Power Sword",
@@ -20,6 +20,68 @@
             {
                 "modelActionName": "Plasma Pistol",
                 "actionId": "40K.PLASMAPISTOL.4+"
+            }
+        ],
+        "options": [
+            {
+                "id": "MELEE",
+                "description": "Choose a melee weapon",
+                "choices": [
+                    {
+                        "description": "Chainsword",
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelActionName": "Chainsword",
+                                "actionId": "40K.CHAINSWORD.3D6.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "description": "Power Sword",
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelActionName": "Power Sword",
+                                "actionId": "40K.POWERSWORD.2D6.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            },
+            {
+                "id": "RANGED",
+                "description": "Choose a ranged weapon",
+                "choices": [
+                    {
+                        "description": "Laspistol",
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelActionName": "Laspistol",
+                                "actionId": "40K.LASPISTOL.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "description": "Plasma Pistol",
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelActionName": "Plasma Pistol",
+                                "actionId": "40K.PLASMAPISTOL.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
             }
         ]
     },
@@ -35,7 +97,11 @@
         "AR": 5,
         "WN": 1,
         "NE": 4,
-        "specialRuleIds": ["GRUNT"],
+        "abilities": [
+            {
+                "specialRuleId": "GRUNT"
+            }
+        ],
         "actions": [
             {
                 "modelActionName": "Guard Knife",
@@ -45,6 +111,7 @@
                 "modelActionName": "Lasgun",
                 "actionId": "40K.LASGUN.4+"
             }
-        ]
+        ],
+        "options": []
     }
 ]

@@ -42,8 +42,8 @@
 
   </div>
 
-  <!-- WEAPONS -->
-  <div class="section-title font-normal">WEAPONS</div>
+  <!-- ATTACKS -->
+  <div class="section-title font-normal">ATTACKS</div>
   <div *ngFor="let action of model.actions; index as actionIndex" class="action-box font-normal">
     <b>{{action.modelActionName}}</b> ( 
       <span *ngIf="action.type==='RANGED'">{{action.RNG}}"</span>

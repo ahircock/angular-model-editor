@@ -11,8 +11,8 @@
 
       <!-- MODEL NAME -->
       <div class="model-text-box-top">
-        <div *ngIf="!editable" class="model-name font-title-big">{{model.forceModelName}}</div>
-        <div *ngIf="editable">
+        <div *ngIf="!allowEdit" class="model-name font-title-big">{{model.forceModelName}}</div>
+        <div *ngIf="allowEdit">
           <input  class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="saveModelData()" placeholder="Model name">
         </div>
 
@@ -43,7 +43,7 @@
   </div>
 
   <!-- ATTACKS -->
-  <div class="section-title font-normal">ATTACKS</div>
+  <div *ngIf="model.attacks.length > 0" class="section-title font-normal">ATTACKS</div>
   <div *ngFor="let attack of model.attacks" class="action-box font-normal">
     <b>{{attack.modelAttackName}}</b> ( 
       <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
@@ -57,11 +57,9 @@
   <!-- ACTIONS -->
   
   <!-- MODEL ABILITIES -->
-  <div *ngIf="visibleModelRules" class="section-title font-normal">ABILITIES</div>
-  <div *ngIf="visibleModelRules" class="model-special-rules-box font-normal">
-    <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule">
-      <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
-    </div>
+  <div *ngIf="model.abilities.length > 0" class="section-title font-normal">ABILITIES</div>
+  <div *ngFor="let specialRule of model.specialRules; index as ruleIndex" class="special-rule">
+    <b>{{specialRule.ruleName}}</b> - <span [innerHTML]="specialRule.ruleText"></span>
   </div>
 
 </div>

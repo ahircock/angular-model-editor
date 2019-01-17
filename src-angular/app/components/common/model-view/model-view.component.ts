@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModelDataService } from '../../../services/model-data.service';
 import { PORTRAIT_LIST } from '../../../../assets/portraits/portrait-list.const';
 import { ForceModelData } from '../../../services/force-data.service';
@@ -13,7 +13,7 @@ interface StatCost {
   templateUrl: './model-view.component.html',
   styleUrls: ['./model-view.component.css']
 })
-export class ModelViewComponent implements OnInit, OnChanges {
+export class ModelViewComponent implements OnInit {
 
   @Input() model: ForceModelData;
   @Input() allowEdit: boolean;
@@ -21,39 +21,12 @@ export class ModelViewComponent implements OnInit, OnChanges {
 
   modelPortraits: string[] = PORTRAIT_LIST;
   showModelPortraitsDropdown = false;
-  visibleModelRules = false;
-  editable = true;
 
   constructor(
     private modelDataService: ModelDataService
    ) { }
 
   ngOnInit() {
-    this.initViewSettings();
-  }
-
-  ngOnChanges() {
-    this.initViewSettings();
-  }
-
-  initViewSettings() {
-
-    // if no model is selected
-    if ( !this.model ) {
-      this.editable = false;
-      this.visibleModelRules = false;
-      return;
-    }
-
-    // figure out if the model should be editable
-    this.editable = this.allowEdit;
-
-    // figure out if the Model Rules box should be shown
-    this.visibleModelRules = false;
-    if ( this.model.specialRules.length > 0 ) {
-      this.visibleModelRules = true; // show the box since there is an Add Model button
-    }
-
   }
 
   selectPortrait( portrait: string ) {

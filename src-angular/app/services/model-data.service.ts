@@ -15,8 +15,8 @@ export interface ModelData {
   AR: number;
   WN: number;
   NE: number;
-  specialRules: SpecialRuleData[];
   attacks: ModelAttackData[];
+  abilities: SpecialRuleData[];
   options: ModelOptionData[];
 }
 
@@ -173,7 +173,7 @@ export class ModelDataService {
       AR: modelDBData.AR ? modelDBData.AR : 5,
       WN: modelDBData.WN ? modelDBData.WN : 2,
       NE: modelDBData.NE ? modelDBData.NE : 4,
-      specialRules: [],
+      abilities: [],
       attacks: [],
       options: []
     };
@@ -181,7 +181,7 @@ export class ModelDataService {
     // copy the special rules onto the model
     for ( const ability of modelDBData.abilities ) {
       const specialRuleData: SpecialRuleData = await this.specialRuleDataService.getSpecialRuleById(ability.specialRuleId);
-      modelData.specialRules.push( specialRuleData );
+      modelData.abilities.push( specialRuleData );
     }
 
     // copy the attacks onto the model

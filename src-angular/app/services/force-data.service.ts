@@ -296,7 +296,7 @@ export class ForceDataService {
         forceModelData.attacks.push( attack );
       }
       for ( const ability of optionChoice.abilities ) {
-        forceModelData.specialRules.push( ability );
+        forceModelData.abilities.push( ability );
       }
       forceModelData.cost += optionChoice.cost;
     }

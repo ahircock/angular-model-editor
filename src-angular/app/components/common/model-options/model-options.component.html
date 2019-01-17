@@ -2,13 +2,21 @@
 <div *ngIf="model" class="content-section">
 
   <div *ngFor="let option of model.options">
-    <div class="option-description box-white">{{option.description}}</div>
+    <div class="option-description">{{option.description}}</div>
     <div *ngFor="let choice of option.choices; index as choiceIndex" 
-        class="option-choice box-light-hover" 
-        (click)="selectChoice(option.id, choiceIndex)"
-        [class.selected]="isChoiceSelected(option.id, choiceIndex)"
-        >
-        {{choice.description}} (+{{choice.cost}} points)
+      class="option-choice box-light-hover" 
+      (click)="selectChoice(option.id, choiceIndex)"
+      [class.selected]="isChoiceSelected(option.id, choiceIndex)"
+      >
+      <div *ngFor="let attack of choice.attacks">
+        <span class="cost-box">+{{choice.cost}}pts</span> <b>{{attack.modelActionName}}</b> ( 
+          <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
+          <span *ngIf="attack.type==='MELEE'">MELEE</span>
+          , {{attack.DICE}}D6, HIT {{attack.HIT}}+, AP{{attack.AP}}, D{{attack.DMG}})
+        <div *ngFor="let actionRule of attack.specialRules; index as actionRuleIndex" class="attack-rule-box">
+            <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

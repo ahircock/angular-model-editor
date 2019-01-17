@@ -25,11 +25,19 @@
 /* OPTIONS */
 .option-description {
     border: none;
-    padding: 4px;
+    padding: 4px 0px;
 }
 .option-choice {
     border: 1px solid;
     padding: 4px;
     margin: 2px 0px 2px 16px;
     border-radius: 4px;
+}
+
+/* ATTACKS */
+.cost-box {
+    border: none;
+}
+.attack-rule-box {
+    padding: 4px 4px 0px 16px;
 }

@@ -293,10 +293,10 @@ export class ForceDataService {
       const option = forceModelData.options.find( element => element.id === modelOptionChoice.optionId );
       const optionChoice = option.choices[modelOptionChoice.choiceIndex];
       for ( const attack of optionChoice.attacks ) {
-        forceModelData.actions.push( attack );
+        forceModelData.attacks.push( attack );
       }
       for ( const action of optionChoice.actions ) {
-        forceModelData.actions.push( action );
+        forceModelData.attacks.push( action );
       }
       for ( const ability of optionChoice.abilities ) {
         forceModelData.specialRules.push( ability );

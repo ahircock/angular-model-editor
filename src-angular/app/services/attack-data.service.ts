@@ -6,8 +6,7 @@ import { UserService } from './user.service';
 /**
  * List of possible action types
  */
-export const enum ActionType {
-  Special = 'SPECIAL',
+export const enum AttackType {
   Melee = 'MELEE',
   Ranged = 'RANGED'
 }
@@ -15,9 +14,9 @@ export const enum ActionType {
 /**
  * Structure of action data
  */
-export interface ActionData {
+export interface AttackData {
   _id: string;
-  type: ActionType;
+  type: AttackType;
   traits: string;
   RNG: number;
   DICE: number;
@@ -32,7 +31,7 @@ export interface ActionData {
 */
 interface ActionDBData {
   _id: string;
-  type: ActionType;
+  type: AttackType;
   traits: string;
   RNG: number;
   DICE: number;
@@ -43,9 +42,9 @@ interface ActionDBData {
 }
 
 @Injectable()
-export class ActionDataService {
+export class AttackDataService {
 
-  private actionCache: ActionData[] = [];
+  private attackCache: AttackData[] = [];
 
   constructor(
     private dbConnectService: DataAccessService,
@@ -57,27 +56,27 @@ export class ActionDataService {
     this.userService.logoutEvent.subscribe( () => this.logout() );
   }
 
-  async getMeleeActions(): Promise<ActionData[]> {
+  async getMeleeActions(): Promise<AttackData[]> {
     return this.getActionsByType( 'MELEE' );
   }
 
-  async getRangedActions(): Promise<ActionData[]> {
+  async getRangedActions(): Promise<AttackData[]> {
     return this.getActionsByType( 'RANGED' );
   }
 
-  async getSpecialActions(): Promise<ActionData[]> {
+  async getSpecialActions(): Promise<AttackData[]> {
     return this.getActionsByType( 'SPECIAL' );
   }
 
-  async getActionById( actionId: string ): Promise<ActionData> {
+  async getActionById( actionId: string ): Promise<AttackData> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.actionCache.length === 0 ) {
+    if ( this.attackCache.length === 0 ) {
       await this.loadCache();
     }
 
     // return the model with the matching ID
-    const action = this.actionCache.find( element => element._id === actionId );
+    const action = this.attackCache.find( element => element._id === actionId );
     if ( typeof action === 'undefined' ) {
       throw Error('actionId:' + actionId + ' does not exist');
     }
@@ -85,16 +84,16 @@ export class ActionDataService {
 
   }
 
-  private async getActionsByType( type: string ): Promise<ActionData[]> {
+  private async getActionsByType( type: string ): Promise<AttackData[]> {
 
     // if the cache has not been loaded yet, then refresh it from the DB
-    if ( this.actionCache.length === 0 ) {
+    if ( this.attackCache.length === 0 ) {
       await this.loadCache();
     }
 
     // filter down the array to only include those with the correct type
-    const returnList: ActionData[] = [];
-    for ( const action of this.actionCache ) {
+    const returnList: AttackData[] = [];
+    for ( const action of this.attackCache ) {
       if ( action.type === type ) {
         returnList.push( action );
       }
@@ -107,10 +106,10 @@ export class ActionDataService {
   private async loadCache() {
 
     // clear out the rule cache
-    const prepareCache: ActionData[] = [];
+    const prepareCache: AttackData[] = [];
 
     // load the rule objects form the DB
-    const actionDBList: ActionDBData[] = await this.dbConnectService.getActions();
+    const actionDBList: ActionDBData[] = await this.dbConnectService.getAttacks();
 
     // convert everything to the application objects and add it to the cache
     for ( const actionDB of actionDBList ) {
@@ -118,13 +117,13 @@ export class ActionDataService {
     }
 
     // store the prepared cache
-    this.actionCache = prepareCache;
+    this.attackCache = prepareCache;
   }
 
-  private async convertDBToAppData( dbData: ActionDBData ): Promise<ActionData> {
+  private async convertDBToAppData( dbData: ActionDBData ): Promise<AttackData> {
 
     // create an application data object
-    const appData: ActionData = {
+    const appData: AttackData = {
       _id: dbData._id,
       type: dbData.type,
       traits: dbData.traits,
@@ -149,6 +148,6 @@ export class ActionDataService {
    * This method should be called after logout
    */
   private logout() {
-    this.actionCache = [];
+    this.attackCache = [];
   }
 }

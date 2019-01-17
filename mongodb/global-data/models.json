@@ -12,7 +12,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [],
+        "attacks": [],
         "options": [
             {
                 "id": "MELEE",
@@ -107,7 +107,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [
+        "attacks": [
             {
                 "modelActionName": "Bionic Hand",
                 "actionId": "40K.STDMELEE.1D6.4+"
@@ -157,7 +157,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [
+        "attacks": [
             {
                 "modelActionName": "Bionic Hand",
                 "actionId": "40K.STDMELEE.1D6.4+"
@@ -182,7 +182,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [
+        "attacks": [
             {
                 "modelActionName": "Bionic Hand",
                 "actionId": "40K.STDMELEE.1D6.4+"
@@ -207,7 +207,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [
+        "attacks": [
             {
                 "modelActionName": "Bionic Hand",
                 "actionId": "40K.STDMELEE.1D6.4+"
@@ -236,7 +236,7 @@
                 "specialRuleId": "GRUNT"
             }
         ],
-        "actions": [
+        "attacks": [
             {
                 "modelActionName": "Guard Knife",
                 "actionId": "40K.STDMELEE.1D6.4+"
@@ -261,7 +261,7 @@
         "WN": 2,
         "NE": 4,
         "abilities": [],
-        "actions": [],
+        "attacks": [],
         "options": [
             {
                 "id": "MELEE",

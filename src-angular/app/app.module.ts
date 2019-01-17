@@ -9,7 +9,7 @@ import { UserService } from './services/user.service';
 import { ModelDataService } from './services/model-data.service';
 import { SpecialRuleDataService } from './services/special-rule-data.service';
 import { ForceDataService } from './services/force-data.service';
-import { ActionDataService } from './services/action-data.service';
+import { AttackDataService } from './services/attack-data.service';
 import { DataAccessService } from './services/data-access.service';
 import { AppErrorHandler } from './services/error-handler.service';
 
@@ -25,9 +25,6 @@ import { ForceDetailsComponent } from './components/page-force-details/force-det
 import { ForcePrintComponent } from './components/page-force-print/force-print.component';
 import { UserLoginComponent } from './components/common-account/user-login/user-login.component';
 import { UserSignupComponent } from './components/common-account/user-signup/user-signup.component';
-import { DropdownMeleeComponent } from './components/common/dropdowns/dropdown-melee.component';
-import { DropdownRangedComponent } from './components/common/dropdowns/dropdown-ranged.component';
-import { DropdownSpecialComponent } from './components/common/dropdowns/dropdown-special.component';
 import { ModelOptionsComponent } from './components/common/model-options/model-options.component';
 
 // directives
@@ -51,9 +48,6 @@ import { WindowService } from './services/window.service';
     UserLoginComponent,
     UserSignupComponent,
     AppHeaderComponent,
-    DropdownMeleeComponent,
-    DropdownRangedComponent,
-    DropdownSpecialComponent,
     ModelOptionsComponent,
     ModelDetailsComponent
   ],
@@ -69,7 +63,7 @@ import { WindowService } from './services/window.service';
     ModelDataService,
     SpecialRuleDataService,
     ForceDataService,
-    ActionDataService,
+    AttackDataService,
     DataAccessService,
     WindowService
   ],

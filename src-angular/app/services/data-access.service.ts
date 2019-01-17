@@ -8,7 +8,7 @@ export class DataAccessService {
     private apiUrlModels = environment.apiUrl + '/models';
     private apiUrlRules  = environment.apiUrl + '/rules';
     private apiUrlForces = environment.apiUrl + '/forces';
-    private apiUrlActions = environment.apiUrl + '/actions';
+    private apiUrlActions = environment.apiUrl + '/attacks';
     private apiUrlGetNextId = environment.apiUrl + '/services/getnextid';
     private apiUrlLogin = environment.apiUrl + '/login';
     private apiUrlSignup = environment.apiUrl + '/signup';
@@ -26,7 +26,7 @@ export class DataAccessService {
             ).toPromise() as Promise<any[]>);
     }
 
-    async getActions(): Promise<any[]> {
+    async getAttacks(): Promise<any[]> {
         return ( this.httpClient.get(
                 this.apiUrlActions,
                 {headers: {'sessionid': this.sessionid}}

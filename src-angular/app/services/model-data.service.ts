@@ -1,7 +1,7 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { SpecialRuleData, SpecialRuleDataService } from './special-rule-data.service';
-import { ActionData, ActionDataService } from './action-data.service';
+import { AttackData, AttackDataService } from './attack-data.service';
 import { UserService } from './user.service';
 
 export interface ModelData {
@@ -16,11 +16,11 @@ export interface ModelData {
   WN: number;
   NE: number;
   specialRules: SpecialRuleData[];
-  actions: ModelActionData[];
+  attacks: ModelAttackData[];
   options: ModelOptionData[];
 }
 
-export interface ModelActionData extends ActionData {
+export interface ModelAttackData extends AttackData {
   modelActionName: string;
 }
 
@@ -32,8 +32,8 @@ export interface ModelOptionData {
 
 export interface ModelOptionChoiceData {
   cost: number;
-  attacks: ModelActionData[];
-  actions: ModelActionData[];
+  attacks: ModelAttackData[];
+  actions: ModelAttackData[];
   abilities: SpecialRuleData[];
 }
 
@@ -51,11 +51,11 @@ interface ModelDBData {
   AR: number;
   WN: number;
   NE: number;
-  actions: ModelActionDBData[];
+  attacks: ModelAttackDBData[];
   abilities: ModelAbilityDBData[];
   options: ModelOptionDBData[];
 }
-interface ModelActionDBData {
+interface ModelAttackDBData {
   modelActionName: string;
   actionId: string;
 }
@@ -69,8 +69,8 @@ interface ModelOptionDBData {
 }
 interface ModelOptionChoiceDBData {
   cost: number;
-  attacks: ModelActionDBData[];
-  actions: ModelActionDBData[];
+  attacks: ModelAttackDBData[];
+  actions: ModelAttackDBData[];
   abilities: ModelAbilityDBData[];
 }
 
@@ -81,7 +81,7 @@ export class ModelDataService {
 
   constructor(
     private specialRuleDataService: SpecialRuleDataService,
-    private actionDataService: ActionDataService,
+    private AttackDataService: AttackDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
@@ -176,7 +176,7 @@ export class ModelDataService {
       WN: modelDBData.WN ? modelDBData.WN : 2,
       NE: modelDBData.NE ? modelDBData.NE : 4,
       specialRules: [],
-      actions: [],
+      attacks: [],
       options: []
     };
 
@@ -187,11 +187,11 @@ export class ModelDataService {
     }
 
     // copy the actions onto the model
-    for ( const actionDB of modelDBData.actions ) {
+    for ( const actionDB of modelDBData.attacks ) {
 
-      const action: ActionData = await this.actionDataService.getActionById( actionDB.actionId );
+      const action: AttackData = await this.AttackDataService.getActionById( actionDB.actionId );
 
-      const modelAction: ModelActionData = {
+      const modelAction: ModelAttackData = {
         modelActionName: actionDB.modelActionName,
         _id: action._id,
         type: action.type,
@@ -203,7 +203,7 @@ export class ModelDataService {
         DMG: action.DMG,
         specialRules: action.specialRules
       };
-      modelData.actions.push( modelAction );
+      modelData.attacks.push( modelAction );
     }
 
     // copy the options onto the model
@@ -227,8 +227,8 @@ export class ModelDataService {
 
         // copy the attacks into the choice
         for ( const attackDB of choiceDB.attacks ) {
-          const action: ActionData = await this.actionDataService.getActionById( attackDB.actionId );
-          const attack: ModelActionData = {
+          const action: AttackData = await this.AttackDataService.getActionById( attackDB.actionId );
+          const attack: ModelAttackData = {
             modelActionName: attackDB.modelActionName,
             _id: action._id,
             type: action.type,
@@ -245,8 +245,8 @@ export class ModelDataService {
 
         // copy the actions into the choice
         for ( const actionDB of choiceDB.actions ) {
-          const action: ActionData = await this.actionDataService.getActionById( actionDB.actionId );
-          const actionModel: ModelActionData = {
+          const action: AttackData = await this.AttackDataService.getActionById( actionDB.actionId );
+          const actionModel: ModelAttackData = {
             modelActionName: actionDB.modelActionName,
             _id: action._id,
             type: action.type,

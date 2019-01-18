@@ -3,6 +3,7 @@ import { DataAccessService } from './data-access.service';
 import { ModelData, ModelDataService, ModelAttackData } from './model-data.service';
 import { UserService } from './user.service';
 import { RuleData } from './rule-data.service';
+import { FactionData, FactionDataService } from './faction-data.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -10,12 +11,8 @@ import { RuleData } from './rule-data.service';
 export interface ForceData {
   _id: string;
   name: string;
-  size: string;
-  maxCost: number;
-  stdMissionCost: number;
+  faction: FactionData;
   cost: number;
-  modelCost: number;
-  equipmentCost: number;
   models: ForceModelData[];
 }
 export interface ForceModelData {
@@ -39,7 +36,7 @@ interface ForceDBData {
   _id: string;
   userId: string;
   name: string;
-  size: string;
+  factionId: string;
   models: ForceModelDBData[];
 }
 interface ForceModelDBData {
@@ -84,6 +81,7 @@ export class ForceDataService {
 
   constructor(
     private modelDataService: ModelDataService,
+    private factionDataService: FactionDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
@@ -145,7 +143,7 @@ export class ForceDataService {
   /**
    * Create a new force, initializing the attributes to some defaults
    */
-  async createForce(): Promise<ForceData> {
+  async createForce(faction: FactionData): Promise<ForceData> {
 
     // generate a new ID for the new force
     const newForceId = await this.dbConnectService.getNextId('F');
@@ -155,7 +153,7 @@ export class ForceDataService {
       _id: newForceId,
       userId: this.loggedInUserId.toLowerCase(),
       name: 'New Force',
-      size: 'standard',
+      factionId: faction._id,
       models: []
     };
 
@@ -179,7 +177,8 @@ export class ForceDataService {
   async updateForce( updateForce: ForceData ): Promise<ForceData> {
 
     // update the database
-    const updateDBForce = await this.dbConnectService.updateForce( this.convertForceDataToDB(updateForce) );
+    const updateDBForceInit = this.convertForceDataToDB(updateForce);
+    const updateDBForce = await this.dbConnectService.updateForce( updateDBForceInit );
 
     // find the force record in the fake DB, and then replace it with the updated force
     const newUpdatedForce = await this.convertDBToForceData( updateDBForce );
@@ -250,19 +249,15 @@ export class ForceDataService {
    */
   private async convertDBToForceData( forceDBData: ForceDBData ): Promise<ForceData> {
 
-    // look up the force size from the DB
-    const forceSize: ForceSize = this.FORCE_SIZES.find( element => element.size === forceDBData.size );
+    // lookup the faction from the DB
+    const faction = await this.factionDataService.getFactionById( forceDBData.factionId );
 
     // create the new object
     const forceData: ForceData = {
       _id: forceDBData._id,
       name: forceDBData.name,
-      size: forceDBData.size,
-      maxCost: forceSize.maxCost,
-      stdMissionCost: forceSize.stdMissionCost,
+      faction: faction,
       cost: 0, // will be calculated below
-      modelCost: 0,
-      equipmentCost: 0,
       models: []
     };
 
@@ -366,7 +361,7 @@ export class ForceDataService {
       _id: forceData._id,
       userId: this.loggedInUserId.toLowerCase(),
       name: forceData.name,
-      size: forceData.size,
+      factionId: forceData.faction._id,
       models: modelList
     };
 

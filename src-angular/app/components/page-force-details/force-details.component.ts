@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { ModelData, ModelDataService } from '../../services/model-data.service';
 import { Location } from '@angular/common';
 import { WindowService } from '../../services/window.service';
+import { FactionModelData } from '../../services/faction-data.service';
 
 @Component({
   selector: 'app-force-details',
@@ -15,7 +16,7 @@ export class ForceDetailsComponent implements OnInit {
 
   public force: ForceData;
   public selectedModelIndex: number;
-  public modelTemplates: ModelData[];
+  public factionModels: FactionModelData[];
   public showModelListDropdown = false;
   public smallScreen: boolean;
   public modelButtonPressed = false;
@@ -48,7 +49,7 @@ export class ForceDetailsComponent implements OnInit {
     }
 
     // load up the list of model templates
-    this.modelTemplates = await this.modelDataService.getAllModels();
+    this.factionModels = this.force.faction.models;
   }
 
   selectModel( selectedModelIndex: number ) {
@@ -64,10 +65,10 @@ export class ForceDetailsComponent implements OnInit {
     }
   }
 
-  async addModel( model: ModelData ) {
+  async addModel( model: FactionModelData ) {
 
     // add the model to the force
-    this.force = await this.forceDataService.addModel( this.force, model );
+    this.force = await this.forceDataService.addModel( this.force, model.modelData );
 
     // select the new model (which should be the last one in the list)
     this.selectedModelIndex = this.force.models.length - 1;

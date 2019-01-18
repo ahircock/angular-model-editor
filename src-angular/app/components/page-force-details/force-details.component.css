@@ -16,7 +16,7 @@
 .back-arrow img {
     width:64px;
 }
-.force-cost {
+.force-details {
     margin-left: 8px;
 }
 
@@ -69,8 +69,6 @@
     display: inline-block;
     margin: 16px 8px 8px 16px;    
 }
-
-/* MODEL DROPDOWN FOR NEW MODEL BUTTON */
 .create-model-button-dropdown {
     position: absolute;
     top: 50px;

@@ -26,29 +26,46 @@ div.column-section .right {
 }
 
 /* NEW FORCE BUTTON */
-div.create-force-button {
+.create-force-button-zone {
+    position: relative;
+    display: inline-block;
+    margin: 16px 8px 8px 16px;    
+}
+.create-force-button-dropdown {
+    position: absolute;
+    top: 50px;
+    width: 400px;
+    z-index: 2;
+}
+.create-force-button-dropdown .faction-selection {
+    padding: 4px;
+    height: 24px;
+    border: none;    
+}
+.action-button {
     display: inline-block;
     height: 50px;
     border-radius: 4px;
     position: relative;
-    margin: 16px 8px 8px 8px;
     box-sizing: border-box;
     padding: 8px;
 }
-div.create-force-button img {
+.action-button img {
     width: 32px;
     float: left;
 }
-div.create-force-button .button-text {
+.action-button .button-text {
     padding-left: 36px;
     padding-top: 7px;
-}
+} 
 
-div.force-list {
+
+/* FORCE LIST */
+.force-list {
     display: flex;
     flex-flow: row wrap;
 }
-div.force-list div {
+.force-list div {
     flex: 0 0;
     margin: 8px;
 }

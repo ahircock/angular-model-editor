@@ -3,7 +3,7 @@
   <div class="back-arrow box-dark-hover" (click)="backArrow()"><img src="/assets/icons/icon-arrow-left-128.png"></div>
   <div>
     <div class="force-name"><input class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
-    <div class="force-cost font-subtitle">{{force.cost}} Points</div>
+    <div class="force-details">{{force.faction.name}} ({{force.cost}} Points)</div>
   </div>
 </div>
 
@@ -23,9 +23,9 @@
           <div class="button-text">Add Model</div>
         </div>
         <div *ngIf="showModelListDropdown" class="create-model-button-dropdown box-white font-normal">
-          <div *ngFor="let model of modelTemplates" class="model-selection box-light-hover" (click)="addModel(model); showModelListDropdown = false;">
-            <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.picture"></div>
-            <div class="model-text-box">{{model.name}} ({{model.cost}} Points)</div>
+          <div *ngFor="let model of factionModels" class="model-selection box-light-hover" (click)="addModel(model); showModelListDropdown = false;">
+            <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.modelData.picture"></div>
+            <div class="model-text-box">{{model.modelData.name}} ({{model.modelData.cost}} Points)</div>
           </div>
         </div>
       </div>

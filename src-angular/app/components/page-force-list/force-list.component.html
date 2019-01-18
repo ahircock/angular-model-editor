@@ -3,10 +3,17 @@
   <!-- MODEL LIST -->
   <div class="left">
 
-    <!-- ACTION BUTTONS -->
-    <div class="create-force-button box-light-hover font-title" (click)="newForce()">
-      <img src="/assets/icons/icon-outline-plus-128.png">
-      <div class="button-text">New Force List</div>
+    <!-- ADD FORCE BUTTON -->
+    <div class="create-force-button-zone" (click)="showFactionListDropdown = true" (appClickElsewhere)="showFactionListDropdown = false">
+      <div class="action-button box-light-hover font-title">
+        <img src="/assets/icons/icon-outline-plus-128.png">
+        <div class="button-text">Add Force</div>
+      </div>
+      <div *ngIf="showFactionListDropdown" class="create-force-button-dropdown box-white font-normal">
+        <div *ngFor="let faction of factions" class="faction-selection box-light-hover" (click)="newForce(faction); showFactionListDropdown = false;">
+          <div class="faction-text-box">{{faction.name}}</div>
+        </div>
+      </div>
     </div>
 
     <!-- LIST OF FORCES -->

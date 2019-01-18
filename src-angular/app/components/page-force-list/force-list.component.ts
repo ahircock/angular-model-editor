@@ -13,6 +13,7 @@ export class ForceListComponent implements OnInit {
 
   public forces: ForceData[];
   public factions: FactionData[];
+  public showFactionListDropdown = false;
 
   constructor(
     private forceDataService: ForceDataService,
@@ -34,8 +35,8 @@ export class ForceListComponent implements OnInit {
     this.forces = await this.forceDataService.getAllForces();
   }
 
-  async newForce() {
-    const newForce: ForceData = await this.forceDataService.createForce();
+  async newForce( faction: FactionData ) {
+    const newForce: ForceData = await this.forceDataService.createForce(faction);
     this.openForce( newForce._id );
   }
 

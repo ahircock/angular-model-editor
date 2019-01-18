@@ -10,14 +10,8 @@
     padding: 8px;
     padding-bottom: 4px;
 }
-.force-title {
-}
-.force-cost { 
+.force-details {
     margin-bottom: 4px;
-}
-.force-size {
-}
-.force-summary {
 }
 .force-button-band {
     width: 212px;

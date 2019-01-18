@@ -10,6 +10,7 @@ import modelsRouter from './routers/models-router';
 import attackRouter from './routers/attack-router';
 import rulesRouter from './routers/rules-router';
 import forcesRouter from './routers/forces-router';
+import factionsRouter from './routers/factions-router';
 import servicesRouter from './routers/services-router';
 
 // create the express application
@@ -26,6 +27,7 @@ app.use('/api', authRouter ); // login, signup and verification of every call
 app.use('/api/models', modelsRouter );
 app.use('/api/rules', rulesRouter );
 app.use('/api/forces', forcesRouter );
+app.use('/api/factions', factionsRouter );
 app.use('/api/attacks', attackRouter );
 app.use('/api/services', servicesRouter );
 

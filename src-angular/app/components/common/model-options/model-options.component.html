@@ -2,7 +2,7 @@
 <div *ngIf="model" class="content-section">
 
   <!-- LIST OPTIONS -->
-  <div *ngFor="let option of model.options">
+  <div *ngFor="let option of model.modelData.options">
     <div class="option-description">{{option.description}}</div>
 
     <!-- LIST CHOICES FOR OPTION -->

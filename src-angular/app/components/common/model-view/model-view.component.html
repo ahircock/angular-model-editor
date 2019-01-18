@@ -4,7 +4,7 @@
   <div class="title-box">
 
     <!-- MODEL PORTRAIT -->
-    <div class="model-image-box-printable"><img [src]="'assets/portraits/' + model.picture"></div>
+    <div class="model-image-box-printable"><img [src]="'assets/portraits/' + model.modelData.picture"></div>
   
     <!-- MODEL TITLE INFO -->
     <div class="model-text-box">
@@ -17,7 +17,7 @@
         </div>
 
         <!-- MODEL INFO -->
-        <div class="model-traits font-normal">{{model.name}}</div>
+        <div class="model-traits font-normal">{{model.modelData.name}}</div>
         <div class="model-traits font-normal">{{model.cost}} Points</div>
       </div>
 
@@ -31,11 +31,11 @@
           <th>Ne</th>
         </tr>
         <tr>
-          <td>{{model.PW}}</td>
-          <td>{{model.SP}}"</td>
-          <td>{{model.AR}}+</td>
-          <td>{{model.WN}}</td>
-          <td>{{model.NE}}+</td>          
+          <td>{{model.modelData.PW}}</td>
+          <td>{{model.modelData.SP}}"</td>
+          <td>{{model.modelData.AR}}+</td>
+          <td>{{model.modelData.WN}}</td>
+          <td>{{model.modelData.NE}}+</td>          
         </tr>
       </table>
     </div>

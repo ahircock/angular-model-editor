@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { ModelData, ModelDataService } from './model-data.service';
+import { ModelData, ModelDataService, ModelAttackData } from './model-data.service';
 import { UserService } from './user.service';
+import { RuleData } from './rule-data.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -17,9 +18,13 @@ export interface ForceData {
   equipmentCost: number;
   models: ForceModelData[];
 }
-export interface ForceModelData extends ModelData {
+export interface ForceModelData {
+  modelData: ModelData;
   count: number;
   forceModelName: string;
+  cost: number;
+  attacks: ModelAttackData[];
+  abilities: RuleData[];
   optionChoices: ForceModelOptionChoiceData[];
 }
 export interface ForceModelOptionChoiceData {
@@ -204,7 +209,15 @@ export class ForceDataService {
   async addModel( force: ForceData, model: ModelData ) {
 
     // create a new force model
-    const newForceModelData: ForceModelData = Object.assign( {}, {count: 1, forceModelName: model.name, optionChoices: []}, model );
+    const forceModelData: ForceModelData = {
+      modelData: model,
+      forceModelName: model.name,
+      cost: model.cost,
+      count: 1,
+      attacks: model.attacks.slice(),
+      abilities: model.abilities.slice(),
+      optionChoices: []
+    };
 
     // default the options to the first choice in the list
     for ( const option of model.options ) {
@@ -219,11 +232,11 @@ export class ForceDataService {
         optionId: option.id,
         choiceIndexes: choiceIndexes
       };
-      newForceModelData.optionChoices.push(optionChoice);
+      forceModelData.optionChoices.push(optionChoice);
     }
 
     // add this new force model to the force
-    force.models.push ( newForceModelData );
+    force.models.push ( forceModelData );
 
     // update the force in the DB
     return await this.updateForce( force );
@@ -282,21 +295,46 @@ export class ForceDataService {
   private generateForceModelData(model: ModelData, forceModelDB: ForceModelDBData ) {
 
     // copy all of the base model information and the base DB information into the force-model
-    const modelCopy: ModelData = JSON.parse(JSON.stringify(model));
-    const forceModelDBCopy: ForceModelDBData = JSON.parse(JSON.stringify(forceModelDB));
-    const forceModelData: ForceModelData = Object.assign( {}, modelCopy, forceModelDBCopy );
+    const forceModelData: ForceModelData = {
+      modelData: model,
+      count: forceModelDB.count,
+      cost: model.cost,
+      forceModelName: forceModelDB.forceModelName,
+      attacks: model.attacks.slice(),
+      abilities: model.abilities.slice(),
+      optionChoices: []
+    };
 
-    // go through each option, and update the attacks, actions, abilities and cost
-    for ( const modelOptionChoice of forceModelData.optionChoices ) {
-      const option = forceModelData.options.find( element => element.id === modelOptionChoice.optionId );
-      for ( const choiceIndex of modelOptionChoice.choiceIndexes ) {
-        const optionChoice = option.choices[choiceIndex];
+    // copy over the optionChoices
+    for ( const optionChoiceDB of forceModelDB.optionChoices ) {
+
+      const optionChoice: ForceModelOptionChoiceData = {
+        optionId: optionChoiceDB.optionId,
+        choiceIndexes: optionChoiceDB.choiceIndexes
+      };
+      forceModelData.optionChoices.push( optionChoice );
+    }
+
+    // go through each option, and add the chosen attacks, actions, abilities to the model
+    for ( const forceModelOptionChoice of forceModelData.optionChoices ) {
+
+      // get the matching model option from the baseline model data
+      const modelOption = model.options.find( element => element.id === forceModelOptionChoice.optionId );
+
+      // loop through the choices that have been made on this model
+      for ( const choiceIndex of forceModelOptionChoice.choiceIndexes ) {
+
+        // copy the attacks from the model to the forceModel
+        const optionChoice = modelOption.choices[choiceIndex];
         for ( const attack of optionChoice.attacks ) {
           forceModelData.attacks.push( attack );
         }
+
+        // copy the abilities from the model to the forceModel
         for ( const ability of optionChoice.abilities ) {
           forceModelData.abilities.push( ability );
         }
+
         forceModelData.cost += optionChoice.cost;
       }
     }
@@ -316,7 +354,7 @@ export class ForceDataService {
     const modelList: ForceModelDBData[] = [];
     for ( const model of forceData.models ) {
       const newModelDBData: ForceModelDBData = {
-        _id: model._id,
+        _id: model.modelData._id,
         count: model.count,
         forceModelName: model.forceModelName,
         optionChoices: model.optionChoices

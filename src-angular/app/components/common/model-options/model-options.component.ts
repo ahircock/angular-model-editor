@@ -39,8 +39,7 @@ export class ModelOptionsComponent implements OnInit {
   async selectChoice( optionId: string, choiceIndex: number ) {
 
     // find out if the choice is optional
-    const option = this.model.options.find( element => element.id === optionId );
-    const optional = option.optional;
+    const option = this.model.modelData.options.find( element => element.id === optionId );
 
     // get the list of possible choices for this option
     const optionChoices = this.model.optionChoices.find( element => element.optionId === optionId );

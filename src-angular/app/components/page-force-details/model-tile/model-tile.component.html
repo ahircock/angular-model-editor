@@ -2,13 +2,13 @@
 
   <!-- IMAGE -->
   <div class="model-image-box">
-    <img class="model-image" [src]="'assets/portraits/' + model.picture">
+    <img class="model-image" [src]="'assets/portraits/' + model.modelData.picture">
   </div>
 
   <!-- TEXT DETAILS -->
   <div class="model-details-box">
     <div class="force-model-name"><span *ngIf="model.count > 1">{{model.count}}x</span> <span class="font-title">{{model.forceModelName}}</span></div>
-    <div class="model-name">{{model.name}}</div>
+    <div class="model-name">{{model.modelData.name}}</div>
     <div class="model-cost">{{model.cost}} points</div>
   </div>
 

@@ -138,8 +138,6 @@ export class FactionDataService {
     for ( const factionDB of factionDBList ) {
       this.factionCache.push( await this.convertDBToFactionData(factionDB) );
     }
-
-    console.log(this.factionCache);
   }
 
   /**

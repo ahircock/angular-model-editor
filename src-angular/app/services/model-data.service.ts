@@ -20,7 +20,8 @@ export interface ModelData {
   options: ModelOptionData[];
 }
 
-export interface ModelAttackData extends AttackData {
+export interface ModelAttackData {
+  attackData: AttackData;
   modelAttackName: string;
 }
 
@@ -196,16 +197,8 @@ export class ModelDataService {
       const attack: AttackData = await this.attackDataService.getAttackById( attackDB.attackId );
 
       const modelAttack: ModelAttackData = {
-        modelAttackName: attackDB.modelAttackName,
-        _id: attack._id,
-        type: attack.type,
-        traits: attack.traits,
-        RNG: attack.RNG,
-        DICE: attack.DICE,
-        HIT: attack.HIT,
-        AP: attack.AP,
-        DMG: attack.DMG,
-        rules: attack.rules
+        attackData: attack,
+        modelAttackName: attackDB.modelAttackName
       };
       modelData.attacks.push( modelAttack );
     }
@@ -234,16 +227,8 @@ export class ModelDataService {
         for ( const attackDB of choiceDB.attacks ) {
           const attack: AttackData = await this.attackDataService.getAttackById( attackDB.attackId );
           const modelAttack: ModelAttackData = {
-            modelAttackName: attackDB.modelAttackName,
-            _id: attack._id,
-            type: attack.type,
-            traits: attack.traits,
-            RNG: attack.RNG,
-            DICE: attack.DICE,
-            HIT: attack.HIT,
-            AP: attack.AP,
-            DMG: attack.DMG,
-            rules: attack.rules
+            attackData: attack,
+            modelAttackName: attackDB.modelAttackName
           };
           choice.attacks.push( modelAttack );
         }

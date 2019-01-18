@@ -46,10 +46,10 @@
   <div *ngIf="model.attacks.length > 0" class="section-title font-normal">ATTACKS</div>
   <div *ngFor="let attack of model.attacks" class="action-box font-normal">
     <b>{{attack.modelAttackName}}</b> ( 
-      <span *ngIf="attack.type==='RANGED'">{{attack.RNG}}"</span>
-      <span *ngIf="attack.type==='MELEE'">MELEE</span>
-      , {{attack.DICE}}D6, {{attack.HIT}}+, AP{{attack.AP}}, D{{attack.DMG}})
-    <div *ngFor="let actionRule of attack.rules" class="action-rule-box">
+      <span *ngIf="attack.attackData.type==='RANGED'">{{attack.attackData.RNG}}"</span>
+      <span *ngIf="attack.attackData.type==='MELEE'">MELEE</span>
+      , {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}})
+    <div *ngFor="let actionRule of attack.attackData.rules" class="action-rule-box">
         <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
     </div>
   </div>

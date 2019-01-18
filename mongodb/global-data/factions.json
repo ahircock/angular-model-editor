@@ -1,0 +1,45 @@
+[
+    {
+        "_id": "40K.ADMECH",
+        "userId": "global",
+        "name": "Adeptus Mechanicus",
+        "models": [
+            {
+                "modelId": "40K.ADMECH.SKITALPHA",
+                "max": 1
+            },
+            {
+                "modelId": "40K.ADMECH.SKITGUNNER",
+                "max": 3
+            },
+            {
+                "modelId": "40K.ADMECH.SKITRANGER",
+                "max": 9999
+            },
+            {
+                "modelId": "40K.ADMECH.SKITVANGUARD",
+                "max": 9999
+            }
+            ,
+            {
+                "modelId": "40K.ADMECH.SKITSNIPER",
+                "max": 1
+            }
+        ]
+    },
+    {
+        "_id": "40K.ADMIL",
+        "userId": "global",
+        "name": "Astra Militarum",
+        "models": [
+            {
+                "modelId": "40K.ADMIL.SERGEANT",
+                "max": 1
+            },
+            {
+                "modelId": "40K.ADMIL.GUARDSMAN",
+                "max": 9999
+            }
+        ]
+    }
+]

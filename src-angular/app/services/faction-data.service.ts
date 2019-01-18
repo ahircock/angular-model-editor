@@ -1,14 +1,15 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { UserService } from './user.service';
-import { ModelData } from './model-data.service';
+import { ModelData, ModelDataService } from './model-data.service';
 
 export interface FactionData {
   _id: string;
   name: string;
   models: FactionModelData[];
 }
-export interface FactionModelData extends ModelData {
+export interface FactionModelData {
+  modelData: ModelData;
   max: number;
 }
 
@@ -32,6 +33,7 @@ export class FactionDataService {
 
   constructor(
     private dbConnectService: DataAccessService,
+    private modelDataService: ModelDataService,
     private userService: UserService
   ) {
     // subscribe to events from the other services
@@ -39,8 +41,8 @@ export class FactionDataService {
   }
 
   /**
-   * Returns the special rule with the given ID
-   * @param ruleId _id of the rule that you want to return
+   * Returns the special faction with the given ID
+   * @param factionId _id of the faction that you want to return
    */
   async getFactionById( factionId: string ): Promise<FactionData> {
 
@@ -49,12 +51,12 @@ export class FactionDataService {
       await this.loadCache();
     }
 
-    // find the rule in the cache and return it
-    const rule = this.factionCache.find( element => element._id === factionId );
-    if ( typeof rule === 'undefined' ) {
+    // find the faction in the cache and return it
+    const faction = this.factionCache.find( element => element._id === factionId );
+    if ( typeof faction === 'undefined' ) {
       throw Error('factionId:' + factionId + ' does not exist');
     }
-    return rule;
+    return faction;
   }
 
   /**
@@ -77,9 +79,9 @@ export class FactionDataService {
   /**
    * Converts a DB record into the externally-exposed FactionData entity.
    * Returns the converted record
-   * @param ruleDBData the DB data to be converted
+   * @param factionDBData the DB data to be converted
    */
-  private convertDBToFactionData( factionDBData: FactionDBData ): FactionData {
+  private async convertDBToFactionData( factionDBData: FactionDBData ) {
 
     // initialize the return data
     const factionData: FactionData = {
@@ -88,13 +90,30 @@ export class FactionDataService {
       models: []
     };
 
+
+    // retrieve the model information from its service
+    const modelIdList: string[] = [];
+    for ( const factionModel of factionDBData.models ) {
+      modelIdList.push( factionModel.modelId );
+    }
+    const modelDataList: ModelData[] = await this.modelDataService.getModelListById( modelIdList );
+
+    // copy the faction models to the object
+    for ( let i = 0; i < factionDBData.models.length; i++  ) {
+      const factionModelData: FactionModelData = {
+        modelData: modelDataList[i],
+        max: factionDBData.models[i].max
+      };
+      factionData.models.push(factionModelData);
+    }
+
     return factionData;
   }
 
   /**
-   * The method used by Javascript array.sort to sort the array of rules
-   * @param a first rule
-   * @param b second rule
+   * The method used by Javascript array.sort to sort the array of factions
+   * @param a first faction
+   * @param b second faction
    */
   private sortFactionData( a: FactionData, b: FactionData ): number {
 
@@ -109,16 +128,18 @@ export class FactionDataService {
   }
 
   private async loadCache() {
-    // clear out the rule cache
+    // clear out the faction cache
     this.factionCache = [];
 
-    // load the rule objects form the DB
+    // load the faction objects form the DB
     const factionDBList: FactionDBData[] = await this.dbConnectService.getFactions();
 
     // convert everything to a FactionData and add it to the cache
-    for ( const ruleDB of factionDBList ) {
-      this.factionCache.push( this.convertDBToFactionData(ruleDB));
+    for ( const factionDB of factionDBList ) {
+      this.factionCache.push( await this.convertDBToFactionData(factionDB) );
     }
+
+    console.log(this.factionCache);
   }
 
   /**

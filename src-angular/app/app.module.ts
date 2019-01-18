@@ -10,6 +10,7 @@ import { ModelDataService } from './services/model-data.service';
 import { RuleDataService } from './services/rule-data.service';
 import { ForceDataService } from './services/force-data.service';
 import { AttackDataService } from './services/attack-data.service';
+import { FactionDataService } from './services/faction-data.service';
 import { DataAccessService } from './services/data-access.service';
 import { AppErrorHandler } from './services/error-handler.service';
 
@@ -64,6 +65,7 @@ import { WindowService } from './services/window.service';
     RuleDataService,
     ForceDataService,
     AttackDataService,
+    FactionDataService,
     DataAccessService,
     WindowService
   ],

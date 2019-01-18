@@ -1,46 +1,38 @@
-/* MODEL BOX */
+/* MODEL FLEX LAYOUT */
 .model-tile {
     position: relative;
-    height: 96px; width: 292px;
     border-radius: 4px;
+    display: flex;
+    margin-bottom: 4px;
 }
 .model-image-box {
-    position: absolute;
-    left: 4px; top: 4px; width: 88px; 
-    display: inline-block;
+    padding: 4px;
 }
-.model-image {
-    height: 88px; margin-left: auto; margin-right: auto; display: block;
+.model-details-box {
+    flex: 1 1 1px;
+    padding: 4px;
 }
-div.model-details-box {
-    position: absolute;
-    left: 96px; top:8px; width: 188px;
+.model-button-box {
+    flex: 0 0 60px;
 }
-div.model-details-box .model-name {
-    width: 196px;
-    height: 20px;
+
+/* FIELD DETAILS */
+.force-model-name {
     overflow-x: hidden;
     white-space: nowrap;
 }
-div.model-details-box .model-cost { 
-    margin-top:4px; margin-bottom: 4px;
-    width: max-content;    
+.model-image {
+    height: 48px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;
 }
-div.model-details-box .model-button-band {
-    width: 100%;
-}
-
-/* buttons */
 .model-button {
-    float: right;
+    float: left;
     border-radius: 4px;
-    margin-top: 4px;
-    margin-left: 8px;
-    margin-bottom: 8px;
-    height: 28px;
+    height: 20px;
+    margin: 16px 2px;
 }
 .model-button img {
     width: 20px;
-    margin: 4px;
 }
-

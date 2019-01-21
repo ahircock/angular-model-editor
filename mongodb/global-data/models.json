@@ -230,7 +230,7 @@
         "SP": 5,
         "AR": 5,
         "WN": 1,
-        "NE": 4,
+        "NE": 5,
         "abilities": [
             {
                 "ruleId": "GRUNT"
@@ -391,7 +391,7 @@
                         "abilities": []
                     },
                     {
-                        "cost": 1,
+                        "cost": 2,
                         "attacks": [
                             {
                                 "modelAttackName": "Power Fist",
@@ -436,7 +436,7 @@
     {
         "_id": "40K.ADMIL.GUARDSMANGUNNER",
         "userId": "global",
-        "name": "Guardsman, Special Weapon",
+        "name": "Guardsman Gunner",
         "traits": "",
         "picture": "enforcer-commander.jpg",
         "cost": 5,
@@ -444,7 +444,7 @@
         "SP": 5,
         "AR": 5,
         "WN": 1,
-        "NE": 4,
+        "NE": 5,
         "abilities": [
             {
                 "ruleId": "GRUNT"
@@ -462,7 +462,7 @@
                 "description": "Choose a ranged weapon",
                 "choices": [
                     {
-                        "cost": 0,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Flamer",
@@ -473,7 +473,7 @@
                         "abilities": []
                     },
                     {
-                        "cost": 1,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Meltagun",
@@ -484,7 +484,7 @@
                         "abilities": []
                     },
                     {
-                        "cost": 1,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Plasma Gun",
@@ -540,7 +540,7 @@
         "name": "Tempestus Scion Gunner",
         "traits": "",
         "picture": "enforcer-rifle.jpg",
-        "cost": 9,
+        "cost": 10,
         "PW": 0,
         "SP": 5,
         "AR": 4,
@@ -559,7 +559,7 @@
                 "description": "Choose a ranged weapon",
                 "choices": [
                     {
-                        "cost": 0,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Flamer",
@@ -570,7 +570,7 @@
                         "abilities": []
                     },
                     {
-                        "cost": 1,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Meltagun",
@@ -581,7 +581,7 @@
                         "abilities": []
                     },
                     {
-                        "cost": 1,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Plasma Gun",
@@ -592,7 +592,7 @@
                         "abilities": []
                     },
                     {
-                        "cost": 1,
+                        "cost": 3,
                         "attacks": [
                             {
                                 "modelAttackName": "Hot-Shot Volley Gun",

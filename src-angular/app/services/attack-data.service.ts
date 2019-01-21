@@ -16,6 +16,7 @@ export const enum AttackType {
  */
 export interface AttackData {
   _id: string;
+  name: string;
   type: AttackType;
   traits: string;
   RNG: number;
@@ -32,6 +33,7 @@ export interface AttackData {
 */
 interface AttackDBData {
   _id: string;
+  name: string;
   type: AttackType;
   traits: string;
   RNG: number;
@@ -96,6 +98,7 @@ export class AttackDataService {
     // create an application data object
     const appData: AttackData = {
       _id: dbData._id,
+      name: dbData.name,
       type: dbData.type,
       traits: dbData.traits,
       RNG: dbData.RNG,

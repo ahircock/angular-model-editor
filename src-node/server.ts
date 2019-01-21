@@ -7,7 +7,9 @@ import * as cors from 'cors'; // HTTP cross-origin resource sharing for API
 import * as morgan from 'morgan'; // HTTP request logging
 import authRouter from './routers/auth-router';
 import modelsRouter from './routers/models-router';
-import attackRouter from './routers/attack-router';
+import attacksRouter from './routers/attacks-router';
+import abilitiesRouter from './routers/abilities-router';
+import actionsRouter from './routers/actions-router';
 import rulesRouter from './routers/rules-router';
 import forcesRouter from './routers/forces-router';
 import factionsRouter from './routers/factions-router';
@@ -28,7 +30,9 @@ app.use('/api/models', modelsRouter );
 app.use('/api/rules', rulesRouter );
 app.use('/api/forces', forcesRouter );
 app.use('/api/factions', factionsRouter );
-app.use('/api/attacks', attackRouter );
+app.use('/api/attacks', attacksRouter );
+app.use('/api/actions', attacksRouter );
+app.use('/api/abilities', abilitiesRouter );
 app.use('/api/services', servicesRouter );
 
 // setup router for the static assets (images, icons, etc.)

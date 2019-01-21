@@ -1,0 +1,27 @@
+[
+    {
+        "_id": "MEDKIT",
+        "userId": "global",
+        "name": "Med Kit",
+        "text": "Single use item. A model with this item may discard it during its activation to recover 1 wound."
+    },
+    {
+        "_id": "STIMPACK",
+        "userId": "global",
+        "name": "Stim Pack",
+        "text": "Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."
+    },
+    {
+        "_id": "VOXCASTER",
+        "userId": "global",
+        "name": "Vox-Caster",
+        "power": 1,
+        "text": "Use when a friendly model is about to make a Nerve test. The model receives a +1 modifier to the Nerve test."
+    },
+    {
+        "_id": "GRUNT",
+        "userId": "global",
+        "name": "Grunt",
+        "text": " This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."
+    }
+]

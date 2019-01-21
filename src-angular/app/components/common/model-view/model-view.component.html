@@ -53,7 +53,7 @@
   <!-- MODEL ABILITIES -->
   <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>
   <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
-    <b>{{ability.ruleName}}</b> - <span [innerHTML]="ability.ruleText"></span>
+    <b>{{ability.modelAbilityName}}</b> - <span [innerHTML]="ability.abilityData.text"></span>
   </div>
 
 </div>

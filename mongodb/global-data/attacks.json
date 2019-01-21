@@ -2,6 +2,7 @@
     {
         "_id": "40K.ARCMAUL.2D6.4+",
         "userId": "global",
+        "name": "Arc Maul",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -14,6 +15,7 @@
     {
         "_id": "40K.ARCPISTOL.3+",
         "userId": "global",
+        "name": "Arc Pistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -26,6 +28,7 @@
     {
         "_id": "40K.ARCRIFLE.3+",
         "userId": "global",
+        "name": "Arc Rifle",
         "type": "RANGED",
         "traits": "",
         "RNG": 24,
@@ -38,6 +41,7 @@
     {
         "_id": "40K.CHAINSWORD.3D6.4+",
         "userId": "global",
+        "name": "Chainsword",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -50,6 +54,7 @@
     {
         "_id": "40K.CHAINSWORD.3D6.3+",
         "userId": "global",
+        "name": "Chainsword",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -62,6 +67,7 @@
     {
         "_id": "40K.GALVANICRIFLE.3+",
         "userId": "global",
+        "name": "Galvanic Rifle",
         "type": "RANGED",
         "traits": "",
         "RNG": 30,
@@ -74,6 +80,7 @@
     {
         "_id": "40K.LASGUN.4+",
         "userId": "global",
+        "name": "Lasgun",
         "type": "RANGED",
         "traits": "",
         "RNG": 24,
@@ -86,6 +93,7 @@
     {
         "_id": "40K.LASPISTOL.4+",
         "userId": "global",
+        "name": "Laspistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -98,6 +106,7 @@
     {
         "_id": "40K.HOTSHOTLASPISTOL.3+",
         "userId": "global",
+        "name": "Hot-Shot Laspistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 6,
@@ -110,6 +119,7 @@
     {
         "_id": "40K.HOTSHOTLASGUN.3+",
         "userId": "global",
+        "name": "Hot-Shot Lasgun",
         "type": "RANGED",
         "traits": "",
         "RNG": 18,
@@ -122,6 +132,7 @@
     {
         "_id": "40K.HOTSHOTVOLLEYGUN.3+",
         "userId": "global",
+        "name": "Hot-Shot Volley Gun",
         "type": "RANGED",
         "traits": "",
         "RNG": 24,
@@ -134,6 +145,7 @@
     {
         "_id": "40K.FLAMER.4+",
         "userId": "global",
+        "name": "Flamer",
         "type": "RANGED",
         "traits": "",
         "RNG": 8,
@@ -148,6 +160,7 @@
     {
         "_id": "40K.FLAMER.3+",
         "userId": "global",
+        "name": "Flamer",
         "type": "RANGED",
         "traits": "",
         "RNG": 8,
@@ -162,6 +175,7 @@
     {
         "_id": "40K.GRENADELAUNCHER.3+",
         "userId": "global",
+        "name": "Grenade Launcher",
         "type": "RANGED",
         "traits": "",
         "RNG": 0,
@@ -177,6 +191,7 @@
     {
         "_id": "40K.GRENADELAUNCHER.4+",
         "userId": "global",
+        "name": "Grenade Launcher",
         "type": "RANGED",
         "traits": "",
         "RNG": 0,
@@ -192,6 +207,7 @@
     {
         "_id": "40K.PHOSPHORPISTOL.3+",
         "userId": "global",
+        "name": "Phosphor Blast Pistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -206,6 +222,7 @@
     {
         "_id": "40K.PLASMACALIVER.3+",
         "userId": "global",
+        "name": "Plasma Caliver",
         "type": "RANGED",
         "traits": "",
         "RNG": 18,
@@ -220,6 +237,7 @@
     {
         "_id": "40K.PLASMAPISTOL.3+",
         "userId": "global",
+        "name": "Plasma Pistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -234,6 +252,7 @@
     {
         "_id": "40K.PLASMAPISTOL.4+",
         "userId": "global",
+        "name": "Plasma Pistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -248,6 +267,7 @@
     {
         "_id": "40K.PLASMAGUN.4+",
         "userId": "global",
+        "name": "Plasma Gun",
         "type": "RANGED",
         "traits": "",
         "RNG": 24,
@@ -262,6 +282,7 @@
     {
         "_id": "40K.PLASMAGUN.3+",
         "userId": "global",
+        "name": "Plasma Gun",
         "type": "RANGED",
         "traits": "",
         "RNG": 24,
@@ -276,6 +297,7 @@
     {
         "_id": "40K.POWERFIST.2D6.4+",
         "userId": "global",
+        "name": "Power Fist",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -288,6 +310,7 @@
     {
         "_id": "40K.POWERSWORD.2D6.3+",
         "userId": "global",
+        "name": "Power Sword",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -300,6 +323,7 @@
     {
         "_id": "40K.POWERSWORD.2D6.4+",
         "userId": "global",
+        "name": "Power Sword",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -312,6 +336,7 @@
     {
         "_id": "40K.RADIUMCARBINE.3+",
         "userId": "global",
+        "name": "Radium Carbine",
         "type": "RANGED",
         "traits": "",
         "RNG": 18,
@@ -324,6 +349,7 @@
     {
         "_id": "40K.RADIUMPISTOL.3+",
         "userId": "global",
+        "name": "Radium Pistol",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -336,6 +362,7 @@
     {
         "_id": "40K.STDMELEE.1D6.3+",
         "userId": "global",
+        "name": "Melee Weapon",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -348,6 +375,7 @@
     {
         "_id": "40K.STDMELEE.1D6.4+",
         "userId": "global",
+        "name": "Melee Weapon",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -360,6 +388,7 @@
     {
         "_id": "40K.TASERGOAD.2D6.4+",
         "userId": "global",
+        "name": "Taser Goad",
         "type": "MELEE",
         "traits": "",
         "RNG": 0,
@@ -374,6 +403,7 @@
     {
         "_id": "40K.TRANSARQUE.3+",
         "userId": "global",
+        "name": "Transuranic Arquebus",
         "type": "RANGED",
         "traits": "",
         "RNG": 60,
@@ -390,6 +420,7 @@
     {
         "_id": "40K.SNIPERRIFLE.3+",
         "userId": "global",
+        "name": "Sniper Rifle",
         "type": "RANGED",
         "traits": "",
         "RNG": 36,
@@ -406,6 +437,7 @@
     {
         "_id": "40K.SNIPERRIFLE.4+",
         "userId": "global",
+        "name": "Sniper Rifle",
         "type": "RANGED",
         "traits": "",
         "RNG": 36,
@@ -422,6 +454,7 @@
     {
         "_id": "40K.FRAGGRENADE.4+",
         "userId": "global",
+        "name": "Frag Grenade",
         "type": "RANGED",
         "traits": "",
         "RNG": 6,
@@ -436,6 +469,7 @@
     {
         "_id": "40K.FRAGGRENADE.3+",
         "userId": "global",
+        "name": "Frag Grenade",
         "type": "RANGED",
         "traits": "",
         "RNG": 6,
@@ -450,6 +484,7 @@
     {
         "_id": "40K.KRAKGRENADE.4+",
         "userId": "global",
+        "name": "Krak Grenade",
         "type": "RANGED",
         "traits": "",
         "RNG": 6,
@@ -462,6 +497,7 @@
     {
         "_id": "40K.KRAKGRENADE.3+",
         "userId": "global",
+        "name": "Krak Grenade",
         "type": "RANGED",
         "traits": "",
         "RNG": 6,
@@ -474,6 +510,7 @@
     {
         "_id": "40K.MELTAGUN.4+",
         "userId": "global",
+        "name": "Meltagun",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,
@@ -486,6 +523,7 @@
     {
         "_id": "40K.MELTAGUN.3+",
         "userId": "global",
+        "name": "Meltagun",
         "type": "RANGED",
         "traits": "",
         "RNG": 12,

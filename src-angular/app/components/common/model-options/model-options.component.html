@@ -19,7 +19,9 @@
 
       <!-- LIST ABILITIES FOR CHOICE -->
       <div *ngFor="let ability of choice.abilities" class="special-rule-box">
-        <span class="cost-box">+{{choice.cost}}pts</span> <b>{{ability.ruleName}}</b> - <span [innerHTML]="ability.ruleText"></span>
+        <span class="cost-box">+{{choice.cost}}pts </span>
+        <b>{{ability.modelAbilityName}}</b> - 
+        <span [innerHTML]="ability.abilityData.text"></span>
       </div>
 
     </div>

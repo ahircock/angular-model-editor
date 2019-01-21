@@ -56,6 +56,36 @@
                 "modelId": "40K.ADMIL.SCIONGUNNER",
                 "max": 1
             }
+        ],
+        "modelOtions": [
+            {
+                "id": "EQUIP",
+                "description": "Choose equipment",
+                "optional": true,
+                "multiSelect": true,
+                "choices": [
+                    {
+                        "cost": 1,
+                        "attacks": [],
+                        "actions": [],
+                        "abilities": [
+                            {
+                                "abilityId": "MEDKIT"
+                            }
+                        ]
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [],
+                        "actions": [],
+                        "abilities": [
+                            {
+                                "abilityId": "STIMPACK"
+                            }
+                        ]
+                    }
+                ]
+            }
         ]
     },
     {

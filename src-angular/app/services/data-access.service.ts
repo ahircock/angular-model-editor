@@ -8,7 +8,9 @@ export class DataAccessService {
     private apiUrlModels = environment.apiUrl + '/models';
     private apiUrlRules  = environment.apiUrl + '/rules';
     private apiUrlForces = environment.apiUrl + '/forces';
-    private apiUrlActions = environment.apiUrl + '/attacks';
+    private apiUrlAttacks = environment.apiUrl + '/attacks';
+    private apiUrlAbilities = environment.apiUrl + '/abilities';
+    private apiUrlActions = environment.apiUrl + '/actions';
     private apiUrlFactions = environment.apiUrl + '/factions';
     private apiUrlGetNextId = environment.apiUrl + '/services/getnextid';
     private apiUrlLogin = environment.apiUrl + '/login';
@@ -29,7 +31,21 @@ export class DataAccessService {
 
     async getAttacks(): Promise<any[]> {
         return ( this.httpClient.get(
+                this.apiUrlAttacks,
+                {headers: {'sessionid': this.sessionid}}
+            ).toPromise() as Promise<any[]>);
+    }
+
+    async getActions(): Promise<any[]> {
+        return ( this.httpClient.get(
                 this.apiUrlActions,
+                {headers: {'sessionid': this.sessionid}}
+            ).toPromise() as Promise<any[]>);
+    }
+
+    async getAbilities(): Promise<any[]> {
+        return ( this.httpClient.get(
+                this.apiUrlAbilities,
                 {headers: {'sessionid': this.sessionid}}
             ).toPromise() as Promise<any[]>);
     }
@@ -84,21 +100,21 @@ export class DataAccessService {
     async getNextId( prefix: string ): Promise<string> {
         const url = this.apiUrlGetNextId;
         const nextId = await this.httpClient.get(url, {headers: {'sessionid': this.sessionid}}).toPromise()
-                .catch( (reason) => { throw reason; });
+                .catch( (reason: any) => { throw reason; });
         return prefix + nextId;
     }
 
     async login( email: string, password: string ): Promise<void> {
         const userInfo = { email: email, password: password };
         const authResult = await this.httpClient.post(this.apiUrlLogin, userInfo).toPromise()
-            .catch( (reason) => { throw reason; });
+            .catch( (reason: any) => { throw reason; });
         this.sessionid = (authResult as AuthResult).sessionid;
     }
 
     async signup( email: string, password: string ): Promise<void> {
         const userInfo = { email: email, password: password };
         const authResult = await this.httpClient.post(this.apiUrlSignup, userInfo).toPromise()
-            .catch( (reason) => { throw reason; });
+            .catch( (reason: any) => { throw reason; });
         this.sessionid = (authResult as AuthResult).sessionid;
     }
 

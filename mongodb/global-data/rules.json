@@ -6,12 +6,6 @@
         "text": "If at least one hit rolls a natural 6, this attack is resolved with D2"
     },
     {
-        "_id": "GRUNT",
-        "userId": "global",
-        "name": "Grunt",
-        "text": " This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."
-    },
-    {
         "_id": "IGNORECOVER",
         "userId": "global",
         "name": "Ignore Cover",
@@ -40,18 +34,6 @@
         "userId": "global",
         "name": "Slow Attack",
         "text": "This attack is a long action"
-    },
-    {
-        "_id": "MEDKIT",
-        "userId": "global",
-        "name": "Med Kit",
-        "text": "Single use item. A model with this item may discard it during its activation to recover 1 wound."
-    },
-    {
-        "_id": "STIMPACK",
-        "userId": "global",
-        "name": "Stim Pack",
-        "text": "Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."
     },
     {
         "_id": "AREAEFFECT.2\"",

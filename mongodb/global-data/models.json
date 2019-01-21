@@ -22,7 +22,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Arc Maul",
                                 "attackId": "40K.ARCMAUL.2D6.4+"
                             }
                         ],
@@ -33,7 +32,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Power Sword",
                                 "attackId": "40K.POWERSWORD.2D6.4+"
                             }
                         ],
@@ -44,7 +42,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Taser Goad",
                                 "attackId": "40K.TASERGOAD.2D6.4+"
                             }
                         ],
@@ -61,7 +58,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Radium Pistol",
                                 "attackId": "40K.RADIUMPISTOL.3+"
                             }
                         ],
@@ -72,7 +68,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Arc Pistol",
                                 "attackId": "40K.ARCPISTOL.3+"
                             }
                         ],
@@ -83,7 +78,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Phosphor Blast Pistol",
                                 "attackId": "40K.PHOSPHORPISTOL.3+"
                             }
                         ],
@@ -122,7 +116,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Arc Rifle",
                                 "attackId": "40K.ARCRIFLE.3+"
                             }
                         ],
@@ -133,7 +126,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Plasma Caliver",
                                 "attackId": "40K.PLASMACALIVER.3+"
                             }
                         ],
@@ -163,7 +155,6 @@
                 "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
-                "modelAttackName": "Galvanic Rifle",
                 "attackId": "40K.GALVANICRIFLE.3+"
             }
         ],
@@ -188,7 +179,6 @@
                 "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
-                "modelAttackName": "Radium Carbine",
                 "attackId": "40K.RADIUMCARBINE.3+"
             }
         ],
@@ -213,7 +203,6 @@
                 "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
-                "modelAttackName": "Transuranic Arquebus",
                 "attackId": "40K.TRANSARQUE.3+"
             }
         ],
@@ -233,7 +222,7 @@
         "NE": 5,
         "abilities": [
             {
-                "ruleId": "GRUNT"
+                "abilityId": "GRUNT"
             }
         ],
         "attacks": [
@@ -242,11 +231,30 @@
                 "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
-                "modelAttackName": "Lasgun",
                 "attackId": "40K.LASGUN.4+"
             }
         ],
-        "options": []
+        "options": [
+            {
+                "id": "EQUIP",
+                "description": "Choose equipment",
+                "optional": true,
+                "multiSelect": true,
+                "choices": [
+                    {
+                        "cost": 1,
+                        "attacks": [],
+                        "actions": [],
+                        "abilities": [
+                            {
+                                "abilityId": "MEDKIT"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+        ]
     },
     {
         "_id": "40K.ADMIL.SERGEANT",
@@ -271,7 +279,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Chainsword",
                                 "attackId": "40K.CHAINSWORD.3D6.4+"
                             }
                         ],
@@ -282,7 +289,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Power Sword",
                                 "attackId": "40K.POWERSWORD.2D6.4+"
                             }
                         ],
@@ -299,7 +305,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Laspistol",
                                 "attackId": "40K.LASPISTOL.4+"
                             }
                         ],
@@ -310,7 +315,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Plasma Pistol",
                                 "attackId": "40K.PLASMAPISTOL.4+"
                             }
                         ],
@@ -331,7 +335,7 @@
                         "actions": [],
                         "abilities": [
                             {
-                                "ruleId": "MEDKIT"
+                                "abilityId": "MEDKIT"
                             }
                         ]
                     },
@@ -341,7 +345,7 @@
                         "actions": [],
                         "abilities": [
                             {
-                                "ruleId": "STIMPACK"
+                                "abilityId": "STIMPACK"
                             }
                         ]
                     }
@@ -372,7 +376,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Chainsword",
                                 "attackId": "40K.CHAINSWORD.3D6.3+"
                             }
                         ],
@@ -383,7 +386,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Power Sword",
                                 "attackId": "40K.POWERSWORD.2D6.3+"
                             }
                         ],
@@ -394,7 +396,6 @@
                         "cost": 2,
                         "attacks": [
                             {
-                                "modelAttackName": "Power Fist",
                                 "attackId": "40K.POWERFIST.2D6.4+"
                             }
                         ],
@@ -411,7 +412,6 @@
                         "cost": 0,
                         "attacks": [
                             {
-                                "modelAttackName": "Hot-Shot Laspistol",
                                 "attackId": "40K.HOTSHOTLASPISTOL.3+"
                             }
                         ],
@@ -422,7 +422,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Plasma Pistol",
                                 "attackId": "40K.PLASMAPISTOL.3+"
                             }
                         ],
@@ -447,7 +446,7 @@
         "NE": 5,
         "abilities": [
             {
-                "ruleId": "GRUNT"
+                "abilityId": "GRUNT"
             }
         ],
         "attacks": [
@@ -465,7 +464,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Flamer",
                                 "attackId": "40K.FLAMER.4+"
                             }
                         ],
@@ -476,7 +474,6 @@
                         "cost": 2,
                         "attacks": [
                             {
-                                "modelAttackName": "Grenade Launcher",
                                 "attackId": "40K.GRENADELAUNCHER.4+"
                             }
                         ],
@@ -487,7 +484,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Meltagun",
                                 "attackId": "40K.MELTAGUN.4+"
                             }
                         ],
@@ -498,7 +494,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Plasma Gun",
                                 "attackId": "40K.PLASMAGUN.4+"
                             }
                         ],
@@ -509,7 +504,6 @@
                         "cost": 1,
                         "attacks": [
                             {
-                                "modelAttackName": "Sniper Rifle",
                                 "attackId": "40K.SNIPERRIFLE.4+"
                             }
                         ],
@@ -539,7 +533,6 @@
                 "attackId": "40K.STDMELEE.1D6.4+"
             },
             {
-                "modelAttackName": "Hot-Shot Lasgun",
                 "attackId": "40K.HOTSHOTLASGUN.3+"
             }
         ],
@@ -573,7 +566,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Flamer",
                                 "attackId": "40K.FLAMER.3+"
                             }
                         ],
@@ -584,7 +576,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Meltagun",
                                 "attackId": "40K.MELTAGUN.3+"
                             }
                         ],
@@ -595,7 +586,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Plasma Gun",
                                 "attackId": "40K.PLASMAGUN.3+"
                             }
                         ],
@@ -606,7 +596,6 @@
                         "cost": 3,
                         "attacks": [
                             {
-                                "modelAttackName": "Hot-Shot Volley Gun",
                                 "attackId": "40K.HOTSHOTVOLLEYGUN.3+"
                             }
                         ],

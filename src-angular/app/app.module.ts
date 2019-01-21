@@ -13,6 +13,8 @@ import { AttackDataService } from './services/attack-data.service';
 import { FactionDataService } from './services/faction-data.service';
 import { DataAccessService } from './services/data-access.service';
 import { AppErrorHandler } from './services/error-handler.service';
+import { AbilityDataService } from './services/ability-data.service';
+import { WindowService } from './services/window.service';
 
 // components
 import { AppComponent } from './app.component';
@@ -27,13 +29,12 @@ import { ForcePrintComponent } from './components/page-force-print/force-print.c
 import { UserLoginComponent } from './components/common-account/user-login/user-login.component';
 import { UserSignupComponent } from './components/common-account/user-signup/user-signup.component';
 import { ModelOptionsComponent } from './components/common/model-options/model-options.component';
+import { AttackDetailsComponent } from './components/common/model-view/attack-details/attack-details.component';
+import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
 
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
 import { TextControllerDirective } from './directives/text-controller.directive';
-import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
-import { WindowService } from './services/window.service';
-import { AttackDetailsComponent } from './components/common/model-view/attack-details/attack-details.component';
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import { AttackDetailsComponent } from './components/common/model-view/attack-de
     RuleDataService,
     ForceDataService,
     AttackDataService,
+    AbilityDataService,
     FactionDataService,
     DataAccessService,
     WindowService

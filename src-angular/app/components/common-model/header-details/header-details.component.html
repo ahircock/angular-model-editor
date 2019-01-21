@@ -1,5 +1,3 @@
-<div *ngIf="model" class="model-box">
-
   <!-- TITLE BOX -->
   <div class="title-box">
 
@@ -42,18 +40,3 @@
 
   </div>
 
-  <!-- ATTACKS -->
-  <div *ngIf="model.attacks.length > 0" class="section-title">ATTACKS</div>
-  <div *ngFor="let attack of model.attacks" class="section-row">
-    <app-attack-details [attack]="attack"></app-attack-details>
-  </div>
-
-  <!-- ACTIONS -->
-  
-  <!-- MODEL ABILITIES -->
-  <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>
-  <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
-    <app-ability-details [ability]="ability"></app-ability-details>
-  </div>
-
-</div>

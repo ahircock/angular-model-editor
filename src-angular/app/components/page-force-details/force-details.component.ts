@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
+import { ForceDataService, ForceData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
-import { ModelData, ModelDataService } from '../../services/model-data.service';
+import { ModelDataService } from '../../services/model-data.service';
 import { Location } from '@angular/common';
 import { WindowService } from '../../services/window.service';
 import { FactionModelData } from '../../services/faction-data.service';

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { ModelAttackData } from '../../../../services/model-data.service';
+import { ModelAttackData } from '../../../services/model-data.service';
 
 @Component({
   selector: 'app-attack-details',

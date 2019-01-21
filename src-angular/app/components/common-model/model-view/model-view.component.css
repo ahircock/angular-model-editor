@@ -1,0 +1,23 @@
+/* the main model box */
+.model-box { 
+    border:solid 2px black; 
+    background-color:lightgrey;
+}
+
+/* SECTIONS */
+.section-title {
+    padding: 4px;
+    background: #606060;
+    color: white;
+}
+
+/* SECTION ROWS */
+.section-row {
+    padding: 4px;
+}
+.section-row:nth-child(even) {
+    background-color: #e8e8e8;
+}
+.section-row:nth-child(odd) {
+    background-color: white;
+}

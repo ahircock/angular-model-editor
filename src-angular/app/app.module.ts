@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
 
 // services
 import { UserService } from './services/user.service';
@@ -19,8 +20,7 @@ import { WindowService } from './services/window.service';
 // components
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/common/app-header/app-header.component';
-import { ModelViewComponent } from './components/common/model-view/model-view.component';
-import { AppRoutingModule } from './app-routing.module';
+import { ModelViewComponent } from './components/common-model/model-view/model-view.component';
 import { ForceListComponent } from './components/page-force-list/force-list.component';
 import { ModelTileComponent } from './components/page-force-details/model-tile/model-tile.component';
 import { ForceTileComponent } from './components/page-force-list/force-tile/force-tile.component';
@@ -28,14 +28,15 @@ import { ForceDetailsComponent } from './components/page-force-details/force-det
 import { ForcePrintComponent } from './components/page-force-print/force-print.component';
 import { UserLoginComponent } from './components/common-account/user-login/user-login.component';
 import { UserSignupComponent } from './components/common-account/user-signup/user-signup.component';
-import { ModelOptionsComponent } from './components/common/model-options/model-options.component';
-import { AttackDetailsComponent } from './components/common/model-view/attack-details/attack-details.component';
+import { ModelOptionsComponent } from './components/common-model/model-options/model-options.component';
+import { AttackDetailsComponent } from './components/common-model/attack-details/attack-details.component';
 import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
+import { AbilityDetailsComponent } from './components/common-model/ability-details/ability-details.component';
+import { HeaderDetailsComponent } from './components/common-model/header-details/header-details.component';
 
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
 import { TextControllerDirective } from './directives/text-controller.directive';
-import { AbilityDetailsComponent } from './components/common/model-view/ability-details/ability-details.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { AbilityDetailsComponent } from './components/common/model-view/ability-
     ModelOptionsComponent,
     ModelDetailsComponent,
     AttackDetailsComponent,
-    AbilityDetailsComponent
+    AbilityDetailsComponent,
+    HeaderDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -39,7 +39,30 @@
             {
                 "modelId": "40K.ADMIL.GUARDSMAN",
                 "max": 9999
+            },
+            {
+                "modelId": "40K.ADMIL.TEMPESTOR",
+                "max": 1
+            },
+            {
+                "modelId": "40K.ADMIL.GUARDSMANGUNNER",
+                "max": 1
+            },
+            {
+                "modelId": "40K.ADMIL.SCION",
+                "max": 1
+            },
+            {
+                "modelId": "40K.ADMIL.SCIONGUNNER",
+                "max": 1
             }
+        ]
+    },
+    {
+        "_id": "DZ.PLAGUE",
+        "userId": "global",
+        "name": "Plague Monsters",
+        "models": [
         ]
     }
 ]

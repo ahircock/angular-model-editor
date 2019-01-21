@@ -348,5 +348,283 @@
                 ]
             }
         ]
+    },
+    {
+        "_id": "40K.ADMIL.TEMPESTOR",
+        "userId": "global",
+        "name": "Tempestor",
+        "traits": "",
+        "picture": "enforcer-commander.jpg",
+        "cost": 10,
+        "PW": 1,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "attacks": [],
+        "options": [
+            {
+                "id": "MELEE",
+                "description": "Choose a melee weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Chainsword",
+                                "attackId": "40K.CHAINSWORD.3D6.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Power Sword",
+                                "attackId": "40K.POWERSWORD.2D6.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Power Fist",
+                                "attackId": "40K.POWERFIST.2D6.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            },
+            {
+                "id": "RANGED",
+                "description": "Choose a ranged weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Hot-Shot Laspistol",
+                                "attackId": "40K.HOTSHOTLASPISTOL.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Plasma Pistol",
+                                "attackId": "40K.PLASMAPISTOL.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "40K.ADMIL.GUARDSMANGUNNER",
+        "userId": "global",
+        "name": "Guardsman, Special Weapon",
+        "traits": "",
+        "picture": "enforcer-commander.jpg",
+        "cost": 5,
+        "PW": 0,
+        "SP": 5,
+        "AR": 5,
+        "WN": 1,
+        "NE": 4,
+        "abilities": [
+            {
+                "ruleId": "GRUNT"
+            }
+        ],
+        "attacks": [
+            {
+                "modelAttackName": "Guard Knife",
+                "attackId": "40K.STDMELEE.1D6.4+"
+            }
+        ],
+        "options": [
+            {
+                "id": "RANGED",
+                "description": "Choose a ranged weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Flamer",
+                                "attackId": "40K.FLAMER.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Meltagun",
+                                "attackId": "40K.MELTAGUN.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Plasma Gun",
+                                "attackId": "40K.PLASMAGUN.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Sniper Rifle",
+                                "attackId": "40K.SNIPERRIFLE.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "40K.ADMIL.SCION",
+        "userId": "global",
+        "name": "Tempestus Scion",
+        "traits": "",
+        "picture": "enforcer-rifle.jpg",
+        "cost": 10,
+        "PW": 0,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "attacks": [
+            {
+                "modelAttackName": "Guard Knife",
+                "attackId": "40K.STDMELEE.1D6.4+"
+            },
+            {
+                "modelAttackName": "Hot-Shot Lasgun",
+                "attackId": "40K.HOTSHOTLASGUN.3+"
+            }
+        ],
+        "options": []
+    },
+    {
+        "_id": "40K.ADMIL.SCIONGUNNER",
+        "userId": "global",
+        "name": "Tempestus Scion Gunner",
+        "traits": "",
+        "picture": "enforcer-rifle.jpg",
+        "cost": 9,
+        "PW": 0,
+        "SP": 5,
+        "AR": 4,
+        "WN": 2,
+        "NE": 4,
+        "abilities": [],
+        "attacks": [
+            {
+                "modelAttackName": "Guard Knife",
+                "attackId": "40K.STDMELEE.1D6.4+"
+            }
+        ],
+        "options": [
+            {
+                "id": "RANGED",
+                "description": "Choose a ranged weapon",
+                "choices": [
+                    {
+                        "cost": 0,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Flamer",
+                                "attackId": "40K.FLAMER.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Meltagun",
+                                "attackId": "40K.MELTAGUN.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Plasma Gun",
+                                "attackId": "40K.PLASMAGUN.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
+                        "cost": 1,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Hot-Shot Volley Gun",
+                                "attackId": "40K.HOTSHOTVOLLEYGUN.3+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "_id": "DZ.PLAGUE.ABOMINATION",
+        "userId": "global",
+        "name": "Plague Abomination",
+        "traits": "",
+        "picture": "plague-abomination.jpg",
+        "cost": 9,
+        "PW": 2,
+        "SP": 5,
+        "AR": 3,
+        "WN": 6,
+        "NE": 2,
+        "abilities": [],
+        "attacks": [
+            {
+                "modelAttackName": "Plague Claws",
+                "attackId": "40K.STDMELEE.1D6.4+"
+            }
+        ],
+        "options": []
     }
 ]

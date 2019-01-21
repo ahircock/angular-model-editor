@@ -52,5 +52,17 @@
         "userId": "global",
         "name": "Stim Pack",
         "text": "Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."
+    },
+    {
+        "_id": "AREAEFFECT.FRAG",
+        "userId": "global",
+        "name": "Area Effect",
+        "text": "If this attack hits, make a (2D6, 4+, AP0, D1) attack against every model within 2\". These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus."
+    },
+    {
+        "_id": "SPRAY",
+        "userId": "global",
+        "name": "SPRAY",
+        "text": "This attack targets every model under the spray template and within range. These attacks do not suffer penalties for obscured targets, and targets do not receive a cover bonus."
     }
 ]

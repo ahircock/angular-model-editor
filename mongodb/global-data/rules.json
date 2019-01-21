@@ -64,5 +64,17 @@
         "userId": "global",
         "name": "SPRAY",
         "text": "This attack targets every model under the spray template and within range. These attacks do not suffer penalties for obscured targets, and targets do not receive a cover bonus."
+    },
+    {
+        "_id": "GRENADELAUNCHER.3+",
+        "userId": "global",
+        "name": "",
+        "text": "Choose one of the following grenade types:<ul><li>Frag</li><li>Krak</li></ol>"
+    },
+    {
+        "_id": "GRENADELAUNCHER.4+",
+        "userId": "global",
+        "name": "",
+        "text": "Choose one of the following grenade types:<ul class=\"rule-list\"><li>Frag</li><li>Krak</li></ol>"
     }
 ]

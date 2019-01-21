@@ -160,6 +160,36 @@
         ]
     },
     {
+        "_id": "40K.GRENADELAUNCHER.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 0,
+        "HIT": 0,
+        "AP": 0,
+        "DMG": 0,
+        "ruleIds": [
+            "GRENADELAUNCHER.3+"
+        ],
+        "seeBelow": true
+    },
+    {
+        "_id": "40K.GRENADELAUNCHER.4+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 0,
+        "DICE": 0,
+        "HIT": 0,
+        "AP": 0,
+        "DMG": 0,
+        "ruleIds": [
+            "GRENADELAUNCHER.4+"
+        ],
+        "seeBelow": true
+    },
+    {
         "_id": "40K.PHOSPHORPISTOL.3+",
         "userId": "global",
         "type": "RANGED",

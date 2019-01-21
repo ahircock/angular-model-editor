@@ -473,6 +473,17 @@
                         "abilities": []
                     },
                     {
+                        "cost": 2,
+                        "attacks": [
+                            {
+                                "modelAttackName": "Grenade Launcher",
+                                "attackId": "40K.GRENADELAUNCHER.4+"
+                            }
+                        ],
+                        "actions": [],
+                        "abilities": []
+                    },
+                    {
                         "cost": 3,
                         "attacks": [
                             {

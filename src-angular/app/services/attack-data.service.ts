@@ -24,6 +24,7 @@ export interface AttackData {
   AP: number;
   DMG: number;
   rules: RuleData[];
+  seeBelow: boolean;
 }
 
 /**
@@ -39,6 +40,7 @@ interface AttackDBData {
   AP: number;
   DMG: number;
   ruleIds: string[];
+  seeBelow: boolean;
 }
 
 @Injectable()
@@ -101,7 +103,8 @@ export class AttackDataService {
       HIT: dbData.HIT,
       AP: dbData.AP,
       DMG: dbData.DMG,
-      rules: []
+      rules: [],
+      seeBelow: dbData.seeBelow ? dbData.seeBelow : false
     };
 
     // copy over the special rules

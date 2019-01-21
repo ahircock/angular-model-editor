@@ -237,17 +237,17 @@
         "options": [
             {
                 "id": "EQUIP",
-                "description": "Choose equipment",
+                "description": "Choose wargear",
                 "optional": true,
                 "multiSelect": true,
                 "choices": [
                     {
-                        "cost": 1,
+                        "cost": 5,
                         "attacks": [],
                         "actions": [],
                         "abilities": [
                             {
-                                "abilityId": "MEDKIT"
+                                "abilityId": "VOXCASTER"
                             }
                         ]
                     }
@@ -320,34 +320,6 @@
                         ],
                         "actions": [],
                         "abilities": []
-                    }
-                ]
-            },
-            {
-                "id": "EQUIP",
-                "description": "Choose equipment",
-                "optional": true,
-                "multiSelect": true,
-                "choices": [
-                    {
-                        "cost": 1,
-                        "attacks": [],
-                        "actions": [],
-                        "abilities": [
-                            {
-                                "abilityId": "MEDKIT"
-                            }
-                        ]
-                    },
-                    {
-                        "cost": 1,
-                        "attacks": [],
-                        "actions": [],
-                        "abilities": [
-                            {
-                                "abilityId": "STIMPACK"
-                            }
-                        ]
                     }
                 ]
             }
@@ -536,7 +508,27 @@
                 "attackId": "40K.HOTSHOTLASGUN.3+"
             }
         ],
-        "options": []
+        "options": [
+            {
+                "id": "EQUIP",
+                "description": "Choose wargear",
+                "optional": true,
+                "multiSelect": true,
+                "choices": [
+                    {
+                        "cost": 5,
+                        "attacks": [],
+                        "actions": [],
+                        "abilities": [
+                            {
+                                "abilityId": "VOXCASTER"
+                            }
+                        ]
+                    }
+                ]
+            }
+
+        ]
     },
     {
         "_id": "40K.ADMIL.SCIONGUNNER",

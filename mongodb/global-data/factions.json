@@ -57,10 +57,10 @@
                 "max": 1
             }
         ],
-        "modelOtions": [
+        "modelOptions": [
             {
-                "id": "EQUIP",
-                "description": "Choose equipment",
+                "id": "FACTION.COMMON",
+                "description": "Choose common equipment",
                 "optional": true,
                 "multiSelect": true,
                 "choices": [

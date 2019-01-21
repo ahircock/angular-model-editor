@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { ModelData, ModelDataService, ModelAttackData, ModelAbilityData } from './model-data.service';
 import { UserService } from './user.service';
-import { RuleData } from './rule-data.service';
-import { FactionData, FactionDataService } from './faction-data.service';
+import { FactionData, FactionDataService, FactionModelData } from './faction-data.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -16,7 +15,7 @@ export interface ForceData {
   models: ForceModelData[];
 }
 export interface ForceModelData {
-  modelData: ModelData;
+  factionModelData: FactionModelData;
   count: number;
   forceModelName: string;
   cost: number;
@@ -205,16 +204,16 @@ export class ForceDataService {
    * Add a new model to the force
    * @param model the model that you wanted added to your force
    */
-  async addModel( force: ForceData, model: ModelData ) {
+  async addModel( force: ForceData, model: FactionModelData ) {
 
     // create a new force model
     const forceModelData: ForceModelData = {
-      modelData: model,
-      forceModelName: model.name,
-      cost: model.cost,
+      factionModelData: model,
+      forceModelName: model.modelData.name,
+      cost: model.modelData.cost,
       count: 1,
-      attacks: model.attacks.slice(),
-      abilities: model.abilities.slice(),
+      attacks: model.modelData.attacks.slice(),
+      abilities: model.modelData.abilities.slice(),
       optionChoices: []
     };
 
@@ -261,16 +260,10 @@ export class ForceDataService {
       models: []
     };
 
-    // retrieve the model information from its service
-    const modelIdList: string[] = [];
-    for ( const forceModelData of forceDBData.models ) {
-      modelIdList.push( forceModelData._id );
-    }
-    const modelDataList: ModelData[] = await this.modelDataService.getModelListById( modelIdList );
-
-    // create an array of ForceModelData objects, and copy contents from ModelData and ForceDBData
-    for ( let i = 0; i < forceDBData.models.length; i++ ) {
-      const forceModelData: ForceModelData = this.generateForceModelData( modelDataList[i], forceDBData.models[i] );
+    // create an array of ForceModelData objects, and copy contents from FactionModelData and ForceDBData
+    for ( const forceModelDB of forceDBData.models ) {
+      const factionModel = faction.models.find( element => element.modelData._id === forceModelDB._id );
+      const forceModelData: ForceModelData = this.generateForceModelData( factionModel, forceModelDB );
       forceData.models.push(forceModelData);
     }
 
@@ -287,16 +280,16 @@ export class ForceDataService {
    * @param model The model on which this force-model is based
    * @param forceModelDB The DB info needed to generate the force-model
    */
-  private generateForceModelData(model: ModelData, forceModelDB: ForceModelDBData ) {
+  private generateForceModelData(model: FactionModelData, forceModelDB: ForceModelDBData ) {
 
     // copy all of the base model information and the base DB information into the force-model
     const forceModelData: ForceModelData = {
-      modelData: model,
+      factionModelData: model,
       count: forceModelDB.count,
-      cost: model.cost,
+      cost: model.modelData.cost,
       forceModelName: forceModelDB.forceModelName,
-      attacks: model.attacks.slice(),
-      abilities: model.abilities.slice(),
+      attacks: model.modelData.attacks.slice(),
+      abilities: model.modelData.abilities.slice(),
       optionChoices: []
     };
 
@@ -321,7 +314,7 @@ export class ForceDataService {
   private addOptionChoicesToModel(forceModel: ForceModelData, optionChoice: ForceModelOptionChoiceData ) {
 
     // get the matching model option from the baseline model data
-    const modelOption = forceModel.modelData.options.find( element => element.id === optionChoice.optionId );
+    const modelOption = forceModel.factionModelData.options.find( element => element.id === optionChoice.optionId );
 
     // loop through the choices that have been made on this model
     for ( const choiceIndex of optionChoice.choiceIndexes ) {
@@ -353,7 +346,7 @@ export class ForceDataService {
     const modelList: ForceModelDBData[] = [];
     for ( const model of forceData.models ) {
       const newModelDBData: ForceModelDBData = {
-        _id: model.modelData._id,
+        _id: model.factionModelData.modelData._id,
         count: model.count,
         forceModelName: model.forceModelName,
         optionChoices: model.optionChoices

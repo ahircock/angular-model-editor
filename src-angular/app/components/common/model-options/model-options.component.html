@@ -2,7 +2,7 @@
 <div *ngIf="model" class="content-section">
 
   <!-- LIST OPTIONS -->
-  <div *ngFor="let option of model.modelData.options">
+  <div *ngFor="let option of model.factionModelData.options">
     <div class="option-description">{{option.description}}</div>
 
     <!-- LIST CHOICES FOR OPTION -->
@@ -19,9 +19,7 @@
 
       <!-- LIST ABILITIES FOR CHOICE -->
       <div *ngFor="let ability of choice.abilities" class="special-rule-box">
-        <span class="cost-box">+{{choice.cost}}pts </span>
-        <b>{{ability.modelAbilityName}}</b> - 
-        <span [innerHTML]="ability.abilityData.text"></span>
+        <app-ability-details [ability]="ability"></app-ability-details>
       </div>
 
     </div>

@@ -4,7 +4,7 @@
   <div class="title-box">
 
     <!-- MODEL PORTRAIT -->
-    <div class="model-image-box"><img [src]="'assets/portraits/' + model.modelData.picture"></div>
+    <div class="model-image-box"><img [src]="'assets/portraits/' + model.factionModelData.modelData.picture"></div>
   
     <!-- MODEL TITLE INFO -->
     <div class="model-text-box">
@@ -17,8 +17,8 @@
         </div>
 
         <!-- MODEL INFO -->
-        <div class="model-traits">{{model.modelData.name}}</div>
-        <div class="model-traits">{{model.cost}} Points</div>
+        <div class="model-traits">{{model.factionModelData.modelData.name}}</div>
+        <div class="model-traits">{{model.factionModelData.cost}} Points</div>
       </div>
 
       <!-- STAT TABLE -->
@@ -31,11 +31,11 @@
           <th>Ne</th>
         </tr>
         <tr>
-          <td>{{model.modelData.PW}}</td>
-          <td>{{model.modelData.SP}}"</td>
-          <td>{{model.modelData.AR}}+</td>
-          <td>{{model.modelData.WN}}</td>
-          <td>{{model.modelData.NE}}+</td>          
+          <td>{{model.factionModelData.modelData.PW}}</td>
+          <td>{{model.factionModelData.modelData.SP}}"</td>
+          <td>{{model.factionModelData.modelData.AR}}+</td>
+          <td>{{model.factionModelData.modelData.WN}}</td>
+          <td>{{model.factionModelData.modelData.NE}}+</td>          
         </tr>
       </table>
     </div>
@@ -53,7 +53,7 @@
   <!-- MODEL ABILITIES -->
   <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>
   <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
-    <b>{{ability.modelAbilityName}}</b> - <span [innerHTML]="ability.abilityData.text"></span>
+    <app-ability-details [ability]="ability"></app-ability-details>
   </div>
 
 </div>

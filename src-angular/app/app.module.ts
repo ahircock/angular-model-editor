@@ -35,6 +35,7 @@ import { ModelDetailsComponent } from './components/page-model-details/model-det
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
 import { TextControllerDirective } from './directives/text-controller.directive';
+import { AbilityDetailsComponent } from './components/common/model-view/ability-details/ability-details.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     AppHeaderComponent,
     ModelOptionsComponent,
     ModelDetailsComponent,
-    AttackDetailsComponent
+    AttackDetailsComponent,
+    AbilityDetailsComponent
   ],
   imports: [
     BrowserModule,

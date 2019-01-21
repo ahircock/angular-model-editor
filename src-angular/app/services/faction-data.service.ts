@@ -1,16 +1,18 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { UserService } from './user.service';
-import { ModelData, ModelDataService } from './model-data.service';
+import { ModelData, ModelDataService, ModelOptionData, ModelOptionDBData } from './model-data.service';
 
 export interface FactionData {
   _id: string;
   name: string;
   models: FactionModelData[];
+  modelOptions: ModelOptionData[];
 }
 export interface FactionModelData {
   modelData: ModelData;
   max: number;
+  options: ModelOptionData[];
 }
 
 /**
@@ -20,6 +22,7 @@ interface FactionDBData {
   _id: string;
   name: string;
   models: FactionModelDBData[];
+  modelOptions: ModelOptionDBData[];
 }
 interface FactionModelDBData {
   modelId: string;
@@ -87,9 +90,14 @@ export class FactionDataService {
     const factionData: FactionData = {
       _id: factionDBData._id,
       name: factionDBData.name,
+      modelOptions: [],
       models: []
     };
 
+    // copy the options from the DB, modelOptions is an optional field
+    if ( typeof factionDBData.modelOptions !== 'undefined') {
+      factionData.modelOptions = await this.modelDataService.convertDBToModelOptionDataList( factionDBData.modelOptions );
+    }
 
     // retrieve the model information from its service
     const modelIdList: string[] = [];
@@ -102,10 +110,19 @@ export class FactionDataService {
     for ( let i = 0; i < factionDBData.models.length; i++  ) {
       const factionModelData: FactionModelData = {
         modelData: modelDataList[i],
-        max: factionDBData.models[i].max
+        max: factionDBData.models[i].max,
+        options: []
       };
+
+      // combine the options from both the Model and the Faction onto this FactionModel
+      factionModelData.options = modelDataList[i].options.concat(factionData.modelOptions);
+
+      // add the faction model to the faction data
       factionData.models.push(factionModelData);
     }
+
+    // copy the model options to the object
+    
 
     return factionData;
   }

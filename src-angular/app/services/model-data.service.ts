@@ -70,7 +70,7 @@ interface ModelAbilityDBData {
   abilityName: string;
   abilityId: string;
 }
-interface ModelOptionDBData {
+export interface ModelOptionDBData {
   id: string;
   description: string;
   optional: boolean;
@@ -208,13 +208,18 @@ export class ModelDataService {
     }
 
     // copy the options from the model-data to the model
-    this.generateOptionsForModel( modelData, modelDBData.options );
+    modelData.options = await this.convertDBToModelOptionDataList( modelDBData.options );
 
     // return the prepared object
     return modelData;
   }
 
-  private async generateOptionsForModel( model: ModelData, optionListDB: ModelOptionDBData[] ) {
+  /**
+   * This method converts an array of modelOptionDB records into ModelOption records
+   */
+  public async convertDBToModelOptionDataList( optionListDB: ModelOptionDBData[] ): Promise<ModelOptionData[]> {
+
+    const modelOptionList: ModelOptionData[] = [];
 
     for ( const optionDB of optionListDB ) {
 
@@ -258,8 +263,11 @@ export class ModelDataService {
         modelOption.choices.push(choice);
       }
 
-      model.options.push(modelOption);
+      modelOptionList.push(modelOption);
     }
+
+    // return the list of generated options
+    return modelOptionList;
   }
 
   /**

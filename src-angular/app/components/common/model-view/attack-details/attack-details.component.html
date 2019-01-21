@@ -8,10 +8,10 @@
   <b>{{attack.modelAttackName}}</b> ( 
 
     <!-- ATTACKS SAYS "SEE BELOW" -->
-    <span *ngIf="attack.seeBelow">see below</span>
+    <span *ngIf="attack.attackData.seeBelow">see below</span>
 
     <!-- ATTACKS STATS -->
-    <span *ngIf="!attack.seeBelow">
+    <span *ngIf="!attack.attackData.seeBelow">
       <span *ngIf="attack.attackData.type==='RANGED'">{{attack.attackData.RNG}}", </span>
       {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}}
     </span>

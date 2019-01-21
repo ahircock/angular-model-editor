@@ -54,10 +54,10 @@
         "text": "Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."
     },
     {
-        "_id": "AREAEFFECT.FRAG",
+        "_id": "AREAEFFECT.2\"",
         "userId": "global",
         "name": "Area Effect",
-        "text": "If this attack hits, make a (2D6, 4+, AP0, D1) attack against every model within 2\". These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus."
+        "text": "If this attack hits, make another attack against every other model within 2\" of the hit model. These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus."
     },
     {
         "_id": "SPRAY",
@@ -69,12 +69,12 @@
         "_id": "GRENADELAUNCHER.3+",
         "userId": "global",
         "name": "",
-        "text": "Choose one of the following grenade types:<ul><li>Frag</li><li>Krak</li></ol>"
+        "text": "Choose one of the following grenade types:<ul style='margin-block-start: 0px; margin-block-end: 0px; padding-inline-start: 16px;'><li>Frag</li><li>Krak</li></ol>"
     },
     {
         "_id": "GRENADELAUNCHER.4+",
         "userId": "global",
         "name": "",
-        "text": "Choose one of the following grenade types:<ul class=\"rule-list\"><li>Frag</li><li>Krak</li></ol>"
+        "text": "Choose one of the following grenade types:<ul style=\"margin-block-start: 0px; margin-block-end: 0px; padding-inline-start: 16px;\"><li>Frag</li><li>Krak</li></ol>"
     }
 ]

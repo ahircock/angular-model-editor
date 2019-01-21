@@ -193,7 +193,7 @@ export class ModelDataService {
       const modelAbility: ModelAbilityData = {
         abilityData: ability,
         modelAbilityName: modelAbilityDB.abilityName ? modelAbilityDB.abilityName : ability.name
-      }
+      };
       modelData.abilities.push( modelAbility );
     }
 
@@ -256,7 +256,7 @@ export class ModelDataService {
           const modelAbility: ModelAbilityData = {
             abilityData: ability,
             modelAbilityName: choiceAbilityDB.abilityName ? choiceAbilityDB.abilityName : ability.name
-          }
+          };
           choice.abilities.push( modelAbility );
         }
 

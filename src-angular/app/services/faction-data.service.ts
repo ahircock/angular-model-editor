@@ -122,7 +122,7 @@ export class FactionDataService {
     }
 
     // copy the model options to the object
-    
+
 
     return factionData;
   }

@@ -207,8 +207,16 @@ export class ModelDataService {
       modelData.attacks.push( modelAttack );
     }
 
-    // copy the options onto the model
-    for ( const optionDB of modelDBData.options ) {
+    // copy the options from the model-data to the model
+    this.generateOptionsForModel( modelData, modelDBData.options );
+
+    // return the prepared object
+    return modelData;
+  }
+
+  private async generateOptionsForModel( model: ModelData, optionListDB: ModelOptionDBData[] ) {
+
+    for ( const optionDB of optionListDB ) {
 
       const modelOption: ModelOptionData = {
         id: optionDB.id,
@@ -250,11 +258,8 @@ export class ModelDataService {
         modelOption.choices.push(choice);
       }
 
-      modelData.options.push(modelOption);
+      model.options.push(modelOption);
     }
-
-    // return the prepared object
-    return modelData;
   }
 
   /**

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { ModelData, ModelDataService, ModelAttackData } from './model-data.service';
+import { ModelData, ModelDataService, ModelAttackData, ModelAbilityData } from './model-data.service';
 import { UserService } from './user.service';
 import { RuleData } from './rule-data.service';
 import { FactionData, FactionDataService } from './faction-data.service';
@@ -21,7 +21,7 @@ export interface ForceModelData {
   forceModelName: string;
   cost: number;
   attacks: ModelAttackData[];
-  abilities: RuleData[];
+  abilities: ModelAbilityData[];
   optionChoices: ForceModelOptionChoiceData[];
 }
 export interface ForceModelOptionChoiceData {
@@ -300,7 +300,7 @@ export class ForceDataService {
       optionChoices: []
     };
 
-    // copy over the optionChoices
+    // copy over the choices that have been made for this model in this force
     for ( const optionChoiceDB of forceModelDB.optionChoices ) {
 
       const optionChoice: ForceModelOptionChoiceData = {
@@ -310,31 +310,35 @@ export class ForceDataService {
       forceModelData.optionChoices.push( optionChoice );
     }
 
-    // go through each option, and add the chosen attacks, actions, abilities to the model
-    for ( const forceModelOptionChoice of forceModelData.optionChoices ) {
-
-      // get the matching model option from the baseline model data
-      const modelOption = model.options.find( element => element.id === forceModelOptionChoice.optionId );
-
-      // loop through the choices that have been made on this model
-      for ( const choiceIndex of forceModelOptionChoice.choiceIndexes ) {
-
-        // copy the attacks from the model to the forceModel
-        const optionChoice = modelOption.choices[choiceIndex];
-        for ( const attack of optionChoice.attacks ) {
-          forceModelData.attacks.push( attack );
-        }
-
-        // copy the abilities from the model to the forceModel
-        for ( const ability of optionChoice.abilities ) {
-          forceModelData.abilities.push( ability );
-        }
-
-        forceModelData.cost += optionChoice.cost;
-      }
+    // go through each model option, and add the chosen attacks, actions, abilities to the model
+    for ( const optionChoice of forceModelData.optionChoices ) {
+      this.addOptionChoicesToModel( forceModelData, optionChoice );
     }
 
     return forceModelData;
+  }
+
+  private addOptionChoicesToModel(forceModel: ForceModelData, optionChoice: ForceModelOptionChoiceData ) {
+
+    // get the matching model option from the baseline model data
+    const modelOption = forceModel.modelData.options.find( element => element.id === optionChoice.optionId );
+
+    // loop through the choices that have been made on this model
+    for ( const choiceIndex of optionChoice.choiceIndexes ) {
+
+      // copy the attacks from the model to the forceModel
+      const modelOptionChoice = modelOption.choices[choiceIndex];
+      for ( const attack of modelOptionChoice.attacks ) {
+        forceModel.attacks.push( attack );
+      }
+
+      // copy the abilities from the model to the forceModel
+      for ( const ability of modelOptionChoice.abilities ) {
+        forceModel.abilities.push( ability );
+      }
+
+      forceModel.cost += modelOptionChoice.cost;
+    }
   }
 
   /**

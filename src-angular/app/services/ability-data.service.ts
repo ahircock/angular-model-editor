@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { RuleData, RuleDataService } from './rule-data.service';
 import { UserService } from './user.service';
 
 /**

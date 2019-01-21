@@ -1,0 +1,23 @@
+[
+    {
+        "_id": "MOVECOMMAND",
+        "userId": "global",
+        "name": "Move!",
+        "duration": "short",
+        "text": "Target another friendly model within 12”. Target model may immediately perform a Walk action for free"
+    },
+    {
+        "_id": "MELEECOMMAND",
+        "userId": "global",
+        "name": "Fight!",
+        "duration": "short",
+        "text": "Target another friendly model within 12”. Target model may immediately perform a melee attack action for free"
+    },
+    {
+        "_id": "FATIGUECOMMAND",
+        "userId": "global",
+        "name": "Keep Going!",
+        "duration": "short",
+        "text": "Target another fatigued friendly model within 12”. Target model is no longer fatigued"
+    }    
+]

@@ -17,6 +17,11 @@
         <app-attack-details [attack]="attack"></app-attack-details>
       </div>
 
+      <!-- LIST ACTIONS FOR CHOICE -->
+      <div *ngFor="let action of choice.actions">
+          <app-action-details [action]="action"></app-action-details>
+        </div>
+
       <!-- LIST ABILITIES FOR CHOICE -->
       <div *ngFor="let ability of choice.abilities" class="special-rule-box">
         <app-ability-details [ability]="ability"></app-ability-details>

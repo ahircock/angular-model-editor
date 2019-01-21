@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { UserService } from './user.service';
 import { ModelData, ModelDataService, ModelOptionData, ModelOptionDBData } from './model-data.service';

@@ -31,7 +31,7 @@ app.use('/api/rules', rulesRouter );
 app.use('/api/forces', forcesRouter );
 app.use('/api/factions', factionsRouter );
 app.use('/api/attacks', attacksRouter );
-app.use('/api/actions', attacksRouter );
+app.use('/api/actions', actionsRouter );
 app.use('/api/abilities', abilitiesRouter );
 app.use('/api/services', servicesRouter );
 

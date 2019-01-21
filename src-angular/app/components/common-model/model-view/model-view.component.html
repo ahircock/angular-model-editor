@@ -10,6 +10,10 @@
   </div>
 
   <!-- ACTIONS -->
+  <div *ngIf="model.actions.length > 0" class="section-title">ACTIONS</div>
+  <div *ngFor="let action of model.actions" class="section-row">
+    <app-action-details [action]="action"></app-action-details>
+  </div>
   
   <!-- MODEL ABILITIES -->
   <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>

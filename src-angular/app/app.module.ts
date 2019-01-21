@@ -11,6 +11,7 @@ import { ModelDataService } from './services/model-data.service';
 import { RuleDataService } from './services/rule-data.service';
 import { ForceDataService } from './services/force-data.service';
 import { AttackDataService } from './services/attack-data.service';
+import { ActionDataService } from './services/action-data.service';
 import { FactionDataService } from './services/faction-data.service';
 import { DataAccessService } from './services/data-access.service';
 import { AppErrorHandler } from './services/error-handler.service';
@@ -33,6 +34,7 @@ import { AttackDetailsComponent } from './components/common-model/attack-details
 import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
 import { AbilityDetailsComponent } from './components/common-model/ability-details/ability-details.component';
 import { HeaderDetailsComponent } from './components/common-model/header-details/header-details.component';
+import { ActionDetailsComponent } from './components/common-model/action-details/action-details.component';
 
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
@@ -57,7 +59,8 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     ModelDetailsComponent,
     AttackDetailsComponent,
     AbilityDetailsComponent,
-    HeaderDetailsComponent
+    HeaderDetailsComponent,
+    ActionDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     ForceDataService,
     AttackDataService,
     AbilityDataService,
+    ActionDataService,
     FactionDataService,
     DataAccessService,
     WindowService

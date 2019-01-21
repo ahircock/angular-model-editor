@@ -3,6 +3,7 @@ import { DataAccessService } from './data-access.service';
 import { AttackData, AttackDataService } from './attack-data.service';
 import { UserService } from './user.service';
 import { AbilityData, AbilityDataService } from './ability-data.service';
+import { ActionData, ActionDataService } from './action-data.service';
 
 export interface ModelData {
   _id: string;
@@ -16,6 +17,7 @@ export interface ModelData {
   WN: number;
   NE: number;
   attacks: ModelAttackData[];
+  actions: ModelActionData[];
   abilities: ModelAbilityData[];
   options: ModelOptionData[];
 }
@@ -23,6 +25,11 @@ export interface ModelData {
 export interface ModelAttackData {
   attackData: AttackData;
   modelAttackName: string;
+}
+
+export interface ModelActionData {
+  actionData: ActionData;
+  modelActionName: string;
 }
 
 export interface ModelAbilityData {
@@ -41,6 +48,7 @@ export interface ModelOptionData {
 export interface ModelOptionChoiceData {
   cost: number;
   attacks: ModelAttackData[];
+  actions: ModelActionData[];
   abilities: ModelAbilityData[];
 }
 
@@ -60,11 +68,16 @@ interface ModelDBData {
   NE: number;
   attacks: ModelAttackDBData[];
   abilities: ModelAbilityDBData[];
+  actions: ModelActionDBData[];
   options: ModelOptionDBData[];
 }
 interface ModelAttackDBData {
   modelAttackName: string;
   attackId: string;
+}
+interface ModelActionDBData {
+  modelActionName: string;
+  actionId: string;
 }
 interface ModelAbilityDBData {
   abilityName: string;
@@ -80,6 +93,7 @@ export interface ModelOptionDBData {
 interface ModelOptionChoiceDBData {
   cost: number;
   attacks: ModelAttackDBData[];
+  actions: ModelActionDBData[];
   abilities: ModelAbilityDBData[];
 }
 
@@ -91,6 +105,7 @@ export class ModelDataService {
   constructor(
     private attackDataService: AttackDataService,
     private abilityDataService: AbilityDataService,
+    private actionDataService: ActionDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
@@ -183,11 +198,12 @@ export class ModelDataService {
       WN: modelDBData.WN ? modelDBData.WN : 2,
       NE: modelDBData.NE ? modelDBData.NE : 4,
       abilities: [],
+      actions: [],
       attacks: [],
       options: []
     };
 
-    // copy the special rules onto the model
+    // copy the abilities onto the model
     for ( const modelAbilityDB of modelDBData.abilities ) {
       const ability: AbilityData = await this.abilityDataService.getAbilityById(modelAbilityDB.abilityId);
       const modelAbility: ModelAbilityData = {
@@ -205,6 +221,16 @@ export class ModelDataService {
         modelAttackName: modelAttackDB.modelAttackName ? modelAttackDB.modelAttackName : attack.name
       };
       modelData.attacks.push( modelAttack );
+    }
+
+    // copy the actions onto the model
+    for ( const modelActionDB of modelDBData.actions ) {
+      const action: ActionData = await this.actionDataService.getActionById( modelActionDB.actionId );
+      const modelAction: ModelActionData = {
+        actionData: action,
+        modelActionName: modelActionDB.modelActionName ? modelActionDB.modelActionName : action.name
+      };
+      modelData.actions.push( modelAction );
     }
 
     // copy the options from the model-data to the model
@@ -237,6 +263,7 @@ export class ModelDataService {
         const choice: ModelOptionChoiceData = {
           cost: choiceDB.cost,
           attacks: [],
+          actions: [],
           abilities: []
         };
 
@@ -246,6 +273,16 @@ export class ModelDataService {
           const modelAttack: ModelAttackData = {
             attackData: attack,
             modelAttackName: choiceAttackDB.modelAttackName ? choiceAttackDB.modelAttackName : attack.name
+          };
+          choice.attacks.push( modelAttack );
+        }
+
+        // copy the actions into the choice
+        for ( const choiceActionDB of choiceDB.actions ) {
+          const attack: AttackData = await this.attackDataService.getAttackById( choiceActionDB.actionId );
+          const modelAttack: ModelAttackData = {
+            attackData: attack,
+            modelAttackName: choiceActionDB.modelActionName ? choiceActionDB.modelActionName : attack.name
           };
           choice.attacks.push( modelAttack );
         }

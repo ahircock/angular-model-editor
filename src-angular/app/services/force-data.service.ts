@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { ModelDataService, ModelAttackData, ModelAbilityData } from './model-data.service';
+import { ModelAttackData, ModelAbilityData, ModelActionData } from './model-data.service';
 import { UserService } from './user.service';
 import { FactionData, FactionDataService, FactionModelData } from './faction-data.service';
 import { AbilityDataService } from './ability-data.service';
@@ -28,6 +28,7 @@ export interface ForceModelData {
   WN: number;
   NE: number;
   attacks: ModelAttackData[];
+  actions: ModelActionData[];
   abilities: ModelAbilityData[];
   optionChoices: ForceModelOptionChoiceData[];
 }
@@ -235,6 +236,7 @@ export class ForceDataService {
       WN: model.modelData.WN, // leaders get +1 NE
       NE: model.modelData.NE,
       attacks: model.modelData.attacks.slice(),
+      actions: model.modelData.actions.slice(),
       abilities: model.modelData.abilities.slice(),
       optionChoices: []
     };
@@ -374,6 +376,7 @@ export class ForceDataService {
       WN: forceModelDB.leader ? factionModel.modelData.WN + 1 : factionModel.modelData.WN, // leaders get +1 NE
       NE: factionModel.modelData.NE,
       attacks: factionModel.modelData.attacks.slice(),
+      actions: factionModel.modelData.actions.slice(),
       abilities: factionModel.modelData.abilities.slice(),
       optionChoices: []
     };

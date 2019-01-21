@@ -434,6 +434,20 @@
         ]
     },
     {
+        "_id": "40K.FRAGGRENADE.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 6,
+        "DICE": 2,
+        "HIT": 3,
+        "AP": 0,
+        "DMG": 1,
+        "ruleIds": [
+            "AREAEFFECT.2\""
+        ]
+    },
+    {
         "_id": "40K.KRAKGRENADE.4+",
         "userId": "global",
         "type": "RANGED",
@@ -441,6 +455,18 @@
         "RNG": 6,
         "DICE": 1,
         "HIT": 4,
+        "AP": 2,
+        "DMG": 2,
+        "ruleIds": []
+    },
+    {
+        "_id": "40K.KRAKGRENADE.3+",
+        "userId": "global",
+        "type": "RANGED",
+        "traits": "",
+        "RNG": 6,
+        "DICE": 1,
+        "HIT": 3,
         "AP": 2,
         "DMG": 2,
         "ruleIds": []

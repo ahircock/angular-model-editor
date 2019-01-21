@@ -33,6 +33,7 @@ import { ClickElsewhereDirective } from './directives/click-elsewhere.directive'
 import { TextControllerDirective } from './directives/text-controller.directive';
 import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
 import { WindowService } from './services/window.service';
+import { AttackDetailsComponent } from './components/common/model-view/attack-details/attack-details.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { WindowService } from './services/window.service';
     UserSignupComponent,
     AppHeaderComponent,
     ModelOptionsComponent,
-    ModelDetailsComponent
+    ModelDetailsComponent,
+    AttackDetailsComponent
   ],
   imports: [
     BrowserModule,

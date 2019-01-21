@@ -1,0 +1,10 @@
+<div>
+  <img *ngIf="attack.attackData.type==='MELEE'" [src]="'assets/icons/icon-melee-128.png'" class="attack-img">
+  <img *ngIf="attack.attackData.type==='RANGED'" [src]="'assets/icons/icon-ranged-128.png'" class="attack-img">
+  <b>{{attack.modelAttackName}}</b> ( 
+    <span *ngIf="attack.attackData.type==='RANGED'">{{attack.attackData.RNG}}", </span>
+    {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}} )
+  <div *ngFor="let actionRule of attack.attackData.rules" class="action-rule-box">
+      <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
+  </div>
+</div>

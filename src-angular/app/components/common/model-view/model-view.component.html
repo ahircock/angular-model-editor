@@ -4,7 +4,7 @@
   <div class="title-box">
 
     <!-- MODEL PORTRAIT -->
-    <div class="model-image-box-printable"><img [src]="'assets/portraits/' + model.modelData.picture"></div>
+    <div class="model-image-box"><img [src]="'assets/portraits/' + model.modelData.picture"></div>
   
     <!-- MODEL TITLE INFO -->
     <div class="model-text-box">
@@ -17,8 +17,8 @@
         </div>
 
         <!-- MODEL INFO -->
-        <div class="model-traits font-normal">{{model.modelData.name}}</div>
-        <div class="model-traits font-normal">{{model.cost}} Points</div>
+        <div class="model-traits">{{model.modelData.name}}</div>
+        <div class="model-traits">{{model.cost}} Points</div>
       </div>
 
       <!-- STAT TABLE -->
@@ -43,25 +43,17 @@
   </div>
 
   <!-- ATTACKS -->
-  <div *ngIf="model.attacks.length > 0" class="section-title font-normal">ATTACKS</div>
-  <div *ngFor="let attack of model.attacks" class="action-box font-normal">
-    <img *ngIf="attack.attackData.type==='MELEE'" [src]="'assets/icons/icon-melee-128.png'" class="attack-img">
-    <img *ngIf="attack.attackData.type==='RANGED'" [src]="'assets/icons/icon-ranged-128.png'" class="attack-img">
-    <b>{{attack.modelAttackName}}</b> ( 
-      <span *ngIf="attack.attackData.type==='RANGED'">{{attack.attackData.RNG}}", </span>
-      {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}} )
-    <div *ngFor="let actionRule of attack.attackData.rules" class="action-rule-box">
-        <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
-    </div>
+  <div *ngIf="model.attacks.length > 0" class="section-title">ATTACKS</div>
+  <div *ngFor="let attack of model.attacks" class="section-row">
+    <app-attack-details [attack]="attack"></app-attack-details>
   </div>
 
   <!-- ACTIONS -->
   
   <!-- MODEL ABILITIES -->
-  <div *ngIf="model.abilities.length > 0" class="section-title font-normal">ABILITIES</div>
-  <div *ngFor="let ability of model.abilities; index as ruleIndex" class="special-rule">
+  <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>
+  <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
     <b>{{ability.ruleName}}</b> - <span [innerHTML]="ability.ruleText"></span>
   </div>
 
 </div>
-

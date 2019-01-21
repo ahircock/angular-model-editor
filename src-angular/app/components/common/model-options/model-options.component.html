@@ -14,14 +14,7 @@
 
       <!-- LIST ATTACKS FOR CHOICE -->
       <div *ngFor="let attack of choice.attacks">
-        <img *ngIf="attack.attackData.type==='MELEE'" [src]="'assets/icons/icon-melee-128.png'" class="attack-img">
-        <img *ngIf="attack.attackData.type==='RANGED'" [src]="'assets/icons/icon-ranged-128.png'" class="attack-img">
-        <span class="cost-box">+{{choice.cost}}pts</span> <b>{{attack.modelAttackName}}</b> ( 
-          <span *ngIf="attack.attackData.type==='RANGED'">{{attack.attackData.RNG}}", </span>
-          {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}} )
-        <div *ngFor="let actionRule of attack.attackData.rules; index as actionRuleIndex" class="attack-rule-box">
-            <i>{{actionRule.ruleName}}</i> - <span [innerHTML]="actionRule.ruleText"></span>
-        </div>
+        <app-attack-details [attack]="attack"></app-attack-details>
       </div>
 
       <!-- LIST ABILITIES FOR CHOICE -->

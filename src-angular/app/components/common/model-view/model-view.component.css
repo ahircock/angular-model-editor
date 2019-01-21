@@ -4,10 +4,13 @@
     background-color:lightgrey;
 }
 
-/* title area */
+/* TITLE AREA */
 .title-box { 
     display: flex;
     background-color: white; 
+}
+.model-image-box  img {
+    height: 120px;
 }
 .model-text-box {
     position: relative;
@@ -26,44 +29,12 @@ div.model-name {
     overflow-x: hidden;
     max-width: 250px;
 }
-div.model-traits {
+.model-traits {
     position: relative;
     top: 4px;
 }
 
-/* MODEL PORTRAIT DISPLAY & SELECTION */
-.model-image-zone {
-    position: relative;
-}
-.model-image-box-printable  img {
-    height: 120px;
-}
-.model-image-box {
-    height: 136px;
-}
-.model-image-box img {
-    width: 132px;
-}
-.model-image-dropdown {
-    position: absolute;
-    top: 137px;
-    width: 456px;
-    z-index: 2;
-    display: flex;
-    flex-wrap: wrap;
-}
-.model-image-selection {
-    padding: 4px;
-    width: 76px; height: 76px;
-    border-radius: 0px;
-    background: white;
-}
-.model-image-selection img {
-    width: 64px;
-}
-
-
-/* stats table */
+/* STAT TABLE */
 .stat-table {
     border-collapse: collapse; 
     text-align: center;
@@ -77,17 +48,6 @@ div.model-traits {
     width: 50px;
 }
 
-/* MODEL SPECIAL RULES */
-.special-rule {
-    padding: 4px;
-}
-.special-rule:nth-child(even) {
-    background-color: #e8e8e8; 
-}
-.special-rule:nth-child(odd) {
-    background-color: white; 
-}
-
 /* SECTIONS */
 .section-title {
     padding: 4px;
@@ -95,41 +55,13 @@ div.model-traits {
     color: white;
 }
 
-/* ACTIONS */
-.action-box {
+/* SECTION ROWS */
+.section-row {
     padding: 4px;
 }
-.action-box:nth-child(even) {
+.section-row:nth-child(even) {
     background-color: #e8e8e8;
 }
-.action-box:nth-child(odd) {
+.section-row:nth-child(odd) {
     background-color: white;
-}
-.action-rule-box {
-    padding: 4px 4px 0px 16px;
-}
-.attack-img {
-    width: 14px;
-}
-
-
-/* ADD ACTION BUTTONS */ 
-.add-action-button {
-    margin-bottom: 4px;
-}
-
-/* REMOVE BUTTONS */
-.remove-button {
-    margin-right: 8px;
-    border: none;
-    height: 18px;
-    float: left;
-}
-.remove-button img {
-    width: 18px;
-}
-
-/* Used to hide an element */
-.hidden {
-    display: none;
 }

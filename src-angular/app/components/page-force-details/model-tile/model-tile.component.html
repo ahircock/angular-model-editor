@@ -8,7 +8,10 @@
   <!-- TEXT DETAILS -->
   <div class="model-details-box">
     <div class="force-model-name"><span *ngIf="model.count > 1">{{model.count}}x</span> <span class="font-title">{{model.forceModelName}}</span></div>
-    <div class="model-name">{{model.factionModelData.modelData.name}}</div>
+    <div class="model-name">
+      {{model.factionModelData.modelData.name}}
+      <span *ngIf="model.leader"> , Leader</span><img *ngIf="model.leader" [src]="'assets/icons/icon-leader-128.png'" class="leader-img">
+    </div>
     <div class="model-cost">{{model.cost}} points</div>
   </div>
 
@@ -16,6 +19,7 @@
   <div class="model-button-box">
       <div class="model-button box-light-hover" (click)="increaseCount.emit()"><img src="/assets/icons/icon-plus-128.png"></div>
       <div class="model-button box-light-hover" (click)="decreaseCount.emit()"><img src="/assets/icons/icon-minus-128.png"></div>
+      <div *ngIf="!model.leader" class="model-button box-light-hover" (click)="selectLeader.emit()"><img src="/assets/icons/icon-leader-128.png"></div>
   </div>
 
 </div>  

@@ -13,6 +13,7 @@ export class ModelTileComponent implements OnInit {
   @Input() selected: boolean;
   @Output() increaseCount: EventEmitter<void> = new EventEmitter();
   @Output() decreaseCount: EventEmitter<void> = new EventEmitter();
+  @Output() selectLeader: EventEmitter<void> = new EventEmitter();
 
   constructor(
     private forceDataService: ForceDataService

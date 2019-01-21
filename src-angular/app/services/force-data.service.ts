@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
-import { ModelData, ModelDataService, ModelAttackData, ModelAbilityData } from './model-data.service';
+import { ModelDataService, ModelAttackData, ModelAbilityData } from './model-data.service';
 import { UserService } from './user.service';
 import { FactionData, FactionDataService, FactionModelData } from './faction-data.service';
+import { AbilityDataService } from './ability-data.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -15,10 +16,17 @@ export interface ForceData {
   models: ForceModelData[];
 }
 export interface ForceModelData {
+  force: ForceData;
   factionModelData: FactionModelData;
   count: number;
   forceModelName: string;
   cost: number;
+  leader: boolean;
+  PW: number;
+  SP: number;
+  AR: number;
+  WN: number;
+  NE: number;
   attacks: ModelAttackData[];
   abilities: ModelAbilityData[];
   optionChoices: ForceModelOptionChoiceData[];
@@ -41,6 +49,7 @@ interface ForceDBData {
 interface ForceModelDBData {
   _id: string;
   count: number;
+  leader: boolean;
   forceModelName: string;
   optionChoices: ForceModelOptionChoiceDBData[];
 }
@@ -79,8 +88,8 @@ export class ForceDataService {
   ];
 
   constructor(
-    private modelDataService: ModelDataService,
     private factionDataService: FactionDataService,
+    private abilityDataService: AbilityDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
@@ -204,14 +213,27 @@ export class ForceDataService {
    * Add a new model to the force
    * @param model the model that you wanted added to your force
    */
-  async addModel( force: ForceData, model: FactionModelData ) {
+  async addModel( force: ForceData, model: FactionModelData ): Promise<ForceData> {
+
+    // if this is the first model, mark it as the leader
+    let isLeader = false;
+    if ( force.models.length === 0 ) {
+      isLeader = true;
+    }
 
     // create a new force model
     const forceModelData: ForceModelData = {
+      force: force,
       factionModelData: model,
       forceModelName: model.modelData.name,
       cost: model.modelData.cost,
       count: 1,
+      leader: isLeader,
+      PW: model.modelData.PW, // leaders get +1 PW
+      SP: model.modelData.SP,
+      AR: model.modelData.AR,
+      WN: model.modelData.WN, // leaders get +1 NE
+      NE: model.modelData.NE,
       attacks: model.modelData.attacks.slice(),
       abilities: model.modelData.abilities.slice(),
       optionChoices: []
@@ -241,6 +263,62 @@ export class ForceDataService {
   }
 
   /**
+   * Choose a new leader for a given force
+   * @param forceModel the model who is being selected as leader
+   */
+  async selectLeader( forceModel: ForceModelData ): Promise<ForceData> {
+
+    const force = forceModel.force;
+
+    // de-select the current leader
+    const previousLeader = force.models.find( element => element.leader === true );
+    if ( previousLeader ) {
+      previousLeader.leader = false;
+    }
+
+    // select the new leader
+    forceModel.leader = true;
+
+    // update the force in the DB
+    return await this.updateForce( force );
+  }
+
+  /**
+   * Decrease the number of models in a given force. If decreased to 0, then the model 
+   * is removed from the force
+   * @param forceModel the model whose count is being decreased
+   */
+  async decreaseModelCount( forceModel: ForceModelData ): Promise<ForceData> {
+
+    const force = forceModel.force;
+
+    // decrease the count on the force object
+    forceModel.count--;
+    if ( forceModel.count <= 0) {
+      const modelIndex: number = force.models.findIndex( element => element === forceModel );
+      force.models.splice(modelIndex, 1);
+    }
+
+    // update the force in the DB
+    return await this.updateForce( force );
+  }
+
+  /**
+   * Increase the number of models in a given force.
+   * @param forceModel the model whose conut is being increased
+   */
+  async increaseModelCount( forceModel: ForceModelData ): Promise<ForceData> {
+
+    const force = forceModel.force;
+
+    // increase the count of this model
+    forceModel.count++;
+
+    // update the force in the DB
+    return await this.updateForce( force );
+  }
+
+  /**
    * This method will convert a ForceDBData record (which is used internally) into a ForceData record (which
    * is used externally). Returns the converted object
    *
@@ -263,7 +341,7 @@ export class ForceDataService {
     // create an array of ForceModelData objects, and copy contents from FactionModelData and ForceDBData
     for ( const forceModelDB of forceDBData.models ) {
       const factionModel = faction.models.find( element => element.modelData._id === forceModelDB._id );
-      const forceModelData: ForceModelData = this.generateForceModelData( factionModel, forceModelDB );
+      const forceModelData: ForceModelData = await this.generateForceModelData( forceData, factionModel, forceModelDB );
       forceData.models.push(forceModelData);
     }
 
@@ -280,16 +358,23 @@ export class ForceDataService {
    * @param model The model on which this force-model is based
    * @param forceModelDB The DB info needed to generate the force-model
    */
-  private generateForceModelData(model: FactionModelData, forceModelDB: ForceModelDBData ) {
+  private async generateForceModelData(force: ForceData, factionModel: FactionModelData, forceModelDB: ForceModelDBData ) {
 
     // copy all of the base model information and the base DB information into the force-model
     const forceModelData: ForceModelData = {
-      factionModelData: model,
+      force: force,
+      factionModelData: factionModel,
       count: forceModelDB.count,
-      cost: model.modelData.cost,
+      cost: factionModel.modelData.cost,
+      leader: forceModelDB.leader ? forceModelDB.leader : false,
       forceModelName: forceModelDB.forceModelName,
-      attacks: model.modelData.attacks.slice(),
-      abilities: model.modelData.abilities.slice(),
+      PW: forceModelDB.leader ? factionModel.modelData.PW + 1 : factionModel.modelData.PW, // leaders get +1 PW
+      SP: factionModel.modelData.SP,
+      AR: factionModel.modelData.AR,
+      WN: forceModelDB.leader ? factionModel.modelData.WN + 1 : factionModel.modelData.WN, // leaders get +1 NE
+      NE: factionModel.modelData.NE,
+      attacks: factionModel.modelData.attacks.slice(),
+      abilities: factionModel.modelData.abilities.slice(),
       optionChoices: []
     };
 
@@ -308,7 +393,23 @@ export class ForceDataService {
       this.addOptionChoicesToModel( forceModelData, optionChoice );
     }
 
+    // leaders get the Inspire ability
+    if ( forceModelData.leader ) {
+      await this.addInspireAbility(forceModelData);
+    }
+
     return forceModelData;
+  }
+
+  private async addInspireAbility(forceModel: ForceModelData) {
+    if ( forceModel.leader ) {
+      const inspireAbility = await this.abilityDataService.getAbilityById( 'INSPIRE' );
+      const ability: ModelAbilityData = {
+        abilityData: inspireAbility,
+        modelAbilityName: inspireAbility.name
+      };
+      forceModel.abilities.push(ability);
+    }
   }
 
   private addOptionChoicesToModel(forceModel: ForceModelData, optionChoice: ForceModelOptionChoiceData ) {
@@ -348,6 +449,7 @@ export class ForceDataService {
       const newModelDBData: ForceModelDBData = {
         _id: model.factionModelData.modelData._id,
         count: model.count,
+        leader: model.leader,
         forceModelName: model.forceModelName,
         optionChoices: model.optionChoices
       };
@@ -392,6 +494,21 @@ export class ForceDataService {
     if ( a.name < b.name ) {
       return -1;
     } else if ( a.name > b.name ) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  private sortForceModelData( a: ForceModelData, b: ForceModelData ) {
+
+    // always return the leader first
+    if ( a.leader ) { return -1; }
+    if ( b.leader ) { return 1; }
+
+    if ( a.forceModelName < b.forceModelName ) {
+      return -1;
+    } else if ( a.forceModelName > b.forceModelName ) {
       return 1;
     } else {
       return 0;

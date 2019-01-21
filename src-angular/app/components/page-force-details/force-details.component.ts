@@ -19,6 +19,8 @@ export class ForceDetailsComponent implements OnInit {
   public factionModels: FactionModelData[];
   public showModelListDropdown = false;
   public smallScreen: boolean;
+
+  /** This variable is needed to control selection problems with mobile device workflow */
   public modelButtonPressed = false;
 
   constructor(
@@ -79,11 +81,7 @@ export class ForceDetailsComponent implements OnInit {
     // record that a button was pressed
     this.modelButtonPressed = true;
 
-    // increase the count on the force object
-    this.force.models[modelIndex].count++;
-
-    // save the changes
-    await this.saveForce();
+    this.force = await this.forceDataService.increaseModelCount( this.force.models[modelIndex]);
   }
 
   async decreaseModelCount(modelIndex: number) {
@@ -91,16 +89,16 @@ export class ForceDetailsComponent implements OnInit {
     // record that a button was pressed
     this.modelButtonPressed = true;
 
-    // decrease the count on the force object
-    this.force.models[modelIndex].count--;
-    if ( this.force.models[modelIndex].count <= 0) {
-      this.force.models.splice(modelIndex, 1);
-    }
-
-    // save the changes
-    await this.saveForce();
+    this.force = await this.forceDataService.decreaseModelCount( this.force.models[modelIndex]);
   }
 
+  async selectLeader(modelIndex: number) {
+
+      // record that a button was pressed
+      this.modelButtonPressed = true;
+
+      this.force = await this.forceDataService.selectLeader( this.force.models[modelIndex]);
+  }
 
   async saveForce() {
     this.force = await this.forceDataService.updateForce( this.force );

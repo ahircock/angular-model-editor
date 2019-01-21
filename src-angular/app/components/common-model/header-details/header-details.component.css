@@ -27,6 +27,10 @@ div.model-name {
     position: relative;
     top: 4px;
 }
+.leader-img {
+    width: 14px;
+}
+
 
 /* STAT TABLE */
 .stat-table {

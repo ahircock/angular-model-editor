@@ -1,6 +1,9 @@
 {
   "name": "angular-model-editor",
   "version": "0.0.0",
+  "engines": {
+    "node": "10.13.0"
+  },
   "license": "MIT",
   "scripts": {
     "start": "node ./dist/server.js",

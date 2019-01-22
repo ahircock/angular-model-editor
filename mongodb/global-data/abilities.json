@@ -1,52 +1,11 @@
 [
-    {
-        "_id": "INSPIRE",
-        "userId": "global",
-        "name": "Inspire",
-        "text": "This model and all friendly models within 6\" may re-roll failed Nerve tests."
-    },
-    {
-        "_id": "MEDKIT",
-        "userId": "global",
-        "name": "Med Kit",
-        "text": "Single use item. A model with this item may discard it during its activation to recover 1 wound."
-    },
-    {
-        "_id": "STIMPACK",
-        "userId": "global",
-        "name": "Stim Pack",
-        "text": "Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."
-    },
-    {
-        "_id": "VOXCASTER",
-        "userId": "global",
-        "name": "Vox-Caster",
-        "power": 1,
-        "text": "Use when a friendly model is about to make a Nerve test. The model receives a +1 modifier to the Nerve test."
-    },
-    {
-        "_id": "GRUNT",
-        "userId": "global",
-        "name": "Grunt",
-        "text": "This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."
-    },
-    {
-        "_id": "KNOWNOFEAR",
-        "userId": "global",
-        "name": "And They Shall Know No Fear",
-        "text": "You can re-roll failed Nerve tests for this model"
-    },
-    {
-        "_id": "IRONHALO",
-        "userId": "global",
-        "name": "Iron Halo",
-        "text": "This model has a 4+ invulnerable save"
-    },
-    {
-        "_id": "RITESOFBATTLE",
-        "userId": "global",
-        "name": "Rites Of Battle",
-        "power": 1,
-        "text": "For the rest of the turn, you can re-roll melee and shooting hit-rolls of 1 for friendly models within 6” of this model."
-    }
+    {"_id":"CAMO","userId":"global","name":"Camo","text":"When an opponent targets this model with a ranged attack, and this model is obscured, the hit roll suffers an additional -1 modifier."},
+    {"_id":"GRUNT","userId":"global","name":"Grunt","text":"This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."},
+    {"_id":"INSPIRE","userId":"global","name":"Inspire","text":"This model and all friendly models within 6\" may re-roll failed Nerve tests."},
+    {"_id":"IRONHALO","userId":"global","name":"Iron Halo","text":"This model has a 4+ invulnerable save"},
+    {"_id":"KNOWNOFEAR","userId":"global","name":"And They Shall Know No Fear","text":"You can re-roll failed Nerve tests for this model"},
+    {"_id":"MEDKIT","userId":"global","name":"Med Kit","text":"Single use item. A model with this item may discard it during its activation to recover 1 wound."},
+    {"_id":"RITESOFBATTLE","userId":"global","name":"Rites Of Battle","power":1,"text":"For the rest of the turn, you can re-roll melee and shooting hit-rolls of 1 for friendly models within 6” of this model."},
+    {"_id":"STIMPACK","userId":"global","name":"Stim Pack","text":"Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."},
+    {"_id":"VOXCASTER","userId":"global","name":"Vox-Caster","power":1,"text":"Use when a friendly model is about to make a Nerve test. The model receives a +1 modifier to the Nerve test."}
 ]

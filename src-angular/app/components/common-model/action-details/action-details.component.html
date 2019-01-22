@@ -1,4 +1,7 @@
 <div>
+  <!-- COST -->
+  <span *ngIf="cost >= 0">+{{cost}}pts </span>
+  
   <b>{{action.modelActionName}}</b>
   ({{action.actionData.duration}})
   - <span [innerHTML]="action.actionData.text" class="rule-text"></span>

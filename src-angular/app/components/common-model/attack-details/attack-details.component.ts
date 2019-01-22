@@ -10,6 +10,7 @@ import { ModelAttackData } from '../../../services/model-data.service';
 export class AttackDetailsComponent implements OnInit {
 
   @Input() attack: ModelAttackData;
+  @Input() cost = -1;
 
   constructor() { }
 

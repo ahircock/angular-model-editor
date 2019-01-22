@@ -10,6 +10,7 @@ import { ModelAbilityData } from '../../../services/model-data.service';
 export class AbilityDetailsComponent implements OnInit {
 
   @Input() ability: ModelAbilityData;
+  @Input() cost = -1;
 
   constructor() { }
 

@@ -4,6 +4,9 @@
   <img *ngIf="attack.attackData.type==='MELEE'" [src]="'assets/icons/icon-melee-128.png'" class="attack-img">
   <img *ngIf="attack.attackData.type==='RANGED'" [src]="'assets/icons/icon-ranged-128.png'" class="attack-img">
 
+  <!-- ATTACK COST -->
+  <span *ngIf="cost >= 0">+{{cost}}pts </span>
+  
   <!-- ATTACK NAME -->
   <b>{{attack.modelAttackName}}</b> ( 
 

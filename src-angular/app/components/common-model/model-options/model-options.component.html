@@ -14,17 +14,17 @@
 
       <!-- LIST ATTACKS FOR CHOICE -->
       <div *ngFor="let attack of choice.attacks">
-        <app-attack-details [attack]="attack"></app-attack-details>
+        <app-attack-details [attack]="attack" [cost]="choice.cost"></app-attack-details>
       </div>
 
       <!-- LIST ACTIONS FOR CHOICE -->
       <div *ngFor="let action of choice.actions">
-          <app-action-details [action]="action"></app-action-details>
+          <app-action-details [action]="action" [cost]="choice.cost"></app-action-details>
         </div>
 
       <!-- LIST ABILITIES FOR CHOICE -->
       <div *ngFor="let ability of choice.abilities" class="special-rule-box">
-        <app-ability-details [ability]="ability"></app-ability-details>
+        <app-ability-details [ability]="ability" [cost]="choice.cost"></app-ability-details>
       </div>
 
     </div>

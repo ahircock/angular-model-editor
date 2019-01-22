@@ -9,6 +9,7 @@ import { ModelActionData } from '../../../services/model-data.service';
 export class ActionDetailsComponent implements OnInit {
 
   @Input() action: ModelActionData;
+  @Input() cost = -1;
 
   constructor() { }
 

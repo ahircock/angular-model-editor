@@ -1,4 +1,7 @@
 <div>
+  <!-- COST -->
+  <span *ngIf="cost >= 0">+{{cost}}pts </span>
+  
   <b>{{ability.modelAbilityName}}</b>
   <span *ngIf="ability.abilityData.power > 0"> ({{ability.abilityData.power}} Pw)</span>
   - <span [innerHTML]="ability.abilityData.text" class="rule-text"></span>

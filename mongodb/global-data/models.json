@@ -218,7 +218,7 @@
         "userId": "global",
         "name": "Guardsman",
         "traits": "",
-        "picture": "enforcer-rifle.jpg",
+        "picture": "guard-trooper.jpg",
         "cost": 5,
         "PW": 0,
         "SP": 5,
@@ -238,6 +238,9 @@
             },
             {
                 "attackId": "40K.LASGUN.4+"
+            },
+            {
+                "attackId": "40K.FRAGGRENADE.4+"
             }
         ],
         "options": [
@@ -267,7 +270,7 @@
         "userId": "global",
         "name": "Guard Sergeant",
         "traits": "",
-        "picture": "enforcer-commander.jpg",
+        "picture": "guard-sergeant.jpg",
         "cost": 7,
         "PW": 1,
         "SP": 5,
@@ -346,7 +349,7 @@
         "userId": "global",
         "name": "Tempestor",
         "traits": "",
-        "picture": "enforcer-commander.jpg",
+        "picture": "tempestus-sergeant.jpg",
         "cost": 10,
         "PW": 1,
         "SP": 5,
@@ -431,7 +434,7 @@
         "userId": "global",
         "name": "Guardsman Gunner",
         "traits": "",
-        "picture": "enforcer-commander.jpg",
+        "picture": "guard-gunner.jpg",
         "cost": 5,
         "PW": 0,
         "SP": 5,
@@ -514,7 +517,7 @@
         "userId": "global",
         "name": "Tempestus Scion",
         "traits": "",
-        "picture": "enforcer-rifle.jpg",
+        "picture": "tempestus-trooper.jpg",
         "cost": 10,
         "PW": 0,
         "SP": 5,
@@ -559,7 +562,7 @@
         "userId": "global",
         "name": "Tempestus Scion Gunner",
         "traits": "",
-        "picture": "enforcer-rifle.jpg",
+        "picture": "tempestus-gunner.jpg",
         "cost": 10,
         "PW": 0,
         "SP": 5,

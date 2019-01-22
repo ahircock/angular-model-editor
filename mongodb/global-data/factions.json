@@ -1,109 +1,21 @@
 [
-    {
-        "_id": "40K.ADMECH",
-        "userId": "global",
-        "name": "Adeptus Mechanicus",
-        "models": [
-            {
-                "modelId": "40K.ADMECH.SKITALPHA",
-                "max": 1
-            },
-            {
-                "modelId": "40K.ADMECH.SKITGUNNER",
-                "max": 3
-            },
-            {
-                "modelId": "40K.ADMECH.SKITRANGER",
-                "max": 9999
-            },
-            {
-                "modelId": "40K.ADMECH.SKITVANGUARD",
-                "max": 9999
-            }
-            ,
-            {
-                "modelId": "40K.ADMECH.SKITSNIPER",
-                "max": 1
-            }
-        ]
-    },
-    {
-        "_id": "40K.ADMIL",
-        "userId": "global",
-        "name": "Astra Militarum",
-        "models": [
-            {
-                "modelId": "40K.ADMIL.SERGEANT",
-                "max": 1
-            },
-            {
-                "modelId": "40K.ADMIL.GUARDSMAN",
-                "max": 9999
-            },
-            {
-                "modelId": "40K.ADMIL.TEMPESTOR",
-                "max": 1
-            },
-            {
-                "modelId": "40K.ADMIL.GUARDSMANGUNNER",
-                "max": 1
-            },
-            {
-                "modelId": "40K.ADMIL.SCION",
-                "max": 1
-            },
-            {
-                "modelId": "40K.ADMIL.SCIONGUNNER",
-                "max": 1
-            }
-        ],
-        "modelOptions": [
-            {
-                "id": "FACTION.COMMON",
-                "description": "Choose common equipment",
-                "optional": true,
-                "multiSelect": true,
-                "choices": [
-                    {
-                        "cost": 1,
-                        "attacks": [],
-                        "actions": [],
-                        "abilities": [
-                            {
-                                "abilityId": "MEDKIT"
-                            }
-                        ]
-                    },
-                    {
-                        "cost": 1,
-                        "attacks": [],
-                        "actions": [],
-                        "abilities": [
-                            {
-                                "abilityId": "STIMPACK"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "_id": "DZ.PLAGUE",
-        "userId": "global",
-        "name": "Plague Monsters",
-        "models": [
-        ]
-    },
-    {
-        "_id": "40K.ASTARTES",
-        "userId": "global",
-        "name": "Adeptus Astartes",
-        "models": [
-            {
-                "modelId": "40K.ASTARTES.PRIMARISCAPTAIN",
-                "max": 1
-            }
-        ]
-    }
+    {"_id":"40K.ADMECH","userId":"global","name":"Adeptus Mechanicus","models":[
+        {"modelId":"40K.ADMECH.SKITALPHA","max":1},
+        {"modelId":"40K.ADMECH.SKITGUNNER","max":3},
+        {"modelId":"40K.ADMECH.SKITRANGER","max":9999},
+        {"modelId":"40K.ADMECH.SKITVANGUARD","max":9999},
+        {"modelId":"40K.ADMECH.SKITSNIPER","max":1}]},
+    {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum","models":[
+        {"modelId":"40K.ADMIL.SERGEANT","max":1},
+        {"modelId":"40K.ADMIL.GUARDSMAN","max":9999},
+        {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
+        {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":1},
+        {"modelId":"40K.ADMIL.SCION","max":1},
+        {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}],
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"attacks":[],"actions":[],"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"attacks":[],"actions":[],"abilities":[{"abilityId":"STIMPACK"}]}]}]},
+    {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes","models":[
+        {"modelId":"40K.ASTARTES.PRIMARISCAPTAIN","max":1},
+        {"modelId":"40K.ASTARTES.SCOUT","max":9999}
+        ]}
 ]

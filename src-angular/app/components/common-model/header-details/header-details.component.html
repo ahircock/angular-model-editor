@@ -9,9 +9,8 @@
 
       <!-- MODEL NAME -->
       <div class="model-text-box-top">
-        <div *ngIf="!allowEdit" class="model-name font-title-big">{{model.forceModelName}}</div>
-        <div *ngIf="allowEdit">
-          <input  class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="saveModelData()" placeholder="Model name">
+        <div>
+          <input  class="model-name input-white font-title-big" appTextController [(ngModel)]="model.forceModelName" (blur)="updated.emit()" placeholder="Model name">
         </div>
 
         <!-- MODEL INFO -->

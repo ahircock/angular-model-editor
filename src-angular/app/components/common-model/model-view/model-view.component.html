@@ -1,7 +1,7 @@
 <div *ngIf="model" class="model-box">
 
   <!-- MODEL HEADER INFO -->
-  <app-header-details [model]="model"></app-header-details>
+  <app-header-details [model]="model" (updated)="updated.emit()"></app-header-details>
 
   <!-- ATTACKS -->
   <div *ngIf="model.attacks.length > 0" class="section-title">ATTACKS</div>

@@ -189,7 +189,7 @@ export class ModelDataService {
     const modelData: ModelData = {
       _id: modelDBData._id,
       name: modelDBData.name,
-      traits: modelDBData.traits,
+      traits: modelDBData.traits ? modelDBData.traits : '',
       picture: modelDBData.picture,
       cost: modelDBData.cost ? modelDBData.cost : 0,
       PW: modelDBData.PW ? modelDBData.PW : 0,
@@ -204,37 +204,45 @@ export class ModelDataService {
     };
 
     // copy the abilities onto the model
-    for ( const modelAbilityDB of modelDBData.abilities ) {
-      const ability: AbilityData = await this.abilityDataService.getAbilityById(modelAbilityDB.abilityId);
-      const modelAbility: ModelAbilityData = {
-        abilityData: ability,
-        modelAbilityName: modelAbilityDB.abilityName ? modelAbilityDB.abilityName : ability.name
-      };
-      modelData.abilities.push( modelAbility );
+    if ( modelDBData.abilities ) {
+      for ( const modelAbilityDB of modelDBData.abilities ) {
+        const ability: AbilityData = await this.abilityDataService.getAbilityById(modelAbilityDB.abilityId);
+        const modelAbility: ModelAbilityData = {
+          abilityData: ability,
+          modelAbilityName: modelAbilityDB.abilityName ? modelAbilityDB.abilityName : ability.name
+        };
+        modelData.abilities.push( modelAbility );
+      }
     }
 
     // copy the attacks onto the model
-    for ( const modelAttackDB of modelDBData.attacks ) {
-      const attack: AttackData = await this.attackDataService.getAttackById( modelAttackDB.attackId );
-      const modelAttack: ModelAttackData = {
-        attackData: attack,
-        modelAttackName: modelAttackDB.modelAttackName ? modelAttackDB.modelAttackName : attack.name
-      };
-      modelData.attacks.push( modelAttack );
+    if ( modelDBData.attacks ) {
+      for ( const modelAttackDB of modelDBData.attacks ) {
+        const attack: AttackData = await this.attackDataService.getAttackById( modelAttackDB.attackId );
+        const modelAttack: ModelAttackData = {
+          attackData: attack,
+          modelAttackName: modelAttackDB.modelAttackName ? modelAttackDB.modelAttackName : attack.name
+        };
+        modelData.attacks.push( modelAttack );
+      }
     }
 
     // copy the actions onto the model
-    for ( const modelActionDB of modelDBData.actions ) {
-      const action: ActionData = await this.actionDataService.getActionById( modelActionDB.actionId );
-      const modelAction: ModelActionData = {
-        actionData: action,
-        modelActionName: modelActionDB.modelActionName ? modelActionDB.modelActionName : action.name
-      };
-      modelData.actions.push( modelAction );
+    if ( modelDBData.actions ) {
+      for ( const modelActionDB of modelDBData.actions ) {
+        const action: ActionData = await this.actionDataService.getActionById( modelActionDB.actionId );
+        const modelAction: ModelActionData = {
+          actionData: action,
+          modelActionName: modelActionDB.modelActionName ? modelActionDB.modelActionName : action.name
+        };
+        modelData.actions.push( modelAction );
+      }
     }
 
     // copy the options from the model-data to the model
-    modelData.options = await this.convertDBToModelOptionDataList( modelDBData.options );
+    if ( modelDBData.options ) {
+      modelData.options = await this.convertDBToModelOptionDataList( modelDBData.options );
+    }
 
     // return the prepared object
     return modelData;
@@ -268,33 +276,39 @@ export class ModelDataService {
         };
 
         // copy the attacks into the choice
-        for ( const choiceAttackDB of choiceDB.attacks ) {
-          const attack: AttackData = await this.attackDataService.getAttackById( choiceAttackDB.attackId );
-          const modelAttack: ModelAttackData = {
-            attackData: attack,
-            modelAttackName: choiceAttackDB.modelAttackName ? choiceAttackDB.modelAttackName : attack.name
-          };
-          choice.attacks.push( modelAttack );
+        if ( choiceDB.attacks ) {
+          for ( const choiceAttackDB of choiceDB.attacks ) {
+            const attack: AttackData = await this.attackDataService.getAttackById( choiceAttackDB.attackId );
+            const modelAttack: ModelAttackData = {
+              attackData: attack,
+              modelAttackName: choiceAttackDB.modelAttackName ? choiceAttackDB.modelAttackName : attack.name
+            };
+            choice.attacks.push( modelAttack );
+          }
         }
 
         // copy the actions into the choice
-        for ( const choiceActionDB of choiceDB.actions ) {
-          const attack: AttackData = await this.attackDataService.getAttackById( choiceActionDB.actionId );
-          const modelAttack: ModelAttackData = {
-            attackData: attack,
-            modelAttackName: choiceActionDB.modelActionName ? choiceActionDB.modelActionName : attack.name
-          };
-          choice.attacks.push( modelAttack );
+        if ( choiceDB.actions ) {
+          for ( const choiceActionDB of choiceDB.actions ) {
+            const attack: AttackData = await this.attackDataService.getAttackById( choiceActionDB.actionId );
+            const modelAttack: ModelAttackData = {
+              attackData: attack,
+              modelAttackName: choiceActionDB.modelActionName ? choiceActionDB.modelActionName : attack.name
+            };
+            choice.attacks.push( modelAttack );
+          }
         }
 
         // copy the abilities onto the model
-        for ( const choiceAbilityDB of choiceDB.abilities ) {
-          const ability: AbilityData = await this.abilityDataService.getAbilityById(choiceAbilityDB.abilityId);
-          const modelAbility: ModelAbilityData = {
-            abilityData: ability,
-            modelAbilityName: choiceAbilityDB.abilityName ? choiceAbilityDB.abilityName : ability.name
-          };
-          choice.abilities.push( modelAbility );
+        if ( choiceDB.abilities ) {
+          for ( const choiceAbilityDB of choiceDB.abilities ) {
+            const ability: AbilityData = await this.abilityDataService.getAbilityById(choiceAbilityDB.abilityId);
+            const modelAbility: ModelAbilityData = {
+              abilityData: ability,
+              modelAbilityName: choiceAbilityDB.abilityName ? choiceAbilityDB.abilityName : ability.name
+            };
+            choice.abilities.push( modelAbility );
+          }
         }
 
         modelOption.choices.push(choice);

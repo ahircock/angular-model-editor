@@ -95,34 +95,28 @@ export class FactionDataService {
     };
 
     // copy the options from the DB, modelOptions is an optional field
-    if ( typeof factionDBData.modelOptions !== 'undefined') {
+    if ( factionDBData.modelOptions ) {
       factionData.modelOptions = await this.modelDataService.convertDBToModelOptionDataList( factionDBData.modelOptions );
     }
 
-    // retrieve the model information from its service
-    const modelIdList: string[] = [];
-    for ( const factionModel of factionDBData.models ) {
-      modelIdList.push( factionModel.modelId );
-    }
-    const modelDataList: ModelData[] = await this.modelDataService.getModelListById( modelIdList );
-
     // copy the faction models to the object
-    for ( let i = 0; i < factionDBData.models.length; i++  ) {
-      const factionModelData: FactionModelData = {
-        modelData: modelDataList[i],
-        max: factionDBData.models[i].max,
-        options: []
-      };
+    if ( factionDBData.models ) {
+      for ( const factionModelDB of factionDBData.models  ) {
 
-      // combine the options from both the Model and the Faction onto this FactionModel
-      factionModelData.options = modelDataList[i].options.concat(factionData.modelOptions);
+        const model = await this.modelDataService.getModelById( factionModelDB.modelId )
+        const factionModelData: FactionModelData = {
+          modelData: model,
+          max: factionModelDB.max,
+          options: []
+        };
 
-      // add the faction model to the faction data
-      factionData.models.push(factionModelData);
+        // combine the options from both the Model and the Faction onto this FactionModel
+        factionModelData.options = model.options.concat(factionData.modelOptions);
+
+        // add the faction model to the faction data
+        factionData.models.push(factionModelData);
+      }
     }
-
-    // copy the model options to the object
-
 
     return factionData;
   }

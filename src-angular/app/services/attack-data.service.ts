@@ -100,14 +100,14 @@ export class AttackDataService {
       _id: dbData._id,
       name: dbData.name,
       type: dbData.type,
-      traits: dbData.traits,
-      RNG: dbData.RNG,
-      DICE: dbData.DICE,
-      HIT: dbData.HIT,
-      AP: dbData.AP,
-      DMG: dbData.DMG,
-      rules: [],
-      seeBelow: dbData.seeBelow ? dbData.seeBelow : false
+      traits: dbData.traits ? dbData.traits : '',
+      RNG: dbData.RNG ? dbData.RNG : 0,
+      DICE: dbData.DICE ? dbData.DICE : 0,
+      HIT: dbData.HIT ? dbData.HIT : 0,
+      AP: dbData.AP ? dbData.AP : 0,
+      DMG: dbData.DMG ? dbData.DMG : 0,
+      seeBelow: dbData.seeBelow ? dbData.seeBelow : false,
+      rules: []
     };
 
     // copy over the special rules

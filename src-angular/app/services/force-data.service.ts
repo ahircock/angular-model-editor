@@ -398,18 +398,18 @@ export class ForceDataService {
 
     // leaders get the Inspire ability
     if ( forceModelData.leader ) {
-      await this.addInspireAbility(forceModelData);
+      await this.addLeaderAbility(forceModelData);
     }
 
     return forceModelData;
   }
 
-  private async addInspireAbility(forceModel: ForceModelData) {
+  private async addLeaderAbility(forceModel: ForceModelData) {
     if ( forceModel.leader ) {
-      const inspireAbility = await this.abilityDataService.getAbilityById( 'INSPIRE' );
+      const leaderAbility = await this.abilityDataService.getAbilityById( 'LEADER' );
       const ability: ModelAbilityData = {
-        abilityData: inspireAbility,
-        modelAbilityName: inspireAbility.name
+        abilityData: leaderAbility,
+        modelAbilityName: leaderAbility.name
       };
       forceModel.abilities.push(ability);
     }

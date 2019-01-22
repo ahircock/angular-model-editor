@@ -28,5 +28,13 @@
         {"modelId":"40K.ASTARTES.SCOUTASSAULT"},
         {"modelId":"40K.ASTARTES.SCOUTHEAVY","max":1},
         {"modelId":"40K.ASTARTES.SCOUTSNIPER","max":1}
+        ]},
+    {"_id":"40K.GC","userId":"global","name":"Genestealer Cult","models":[
+        {"modelId":"40K.GC.METAMORPHLEADER","max":1},
+        {"modelId":"40K.GC.METAMORPH"},
+        {"modelId":"40K.GC.NEOPHYTE"},
+        {"modelId":"40K.GC.NEOPHYTEASSAULT","max":2},
+        {"modelId":"40K.GC.NEOPHYTEHEAVY","max":2},
+        {"modelId":"40K.GC.ACOLYTEFIGHTER","max":4}        
         ]}
 ]

@@ -1,11 +1,12 @@
 [
     {"_id":"ASSAULT","userId":"global","name":"Assault","text":"If target is within 8\", this attack rolls +1D6"},
     {"_id":"BLAST","userId":"global","name":"Blast (2\")","text":"If this attack hits, make another attack against every other model within 2\" of the hit model. These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus."},
-    {"_id":"SHOTGUN","userId":"global","name":"Close Quarters","text":"If target is within 6\", this attack rolls 3D6 and AP1"},
     {"_id":"COMBIFLAMER.3+","userId":"global","name":"","text":"Choose one or both of the attacks below. If you choose both, then make attacks with both profiles at -1 to hit:<ul><li><b>Boltgun:</b> ( 24\", 2D6, 3+, AP0, D1 )</li><li><b>Flamer:</b> ( 8\", 2D6, 3+, AP0, D1 ) <i>Spray</i>: This attack targets every model under the spray template and within range. These attacks do not suffer penalties for obscured targets, and targets do not receive a cover bonus.</li></ol>"},
     {"_id":"COMBIGRAV.3+","userId":"global","name":"","text":"Choose one or both of the attacks below. If you choose both, then make attacks with both profiles at -1 to hit:<ul><li><b>Boltgun:</b> ( 24\", 2D6, 3+, AP0, D1 )</li><li><b>Grav:</b> ( 18\", 2D6, 3+, AP3, D1 ) <i>Grav</i>: If the target has an AR of 3+ or better, this attack gains D2</li></ol>"},
     {"_id":"COMBIPLASMA.3+","userId":"global","name":"","text":"Choose one or both of the attacks below. If you choose both, then make attacks with both profiles at -1 to hit:<ul><li><b>Boltgun:</b> ( 24\", 2D6, 3+, AP0, D1 )</li><li><b>Plasma:</b> ( 18\", 2D6, 3+, AP2, D1 ) <i>Plama</i>: You may choose to supercharge whenever you make an attack. If you do, then this attack gains AP3 and D2, however if any hit dice rolls a 1 then this model is immediately removed from play.</li></ol>"},
-    {"_id":"CRITDMG2","userId":"global","name":"Crit Damage (2)","text":"If at least one hit rolls a natural 6, this attack is resolved with D2"},
+    {"_id":"CRITAP4","userId":"global","name":"Crit AP (4)","text":"Hits that roll a natural 6 are resolved with AP4"},
+    {"_id":"CRITDMG2","userId":"global","name":"Crit Damage (2)","text":"Hits that roll a natural 6 are resolved with D2"},
+    {"_id":"DRILL","userId":"global","name":"Drill","text":"Every hit rolled counts as an exploding 6 result and so another die can be rolled"},
     {"_id":"GRAV","userId":"global","name":"Grav","text":"If the target has an AR of 3+ or better, this attack gains D2"},
     {"_id":"GRENADELAUNCHER.3+","userId":"global","name":"","text":"Choose one of the following grenade types:<ul><li><b>Frag:</b> ( 24\", 2D6, 3+, AP0, D1 ) <i>Area Effect (2\")</i>: If this attack hits, make another attack against every other model within 2\" of the hit model. These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus.</li><li><b>Krak:</b> ( 24\", 1D6, 3+, AP2, D2 )</li></ol>"},
     {"_id":"GRENADELAUNCHER.4+","userId":"global","name":"","text":"Choose one of the following grenade types:<ul><li><b>Frag:</b> ( 24\", 2D6, 4+, AP0, D1 ) <i>Area Effect (2\")</i>: If this attack hits, make another attack against every other model within 2\" of the hit model. These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus.</li><li><b>Krak:</b> ( 24\", 1D6, 4+, AP2, D2 )</li></ol>"},
@@ -17,7 +18,10 @@
     {"_id":"PLASMA","userId":"global","name":"Plasma","text":"You may choose to supercharge whenever you make an attack. If you do, then this attack gains AP3 and D2, however if any hit dice rolls a 1 then this model is immediately removed from play."},
     {"_id":"RAPIDFIRE","userId":"global","name":"Rapid Fire","power":1,"text":"You may perform this attack against 2 different targets, as long as they are within 2\" of each other. Make separate hit rolls with their own modifiers."},
     {"_id":"SCOPED","userId":"global","name":"Scoped","text":"This model always gets the aiming bonus as if they have taken the Aim action"},
+    {"_id":"SEISMICCANNON","userId":"global","name":"","text":"Choose one of the following wave types:<ul><li><b>Long-Wave:</b> ( 24\", 4D6, 4+, AP0, D1 )</li><li><b>Short-Wave:</b> ( 12\", 2D6, 4+, AP2, D2 )</li></ol>"},
     {"_id":"SHOCK","userId":"global","name":"Shock","text":"If this attack hits, it does no damage; instead the target is marked as fatigued."},
+    {"_id":"SHOTGUN","userId":"global","name":"Close Quarters","text":"If target is within 6\", this attack rolls 3D6 and AP1"},
     {"_id":"SLOWATTACK","userId":"global","name":"Slow Attack","text":"This attack is a long action"},
-    {"_id":"SPRAY","userId":"global","name":"SPRAY","text":"This attack targets every model under the spray template and within range. These attacks do not suffer penalties for obscured targets, and targets do not receive a cover bonus."}    
+    {"_id":"SPRAY","userId":"global","name":"Spray","text":"This attack targets every model under the spray template and within range. These attacks do not suffer penalties for obscured targets, and targets do not receive a cover bonus."},
+    {"_id":"WEB","userId":"global","name":"Web","text":"If this attack hits, the target does not make an armour roll and it deals no damage. Instead the target's SP is reduced to 0 until the end of the turn."}    
 ]

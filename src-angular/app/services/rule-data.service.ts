@@ -6,6 +6,7 @@ export interface RuleData {
   _id: string;
   ruleName: string;
   ruleText: string;
+  power: number;
 }
 
 /**
@@ -15,6 +16,7 @@ interface RuleDBData {
   _id: string;
   name: string;
   text: string;
+  power: number;
 }
 
 @Injectable()
@@ -64,7 +66,8 @@ export class RuleDataService {
     const ruleData: RuleData = {
       _id: ruleDBData._id,
       ruleName: ruleDBData.name.toUpperCase(),
-      ruleText: ruleDBData.text
+      ruleText: ruleDBData.text,
+      power: ruleDBData.power ? ruleDBData.power : 0
     };
 
     return ruleData;

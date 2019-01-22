@@ -28,6 +28,25 @@
         "_id": "GRUNT",
         "userId": "global",
         "name": "Grunt",
-        "text": " This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."
+        "text": "This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."
+    },
+    {
+        "_id": "KNOWNOFEAR",
+        "userId": "global",
+        "name": "And They Shall Know No Fear",
+        "text": "You can re-roll failed Nerve tests for this model"
+    },
+    {
+        "_id": "IRONHALO",
+        "userId": "global",
+        "name": "Iron Halo",
+        "text": "This model has a 4+ invulnerable save"
+    },
+    {
+        "_id": "RITESOFBATTLE",
+        "userId": "global",
+        "name": "Rites Of Battle",
+        "power": 1,
+        "text": "For the rest of the turn, you can re-roll melee and shooting hit-rolls of 1 for friendly models within 6” of this model."
     }
 ]

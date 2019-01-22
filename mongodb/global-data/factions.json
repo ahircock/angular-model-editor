@@ -94,5 +94,16 @@
         "name": "Plague Monsters",
         "models": [
         ]
+    },
+    {
+        "_id": "40K.ASTARTES",
+        "userId": "global",
+        "name": "Adeptus Astartes",
+        "models": [
+            {
+                "modelId": "40K.ASTARTES.PRIMARISCAPTAIN",
+                "max": 1
+            }
+        ]
     }
 ]

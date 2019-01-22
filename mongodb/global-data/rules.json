@@ -58,5 +58,24 @@
         "userId": "global",
         "name": "",
         "text": "Choose one of the following grenade types:<ul><li><b>Frag:</b> ( 24\", 2D6, 4+, AP0, D1 ) <i>Area Effect (2\")</i>: If this attack hits, make another attack against every other model within 2\" of the hit model. These attacks does not suffer penalties for obscured targets, and targets do not receive a cover bonus.</li><li><b>Krak:</b> ( 24\", 1D6, 4+, AP2, D2 )</li></ol>"
+    },
+    {
+        "_id": "ASSAULT",
+        "userId": "global",
+        "name": "Assault",
+        "text": " If target is within 8\", this attack rolls +1D6"
+    },
+    {
+        "_id": "MARKSMANSHIP",
+        "userId": "global",
+        "name": "Marksmanship",
+        "power": 1,
+        "text": " If target is within 8\", this attack rolls +1D6"
+    },
+    {
+        "_id": "MELTABLAST",
+        "userId": "global",
+        "name": "Melta Blast",
+        "text": "If target is within 6\", this attack is AP4 and D3"
     }
 ]

@@ -19,7 +19,9 @@
 
     <!-- SPECIAL RULES -->
     <div *ngFor="let actionRule of attack.attackData.rules" class="action-rule-box">
-      <span *ngIf="actionRule.ruleName != ''"><i>{{actionRule.ruleName}}</i> - </span>
+      <span *ngIf="actionRule.ruleName != ''"><i>{{actionRule.ruleName}}</i> 
+      <span *ngIf="actionRule.power > 0"> ({{actionRule.power}} Pw)</span>
+      - </span>
       <span [innerHTML]="actionRule.ruleText" class="rule-text"></span>
   </div>
 </div>

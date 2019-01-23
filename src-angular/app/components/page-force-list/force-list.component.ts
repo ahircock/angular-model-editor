@@ -37,11 +37,15 @@ export class ForceListComponent implements OnInit {
 
   async newForce( faction: FactionData ) {
     const newForce: ForceData = await this.forceDataService.createForce(faction);
-    this.openForce( newForce._id );
+    this.openForce( newForce );
   }
 
-  openForce( forceId: string ) {
-    this.router.navigateByUrl('/force/' + forceId );
+  openForce( force: ForceData ) {
+    this.router.navigateByUrl('/force/' + force._id );
   }
 
+  async deleteForce(force: ForceData) {
+    await this.forceDataService.deleteForce( force );
+    this.forces = await this.forceDataService.getAllForces();
+  }
 }

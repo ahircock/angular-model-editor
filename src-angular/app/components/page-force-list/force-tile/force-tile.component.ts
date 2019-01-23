@@ -10,19 +10,11 @@ export class ForceTileComponent implements OnInit {
 
   @Input() force: ForceData;
   @Input() selected: boolean;
-  @Output() change: EventEmitter<void> = new EventEmitter();
+  @Output() delete: EventEmitter<void> = new EventEmitter();
   @Output() select: EventEmitter<void> = new EventEmitter();
 
-  constructor(
-    private forceDataService: ForceDataService
-  ) { }
+  constructor() {}
 
   ngOnInit() {
   }
-
-  async deleteForce() {
-    await this.forceDataService.deleteForce( this.force );
-    this.change.emit();
-  }
-
 }

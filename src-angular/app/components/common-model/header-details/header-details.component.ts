@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ForceModelData } from '../../../services/force-data.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { ForceModelData } from '../../../services/force-data.service';
 export class HeaderDetailsComponent implements OnInit {
 
   @Input() model: ForceModelData;
+  @Output() updated: EventEmitter<void> = new EventEmitter();
 
   constructor() { }
 

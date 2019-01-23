@@ -12,7 +12,7 @@
     "start-dev-all": "npm run start-dev-node | npm run start-dev-ng",
     "heroku-postbuild": "npm run build",
     "build": "npm run build-ng && npm run build-node",
-    "build-ng": "ng build -prod",
+    "build-ng": "ng build --prod",
     "build-node": "tsc -p src-node",
     "ng": "ng",
     "test": "ng test",

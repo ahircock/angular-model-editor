@@ -28,8 +28,4 @@ export class ModelViewComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  async saveModelData() {
-    this.updated.emit();
-  }
 }

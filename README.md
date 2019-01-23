@@ -1,7 +1,16 @@
 ## Run Development
 
-In order to run in a development environment, execute the folloiwng commands on SEPARATE command lines.
-Each of these is a separate WATCH process and will automatically restart if source code changes are made.
+In order to run in a development environment, you will need to install the MongoDB CE database locally.
+
+https://docs.mongodb.com/manual/installation/
+
+You can then use the following script to install baseline data into the local MongoDB database.
+
+```
+/mongodb/global-data/import-data-local.bat
+```
+
+Once the MongoDB database is up and running, execute the folloiwng commands on SEPARATE command lines.
 Alternatively, you can use Visual Studio Code's "Tasks / Run Tasks" feature to launch these processes
 
 ```

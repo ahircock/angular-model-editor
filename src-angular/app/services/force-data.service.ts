@@ -286,7 +286,7 @@ export class ForceDataService {
   }
 
   /**
-   * Decrease the number of models in a given force. If decreased to 0, then the model 
+   * Decrease the number of models in a given force. If decreased to 0, then the model
    * is removed from the force
    * @param forceModel the model whose count is being decreased
    */

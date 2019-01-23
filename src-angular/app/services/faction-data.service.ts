@@ -103,7 +103,7 @@ export class FactionDataService {
     if ( factionDBData.models ) {
       for ( const factionModelDB of factionDBData.models  ) {
 
-        const model = await this.modelDataService.getModelById( factionModelDB.modelId )
+        const model = await this.modelDataService.getModelById( factionModelDB.modelId );
         const factionModelData: FactionModelData = {
           modelData: model,
           max: factionModelDB.max ? factionModelDB.max : 9999,

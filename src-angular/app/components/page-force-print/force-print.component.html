@@ -8,7 +8,7 @@
 
             <!-- COMMON ABILITIES -->
             <div *ngIf="force.abilities.length > 0" class="model-detail">
-                <app-view-force [force]="force"></app-view-force>
+                <app-view-force-abilities [force]="force"></app-view-force-abilities>
             </div>
         
             <div *ngFor="let model of leftModels" class="model-detail">

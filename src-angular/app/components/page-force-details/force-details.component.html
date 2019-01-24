@@ -70,7 +70,7 @@
   <div *ngIf="!isWindowMobile()" class="right">
 
     <!-- FORCE ABILITIES VIEW -->
-    <app-view-force *ngIf="commonAbilitiesExist && selectedItemIndex === 0" [force]="force"></app-view-force>
+    <app-view-force-abilities *ngIf="commonAbilitiesExist && selectedItemIndex === 0" [force]="force"></app-view-force-abilities>
       
     <!-- MODEL VIEW -->
     <app-model-view [model]="force.models[selectedModelIndex]" [allowEdit]="true" (updated)="saveForce()"></app-model-view>

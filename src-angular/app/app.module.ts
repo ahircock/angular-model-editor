@@ -35,7 +35,7 @@ import { ForceAbilityDetailsComponent } from './components/page-force-ability-de
 import { AbilityDetailsComponent } from './components/view-model/ability-details/ability-details.component';
 import { HeaderDetailsComponent } from './components/view-model/header-details/header-details.component';
 import { ActionDetailsComponent } from './components/view-model/action-details/action-details.component';
-import { ViewForceComponent } from './components/view-force/view-force.component';
+import { ViewForceAbilitiesComponent } from './components/view-force-abilities/view-force-abilities.component';
 import { ForceListItemComponent } from './components/page-force-details/force-list-item/force-list-item.component';
 import { ModelListItemComponent } from './components/page-force-details/model-list-item/model-list-item.component';
 
@@ -64,7 +64,7 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     AbilityDetailsComponent,
     HeaderDetailsComponent,
     ActionDetailsComponent,
-    ViewForceComponent,
+    ViewForceAbilitiesComponent,
     ForceListItemComponent,
     ModelListItemComponent
   ],

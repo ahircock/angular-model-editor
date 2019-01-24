@@ -5,7 +5,9 @@
             {"modelId":"40K.ADMECH.SKITGUNNER","max":3},
             {"modelId":"40K.ADMECH.SKITRANGER"},
             {"modelId":"40K.ADMECH.SKITVANGUARD"},
-            {"modelId":"40K.ADMECH.SKITSNIPER","max":1}]},
+            {"modelId":"40K.ADMECH.SKITSNIPER","max":1}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.4+"}]}]}]},
     {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum (Imperial Guard)",
         "models":[
             {"modelId":"40K.ADMIL.SERGEANT","max":1},
@@ -13,8 +15,9 @@
             {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
             {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":1},
             {"modelId":"40K.ADMIL.SCION","max":1},
-            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}],
-        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"attacks":[],"actions":[],"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"attacks":[],"actions":[],"abilities":[{"abilityId":"STIMPACK"}]}]}]},
+            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.4+"}]}]}]},
     {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes (Space Marines)",
         "models":[
             {"modelId":"40K.ASTARTES.PRIMARISCAPTAIN","max":1},
@@ -30,7 +33,9 @@
             {"modelId":"40K.ASTARTES.SCOUT"},
             {"modelId":"40K.ASTARTES.SCOUTASSAULT"},
             {"modelId":"40K.ASTARTES.SCOUTHEAVY","max":1},
-            {"modelId":"40K.ASTARTES.SCOUTSNIPER","max":1}],
+            {"modelId":"40K.ASTARTES.SCOUTSNIPER","max":1}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.3+"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEKRAK.3+"}]}]}],
         "factionAbilities":[{"abilityId":"KNOWNOFEAR"}]},
     {"_id":"40K.GC","userId":"global","name":"Genestealer Cult",
         "models":[
@@ -39,5 +44,10 @@
             {"modelId":"40K.GC.NEOPHYTE"},
             {"modelId":"40K.GC.NEOPHYTEASSAULT","max":2},
             {"modelId":"40K.GC.NEOPHYTEHEAVY","max":2},
-            {"modelId":"40K.GC.ACOLYTEFIGHTER","max":4}]}
+            {"modelId":"40K.GC.ACOLYTEFIGHTER","max":4},
+            {"modelId":"40K.TY.GENESTEALER"},
+            {"modelId":"40K.TY.GENESTEALERCARAPACE"}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"modelAttackName":"Blasting Charges","attackId":"40K.GRENADEFRAG.4+"}]}]}],
+        "factionAbilities":[{"abilityId":"CULTAMBUSH"}]}
 ]

@@ -5,11 +5,17 @@
     display: flex;
     margin-bottom: 4px;
 }
-.model-image-box {
-    width: 48px;
-    height: 48px;
-    margin: 4px;
+
+/* IMAGE */
+.model-image {
+    padding: 4px;
 }
+.model-image img {
+    height: 48px; 
+    display: block;
+}
+
+/* TEXT DETAILS */
 .model-details-box {
     flex: 1 1 1px;
     padding: 4px;

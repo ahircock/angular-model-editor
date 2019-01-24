@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ForceDataService, ForceData } from '../../services/force-data.service';
+import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
-import { ModelDataService } from '../../services/model-data.service';
 import { Location } from '@angular/common';
 import { WindowService } from '../../services/window.service';
 import { FactionModelData } from '../../services/faction-data.service';
@@ -15,7 +14,9 @@ import { FactionModelData } from '../../services/faction-data.service';
 export class ForceDetailsComponent implements OnInit {
 
   public force: ForceData;
+  public selectedItemIndex: number;
   public selectedModelIndex: number;
+  public commonAbilitiesExist: boolean;
   public factionModels: FactionModelData[];
   public showModelListDropdown = false;
   public smallScreen: boolean;
@@ -26,7 +27,6 @@ export class ForceDetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private modelDataService: ModelDataService,
     private forceDataService: ForceDataService,
     private userService: UserService,
     private location: Location,
@@ -45,23 +45,42 @@ export class ForceDetailsComponent implements OnInit {
     const forceId = this.activatedRoute.snapshot.paramMap.get('id');
     this.force = await this.forceDataService.getForceById(forceId);
 
-    // mark the first model as selected
-    if ( this.force.models.length > 0 && !this.isWindowMobile() ) {
-      this.selectedModelIndex = 0;
-    }
+    // determine if there are common abilities
+    this.commonAbilitiesExist = this.force.abilities.length > 0;
 
     // load up the list of model templates
     this.factionModels = this.force.faction.models;
   }
 
-  selectModel( selectedModelIndex: number ) {
-    this.selectedModelIndex = selectedModelIndex;
+  selectModel( model: ForceModelData ) {
+    const forceModelIndex = this.force.models.findIndex( element => element === model );
+    if ( this.commonAbilitiesExist ) {
+      this.selectedItemIndex = forceModelIndex + 1;
+      this.selectedModelIndex = forceModelIndex;
+    } else {
+      this.selectedItemIndex = forceModelIndex;
+      this.selectedModelIndex = forceModelIndex;
+    }
 
     // if this is a mobile device AND one of the buttons on the tile was not pressed
     if ( this.windowService.isWindowMobile() ) {
       if ( !this.modelButtonPressed ) {
-        const forceModelId = this.force._id + ':' + this.selectedModelIndex;
+        const forceModelId = this.force._id + ':' + (this.selectedModelIndex);
         this.router.navigateByUrl('/model/' + forceModelId);
+      }
+      this.modelButtonPressed = false;
+    }
+  }
+
+  selectForce() {
+    this.selectedItemIndex = 0;
+    this.selectedModelIndex = -1;
+
+    // if this is a mobile device AND one of the buttons on the tile was not pressed
+    if ( this.windowService.isWindowMobile() ) {
+      if ( !this.modelButtonPressed ) {
+        const forceModelId = this.force._id;
+        this.router.navigateByUrl('/force/abilities/' + forceModelId);
       }
       this.modelButtonPressed = false;
     }
@@ -73,31 +92,31 @@ export class ForceDetailsComponent implements OnInit {
     this.force = await this.forceDataService.addModel( this.force, model );
 
     // select the new model (which should be the last one in the list)
-    this.selectedModelIndex = this.force.models.length - 1;
+    this.selectModel( this.force.models[this.force.models.length - 1] );
   }
 
-  async increaseModelCount(modelIndex: number) {
+  async increaseModelCount( model: ForceModelData ) {
 
     // record that a button was pressed
     this.modelButtonPressed = true;
 
-    this.force = await this.forceDataService.increaseModelCount( this.force.models[modelIndex]);
+    this.force = await this.forceDataService.increaseModelCount( model );
   }
 
-  async decreaseModelCount(modelIndex: number) {
+  async decreaseModelCount( model: ForceModelData ) {
 
     // record that a button was pressed
     this.modelButtonPressed = true;
 
-    this.force = await this.forceDataService.decreaseModelCount( this.force.models[modelIndex]);
+    this.force = await this.forceDataService.decreaseModelCount( model );
   }
 
-  async selectLeader(modelIndex: number) {
+  async selectLeader( model: ForceModelData ) {
 
       // record that a button was pressed
       this.modelButtonPressed = true;
 
-      this.force = await this.forceDataService.selectLeader( this.force.models[modelIndex]);
+      this.force = await this.forceDataService.selectLeader( model );
   }
 
   async saveForce() {
@@ -109,7 +128,7 @@ export class ForceDetailsComponent implements OnInit {
   }
 
   modelOptions() {
-    const forceModelId = this.force._id + ':' + this.selectedModelIndex;
+    const forceModelId = this.force._id + ':' + (this.selectedModelIndex);
     this.router.navigateByUrl('/model/options/' + forceModelId);
   }
 

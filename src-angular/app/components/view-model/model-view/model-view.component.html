@@ -5,20 +5,26 @@
 
   <!-- ATTACKS -->
   <div *ngIf="model.attacks.length > 0" class="section-title">ATTACKS</div>
-  <div *ngFor="let attack of model.attacks" class="section-row">
-    <app-attack-details [attack]="attack"></app-attack-details>
+  <div>
+    <div *ngFor="let attack of model.attacks" class="section-row">
+      <app-attack-details [attack]="attack"></app-attack-details>
+    </div>
   </div>
 
   <!-- ACTIONS -->
   <div *ngIf="model.actions.length > 0" class="section-title">ACTIONS</div>
-  <div *ngFor="let action of model.actions" class="section-row">
-    <app-action-details [action]="action"></app-action-details>
+  <div>
+    <div *ngFor="let action of model.actions" class="section-row">
+      <app-action-details [action]="action"></app-action-details>
+    </div>
   </div>
   
   <!-- MODEL ABILITIES -->
   <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>
-  <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
-    <app-ability-details [ability]="ability"></app-ability-details>
+  <div>
+    <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
+      <app-ability-details [ability]="ability"></app-ability-details>
+    </div>
   </div>
 
 </div>

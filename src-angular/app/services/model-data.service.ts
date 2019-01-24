@@ -71,15 +71,15 @@ interface ModelDBData {
   actions: ModelActionDBData[];
   options: ModelOptionDBData[];
 }
-interface ModelAttackDBData {
+export interface ModelAttackDBData {
   modelAttackName: string;
   attackId: string;
 }
-interface ModelActionDBData {
+export interface ModelActionDBData {
   modelActionName: string;
   actionId: string;
 }
-interface ModelAbilityDBData {
+export interface ModelAbilityDBData {
   abilityName: string;
   abilityId: string;
 }

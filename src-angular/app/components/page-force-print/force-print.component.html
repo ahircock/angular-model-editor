@@ -5,6 +5,12 @@
     <div class="model-list">
 
         <div class="left-column">
+
+            <!-- COMMON ABILITIES -->
+            <div *ngIf="force.abilities.length > 0" class="model-detail">
+                <app-view-force-abilities [force]="force"></app-view-force-abilities>
+            </div>
+        
             <div *ngFor="let model of leftModels" class="model-detail">
                 <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
                 <app-model-view [allowEdit]="false" [model]="model"></app-model-view>

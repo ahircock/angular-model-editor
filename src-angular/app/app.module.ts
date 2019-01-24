@@ -21,20 +21,23 @@ import { WindowService } from './services/window.service';
 // components
 import { AppComponent } from './app.component';
 import { AppHeaderComponent } from './components/common/app-header/app-header.component';
-import { ModelViewComponent } from './components/common-model/model-view/model-view.component';
+import { ModelViewComponent } from './components/view-model/model-view/model-view.component';
 import { ForceListComponent } from './components/page-force-list/force-list.component';
-import { ModelTileComponent } from './components/page-force-details/model-tile/model-tile.component';
 import { ForceTileComponent } from './components/page-force-list/force-tile/force-tile.component';
 import { ForceDetailsComponent } from './components/page-force-details/force-details.component';
 import { ForcePrintComponent } from './components/page-force-print/force-print.component';
 import { UserLoginComponent } from './components/common-account/user-login/user-login.component';
 import { UserSignupComponent } from './components/common-account/user-signup/user-signup.component';
-import { ModelOptionsComponent } from './components/common-model/model-options/model-options.component';
-import { AttackDetailsComponent } from './components/common-model/attack-details/attack-details.component';
+import { ModelOptionsComponent } from './components/view-model/model-options/model-options.component';
+import { AttackDetailsComponent } from './components/view-model/attack-details/attack-details.component';
 import { ModelDetailsComponent } from './components/page-model-details/model-details.component';
-import { AbilityDetailsComponent } from './components/common-model/ability-details/ability-details.component';
-import { HeaderDetailsComponent } from './components/common-model/header-details/header-details.component';
-import { ActionDetailsComponent } from './components/common-model/action-details/action-details.component';
+import { ForceAbilityDetailsComponent } from './components/page-force-ability-details/force-ability-details.component';
+import { AbilityDetailsComponent } from './components/view-model/ability-details/ability-details.component';
+import { HeaderDetailsComponent } from './components/view-model/header-details/header-details.component';
+import { ActionDetailsComponent } from './components/view-model/action-details/action-details.component';
+import { ViewForceAbilitiesComponent } from './components/view-force-abilities/view-force-abilities.component';
+import { ForceListItemComponent } from './components/page-force-details/force-list-item/force-list-item.component';
+import { ModelListItemComponent } from './components/page-force-details/model-list-item/model-list-item.component';
 
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
@@ -48,7 +51,6 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     AppComponent,
     ModelViewComponent,
     ForceListComponent,
-    ModelTileComponent,
     ForceTileComponent,
     ForceDetailsComponent,
     ForcePrintComponent,
@@ -57,10 +59,14 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     AppHeaderComponent,
     ModelOptionsComponent,
     ModelDetailsComponent,
+    ForceAbilityDetailsComponent,
     AttackDetailsComponent,
     AbilityDetailsComponent,
     HeaderDetailsComponent,
-    ActionDetailsComponent
+    ActionDetailsComponent,
+    ViewForceAbilitiesComponent,
+    ForceListItemComponent,
+    ModelListItemComponent
   ],
   imports: [
     BrowserModule,

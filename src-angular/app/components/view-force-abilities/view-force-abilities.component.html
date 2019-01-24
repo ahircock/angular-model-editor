@@ -1,0 +1,13 @@
+<div *ngIf="force" class="force-box">
+    
+  <!-- TITLE BOX -->
+  <div class="title-box font-title-big">FACTION ABILITIES</div>
+  <div class="subtitle-box">All models have these abilities</div>
+
+  <!-- MODEL ABILITIES -->
+  <div *ngIf="force.abilities.length > 0" class="section-title">ABILITIES</div>
+  <div *ngFor="let ability of force.abilities" class="section-row">
+    <app-ability-details [ability]="ability"></app-ability-details>
+  </div>
+
+</div>

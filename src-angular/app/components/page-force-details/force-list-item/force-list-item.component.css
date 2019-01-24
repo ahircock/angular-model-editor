@@ -1,0 +1,22 @@
+/* MODEL FLEX LAYOUT */
+.force-tile {
+    position: relative;
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 4px;
+}
+
+/* IMAGE */
+.model-image {
+    padding: 4px;
+}
+.model-image img {
+    height: 48px; 
+    display: block;
+}
+
+/* TEXT DETAILS */
+.model-details-box {
+    flex: 1 1 1px;
+    padding: 4px;
+}

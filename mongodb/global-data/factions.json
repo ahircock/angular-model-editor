@@ -6,7 +6,7 @@
             {"modelId":"40K.ADMECH.SKITRANGER"},
             {"modelId":"40K.ADMECH.SKITVANGUARD"},
             {"modelId":"40K.ADMECH.SKITSNIPER","max":1}]},
-    {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum",
+    {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum (Imperial Guard)",
         "models":[
             {"modelId":"40K.ADMIL.SERGEANT","max":1},
             {"modelId":"40K.ADMIL.GUARDSMAN"},
@@ -15,7 +15,7 @@
             {"modelId":"40K.ADMIL.SCION","max":1},
             {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}],
         "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"attacks":[],"actions":[],"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"attacks":[],"actions":[],"abilities":[{"abilityId":"STIMPACK"}]}]}]},
-    {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes",
+    {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes (Space Marines)",
         "models":[
             {"modelId":"40K.ASTARTES.PRIMARISCAPTAIN","max":1},
             {"modelId":"40K.ASTARTES.SERGEANTSCOUT","max":1},

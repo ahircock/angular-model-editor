@@ -14,6 +14,7 @@ export interface ForceData {
   faction: FactionData;
   cost: number;
   models: ForceModelData[];
+  abilities: ModelAbilityData[];
 }
 export interface ForceModelData {
   force: ForceData;
@@ -286,7 +287,7 @@ export class ForceDataService {
   }
 
   /**
-   * Decrease the number of models in a given force. If decreased to 0, then the model 
+   * Decrease the number of models in a given force. If decreased to 0, then the model
    * is removed from the force
    * @param forceModel the model whose count is being decreased
    */
@@ -337,7 +338,8 @@ export class ForceDataService {
       name: forceDBData.name,
       faction: faction,
       cost: 0, // will be calculated below
-      models: []
+      models: [],
+      abilities: []
     };
 
     // create an array of ForceModelData objects, and copy contents from FactionModelData and ForceDBData
@@ -345,6 +347,11 @@ export class ForceDataService {
       const factionModel = faction.models.find( element => element.modelData._id === forceModelDB._id );
       const forceModelData: ForceModelData = await this.generateForceModelData( forceData, factionModel, forceModelDB );
       forceData.models.push(forceModelData);
+    }
+
+    // copy the abilities from the faction to the force
+    for ( const ability of faction.factionAbilities ) {
+      forceData.abilities.push( ability );
     }
 
     // calculate the force cost

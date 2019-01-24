@@ -1,0 +1,30 @@
+/* the main model box */
+.force-box { 
+    border:solid 2px black; 
+    background-color:white;
+}
+
+.title-box {
+    padding: 4px 4px 0px 4px;
+}
+.subtitle-box {
+    padding: 0px 4px 4px 4px;
+}
+
+/* SECTIONS */
+.section-title {
+    padding: 4px;
+    background: #606060;
+    color: white;
+}
+
+/* SECTION ROWS */
+.section-row {
+    padding: 4px;
+}
+.section-row:nth-child(odd) {
+    background-color: #e8e8e8;
+}
+.section-row:nth-child(even) {
+    background-color: white;
+}

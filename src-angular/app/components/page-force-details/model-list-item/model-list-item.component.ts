@@ -1,23 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ForceData, ForceDataService, ForceModelData } from '../../../services/force-data.service';
+import { ForceModelData } from '../../../services/force-data.service';
 
 @Component({
-  selector: 'app-model-tile',
-  templateUrl: './model-tile.component.html',
-  styleUrls: ['./model-tile.component.css']
+  selector: 'app-model-list-item',
+  templateUrl: './model-list-item.component.html',
+  styleUrls: ['./model-list-item.component.css']
 })
-export class ModelTileComponent implements OnInit {
+export class ModelListItemComponent implements OnInit {
 
   @Input() model: ForceModelData;
-  @Input() force: ForceData;
   @Input() selected: boolean;
   @Output() increaseCount: EventEmitter<void> = new EventEmitter();
   @Output() decreaseCount: EventEmitter<void> = new EventEmitter();
   @Output() selectLeader: EventEmitter<void> = new EventEmitter();
 
-  constructor(
-    private forceDataService: ForceDataService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }

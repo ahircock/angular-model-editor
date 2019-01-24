@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { UserService } from './user.service';
-import { ModelData, ModelDataService, ModelOptionData, ModelOptionDBData } from './model-data.service';
+import { ModelData, ModelDataService, ModelOptionData, ModelOptionDBData,
+  ModelAbilityDBData, ModelAbilityData } from './model-data.service';
+import { AbilityDataService } from './ability-data.service';
 
 export interface FactionData {
   _id: string;
   name: string;
   models: FactionModelData[];
   modelOptions: ModelOptionData[];
+  factionAbilities: ModelAbilityData[];
 }
 export interface FactionModelData {
   modelData: ModelData;
@@ -23,6 +26,7 @@ interface FactionDBData {
   name: string;
   models: FactionModelDBData[];
   modelOptions: ModelOptionDBData[];
+  factionAbilities: ModelAbilityDBData[];
 }
 interface FactionModelDBData {
   modelId: string;
@@ -37,6 +41,7 @@ export class FactionDataService {
   constructor(
     private dbConnectService: DataAccessService,
     private modelDataService: ModelDataService,
+    private abilityDataService: AbilityDataService,
     private userService: UserService
   ) {
     // subscribe to events from the other services
@@ -91,7 +96,8 @@ export class FactionDataService {
       _id: factionDBData._id,
       name: factionDBData.name,
       modelOptions: [],
-      models: []
+      models: [],
+      factionAbilities: []
     };
 
     // copy the options from the DB, modelOptions is an optional field
@@ -99,11 +105,11 @@ export class FactionDataService {
       factionData.modelOptions = await this.modelDataService.convertDBToModelOptionDataList( factionDBData.modelOptions );
     }
 
-    // copy the faction models to the object
+    // copy the models to the faction
     if ( factionDBData.models ) {
       for ( const factionModelDB of factionDBData.models  ) {
 
-        const model = await this.modelDataService.getModelById( factionModelDB.modelId )
+        const model = await this.modelDataService.getModelById( factionModelDB.modelId );
         const factionModelData: FactionModelData = {
           modelData: model,
           max: factionModelDB.max ? factionModelDB.max : 9999,
@@ -115,6 +121,18 @@ export class FactionDataService {
 
         // add the faction model to the faction data
         factionData.models.push(factionModelData);
+      }
+    }
+
+    // copy the force abilities to the faction
+    if ( factionDBData.factionAbilities ) {
+      for ( const factionAbilityDB of factionDBData.factionAbilities ) {
+        const ability = await this.abilityDataService.getAbilityById( factionAbilityDB.abilityId );
+        const factionAbilityData: ModelAbilityData = {
+          abilityData: ability,
+          modelAbilityName: factionAbilityDB.abilityName ? factionAbilityDB.abilityName : ability.name
+        };
+        factionData.factionAbilities.push(factionAbilityData);
       }
     }
 

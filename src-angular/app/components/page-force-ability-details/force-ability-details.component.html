@@ -1,0 +1,17 @@
+<!-- THE HEADER BAND -->
+<div *ngIf="force" class="header-section box-dark">
+  <div class="back-arrow box-dark-hover" (click)="backArrow()"><img src="/assets/icons/icon-arrow-left-128.png"></div>
+  <div>
+    <div class="header-title font-title-big">COMMON ABILITIES</div>
+    <div class="header-subtitle font-subtitle">{{force.faction.name}}</div>
+  </div>
+</div>
+  
+<!-- THE CONTENT AREA -->
+<div *ngIf="force" class="content-section">
+
+    <!-- FORCE ABILITIES VIEW -->
+    <app-view-force [force]="force"></app-view-force>
+
+</div>
+  

@@ -193,9 +193,7 @@ export class ForceDataService {
     // find the old force record in the cache, and then replace it with the updated force
     const newUpdatedForce = await this.convertDBToForceData( updateDBForce );
     const forceIndex: number = this.forceCache.findIndex( element => element._id === newUpdatedForce._id );
-    if ( forceIndex > 0 ) {
-      this.forceCache[forceIndex] = newUpdatedForce;
-    }
+    this.forceCache[forceIndex] = newUpdatedForce;
 
     // return a deep copy of the model from the DB
     return newUpdatedForce;
@@ -210,9 +208,7 @@ export class ForceDataService {
     // delete the matching force from the DB
     await this.dbConnectService.deleteForce( this.convertForceDataToDB(deleteForce) );
     const forceIndex: number = this.forceCache.findIndex( element => element._id === deleteForce._id );
-    if ( forceIndex > 0 ) {
-      this.forceCache.splice( forceIndex, 1 );
-    }
+    this.forceCache.splice( forceIndex, 1 );
   }
 
   /**

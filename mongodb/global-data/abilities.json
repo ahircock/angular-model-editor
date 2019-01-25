@@ -6,12 +6,16 @@
     {"_id":"LEADER","userId":"global","name":"Leadership","text":"All friendly models within 6\" may use this model's NE instead of their own."},
     {"_id":"INVULNERABLE.5+","userId":"global","name":"Invulnerable 5+","text":"This model has a 5+ invulnerable save"},
     {"_id":"INVULNERABLE.4+","userId":"global","name":"Invulnerable 4+","text":"This model has a 4+ invulnerable save"},
+    {"_id":"REGEN1","userId":"global","name":"Regeneration (1)","text":"At the beginning of this model's activation, heal 1 wound"},
     {"_id":"KNOWNOFEAR","userId":"global","name":"And They Shall Know No Fear","text":"You can re-roll failed Nerve tests for this model"},
+    {"_id":"MARKSMAN","userId":"global","name":"MARKSMAN","power":1,"text":"Use when performing a ranged attack. The attack gets +1 to hit."},
     {"_id":"MEDKIT","userId":"global","name":"Med Kit","text":"Single use item. A model with this item may discard it during its activation to recover 1 wound."},
     {"_id":"METAMORPHWHIP","userId":"global","name":"Metamorph Whip","text":"When performing a Parting Blow attack, you may choose to deal no damage and instead the enemy model's SP is reduced to 0 until the end of the turn."},
+    {"_id":"REANIMATIONPROTOCOL","userId":"global","name":"Reanimation Protocol","power":1,"text":"Use during the end phase. This model heals 1 wound."},
+    {"_id":"REANIMATIONPROTOCOLPRIME","userId":"global","name":"Prime Reanimation Protocol","power":2,"text":"Use when this model is targeted by an attack. This model heals 1 wound."},
     {"_id":"RITESOFBATTLE","userId":"global","name":"Rites Of Battle","power":1,"text":"For the rest of the turn, you can re-roll melee and shooting hit-rolls of 1 for friendly models within 6” of this model."},
     {"_id":"STIMPACK","userId":"global","name":"Stim Pack","text":"Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued."},
-    {"_id":"SWIFTCHARGE","userId":"global","name":"Swift Charge","text":"This model gains +2 SP while making a Charge action."},
+    {"_id":"SWIFTCHARGE","userId":"global","name":"Swift Charge","text":"This model gains +1 SP while making a Charge action."},
     {"_id":"TOXINSACS","userId":"global","name":"Toxin Sacs","text":"Melee hits that roll a natural 6 are resolved with +1 D"},
     {"_id":"VOXCASTER","userId":"global","name":"Vox-Caster","power":1,"text":"Use when a friendly model is about to make a Nerve test. The model receives a +1 modifier to the Nerve test."}
 ]

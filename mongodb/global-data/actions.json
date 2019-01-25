@@ -1,23 +1,6 @@
 [
-    {
-        "_id": "MOVECOMMAND",
-        "userId": "global",
-        "name": "Move!",
-        "duration": "short",
-        "text": "Target another friendly model within 12”. Target model may immediately perform a Walk action for free"
-    },
-    {
-        "_id": "MELEECOMMAND",
-        "userId": "global",
-        "name": "Fight!",
-        "duration": "short",
-        "text": "Target another friendly model within 12”. Target model may immediately perform a melee attack action for free"
-    },
-    {
-        "_id": "FATIGUECOMMAND",
-        "userId": "global",
-        "name": "Keep Going!",
-        "duration": "short",
-        "text": "Target another fatigued friendly model within 12”. Target model is no longer fatigued"
-    }    
+    {"_id": "FATIGUECOMMAND","userId": "global","name": "Keep Going!","duration": "short","text": "Target another fatigued friendly model within 12”. Target model is no longer fatigued"},
+    {"_id": "MELEECOMMAND","userId": "global","name": "Fight!","duration": "short","text": "Target another friendly model within 12”. Target model may immediately perform a melee attack action for free"},
+    {"_id": "MOVECOMMAND","userId": "global","name": "Move!","duration": "short","text": "Target another friendly model within 12”. Target model may immediately perform a Walk action for free"},
+    {"_id": "RESURRECTION","userId": "global","name": "Resurrection","power":2,"duration": "long","text": "Pick a friendly model that was previously removed from play. Return that model to play with 1 wound within 3\" of this model and more than 1\" from enemy models. Mark the returned model as activated."}
 ]

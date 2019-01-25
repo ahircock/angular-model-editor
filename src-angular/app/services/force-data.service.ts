@@ -430,10 +430,16 @@ export class ForceDataService {
     // loop through the choices that have been made on this model
     for ( const choiceIndex of optionChoice.choiceIndexes ) {
 
-      // copy the attacks from the model to the forceModel
       const modelOptionChoice = modelOption.choices[choiceIndex];
+
+      // copy the attacks from the model to the forceModel
       for ( const attack of modelOptionChoice.attacks ) {
         forceModel.attacks.push( attack );
+      }
+
+      // copy the actions from the model to the forceModel
+      for ( const action of modelOptionChoice.actions ) {
+        forceModel.actions.push( action );
       }
 
       // copy the abilities from the model to the forceModel

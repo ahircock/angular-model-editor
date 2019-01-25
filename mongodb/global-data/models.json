@@ -1,4 +1,26 @@
 [
+    {"_id":"40K.NC.OVERLORD","userId":"global","name":"Necron Overlord","picture":"necron-overlord.jpg","cost":25,"PW":3,"SP":4,"AR":3,"WN":3,"NE":2,
+        "abilities":[{"modelAbilityName":"Living Metal","abilityId":"REGEN1"},{"modelAbilityName":"Phase Shifter","abilityId":"INVULNERABLE.4+"}],
+        "actions":[{"modelActionName":"Resurrection Orb","actionId":"RESURRECTION"}],
+        "options":[
+            {"id":"WEAPON","description":"Choose a weapon","choices":[{"cost":0,"attacks":[{"attackId":"40K.STAFFOFLIGHTM.3+"},{"attackId":"40K.STAFFOFLIGHTR.3+"}]},{"cost":0,"attacks":[{"attackId":"40K.VOIDSCYTHE.3+"}]},{"cost":0,"attacks":[{"attackId":"40K.WARSCYTHE.3+"}]}]}]},
+    {"_id":"40K.NC.IMMORTALPRIME","userId":"global","name":"Immortal Prime","picture":"necron-immortal.jpg","cost":19,"PW":1,"SP":4,"AR":3,"WN":2,"NE":2,
+        "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
+        "attacks":[{"attackId":"40K.STDMELEE.1D6.3+"}],
+        "options":[{"id":"RANGED","description":"Choose a ranged weapon","choices":[{"cost":0,"attacks":[{"attackId":"40K.GAUSSBLASTER.3+"}]},{"cost":0,"attacks":[{"attackId":"40K.TESLACARBINE.3+"}]}]}]},
+    {"_id":"40K.NC.WARRIOR","userId":"global","name":"Necron Warrior","picture":"necron-warrior.jpg","cost":12,"PW":0,"SP":4,"AR":4,"WN":2,"NE":2,
+        "attacks":[{"attackId":"40K.STDMELEE.1D6.3+"},{"attackId":"40K.GAUSSFLAYER.3+"}]},
+    {"_id":"40K.NC.IMMORTAL","userId":"global","name":"Immortal","picture":"necron-immortal.jpg","cost":16,"PW":0,"SP":4,"AR":3,"WN":2,"NE":2,
+        "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
+        "attacks":[{"attackId":"40K.STDMELEE.1D6.3+"}],
+        "options":[{"id":"RANGED","description":"Choose a ranged weapon","choices":[{"cost":0,"attacks":[{"attackId":"40K.GAUSSBLASTER.3+"}]},{"cost":0,"attacks":[{"attackId":"40K.TESLACARBINE.3+"}]}]}]},
+    {"_id":"40K.NC.FLAYEDONE","userId":"global","name":"Flayed One","picture":"necron-flayedone.jpg","cost":10,"PW":0,"SP":4,"AR":4,"WN":2,"NE":2,
+        "attacks":[{"attackId":"40K.FLAYERCLAWS.3D6.3+"}],
+        "abilities":[{"modelAbilityName":"Entropic Strike","abilityId":"SWIFTCHARGE"}]},
+    {"_id":"40K.NC.DEATHMARK","userId":"global","name":"Deathmark","picture":"necron-deathmark.jpg","cost":15,"PW":0,"SP":4,"AR":3,"WN":2,"NE":2,
+        "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
+        "attacks":[{"attackId":"40K.STDMELEE.1D6.3+"},{"attackId":"40K.SYNAPTICDISINTEGRATOR.3+"}]},
+
     {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":76,"PW":3,"SP":5,"AR":3,"WN":6,"NE":2,
         "abilities":[{"modelAbilityName":"Iron Halo","abilityId":"INVULNERABLE.4+"},{"abilityId":"RITESOFBATTLE"}],
         "options":[
@@ -76,13 +98,13 @@
             ]},
 
     {"_id":"40K.TY.GENESTEALER","userId":"global","name":"Genestealer","picture":"tyranid-genestealer.jpg","cost":11,"PW":0,"SP":6,"AR":5,"WN":2,"NE":2,
-        "abilities":[{"abilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"},{"abilityName":"Swift And Deadly","abilityId":"SWIFTCHARGE"}],
+        "abilities":[{"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"},{"modelAbilityName":"Swift And Deadly","abilityId":"SWIFTCHARGE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","optional":true,"choices":[{"cost":1,"attacks":[{"attackId":"40K.FLESHHOOKS.4+"}]}]},
             {"id":"MELEE","description":"Choose a melee weapon","choices":[{"cost":0,"attacks":[{"attackId":"40K.RENDINGCLAW.3D6.3+"}]},{"cost":0,"attacks":[{"attackId":"40K.SCYTHINGTALON.4D6.3+"}]},{"cost":3,"attacks":[{"attackId":"40K.ACIDMAW.3D6.3+"}]}]},
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"TOXINSACS"}]}]}]},
     {"_id":"40K.TY.GENESTEALERCARAPACE","userId":"global","name":"Genestealer Extended Carapace","picture":"tyranid-genestealer.jpg","cost":11,"PW":0,"SP":6,"AR":4,"WN":2,"NE":2,
-        "abilities":[{"abilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"}],
+        "abilities":[{"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","optional":true,"choices":[{"cost":1,"attacks":[{"attackId":"40K.FLESHHOOKS.4+"}]}]},
             {"id":"MELEE","description":"Choose a melee weapon","choices":[{"cost":0,"attacks":[{"attackId":"40K.RENDINGCLAW.3D6.3+"}]},{"cost":0,"attacks":[{"attackId":"40K.SCYTHINGTALON.4D6.3+"}]},{"cost":3,"attacks":[{"attackId":"40K.ACIDMAW.3D6.3+"}]}]},

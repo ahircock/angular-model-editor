@@ -130,7 +130,7 @@ export class FactionDataService {
         const ability = await this.abilityDataService.getAbilityById( factionAbilityDB.abilityId );
         const factionAbilityData: ModelAbilityData = {
           abilityData: ability,
-          modelAbilityName: factionAbilityDB.abilityName ? factionAbilityDB.abilityName : ability.name
+          modelAbilityName: factionAbilityDB.modelAbilityName ? factionAbilityDB.modelAbilityName : ability.name
         };
         factionData.factionAbilities.push(factionAbilityData);
       }

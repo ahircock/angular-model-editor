@@ -80,7 +80,7 @@ export interface ModelActionDBData {
   actionId: string;
 }
 export interface ModelAbilityDBData {
-  abilityName: string;
+  modelAbilityName: string;
   abilityId: string;
 }
 export interface ModelOptionDBData {
@@ -209,7 +209,7 @@ export class ModelDataService {
         const ability: AbilityData = await this.abilityDataService.getAbilityById(modelAbilityDB.abilityId);
         const modelAbility: ModelAbilityData = {
           abilityData: ability,
-          modelAbilityName: modelAbilityDB.abilityName ? modelAbilityDB.abilityName : ability.name
+          modelAbilityName: modelAbilityDB.modelAbilityName ? modelAbilityDB.modelAbilityName : ability.name
         };
         modelData.abilities.push( modelAbility );
       }
@@ -290,12 +290,12 @@ export class ModelDataService {
         // copy the actions into the choice
         if ( choiceDB.actions ) {
           for ( const choiceActionDB of choiceDB.actions ) {
-            const attack: AttackData = await this.attackDataService.getAttackById( choiceActionDB.actionId );
-            const modelAttack: ModelAttackData = {
-              attackData: attack,
-              modelAttackName: choiceActionDB.modelActionName ? choiceActionDB.modelActionName : attack.name
+            const action: ActionData = await this.actionDataService.getActionById( choiceActionDB.actionId );
+            const modelAction: ModelActionData = {
+              actionData: action,
+              modelActionName: choiceActionDB.modelActionName ? choiceActionDB.modelActionName : action.name
             };
-            choice.attacks.push( modelAttack );
+            choice.actions.push( modelAction );
           }
         }
 
@@ -305,7 +305,7 @@ export class ModelDataService {
             const ability: AbilityData = await this.abilityDataService.getAbilityById(choiceAbilityDB.abilityId);
             const modelAbility: ModelAbilityData = {
               abilityData: ability,
-              modelAbilityName: choiceAbilityDB.abilityName ? choiceAbilityDB.abilityName : ability.name
+              modelAbilityName: choiceAbilityDB.modelAbilityName ? choiceAbilityDB.modelAbilityName : ability.name
             };
             choice.abilities.push( modelAbility );
           }

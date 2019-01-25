@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { DBErrorData } from '../../../services/data-access.service';
@@ -14,6 +14,9 @@ export class UserLoginComponent implements OnInit {
   public userPassword = '';
   public errorText = '';
 
+  @ViewChild('userEmailInput') userEmailElement: ElementRef;
+  @ViewChild('userEmailInput') userPasswordElement: ElementRef;
+
   constructor(
     private userService: UserService,
     private router: Router
@@ -26,6 +29,14 @@ export class UserLoginComponent implements OnInit {
    * called from the login button
    */
   async login() {
+
+    // there is a bug in iOS Chrome autofill. You need to access the vaules directly
+    if ( this.userEmail === '' ) {
+      this.userEmail = this.userEmailElement.nativeElement.value;
+    }
+    if ( this.userPassword === '' ) {
+      this.userPassword = this.userPasswordElement.nativeElement.value;
+    }
 
     // convert the email to lowercase
     this.userEmail = this.userEmail.toLowerCase();

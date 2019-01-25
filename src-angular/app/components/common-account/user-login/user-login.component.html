@@ -1,7 +1,7 @@
 <div class="layout-box">
     <form id="login-form">
         <label class="input-title font-normal" for="username">Email</label>
-        <input 
+        <input #userEmailInput
             [(ngModel)]="userEmail" 
             class="input-field input-light font-normal" 
             type="text" 
@@ -9,7 +9,7 @@
             placeholder="Enter email address"
             (keyup.enter)="login(); $event.target.blur();">
         <label class="input-title font-normal" for="password">Password</label>
-        <input 
+        <input #userPasswordInput
             [(ngModel)]="userPassword" 
             class="input-field input-light font-normal" 
             type="password" 

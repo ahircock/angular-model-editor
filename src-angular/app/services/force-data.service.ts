@@ -190,10 +190,12 @@ export class ForceDataService {
     const updateDBForceInit = this.convertForceDataToDB(updateForce);
     const updateDBForce = await this.dbConnectService.updateForce( updateDBForceInit );
 
-    // find the force record in the fake DB, and then replace it with the updated force
+    // find the old force record in the cache, and then replace it with the updated force
     const newUpdatedForce = await this.convertDBToForceData( updateDBForce );
     const forceIndex: number = this.forceCache.findIndex( element => element._id === newUpdatedForce._id );
-    this.forceCache[forceIndex] = newUpdatedForce;
+    if ( forceIndex > 0 ) {
+      this.forceCache[forceIndex] = newUpdatedForce;
+    }
 
     // return a deep copy of the model from the DB
     return newUpdatedForce;
@@ -208,7 +210,9 @@ export class ForceDataService {
     // delete the matching force from the DB
     await this.dbConnectService.deleteForce( this.convertForceDataToDB(deleteForce) );
     const forceIndex: number = this.forceCache.findIndex( element => element._id === deleteForce._id );
-    this.forceCache.splice( forceIndex, 1 );
+    if ( forceIndex > 0 ) {
+      this.forceCache.splice( forceIndex, 1 );
+    }
   }
 
   /**
@@ -345,8 +349,10 @@ export class ForceDataService {
     // create an array of ForceModelData objects, and copy contents from FactionModelData and ForceDBData
     for ( const forceModelDB of forceDBData.models ) {
       const factionModel = faction.models.find( element => element.modelData._id === forceModelDB._id );
-      const forceModelData: ForceModelData = await this.generateForceModelData( forceData, factionModel, forceModelDB );
-      forceData.models.push(forceModelData);
+      if ( factionModel ) {
+        const forceModelData: ForceModelData = await this.generateForceModelData( forceData, factionModel, forceModelDB );
+        forceData.models.push(forceModelData);
+      }
     }
 
     // copy the abilities from the faction to the force
@@ -426,6 +432,9 @@ export class ForceDataService {
 
     // get the matching model option from the baseline model data
     const modelOption = forceModel.factionModelData.options.find( element => element.id === optionChoice.optionId );
+    if (!modelOption) {
+      return;
+    }
 
     // loop through the choices that have been made on this model
     for ( const choiceIndex of optionChoice.choiceIndexes ) {

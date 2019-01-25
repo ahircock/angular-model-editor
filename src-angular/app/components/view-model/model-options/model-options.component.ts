@@ -32,6 +32,9 @@ export class ModelOptionsComponent implements OnInit {
 
   isChoiceSelected(optionId: string, choiceIndex: number) {
     const option = this.model.optionChoices.find( element => element.optionId === optionId );
+    if ( !option ) {
+      return false;
+    }
     const value = option.choiceIndexes.find( element => element === choiceIndex );
     return typeof value === 'undefined' ? false : true;
   }

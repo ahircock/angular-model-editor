@@ -9,6 +9,7 @@ import { ForceModelData } from '../../../services/force-data.service';
 export class HeaderDetailsComponent implements OnInit {
 
   @Input() model: ForceModelData;
+  @Input() allowEdit = true;
   @Output() updated: EventEmitter<void> = new EventEmitter();
 
   constructor() { }

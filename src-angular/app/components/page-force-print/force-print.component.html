@@ -1,17 +1,18 @@
 <div *ngIf="force" class="main-page">
 
+    <!-- FORCE TITLE -->
     <div class="force-title font-title-big">{{force.name}}</div>
 
-    <div class="model-list">
+    <!-- FACTION ABILITIES SECTION -->
+    <div class="model-detail">
+        <app-view-force-abilities [force]="force"></app-view-force-abilities>
+    </div>
+
+    <!-- MODEL LISTS -->
+    <div *ngFor="let page of pages; index as pageIndex" class="page">
 
         <div class="left-column">
-
-            <!-- COMMON ABILITIES -->
-            <div *ngIf="force.abilities.length > 0" class="model-detail">
-                <app-view-force-abilities [force]="force"></app-view-force-abilities>
-            </div>
-        
-            <div *ngFor="let model of leftModels" class="model-detail">
+            <div *ngFor="let model of page.leftColumn.forceModels" class="model-detail">
                 <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
                 <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
             </div>
@@ -20,7 +21,7 @@
         <div class="column-separator"></div>
 
         <div class="right-column">
-            <div *ngFor="let model of rightModels" class="model-detail">
+            <div *ngFor="let model of page.rightColumn.forceModels" class="model-detail">
                 <div *ngIf="model.count > 1" class="model-count box-mid font-normal">x{{model.count}}</div>
                 <app-model-view [allowEdit]="false" [model]="model"></app-model-view>
             </div>

@@ -3,6 +3,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
 
+interface Page {
+  leftColumn: Column;
+  rightColumn: Column;
+}
+interface Column {
+  forceModels: ForceModelData[];
+}
+
 @Component({
   selector: 'app-force-print',
   templateUrl: './force-print.component.html',
@@ -15,14 +23,16 @@ export class ForcePrintComponent implements OnInit {
    */
   public force: ForceData;
 
-  public leftModels: ForceModelData[] = [];
-  public rightModels: ForceModelData[] = [];
-
   /**
    * This property is checked by the parent component, and
    * is used to show or hide the application header band
    */
   public showHeader = false;
+
+  /**
+   * This is the list of pages to be printed
+   */
+  public pages: Page[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,16 +54,39 @@ export class ForcePrintComponent implements OnInit {
     this.force = await this.forceDataService.getForceById(forceId);
 
     // add the first half of the models to the left array, and the second half to the right
-    for ( let i = 0; i < this.force.models.length; i++ ) {
-      if ( i >= this.force.models.length / 2 ) {
-        this.rightModels.push( this.force.models[i] );
-      } else {
-        this.leftModels.push( this.force.models[i] );
-      }
+    this.preparePrintLayout();
+  }
+
+  private preparePrintLayout() {
+
+    // create a page for every 4 models
+    const numPages = (this.force.models.length / 4) + 1;
+    for ( let i = 0; i < numPages; i++ ) {
+      const leftColumn: Column = { forceModels: [] };
+      const rightColumn: Column = { forceModels: [] };
+      const page: Page = { leftColumn: leftColumn, rightColumn: rightColumn };
+      this.pages.push(page);
     }
 
-    // open the print window
-    // window.print();
+    // add each model to the correct page
+    let pageIndex = 0;
+    let modelCounter = 1;
+    for ( const model of this.force.models ) {
+      if ( modelCounter === 1 ) {
+        this.pages[pageIndex].leftColumn.forceModels.push(model);
+        modelCounter++;
+      } else  if ( modelCounter === 2 ) {
+        this.pages[pageIndex].leftColumn.forceModels.push(model);
+        modelCounter++;
+      } else if ( modelCounter === 3 ) {
+        this.pages[pageIndex].rightColumn.forceModels.push(model);
+        modelCounter++;
+      } else if ( modelCounter === 4 ) {
+        this.pages[pageIndex].rightColumn.forceModels.push(model);
+        modelCounter = 1;
+        pageIndex++;
+      }
+    }
   }
 
 }

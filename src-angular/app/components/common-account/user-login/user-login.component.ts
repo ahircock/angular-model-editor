@@ -15,7 +15,7 @@ export class UserLoginComponent implements OnInit {
   public errorText = '';
 
   @ViewChild('userEmailInput') userEmailElement: ElementRef;
-  @ViewChild('userEmailInput') userPasswordElement: ElementRef;
+  @ViewChild('userPasswordInput') userPasswordElement: ElementRef;
 
   constructor(
     private userService: UserService,

@@ -31,17 +31,19 @@ export class UserLoginComponent implements OnInit {
   async login() {
 
     // there is a bug in iOS Chrome autofill. You need to access the vaules directly
-    if ( this.userEmail === '' ) {
-      this.userEmail = this.userEmailElement.nativeElement.value;
+    let loginEmail = this.userEmail;
+    let loginPassword = this.userPassword;
+    if ( loginEmail === '' ) {
+      loginEmail = this.userEmailElement.nativeElement.value;
     }
-    if ( this.userPassword === '' ) {
-      this.userPassword = this.userPasswordElement.nativeElement.value;
+    if ( loginPassword === '' ) {
+      loginPassword = this.userPasswordElement.nativeElement.value;
     }
 
     // convert the email to lowercase
-    this.userEmail = this.userEmail.toLowerCase();
+    loginEmail = loginEmail.toLowerCase();
 
-    await this.userService.login(this.userEmail, this.userPassword)
+    await this.userService.login(loginEmail, loginPassword)
         .then( () => this.router.navigateByUrl('/') ) // if successful, then open the main page
         .catch( (reason) => { this.displayError(reason.error); }); // if unsuccssful, then display error message
   }

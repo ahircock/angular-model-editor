@@ -27,8 +27,8 @@ div.column-section .right {
 }
 .create-force-button-dropdown {
     position: absolute;
+    width: 250px;
     top: 50px;
-    width: 400px;
     z-index: 2;
 }
 .create-force-button-dropdown .faction-selection {

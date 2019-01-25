@@ -23,7 +23,8 @@
 /* multi-column display */
 .column-section {
     position: absolute;
-    width: 100%;
+    right: 0px;
+    left: 0px;
     top: 64px; 
     bottom: 0px;
     display: flex;    
@@ -72,7 +73,7 @@
 .create-model-button-dropdown {
     position: absolute;
     top: 50px;
-    width: 400px;
+    width: 250px;
     z-index: 2;
 }
 .create-model-button-dropdown .model-selection {

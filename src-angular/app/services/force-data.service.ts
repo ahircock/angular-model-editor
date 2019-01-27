@@ -379,10 +379,10 @@ export class ForceDataService {
       cost: factionModel.modelData.cost,
       leader: forceModelDB.leader ? forceModelDB.leader : false,
       forceModelName: forceModelDB.forceModelName,
-      PW: forceModelDB.leader ? factionModel.modelData.PW + 1 : factionModel.modelData.PW, // leaders get +1 PW
+      PW: factionModel.modelData.PW,
       SP: factionModel.modelData.SP,
       AR: factionModel.modelData.AR,
-      WN: forceModelDB.leader ? factionModel.modelData.WN + 1 : factionModel.modelData.WN, // leaders get +1 NE
+      WN: factionModel.modelData.WN,
       NE: factionModel.modelData.NE,
       attacks: factionModel.modelData.attacks.slice(),
       actions: factionModel.modelData.actions.slice(),
@@ -407,20 +407,18 @@ export class ForceDataService {
 
     // leaders get the Inspire ability
     if ( forceModelData.leader ) {
-      await this.addLeaderAbility(forceModelData);
+      await this.getLeaderUpgrades(forceModelData);
     }
 
     return forceModelData;
   }
 
-  private async addLeaderAbility(forceModel: ForceModelData) {
+  private async getLeaderUpgrades(forceModel: ForceModelData) {
     if ( forceModel.leader ) {
-      const leaderAbility = await this.abilityDataService.getAbilityById( 'LEADER' );
-      const ability: ModelAbilityData = {
-        abilityData: leaderAbility,
-        modelAbilityName: leaderAbility.name
-      };
-      forceModel.abilities.push(ability);
+
+      // leaders get +1 PW and +1 WN
+      forceModel.PW++;
+      forceModel.WN++;
     }
   }
 

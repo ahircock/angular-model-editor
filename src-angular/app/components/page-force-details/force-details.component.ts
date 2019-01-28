@@ -9,7 +9,7 @@ import { FactionModelData } from '../../services/faction-data.service';
 @Component({
   selector: 'app-force-details',
   templateUrl: './force-details.component.html',
-  styleUrls: ['./force-details.component.css']
+  styleUrls: ['./force-details.component.css', '../../app.backgrounds.css']
 })
 export class ForceDetailsComponent implements OnInit {
 
@@ -138,5 +138,15 @@ export class ForceDetailsComponent implements OnInit {
 
   isWindowMobile() {
     return this.windowService.isWindowMobile();
+  }
+
+  getBackgroundClass() : string {
+    let bgClass = this.force.faction.name;
+    return bgClass
+      .replace(/ /g, '_')
+      .replace(/\(/g, '')
+      .replace(/\)/g, '')
+      .toLowerCase()
+      .substring(0, 30);
   }
 }

@@ -1,0 +1,9 @@
+
+.warhammer-bg { background: url('/assets/backgrounds/warhammer.jpg') no-repeat; background-size: 100% 100%;}
+.necrons { background: url('/assets/backgrounds/necrons.jpg') no-repeat; background-size: 100% 100%; }
+.astra_militarum_imperial_guard { background: url('/assets/backgrounds/astra_militarum_imperial_guard.jpg') no-repeat; background-size: 100% 100%; }
+.adeptus_astartes_space_marines { background: url('/assets/backgrounds/adeptus_astartes_space_marines.jpg') no-repeat; background-size: 100% 100%; }
+.adeptus_mechanicus { background: url('/assets/backgrounds/adeptus_mechanicus.jpg') no-repeat; background-size: 100% 100%; }
+.genestealer_cult { background: url('/assets/backgrounds/genestealer_cult.jpg') no-repeat; background-size: 100% 100%; }
+
+@media print { .warhammer-bg { background: none; } }

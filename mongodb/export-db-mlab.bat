@@ -1,1 +1,1 @@
-mongodump -h ds237669.mlab.com:37669 -d model-editor -u admin -p blix2400
+mongodump -h ds237669.mlab.com:37669 -d model-editor -u <user> -p <pwd>

@@ -1,5 +1,5 @@
 [
-    {"_id":"CAMO","userId":"global","name":"Camo","text":"When an opponent targets this model with a ranged attack, and this model is obscured, the hit roll suffers an additional -1 modifier."},
+    {"_id":"CAMO","userId":"global","name":"Camo","text":"When targeting this model with a ranged attack, attackers get a -2 modifier for being obscured rather than -1."},
     {"_id":"CULTAMBUSH","userId":"global","name":"Cult Ambush","text":"After setup but before the first round, each friendly model may move 6\" and be marked as <i>Hidden</i>: This model may not be targeted by a ranged attack; this model loses hidden if it performs any action."},
     {"_id":"CULTICON","userId":"global","name":"Cult Icon","text":"You can re-roll melee hit rolls of 1 for friendly models within 6\" of this model."},
     {"_id":"GRUNT","userId":"global","name":"Grunt","text":"This model automatically fails all Nerve tests taken when its wounds are reduced below 0. It is always removed from play."},

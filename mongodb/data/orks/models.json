@@ -1,0 +1,64 @@
+[
+    {"_id":"40K.ORK.BOSSNOB","userId":"global","name":"Boss Nob","picture":"ork-bossnob.jpg","cost":10,"PW":1,"SP":4,"AR":6,"WN":3,"NE":4,
+        "attacks":[],
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ORK.CHOPPA.4D6"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ORK.BIGCHOPPA.3D6"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ORK.POWERKLAW.3D6"}]}
+            ]},
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ORK.SLUGGA"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.ORK.KOMBIWEAPONROKKIT"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ORK.KOMBIWEAPONSKORCHA"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ORK.KOMMANDOBOSSNOB","userId":"global","name":"Kommando Boss Nob","picture":"ork-kommandoboss.jpg","cost":12,"PW":1,"SP":4,"AR":6,"WN":3,"NE":4,
+        "abilities":[{"modelAbilityName":"Sneaky Gitz","abilityId":"CAMO"}],
+        "attacks":[{"attackId":"40K.ORK.SLUGGA"}],
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ORK.CHOPPA.4D6"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ORK.POWERKLAW.3D6"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ORK.ORKBOY","userId":"global","name":"Ork Boy","picture":"ork-boy.jpg","cost":6,"PW":0,"SP":4,"AR":6,"WN":2,"NE":4,
+        "abilities":[{"abilityId":"GRUNT"}],
+        "attacks":[],
+        "options":[
+            {"id":"WEAPON","description":"Choose a weapon combo","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ORK.SLUGGA"},{"attackId":"40K.ORK.CHOPPA.3D6"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ORK.SHOOTA"},{"attackId":"40K.ORK.MELEE.2D6"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ORK.ORKGUNNER","userId":"global","name":"Ork Boy Gunner","picture":"ork-gunner.jpg","cost":7,"PW":0,"SP":4,"AR":6,"WN":2,"NE":4,
+        "attacks":[{"attackId":"40K.ORK.MELEE.2D6"}],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ORK.BIGSHOOTA"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.ORK.ROKKITLAUNCHA"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ORK.GRETCHIN","userId":"global","name":"Gretchin","picture":"ork-gretchin.jpg","cost":3,"PW":0,"SP":4,"AR":6,"WN":1,"NE":5,
+        "abilities":[{"abilityId":"GRUNT"},{"abilityId":"40K.ORK.KICKBOY"}],
+        "attacks":[{"attackId":"40K.ORK.GROTBLASTA"},{"attackId":"40K.ORK.GRETCHINMELEE.1D6"}]
+    },
+    {"_id":"40K.ORK.KOMMANDO","userId":"global","name":"Kommando","picture":"ork-kommando.jpg","cost":8,"PW":0,"SP":4,"AR":6,"WN":2,"NE":4,
+        "abilities":[{"modelAbilityName":"Sneaky Gitz","abilityId":"CAMO"}],
+        "attacks":[{"attackId":"40K.ORK.SLUGGA"},{"attackId":"40K.ORK.CHOPPA.3D6"}]
+    },
+    {"_id":"40K.ORK.BURNABOY","userId":"global","name":"Burna Boy","picture":"ork-burna.jpg","cost":12,"PW":0,"SP":4,"AR":6,"WN":2,"NE":4,
+        "attacks":[{"attackId":"40K.ORK.BURNAR"},{"attackId":"40K.ORK.BURNAM.2D6"}]
+    },
+    {"_id":"40K.ORK.LOOTA","userId":"global","name":"Loota","picture":"ork-loota.jpg","cost":12,"PW":0,"SP":4,"AR":6,"WN":2,"NE":4,
+        "attacks":[{"attackId":"40K.ORK.MELEE.2D6"},{"attackId":"40K.ORK.DEFFGUN"}]
+    },
+    {"_id":"40K.ORK.SPANNER","userId":"global","name":"Ork Spanner","picture":"ork-spanner.jpg","cost":10,"PW":0,"SP":4,"AR":6,"WN":2,"NE":4,
+        "attacks":[{"attackId":"40K.ORK.KUSTOMMEGABLASTA"},{"attackId":"40K.ORK.MELEE.2D6"}]
+    },
+    {}
+]

@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { DataAccessService } from './data-access.service';
 import { UserService } from './user.service';
 import { ModelData, ModelDataService, ModelOptionData, ModelOptionDBData,
-  ModelAbilityDBData, ModelAbilityData } from './model-data.service';
+  ModelAbilityDBData, ModelAbilityData, ModelAttackData, ModelAttackDBData } from './model-data.service';
 import { AbilityDataService } from './ability-data.service';
+import { AttackDataService } from './attack-data.service';
 
 export interface FactionData {
   _id: string;
@@ -11,6 +12,7 @@ export interface FactionData {
   models: FactionModelData[];
   modelOptions: ModelOptionData[];
   factionAbilities: ModelAbilityData[];
+  factionAttacks: ModelAttackData[];
 }
 export interface FactionModelData {
   modelData: ModelData;
@@ -27,6 +29,7 @@ interface FactionDBData {
   models: FactionModelDBData[];
   modelOptions: ModelOptionDBData[];
   factionAbilities: ModelAbilityDBData[];
+  factionAttacks: ModelAttackDBData[];
 }
 interface FactionModelDBData {
   modelId: string;
@@ -42,6 +45,7 @@ export class FactionDataService {
     private dbConnectService: DataAccessService,
     private modelDataService: ModelDataService,
     private abilityDataService: AbilityDataService,
+    private attackDataService: AttackDataService,
     private userService: UserService
   ) {
     // subscribe to events from the other services
@@ -97,7 +101,8 @@ export class FactionDataService {
       name: factionDBData.name,
       modelOptions: [],
       models: [],
-      factionAbilities: []
+      factionAbilities: [],
+      factionAttacks: []
     };
 
     // copy the options from the DB, modelOptions is an optional field
@@ -124,7 +129,7 @@ export class FactionDataService {
       }
     }
 
-    // copy the force abilities to the faction
+    // copy the faction abilities
     if ( factionDBData.factionAbilities ) {
       for ( const factionAbilityDB of factionDBData.factionAbilities ) {
         const ability = await this.abilityDataService.getAbilityById( factionAbilityDB.abilityId );
@@ -133,6 +138,18 @@ export class FactionDataService {
           modelAbilityName: factionAbilityDB.modelAbilityName ? factionAbilityDB.modelAbilityName : ability.name
         };
         factionData.factionAbilities.push(factionAbilityData);
+      }
+    }
+
+    // copy the faction attacks
+    if ( factionDBData.factionAttacks ) {
+      for ( const factionAttackDB of factionDBData.factionAttacks ) {
+        const attack = await this.attackDataService.getAttackById( factionAttackDB.attackId );
+        const factionAttackData: ModelAttackData = {
+          attackData: attack,
+          modelAttackName: factionAttackDB.modelAttackName ? factionAttackDB.modelAttackName : attack.name
+        };
+        factionData.factionAttacks.push(factionAttackData);
       }
     }
 

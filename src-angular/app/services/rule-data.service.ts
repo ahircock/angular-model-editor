@@ -101,6 +101,9 @@ export class RuleDataService {
     for ( const ruleDB of ruleDBList ) {
       this.ruleCache.push( this.convertDBToRuleData(ruleDB));
     }
+
+    // replace any special tokens in the rule text
+    await this.replaceRuleTokens();
   }
 
   /**
@@ -108,5 +111,35 @@ export class RuleDataService {
    */
   public logout() {
     this.ruleCache = [];
+  }
+
+  async replaceRuleTokens() {
+
+    // loop through every rule in the cache
+    for ( const rule of this.ruleCache ) {
+
+      // are there any @rule{} tokens
+      let startPos = rule.ruleText.search('rule={');
+      while ( startPos > 0 ) {
+        const ruleNameLen = rule.ruleText.substr(startPos).search('}') - 6;
+        const ruleId = rule.ruleText.substr(startPos + 6, ruleNameLen);
+
+        // get the embedded rule
+        const embeddedRule = await this.getRuleById(ruleId);
+
+        // generate the new rule text
+        const newRuleText = 
+            rule.ruleText.substr(0, startPos) + 
+            '<i>' + embeddedRule.ruleName + '</i>: ' + 
+            embeddedRule.ruleText + 
+            rule.ruleText.substr(startPos + ruleNameLen + 7);
+        rule.ruleText = newRuleText;
+
+        startPos = rule.ruleText.search('rule={');
+      }
+
+
+    }
+    return;
   }
 }

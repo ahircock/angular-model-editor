@@ -19,13 +19,14 @@
 
 /* CONTENT */
 .content-section {
-    padding: 4px;
+    margin-top: 4px;
 }
 
 /* OPTIONS */
 .option-description {
-    border: none;
-    padding: 4px 0px;
+    border: 2px solid;
+    padding: 4px;
+    background-color: white;
 }
 .option-choice {
     border: 1px solid;

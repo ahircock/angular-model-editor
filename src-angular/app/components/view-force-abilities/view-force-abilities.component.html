@@ -2,9 +2,15 @@
     
   <!-- TITLE BOX -->
   <div class="title-box font-title-big">FACTION ABILITIES</div>
-  <div class="subtitle-box">All models have these abilities</div>
+  <div class="subtitle-box">All models have these attacks / abilities</div>
 
-  <!-- MODEL ABILITIES -->
+  <!-- FACTION ATTACKS -->
+  <div *ngIf="force.attacks.length > 0" class="section-title">ATTACKS</div>
+  <div *ngFor="let attack of force.attacks" class="section-row">
+    <app-attack-details [attack]="attack"></app-attack-details>
+  </div>
+
+  <!-- FACTION ABILITIES -->
   <div *ngIf="force.abilities.length > 0" class="section-title">ABILITIES</div>
   <div *ngFor="let ability of force.abilities" class="section-row">
     <app-ability-details [ability]="ability"></app-ability-details>

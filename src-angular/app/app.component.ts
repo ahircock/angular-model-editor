@@ -4,7 +4,7 @@ import { WindowService } from './services/window.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', './app.backgrounds.css']
 })
 export class AppComponent {
 

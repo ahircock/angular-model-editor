@@ -15,6 +15,7 @@ export interface ForceData {
   cost: number;
   models: ForceModelData[];
   abilities: ModelAbilityData[];
+  attacks: ModelAttackData[];
 }
 export interface ForceModelData {
   force: ForceData;
@@ -339,7 +340,8 @@ export class ForceDataService {
       faction: faction,
       cost: 0, // will be calculated below
       models: [],
-      abilities: []
+      abilities: [],
+      attacks: []
     };
 
     // create an array of ForceModelData objects, and copy contents from FactionModelData and ForceDBData
@@ -354,6 +356,11 @@ export class ForceDataService {
     // copy the abilities from the faction to the force
     for ( const ability of faction.factionAbilities ) {
       forceData.abilities.push( ability );
+    }
+
+    // copy the attacks from the faction to the force
+    for ( const attack of faction.factionAttacks ) {
+      forceData.attacks.push( attack );
     }
 
     // calculate the force cost

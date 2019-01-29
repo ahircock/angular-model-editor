@@ -1,1 +1,0 @@
-mongodump -h ds237669.mlab.com:37669 -d model-editor -u admin -p blix2400

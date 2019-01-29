@@ -1,0 +1,23 @@
+[
+    {"_id":"40K.ORK","userId":"global","name":"Orks",
+        "models":[
+            {"modelId":"40K.ORK.BOSSNOB","max":1},
+            {"modelId":"40K.ORK.KOMMANDOBOSSNOB","max":1},
+            {"modelId":"40K.ORK.ORKBOY","max":1},
+            {"modelId":"40K.ORK.ORKGUNNER","max":1},
+            {"modelId":"40K.ORK.GRETCHIN","max":1},
+            {"modelId":"40K.ORK.KOMMANDO"},
+            {"modelId":"40K.ORK.BURNABOY"},
+            {"modelId":"40K.ORK.LOOTA"},
+            {"modelId":"40K.ORK.SPANNER"}
+        ],
+        "factionAbilities":[{"modelAbilityName":"ERE WE GO!","abilityId":"SWIFTCHARGE"}],
+        "factionAttacks":[{"attackId":"40K.ORK.STIKKBOMB"}],
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"modelAbilityName":"DOK STUFFS","abilityId":"MEDKIT"}]},
+                {"cost":1,"abilities":[{"modelAbilityName":"FUNGUS BREW","abilityId":"STIMPACK"}]}
+            ]}
+        ]
+    }
+]

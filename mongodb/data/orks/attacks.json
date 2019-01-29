@@ -1,0 +1,22 @@
+[
+    {"_id":"40K.ORK.BIGSHOOTA","userId":"global","name":"Big Shoota","type":"RANGED","RNG":36,"DICE":3,"HIT":5,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.BURNAR","userId":"global","name":"Burna [RANGED]","type":"RANGED","RNG":8,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.ORK.DEFFGUN","userId":"global","name":"Deffgun","type":"RANGED","RNG":48,"DICE":2,"HIT":5,"AP":3,"DMG":2,"ruleIds":["HEAVY"]},
+    {"_id":"40K.ORK.GROTBLASTA","userId":"global","name":"Grot Blasta","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.KOMBIWEAPONROKKIT","userId":"global","name":"Komksbi-weapon with Rokkit Launcha","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["KOMBIROKKIT"]},
+    {"_id":"40K.ORK.KOMBIWEAPONSKORCHA","userId":"global","name":"Kombi-weapon with Skorcha","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["KOMBISKORCHA"]},
+    {"_id":"40K.ORK.KUSTOMMEGABLASTA","userId":"global","name":"Kustom Mega-Blasta","type":"RANGED","RNG":24,"DICE":1,"HIT":5,"AP":4,"DMG":2,"ruleIds":["EXPLODES"]},
+    {"_id":"40K.ORK.ROKKITLAUNCHA","userId":"global","name":"Rokkit Launcha","type":"RANGED","RNG":24,"DICE":1,"HIT":5,"AP":4,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.ORK.SHOOTA","userId":"global","name":"Shoota","type":"RANGED","RNG":18,"DICE":2,"HIT":5,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.SLUGGA","userId":"global","name":"Slugga","type":"RANGED","RNG":12,"DICE":2,"HIT":5,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.STIKKBOMB","userId":"global","name":"Stikkbomb","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["GRENADE","BLAST"]},
+
+    {"_id":"40K.ORK.BIGCHOPPA.3D6","userId":"global","name":"Big Choppa","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":2,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.ORK.BURNAM.2D6","userId":"global","name":"Burna [MELEE]","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.CHOPPA.3D6","userId":"global","name":"Choppa","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.CHOPPA.4D6","userId":"global","name":"Choppa","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.GRETCHINMELEE.1D6","userId":"global","name":"Gretchin Bite","type":"MELEE","RNG":0,"DICE":1,"HIT":5,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.MELEE.2D6","userId":"global","name":"Ork Fist","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ORK.POWERKLAW.3D6","userId":"global","name":"Power Klaw","type":"MELEE","RNG":0,"DICE":3,"HIT":4,"AP":4,"DMG":2,"ruleIds":[]},
+    {}
+]

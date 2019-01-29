@@ -128,10 +128,10 @@ export class RuleDataService {
         const embeddedRule = await this.getRuleById(ruleId);
 
         // generate the new rule text
-        const newRuleText = 
-            rule.ruleText.substr(0, startPos) + 
-            '<i>' + embeddedRule.ruleName + '</i>: ' + 
-            embeddedRule.ruleText + 
+        const newRuleText =
+            rule.ruleText.substr(0, startPos) +
+            '<i>' + embeddedRule.ruleName + '</i>: ' +
+            embeddedRule.ruleText +
             rule.ruleText.substr(startPos + ruleNameLen + 7);
         rule.ruleText = newRuleText;
 

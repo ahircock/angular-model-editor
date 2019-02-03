@@ -1,0 +1,19 @@
+[
+    {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum / Imperial Guard",
+        "models":[
+            {"modelId":"40K.ADMIL.SERGEANT","max":1},
+            {"modelId":"40K.ADMIL.GUARDSMAN"},
+            {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
+            {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":1},
+            {"modelId":"40K.ADMIL.SCION","max":1},
+            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}
+        ],
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.4+"}]}
+            ]}
+        ]
+    }
+]

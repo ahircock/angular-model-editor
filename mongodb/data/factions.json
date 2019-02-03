@@ -8,27 +8,7 @@
             {"modelId":"40K.ADMECH.SKITSNIPER","max":1}
         ],
         "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}]}]},
-    {"_id":"40K.NC","userId":"global","name":"Necrons",
-        "models":[
-            {"modelId":"40K.NC.OVERLORD","max":1},
-            {"modelId":"40K.NC.IMMORTALPRIME","max":1},
-            {"modelId":"40K.NC.WARRIOR"},
-            {"modelId":"40K.NC.IMMORTAL"},
-            {"modelId":"40K.NC.FLAYEDONE"},
-            {"modelId":"40K.NC.DEATHMARK"}
-        ],
-        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"modelAbilityName":"Crypt Charge Crystal","abilityId":"STIMPACK"}]}]}],
-        "factionAbilities":[{"abilityId":"REANIMATIONPROTOCOL"}]},
-    {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum (Imperial Guard)",
-        "models":[
-            {"modelId":"40K.ADMIL.SERGEANT","max":1},
-            {"modelId":"40K.ADMIL.GUARDSMAN"},
-            {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
-            {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":1},
-            {"modelId":"40K.ADMIL.SCION","max":1},
-            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}
-        ],
-        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.4+"}]}]}]},
+
     {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes (Space Marines)",
         "models":[
             {"modelId":"40K.ASTARTES.PRIMARISCAPTAIN","max":1},
@@ -48,6 +28,7 @@
         ],
         "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.3+"}]},{"cost":1,"attacks":[{"attackId":"40K.GRENADEKRAK.3+"}]}]}],
         "factionAbilities":[{"abilityId":"KNOWNOFEAR"}]},
+        
     {"_id":"40K.GC","userId":"global","name":"Genestealer Cult",
         "models":[
             {"modelId":"40K.GC.METAMORPHLEADER","max":1},

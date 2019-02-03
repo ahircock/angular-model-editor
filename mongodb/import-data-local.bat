@@ -1,12 +1,25 @@
 mongoimport -d model-editor -c rules     --file ./data/rules.json     --jsonArray --drop
-mongoimport -d model-editor -c attacks   --file ./data/attacks.json   --jsonArray --drop
 mongoimport -d model-editor -c abilities --file ./data/abilities.json --jsonArray --drop
 mongoimport -d model-editor -c actions   --file ./data/actions.json   --jsonArray --drop
+mongoimport -d model-editor -c attacks   --file ./data/attacks.json   --jsonArray --drop
 mongoimport -d model-editor -c models    --file ./data/models.json    --jsonArray --drop
 mongoimport -d model-editor -c factions  --file ./data/factions.json  --jsonArray --drop
 
-mongoimport -d model-editor -c abilities --file ./data/orks/abilities.json --jsonArray
-mongoimport -d model-editor -c attacks   --file ./data/orks/attacks.json   --jsonArray
-mongoimport -d model-editor -c models    --file ./data/orks/models.json    --jsonArray
-mongoimport -d model-editor -c factions  --file ./data/orks/factions.json  --jsonArray
+mongoimport -d model-editor -c abilities --file ./data/40k-admil/abilities.json --jsonArray
+mongoimport -d model-editor -c actions   --file ./data/40k-admil/actions.json   --jsonArray
+mongoimport -d model-editor -c attacks   --file ./data/40k-admil/attacks.json   --jsonArray
+mongoimport -d model-editor -c models    --file ./data/40k-admil/models.json    --jsonArray
+mongoimport -d model-editor -c factions  --file ./data/40k-admil/factions.json  --jsonArray
+
+mongoimport -d model-editor -c abilities --file ./data/40k-necrons/abilities.json --jsonArray
+mongoimport -d model-editor -c actions   --file ./data/40k-necrons/actions.json   --jsonArray
+mongoimport -d model-editor -c attacks   --file ./data/40k-necrons/attacks.json   --jsonArray
+mongoimport -d model-editor -c models    --file ./data/40k-necrons/models.json    --jsonArray
+mongoimport -d model-editor -c factions  --file ./data/40k-necrons/factions.json  --jsonArray
+
+mongoimport -d model-editor -c abilities --file ./data/40k-orks/abilities.json --jsonArray
+mongoimport -d model-editor -c actions   --file ./data/40k-orks/actions.json   --jsonArray
+mongoimport -d model-editor -c attacks   --file ./data/40k-orks/attacks.json   --jsonArray
+mongoimport -d model-editor -c models    --file ./data/40k-orks/models.json    --jsonArray
+mongoimport -d model-editor -c factions  --file ./data/40k-orks/factions.json  --jsonArray
 

@@ -1,0 +1,14 @@
+[
+    {"_id":"40K.NC","userId":"global","name":"Necrons",
+        "models":[
+            {"modelId":"40K.NC.OVERLORD","max":1},
+            {"modelId":"40K.NC.IMMORTALPRIME","max":1},
+            {"modelId":"40K.NC.WARRIOR"},
+            {"modelId":"40K.NC.IMMORTAL"},
+            {"modelId":"40K.NC.FLAYEDONE"},
+            {"modelId":"40K.NC.DEATHMARK"}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"modelAbilityName":"Crypt Charge Crystal","abilityId":"STIMPACK"}]}]}],
+        "factionAbilities":[{"abilityId":"REANIMATIONPROTOCOL"}]
+    }
+]

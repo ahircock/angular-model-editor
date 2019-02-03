@@ -119,7 +119,7 @@ export class RuleDataService {
     for ( const rule of this.ruleCache ) {
 
       // are there any @rule{} tokens
-      let startPos = rule.ruleText.search('rule={');
+      let startPos = rule.ruleText.search('{rule=');
       while ( startPos > 0 ) {
         const ruleNameLen = rule.ruleText.substr(startPos).search('}') - 6;
         const ruleId = rule.ruleText.substr(startPos + 6, ruleNameLen);
@@ -135,7 +135,7 @@ export class RuleDataService {
             rule.ruleText.substr(startPos + ruleNameLen + 7);
         rule.ruleText = newRuleText;
 
-        startPos = rule.ruleText.search('rule={');
+        startPos = rule.ruleText.search('{rule=');
       }
 
 

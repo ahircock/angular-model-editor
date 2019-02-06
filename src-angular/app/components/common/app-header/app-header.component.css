@@ -11,19 +11,18 @@ a:visited {
 /* APPLICATION IMAGE */
 div.app-title {
   float: left;
-  margin-top: 14px;
-  margin-right: 4px;
-  padding: 6px 8px 0px 0px;
-  height: 32px;
+  margin-top: 12px;
+  margin-left: 8px;
+  height: 40px;
+  font-size: 32px;
 }
 div.app-title-img {
   float: left;
-  margin-top: 14px;
-  margin-right: 8px;
-  margin-left: 4px;
+  height: 62px;
+  width: 62px;
 }
 div.app-title-img img {
-  height: 32px; width: 32px;
+  height: 60px;
 }
 div.app-separator {
   float: left;
@@ -75,6 +74,7 @@ div.menu-dropdown-button-right {
   border: none;
   border-radius: 4px;
   height: 40px;
+  background-color: transparent;
 }
 div.menu-dropdown-button-right img {
   height: 32px; width: 32px;

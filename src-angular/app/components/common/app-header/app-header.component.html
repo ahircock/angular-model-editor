@@ -1,23 +1,5 @@
-<div class="app-title-img"><img src="/assets/icons/spinning-sword-512.png"></div>
-<div class="app-title font-title">Vanguard</div>
-<div class="app-separator"> </div>
-
-<!-- MAIN MENU DROPDOWN -->
-<div class="menu-dropdown-zone" (appClickElsewhere)="showMenuDropdown = false">
-  <div class="menu-dropdown-button box-mid-hover" (click)="showMenuDropdown = !showMenuDropdown"><img src="/assets/icons/icon-menu-128.png"></div>
-  <div *ngIf="showMenuDropdown" class="menu-dropdown box-white">
-    <div *ngIf="!userService.userName">
-        <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/login" routerLinkActive="selected">Log In</div>
-        <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/signup" routerLinkActive="selected">Sign Up</div>
-    </div>
-    <div *ngIf="userService.userName">
-      <div class="menu-dropdown-item box-white-hover font-normal"><a href="/assets/files/Genesys - Core Rules.pdf" download>Download Rules</a></div>
-      <div class="menu-dropdown-item box-white-hover font-normal" routerLink="/forces" routerLinkActive="selected" (click)="showMenuDropdown = false">Force Builder</div>
-      <div class="menu-dropdown-separator"></div>
-      <div class="menu-dropdown-item box-white-hover font-normal" (click)="logout()">Log Out</div>
-    </div>
-  </div>
-</div>
+<div class="app-title-img background orange-bg"><img src="/assets/icons/app-logo.png"></div>
+<div class="app-title font-orange">VANGUARD</div>
 
 <!-- USER MENU DROPDOWN -->
 <div class="menu-dropdown-zone-right" (appClickElsewhere)="showUserMenuDropdown = false">

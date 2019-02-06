@@ -1,7 +1,7 @@
-<div *ngIf="showHeader" class="header box-mid" (window:resize)="windowResized()">
+<div *ngIf="showHeader" class="header box-mid dark-grey-bg" (window:resize)="windowResized()">
     <app-app-header></app-app-header>
 </div>
 
-<div [class.middle]="showHeader" class="warhammer-bg">
+<div [class.light-grey-bg]="showHeader" [class.middle]="showHeader">
   <router-outlet (activate)="routerOutletActivate($event)"></router-outlet>
 </div>

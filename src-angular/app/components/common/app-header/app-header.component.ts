@@ -5,7 +5,7 @@ import { UserService } from '../../../services/user.service';
 @Component({
   selector: 'app-app-header',
   templateUrl: './app-header.component.html',
-  styleUrls: ['./app-header.component.css']
+  styleUrls: ['./app-header.component.css', '../../../app.backgrounds.css']
 })
 export class AppHeaderComponent implements OnInit {
 

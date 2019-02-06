@@ -139,14 +139,4 @@ export class ForceDetailsComponent implements OnInit {
   isWindowMobile() {
     return this.windowService.isWindowMobile();
   }
-
-  getBackgroundClass() : string {
-    let bgClass = this.force.faction.name;
-    return bgClass
-      .replace(/ /g, '_')
-      .replace(/\(/g, '')
-      .replace(/\)/g, '')
-      .toLowerCase()
-      .substring(0, 30);
-  }
 }

@@ -7,7 +7,7 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-model-details',
   templateUrl: './model-details.component.html',
-  styleUrls: ['./model-details.component.css']
+  styleUrls: ['./model-details.component.css', '../../app.backgrounds.css']
 })
 export class ModelDetailsComponent implements OnInit {
 

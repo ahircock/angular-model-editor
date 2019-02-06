@@ -9,6 +9,9 @@ body {
 }
 
 /* FONTS */
+.font-orange {
+    color: rgb(225, 80, 30); 
+}
 .font-normal {
     font-family: "Roboto", sans-serif; font-size:  14px;
     font-weight: normal; text-transform: none;

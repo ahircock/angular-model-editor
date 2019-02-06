@@ -12,6 +12,7 @@
     border: none;
     vertical-align: center;
     box-sizing: border-box;
+    background: transparent;
 }
 .back-arrow img {
     width:64px;

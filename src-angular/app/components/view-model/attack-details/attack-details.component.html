@@ -15,8 +15,7 @@
 
     <!-- ATTACKS STATS -->
     <span *ngIf="!attack.attackData.seeBelow">
-      <span *ngIf="attack.attackData.type==='RANGED'">{{attack.attackData.RNG}}", </span>
-      {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}}
+      {{attack.attackData.RNG}}", {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}}
     </span>
     )
 

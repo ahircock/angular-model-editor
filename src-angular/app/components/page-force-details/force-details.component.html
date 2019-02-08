@@ -18,10 +18,7 @@
 
       <!-- ADD MODEL BUTTON -->
       <div class="create-model-button-zone" (click)="showModelListDropdown = true" (appClickElsewhere)="showModelListDropdown = false">
-        <div class="action-button box-light-hover font-title">
-          <img src="/assets/icons/icon-outline-plus-128.png">
-          <div class="button-text">Add Model</div>
-        </div>
+        <app-button [image]="'/assets/icons/icon-outline-plus-128.png'" [title]="'Add Model'"></app-button>
         <div *ngIf="showModelListDropdown" class="create-model-button-dropdown box-white font-normal">
           <div *ngFor="let model of factionModels" class="model-selection box-light-hover" (click)="addModel(model); showModelListDropdown = false;">
             <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.modelData.picture"></div>
@@ -31,10 +28,7 @@
       </div>
 
       <!-- PRINT FORCE BUTTON -->
-      <div *ngIf="!isWindowMobile()" class="action-button box-light-hover font-title" (click)="printForce()">
-        <img src="/assets/icons/icon-print-128.png">
-        <div class="button-text">Print Force</div>
-      </div>
+      <app-button *ngIf="!isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Print Force'" (clicked)="printForce()"></app-button>
     
     </div>
 

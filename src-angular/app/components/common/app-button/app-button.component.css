@@ -1,0 +1,14 @@
+.action-button {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 4px;
+    margin: 4px;
+}
+.action-button img {
+    width: 16px;
+    float: left;
+}
+.action-button .button-text {
+    float: left;
+    padding-left: 4px;
+} 

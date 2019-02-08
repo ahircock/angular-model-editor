@@ -19,16 +19,19 @@ div.column-section .right {
     overflow-y: auto;    
 }
 
-/* NEW FORCE BUTTON */
+/* BUTTON BAR */
+.button-bar {
+    padding: 4px;
+}
 .create-force-button-zone {
     position: relative;
     display: inline-block;
-    margin: 16px 8px 8px 16px;    
 }
 .create-force-button-dropdown {
     position: absolute;
     width: 250px;
-    top: 50px;
+    top: 32px;
+    left: 4px;
     z-index: 2;
 }
 .create-force-button-dropdown .faction-selection {

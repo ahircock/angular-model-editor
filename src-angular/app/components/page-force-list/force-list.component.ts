@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ForceDataService, ForceData  } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
 import { FactionData, FactionDataService } from '../../services/faction-data.service';
+import { WindowService } from '../../services/window.service';
 
 @Component({
   selector: 'app-force-list',
@@ -19,7 +20,8 @@ export class ForceListComponent implements OnInit {
     private forceDataService: ForceDataService,
     private factionDataService: FactionDataService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private windowService: WindowService
   ) { }
 
   async ngOnInit() {

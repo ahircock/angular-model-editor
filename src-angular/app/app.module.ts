@@ -42,6 +42,7 @@ import { ModelListItemComponent } from './components/page-force-details/model-li
 // directives
 import { ClickElsewhereDirective } from './directives/click-elsewhere.directive';
 import { TextControllerDirective } from './directives/text-controller.directive';
+import { AppButtonComponent } from './components/common/app-button/app-button.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { TextControllerDirective } from './directives/text-controller.directive'
     ActionDetailsComponent,
     ViewForceAbilitiesComponent,
     ForceListItemComponent,
-    ModelListItemComponent
+    ModelListItemComponent,
+    AppButtonComponent
   ],
   imports: [
     BrowserModule,

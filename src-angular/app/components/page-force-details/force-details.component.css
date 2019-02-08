@@ -7,9 +7,6 @@
     border-top: 0px;
     display: flex;
 }
-.force-name input {
-    background: transparent;
-}
 .back-arrow {
     width: 64px;
     border: none;
@@ -19,6 +16,9 @@
 }
 .back-arrow img {
     width:64px;
+}
+.force-name input {
+    background: transparent;
 }
 .force-details {
     margin-left: 8px;
@@ -46,79 +46,37 @@
     overflow-y: auto;    
 }
 
-/* BUTTON BARS */
-.button-bar {
-    margin: 0px 0px 8px 0px;
-}
-.action-button {
-    display: inline-block;
-    height: 50px;
-    border-radius: 4px;
-    position: relative;
-    box-sizing: border-box;
-    padding: 8px;
-}
-.action-button img {
-    width: 32px;
-    float: left;
-}
-.action-button .button-text {
-    padding-left: 36px;
-    padding-top: 7px;
-} 
-
-/* NEW MODEL BUTTON */
+/* CREATE MODEL BUTTON */
 .create-model-button-zone {
     position: relative;
     display: inline-block;
-    margin: 16px 8px 8px 16px;    
 }
 .create-model-button-dropdown {
     position: absolute;
-    top: 50px;
+    top: 32px;
+    left: 4px;
     width: 250px;
     z-index: 2;
 }
-.create-model-button-dropdown .model-selection {
+.model-selection {
     padding: 4px;
     height: 24px;
     border: none;    
 }
-
-.model-image-box {
+.model-selection .model-image-box {
     position: absolute;
     width: 24px;
 }
-img.model-image {
+.model-selection .model-image {
     height: 24px; margin-left: auto; margin-right: auto; display: block;
 }
-.model-text-box {
+.model-selection .model-text-box {
     float: left;
     padding-left: 28px;
     padding-top: 4px;
 }
 
-
-/* model list */
+/* MODEL LIST */
 .model-list {
     padding: 8px;
-}
-
-/* buttons */
-.header-button-bar {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;    
-}
-.model-button {
-    float: right;
-    border-radius: 4px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    height: 28px;
-    z-index: 1;
-}
-.model-button img {
-    width: 20px;
-    margin: 4px;
 }

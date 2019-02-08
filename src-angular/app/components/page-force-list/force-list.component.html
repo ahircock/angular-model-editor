@@ -1,34 +1,34 @@
-<div class="column-section">
-    
-  <!-- MODEL LIST -->
-  <div class="left">
+<div class="main-area">
 
-    <!-- BUTTON BAR -->
-    <div class="button-bar">
+  <!-- BUTTON BAR -->
+  <div class="button-bar">
 
-      <!-- ADD FORCE BUTTON -->
-      <div class="create-force-button-zone" (click)="showFactionListDropdown = true" (appClickElsewhere)="showFactionListDropdown = false">
-        <app-button [image]="'/assets/icons/icon-outline-plus-128.png'" [title]="'Add Force'"></app-button>
-        <div *ngIf="showFactionListDropdown" class="create-force-button-dropdown box-white font-normal">
-          <div *ngFor="let faction of factions" class="faction-selection box-light-hover" (click)="newForce(faction); showFactionListDropdown = false;">
-            <div class="faction-text-box">{{faction.name}}</div>
-          </div>
+    <!-- ADD FORCE BUTTON -->
+    <div class="create-force-button-zone" (click)="showFactionListDropdown = true" (appClickElsewhere)="showFactionListDropdown = false">
+      <app-button [image]="'/assets/icons/icon-outline-plus-128.png'" [title]="'Add Force'"></app-button>
+      <div *ngIf="showFactionListDropdown" class="create-force-button-dropdown box-white font-normal">
+        <div *ngFor="let faction of factions" class="faction-selection box-light-hover" (click)="newForce(faction); showFactionListDropdown = false;">
+          <div class="faction-text-box">{{faction.name}}</div>
         </div>
       </div>
-  
-      <!-- DOWNLOAD RULES BUTTON -->
-      <app-button *ngIf="!windowService.isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Rules'"></app-button>
-  
-      <!-- DOWNLOAD SUMMARY BUTTON -->
-      <app-button *ngIf="!windowService.isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Summary'"></app-button>
-  
     </div>
 
-    <!-- LIST OF FORCES -->
-    <div *ngIf="forces" class="force-list">
-      <div *ngFor="let force of forces;">
-        <app-force-tile [force]="force" [selected]="false" (select)="openForce(force)" (delete)="deleteForce(force)"></app-force-tile>
-      </div>
+    <!-- DOWNLOAD RULES BUTTON -->
+    <a href="/assets/files/Vanguard Kill Team - Core Rules.pdf" download>
+      <app-button *ngIf="!windowService.isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Rules'"></app-button>
+    </a>
+
+    <!-- DOWNLOAD SUMMARY BUTTON -->
+    <a href="/assets/files/Vanguard Kill Team - Summary.pdf" download>
+      <app-button *ngIf="!windowService.isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Summary'"></app-button>
+    </a>
+
+  </div>
+
+  <!-- LIST OF FORCES -->
+  <div *ngIf="forces" class="force-list">
+    <div *ngFor="let force of forces;">
+      <app-force-tile [force]="force" [selected]="false" (select)="openForce(force)" (delete)="deleteForce(force)"></app-force-tile>
     </div>
   </div>
 </div>

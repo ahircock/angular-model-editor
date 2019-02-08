@@ -1,8 +1,5 @@
 [
     {"_id":"40K.ACIDMAW.3D6.3+","userId":"global","name":"Acid Maw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ARCMAUL.2D6.4+","userId":"global","name":"Arc Maul","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":2,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ARCPISTOL.3+","userId":"global","name":"Arc Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ARCRIFLE.3+","userId":"global","name":"Arc Rifle","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
     {"_id":"40K.AUTOGUN.4+","userId":"global","name":"Autogun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.AUTOPISTOL.4+","userId":"global","name":"Autopistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.BOLTERHEAVY.3+","userId":"global","name":"Heavy Bolter","type":"RANGED","RNG":36,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["SLOWATTACK","LONGRANGE","RAPIDFIRE"]},
@@ -23,7 +20,6 @@
     {"_id":"40K.FLAMERPISTOL.3+","userId":"global","name":"Hand Flamer","type":"RANGED","RNG":6,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
     {"_id":"40K.FLAMERPISTOL.4+","userId":"global","name":"Hand Flamer","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
     {"_id":"40K.FLESHHOOKS.4+","userId":"global","name":"Flesh Hooks","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["MELEESHOT"]},
-    {"_id":"40K.GALVANICRIFLE.3+","userId":"global","name":"Galvanic Rifle","type":"RANGED","RNG":30,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITAP1"]},
     {"_id":"40K.GRAVGUN.3+","userId":"global","name":"Grav Gun","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["GRAV"]},
     {"_id":"40K.GRAVPISTOL.3+","userId":"global","name":"Grav Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["GRAV"]},
     {"_id":"40K.GRENADEFRAG.3+","userId":"global","name":"Frag Grenade","type":"RANGED","RNG":6,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["BLAST"]},
@@ -46,8 +42,6 @@
     {"_id":"40K.MELTAGUN.4+","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":4,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
     {"_id":"40K.MININGLASER.4+","userId":"global","name":"Mining Laser","type":"RANGED","RNG":24,"DICE":1,"HIT":4,"AP":3,"DMG":2,"ruleIds":["SLOWATTACK","LONGRANGE"]},
     {"_id":"40K.MISSILELAUNCHER.3+","userId":"global","name":"Missile Launcher","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["MISSILELAUNCHER.3+","SLOWATTACK","LONGRANGE"]},
-    {"_id":"40K.PHOSPHORPISTOL.3+","userId":"global","name":"Phosphor Blast Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["IGNORECOVER"]},
-    {"_id":"40K.PLASMACALIVER.3+","userId":"global","name":"Plasma Caliver","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
     {"_id":"40K.PLASMAGUN.3+","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
     {"_id":"40K.PLASMAGUN.4+","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
     {"_id":"40K.PLASMAPISTOL.3+","userId":"global","name":"Plasma Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
@@ -65,8 +59,6 @@
     {"_id":"40K.POWERSWORD.4D6.3+","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
     {"_id":"40K.POWERSWORD.4D6.4+","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":4,"HIT":4,"AP":3,"DMG":1,"ruleIds":[]},
     {"_id":"40K.POWERSWORD.5D6.2+","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":5,"HIT":2,"AP":3,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.RADIUMCARBINE.3+","userId":"global","name":"Radium Carbine","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["ASSAULT","CRITDMG2"]},
-    {"_id":"40K.RADIUMPISTOL.3+","userId":"global","name":"Radium Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITDMG2"]},
     {"_id":"40K.RENDINGCLAW.2D6.3+","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
     {"_id":"40K.RENDINGCLAW.3D6.3+","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
     {"_id":"40K.RENDINGCLAW.4D6.3+","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
@@ -90,8 +82,6 @@
     {"_id":"40K.STDMELEE.4D6.3+","userId":"global","name":"Melee Weapon","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.STDMELEE.4D6.4+","userId":"global","name":"Melee Weapon","type":"MELEE","RNG":0,"DICE":4,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.STDMELEE.5D6.2+","userId":"global","name":"Melee Weapon","type":"MELEE","RNG":0,"DICE":5,"HIT":2,"AP":0,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.TASERGOAD.2D6.4+","userId":"global","name":"Taser Goad","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":1,"DMG":1,"ruleIds":["CRITHIT3"]},
-    {"_id":"40K.TRANSARQUE.3+","userId":"global","name":"Transuranic Arquebus","type":"RANGED","RNG":60,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":["SNIPER","CRITWND"]},
     {"_id":"40K.WEBBER.4+","userId":"global","name":"Webber","type":"RANGED","RNG":16,"DICE":2,"HIT":4,"AP":0,"DMG":0,"ruleIds":["ASSAULT","WEB"]},
     {"_id":"40K.WEBPISTOL.4+","userId":"global","name":"Web Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":0,"ruleIds":["WEB"]}
 ]

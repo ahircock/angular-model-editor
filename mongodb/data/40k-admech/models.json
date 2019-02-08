@@ -1,0 +1,22 @@
+[
+    {"_id":"40K.ADMECH.SKITALPHA","userId":"global","name":"Skitarri Alpha","picture":"skitarii-vanguard-alpha.jpg","cost":10,"PW":1,"SP":5,"AR":4,"WN":2,"NE":4,
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ARCMAUL.2D6.4+"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.POWERSWORD.2D6.4+"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.TASERGOAD.2D6.4+"}]}]},
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.RADIUMPISTOL.3+"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ARCPISTOL.3+"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.PHOSPHORPISTOL.3+"}]}]}]},
+    {"_id":"40K.ADMECH.SKITGUNNER","userId":"global","name":"Skitarri Gunner","picture":"skitarii-vanguard-plasmacaliver.jpg","cost":10,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "attacks":[{"modelAttackName":"Bionic Hand","attackId":"40K.STDMELEE.1D6.4+"}],
+        "options":[{"id":"RANGED","description":"Choose a ranged weapon","choices":[{"cost":0,"attacks":[{"attackId":"40K.ARCRIFLE.3+"}]},{"cost":3,"attacks":[{"attackId":"40K.PLASMACALIVER.3+"}]}]}]},
+    {"_id":"40K.ADMECH.SKITRANGER","userId":"global","name":"Skitarii Ranger","picture":"skitarii-ranger.jpg","cost":9,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "attacks":[{"modelAttackName":"Bionic Hand","attackId":"40K.STDMELEE.1D6.4+"},{"attackId":"40K.GALVANICRIFLE.3+"}]},
+    {"_id":"40K.ADMECH.SKITSNIPER","userId":"global","name":"Skitarii Sniper","picture":"skitarii-ranger-arquebus.jpg","cost":15,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "attacks":[{"modelAttackName":"Bionic Hand","attackId":"40K.STDMELEE.1D6.4+"},{"attackId":"40K.TRANSARQUE.3+"}]},
+    {"_id":"40K.ADMECH.SKITVANGUARD","userId":"global","name":"Skitarii Vanguard","picture":"skitarii-vanguard.jpg","cost":9,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "attacks":[{"modelAttackName":"Bionic Hand","attackId":"40K.STDMELEE.1D6.4+"},{"attackId":"40K.RADIUMCARBINE.3+"}]},
+    {}    
+]

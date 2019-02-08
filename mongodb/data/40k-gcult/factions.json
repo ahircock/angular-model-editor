@@ -1,0 +1,15 @@
+[
+    {"_id":"40K.GC","userId":"global","name":"Genestealer Cult",
+        "models":[
+            {"modelId":"40K.GC.METAMORPHLEADER","max":1},
+            {"modelId":"40K.GC.METAMORPH"},
+            {"modelId":"40K.GC.NEOPHYTE"},
+            {"modelId":"40K.GC.NEOPHYTEASSAULT","max":2},
+            {"modelId":"40K.GC.NEOPHYTEHEAVY","max":2},
+            {"modelId":"40K.GC.ACOLYTEFIGHTER","max":4},
+            {"modelId":"40K.TY.GENESTEALER"},
+            {"modelId":"40K.TY.GENESTEALERCARAPACE"}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},{"cost":1,"attacks":[{"modelAttackName":"Blasting Charges","attackId":"40K.GRENADEFRAG.4+"}]}]}],
+        "factionAbilities":[{"modelAbilityName":"Cult Ambush","abilityId":"AMBUSH"}]}
+]

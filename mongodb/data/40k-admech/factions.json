@@ -1,0 +1,11 @@
+[
+    {"_id":"40K.ADMECH","userId":"global","name":"Adeptus Mechanicus",
+        "models":[
+            {"modelId":"40K.ADMECH.SKITALPHA","max":1},
+            {"modelId":"40K.ADMECH.SKITGUNNER","max":3},
+            {"modelId":"40K.ADMECH.SKITRANGER"},
+            {"modelId":"40K.ADMECH.SKITVANGUARD"},
+            {"modelId":"40K.ADMECH.SKITSNIPER","max":1}
+        ],
+        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}]}]}
+]

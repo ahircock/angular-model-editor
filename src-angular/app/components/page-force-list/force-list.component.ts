@@ -50,4 +50,8 @@ export class ForceListComponent implements OnInit {
     await this.forceDataService.deleteForce( force );
     this.forces = await this.forceDataService.getAllForces();
   }
+
+  isWindowMobile() {
+    return this.windowService.isWindowMobile();
+  }
 }

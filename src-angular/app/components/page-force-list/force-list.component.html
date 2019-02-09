@@ -15,12 +15,12 @@
 
     <!-- DOWNLOAD RULES BUTTON -->
     <a href="/assets/files/Vanguard Kill Team - Core Rules.pdf" download>
-      <app-button *ngIf="!windowService.isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Rules'"></app-button>
+      <app-button *ngIf="!isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Rules'"></app-button>
     </a>
 
     <!-- DOWNLOAD SUMMARY BUTTON -->
     <a href="/assets/files/Vanguard Kill Team - Summary.pdf" download>
-      <app-button *ngIf="!windowService.isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Summary'"></app-button>
+      <app-button *ngIf="!isWindowMobile()" [image]="'/assets/icons/icon-print-128.png'" [title]="'Download Summary'"></app-button>
     </a>
 
   </div>

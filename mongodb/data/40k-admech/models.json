@@ -3,7 +3,7 @@
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCMAUL"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.POWERSWORD.2D6.4+"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.POWERSWORD"}]},
                 {"cost":1,"attacks":[{"attackId":"40K.ADMECH.TASERGOAD"}]}]},
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.RADIUMPISTOL"}]},

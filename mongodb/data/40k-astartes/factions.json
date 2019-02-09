@@ -20,8 +20,8 @@
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
                 {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.3+"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.GRENADEKRAK.3+"}]}
+                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.GRENADEFRAG"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.GRENADEKRAK"}]}
             ]}
         ],
         "factionAbilities":[

@@ -1,2 +1,14 @@
 [
+    {"_id":"40K.GCULT.AUTOGUN","userId":"global","name":"Autogun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GCULT.AUTOPISTOL","userId":"global","name":"Autopistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GCULT.FLAMER","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.GCULT.FLAMERPISTOL","userId":"global","name":"Flamer","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.GCULT.GRENADELAUNCHER","userId":"global","name":"Grenade Launcher","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["GRENADELAUNCHER.4+"]},
+
+    {"_id":"40K.GCULT.BONESWORD","userId":"global","name":"Bonesword","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GCULT.CULTISTKNIFE","userId":"global","name":"Cultist Knife","type":"MELEE","RNG":0,"DICE":1,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GCULT.METAMORPHTALON","userId":"global","name":"Metamorph Talon","type":"MELEE","RNG":0,"DICE":3,"HIT":2,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GCULT.METAMORPHTALON.LEADER","userId":"global","name":"Metamorph Talon","type":"MELEE","RNG":0,"DICE":4,"HIT":2,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GCULT.RENDINGCLAW","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
+    {"_id":"40K.GCULT.RENDINGCLAW.LEADER","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]}
 ]

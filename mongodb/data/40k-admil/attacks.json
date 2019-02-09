@@ -1,1 +1,24 @@
-[]
+[
+    {"_id":"40K.ADMIL.FLAMER.GUARD","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.ADMIL.FLAMER.SCION","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.ADMIL.GRENADELAUNCHER","userId":"global","name":"Grenade Launcher","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["GRENADELAUNCHER.4+"]},
+    {"_id":"40K.ADMIL.HOTSHOTLASGUN","userId":"global","name":"Hot-Shot Lasgun","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.HOTSHOTLASPISTOL","userId":"global","name":"Hot-Shot Laspistol","type":"RANGED","RNG":6,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.HOTSHOTVOLLEYGUN","userId":"global","name":"Hot-Shot Volley Gun","type":"RANGED","RNG":24,"DICE":4,"HIT":3,"AP":2,"DMG":1,"ruleIds":["HEAVY"]},
+    {"_id":"40K.ADMIL.LASGUN","userId":"global","name":"Lasgun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.LASPISTOL","userId":"global","name":"Laspistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.MELTAGUN.GUARD","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":3,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
+    {"_id":"40K.ADMIL.MELTAGUN.SCION","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":3,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
+    {"_id":"40K.ADMIL.PLASMAGUN.GUARD","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
+    {"_id":"40K.ADMIL.PLASMAGUN.SCION","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
+    {"_id":"40K.ADMIL.PLASMAPISTOL.GUARD","userId":"global","name":"Plasma Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
+    {"_id":"40K.ADMIL.PLASMAPISTOL.SCION","userId":"global","name":"Plasma Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
+    {"_id":"40K.ADMIL.SNIPERRIFLE","userId":"global","name":"Sniper Rifle","type":"RANGED","RNG":36,"DICE":1,"HIT":4,"AP":1,"DMG":2,"ruleIds":["SNIPER"]},
+    
+    {"_id":"40K.ADMIL.CHAINSWORD.GUARD","userId":"global","name":"Chainsword","type":"MELEE","RNG":0,"DICE":3,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.CHAINSWORD.TEMPEST","userId":"global","name":"Chainsword","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.KNIFE","userId":"global","name":"Guard Knife","type":"MELEE","RNG":0,"DICE":1,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.POWERFIST.TEMPEST","userId":"global","name":"Power Fist","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":4,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.ADMIL.POWERSWORD.GUARD","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMIL.POWERSWORD.TEMPEST","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]}
+]

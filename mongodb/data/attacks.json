@@ -1,23 +1,2 @@
 [
-    {"_id":"40K.ACIDMAW.3D6.3+","userId":"global","name":"Acid Maw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.COMBIFLAMER.3+","userId":"global","name":"Combi-Flamer","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["COMBIFLAMER.3+"]},
-    {"_id":"40K.COMBIGRAV.3+","userId":"global","name":"Combi-Flamer","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["COMBIGRAV.3+"]},
-    {"_id":"40K.COMBIPLASMA.3+","userId":"global","name":"Combi-Flamer","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["COMBIPLASMA.3+"]},
-    {"_id":"40K.FLESHHOOKS.4+","userId":"global","name":"Flesh Hooks","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["MELEESHOT"]},
-    {"_id":"40K.GRENADEFRAG.4+","userId":"global","name":"Frag Grenade","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["BLAST"]},
-    {"_id":"40K.GRENADEKRAK.4+","userId":"global","name":"Krak Grenade","type":"RANGED","RNG":6,"DICE":1,"HIT":4,"AP":2,"DMG":2,"ruleIds":[]},
-    {"_id":"40K.GRENADEDEMOLITION.3+","userId":"global","name":"Demolition Charge","type":"RANGED","RNG":6,"DICE":2,"HIT":3,"AP":3,"DMG":2,"ruleIds":["BLAST"]},
-    {"_id":"40K.GRENADEDEMOLITION.4+","userId":"global","name":"Demolition Charge","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":3,"DMG":2,"ruleIds":["BLAST"]},
-    {"_id":"40K.HEAVYSTUBBER.4+","userId":"global","name":"Heavy Stubber","type":"RANGED","RNG":36,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SLOWATTACK","LONGRANGE","RAPIDFIRE"]},
-    {"_id":"40K.MININGLASER.4+","userId":"global","name":"Mining Laser","type":"RANGED","RNG":24,"DICE":1,"HIT":4,"AP":3,"DMG":2,"ruleIds":["SLOWATTACK","LONGRANGE"]},
-    {"_id":"40K.RENDINGCLAW.2D6.3+","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
-    {"_id":"40K.RENDINGCLAW.4D6.3+","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
-    {"_id":"40K.RENDINGCLAW.5D6.3+","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":5,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
-    {"_id":"40K.ROCKDRILL.2D6.3+","userId":"global","name":"Heavy Rock Drill","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["DRILL"]},
-    {"_id":"40K.ROCKSAW.2D6.3+","userId":"global","name":"Heavy Rock Saw","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":4,"DMG":2,"ruleIds":[]},
-    {"_id":"40K.SCYTHINGTALON.4D6.3+","userId":"global","name":"Scything Talons","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":0,"DMG":1,"ruleIds":["ACCURATE"]},
-    {"_id":"40K.SEISMICCANNON.4+","userId":"global","name":"Seismic Cannon","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["SEISMICCANNON","SLOWATTACK","LONGRANGE","CRITAP4"]},
-    {"_id":"40K.SHOTGUN.4+","userId":"global","name":"Shotgun","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SHOTGUN"]},
-    {"_id":"40K.WEBBER.4+","userId":"global","name":"Webber","type":"RANGED","RNG":16,"DICE":2,"HIT":4,"AP":0,"DMG":0,"ruleIds":["ASSAULT","WEB"]},
-    {"_id":"40K.WEBPISTOL.4+","userId":"global","name":"Web Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":0,"ruleIds":["WEB"]}
 ]

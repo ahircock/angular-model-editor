@@ -12,7 +12,7 @@
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
                 {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.GRENADEFRAG.4+"}]}
+                {"cost":1,"attacks":[{"attackId":"40K.ADMIL.GRENADEFRAG"}]}
             ]}
         ]
     }

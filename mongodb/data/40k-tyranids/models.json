@@ -1,14 +1,17 @@
 [
     {"_id":"40K.TY.GENESTEALER","userId":"global","name":"Genestealer","picture":"tyranid-genestealer.jpg","cost":11,"PW":0,"SP":6,"AR":5,"WN":2,"NE":4,
-        "abilities":[{"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"},{"modelAbilityName":"Swift And Deadly","abilityId":"SWIFTCHARGE"}],
+        "abilities":[
+            {"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"},
+            {"modelAbilityName":"Swift And Deadly","abilityId":"SWIFTCHARGE"}
+        ],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","optional":true,"choices":[
-                {"cost":1,"attacks":[{"attackId":"40K.FLESHHOOKS.4+"}]}
+                {"cost":1,"attacks":[{"attackId":"40K.TYRANID.FLESHHOOKS"}]}
             ]},
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.TYRANID.RENDINGCLAW"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.SCYTHINGTALON.4D6.3+"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ACIDMAW.3D6.3+"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.TYRANID.SCYTHINGTALON"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.TYRANID.ACIDMAW"}]}
             ]},
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"abilityId":"TOXINSACS"}]}
@@ -16,15 +19,17 @@
         ]
     },
     {"_id":"40K.TY.GENESTEALERCARAPACE","userId":"global","name":"Genestealer Extended Carapace","picture":"tyranid-genestealer.jpg","cost":11,"PW":0,"SP":6,"AR":4,"WN":2,"NE":4,
-        "abilities":[{"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"}],
+        "abilities":[
+            {"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"}
+        ],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","optional":true,"choices":[
-                {"cost":1,"attacks":[{"attackId":"40K.FLESHHOOKS.4+"}]}
+                {"cost":1,"attacks":[{"attackId":"40K.TYRANID.FLESHHOOKS"}]}
             ]},
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.TYRANID.RENDINGCLAW"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.SCYTHINGTALON.4D6.3+"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ACIDMAW.3D6.3+"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.TYRANID.SCYTHINGTALON"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.TYRANID.ACIDMAW"}]}
             ]},
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"abilityId":"TOXINSACS"}]}

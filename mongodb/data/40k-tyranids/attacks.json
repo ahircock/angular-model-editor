@@ -1,3 +1,6 @@
 [
-    {"_id":"40K.TYRANID.RENDINGCLAW","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]}
+    {"_id":"40K.TYRANID.ACIDMAW","userId":"global","name":"Acid Maw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TYRANID.FLESHHOOKS","userId":"global","name":"Flesh Hooks","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["MELEESHOT"]},
+    {"_id":"40K.TYRANID.RENDINGCLAW","userId":"global","name":"Rending Claw","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
+    {"_id":"40K.TYRANID.SCYTHINGTALON","userId":"global","name":"Scything Talons","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":0,"DMG":1,"ruleIds":["ACCURATE"]}
 ]

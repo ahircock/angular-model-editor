@@ -1,6 +1,7 @@
 [
     {"_id":"40K.ADMIL.FLAMER.GUARD","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
     {"_id":"40K.ADMIL.FLAMER.SCION","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.ADMIL.GRENADEFRAG","userId":"global","name":"Frag Grenade","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["BLAST"]},
     {"_id":"40K.ADMIL.GRENADELAUNCHER","userId":"global","name":"Grenade Launcher","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"seeBelow":true,"ruleIds":["GRENADELAUNCHER.4+"]},
     {"_id":"40K.ADMIL.HOTSHOTLASGUN","userId":"global","name":"Hot-Shot Lasgun","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ADMIL.HOTSHOTLASPISTOL","userId":"global","name":"Hot-Shot Laspistol","type":"RANGED","RNG":6,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},

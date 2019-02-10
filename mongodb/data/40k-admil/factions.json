@@ -6,8 +6,9 @@
             {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
             {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":5},
             {"modelId":"40K.ADMIL.GUARDSMANCOMMS","max":1},
-            {"modelId":"40K.ADMIL.SCION","max":1},
-            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}
+            {"modelId":"40K.ADMIL.SCION"},
+            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1},
+            {"modelId":"40K.ADMIL.SCIONCOMMS","max":1}
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[

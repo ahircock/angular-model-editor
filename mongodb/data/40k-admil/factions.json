@@ -4,7 +4,8 @@
             {"modelId":"40K.ADMIL.SERGEANT","max":1},
             {"modelId":"40K.ADMIL.GUARDSMAN"},
             {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
-            {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":1},
+            {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":5},
+            {"modelId":"40K.ADMIL.GUARDSMANCOMMS","max":1},
             {"modelId":"40K.ADMIL.SCION","max":1},
             {"modelId":"40K.ADMIL.SCIONGUNNER","max":1}
         ],

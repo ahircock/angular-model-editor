@@ -9,7 +9,7 @@
     {"_id":"40K.ORK.ROKKITLAUNCHA","userId":"global","name":"Rokkit Launcha","type":"RANGED","RNG":24,"DICE":1,"HIT":5,"AP":4,"DMG":2,"ruleIds":[]},
     {"_id":"40K.ORK.SHOOTA","userId":"global","name":"Shoota","type":"RANGED","RNG":18,"DICE":2,"HIT":5,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ORK.SLUGGA","userId":"global","name":"Slugga","type":"RANGED","RNG":12,"DICE":2,"HIT":5,"AP":0,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ORK.STIKKBOMB","userId":"global","name":"Stikkbomb","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["GRENADE","BLAST"]},
+    {"_id":"40K.ORK.STIKKBOMB","userId":"global","name":"Stikkbomb","type":"RANGED","RNG":6,"DICE":2,"HIT":4,"AP":0,"DMG":0,"ruleIds":["GRENADE","BLAST2HIT"]},
 
     {"_id":"40K.ORK.BIGCHOPPA.3D6","userId":"global","name":"Big Choppa","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":2,"DMG":2,"ruleIds":[]},
     {"_id":"40K.ORK.BURNAM.2D6","userId":"global","name":"Burna [MELEE]","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},

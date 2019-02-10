@@ -11,9 +11,10 @@
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMIL.GRENADEFRAG"}]}
+                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
             ]}
-        ]
+        ],
+        "factionAbilities":[{"abilityId":"40K.ADMIL.VOICEOFCOMMAND"}],
+        "factionAttacks":[{"attackId":"40K.ADMIL.GRENADEFRAG"}]
     }
 ]

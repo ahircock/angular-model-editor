@@ -1,9 +1,9 @@
 [
     {"_id":"ACCURATE","userId":"global","name":"Accurate","text":"You may re-roll hit rolls of 1."},
     {"_id":"ASSAULT","userId":"global","name":"Assault","text":"If target is within 8\", this attack rolls +1D6"},
-    {"_id":"BLAST2HIT","userId":"global","name":"Blast(2)","text":"For every hit, deal 2 hits at AP0 D1 against the target model and every other model within 2\" of the target."},
-    {"_id":"BLAST3HIT","userId":"global","name":"Blast(3)","text":"For every hit, deal 3 hits at AP0 D1 against the target model and every other model within 2\" of the target."},
-    {"_id":"BLASTHEAVY","userId":"global","name":"Heavy Blast","text":"For every hit, deal 3 hits at AP3 D1 against the target model and every other model within 2\" of the target."},
+    {"_id":"BLAST2HIT","userId":"global","name":"Blast(2)","text":"If this attack scores at least 1 hit, deal 2 hits at AP0 D1 against the target model and every other model within 2\" of the target."},
+    {"_id":"BLAST3HIT","userId":"global","name":"Blast(3)","text":"If this attack scores at least 1 hit, deal 3 hits at AP0 D1 against the target model and every other model within 2\" of the target."},
+    {"_id":"BLASTHEAVY","userId":"global","name":"Heavy Blast","text":"If this attack scores at least 1 hit, deal 3 hits at AP3 D1 against the target model and every other model within 2\" of the target."},
     {"_id":"COMBIFLAMER.3+","userId":"global","name":"","text":"Choose one or both of the attacks below. If you choose both, then make attacks with both profiles at -1 to hit:<ul><li><b>Boltgun:</b> ( 24\", 2D6, 3+, AP0, D1 )</li><li><b>Flamer:</b> ( 8\", 2D6, 3+, AP0, D1 ) {rule=SPRAY}</li></ol>"},
     {"_id":"COMBIGRAV.3+","userId":"global","name":"","text":"Choose one or both of the attacks below. If you choose both, then make attacks with both profiles at -1 to hit:<ul><li><b>Boltgun:</b> ( 24\", 2D6, 3+, AP0, D1 )</li><li><b>Grav:</b> ( 18\", 2D6, 3+, AP3, D1 ) {rule=GRAV}</li></ol>"},
     {"_id":"COMBIPLASMA.3+","userId":"global","name":"","text":"Choose one or both of the attacks below. If you choose both, then make attacks with both profiles at -1 to hit:<ul><li><b>Boltgun:</b> ( 24\", 2D6, 3+, AP0, D1 )</li><li><b>Plasma:</b> ( 18\", 2D6, 3+, AP2, D1 ) {rule=PLASMA}</li></ol>"},

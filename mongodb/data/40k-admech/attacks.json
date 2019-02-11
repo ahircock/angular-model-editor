@@ -8,7 +8,7 @@
     {"_id":"40K.ADMECH.RADIUMCARBINE","userId":"global","name":"Radium Carbine","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["ASSAULT","CRITDMG2"]},
     {"_id":"40K.ADMECH.RADIUMPISTOL","userId":"global","name":"Radium Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITDMG2"]},
     {"_id":"40K.ADMECH.TASERGOAD","userId":"global","name":"Taser Goad","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":1,"DMG":1,"ruleIds":["CRITHIT3"]},
-    {"_id":"40K.ADMECH.TRANSARQUE","userId":"global","name":"Transuranic Arquebus","type":"RANGED","RNG":60,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":["SNIPER","CRITWND"]},
+    {"_id":"40K.ADMECH.TRANSARQUE","userId":"global","name":"Transuranic Arquebus","type":"RANGED","RNG":60,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":["SNIPER","CRITMORTAL"]},
 
     {"_id":"40K.ADMECH.HAND","userId":"global","name":"Bionic Hand","type":"MELEE","RNG":0,"DICE":1,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ADMECH.POWERSWORD","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":[]}

@@ -8,22 +8,38 @@
   <span *ngIf="cost >= 0">+{{cost}}pts </span>
   
   <!-- ATTACK NAME -->
-  <b>{{attack.modelAttackName}}</b> ( 
+  <b>{{attack.modelAttackName}}</b> 
 
-    <!-- ATTACKS SAYS "SEE BELOW" -->
-    <span *ngIf="attack.attackData.seeBelow">see below</span>
+  <!-- ATTACKS SAYS "SEE BELOW" -->
+  <span *ngIf="attack.attackData.seeBelow || attack.attackData.multiProfileAttackData.length > 0">( see below )</span>
 
-    <!-- ATTACKS STATS -->
-    <span *ngIf="!attack.attackData.seeBelow">
-      {{attack.attackData.RNG}}", {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}}
-    </span>
-    )
+  <!-- ATTACKS STATS -->
+  <span *ngIf="!attack.attackData.seeBelow && attack.attackData.multiProfileAttackData.length === 0">
+    ( {{attack.attackData.RNG}}", {{attack.attackData.DICE}}D6, {{attack.attackData.HIT}}+, AP{{attack.attackData.AP}}, D{{attack.attackData.DMG}} )
+  </span>
 
-    <!-- SPECIAL RULES -->
-    <div *ngFor="let actionRule of attack.attackData.rules" class="action-rule-box">
-      <span *ngIf="actionRule.ruleName != ''"><i>{{actionRule.ruleName}}</i> 
-      <span *ngIf="actionRule.power > 0"> ({{actionRule.power}} CP)</span>
-      - </span>
-      <span [innerHTML]="actionRule.ruleText" class="rule-text"></span>
+  <!-- MULTI PROFILE -->
+  <div *ngIf="attack.attackData.multiProfileAttackData.length > 0" class="multi-profile-box">
+    Choose one of the profiles below:<br>
+    <ul>
+      <li *ngFor="let subAttackData of attack.attackData.multiProfileAttackData">
+        <b>{{subAttackData.name}}</b> 
+        ( {{subAttackData.RNG}}", {{subAttackData.DICE}}D6, {{subAttackData.HIT}}+, AP{{subAttackData.AP}}, D{{subAttackData.DMG}} )
+        <div *ngFor="let actionRule of subAttackData.rules" class="subattack-rule-box">
+          <span *ngIf="actionRule.ruleName != ''"><i>{{actionRule.ruleName}}</i> 
+          <span *ngIf="actionRule.power > 0"> ({{actionRule.power}} CP)</span>
+          - </span>
+          <span [innerHTML]="actionRule.ruleText" class="rule-text"></span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SPECIAL RULES -->
+  <div *ngFor="let actionRule of attack.attackData.rules" class="action-rule-box">
+    <span *ngIf="actionRule.ruleName != ''"><i>{{actionRule.ruleName}}</i> 
+    <span *ngIf="actionRule.power > 0"> ({{actionRule.power}} CP)</span>
+    - </span>
+    <span [innerHTML]="actionRule.ruleText" class="rule-text"></span>
   </div>
 </div>

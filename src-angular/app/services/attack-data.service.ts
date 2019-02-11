@@ -26,6 +26,7 @@ export interface AttackData {
   DMG: number;
   rules: RuleData[];
   seeBelow: boolean;
+  multiProfileAttackData: AttackData[];
 }
 
 /**
@@ -43,6 +44,7 @@ interface AttackDBData {
   DMG: number;
   ruleIds: string[];
   seeBelow: boolean;
+  multiProfileAttackIds: string[];
 }
 
 @Injectable()
@@ -91,6 +93,26 @@ export class AttackDataService {
 
     // store the prepared cache
     this.attackCache = prepareCache;
+
+    // prepare any attacks with multiple profiles
+    this.prepareMultiProfile( attackDBList );
+  }
+
+  /**
+   * After all of the attacks have been loaded into the cache, we need to load
+   * up the sub-attacks that are stored in the multi-profile attribute
+   * @param attackDBDataList The source DB data for all attacks
+   */
+  private async prepareMultiProfile( attackDBDataList: AttackDBData[] ) {
+    for ( const attackDB of attackDBDataList ) {
+      if ( attackDB.multiProfileAttackIds && attackDB.multiProfileAttackIds.length > 0 ) {
+        const attackData: AttackData = await this.getAttackById(attackDB._id);
+        for ( const subAttackId of attackDB.multiProfileAttackIds ) {
+          const subAttackData: AttackData = await this.getAttackById(subAttackId);
+          attackData.multiProfileAttackData.push( subAttackData );
+        }
+      }
+    }
   }
 
   private async convertDBToAppData( dbData: AttackDBData ): Promise<AttackData> {
@@ -107,13 +129,16 @@ export class AttackDataService {
       AP: dbData.AP ? dbData.AP : 0,
       DMG: dbData.DMG ? dbData.DMG : 0,
       seeBelow: dbData.seeBelow ? dbData.seeBelow : false,
-      rules: []
+      rules: [],
+      multiProfileAttackData: []
     };
 
     // copy over the special rules
-    for ( const ruleId of dbData.ruleIds ) {
-      const ruleData: RuleData = await this.ruleDataService.getRuleById(ruleId);
-      appData.rules.push( ruleData );
+    if ( dbData.ruleIds ) {
+      for ( const ruleId of dbData.ruleIds ) {
+        const ruleData: RuleData = await this.ruleDataService.getRuleById(ruleId);
+        appData.rules.push( ruleData );
+      }
     }
 
     return appData;

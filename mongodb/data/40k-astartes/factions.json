@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes (Space Marines)",
+    {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes",
         "models":[
             {"modelId":"40K.ASTARTES.PRIMARISCAPTAIN","max":1},
             {"modelId":"40K.ASTARTES.SERGEANTSCOUT","max":1},

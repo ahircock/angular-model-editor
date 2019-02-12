@@ -15,7 +15,7 @@
     {"_id":"EXPLODES","userId":"global","name":"Explodes!","text":"This model suffers a mortal wound for every hit roll of a natural 1."},
     {"_id":"GRAV","userId":"global","name":"Grav","text":"If the target has an AR of 3+ or better, this attack gains D2"},
     {"_id":"GRENADE","userId":"global","name":"Grenade","text":"This attack ignores modifiers for obscured and cover"},
-    {"_id":"HEAVY","userId":"global","name":"Heavy Weapon","text":"This attack is a long action. This attack does not suffer the long range modifier."},
+    {"_id":"HEAVY","userId":"global","name":"Heavy Weapon","text":"This attack is a long action, and does not suffer the long range modifier."},
     {"_id":"IGNORECOVER","userId":"global","name":"Ignore Cover","text":"This attack ignores modifiers for obscured and cover."},
     {"_id":"LONGRANGE","userId":"global","name":"Long Range","text":"This model does not suffer the -1 hit penalty when making an attack at long range"},
     {"_id":"MELTA","userId":"global","name":"Melta Blast","text":"If target is within 6\", this attack is D4"},

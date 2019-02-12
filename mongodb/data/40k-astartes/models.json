@@ -1,31 +1,35 @@
 [
-    {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":76,"PW":3,"SP":5,"AR":3,"WN":6,"NE":3,
+    {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":25,"PW":2,"SP":5,"AR":3,"WN":4,"NE":3,
         "abilities":[
-            {"modelAbilityName":"Iron Halo","abilityId":"INVULNERABLE.4+"},
-            {"abilityId":"RITESOFBATTLE"}
+            {"modelAbilityName":"Rites Of Battle","abilityId":"REROLLHITAURA"}
         ],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.PRIM","modelAttackName":"Astartes Blade"}]},
-                {"cost":7,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.PRIM"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.CAP","modelAttackName":"Astartes Blade"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.CAP"}]},
+                {"cost":5,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.CAP"}]}
             ]},
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLE"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLEAUTO"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLESTALKER"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLESTALKER"}]}
+            ]},
+            {"id":"CAPTAIN","description":"Choose captain options","choices":[
+                {"cost":7,"abilities":[{"modelAbilityName":"Iron Halo","abilityId":"INVULNERABLE.4+"}]}
             ]}
         ]
     },
     {"_id":"40K.ASTARTES.SERGEANTSCOUT","userId":"global","name":"Scout Sergeant","picture":"smarine-scoutsergeant.jpg","cost":11,"PW":1,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[
-            {"attackId":"40K.ASTARTES.CHAINSWORD.TAC"},
+            {"attackId":"40K.ASTARTES.CHAINSWORD.TACSGT"},
             {"attackId":"40K.ASTARTES.BOLTPISTOL"}
         ]},
     {"_id":"40K.ASTARTES.SERGEANTTACTICAL","userId":"global","name":"Tactical Sergeant","picture":"smarine-tacticalsergeant.jpg","cost":13,"PW":1,"SP":5,"AR":3,"WN":2,"NE":4,
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.TAC"}]},
-                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.TAC"}]},
-                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.TAC"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.TACSGT"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.TACSGT"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.TACSGT"}]}
             ]},
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTPISTOL"}]},
@@ -37,9 +41,9 @@
     {"_id":"40K.ASTARTES.SERGEANTPRIMARIS","userId":"global","name":"Primaris Sergeant","picture":"smarine-tacticalsergeant.jpg","cost":16,"PW":1,"SP":5,"AR":3,"WN":3,"NE":4,
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.PRIM"}]},
-                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.PRIM"}]},
-                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.PRIM"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.PRIMSGT"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.PRIMSGT"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.PRIMSGT"}]}
             ]},
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTPISTOL"}]},

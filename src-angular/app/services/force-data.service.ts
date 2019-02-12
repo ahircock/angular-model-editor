@@ -3,7 +3,7 @@ import { DataAccessService } from './data-access.service';
 import { ModelAttackData, ModelAbilityData, ModelActionData } from './model-data.service';
 import { UserService } from './user.service';
 import { FactionData, FactionDataService, FactionModelData } from './faction-data.service';
-import { AbilityDataService } from './ability-data.service';
+import { AttackType } from './attack-data.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -92,7 +92,6 @@ export class ForceDataService {
 
   constructor(
     private factionDataService: FactionDataService,
-    private abilityDataService: AbilityDataService,
     private dbConnectService: DataAccessService,
     private userService: UserService
   ) {
@@ -412,10 +411,15 @@ export class ForceDataService {
       this.addOptionChoicesToModel( forceModelData, optionChoice );
     }
 
-    // leaders get the Inspire ability
+    // give leaders the default upgrades
     if ( forceModelData.leader ) {
       await this.getLeaderUpgrades(forceModelData);
     }
+
+    // sort the attacks, abilities and actions
+    forceModelData.attacks.sort(this.sortForceModelAttacks);
+    forceModelData.abilities.sort(this.sortForceModelAbilities);
+    forceModelData.actions.sort(this.sortForceModelActions);
 
     return forceModelData;
   }
@@ -526,16 +530,48 @@ export class ForceDataService {
     }
   }
 
-  private sortForceModelData( a: ForceModelData, b: ForceModelData ) {
+  private sortForceModelAttacks( a: ModelAttackData , b: ModelAttackData ) {
 
-    // always return the leader first
-    if ( a.leader ) { return -1; }
-    if ( b.leader ) { return 1; }
-
-    if ( a.forceModelName < b.forceModelName ) {
+    // melee attacks go at the top
+    if ( a.attackData.type === AttackType.Melee && b.attackData.type === AttackType.Ranged ) {
       return -1;
-    } else if ( a.forceModelName > b.forceModelName ) {
+    }
+    if ( b.attackData.type === AttackType.Melee && a.attackData.type === AttackType.Ranged ) {
       return 1;
+    }
+
+    // secondary attacks go below normal attacks
+    if ( !a.attackData.secondary && b.attackData.secondary ) {
+      return -1;
+    }
+    if ( !b.attackData.secondary && a.attackData.secondary ) {
+      return 1;
+    }
+
+
+    // sort the attacks alphabetically by name
+    if ( a.modelAttackName < b.modelAttackName ) {
+      return -1;
+    } else if ( b.modelAttackName < a.modelAttackName ) {
+        return 1;
+    } else {
+      return 0;
+    }
+  }
+  private sortForceModelAbilities( a: ModelAbilityData , b: ModelAbilityData ) {
+    if ( a.modelAbilityName < b.modelAbilityName ) {
+      return -1;
+    } else if ( b.modelAbilityName < a.modelAbilityName ) {
+        return 1;
+    } else {
+      return 0;
+    }
+  }
+  private sortForceModelActions( a: ModelActionData , b: ModelActionData ) {
+    if ( a.modelActionName < b.modelActionName ) {
+      return -1;
+    } else if ( b.modelActionName < a.modelActionName ) {
+        return 1;
     } else {
       return 0;
     }

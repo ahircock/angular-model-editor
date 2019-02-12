@@ -26,6 +26,7 @@ export interface AttackData {
   DMG: number;
   rules: RuleData[];
   seeBelow: boolean;
+  secondary: boolean;
   multiProfileAttackData: AttackData[];
 }
 
@@ -44,6 +45,7 @@ interface AttackDBData {
   DMG: number;
   ruleIds: string[];
   seeBelow: boolean;
+  secondary: boolean;
   multiProfileAttackIds: string[];
 }
 
@@ -129,6 +131,7 @@ export class AttackDataService {
       AP: dbData.AP ? dbData.AP : 0,
       DMG: dbData.DMG ? dbData.DMG : 0,
       seeBelow: dbData.seeBelow ? dbData.seeBelow : false,
+      secondary: dbData.secondary ? dbData.secondary : false,
       rules: [],
       multiProfileAttackData: []
     };

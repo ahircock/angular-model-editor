@@ -1,14 +1,14 @@
 [
-    {"_id":"40K.NC.FLAYERCLAWS.3D6.3+","userId":"global","name":"Flayer Claws","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
-    {"_id":"40K.NC.GAUSSBLASTER.3+","userId":"global","name":"Gauss Blaster","type":"RANGED","RNG":24,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.NC.GAUSSFLAYER.3+","userId":"global","name":"Gauss Flayer","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.NC.STAFFOFLIGHTR.3+","userId":"global","name":"Staff of Light [RANGED]","type":"RANGED","RNG":12,"DICE":3,"HIT":2,"AP":2,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.NC.SYNAPTICDISINTEGRATOR.3+","userId":"global","name":"Synaptic Disintegrator","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":["LONGRANGE","SCOPED","CRITDMG2"]},
-    {"_id":"40K.NC.TESLACARBINE.3+","userId":"global","name":"Tesla Carbine","type":"RANGED","RNG":24,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.NC.GAUSSBLASTER","userId":"global","name":"Gauss Blaster","type":"RANGED","RNG":24,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.NC.GAUSSFLAYER","userId":"global","name":"Gauss Flayer","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.NC.STAFFOFLIGHTR","userId":"global","name":"Staff of Light [RANGED]","type":"RANGED","RNG":12,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.NC.SYNAPTICDISINTEGRATOR","userId":"global","name":"Synaptic Disintegrator","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":["LONGRANGE","SCOPED","CRITDMG2"]},
+    {"_id":"40K.NC.TESLACARBINE","userId":"global","name":"Tesla Carbine","type":"RANGED","RNG":24,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":[]},
 
-    {"_id":"40K.NC.NECRONMELEE.3+","userId":"global","name":"Melee Weapon","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.NC.STAFFOFLIGHTM.3+","userId":"global","name":"Staff of Light [MELEE]","type":"MELEE","RNG":0,"DICE":3,"HIT":2,"AP":2,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.NC.VOIDSCYTHE.3+","userId":"global","name":"Voidscythe","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":4,"DMG":3,"ruleIds":[]},
-    {"_id":"40K.NC.WARSCYTHE.3+","userId":"global","name":"Warscythe","type":"MELEE","RNG":0,"DICE":3,"HIT":2,"AP":4,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.NC.FLAYERCLAWS","userId":"global","name":"Flayer Claws","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITAP4"]},
+    {"_id":"40K.NC.NECRONMELEE","userId":"global","name":"Melee Weapon","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.NC.STAFFOFLIGHTM","userId":"global","name":"Staff of Light [MELEE]","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.NC.VOIDSCYTHE","userId":"global","name":"Voidscythe","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.NC.WARSCYTHE","userId":"global","name":"Warscythe","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":4,"DMG":2,"ruleIds":[]},
     {}
 ]

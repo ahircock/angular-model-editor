@@ -8,7 +8,13 @@
             {"modelId":"40K.NC.FLAYEDONE"},
             {"modelId":"40K.NC.DEATHMARK"}
         ],
-        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"modelAbilityName":"Crypt Charge Crystal","abilityId":"STIMPACK"}]}]}],
-        "factionAbilities":[]
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"modelAbilityName":"Crypt Charge Crystal","abilityId":"STIMPACK"}]}
+            ]}
+        ],
+        "factionAbilities":[
+            {"modelAbilityName":"Living Metal","abilityId":"REGEN"}
+        ]
     }
 ]

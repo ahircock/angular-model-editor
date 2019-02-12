@@ -1,5 +1,4 @@
 [
-    {"_id": "40K.NC.REANIMATIONPROTOCOL","userId": "global","name": "Reanimation Protocol","duration": "long","text": "Pick a friendly Necron Warrior or Flayed One model that was previously removed from play. Return that model to play with 1 wound within 3\" of this model and more than 1\" from enemy models. Mark the returned model as activated."},
-    {"_id": "40K.NC.PRIMEREANIMATIONPROTOCOL","userId": "global","name": "Prime Reanimation Protocol","power":2,"duration": "long","text": "Pick a friendly Immortal or Deathmark model that was previously removed from play. Return that model to play with 1 wound within 3\" of this model and more than 1\" from enemy models. Mark the returned model as activated."},
-    {}
+    {"_id": "40K.NC.REANIMATIONPROTOCOL","userId":"global","name":"Reanimation Protocol","power":1,"duration":"long","text":"Pick a friendly Necron Warrior or Flayed One model that was previously removed from play. Return that model to play with 1 wound within 3\" of this model and more than 1\" from enemy models. Mark the returned model as activated."},
+    {"_id": "40K.NC.PRIMEREANIMATIONPROTOCOL","userId": "global","name":"Prime Reanimation Protocol","power":2,"duration":"long","text":"Pick a friendly Immortal or Deathmark model that was previously removed from play. Return that model to play with 1 wound within 3\" of this model and more than 1\" from enemy models. Mark the returned model as activated."}
 ]

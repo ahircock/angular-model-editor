@@ -9,6 +9,7 @@ export interface ActionData {
   _id: string;
   name: string;
   duration: string;
+  power: number;
   text: string;
 }
 
@@ -19,6 +20,7 @@ interface ActionDBData {
   _id: string;
   name: string;
   duration: string;
+  power: number;
   text: string;
 }
 
@@ -76,6 +78,7 @@ export class ActionDataService {
       _id: dbData._id,
       name: dbData.name,
       text: dbData.text,
+      power: dbData.power ? dbData.power : 0,
       duration: dbData.duration
     };
 

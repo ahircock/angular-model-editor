@@ -1,45 +1,45 @@
-[
-    {"_id":"40K.NC.OVERLORD","userId":"global","name":"Necron Overlord","picture":"necron-overlord.jpg","cost":25,"PW":3,"SP":4,"AR":3,"WN":3,"NE":3,
+[   
+    {"_id":"40K.NC.OVERLORD","userId":"global","name":"Necron Overlord","picture":"necron-overlord.jpg","cost":25,"PW":2,"SP":4,"AR":3,"WN":3,"NE":2,
         "abilities":[{"modelAbilityName":"Phase Shifter","abilityId":"INVULNERABLE.4+"}],
         "actions":[{"actionId":"40K.NC.REANIMATIONPROTOCOL"},{"actionId":"40K.NC.PRIMEREANIMATIONPROTOCOL"}],
         "options":[
             {"id":"WEAPON","description":"Choose a weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.NC.STAFFOFLIGHTM.3+"},{"attackId":"40K.NC.STAFFOFLIGHTR.3+"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.NC.VOIDSCYTHE.3+"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.NC.WARSCYTHE.3+"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.NC.STAFFOFLIGHTM"},{"attackId":"40K.NC.STAFFOFLIGHTR"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.NC.VOIDSCYTHE"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.NC.WARSCYTHE"}]}
             ]}
         ]
     },
-    {"_id":"40K.NC.IMMORTALPRIME","userId":"global","name":"Immortal Prime","picture":"necron-immortal.jpg","cost":19,"PW":1,"SP":4,"AR":3,"WN":2,"NE":3,
+    {"_id":"40K.NC.IMMORTALPRIME","userId":"global","name":"Immortal Prime","picture":"necron-immortal.jpg","cost":19,"PW":1,"SP":4,"AR":3,"WN":2,"NE":2,
         "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
-        "attacks":[{"attackId":"40K.NC.NECRONMELEE.3+"}],
+        "attacks":[{"attackId":"40K.NC.NECRONMELEE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.NC.GAUSSBLASTER.3+"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.NC.TESLACARBINE.3+"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.NC.GAUSSBLASTER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.NC.TESLACARBINE"}]}
             ]}
         ]
     },
-    {"_id":"40K.NC.WARRIOR","userId":"global","name":"Necron Warrior","picture":"necron-warrior.jpg","cost":12,"PW":0,"SP":4,"AR":4,"WN":2,"NE":4,
-        "attacks":[{"attackId":"40K.NC.NECRONMELEE.3+"},{"attackId":"40K.NC.GAUSSFLAYER.3+"}]
+    {"_id":"40K.NC.WARRIOR","userId":"global","name":"Necron Warrior","picture":"necron-warrior.jpg","cost":12,"PW":0,"SP":4,"AR":4,"WN":2,"NE":2,
+        "attacks":[{"attackId":"40K.NC.NECRONMELEE"},{"attackId":"40K.NC.GAUSSFLAYER"}]
     },
     {"_id":"40K.NC.IMMORTAL","userId":"global","name":"Immortal","picture":"necron-immortal.jpg","cost":16,"PW":0,"SP":4,"AR":3,"WN":2,"NE":4,
         "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
-        "attacks":[{"attackId":"40K.NC.NECRONMELEE.3+"}],
+        "attacks":[{"attackId":"40K.NC.NECRONMELEE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.NC.GAUSSBLASTER.3+"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.NC.TESLACARBINE.3+"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.NC.GAUSSBLASTER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.NC.TESLACARBINE"}]}
             ]}
         ]
     },
-    {"_id":"40K.NC.FLAYEDONE","userId":"global","name":"Flayed One","picture":"necron-flayedone.jpg","cost":10,"PW":0,"SP":4,"AR":4,"WN":2,"NE":4,
-        "attacks":[{"attackId":"40K.NC.FLAYERCLAWS.3D6.3+"}],
+    {"_id":"40K.NC.FLAYEDONE","userId":"global","name":"Flayed One","picture":"necron-flayedone.jpg","cost":10,"PW":0,"SP":4,"AR":4,"WN":2,"NE":2,
+        "attacks":[{"attackId":"40K.NC.FLAYERCLAWS"}],
         "abilities":[{"modelAbilityName":"Entropic Strike","abilityId":"SWIFTCHARGE"}]
     },
-    {"_id":"40K.NC.DEATHMARK","userId":"global","name":"Deathmark","picture":"necron-deathmark.jpg","cost":15,"PW":0,"SP":4,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.NC.DEATHMARK","userId":"global","name":"Deathmark","picture":"necron-deathmark.jpg","cost":15,"PW":0,"SP":4,"AR":3,"WN":2,"NE":2,
         "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
-        "attacks":[{"attackId":"40K.NC.NECRONMELEE.3+"},{"attackId":"40K.NC.SYNAPTICDISINTEGRATOR.3+"}]
+        "attacks":[{"attackId":"40K.NC.NECRONMELEE"},{"attackId":"40K.NC.SYNAPTICDISINTEGRATOR"}]
     },
     {}
 ]

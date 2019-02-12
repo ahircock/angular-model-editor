@@ -2,7 +2,7 @@
 <div *ngIf="force" class="force-header box-dark orange-bg">
   <div class="back-arrow box-dark-hover" (click)="backArrow()"><img src="/assets/icons/icon-arrow-left-128.png"></div>
   <div>
-    <div class="force-name"><input class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
+    <div class="force-name"><input appTextController class="input-dark font-title-big" [(ngModel)]="force.name" (blur)="saveForce()"></div>
     <div class="force-details">{{force.faction.name}} ({{force.cost}} Points)</div>
   </div>
 </div>

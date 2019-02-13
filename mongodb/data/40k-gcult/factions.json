@@ -13,10 +13,10 @@
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.GCULT.BLASTINGCHARGES"}]}
+                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
             ]}
         ],
-        "factionAbilities":[{"modelAbilityName":"Cult Ambush","abilityId":"AMBUSH"}]
+        "factionAbilities":[{"modelAbilityName":"Cult Ambush","abilityId":"AMBUSH"}],
+        "factionAttacks":[{"attackId":"40K.GCULT.BLASTINGCHARGES"}]
     }
 ]

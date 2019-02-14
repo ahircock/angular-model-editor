@@ -1,1 +1,8 @@
-[]
+[
+    {"_id":"40K.DGUARD.CLOUDOFFLIES","userId":"global","name":"Cloud Of Flies","power":1,"text":"Until the end of the round, enemy models can only attack this model if it is the closest target visible to them."},
+    {"_id":"40K.DGUARD.GRANDFATHERSBLESSING","userId":"global","name":"Grandfather's Blessing","power":2,"text":"For the rest of the round, this model gains +1 to hit and +1 AP."},
+    {"_id":"40K.DGUARD.NURGLESGIFT","userId":"global","name":"Nurgle's Gift","power":1,"text":"If this model attacks an enemy model and removes them from play, you may setup a new Poxwalker within 1\" of this model. This new Poxwalker counts as activated."},
+    {"_id":"40K.DGUARD.NURGLINGINFESTATION","userId":"global","name":"Nurgling Infestation","power":1,"text":"Use during this model's activation. Pick an enemy model engaged with this model and roll a D6. On a 4+ that enemy suffers 1 mortal wound."},
+    {"_id":"40K.DGUARD.POXWALKER","userId":"global","name":"Pox Walker","text":"This model only gets the Disgustingly Resilient faction attacks/abilities. It does not get any others."},
+    {"_id":"40K.DGUARD.PUTRIDSPLATTER","userId":"global","name":"Putrid Splatter","power":1,"text":"Use after this model loses a wound from a melee attack. Roll a D6 for each enemy model engaged with this model. On a 6 that enemy model suffers 1 mortal wound."}
+]

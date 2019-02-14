@@ -12,6 +12,14 @@
                 {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
                 {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
             ]}
+        ],
+        "factionAbilities":[
+            {"modelAbilityName":"Transhuman Physiology","abilityId":"REROLLRECOVERY"},
+            {"modelAbilityName":"Disgustingly Resilient","abilityId":"RESILIENT"}
+        ],
+        "factionAttacks":[
+            {"attackId":"40K.DGUARD.BLIGHTGRENADE"},
+            {"attackId":"40K.DGUARD.KRAKGRENADE"}
         ]
     }
 ]

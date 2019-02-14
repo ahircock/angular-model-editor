@@ -1,0 +1,55 @@
+[
+    {"_id":"40K.DGUARD.PLAGUECHAMPION","userId":"global","name":"Plague Champion","picture":"dguard-champion.jpg","cost":15,"PW":1,"SP":4,"AR":3,"WN":3,"NE":4,
+        "attacks":[
+        ],
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.PLAGUESWORD"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.POWERFIST"}]}
+            ]},
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.BOLTGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.BOLTPISTOL"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.DGUARD.PLASMAPISTOL"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.PLASMAGUN"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.DGUARD.PLAGUEGUNNER","userId":"global","name":"Plague Marine Gunner","picture":"dguard-gunner.jpg","cost":15,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
+        "attacks":[
+            {"attackId":"40K.DGUARD.PLAGUEKNIFE"}
+        ],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.PLAGUESPEWER"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.PLAGUEBELCHER"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.BLIGHTLAUNCHER"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.MELTAGUN"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.PLASMAGUN"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.DGUARD.PLAGUEFIGHTER","userId":"global","name":"Plague Marine Fighter","picture":"dguard-fighter.jpg","cost":15,"PW":1,"SP":4,"AR":3,"WN":3,"NE":4,
+        "attacks":[
+        ],
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":2,"attacks":[{"attackId":"40K.DGUARD.BUBOTICAXE"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.GREATPLAGUECLEAVER"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.FLAILOFCORRUPTION"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.MACEOFCONTAGION"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.DGUARD.PLAGUEMARINE","userId":"global","name":"Plague Marine","picture":"dguard-pmarine.jpg","cost":14,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
+        "attacks":[
+            {"attackId":"40K.DGUARD.PLAGUEKNIFE"},
+            {"attackId":"40K.DGUARD.BOLTGUN"}
+        ]
+    },
+    {"_id":"40K.DGUARD.POXWALKER","userId":"global","name":"Pox Walker","picture":"dguard-poxwalker.jpg","cost":3,"PW":0,"SP":4,"AR":6,"WN":2,"NE":6,
+        "attacks":[
+            {"attackId":"40K.DGUARD.IMPROVISEDWEAPON"}
+        ]
+    }
+]

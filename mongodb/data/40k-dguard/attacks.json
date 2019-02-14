@@ -1,0 +1,21 @@
+[
+    {"_id":"40K.DGUARD.BLIGHTGRENADE","userId":"global","name":"Blight Grenade","type":"RANGED","RNG":6,"DICE":1,"HIT":4,"AP":0,"DMG":0,"ruleIds":["GRENADE","BLAST2HIT"],"secondary":true},
+    {"_id":"40K.DGUARD.BLIGHTLAUNCHER","userId":"global","name":"Blight Launcher","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":3,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.DGUARD.BOLTGUN","userId":"global","name":"Boltgun","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.DGUARD.BOLTPISTOL","userId":"global","name":"Bolt Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.DGUARD.KRAKGRENADE","userId":"global","name":"Krak Grenade","type":"RANGED","RNG":6,"DICE":1,"HIT":4,"AP":3,"DMG":2,"ruleIds":["GRENADE"],"secondary":true},
+    {"_id":"40K.DGUARD.MELTAGUN","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":3,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
+    {"_id":"40K.DGUARD.PLAGUEBELCHER","userId":"global","name":"Plague Belcher","type":"RANGED","RNG":9,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.DGUARD.PLAGUESPEWER","userId":"global","name":"Plague Spewer","type":"RANGED","RNG":9,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":["SPRAY","HEAVY"]},
+    {"_id":"40K.DGUARD.PLASMAGUN","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
+    {"_id":"40K.DGUARD.PLASMAPISTOL","userId":"global","name":"Plasma Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
+
+    {"_id":"40K.DGUARD.BUBOTICAXE","userId":"global","name":"Bubotic Axe","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.DGUARD.FLAILOFCORRUPTION","userId":"global","name":"Flail Of Corruption","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":2,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.DGUARD.GREATPLAGUECLEAVER","userId":"global","name":"Great Plague Cleaver","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":4,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.DGUARD.IMPROVISEDWEAPON","userId":"global","name":"Improvised Weapon","type":"MELEE","RNG":0,"DICE":2,"HIT":5,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.DGUARD.MACEOFCONTAGION","userId":"global","name":"Mace of Contagion","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":2,"DMG":3,"ruleIds":[]},
+    {"_id":"40K.DGUARD.PLAGUEKNIFE","userId":"global","name":"Plague Knife","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.DGUARD.PLAGUESWORD","userId":"global","name":"Plague Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.DGUARD.POWERFIST","userId":"global","name":"Power Fist","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":4,"DMG":2,"ruleIds":[]}
+]

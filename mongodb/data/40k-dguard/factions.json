@@ -1,0 +1,17 @@
+[
+    {"_id":"40K.DGUARD","userId":"global","name":"Death Guard",
+        "models":[
+            {"modelId":"40K.DGUARD.PLAGUECHAMPION","max":1},
+            {"modelId":"40K.DGUARD.PLAGUEMARINE"},
+            {"modelId":"40K.DGUARD.PLAGUEGUNNER","max":2},
+            {"modelId":"40K.DGUARD.PLAGUEFIGHTER","max":2},
+            {"modelId":"40K.DGUARD.POXWALKER"}
+        ],
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+            ]}
+        ]
+    }
+]

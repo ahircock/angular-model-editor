@@ -18,32 +18,32 @@
             ]}
         ]
     },
-    {"_id":"40K.DGUARD.PLAGUEGUNNER","userId":"global","name":"Plague Marine Gunner","picture":"dguard-gunner.jpg","cost":15,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUEGUNNER","userId":"global","name":"Plague Marine Gunner","picture":"dguard-gunner.jpg","cost":18,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
             {"attackId":"40K.DGUARD.PLAGUEKNIFE"}
         ],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.PLAGUEBELCHER"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.BLIGHTLAUNCHER"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.MELTAGUN"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.PLASMAGUN"}]},
-                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.PLAGUESPEWER"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.PLAGUEBELCHER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.BLIGHTLAUNCHER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.MELTAGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.PLASMAGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.PLAGUESPEWER"}]}
             ]}
         ],
         "abilities":[
             {"abilityId":"40K.DGUARD.GRANDFATHERSBLESSING"}
         ]
     },
-    {"_id":"40K.DGUARD.PLAGUEFIGHTER","userId":"global","name":"Plague Marine Fighter","picture":"dguard-fighter.jpg","cost":15,"PW":1,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUEFIGHTER","userId":"global","name":"Plague Marine Fighter","picture":"dguard-fighter.jpg","cost":17,"PW":1,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
         ],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
-                {"cost":2,"attacks":[{"attackId":"40K.DGUARD.BUBOTICAXE"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.DGUARD.MACEOFCONTAGION"}]},
-                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.GREATPLAGUECLEAVER"}]},
-                {"cost":4,"attacks":[{"attackId":"40K.DGUARD.FLAILOFCORRUPTION"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.DGUARD.BUBOTICAXE"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.DGUARD.MACEOFCONTAGION"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.DGUARD.GREATPLAGUECLEAVER"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.DGUARD.FLAILOFCORRUPTION"}]}
             ]}
         ],
         "abilities":[

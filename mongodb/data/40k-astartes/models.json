@@ -1,7 +1,7 @@
 [
-    {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":25,"PW":2,"SP":5,"AR":3,"WN":4,"NE":3,
+    {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":33,"PW":2,"SP":5,"AR":3,"WN":4,"NE":3,
         "abilities":[
-            {"modelAbilityName":"Rites Of Battle","abilityId":"REROLLHITAURA"}
+            {"abilityId":"LEADERSHIP"}
         ],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
@@ -14,27 +14,9 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLEAUTO"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLESTALKER"}]}
             ]},
-            {"id":"CAPTAIN","description":"Choose captain options","choices":[
-                {"cost":7,"abilities":[{"modelAbilityName":"Iron Halo","abilityId":"INVULNERABLE.4+"}]}
-            ]}
-        ]
-    },
-    {"_id":"40K.ASTARTES.SERGEANTSCOUT","userId":"global","name":"Scout Sergeant","picture":"smarine-scoutsergeant.jpg","cost":11,"PW":1,"SP":5,"AR":4,"WN":2,"NE":4,
-        "attacks":[
-            {"attackId":"40K.ASTARTES.CHAINSWORD.TACSGT"},
-            {"attackId":"40K.ASTARTES.BOLTPISTOL"}
-        ]},
-    {"_id":"40K.ASTARTES.SERGEANTTACTICAL","userId":"global","name":"Tactical Sergeant","picture":"smarine-tacticalsergeant.jpg","cost":13,"PW":1,"SP":5,"AR":3,"WN":2,"NE":4,
-        "options":[
-            {"id":"MELEE","description":"Choose a melee weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.TACSGT"}]},
-                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.TACSGT"}]},
-                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.TACSGT"}]}
-            ]},
-            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTPISTOL"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.PLASMAPISTOL"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.GRAVPISTOL"}]}
+            {"id":"CAPTAIN","description":"Choose captain options","optional":true,"multiSelect":true,"choices":[
+                {"cost":7,"abilities":[{"modelAbilityName":"Iron Halo","abilityId":"INVULNERABLE.4+"}]},
+                {"cost":7,"abilities":[{"modelAbilityName":"Rites Of Battle","abilityId":"REROLLHITAURA"}]}                
             ]}
         ]
     },
@@ -52,6 +34,27 @@
             ]}
         ]
     },
+    {"_id":"40K.ASTARTES.SERGEANTTACTICAL","userId":"global","name":"Tactical Sergeant","picture":"smarine-tacticalsergeant.jpg","cost":13,"PW":1,"SP":5,"AR":3,"WN":2,"NE":4,
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.CHAINSWORD.TACSGT"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.POWERSWORD.TACSGT"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.POWERFIST.TACSGT"}]}
+            ]},
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTPISTOL"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.PLASMAPISTOL"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.GRAVPISTOL"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ASTARTES.SERGEANTSCOUT","userId":"global","name":"Scout Sergeant","picture":"smarine-scoutsergeant.jpg","cost":11,"PW":1,"SP":5,"AR":4,"WN":2,"NE":4,
+        "attacks":[
+            {"attackId":"40K.ASTARTES.CHAINSWORD.TACSGT"},
+            {"attackId":"40K.ASTARTES.BOLTPISTOL"}
+        ]
+    },
+
     {"_id":"40K.ASTARTES.SCOUT","userId":"global","name":"Scout","picture":"smarine-scout.jpg","cost":10,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.TAC"}],
         "options":[
@@ -67,22 +70,22 @@
             {"attackId":"40K.ASTARTES.BOLTPISTOL"}
         ]
     },
-    {"_id":"40K.ASTARTES.SCOUTHEAVY","userId":"global","name":"Scout Heavy","picture":"smarine-scoutheavy.jpg","cost":11,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ASTARTES.SCOUTHEAVY","userId":"global","name":"Scout Heavy","picture":"smarine-scoutheavy.jpg","cost":14,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.TAC"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.BOLTERHEAVY"}]},
-                {"cost":5,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTERHEAVY"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
             ]}
         ]
     },
-    {"_id":"40K.ASTARTES.SCOUTSNIPER","userId":"global","name":"Scout Sniper","picture":"smarine-scoutsniper.jpg","cost":11,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ASTARTES.SCOUTSNIPER","userId":"global","name":"Scout Sniper","picture":"smarine-scoutsniper.jpg","cost":12,"PW":0,"SP":5,"AR":4,"WN":2,"NE":4,
         "abilities":[{"modelAbilityName":"Camo Cloak","abilityId":"CAMO"}],
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.TAC"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":1,"attacks":[{"attackId":"40K.ASTARTES.SNIPERRIFLE"}]},
-                {"cost":5,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.SNIPERRIFLE"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
             ]}
         ]
     },
@@ -92,23 +95,23 @@
             {"attackId":"40K.ASTARTES.BOLTGUN"}
         ]
     },
-    {"_id":"40K.ASTARTES.TACTICALASSAULT","userId":"global","name":"Tactical Assault Marine","picture":"smarine-tacticalassault.jpg","cost":13,"PW":0,"SP":5,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.ASTARTES.TACTICALASSAULT","userId":"global","name":"Tactical Assault Marine","picture":"smarine-tacticalassault.jpg","cost":16,"PW":0,"SP":5,"AR":3,"WN":2,"NE":4,
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.TAC"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.FLAMER"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.MELTAGUN"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.PLASMAGUN"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.GRAVGUN"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.FLAMER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.MELTAGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.PLASMAGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.GRAVGUN"}]}
             ]}
         ]
     },
-    {"_id":"40K.ASTARTES.TACTICALHEAVY","userId":"global","name":"Tactical Heavy Marine","picture":"smarine-tacticalheavy.jpg","cost":13,"PW":0,"SP":5,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.ASTARTES.TACTICALHEAVY","userId":"global","name":"Tactical Heavy Marine","picture":"smarine-tacticalheavy.jpg","cost":16,"PW":0,"SP":5,"AR":3,"WN":2,"NE":4,
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.TAC"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.BOLTERHEAVY"}]},
-                {"cost":5,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTERHEAVY"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
             ]}
         ]
     },
@@ -122,23 +125,23 @@
             ]}
         ]
     },
-    {"_id":"40K.ASTARTES.PRIMARISASSAULT","userId":"global","name":"Primaris Assault Marine","picture":"smarine-tacticalassault.jpg","cost":15,"PW":0,"SP":5,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.ASTARTES.PRIMARISASSAULT","userId":"global","name":"Primaris Assault Marine","picture":"smarine-tacticalassault.jpg","cost":18,"PW":0,"SP":5,"AR":3,"WN":3,"NE":4,
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.PRIM"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.FLAMER"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.MELTAGUN"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.PLASMAGUN"}]},
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.GRAVGUN"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.FLAMER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.MELTAGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.PLASMAGUN"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.GRAVGUN"}]}
             ]}
         ]
     },
-    {"_id":"40K.ASTARTES.PRIMARISHEAVY","userId":"global","name":"Primaris Heavy Marine","picture":"smarine-tacticalheavy.jpg","cost":15,"PW":0,"SP":5,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.ASTARTES.PRIMARISHEAVY","userId":"global","name":"Primaris Heavy Marine","picture":"smarine-tacticalheavy.jpg","cost":18,"PW":0,"SP":5,"AR":3,"WN":3,"NE":4,
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.PRIM"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":3,"attacks":[{"attackId":"40K.ASTARTES.BOLTERHEAVY"}]},
-                {"cost":5,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTERHEAVY"}]},
+                {"cost":2,"attacks":[{"attackId":"40K.ASTARTES.MISSILELAUNCHER"}]}
             ]}
         ]
     }   

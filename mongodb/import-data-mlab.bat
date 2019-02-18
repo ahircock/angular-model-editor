@@ -4,23 +4,23 @@ call mongo ds237669.mlab.com:37669/model-editor -u %1 -p %2 drop-data.js
 
 REM import all of the data files
 cd ./data
-call import-data-local.bat
-cd ./40k-admech %1 %2
-call import-data-local.bat
-cd ../40k-admil %1 %2
-call import-data-local.bat
-cd ../40k-astartes %1 %2
-call import-data-local.bat
-cd ../40k-dguard %1 %2
-call import-data-local.bat
-cd ../40k-gcult %1 %2
-call import-data-local.bat
-cd ../40k-necrons %1 %2
-call import-data-local.bat
-cd ../40k-orks %1 %2
-call import-data-local.bat
-cd ../40k-tyranids %1 %2
-call import-data-local.bat
+call import-data-mlab.bat %1 %2
+cd ./40k-admech
+call import-data-mlab.bat %1 %2
+cd ../40k-admil
+call import-data-mlab.bat %1 %2
+cd ../40k-astartes
+call import-data-mlab.bat %1 %2
+cd ../40k-dguard
+call import-data-mlab.bat %1 %2
+cd ../40k-gcult
+call import-data-mlab.bat %1 %2
+cd ../40k-necrons
+call import-data-mlab.bat %1 %2
+cd ../40k-orks
+call import-data-mlab.bat %1 %2
+cd ../40k-tyranids
+call import-data-mlab.bat %1 %2
 
 REM return to the main directory
 cd ../..

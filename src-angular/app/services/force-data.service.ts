@@ -375,7 +375,11 @@ export class ForceDataService {
    * @param model The model on which this force-model is based
    * @param forceModelDB The DB info needed to generate the force-model
    */
-  private async generateForceModelData(force: ForceData, factionModel: FactionModelData, forceModelDB: ForceModelDBData ) {
+  private async generateForceModelData(
+    force: ForceData,
+    factionModel: FactionModelData,
+    forceModelDB: ForceModelDBData
+    ): Promise<ForceModelData> {
 
     // copy all of the base model information and the base DB information into the force-model
     const forceModelData: ForceModelData = {
@@ -404,6 +408,20 @@ export class ForceDataService {
         choiceIndexes: optionChoiceDB.choiceIndexes
       };
       forceModelData.optionChoices.push( optionChoice );
+    }
+
+    // copy over any new faction-model options that are not currently listed on the force model
+    for ( const option of factionModel.options ) {
+      const optionChoiceIndex = forceModelData.optionChoices.findIndex( element => element.optionId === option.id );
+      if ( optionChoiceIndex === -1 ) {
+
+        // create a new option
+        const optionChoice: ForceModelOptionChoiceData = {
+          optionId: option.id,
+          choiceIndexes: option.optional ? [] : [0]
+        };
+        forceModelData.optionChoices.push( optionChoice );
+      }
     }
 
     // go through each model option, and add the chosen attacks, actions, abilities to the model
@@ -460,7 +478,11 @@ export class ForceDataService {
 
     // get the matching model option from the baseline model data
     const modelOption = forceModel.factionModelData.options.find( element => element.id === optionChoice.optionId );
+
+    // if the option is no longer listed on the factionModel, then remove it from the forceModel
     if (!modelOption) {
+      const optionIndex = forceModel.optionChoices.findIndex( element => element === optionChoice );
+      forceModel.optionChoices.splice(optionIndex, 1);
       return;
     }
 

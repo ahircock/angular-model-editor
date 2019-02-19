@@ -24,7 +24,7 @@ export interface ForceModelData {
   forceModelName: string;
   cost: number;
   leader: boolean;
-  PW: number;
+  CP: number;
   SP: number;
   AR: number;
   WN: number;
@@ -231,7 +231,7 @@ export class ForceDataService {
       cost: model.modelData.cost,
       count: 1,
       leader: isLeader,
-      PW: model.modelData.PW, // leaders get +1 PW
+      CP: model.modelData.CP, // leaders get +1 CP
       SP: model.modelData.SP,
       AR: model.modelData.AR,
       WN: model.modelData.WN, // leaders get +1 NE
@@ -385,7 +385,7 @@ export class ForceDataService {
       cost: factionModel.modelData.cost,
       leader: forceModelDB.leader ? forceModelDB.leader : false,
       forceModelName: forceModelDB.forceModelName,
-      PW: factionModel.modelData.PW,
+      CP: factionModel.modelData.CP,
       SP: factionModel.modelData.SP,
       AR: factionModel.modelData.AR,
       WN: factionModel.modelData.WN,
@@ -411,6 +411,9 @@ export class ForceDataService {
       this.addOptionChoicesToModel( forceModelData, optionChoice );
     }
 
+    // apply any stat modifiers
+    this.applyStatMods(forceModelData);
+
     // give leaders the default upgrades
     if ( forceModelData.leader ) {
       await this.getLeaderUpgrades(forceModelData);
@@ -424,11 +427,31 @@ export class ForceDataService {
     return forceModelData;
   }
 
+  /**
+   * If the model has any abilities that modify base stats (AR, SP, WN, etc.),
+   * then update the model stats
+   * @param forceModel the model being adjusted
+   */
+  private applyStatMods(forceModel: ForceModelData ) {
+
+    // loop through each of the assigned abilities
+    for ( const ability of forceModel.abilities ) {
+
+      // modify base stats if there is any modifier
+      forceModel.CP += ability.abilityData.modCP;
+      forceModel.SP += ability.abilityData.modSP;
+      forceModel.AR += ability.abilityData.modAR;
+      forceModel.WN += ability.abilityData.modWN;
+      forceModel.NE += ability.abilityData.modNE;
+    }
+
+  }
+
   private async getLeaderUpgrades(forceModel: ForceModelData) {
     if ( forceModel.leader ) {
 
-      // leaders get +1 PW and +1 WN
-      forceModel.PW++;
+      // leaders get +1 CP and +1 WN
+      forceModel.CP++;
       forceModel.WN++;
     }
   }

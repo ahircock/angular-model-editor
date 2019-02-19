@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.GC.METAMORPHLEADER","userId":"global","name":"Metamorph Leader","picture":"gcult-metamorphleader.jpg","cost":9,"PW":1,"SP":5,"AR":5,"WN":2,"NE":3,
+    {"_id":"40K.GC.METAMORPHLEADER","userId":"global","name":"Metamorph Leader","picture":"gcult-metamorphleader.jpg","cost":9,"CP":1,"SP":5,"AR":5,"WN":2,"NE":3,
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.GCULT.RENDINGCLAW.LEADER"}]},
@@ -14,7 +14,7 @@
             ]}            
         ]
     },
-    {"_id":"40K.GC.METAMORPH","userId":"global","name":"Metamorph","picture":"gcult-metamorph.jpg","cost":8,"PW":0,"SP":5,"AR":5,"WN":2,"NE":4,
+    {"_id":"40K.GC.METAMORPH","userId":"global","name":"Metamorph","picture":"gcult-metamorph.jpg","cost":8,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.GCULT.RENDINGCLAW"}]},
@@ -29,7 +29,7 @@
             ]}            
         ]
     },
-    {"_id":"40K.GC.NEOPHYTE","userId":"global","name":"Neophyte","picture":"gcult-neophyte.jpg","cost":5,"PW":0,"SP":5,"AR":5,"WN":2,"NE":4,
+    {"_id":"40K.GC.NEOPHYTE","userId":"global","name":"Neophyte","picture":"gcult-neophyte.jpg","cost":5,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
         "abilities":[{"abilityId":"GRUNT"}],
         "attacks":[
             {"attackId":"40K.GCULT.CULTISTKNIFE"},
@@ -41,7 +41,7 @@
             ]}
         ]
     },
-    {"_id":"40K.GC.NEOPHYTEASSAULT","userId":"global","name":"Neophyte Assault","picture":"gcult-neophyteassault.jpg","cost":8,"PW":0,"SP":5,"AR":5,"WN":2,"NE":4,
+    {"_id":"40K.GC.NEOPHYTEASSAULT","userId":"global","name":"Neophyte Assault","picture":"gcult-neophyteassault.jpg","cost":8,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
         "abilities":[{"abilityId":"GRUNT"}],
         "attacks":[{"attackId":"40K.GCULT.CULTISTKNIFE"}],
         "options":[
@@ -52,7 +52,7 @@
             ]}
         ]
     },
-    {"_id":"40K.GC.NEOPHYTEHEAVY","userId":"global","name":"Neophyte Heavy","picture":"gcult-neophyteheavy.jpg","cost":6,"PW":0,"SP":5,"AR":5,"WN":2,"NE":4,
+    {"_id":"40K.GC.NEOPHYTEHEAVY","userId":"global","name":"Neophyte Heavy","picture":"gcult-neophyteheavy.jpg","cost":6,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
         "abilities":[{"abilityId":"GRUNT"}],
         "attacks":[{"attackId":"40K.GCULT.CULTISTKNIFE"}],
         "options":[
@@ -63,7 +63,7 @@
             ]}
         ]
     },
-    {"_id":"40K.GC.ACOLYTEFIGHTER","userId":"global","name":"Acolyte Fighter","picture":"gcult-acolytefighter.jpg","cost":8,"PW":0,"SP":5,"AR":5,"WN":2,"NE":4,
+    {"_id":"40K.GC.ACOLYTEFIGHTER","userId":"global","name":"Acolyte Fighter","picture":"gcult-acolytefighter.jpg","cost":8,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.GCULT.RENDINGCLAW"}]},

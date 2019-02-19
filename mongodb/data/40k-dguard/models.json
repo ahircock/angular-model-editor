@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.DGUARD.PLAGUECHAMPION","userId":"global","name":"Plague Champion","picture":"dguard-champion.jpg","cost":15,"PW":1,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUECHAMPION","userId":"global","name":"Plague Champion","picture":"dguard-champion.jpg","cost":15,"CP":1,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
         ],
         "abilities":[
@@ -18,7 +18,7 @@
             ]}
         ]
     },
-    {"_id":"40K.DGUARD.PLAGUEGUNNER","userId":"global","name":"Plague Marine Gunner","picture":"dguard-gunner.jpg","cost":18,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUEGUNNER","userId":"global","name":"Plague Marine Gunner","picture":"dguard-gunner.jpg","cost":18,"CP":0,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
             {"attackId":"40K.DGUARD.PLAGUEKNIFE"}
         ],
@@ -35,7 +35,7 @@
             {"abilityId":"40K.DGUARD.GRANDFATHERSBLESSING"}
         ]
     },
-    {"_id":"40K.DGUARD.PLAGUEFIGHTER","userId":"global","name":"Plague Marine Fighter","picture":"dguard-fighter.jpg","cost":17,"PW":1,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUEFIGHTER","userId":"global","name":"Plague Marine Fighter","picture":"dguard-fighter.jpg","cost":17,"CP":1,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
         ],
         "options":[
@@ -50,7 +50,7 @@
             {"abilityId":"40K.DGUARD.PUTRIDSPLATTER"}
         ]
     },
-    {"_id":"40K.DGUARD.PLAGUEMARINE","userId":"global","name":"Plague Marine","picture":"dguard-pmarine.jpg","cost":14,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUEMARINE","userId":"global","name":"Plague Marine","picture":"dguard-pmarine.jpg","cost":14,"CP":0,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
             {"attackId":"40K.DGUARD.PLAGUEKNIFE"},
             {"attackId":"40K.DGUARD.BOLTGUN"}
@@ -59,7 +59,7 @@
             {"abilityId":"40K.DGUARD.CLOUDOFFLIES"}
         ]
     },
-    {"_id":"40K.DGUARD.PLAGUEICONBEARER","userId":"global","name":"Plague Marine Icon Bearer","picture":"dguard-pmarine.jpg","cost":14,"PW":0,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUEICONBEARER","userId":"global","name":"Plague Marine Icon Bearer","picture":"dguard-pmarine.jpg","cost":14,"CP":0,"SP":4,"AR":3,"WN":3,"NE":4,
         "attacks":[
             {"attackId":"40K.DGUARD.PLAGUEKNIFE"},
             {"attackId":"40K.DGUARD.BOLTGUN"}
@@ -68,7 +68,7 @@
             {"modelAbilityName":"Icon of Despair","abilityId":"FEARAURA"}
         ]
     },
-    {"_id":"40K.DGUARD.POXWALKER","userId":"global","name":"Pox Walker","picture":"dguard-poxwalker.jpg","cost":3,"PW":0,"SP":4,"AR":6,"WN":2,"NE":6,
+    {"_id":"40K.DGUARD.POXWALKER","userId":"global","name":"Pox Walker","picture":"dguard-poxwalker.jpg","cost":3,"CP":0,"SP":4,"AR":6,"WN":2,"NE":6,
         "attacks":[
             {"attackId":"40K.DGUARD.IMPROVISEDWEAPON"}
         ],

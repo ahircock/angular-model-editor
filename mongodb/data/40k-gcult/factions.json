@@ -7,8 +7,7 @@
             {"modelId":"40K.GC.NEOPHYTEASSAULT","max":2},
             {"modelId":"40K.GC.NEOPHYTEHEAVY","max":2},
             {"modelId":"40K.GC.ACOLYTEFIGHTER","max":4},
-            {"modelId":"40K.TY.GENESTEALER"},
-            {"modelId":"40K.TY.GENESTEALERCARAPACE"}
+            {"modelId":"40K.TY.GENESTEALER"}
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[

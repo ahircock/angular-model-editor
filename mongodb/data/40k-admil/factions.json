@@ -1,9 +1,9 @@
 [
     {"_id":"40K.ADMIL","userId":"global","name":"Astra Militarum",
         "models":[
+            {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
             {"modelId":"40K.ADMIL.SERGEANT","max":1},
             {"modelId":"40K.ADMIL.GUARDSMAN"},
-            {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
             {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":5},
             {"modelId":"40K.ADMIL.GUARDSMANSNIPER","max":1},
             {"modelId":"40K.ADMIL.GUARDSMANCOMMS","max":1},

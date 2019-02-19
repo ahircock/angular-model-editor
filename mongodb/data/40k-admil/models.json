@@ -47,10 +47,10 @@
         "attacks":[{"attackId":"40K.ADMIL.KNIFE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":1,"attacks":[{"attackId":"40K.ADMIL.GRENADELAUNCHER"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMIL.FLAMER.GUARD"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMIL.MELTAGUN.GUARD"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMIL.PLASMAGUN.GUARD"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.GRENADELAUNCHER"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.FLAMER.GUARD"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.MELTAGUN.GUARD"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.PLASMAGUN.GUARD"}]}
             ]}
         ]
     },

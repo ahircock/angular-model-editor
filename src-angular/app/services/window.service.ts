@@ -17,7 +17,7 @@ export class WindowService {
   }
 
   isWindowMobile() {
-    return this.getWindowWidth() <= 600 ? true : false;
+    return this.getWindowWidth() <= this.MOBILE_WINDOW_WIDTH ? true : false;
   }
 
 }

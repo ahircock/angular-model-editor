@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ForceDataService, ForceModelData, ForceData } from '../../services/force-data.service';
+import { ForceDataService, ForceData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
 import { Location } from '@angular/common';
 

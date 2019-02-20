@@ -73,23 +73,6 @@ export class RuleDataService {
     return ruleData;
   }
 
-  /**
-   * The method used by Javascript array.sort to sort the array of rules
-   * @param a first rule
-   * @param b second rule
-   */
-  private sortRuleData( a: RuleData, b: RuleData ): number {
-
-    // always return the basic model first
-    if ( a.ruleName < b.ruleName ) {
-      return -1;
-    } else if ( a.ruleName > b.ruleName ) {
-      return 1;
-    } else {
-      return 0;
-    }
-  }
-
   private async loadCache() {
     // clear out the rule cache
     this.ruleCache = [];

@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ForceDataService, ForceModelData, ForceData } from '../../../services/force-data.service';
-import { UserService } from '../../../services/user.service';
+import { ForceModelData, ForceData } from '../../../services/force-data.service';
 import { Location } from '@angular/common';
 
 @Component({
@@ -16,10 +14,6 @@ export class ModelOptionsComponent implements OnInit {
   @Output() updated: EventEmitter<void> = new EventEmitter();
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    private forceDataService: ForceDataService,
-    private userService: UserService,
     private location: Location
   ) { }
 

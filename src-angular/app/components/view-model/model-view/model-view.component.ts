@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ModelDataService } from '../../../services/model-data.service';
 import { PORTRAIT_LIST } from '../../../../assets/portraits/portrait-list.const';
 import { ForceModelData } from '../../../services/force-data.service';
 
@@ -23,7 +22,6 @@ export class ModelViewComponent implements OnInit {
   showModelPortraitsDropdown = false;
 
   constructor(
-    private modelDataService: ModelDataService
    ) { }
 
   ngOnInit() {

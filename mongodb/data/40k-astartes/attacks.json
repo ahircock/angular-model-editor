@@ -35,5 +35,7 @@
     {"_id":"40K.ASTARTES.POWERSWORD.TACSGT","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ASTARTES.MELEE.TAC","userId":"global","name":"Astartes Blade","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ASTARTES.MELEE.TACMELEE","userId":"global","name":"Astartes Blade","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ASTARTES.MELEE.PRIM","userId":"global","name":"Astartes Blade","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]}
+    {"_id":"40K.ASTARTES.MELEE.PRIM","userId":"global","name":"Astartes Blade","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ASTARTES.MELEE.REIVER","userId":"global","name":"Combat Knife","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ASTARTES.MELEE.REIVERSGT","userId":"global","name":"Combat Knife","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]}
 ]

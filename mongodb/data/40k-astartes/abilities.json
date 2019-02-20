@@ -1,2 +1,4 @@
 [
+    {"_id":"40K.ASTARTES.GRAPNELLAUNCHER","userId":"global","name":"Grapnel Launcher","text":"This model can climb any distance vertically (up or down) when it makes a normal move – do not measure the distance moved in this way"},
+    {"_id":"40K.ASTARTES.GRAVCHUTE","userId":"global","name":"Grav Chute","text":"This model never suffers falling damage"}
 ]

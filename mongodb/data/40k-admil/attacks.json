@@ -1,6 +1,5 @@
 [
-    {"_id":"40K.ADMIL.FLAMER.GUARD","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":4,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
-    {"_id":"40K.ADMIL.FLAMER.SCION","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.ADMIL.FLAMER","userId":"global","name":"Flamer","type":"RANGED","RNG":8,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":["SPRAY"]},
     {"_id":"40K.ADMIL.GRENADEFRAG","userId":"global","name":"Frag Grenade","type":"RANGED","RNG":6,"DICE":1,"HIT":4,"AP":0,"DMG":0,"ruleIds":["GRENADE","BLAST2HIT"],"secondary":true},
     {"_id":"40K.ADMIL.GRENADEKRAK","userId":"global","name":"Krak Grenade","type":"RANGED","RNG":6,"DICE":1,"HIT":4,"AP":3,"DMG":2,"ruleIds":["GRENADE"],"secondary":true},
     {"_id":"40K.ADMIL.GRENADELAUNCHER","userId":"global","name":"Grenade Launcher","type":"RANGED","RNG":0,"DICE":0,"HIT":0,"AP":0,"DMG":0,"ruleIds":[],"multiProfileAttackIds":["40K.ADMIL.GRENADELAUNCHER.KRAK","40K.ADMIL.GRENADELAUNCHER.FRAG"]},

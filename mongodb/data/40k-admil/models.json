@@ -48,7 +48,7 @@
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.GRENADELAUNCHER"}]},
-                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.FLAMER.GUARD"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.FLAMER"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.MELTAGUN.GUARD"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.PLASMAGUN.GUARD"}]}
             ]}
@@ -82,7 +82,7 @@
         ],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.FLAMER.SCION"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMIL.FLAMER"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.MELTAGUN.SCION"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.PLASMAGUN.SCION"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.HOTSHOTVOLLEYGUN"}]}

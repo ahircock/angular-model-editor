@@ -1,0 +1,15 @@
+[
+    {"_id":"40K.TSONS.AUTOPISTOL","userId":"global","name":"Auto Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.INFERNOBOLTPISTOL","userId":"global","name":"Inferno Bolt Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.INFERNOBOLTGUN","userId":"global","name":"Inferno Boltgun","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.SOULREAPERCANNON","userId":"global","name":"Soulreaper Cannon","type":"RANGED","RNG":24,"DICE":4,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.WARPFLAMEPISTOL","userId":"global","name":"Warpflame Pistol","type":"RANGED","RNG":6,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":["SPRAY"]},
+    {"_id":"40K.TSONS.WARPFLAMER","userId":"global","name":"Warpflamer","type":"RANGED","RNG":8,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":["SPRAY"]},
+
+    {"_id":"40K.TSONS.ASPIRINGSORC.FORCESTAVE","userId":"global","name":"Force Stave","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":2,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.TSONS.MARINE.FIST","userId":"global","name":"Rubric Fist","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.TZAANGOR.BLADES","userId":"global","name":"Tzaangor Blades","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.TZAANGOR.CHAINSWORD","userId":"global","name":"Chainsword","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.TWISTBRAY.BLADES","userId":"global","name":"Tzaangor Blades","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.TSONS.TWISTBRAY.CHAINSWORD","userId":"global","name":"Chainsword","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]}
+]

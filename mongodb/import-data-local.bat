@@ -18,6 +18,8 @@ cd ../40k-necrons
 call import-data-local.bat
 cd ../40k-orks
 call import-data-local.bat
+cd ../40k-tsons
+call import-data-local.bat
 cd ../40k-tyranids
 call import-data-local.bat
 

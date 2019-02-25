@@ -1,0 +1,91 @@
+[
+    {"_id":"40K.TSONS.ASPIRINGSORCEROR","userId":"global","name":"Aspiring Sorceror","picture":"tsons-sorceror.jpg","cost":17,"CP":1,"SP":5,"AR":3,"WN":2,"NE":4,
+        "attacks":[
+            {"attackId":"40K.TSONS.ASPIRINGSORC.FORCESTAVE"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Transhuman Physiology","abilityId":"REROLLRECOVERY"}
+        ],
+        "actions":[],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.INFERNOBOLTPISTOL"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.TSONS.WARPFLAMEPISTOL"}]}
+            ]},
+            {"id":"PSYCHIC","description":"Choose one psychic power","choices":[
+                {"cost":0,"actions":[{"modelActionName":"Psybolt","actionId":"SPELL.DIRECTATTACK"}]},
+                {"cost":0,"actions":[{"modelActionName":"Psychic Stun","actionId":"SPELL.STUN"}]}
+            ]}
+
+        ]
+    },
+    {"_id":"40K.TSONS.TWISTBRAY","userId":"global","name":"Tzaangor Twistbray","picture":"tsons-twistbray.jpg","cost":8,"CP":1,"SP":5,"AR":6,"WN":2,"NE":4,
+        "attacks":[],
+        "abilities":[],
+        "options":[
+            {"id":"WEAPON","description":"Choose  weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.TWISTBRAY.BLADES"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.TWISTBRAY.CHAINSWORD"},{"attackId":"40K.TSONS.AUTOPISTOL"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.TSONS.RUBRICMARINE","userId":"global","name":"Rubric Marine","picture":"tsons-marine.jpg","cost":16,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
+        "attacks":[
+            {"attackId":"40K.TSONS.MARINE.FIST"}
+        ],
+        "abilities":[
+            {"abilityId":"40K.TSONS.ALLISDUST"}
+        ],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.INFERNOBOLTGUN"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.TSONS.WARPFLAMER"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.TSONS.RUBRICHEAVY","userId":"global","name":"Rubric Heavy Marine","picture":"tsons-heavy.jpg","cost":20,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
+        "attacks":[
+            {"attackId":"40K.TSONS.MARINE.FIST"},{"attackId":"40K.TSONS.SOULREAPERCANNON"}
+        ],
+        "abilities":[
+            {"abilityId":"40K.TSONS.ALLISDUST"}
+        ]
+    },
+    {"_id":"40K.TSONS.RUBRICICON","userId":"global","name":"Rubric Icon Of Flame","picture":"tsons-marine.jpg","cost":17,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
+        "attacks":[
+            {"attackId":"40K.TSONS.MARINE.FIST"}
+        ],
+        "abilities":[
+            {"abilityId":"40K.TSONS.ALLISDUST"},
+            {"abilityId":"40K.TSONS.ICONOFFLAME"}
+        ],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.INFERNOBOLTGUN"}]},
+                {"cost":4,"attacks":[{"attackId":"40K.TSONS.WARPFLAMER"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.TSONS.TZAANGOR","userId":"global","name":"Tzaangor","picture":"tsons-tzaangor.jpg","cost":7,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
+        "attacks":[],
+        "abilities":[],
+        "options":[
+            {"id":"WEAPON","description":"Choose  weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.TZAANGOR.BLADES"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.TZAANGOR.CHAINSWORD"},{"attackId":"40K.TSONS.AUTOPISTOL"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.TSONS.BRAYHORN","userId":"global","name":"Tzaangor Brayhorn","picture":"tsons-brayhorn.jpg","cost":10,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
+        "attacks":[],
+        "abilities":[
+            {"abilityId":"40K.TSONS.BRAYHORN"}
+        ],
+        "options":[
+            {"id":"WEAPON","description":"Choose  weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.TZAANGOR.BLADES"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.TSONS.TZAANGOR.CHAINSWORD"},{"attackId":"40K.TSONS.AUTOPISTOL"}]}
+            ]}
+        ]
+    }
+]

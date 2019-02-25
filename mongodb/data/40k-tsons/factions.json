@@ -1,0 +1,18 @@
+[
+    {"_id":"40K.TSONS","userId":"global","name":"Thousand Sons",
+        "models":[
+            {"modelId":"40K.TSONS.ASPIRINGSORCEROR","max":1},
+            {"modelId":"40K.TSONS.RUBRICMARINE"},
+            {"modelId":"40K.TSONS.RUBRICHEAVY","max":1},
+            {"modelId":"40K.TSONS.RUBRICICON","max":1},
+            {"modelId":"40K.TSONS.TWISTBRAY","max":1},
+            {"modelId":"40K.TSONS.TZAANGOR"},
+            {"modelId":"40K.TSONS.BRAYHORN","max":1}
+        ],
+        "factionAbilities":[
+            {"modelAbilityName":"Aura of Dark Glory","abilityId":"INVULNERABLE.5+"}
+        ],
+        "factionAttacks":[
+        ]
+    }
+]

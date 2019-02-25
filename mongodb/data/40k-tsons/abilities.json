@@ -1,0 +1,5 @@
+[
+    {"_id":"40K.TSONS.ALLISDUST","userId":"global","name":"All Is Dust","text":"This model gets +1 to Armor rolls if targeted by an attack with D1."},
+    {"_id":"40K.TSONS.BRAYHORN","userId":"global","name":"Speed Aura","text":"All friendly TZAANGOR models that start their activation within 6\" of this model get +1 SP."},
+    {"_id":"40K.TSONS.ICONOFFLAME","userId":"global","name":"Icon Of Flame","text":"At the start of this model's activation roll a D6. On a 6 inflict 1 mortal wound on the closest enemy model within 12\""}
+]

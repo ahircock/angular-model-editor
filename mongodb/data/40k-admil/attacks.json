@@ -10,7 +10,7 @@
     {"_id":"40K.ADMIL.HOTSHOTVOLLEYGUN","userId":"global","name":"Hot-Shot Volley Gun","type":"RANGED","RNG":24,"DICE":4,"HIT":3,"AP":2,"DMG":1,"ruleIds":["HEAVY"]},
     {"_id":"40K.ADMIL.LASGUN","userId":"global","name":"Lasgun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ADMIL.LASPISTOL","userId":"global","name":"Laspistol","type":"RANGED","RNG":12,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ADMIL.MELTAGUN.GUARD","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":3,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
+    {"_id":"40K.ADMIL.MELTAGUN.GUARD","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":4,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
     {"_id":"40K.ADMIL.MELTAGUN.SCION","userId":"global","name":"Meltagun","type":"RANGED","RNG":12,"DICE":1,"HIT":3,"AP":4,"DMG":3,"ruleIds":["MELTA"]},
     {"_id":"40K.ADMIL.PLASMAGUN.GUARD","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
     {"_id":"40K.ADMIL.PLASMAGUN.SCION","userId":"global","name":"Plasma Gun","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},

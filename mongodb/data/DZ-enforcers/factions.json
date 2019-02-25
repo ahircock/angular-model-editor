@@ -1,0 +1,34 @@
+[
+    {"_id":"40K.ASTARTES","userId":"global","name":"Adeptus Astartes",
+        "models":[
+            {"modelId":"40K.ASTARTES.PRIMARISCAPTAIN","max":1},
+            {"modelId":"40K.ASTARTES.SERGEANTSCOUT","max":1},
+            {"modelId":"40K.ASTARTES.SERGEANTTACTICAL","max":1},
+            {"modelId":"40K.ASTARTES.SERGEANTPRIMARIS","max":1},
+            {"modelId":"40K.ASTARTES.TACTICAL"},
+            {"modelId":"40K.ASTARTES.TACTICALASSAULT","max":1},
+            {"modelId":"40K.ASTARTES.TACTICALHEAVY","max":1},
+            {"modelId":"40K.ASTARTES.PRIMARIS"},
+            {"modelId":"40K.ASTARTES.PRIMARISASSAULT"},
+            {"modelId":"40K.ASTARTES.PRIMARISHEAVY"},
+            {"modelId":"40K.ASTARTES.SCOUT"},
+            {"modelId":"40K.ASTARTES.SCOUTASSAULT"},
+            {"modelId":"40K.ASTARTES.SCOUTHEAVY","max":1},
+            {"modelId":"40K.ASTARTES.SCOUTSNIPER","max":1}
+        ],
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+            ]}
+        ],
+        "factionAbilities":[
+            {"modelAbilityName":"And They Shall Know No Fear","abilityId":"REROLLNERVE"},
+            {"modelAbilityName":"Transhuman Physiology","abilityId":"REROLLRECOVERY"}
+        ],
+        "factionAttacks":[
+            {"attackId":"40K.ASTARTES.GRENADEFRAG"},
+            {"attackId":"40K.ASTARTES.GRENADEKRAK"}
+        ]
+    }
+]

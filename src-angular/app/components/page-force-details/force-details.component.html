@@ -32,10 +32,9 @@
     
     </div>
 
-    <!-- LIST OF ROWS -->
-    <div class="model-list">
+    <!-- FACTION ABILITIES LIST ITEM -->
+    <div class="force-list">
 
-      <!-- FORCE LIST ITEM -->
       <app-force-list-item
             *ngIf="commonAbilitiesExist" 
             [force]="force" 
@@ -43,21 +42,23 @@
             (click)="selectForce()"
             >
       </app-force-list-item>
-
-      <!-- MODEL LIST ITEM -->
-      <app-model-list-item 
-            *ngFor="let model of force.models; index as modelIndex;"
-            [model]="model" 
-            [selected]="selectedModelIndex === modelIndex" 
-            (click)="selectModel(model)"
-            (increaseCount)="increaseModelCount(model)"
-            (decreaseCount)="decreaseModelCount(model)"
-            (selectLeader)="selectLeader(model)"
-            >
-      </app-model-list-item>
-
     </div>
-  
+
+    <!-- MODEL LIST ITEMS -->
+    <div cdkDropList (cdkDropListDropped)="dropModel($event)" class="model-list">
+      <div *ngFor="let model of force.models; index as modelIndex;" cdkDrag (cdkDragStarted)="selectModel(model)" class="model-list-item">
+        <app-model-list-item
+              [model]="model" 
+              [selected]="selectedModelIndex === modelIndex"
+              (click)="selectModel(model)"
+              (increaseCount)="increaseModelCount(model)"
+              (decreaseCount)="decreaseModelCount(model)"
+              (selectLeader)="selectLeader(model)"
+              >
+        </app-model-list-item>
+      </div>
+    </div>
+
   </div>
 
   <!-- RIGHT PANE, MODEL EDITOR -->

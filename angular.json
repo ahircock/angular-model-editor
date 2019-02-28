@@ -21,6 +21,7 @@
               "src-angular/favicon.ico"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src-angular/styles.css"
             ],
             "scripts": []

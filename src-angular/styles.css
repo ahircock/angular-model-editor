@@ -209,3 +209,5 @@ textarea {
     border-color: rgb(211,211,211);
     background-color: rgb(128,128,128);
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

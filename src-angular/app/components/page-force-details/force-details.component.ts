@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 import { Location } from '@angular/common';
 import { WindowService } from '../../services/window.service';
 import { FactionModelData } from '../../services/faction-data.service';
+import {CdkDragDrop, moveItemInArray, CdkDragStart} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-force-details',
@@ -139,4 +140,11 @@ export class ForceDetailsComponent implements OnInit {
   isWindowMobile() {
     return this.windowService.isWindowMobile();
   }
+
+  dropModel(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.force.models, event.previousIndex, event.currentIndex);
+    this.selectModel(this.force.models[event.currentIndex]);
+    this.saveForce();
+  }
+
 }

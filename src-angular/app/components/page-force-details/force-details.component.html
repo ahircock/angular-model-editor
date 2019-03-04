@@ -46,7 +46,7 @@
 
     <!-- MODEL LIST ITEMS -->
     <div cdkDropList (cdkDropListDropped)="dropModel($event)" class="model-list">
-      <div *ngFor="let model of force.models; index as modelIndex;" cdkDrag (cdkDragStarted)="selectModel(model)" class="model-list-item">
+      <div *ngFor="let model of force.models; index as modelIndex;" cdkDrag [cdkDragDisabled]="isWindowMobile()" class="model-list-item">
         <app-model-list-item
               [model]="model" 
               [selected]="selectedModelIndex === modelIndex"

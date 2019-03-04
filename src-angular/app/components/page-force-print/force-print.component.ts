@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForceDataService, ForceData, ForceModelData } from '../../services/force-data.service';
 import { UserService } from '../../services/user.service';
@@ -9,6 +9,11 @@ interface Page {
 }
 interface Column {
   forceModels: ForceModelData[];
+}
+
+interface ModelDisplayInfo {
+  forceModelData: ForceModelData;
+  height: number;
 }
 
 @Component({
@@ -34,6 +39,11 @@ export class ForcePrintComponent implements OnInit {
    */
   public pages: Page[] = [];
 
+  // the following variables are all used to calculate the height of the 
+  // various div boxes
+  @ViewChildren('modeldiv') private modelDivs: QueryList<ElementRef>;
+  @ViewChild('titlediv') private titleDiv: ElementRef;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private forceDataService: ForceDataService,
@@ -53,40 +63,131 @@ export class ForcePrintComponent implements OnInit {
     const forceId = this.activatedRoute.snapshot.paramMap.get('id');
     this.force = await this.forceDataService.getForceById(forceId);
 
-    // add the first half of the models to the left array, and the second half to the right
-    this.preparePrintLayout();
+    // use the heights of the boxes to layout for printing
+    await this.arrangePrintLayout();
   }
 
-  private preparePrintLayout() {
+  /**
+   * arrange the model boxes so that they will fit on a printed page
+   */
+  private async arrangePrintLayout() {
 
-    // create a page for every 4 models
-    const numPages = (this.force.models.length / 4) + 1;
-    for ( let i = 0; i < numPages; i++ ) {
-      const leftColumn: Column = { forceModels: [] };
-      const rightColumn: Column = { forceModels: [] };
-      const page: Page = { leftColumn: leftColumn, rightColumn: rightColumn };
-      this.pages.push(page);
-    }
+    const modelDisplays = await this.getBoxHeights();
 
-    // add each model to the correct page
-    let pageIndex = 0;
-    let modelCounter = 1;
+    await this.placeBoxesOnPages(modelDisplays);
+  }
+
+  /**
+   * This method will temporarily display the boxes on a single page, so that we can
+   * calculate the height of each div. Heights will be stored in instance variables
+   */
+  private async getBoxHeights() {
+
+    // create an empty page, and add all models to the left column
+    const page: Page = { leftColumn: { forceModels: [] }, rightColumn: { forceModels: [] } };
     for ( const model of this.force.models ) {
-      if ( modelCounter === 1 ) {
-        this.pages[pageIndex].leftColumn.forceModels.push(model);
-        modelCounter++;
-      } else  if ( modelCounter === 2 ) {
-        this.pages[pageIndex].leftColumn.forceModels.push(model);
-        modelCounter++;
-      } else if ( modelCounter === 3 ) {
-        this.pages[pageIndex].rightColumn.forceModels.push(model);
-        modelCounter++;
-      } else if ( modelCounter === 4 ) {
-        this.pages[pageIndex].rightColumn.forceModels.push(model);
-        modelCounter = 1;
-        pageIndex++;
-      }
+      page.leftColumn.forceModels.push(model);
     }
+    this.pages.push(page);
+
+    // wait until angular updates the view, so that you can get the ElementRef properties
+    await this.sleep(0);
+
+    // get the model box heights
+    let i = 0;
+    const modelDisplays: ModelDisplayInfo[] = [];
+    for ( const modelBoxElem of this.modelDivs.toArray() ) {
+      const modelBoxHeight: ModelDisplayInfo = {
+        forceModelData: this.force.models[i],
+        height: modelBoxElem.nativeElement.offsetHeight ? modelBoxElem.nativeElement.offsetHeight : 0
+      };
+      modelDisplays.push(modelBoxHeight);
+      i++;
+    }
+
+    return modelDisplays;
   }
 
+  /**
+   * This method will use the heights of each div to properly place the 
+   * boxes on the page
+   */
+  private async placeBoxesOnPages(modelsToDisplay: ModelDisplayInfo[] ) {
+
+    // this is the total desired height of the page
+    const TOTAL_PAGE_HEIGHT = 1050;
+
+    // calcualte the height of the title div
+    const titleDivHeight = this.titleDiv ? this.titleDiv.nativeElement.offsetHeight : 0;
+
+    // clear the current page layout
+    this.pages = [];
+
+    // create the first page; it's height must account for the height of the title box
+    let page: Page = { leftColumn: { forceModels: [] }, rightColumn: { forceModels: [] } };
+    let pageNumber = 1;
+
+    // start adding models to the left column
+    let columnName = 'left';
+    let column = page.leftColumn;
+
+    // loop through all of the models to display
+    do {
+
+      // get the remaining page height
+      let remainingPageHeight = TOTAL_PAGE_HEIGHT - titleDivHeight;
+      if ( pageNumber > 1 ) {
+        remainingPageHeight = TOTAL_PAGE_HEIGHT;
+      }
+
+      // loop through every model, and add the ones that will fit to the column
+      // also remove them from the list of remaining models to display
+      let i = 0;
+      do {
+        if ( modelsToDisplay[i].height < remainingPageHeight ) {
+          column.forceModels.push(modelsToDisplay[i].forceModelData);
+          remainingPageHeight -= modelsToDisplay[i].height;
+          modelsToDisplay.splice(i, 1); // remove from the list of remaining models
+        } else {
+          i++; // move onto the next model
+        }
+      } while ( i < modelsToDisplay.length );
+
+      // if this is the bottom of the left column
+      if ( columnName === 'left' ) {
+
+        // if there are no more models, then display the page
+        if ( modelsToDisplay.length === 0 ) {
+          this.pages.push( page );
+        } else {
+          // if there are more models, then switch to the right column
+          columnName = 'right';
+          column = page.rightColumn;
+        }
+
+      // if this is the bottom of the right column
+      } else {
+
+        // add the displayed page
+        this.pages.push( page );
+
+        // if there are more models, then create the next page
+        if ( modelsToDisplay.length > 0 ) {
+          page = { leftColumn: { forceModels: [] }, rightColumn: { forceModels: [] } };
+          pageNumber++;
+          columnName = 'left';
+          column = page.leftColumn;
+        }
+      }
+
+      // if this is the last model, then display the page
+
+    } while ( modelsToDisplay.length > 0 ); // keep looping if there are more models
+
+    console.log(this.pages);
+  }
+
+  private async sleep(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 }

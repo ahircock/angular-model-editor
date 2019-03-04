@@ -123,68 +123,59 @@ export class ForcePrintComponent implements OnInit {
     // clear the current page layout
     this.pages = [];
 
-    // create the first page; it's height must account for the height of the title box
-    let page: Page = { leftColumn: { forceModels: [] }, rightColumn: { forceModels: [] } };
-    let pageNumber = 1;
-
-    // start adding models to the left column
-    let columnName = 'left';
-    let column = page.leftColumn;
+    // keep track of whether this is the first page
+    let pageNumber = 0;
 
     // loop through all of the models to display
     do {
 
+      // create the page to display
+      const page: Page = { leftColumn: { forceModels: [] }, rightColumn: { forceModels: [] } };
+      pageNumber++;
+
       // get the remaining page height
-      let remainingPageHeight = TOTAL_PAGE_HEIGHT - titleDivHeight;
+      let remainingLeftColHeight = TOTAL_PAGE_HEIGHT - titleDivHeight;
+      let remainingRightColHeight = TOTAL_PAGE_HEIGHT - titleDivHeight;
       if ( pageNumber > 1 ) {
-        remainingPageHeight = TOTAL_PAGE_HEIGHT;
+        remainingLeftColHeight = TOTAL_PAGE_HEIGHT;
+        remainingRightColHeight = TOTAL_PAGE_HEIGHT;
       }
 
       // loop through every model, and add the ones that will fit to the column
       // also remove them from the list of remaining models to display
       let i = 0;
       do {
-        if ( modelsToDisplay[i].height < remainingPageHeight ) {
+
+        // look in the column that has the most height remaining
+        const colName = remainingRightColHeight > remainingLeftColHeight ? 'right' : 'left';
+        const column = remainingRightColHeight > remainingLeftColHeight ? page.rightColumn : page.leftColumn;
+        const remainingHeight = remainingRightColHeight > remainingLeftColHeight ? remainingRightColHeight : remainingLeftColHeight;
+        if ( modelsToDisplay[i].height < remainingHeight ) {
+
+          // add the model to the column
           column.forceModels.push(modelsToDisplay[i].forceModelData);
-          remainingPageHeight -= modelsToDisplay[i].height;
-          modelsToDisplay.splice(i, 1); // remove from the list of remaining models
+
+          // adjust the height remaining
+          if ( colName === 'left' ) {
+            remainingLeftColHeight -= modelsToDisplay[i].height;
+          } else {
+            remainingRightColHeight -= modelsToDisplay[i].height;
+          }
+
+          // remove the model from the list
+          modelsToDisplay.splice(i, 1);
+
+        // not enough height remaining on this page, so move onto the next model
         } else {
-          i++; // move onto the next model
+          i++;
         }
+
       } while ( i < modelsToDisplay.length );
 
-      // if this is the bottom of the left column
-      if ( columnName === 'left' ) {
-
-        // if there are no more models, then display the page
-        if ( modelsToDisplay.length === 0 ) {
-          this.pages.push( page );
-        } else {
-          // if there are more models, then switch to the right column
-          columnName = 'right';
-          column = page.rightColumn;
-        }
-
-      // if this is the bottom of the right column
-      } else {
-
-        // add the displayed page
-        this.pages.push( page );
-
-        // if there are more models, then create the next page
-        if ( modelsToDisplay.length > 0 ) {
-          page = { leftColumn: { forceModels: [] }, rightColumn: { forceModels: [] } };
-          pageNumber++;
-          columnName = 'left';
-          column = page.leftColumn;
-        }
-      }
-
-      // if this is the last model, then display the page
+      // display the page, and create a new one
+      this.pages.push( page );
 
     } while ( modelsToDisplay.length > 0 ); // keep looping if there are more models
-
-    console.log(this.pages);
   }
 
   private async sleep(ms: number) {

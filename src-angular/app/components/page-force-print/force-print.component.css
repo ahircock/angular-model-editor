@@ -23,7 +23,7 @@
 
 /* MODEL DETAIL */
 .model-detail { 
-    margin-bottom: 20px; 
+    padding-bottom: 20px; 
     position: relative;
 }
 .model-count {

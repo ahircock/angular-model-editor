@@ -39,7 +39,7 @@ export class ForcePrintComponent implements OnInit {
    */
   public pages: Page[] = [];
 
-  // the following variables are all used to calculate the height of the 
+  // the following variables are all used to calculate the height of the
   // various div boxes
   @ViewChildren('modeldiv') private modelDivs: QueryList<ElementRef>;
   @ViewChild('titlediv') private titleDiv: ElementRef;
@@ -109,7 +109,7 @@ export class ForcePrintComponent implements OnInit {
   }
 
   /**
-   * This method will use the heights of each div to properly place the 
+   * This method will use the heights of each div to properly place the
    * boxes on the page
    */
   private async placeBoxesOnPages(modelsToDisplay: ModelDisplayInfo[] ) {

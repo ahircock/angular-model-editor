@@ -3,7 +3,8 @@
 
   <!-- LIST OPTIONS -->
   <div *ngFor="let option of model.factionModelData.options">
-    <div class="option-description">{{option.description}}</div>
+
+    <div class="option-description font-orange">{{option.description}}</div>
 
     <!-- LIST CHOICES FOR OPTION -->
     <div *ngFor="let choice of option.choices; index as choiceIndex" 

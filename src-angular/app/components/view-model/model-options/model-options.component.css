@@ -24,9 +24,7 @@
 
 /* OPTIONS */
 .option-description {
-    border: 2px solid;
     padding: 4px;
-    background-color: white;
 }
 .option-choice {
     border: 1px solid;

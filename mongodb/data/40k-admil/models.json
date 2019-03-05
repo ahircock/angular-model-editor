@@ -67,6 +67,9 @@
         ]
     },
     {"_id":"40K.ADMIL.SCION","userId":"global","name":"Tempestus Scion","picture":"tempestus-trooper.jpg","cost":9,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "abilities":[
+            {"abilityId":"40K.ADMIL.RECONPROTOCOL"}
+        ],
         "attacks":[
             {"attackId":"40K.ADMIL.KNIFE"},
             {"attackId":"40K.ADMIL.HOTSHOTLASGUN"},

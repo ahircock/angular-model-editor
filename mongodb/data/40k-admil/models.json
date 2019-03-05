@@ -20,7 +20,7 @@
         "attacks":[
             {"attackId":"40K.ADMIL.GRENADEKRAK"}
         ],
-        "actions":[{"actionId":"MELEECOMMAND","modelActionName":"Give It To Em!"}],
+        "actions":[],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMIL.CHAINSWORD.TEMPEST"}]},

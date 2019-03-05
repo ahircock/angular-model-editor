@@ -12,6 +12,7 @@
                 {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
                 {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
             ]}
-        ]
+        ],
+        "factionAbilities":[{"abilityId":"40K.ADMECH.CANTICLES"}]
     }
 ]

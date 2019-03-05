@@ -7,5 +7,11 @@
             {"modelId":"40K.ADMECH.SKITVANGUARD"},
             {"modelId":"40K.ADMECH.SKITSNIPER","max":1}
         ],
-        "modelOptions":[{"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[{"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},{"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}]}]}
+        "modelOptions":[
+            {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+            ]}
+        ]
+    }
 ]

@@ -23,7 +23,7 @@
     {"_id":"PLASMA","userId":"global","name":"Plasma","text":"You may choose to supercharge when making this attack. If you do, then this attack gains AP4 and D2, however if any hit dice rolls a 1 then this model is immediately removed from play."},
     {"_id":"RAPIDFIRE","userId":"global","name":"Rapid Fire","power":1,"text":"You may perform this attack against 2 different targets, as long as they are within 2\" of each other. Make separate hit rolls with their own modifiers."},
     {"_id":"SCOPED","userId":"global","name":"Scoped","text":"This model always gets the aim modifier"},
-    {"_id":"SHOCK","userId":"global","name":"Shock","text":"If this attack hits, it does no damage; instead the target is marked as fatigued."},
+    {"_id":"STUN","userId":"global","name":"Stun","text":"If this attack hits, it does no damage; instead the target gets the following condition for one round: That model gets the following condition for one round: <i>Stunned</i>: This model only gets 1 short action during its turn, cannot be re-activated and cannot retaliate."},
     {"_id":"SHOTGUN","userId":"global","name":"Close Quarters","text":"If target is within 6\", this attack rolls 3D6 and AP1"},
     {"_id":"SLOWATTACK","userId":"global","name":"Slow Attack","text":"This attack is a long action"},
     {"_id":"SNIPER","userId":"global","name":"Sniper Weapon","text":"This attack is a long action, is not affected by the long range modifier, and always gets the aim modifier."},

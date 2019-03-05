@@ -20,7 +20,7 @@
     {"_id":"REROLLHITAURA","userId":"global","name":"Hit Reroll Aura","power":1,"text":"For the rest of the turn, you can reroll hit rolls of 1 for friendly models within 6” of this model"},
     {"_id":"RESILIENT","userId":"global","name":"Resilient","text":"This model gets +1 on all recovery rolls"},
     {"_id":"SPEEDAURA","userId":"global","name":"Speed Aura","text":"All friendly models that start their activation within 6\" of this model get +1 SP."},
-    {"_id":"STIMPACK","userId":"global","name":"Stim Pack","text":"Single use item. A fatigued model with this item may discard it during the End Phase to become un-fatigued"},
+    {"_id":"STIMPACK","userId":"global","name":"Stim Pack","text":"Single use item. This model may remove a single condition of your choice."},
     {"_id":"SWIFTCHARGE","userId":"global","name":"Swift Charge","text":"This model gains +1 SP while making a Charge action"},
     {"_id":"TERROR","userId":"global","name":"Terror","text":"Enemy models suffer -1 to all Nerve tests while within 3\" of this model"},
     {"_id":"TOXINSACS","userId":"global","name":"Toxin Sacs","text":"Melee hits that roll a natural 6 are resolved with +1 D"}

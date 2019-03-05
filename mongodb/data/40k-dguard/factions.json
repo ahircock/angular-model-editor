@@ -5,6 +5,7 @@
             {"modelId":"40K.DGUARD.PLAGUEMARINE"},
             {"modelId":"40K.DGUARD.PLAGUEGUNNER","max":2},
             {"modelId":"40K.DGUARD.PLAGUEFIGHTER","max":2},
+            {"modelId":"40K.DGUARD.PLAGUEICONBEARER","max":1},
             {"modelId":"40K.DGUARD.POXWALKER"}
         ],
         "modelOptions":[

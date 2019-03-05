@@ -3,7 +3,8 @@
         "attacks":[
         ],
         "abilities":[
-            {"abilityId":"40K.DGUARD.NURGLINGINFESTATION"}
+            {"abilityId":"40K.DGUARD.NURGLINGINFESTATION"},
+            {"abilityId":"40K.DGUARD.GRANDFATHERSBLESSING"}
         ],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
@@ -32,7 +33,7 @@
             ]}
         ],
         "abilities":[
-            {"abilityId":"40K.DGUARD.GRANDFATHERSBLESSING"}
+            {"abilityId":"40K.DGUARD.CLOUDOFFLIES"}
         ]
     },
     {"_id":"40K.DGUARD.PLAGUEFIGHTER","userId":"global","name":"Plague Marine Fighter","picture":"dguard-fighter.jpg","cost":17,"CP":1,"SP":4,"AR":3,"WN":3,"NE":4,
@@ -56,7 +57,6 @@
             {"attackId":"40K.DGUARD.BOLTGUN"}
         ],
         "abilities":[
-            {"abilityId":"40K.DGUARD.CLOUDOFFLIES"}
         ]
     },
     {"_id":"40K.DGUARD.PLAGUEICONBEARER","userId":"global","name":"Plague Marine Icon Bearer","picture":"dguard-pmarine.jpg","cost":14,"CP":0,"SP":4,"AR":3,"WN":3,"NE":4,

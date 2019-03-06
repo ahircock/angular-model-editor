@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.DGUARD.PLAGUECHAMPION","userId":"global","name":"Plague Champion","picture":"dguard-champion.jpg","cost":15,"CP":1,"SP":4,"AR":3,"WN":3,"NE":4,
+    {"_id":"40K.DGUARD.PLAGUECHAMPION","userId":"global","name":"Plague Champion","picture":"dguard-champion.jpg","cost":15,"CP":1,"SP":4,"AR":3,"WN":3,"NE":3,
         "attacks":[
         ],
         "abilities":[

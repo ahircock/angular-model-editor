@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.TSONS.ASPIRINGSORCEROR","userId":"global","name":"Aspiring Sorceror","picture":"tsons-sorceror.jpg","cost":17,"CP":1,"SP":5,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.ASPIRINGSORCEROR","userId":"global","name":"Aspiring Sorceror","picture":"tsons-sorceror.jpg","cost":17,"CP":1,"SP":5,"AR":3,"WN":2,"NE":3,
         "attacks":[
             {"attackId":"40K.TSONS.ASPIRINGSORC.FORCESTAVE"}
         ],

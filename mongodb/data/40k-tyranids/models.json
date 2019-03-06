@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.TY.GENESTEALER","userId":"global","name":"Genestealer","picture":"tyranid-genestealer.jpg","cost":11,"CP":0,"SP":6,"AR":5,"WN":2,"NE":4,
+    {"_id":"40K.TY.GENESTEALER","userId":"global","name":"Genestealer","picture":"tyranid-genestealer.jpg","cost":11,"CP":0,"SP":6,"AR":5,"WN":2,"NE":2,
         "abilities":[
             {"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"}
         ],

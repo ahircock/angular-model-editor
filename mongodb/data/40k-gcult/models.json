@@ -79,6 +79,5 @@
                 {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"MELEEHITAURA"}]}
             ]}
         ]
-    },
-    {}
+    }
 ]

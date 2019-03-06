@@ -59,6 +59,5 @@
     },
     {"_id":"40K.ORK.SPANNER","userId":"global","name":"Ork Spanner","picture":"ork-spanner.jpg","cost":10,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
         "attacks":[{"attackId":"40K.ORK.KUSTOMMEGABLASTA"},{"attackId":"40K.ORK.ORKFIST"}]
-    },
-    {}
+    }
 ]

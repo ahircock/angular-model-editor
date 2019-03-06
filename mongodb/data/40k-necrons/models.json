@@ -40,6 +40,5 @@
     {"_id":"40K.NC.DEATHMARK","userId":"global","name":"Deathmark","picture":"necron-deathmark.jpg","cost":15,"CP":0,"SP":4,"AR":3,"WN":2,"NE":2,
         "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
         "attacks":[{"attackId":"40K.NC.NECRONMELEE"},{"attackId":"40K.NC.SYNAPTICDISINTEGRATOR"}]
-    },
-    {}
+    }
 ]

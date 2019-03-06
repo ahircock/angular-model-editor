@@ -9,6 +9,5 @@
     {"_id":"40K.NC.NECRONMELEE","userId":"global","name":"Melee Weapon","type":"MELEE","RNG":0,"DICE":1,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.NC.STAFFOFLIGHTM","userId":"global","name":"Staff of Light [MELEE]","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
     {"_id":"40K.NC.VOIDSCYTHE","userId":"global","name":"Voidscythe","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.NC.WARSCYTHE","userId":"global","name":"Warscythe","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":4,"DMG":2,"ruleIds":[]},
-    {}
+    {"_id":"40K.NC.WARSCYTHE","userId":"global","name":"Warscythe","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":4,"DMG":2,"ruleIds":[]}
 ]

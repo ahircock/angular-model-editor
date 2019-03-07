@@ -10,11 +10,11 @@
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"modelAbilityName":"Crypt Charge Crystal","abilityId":"STIMPACK"}]}
+                {"cost":1,"abilities":[{"modelAbilityName":"Crypt Charge Crystal","abilityId":"COMMON.ITEM.STIMPACK"}]}
             ]}
         ],
         "factionAbilities":[
-            {"modelAbilityName":"Living Metal","abilityId":"REGEN"}
+            {"modelAbilityName":"Living Metal","abilityId":"COMMON.TOUGH.REGEN"}
         ]
     }
 ]

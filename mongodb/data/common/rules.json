@@ -20,6 +20,7 @@
     {"_id":"LONGRANGE","userId":"global","name":"Long Range","text":"This model does not suffer the -1 hit penalty when making an attack at long range"},
     {"_id":"MELTA","userId":"global","name":"Melta Blast","text":"If target is within 6\", this attack is D4"},
     {"_id":"MELEESHOT","userId":"global","name":"Melee Shot","text":"This attack may be performed while engaged. This attack may target models that are engaged with this model or other models."},
+    {"_id":"ONCE","userId":"global","name":"Once Per Game","text":"You may only perform this attack once per game"},
     {"_id":"PLASMA","userId":"global","name":"Plasma","text":"You may choose to supercharge when making this attack. If you do, then this attack gains AP4 and D2, however if any hit dice rolls a 1 then this model is immediately removed from play."},
     {"_id":"RAPIDFIRE","userId":"global","name":"Rapid Fire","power":1,"text":"You may perform this attack against 2 different targets, as long as they are within 2\" of each other. Make separate hit rolls with their own modifiers."},
     {"_id":"SCOPED","userId":"global","name":"Scoped","text":"This model always gets the aim modifier"},

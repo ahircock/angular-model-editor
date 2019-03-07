@@ -2,9 +2,9 @@ REM drop all existing data
 call mongo model-editor drop-data.js
 
 REM import all of the data files
-cd ./data
+cd ./data/common
 call import-data-local.bat
-cd ./40k-admech
+cd ../40k-admech
 call import-data-local.bat
 cd ../40k-admil
 call import-data-local.bat

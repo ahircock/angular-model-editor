@@ -10,7 +10,7 @@
                 {"cost":2,"attacks":[{"attackId":"40K.GCULT.FLAMERPISTOL"}]}
             ]},
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"modelAbilityName":"Metamorph Whip","abilityId":"PREVENTDISENGAGE"}]}
+                {"cost":1,"abilities":[{"modelAbilityName":"Metamorph Whip","abilityId":"COMMON.MELEE.PREVENTDISENGAGE"}]}
             ]}            
         ]
     },
@@ -25,24 +25,24 @@
                 {"cost":2,"attacks":[{"attackId":"40K.GCULT.FLAMERPISTOL"}]}
             ]},
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
-                {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"MELEEHITAURA"}]}
+                {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"COMMON.AURA6.MELEEHIT"}]}
             ]}            
         ]
     },
     {"_id":"40K.GC.NEOPHYTE","userId":"global","name":"Neophyte","picture":"gcult-neophyte.jpg","cost":5,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
-        "abilities":[{"abilityId":"GRUNT"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"}],
         "attacks":[
             {"attackId":"40K.GCULT.CULTISTKNIFE"},
             {"attackId":"40K.GCULT.AUTOGUN"}
         ],
         "options":[
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
-                {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"MELEEHITAURA"}]}
+                {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"COMMON.AURA6.MELEEHIT"}]}
             ]}
         ]
     },
     {"_id":"40K.GC.NEOPHYTEASSAULT","userId":"global","name":"Neophyte Assault","picture":"gcult-neophyteassault.jpg","cost":8,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
-        "abilities":[{"abilityId":"GRUNT"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"}],
         "attacks":[{"attackId":"40K.GCULT.CULTISTKNIFE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
@@ -53,7 +53,7 @@
         ]
     },
     {"_id":"40K.GC.NEOPHYTEHEAVY","userId":"global","name":"Neophyte Heavy","picture":"gcult-neophyteheavy.jpg","cost":6,"CP":0,"SP":5,"AR":5,"WN":2,"NE":4,
-        "abilities":[{"abilityId":"GRUNT"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"}],
         "attacks":[{"attackId":"40K.GCULT.CULTISTKNIFE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
@@ -76,7 +76,7 @@
             ]},
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":5,"attacks":[{"attackId":"40K.GCULT.DEMOLITIONCHARGES"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"MELEEHITAURA"}]}
+                {"cost":5,"abilities":[{"modelAbilityName":"Cult Icon","abilityId":"COMMON.AURA6.MELEEHIT"}]}
             ]}
         ]
     }

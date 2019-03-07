@@ -4,7 +4,7 @@
             {"attackId":"40K.TSONS.ASPIRINGSORC.FORCESTAVE"}
         ],
         "abilities":[
-            {"modelAbilityName":"Transhuman Physiology","abilityId":"REROLLRECOVERY"}
+            {"modelAbilityName":"Transhuman Physiology","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}
         ],
         "actions":[],
         "options":[
@@ -13,8 +13,8 @@
                 {"cost":1,"attacks":[{"attackId":"40K.TSONS.WARPFLAMEPISTOL"}]}
             ]},
             {"id":"PSYCHIC","description":"Choose one psychic power","choices":[
-                {"cost":0,"actions":[{"modelActionName":"Psybolt","actionId":"SPELL.DIRECTATTACK"}]},
-                {"cost":0,"actions":[{"modelActionName":"Psychic Stun","actionId":"SPELL.STUN"}]}
+                {"cost":0,"actions":[{"modelActionName":"Psybolt","actionId":"COMMON.ATTACK.DIRECTDMG"}]},
+                {"cost":0,"actions":[{"modelActionName":"Psychic Stun","actionId":"COMMON.DEBUFF.STUN"}]}
             ]}
 
         ]

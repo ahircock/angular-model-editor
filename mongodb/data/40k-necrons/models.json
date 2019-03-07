@@ -1,6 +1,6 @@
 [   
     {"_id":"40K.NC.OVERLORD","userId":"global","name":"Necron Overlord","picture":"necron-overlord.jpg","cost":25,"CP":2,"SP":4,"AR":3,"WN":3,"NE":2,
-        "abilities":[{"modelAbilityName":"Phase Shifter","abilityId":"INVULNERABLE.4+"}],
+        "abilities":[{"modelAbilityName":"Phase Shifter","abilityId":"COMMON.ARMOR.INVULNERABLE.4+"}],
         "actions":[{"actionId":"40K.NC.REANIMATIONPROTOCOL"},{"actionId":"40K.NC.PRIMEREANIMATIONPROTOCOL"}],
         "options":[
             {"id":"WEAPON","description":"Choose a weapon","choices":[
@@ -11,7 +11,7 @@
         ]
     },
     {"_id":"40K.NC.IMMORTALPRIME","userId":"global","name":"Immortal Prime","picture":"necron-immortal.jpg","cost":19,"CP":1,"SP":4,"AR":3,"WN":2,"NE":2,
-        "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
+        "abilities":[],
         "attacks":[{"attackId":"40K.NC.NECRONMELEE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
@@ -21,10 +21,10 @@
         ]
     },
     {"_id":"40K.NC.WARRIOR","userId":"global","name":"Necron Warrior","picture":"necron-warrior.jpg","cost":12,"CP":0,"SP":4,"AR":4,"WN":2,"NE":2,
-        "attacks":[{"attackId":"40K.NC.NECRONMELEE"},{"attackId":"40K.NC.GAUSSFLAYER"}]
+        "attacks":[]
     },
     {"_id":"40K.NC.IMMORTAL","userId":"global","name":"Immortal","picture":"necron-immortal.jpg","cost":16,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
-        "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
+        "abilities":[],
         "attacks":[{"attackId":"40K.NC.NECRONMELEE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
@@ -35,10 +35,10 @@
     },
     {"_id":"40K.NC.FLAYEDONE","userId":"global","name":"Flayed One","picture":"necron-flayedone.jpg","cost":10,"CP":0,"SP":4,"AR":4,"WN":2,"NE":2,
         "attacks":[{"attackId":"40K.NC.FLAYERCLAWS"}],
-        "abilities":[{"modelAbilityName":"Entropic Strike","abilityId":"SWIFTCHARGE"}]
+        "abilities":[{"modelAbilityName":"Entropic Strike","abilityId":"COMMON.MOVE.SWIFTCHARGE"}]
     },
     {"_id":"40K.NC.DEATHMARK","userId":"global","name":"Deathmark","picture":"necron-deathmark.jpg","cost":15,"CP":0,"SP":4,"AR":3,"WN":2,"NE":2,
-        "abilities":[{"modelAbilityName":"Targeting Routines","abilityId":"MARKSMAN"}],
+        "abilities":[],
         "attacks":[{"attackId":"40K.NC.NECRONMELEE"},{"attackId":"40K.NC.SYNAPTICDISINTEGRATOR"}]
     }
 ]

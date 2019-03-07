@@ -10,13 +10,13 @@
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.STIMPACK"}]}
             ]}
         ],
         "factionAbilities":[
-            {"modelAbilityName":"Transhuman Physiology","abilityId":"REROLLRECOVERY"},
-            {"modelAbilityName":"Disgustingly Resilient","abilityId":"RESILIENT"}
+            {"modelAbilityName":"Transhuman Physiology","abilityId":"COMMON.TOUGH.REROLLRECOVERY"},
+            {"modelAbilityName":"Disgustingly Resilient","abilityId":"COMMON.TOUGH.RESILIENT"}
         ],
         "factionAttacks":[
             {"attackId":"40K.DGUARD.BLIGHTGRENADE"},

@@ -1,7 +1,7 @@
 [
     {"_id":"40K.ADMIL.SERGEANT","userId":"global","name":"Guard Sergeant","picture":"guard-sergeant.jpg","cost":7,"CP":1,"SP":5,"AR":5,"WN":2,"NE":4,
         "abilities":[
-            {"abilityId":"LEADERSHIP"}
+            {"abilityId":"COMMON.AURA6.LEADERSHIP"}
         ],
         "actions":[],
         "options":[
@@ -16,7 +16,7 @@
         ]
     },
     {"_id":"40K.ADMIL.TEMPESTOR","userId":"global","name":"Tempestor","picture":"tempestus-sergeant.jpg","cost":10,"CP":1,"SP":5,"AR":4,"WN":2,"NE":4,
-        "abilities":[{"abilityId":"LEADERSHIP"}],
+        "abilities":[{"abilityId":"COMMON.AURA6.LEADERSHIP"}],
         "attacks":[
             {"attackId":"40K.ADMIL.GRENADEKRAK"}
         ],
@@ -34,14 +34,14 @@
         ]
     },
     {"_id":"40K.ADMIL.GUARDSMAN","userId":"global","name":"Guardsman","picture":"guard-trooper.jpg","cost":5,"CP":0,"SP":5,"AR":5,"WN":2,"NE":5,
-        "abilities":[{"abilityId":"GRUNT"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"}],
         "attacks":[
             {"attackId":"40K.ADMIL.KNIFE"},
             {"attackId":"40K.ADMIL.LASGUN"}
         ]
     },
     {"_id":"40K.ADMIL.GUARDSMANGUNNER","userId":"global","name":"Guardsman Gunner","picture":"guard-gunner.jpg","cost":8,"CP":0,"SP":5,"AR":5,"WN":2,"NE":5,
-        "abilities":[{"abilityId":"GRUNT"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"}],
         "attacks":[{"attackId":"40K.ADMIL.KNIFE"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
@@ -53,13 +53,13 @@
         ]
     },
     {"_id":"40K.ADMIL.GUARDSMANSNIPER","userId":"global","name":"Guardsman Sniper","picture":"guard-sniper.jpg","cost":7,"CP":0,"SP":5,"AR":5,"WN":2,"NE":5,
-        "abilities":[{"abilityId":"GRUNT"},{"modelAbilityName":"Camo Cloak","abilityId":"CAMO"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"},{"modelAbilityName":"Camo Cloak","abilityId":"COMMON.DEFENSE.CAMO"}],
         "attacks":[{"attackId":"40K.ADMIL.KNIFE"},{"attackId":"40K.ADMIL.SNIPERRIFLE"}]
     },
     {"_id":"40K.ADMIL.GUARDSMANCOMMS","userId":"global","name":"Guardsman Comms","picture":"guard-comms.jpg","cost":10,"CP":0,"SP":5,"AR":5,"WN":2,"NE":5,
         "abilities":[
-            {"abilityId":"GRUNT"},
-            {"abilityId":"40K.ADMIL.VOXCASTER"}
+            {"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"},
+            {"modelAbilityName":"Vox-Caster","abilityId":"COMMON.AURAALL.REROLLNERVE"}
         ],
         "attacks":[
             {"attackId":"40K.ADMIL.KNIFE"},

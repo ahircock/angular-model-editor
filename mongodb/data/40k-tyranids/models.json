@@ -1,12 +1,12 @@
 [
     {"_id":"40K.TY.GENESTEALER","userId":"global","name":"Genestealer","picture":"tyranid-genestealer.jpg","cost":11,"CP":0,"SP":6,"AR":5,"WN":2,"NE":2,
         "abilities":[
-            {"modelAbilityName":"Lightning Reflexes","abilityId":"INVULNERABLE.5+"}
+            {"modelAbilityName":"Lightning Reflexes","abilityId":"COMMON.ARMOR.INVULNERABLE.5+"}
         ],
         "options":[
             {"id":"BASE","description":"Choose genetic strain","choices":[
-                {"cost":0,"abilities":[{"modelAbilityName":"Swift Hunter","abilityId":"SWIFTCHARGE"}]},
-                {"cost":0,"abilities":[{"modelAbilityName":"Extended Carapace","abilityId":"MODAR+1"}]}
+                {"cost":0,"abilities":[{"modelAbilityName":"Swift Hunter","abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":0,"abilities":[{"modelAbilityName":"Extended Carapace","abilityId":"COMMON.ARMOR.ARMOR+1"}]}
             ]},
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.TYRANID.RENDINGCLAW"}]},
@@ -14,7 +14,7 @@
                 {"cost":3,"attacks":[{"attackId":"40K.TYRANID.ACIDMAW"}]}
             ]},
             {"id":"EQUIP","description":"Choose bio enhancements","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"abilityId":"TOXINSACS"}]},
+                {"cost":1,"abilities":[{"modelAbilityName":"Toxin Sacs","abilityId":"COMMON.MELEE.CRITDMG+1"}]},
                 {"cost":1,"attacks":[{"attackId":"40K.TYRANID.FLESHHOOKS"}]}
             ]}
         ]

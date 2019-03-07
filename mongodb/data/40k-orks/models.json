@@ -15,7 +15,7 @@
         ]
     },
     {"_id":"40K.ORK.KOMMANDOBOSSNOB","userId":"global","name":"Kommando Boss Nob","picture":"ork-kommandoboss.jpg","cost":12,"CP":1,"SP":5,"AR":6,"WN":3,"NE":4,
-        "abilities":[{"modelAbilityName":"Sneaky Gitz","abilityId":"CAMO"}],
+        "abilities":[{"modelAbilityName":"Sneaky Gitz","abilityId":"COMMON.DEFENSE.CAMO"}],
         "attacks":[{"attackId":"40K.ORK.SLUGGA"}],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
@@ -25,7 +25,7 @@
         ]
     },
     {"_id":"40K.ORK.ORKBOY","userId":"global","name":"Ork Boy","picture":"ork-boy.jpg","cost":6,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
-        "abilities":[{"abilityId":"GRUNT"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"}],
         "attacks":[],
         "options":[
             {"id":"WEAPON","description":"Choose a weapon combo","choices":[
@@ -44,11 +44,11 @@
         ]
     },
     {"_id":"40K.ORK.GRETCHIN","userId":"global","name":"Gretchin","picture":"ork-gretchin.jpg","cost":3,"CP":0,"SP":5,"AR":6,"WN":1,"NE":6,
-        "abilities":[{"abilityId":"GRUNT"},{"abilityId":"40K.ORK.KICKBOY"}],
+        "abilities":[{"modelAbilityName":"Grunt","abilityId":"COMMON.WEAK.RECOVERY-1"},{"abilityId":"40K.ORK.KICKBOY"}],
         "attacks":[{"attackId":"40K.ORK.GROTBLASTA"},{"attackId":"40K.ORK.GRETCHINBITE"}]
     },
     {"_id":"40K.ORK.KOMMANDO","userId":"global","name":"Kommando","picture":"ork-kommando.jpg","cost":8,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
-        "abilities":[{"modelAbilityName":"Sneaky Gitz","abilityId":"CAMO"}],
+        "abilities":[{"modelAbilityName":"Sneaky Gitz","abilityId":"COMMON.DEFENSE.CAMO"}],
         "attacks":[{"attackId":"40K.ORK.SLUGGA"},{"attackId":"40K.ORK.CHOPPA"}]
     },
     {"_id":"40K.ORK.BURNABOY","userId":"global","name":"Burna Boy","picture":"ork-burna.jpg","cost":12,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,

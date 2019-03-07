@@ -4,7 +4,8 @@
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCMAUL"}]},
                 {"cost":1,"attacks":[{"attackId":"40K.ADMECH.POWERSWORD"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.TASERGOAD"}]}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.TASERGOAD"}]}
+            ]},
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.RADIUMPISTOL"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCPISTOL"}]},
@@ -23,10 +24,18 @@
             ]}
         ]
     },
-    {"_id":"40K.ADMECH.SKITRANGER","userId":"global","name":"Skitarii Ranger","picture":"skitarii-ranger.jpg","cost":9,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SKITCOMMS","userId":"global","name":"Skitarri Comms","picture":"skitarii-comms.jpg","cost":14,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "abilities":[
+            {"modelAbilityName":"Enhanced Data Tether","abilityId":"COMMON.AURAALL.REROLLNERVE"}
+        ],
         "attacks":[
-            {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"},
-            {"attackId":"40K.ADMECH.GALVANICRIFLE"}
+            {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"}
+        ],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.GALVANICRIFLE"}]},
+                {"cost":3,"attacks":[{"attackId":"40K.ADMECH.RADIUMCARBINE"}]}
+            ]}
         ]
     },
     {"_id":"40K.ADMECH.SKITSNIPER","userId":"global","name":"Skitarii Sniper","picture":"skitarii-ranger-arquebus.jpg","cost":15,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
@@ -35,10 +44,26 @@
             {"attackId":"40K.ADMECH.TRANSARQUE"}
         ]
     },
+    {"_id":"40K.ADMECH.SKITRANGER","userId":"global","name":"Skitarii Ranger","picture":"skitarii-ranger.jpg","cost":9,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+        "attacks":[
+            {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"},
+            {"attackId":"40K.ADMECH.GALVANICRIFLE"}
+        ],
+        "options":[
+            {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"modelAbilityName":"Omnispex","abilityId":"COMMON.ASSIST.IGNORECOVER"}]}
+            ]}            
+        ]
+    },
     {"_id":"40K.ADMECH.SKITVANGUARD","userId":"global","name":"Skitarii Vanguard","picture":"skitarii-vanguard.jpg","cost":9,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[
             {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"},
             {"attackId":"40K.ADMECH.RADIUMCARBINE"}
+        ],
+        "options":[
+            {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
+                {"cost":1,"abilities":[{"modelAbilityName":"Omnispex","abilityId":"COMMON.ASSIST.IGNORECOVER"}]}
+            ]}            
         ]
     }
 ]

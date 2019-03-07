@@ -3,14 +3,15 @@
         "models":[
             {"modelId":"40K.ADMECH.SKITALPHA","max":1},
             {"modelId":"40K.ADMECH.SKITGUNNER","max":3},
+            {"modelId":"40K.ADMECH.SKITSNIPER","max":1},
+            {"modelId":"40K.ADMECH.SKITCOMMS","max":1},
             {"modelId":"40K.ADMECH.SKITRANGER"},
-            {"modelId":"40K.ADMECH.SKITVANGUARD"},
-            {"modelId":"40K.ADMECH.SKITSNIPER","max":1}
+            {"modelId":"40K.ADMECH.SKITVANGUARD"}
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.STIMPACK"}]}
             ]}
         ],
         "factionAbilities":[{"abilityId":"40K.ADMECH.CANTICLES"}]

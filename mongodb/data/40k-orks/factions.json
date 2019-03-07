@@ -11,12 +11,12 @@
             {"modelId":"40K.ORK.LOOTA"},
             {"modelId":"40K.ORK.SPANNER"}
         ],
-        "factionAbilities":[{"modelAbilityName":"ERE WE GO!","abilityId":"SWIFTCHARGE"}],
+        "factionAbilities":[{"modelAbilityName":"ERE WE GO!","abilityId":"COMMON.MOVE.SWIFTCHARGE"}],
         "factionAttacks":[{"attackId":"40K.ORK.STIKKBOMB"}],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"modelAbilityName":"DOK STUFFS","abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"modelAbilityName":"FUNGUS BREW","abilityId":"STIMPACK"}]}
+                {"cost":1,"abilities":[{"modelAbilityName":"DOK STUFFS","abilityId":"COMMON.ITEM.MEDKIT"}]},
+                {"cost":1,"abilities":[{"modelAbilityName":"FUNGUS BREW","abilityId":"COMMON.ITEM.STIMPACK"}]}
             ]}
         ]
     }

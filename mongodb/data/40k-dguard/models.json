@@ -65,7 +65,7 @@
             {"attackId":"40K.DGUARD.BOLTGUN"}
         ],
         "abilities":[
-            {"modelAbilityName":"Icon of Despair","abilityId":"FEARAURA"}
+            {"modelAbilityName":"Icon of Despair","abilityId":"COMMON.FEAR.FEARAURA"}
         ]
     },
     {"_id":"40K.DGUARD.POXWALKER","userId":"global","name":"Pox Walker","picture":"dguard-poxwalker.jpg","cost":3,"CP":0,"SP":4,"AR":6,"WN":2,"NE":6,

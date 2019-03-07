@@ -1,7 +1,7 @@
 [
     {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":33,"CP":2,"SP":5,"AR":3,"WN":4,"NE":2,
         "abilities":[
-            {"abilityId":"LEADERSHIP"}
+            {"abilityId":"COMMON.AURA6.LEADERSHIP"}
         ],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
@@ -15,8 +15,8 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ASTARTES.BOLTRIFLESTALKER"}]}
             ]},
             {"id":"CAPTAIN","description":"Choose captain options","optional":true,"multiSelect":true,"choices":[
-                {"cost":7,"abilities":[{"modelAbilityName":"Iron Halo","abilityId":"INVULNERABLE.4+"}]},
-                {"cost":7,"abilities":[{"modelAbilityName":"Rites Of Battle","abilityId":"REROLLHITAURA"}]}                
+                {"cost":7,"abilities":[{"modelAbilityName":"Iron Halo","abilityId":"COMMON.ARMOR.INVULNERABLE.4+"}]},
+                {"cost":7,"abilities":[{"modelAbilityName":"Rites Of Battle","abilityId":"COMMON.AURA6.ATTACKHIT"}]}                
             ]}
         ]
     },
@@ -36,7 +36,7 @@
     },
     {"_id":"40K.ASTARTES.SERGEANTREIVER","userId":"global","name":"Reiver Sergeant","picture":"smarine-reiversergeant.jpg","cost":17,"CP":1,"SP":5,"AR":3,"WN":3,"NE":3,
         "abilities":[
-            {"modelAbilityName":"Terror Troops","abilityId":"TERROR"}
+            {"modelAbilityName":"Terror Troops","abilityId":"COMMON.FEAR.FEARAURA"}
         ],
        "attacks":[{"attackId":"40K.ASTARTES.GRENADESHOCK"},{"attackId":"40K.ASTARTES.MELEE.REIVERSGT"}],
         "options":[
@@ -96,7 +96,7 @@
         ]
     },
     {"_id":"40K.ASTARTES.SCOUTSNIPER","userId":"global","name":"Scout Sniper","picture":"smarine-scoutsniper.jpg","cost":12,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
-        "abilities":[{"modelAbilityName":"Camo Cloak","abilityId":"CAMO"}],
+        "abilities":[{"modelAbilityName":"Camo Cloak","abilityId":"COMMON.DEFENSE.CAMO"}],
         "attacks":[{"attackId":"40K.ASTARTES.MELEE.TAC"}],
         "options":[
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
@@ -163,7 +163,7 @@
     },
     {"_id":"40K.ASTARTES.REIVER","userId":"global","name":"Primaris Reiver","picture":"smarine-reiver.jpg","cost":16,"CP":0,"SP":5,"AR":3,"WN":3,"NE":4,
         "abilities":[
-            {"modelAbilityName":"Terror Troops","abilityId":"TERROR"}
+            {"modelAbilityName":"Terror Troops","abilityId":"COMMON.FEAR.FEARAURA"}
         ],
        "attacks":[{"attackId":"40K.ASTARTES.GRENADESHOCK"}],
         "options":[

@@ -10,7 +10,7 @@
             {"modelId":"40K.TSONS.BRAYHORN","max":1}
         ],
         "factionAbilities":[
-            {"modelAbilityName":"Aura of Dark Glory","abilityId":"INVULNERABLE.5+"}
+            {"modelAbilityName":"Aura of Dark Glory","abilityId":"COMMON.ARMOR.INVULNERABLE.5+"}
         ],
         "factionAttacks":[
         ]

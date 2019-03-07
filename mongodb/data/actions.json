@@ -1,8 +1,0 @@
-[
-    {"_id": "MELEECOMMAND","userId": "global","name": "Fight!","duration": "short","text": "Target another friendly model within 12”. Target model may immediately perform a melee attack action for free"},
-    {"_id": "MOVECOMMAND","userId": "global","name": "Move!","duration": "short","text": "Target another friendly model within 12”. Target model may immediately perform a Walk action for free"},
-
-    {"_id": "SPELL.DIRECTATTACK","userId": "global","name": "Direct Attack","duration": "short","text": "Target an enemy model within 12\"and LOS. Roll a D6. On a 3+ that model suffers 1 mortal wound, on a 6 that model suffers 2 mortal wounds"},
-    {"_id": "SPELL.STUN","userId": "global","name": "Stun","duration": "short","text": "Target an enemy model within 12\" and LOS. That model gets the following condition for one round: <i>Stunned</i>: This model only gets 1 short action during its turn, cannot be re-activated and cannot retaliate."},
-    {"_id": "SPELL.SLEEP","userId": "global","name": "Sleep","duration": "long","text": "Target an enemy model within 12\" and LOS. That model gets the following condition for one round: <i>Sleep</i>: This model is knocked down and cannot perform any actions; remove this condition if the model takes any damage."}
-]

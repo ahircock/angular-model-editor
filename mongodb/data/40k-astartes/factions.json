@@ -20,13 +20,13 @@
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.STIMPACK"}]}
             ]}
         ],
         "factionAbilities":[
-            {"modelAbilityName":"And They Shall Know No Fear","abilityId":"REROLLNERVE"},
-            {"modelAbilityName":"Transhuman Physiology","abilityId":"REROLLRECOVERY"}
+            {"modelAbilityName":"And They Shall Know No Fear","abilityId":"COMMON.NERVE.REROLLNERVE"},
+            {"modelAbilityName":"Transhuman Physiology","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}
         ],
         "factionAttacks":[
             {"attackId":"40K.ASTARTES.GRENADEFRAG"},

@@ -11,11 +11,14 @@
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[
-                {"cost":1,"abilities":[{"abilityId":"MEDKIT"}]},
-                {"cost":1,"abilities":[{"abilityId":"STIMPACK"}]}
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.MEDKIT"}]},
+                {"cost":1,"abilities":[{"abilityId":"COMMON.ITEM.STIMPACK"}]}
             ]}
         ],
-        "factionAbilities":[{"modelAbilityName":"Cult Ambush","abilityId":"AMBUSH"}],
+        "factionAbilities":[
+            {"modelAbilityName":"Hidden Tunnels","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"},
+            {"modelAbilityName":"Cult Ambush","abilityId":"COMMON.SETUP.HIDDEN"}
+        ],
         "factionAttacks":[{"attackId":"40K.GCULT.BLASTINGCHARGES"}]
     }
 ]

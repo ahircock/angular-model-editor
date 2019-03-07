@@ -11,7 +11,10 @@
     padding: 4px;
 }
 .model-image img {
-    height: 48px; 
+    height: 48px;
+    width: 48px;
+    object-fit: contain; 
+    background: white;
     margin-left: auto; 
     margin-right: auto; 
     display: block;

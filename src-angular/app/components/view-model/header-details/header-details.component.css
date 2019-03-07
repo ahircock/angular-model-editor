@@ -5,6 +5,9 @@
 }
 .model-image-box  img {
     height: 120px;
+    width: 120px;
+    object-fit: contain;
+    background: white;
 }
 .model-text-box {
     position: relative;

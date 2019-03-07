@@ -65,7 +65,10 @@
 }
 .model-selection .model-image-box {
     position: absolute;
+    height: 24px;
     width: 24px;
+    object-fit: contain;
+    background: white;
 }
 .model-selection .model-image {
     height: 24px; margin-left: auto; margin-right: auto; display: block;

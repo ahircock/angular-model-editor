@@ -20,9 +20,9 @@
   </div>
   
   <!-- MODEL ABILITIES -->
-  <div *ngIf="model.abilities.length > 0" class="section-title">ABILITIES</div>
+  <div *ngIf="visibleAbilities.length > 0" class="section-title">ABILITIES</div>
   <div>
-    <div *ngFor="let ability of model.abilities; index as ruleIndex" class="section-row">
+    <div *ngFor="let ability of visibleAbilities" class="section-row">
       <app-ability-details *ngIf="ability.abilityData.display" [ability]="ability"></app-ability-details>
     </div>
   </div>

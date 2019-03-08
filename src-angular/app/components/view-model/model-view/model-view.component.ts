@@ -1,6 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { PORTRAIT_LIST } from '../../../../assets/portraits/portrait-list.const';
 import { ForceModelData } from '../../../services/force-data.service';
+import { ModelAbilityData } from 'src-angular/app/services/model-data.service';
 
 interface StatCost {
   stat: number;
@@ -12,7 +13,7 @@ interface StatCost {
   templateUrl: './model-view.component.html',
   styleUrls: ['./model-view.component.css']
 })
-export class ModelViewComponent implements OnInit {
+export class ModelViewComponent implements OnInit, OnChanges {
 
   @Input() model: ForceModelData;
   @Input() allowEdit: boolean;
@@ -20,10 +21,27 @@ export class ModelViewComponent implements OnInit {
 
   modelPortraits: string[] = PORTRAIT_LIST;
   showModelPortraitsDropdown = false;
+  visibleAbilities: ModelAbilityData[] = [];
 
   constructor(
    ) { }
 
   ngOnInit() {
+    this.setupVisibleAbilities();
+  }
+
+  ngOnChanges() {
+    this.setupVisibleAbilities();
+  }
+
+  private setupVisibleAbilities() {
+    // setup the list of visible abilities
+    if ( this.model ) {
+      for ( const ability of this.model.abilities ) {
+        if ( ability.abilityData.display ) {
+          this.visibleAbilities.push(ability);
+        }
+      }
+    }
   }
 }

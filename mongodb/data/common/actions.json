@@ -9,6 +9,8 @@
 
     {"_id": "COMMON.DEBUFF.STUN","userId": "global","name": "Stun","duration": "short","text": "Target an enemy model within 12\" and LOS. That model gets the following condition: <i>Stunned</i>: This model only gets 1 short action during its turn, cannot be given an extra action, cannot be re-activated and cannot retaliate; remove this condition at the end of its activation"},
     {"_id": "COMMON.DEBUFF.SLEEP","userId": "global","name": "Sleep","duration": "long","text": "Target an enemy model within 12\" and LOS. That model gets the following condition for one round: <i>Sleep</i>: This model is knocked down and cannot perform any actions; remove this condition if the model takes any damage."},
+    {"_id": "COMMON.DEBUFF.RANGETARGET","userId": "global","name": "Ranged Target","duration": "short","text": "Target an enemy model within 24\" and LOS. That model gets the following condition for one round: <i>Targeted</i>: Any ranged attacks targeting this model get the Aim modifier"},
+    {"_id": "COMMON.DEBUFF.MELEETARGET","userId": "global","name": "Melee Target","duration": "short","text": "Target an enemy model engaged with this model. That model gets the following condition for one round: <i>Off-Balance</i>: Any melee attacks targeting this model get the Focus modifier"},
 
     {"_id": "COMMON.HEAL.REMOVECONDITION","userId": "global","name": "Remove Condition","duration": "short","text": "Target a model within 1\" and LOS. Remove 1 condition from that model"},
     {"_id": "COMMON.HEAL.HEAL","userId": "global","name": "Heal","duration": "short","text": "Target a model within 1\" and LOS. Roll 1D6. On a 1+ that model heals 1 wound, on a 4+ that model heals 2 wounds"},

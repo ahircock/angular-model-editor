@@ -1,7 +1,7 @@
 [
     {"_id":"40K.ADMIL.SERGEANT","userId":"global","name":"Guard Sergeant","picture":"guard-sergeant.jpg","cost":7,"CP":1,"SP":5,"AR":5,"WN":2,"NE":4,
         "abilities":[
-            {"abilityId":"COMMON.AURA6.LEADERSHIP"}
+            {"abilityId":"COMMON.AURA6.USENERVE"}
         ],
         "actions":[],
         "options":[
@@ -16,7 +16,7 @@
         ]
     },
     {"_id":"40K.ADMIL.TEMPESTOR","userId":"global","name":"Tempestor","picture":"tempestus-sergeant.jpg","cost":10,"CP":1,"SP":5,"AR":4,"WN":2,"NE":4,
-        "abilities":[{"abilityId":"COMMON.AURA6.LEADERSHIP"}],
+        "abilities":[{"abilityId":"COMMON.AURA6.USENERVE"}],
         "attacks":[
             {"attackId":"40K.ADMIL.GRENADEKRAK"}
         ],

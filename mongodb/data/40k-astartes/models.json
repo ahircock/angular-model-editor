@@ -1,7 +1,7 @@
 [
     {"_id":"40K.ASTARTES.PRIMARISCAPTAIN","userId":"global","name":"Primaris Captain","picture":"smarine-captain.jpg","cost":33,"CP":2,"SP":5,"AR":3,"WN":4,"NE":2,
         "abilities":[
-            {"abilityId":"COMMON.AURA6.LEADERSHIP"}
+            {"abilityId":"COMMON.AURA6.USENERVE"}
         ],
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[

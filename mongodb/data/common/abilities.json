@@ -2,9 +2,14 @@
     {"_id":"COMMON.ITEM.MEDKIT","userId":"global","name":"Med Kit","text":"Single use item. This model may use this item during its activation to recover 1 wound"},
     {"_id":"COMMON.ITEM.STIMPACK","userId":"global","name":"Stim Pack","text":"Single use item. This model may use this item during its activation to remove 1 condition"},
 
-    {"_id":"COMMON.LEADER.COMMAND+1","userId":"global","name":"Command +1","modCP":1,"text":"This model gets +1 Command Point"},
+    {"_id":"COMMON.COMMAND.CP+1","userId":"global","name":"Tactician","modCP":1,"text":"This model gets +1 Command Point"},
+    {"_id":"COMMON.COMMAND.CP+2","userId":"global","name":"Master Tactician","modCP":2,"text":"This model gets +2 Command Point"},
     
-    {"_id":"COMMON.AURA6.LEADERSHIP","userId":"global","name":"Leadership Aura","text":"Friendly models within 6\" may use this model's NE stat instead of their own"},
+    {"_id":"COMMON.NERVE.REROLLNERVE","userId":"global","name":"Reroll Nerve","text":"You can reroll Nerve tests for this model"},
+    {"_id":"COMMON.NERVE.PASSNERVE","userId":"global","name":"Pass Nerve","text":"This model automatically passes Nerve tests"},
+    {"_id":"COMMON.NERVE.NERVE+1","userId":"global","name":"Bravery","text":"This models NE is improved by 1","modNE":-1},
+
+    {"_id":"COMMON.AURA6.USENERVE","userId":"global","name":"Leadership","text":"Friendly models within 6\" may use this model's NE stat instead of their own"},
     {"_id":"COMMON.AURA6.REROLLNERVE","userId":"global","name":"Reroll Nerve Aura","text":"This model and friendly models within 6\" may reroll Nerve tests"},
     {"_id":"COMMON.AURA6.PASSNERVE","userId":"global","name":"Pass Nerve Aura","text":"This model and friendly models within 6\" automatically pass Nerve tests"},
     {"_id":"COMMON.AURA6.MELEEHIT","userId":"global","name":"Melee Hit Aura","text":"This model and friendly models within 6\" can re-roll melee hit rolls of 1"},
@@ -34,22 +39,20 @@
 
     {"_id":"COMMON.TOUGH.REROLLRECOVERY","userId":"global","name":"Reroll Recovery","text":"You can reroll recovery rolls for this model"},
     {"_id":"COMMON.TOUGH.PASSRECOVERY","userId":"global","name":"Pass Recovery","text":"This model automatically passes recovery rolls"},
-    {"_id":"COMMON.TOUGH.RESILIENT","userId":"global","name":"Resilient","text":"This model gets +1 on all recovery rolls"},
+    {"_id":"COMMON.TOUGH.RECOVERY+1","userId":"global","name":"Recovery +1","text":"This model gets +1 on all recovery rolls"},
     {"_id":"COMMON.TOUGH.WOUNDS+1","userId":"global","name":"Wounds +1","text":"This model gets one additional wound","modWN":1},
     {"_id":"COMMON.TOUGH.REGEN","userId":"global","name":"Regeneration","power":1,"text":"Use during the end phase. This model may heal one wound. A model may only use this ability once per round"},
    
-    {"_id":"COMMON.FEAR.FEARAURA","userId":"global","name":"Fear Aura","text":"All enemy models suffer -1 to Nerve tests while within 6\" of this model"},
-    {"_id":"COMMON.FEAR.TERRORAURA","userId":"global","name":"Terror Aura","text":"All enemy models suffer -2 to Nerve tests while within 6\" of this model"},
+    {"_id":"COMMON.FEAR.FEARAURA","userId":"global","name":"Fear Aura","text":"All enemy models suffer -1 to Nerve tests while within 3\" of this model"},
+    {"_id":"COMMON.FEAR.TERRORAURA","userId":"global","name":"Terror Aura","text":"All enemy models suffer -2 to Nerve tests while within 3\" of this model"},
     {"_id":"COMMON.FEAR.INTIMIDATING","userId":"global","name":"Intimidating","text":"Enemy models must pass a Nerve test before they can declare this model as a charge target"},
     
-    {"_id":"COMMON.NERVE.REROLLNERVE","userId":"global","name":"Reroll Nerve","text":"You can reroll Nerve tests for this model"},
-    {"_id":"COMMON.NERVE.PASSNERVE","userId":"global","name":"Pass Nerve","modCP":1,"text":"This model automatically passes Nerve tests"},
-    {"_id":"COMMON.NERVE.NERVE+1","userId":"global","name":"Nerve +1","text":"This models NE is improved by 1","modNE":-1},
-
     {"_id":"COMMON.RANGED.HIT+1","userId":"global","name":"Ranged +1 Hit","text":"This model gets +1 to hit for ranged attacks"},
     {"_id":"COMMON.RANGED.REROLLHIT","userId":"global","name":"Reroll Ranged","text":"This model can re-roll ranged hit rolls of 1"},
     {"_id":"COMMON.RANGED.CRITDMG+1","userId":"global","name":"Critical Damage +1","text":"Ranged hits that roll a natural 6 are resolved with +1 D"},
     {"_id":"COMMON.RANGED.DOUBLEATTACK","userId":"global","name":"Double Attack","text":"When this model performs a ranged attack action, it may attack twice. Completely resolve the first attack before making the second attack."},
+    {"_id":"COMMON.RANGED.HEAVY","userId":"global","name":"Heavy Gunner","text":"This model can perform attacks with HEAVY WEAPONS as a short action."},
+    {"_id":"COMMON.RANGED.REPOSITION","userId":"global","name":"Fire & Reposition","text":"After performing a ranged attack, this model may move 3\""},
 
     {"_id":"COMMON.MELEE.PREVENTDISENGAGE","userId":"global","name":"Prevent Disengage","text":"When performing a disengaging attack, you may choose to deal no damage and instead the enemy model's move ends immediately"},
     {"_id":"COMMON.MELEE.CRITDMG+1","userId":"global","name":"Critical Damage +1","text":"Melee hits that roll a natural 6 are resolved with +1 D"},
@@ -57,14 +60,18 @@
     {"_id":"COMMON.MELEE.CRITAP+4","userId":"global","name":"Critical Damage +1","text":"Melee hits that roll a natural 6 are resolved with +4 AP"},
     {"_id":"COMMON.MELEE.DICE+1","userId":"global","name":"Melee Dice +1","text":"This model's melee attacks roll +1D6 attack dice"},
     {"_id":"COMMON.MELEE.HIT+1","userId":"global","name":"Melee Hit +1","text":"This model gets +1 to hit for melee attacks"},
+    {"_id":"COMMON.MELEE.AP+1","userId":"global","name":"Melee AP +1","text":"This model gets +1 AP for melee attacks"},
     {"_id":"COMMON.MELEE.REROLLHIT","userId":"global","name":"Reroll Melee","text":"This model can re-roll melee hit rolls of 1"},
     {"_id":"COMMON.MELEE.CHARGEDMG","userId":"global","name":"Charge Damage","text":"If this model finishes a charge move engaged with the target model, roll 1D6. On a 4+ the target immediately suffers 1 mortal wound."},
     {"_id":"COMMON.MELEE.PREVENTDISENGAGE","userId":"global","name":"Prevent Disengage","text":"When performing a disengaging attack, you may choose to deal no damage and instead the enemy model's move ends immediately"},
 
     {"_id":"COMMON.MOVE.SWIFTCHARGE","userId":"global","name":"Swift Charge","text":"This model may move twice its SP when making a Charge action"},
+    {"_id":"COMMON.MOVE.UNSTOPPABLECHARGE","userId":"global","name":"Unstoppable Charge","text":"This model may ignore movement penalties for difficult terrain and obstacles when making a Charge action"},
     {"_id":"COMMON.MOVE.IGNORETERRAIN","userId":"global","name":"Ignore Terrain","text":"This model ignores difficult terrain and obstacles when moving"},
     {"_id":"COMMON.MOVE.REPOSITION3","userId":"global","name":"Reposition","text":"This model may move 3\" at the end of its activation"},
-
+    {"_id":"COMMON.MOVE.INCORPOREAL","userId":"global","name":"Incorporeal","text":"This model can move through terrain and other models"},
+    {"_id":"COMMON.MOVE.ACROBAT","userId":"global","name":"Acrobat","text":"This model can move through other models"},
+    
     {"_id":"COMMON.SETUP.ADVANCEDEPLOY","userId":"global","name":"Advance Deploy","text":"After deploying this model during setup, it may move up to 8\""},
     {"_id":"COMMON.SETUP.DEEPDEPLOY","userId":"global","name":"Deep Deploy","text":"You may choose not to deploy this model during setup. At the beginning of the start phase of the second round, you must deploy this model in contact with any table edge and more than 6\" from an enemy model, then give it the following condition: <i>Stunned</i>: This model only gets 1 short action during its turn, cannot be given an extra action, cannot be re-activated and cannot retaliate; remove this condition at the end of its activation"},
     {"_id":"COMMON.SETUP.TELEPORT","userId":"global","name":"Teleport","text":"You may choose not to deploy this model during setup. At the beginning of the start phase of the second round, you must deploy this model anywhere on the table more than 6\" from an enemy model, then give it the following condition: <i>Stunned</i>: This model only gets 1 short action during its turn, cannot be re-activated and cannot retaliate; remove this condition at the end of its activation"},

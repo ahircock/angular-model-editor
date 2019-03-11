@@ -35,7 +35,9 @@ export class ModelViewComponent implements OnInit, OnChanges {
   }
 
   private setupVisibleAbilities() {
+
     // setup the list of visible abilities
+    this.visibleAbilities = [];
     if ( this.model ) {
       for ( const ability of this.model.abilities ) {
         if ( ability.abilityData.display ) {

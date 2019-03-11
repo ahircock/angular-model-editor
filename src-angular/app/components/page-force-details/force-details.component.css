@@ -70,9 +70,13 @@
     object-fit: contain;
     background: white;
 }
-.model-selection .model-image {
-    height: 24px; margin-left: auto; margin-right: auto; display: block;
+.model-image {
+    height: 24px; 
+    width: 24px;
+    object-fit: contain;
+    background: white;
 }
+
 .model-selection .model-text-box {
     float: left;
     padding-left: 28px;

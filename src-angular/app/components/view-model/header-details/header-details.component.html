@@ -17,6 +17,7 @@
         <!-- MODEL INFO -->
         <div class="model-traits">
           {{model.factionModelData.modelData.name}}
+          <span *ngIf="model.factionModelData.modelData.traits">({{model.factionModelData.modelData.traits}})</span>
           <span *ngIf="model.leader"> , Leader</span><img *ngIf="model.leader" [src]="'assets/icons/icon-leader-128.png'" class="leader-img">
         </div>
         <div class="model-traits">{{model.cost}} Points</div>

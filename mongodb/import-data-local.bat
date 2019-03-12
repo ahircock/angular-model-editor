@@ -12,6 +12,8 @@ cd ../40k-astartes
 call import-data-local.bat
 cd ../40k-dguard
 call import-data-local.bat
+cd ../40k-geller
+call import-data-local.bat
 cd ../40k-gcult
 call import-data-local.bat
 cd ../40k-necrons

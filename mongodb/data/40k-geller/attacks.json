@@ -1,0 +1,12 @@
+[
+    {"_id":"40K.GELLER.GRENADEFRAG","userId":"global","name":"Frag Grenade","type":"RANGED","RNG":6,"DICE":1,"HIT":4,"AP":0,"DMG":0,"ruleIds":["GRENADE","BLAST2HIT"],"secondary":true},
+    {"_id":"40K.GELLER.ACIDSPIT","userId":"global","name":"Acid Spit","type":"RANGED","RNG":8,"DICE":1,"HIT":4,"AP":1,"DMG":0,"ruleIds":[]},
+
+    {"_id":"40K.GELLER.CURSEMITE.PROBOSCIS","userId":"global","name":"Bloodsucking Proboscis","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["CRITHIT2"]},
+    {"_id":"40K.GELLER.EYESTINGER.BARB","userId":"global","name":"Spawning Barb","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":0,"DMG":1,"ruleIds":["CRITAP1"]},
+    {"_id":"40K.GELLER.MUTANT.LIMBS","userId":"global","name":"Mutant Limbs","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GELLER.GLITCHLING.CLAWS","userId":"global","name":"Diseased Claws & Fangs","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":1,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.GELLER.HULK.MUTATIONS","userId":"global","name":"Hideous Mutations","type":"MELEE","RNG":0,"DICE":3,"HIT":4,"AP":2,"DMG":2,"ruleIds":[]},
+    {"_id":"40K.GELLER.GNASHER.CLEAVER","userId":"global","name":"Plague Cleaver","type":"MELEE","RNG":0,"DICE":4,"HIT":4,"AP":2,"DMG":2,"ruleIds":["ACCURATE"]},
+    {"_id":"40K.GELLER.GRUB.MAW","userId":"global","name":"Fanged Maw & Stinger","type":"MELEE","RNG":0,"DICE":1,"HIT":4,"AP":1,"DMG":1,"ruleIds":[]}
+]

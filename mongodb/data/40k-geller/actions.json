@@ -1,0 +1,4 @@
+[
+    {"_id": "40K.GELLER.VERMININFEST","userId": "global","name": "Verminoid Infestation","duration":"long","text": "Place a new Vermin model anywhere within 3” of this model. Mark the new model as activated. The newly summoned model is now a member of the kill team for the duration of the current game."},
+    {"_id": "40K.GELLER.GELLERSHIFT","userId": "global","name": "Gellershift","power":1,"duration":"short","text": "Remove this model from the battlefield, then set it up anywhere on the battlefield that is more than 4\" away from any enemy models. This model cannot walk, run or charge during this activation."}
+]

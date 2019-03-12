@@ -1,0 +1,96 @@
+[
+    {"_id":"40K.GELLER.CURSEMITE","userId":"global","name":"Cursemite","picture":"geller-cursemite.jpg","cost":4,"CP":0,"SP":7,"AR":6,"WN":1,"NE":3, "traits":"Vermin",
+        "attacks":[
+            {"attackId":"40K.GELLER.CURSEMITE.PROBOSCIS"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Vermin","abilityId":"COMMON.WEAK.RECOVERY-1"},
+            {"modelAbilityName":"Small","abilityId":"COMMON.DEFENSE.EVADE-1"},
+            {"modelAbilityName":"Leaping","abilityId":"COMMON.MOVE.IGNORETERRAIN"},
+            {"modelAbilityName":"Jumping Insectoids","abilityId":"COMMON.MELEE.CONSOLIDATE6"}
+        ],
+        "actions":[],
+        "options":[]
+    },
+    {"_id":"40K.GELLER.EYESTINGER","userId":"global","name":"Eyestinger Swarm","picture":"geller-eyestinger.jpg","cost":5,"CP":0,"SP":9,"AR":6,"WN":1,"NE":3, "traits":"Vermin",
+        "attacks":[
+            {"attackId":"40K.GELLER.EYESTINGER.BARB"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Buzzing Swarm","abilityId":"COMMON.DEFENSE.EVADE-2"},
+            {"modelAbilityName":"Flying","abilityId":"COMMON.MOVE.FLYING"},
+            {"modelAbilityName":"Steady","abilityId":"COMMON.DEFENSE.NOKNOCKDOWN"},
+            {"modelAbilityName":"Vermin","abilityId":"COMMON.WEAK.RECOVERY-1"}
+        ],
+        "actions":[],
+        "options":[]
+    },
+    {"_id":"40K.GELLER.MUTANT","userId":"global","name":"Gellerpox Mutant","picture":"geller-mutant.jpg","cost":8,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
+        "attacks":[
+            {"attackId":"40K.GELLER.MUTANT.LIMBS"},
+            {"attackId":"40K.GELLER.GRENADEFRAG"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Disgustingly Resilient","abilityId":"COMMON.TOUGH.SUPERRESILIENT"},
+            {"modelAbilityName":"Gellercaust Mask","abilityId":"COMMON.ARMOR.INVULNERABLE.5+"},
+            {"modelAbilityName":"Geller Fumes","abilityId":"COMMON.ARMOR.REFLECTWOUND"}
+        ],
+        "actions":[
+            {"modelActionName":"Verminoid Infestation","actionId":"40K.GELLER.VERMININFEST"},
+            {"modelActionName":"Gellershift","actionId":"40K.GELLER.GELLERSHIFT"}
+        ],
+        "options":[]
+    },
+    {"_id":"40K.GELLER.GLITCHLING","userId":"global","name":"Glitchling","picture":"geller-glitchling.jpg","cost":5,"CP":0,"SP":5,"AR":6,"WN":1,"NE":4,
+        "attacks":[
+            {"attackId":"40K.GELLER.GLITCHLING.CLAWS"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Disgustingly Squishable","abilityId":"COMMON.TOUGH.SUPERRESILIENTD1"},
+            {"modelAbilityName":"Daemonic","abilityId":"COMMON.ARMOR.INVULNERABLE.5+"},
+            {"modelAbilityName":"Weapon Glitch","abilityId":"COMMON.AURA6.RANGEGLITCH"}
+        ],
+        "actions":[],
+        "options":[]
+    },
+    {"_id":"40K.GELLER.HULK","userId":"global","name":"Nightmare Hulk","picture":"geller-hulk.jpg","cost":31,"CP":0,"SP":4,"AR":6,"WN":6,"NE":4,
+        "attacks":[
+            {"attackId":"40K.GELLER.HULK.MUTATIONS"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Disgustingly Resilient","abilityId":"COMMON.TOUGH.SUPERRESILIENT"},
+            {"modelAbilityName":"Horrific Visage","abilityId":"COMMON.FEAR.FEARAURA"},
+            {"modelAbilityName":"Twisted Blessings","abilityId":"COMMON.TOUGH.REGEN"}
+        ],
+        "actions":[
+            {"modelActionName":"Rancid Vomit","actionId":"COMMON.ATTACK.DIRECT3DMG"}
+        ],
+        "options":[]
+    },
+    {"_id":"40K.GELLER.GNASHER","userId":"global","name":"Gnasher-Screamer","picture":"geller-gnasher.jpg","cost":31,"CP":0,"SP":4,"AR":6,"WN":6,"NE":3,
+        "attacks":[
+            {"attackId":"40K.GELLER.GNASHER.CLEAVER"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Disgustingly Resilient","abilityId":"COMMON.TOUGH.SUPERRESILIENT"},
+            {"modelAbilityName":"Horrific Visage","abilityId":"COMMON.FEAR.FEARAURA"},
+            {"modelAbilityName":"Twisted Blessings","abilityId":"COMMON.TOUGH.REGEN"}
+        ],
+        "actions":[
+            {"modelActionName":"Rancid Vomit","actionId":"COMMON.ATTACK.DIRECT3DMG"}
+        ],
+        "options":[]
+    },
+    {"_id":"40K.GELLER.GRUB","userId":"global","name":"Sludge Grub","picture":"geller-grub.jpg","cost":5,"CP":0,"SP":5,"AR":6,"WN":1,"NE":3, "traits":"Vermin",
+        "attacks":[
+            {"attackId":"40K.GELLER.GRUB.MAW"},
+            {"attackId":"40K.GELLER.ACIDSPIT"}
+        ],
+        "abilities":[
+            {"modelAbilityName":"Vermin","abilityId":"COMMON.WEAK.RECOVERY-1"},
+            {"modelAbilityName":"Caustic Blood","abilityId":"COMMON.DEATH.MELEEWOUND"}
+        ],
+        "actions":[],
+        "options":[]
+    }
+]

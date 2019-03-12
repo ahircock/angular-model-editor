@@ -13,6 +13,8 @@ cd ../40k-astartes
 call import-data-mlab.bat %1 %2
 cd ../40k-dguard
 call import-data-mlab.bat %1 %2
+cd ../40k-geller
+call import-data-mlab.bat %1 %2
 cd ../40k-gcult
 call import-data-mlab.bat %1 %2
 cd ../40k-necronskw

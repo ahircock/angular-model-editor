@@ -1,0 +1,15 @@
+[
+    {"_id":"40K.GELLER","userId":"global","name":"Gellerpox Infected",
+        "models":[
+            {"modelId":"40K.GELLER.GNASHER"},
+            {"modelId":"40K.GELLER.HULK"},
+            {"modelId":"40K.GELLER.MUTANT"},
+            {"modelId":"40K.GELLER.CURSEMITE"},
+            {"modelId":"40K.GELLER.EYESTINGER"},
+            {"modelId":"40K.GELLER.GLITCHLING"},
+            {"modelId":"40K.GELLER.GRUB"}
+        ],
+        "factionAbilities":[],
+        "factionAttacks":[]
+    }
+]

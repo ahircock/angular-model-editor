@@ -53,7 +53,7 @@
         "actions":[],
         "options":[]
     },
-    {"_id":"40K.GELLER.HULK","userId":"global","name":"Nightmare Hulk","picture":"geller-hulk.jpg","cost":31,"CP":0,"SP":4,"AR":6,"WN":6,"NE":4,
+    {"_id":"40K.GELLER.HULK","userId":"global","name":"Nightmare Hulk","picture":"geller-hulk.jpg","cost":31,"CP":0,"SP":4,"AR":6,"WN":8,"NE":4,
         "attacks":[
             {"attackId":"40K.GELLER.HULK.MUTATIONS"}
         ],
@@ -67,7 +67,7 @@
         ],
         "options":[]
     },
-    {"_id":"40K.GELLER.GNASHER","userId":"global","name":"Gnasher-Screamer","picture":"geller-gnasher.jpg","cost":31,"CP":0,"SP":4,"AR":6,"WN":6,"NE":3,
+    {"_id":"40K.GELLER.GNASHER","userId":"global","name":"Gnasher-Screamer","picture":"geller-gnasher.jpg","cost":31,"CP":0,"SP":4,"AR":6,"WN":8,"NE":3,
         "attacks":[
             {"attackId":"40K.GELLER.GNASHER.CLEAVER"}
         ],

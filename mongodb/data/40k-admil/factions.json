@@ -4,11 +4,11 @@
             {"modelId":"40K.ADMIL.TEMPESTOR","max":1},
             {"modelId":"40K.ADMIL.SERGEANT","max":1},
             {"modelId":"40K.ADMIL.GUARDSMAN"},
-            {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":5},
+            {"modelId":"40K.ADMIL.GUARDSMANGUNNER","max":4},
             {"modelId":"40K.ADMIL.GUARDSMANSNIPER","max":1},
             {"modelId":"40K.ADMIL.GUARDSMANCOMMS","max":1},
             {"modelId":"40K.ADMIL.SCION"},
-            {"modelId":"40K.ADMIL.SCIONGUNNER","max":1},
+            {"modelId":"40K.ADMIL.SCIONGUNNER","max":4},
             {"modelId":"40K.ADMIL.SCIONCOMMS","max":1}
         ],
         "modelOptions":[

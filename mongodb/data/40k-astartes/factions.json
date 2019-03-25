@@ -10,13 +10,13 @@
             {"modelId":"40K.ASTARTES.TACTICALASSAULT","max":1},
             {"modelId":"40K.ASTARTES.TACTICALHEAVY","max":1},
             {"modelId":"40K.ASTARTES.PRIMARIS"},
-            {"modelId":"40K.ASTARTES.PRIMARISASSAULT"},
-            {"modelId":"40K.ASTARTES.PRIMARISHEAVY"},
+            {"modelId":"40K.ASTARTES.PRIMARISASSAULT","max":1},
+            {"modelId":"40K.ASTARTES.PRIMARISHEAVY","max":1},
             {"modelId":"40K.ASTARTES.REIVER"},
             {"modelId":"40K.ASTARTES.SCOUT"},
             {"modelId":"40K.ASTARTES.SCOUTASSAULT"},
-            {"modelId":"40K.ASTARTES.SCOUTHEAVY","max":1},
-            {"modelId":"40K.ASTARTES.SCOUTSNIPER","max":1}
+            {"modelId":"40K.ASTARTES.SCOUTHEAVY","max":2},
+            {"modelId":"40K.ASTARTES.SCOUTSNIPER"}
         ],
         "modelOptions":[
             {"id":"FACTION.COMMON","description":"Choose common equipment","optional":true,"multiSelect":true,"choices":[

@@ -22,7 +22,8 @@
         <div *ngIf="showModelListDropdown" class="create-model-button-dropdown box-white font-normal">
           <div *ngFor="let model of factionModels" class="model-selection box-light-hover" (click)="addModel(model); showModelListDropdown = false;">
             <div class="model-image-box"><img class="model-image" [src]="'assets/portraits/' + model.modelData.picture"></div>
-            <div class="model-text-box">{{model.modelData.name}} ({{model.modelData.cost}} Points)</div>
+            <div *ngIf="model.max" class="model-text-box">{{model.modelData.name}} ({{model.modelData.cost}} Points, {{model.max}} Max)</div>
+            <div *ngIf="!model.max" class="model-text-box">{{model.modelData.name}} ({{model.modelData.cost}} Points)</div>
           </div>
         </div>
       </div>

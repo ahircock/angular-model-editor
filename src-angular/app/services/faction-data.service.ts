@@ -117,7 +117,7 @@ export class FactionDataService {
         const model = await this.modelDataService.getModelById( factionModelDB.modelId );
         const factionModelData: FactionModelData = {
           modelData: model,
-          max: factionModelDB.max ? factionModelDB.max : 9999,
+          max: factionModelDB.max ? factionModelDB.max : null,
           options: []
         };
 

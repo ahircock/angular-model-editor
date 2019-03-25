@@ -3,8 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AppRoutingModule } from './app-routing.module';
+
+// material design modules
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule, MatButtonModule } from '@angular/material';
 
 // services
 import { UserService } from './services/user.service';
@@ -15,7 +18,7 @@ import { AttackDataService } from './services/attack-data.service';
 import { ActionDataService } from './services/action-data.service';
 import { FactionDataService } from './services/faction-data.service';
 import { DataAccessService } from './services/data-access.service';
-import { AppErrorHandler } from './services/error-handler.service';
+import { ErrorHandlerService } from './services/error-handler.service';
 import { AbilityDataService } from './services/ability-data.service';
 import { WindowService } from './services/window.service';
 
@@ -45,6 +48,7 @@ import { ClickElsewhereDirective } from './directives/click-elsewhere.directive'
 import { TextControllerDirective } from './directives/text-controller.directive';
 import { AppButtonComponent } from './components/common/app-button/app-button.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorDialogComponent } from './components/common/error-dialog/error-dialog.component';
 
 
 @NgModule({
@@ -70,7 +74,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ViewForceAbilitiesComponent,
     ForceListItemComponent,
     ModelListItemComponent,
-    AppButtonComponent
+    AppButtonComponent,
+    ErrorDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -78,10 +83,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
-    { provide: ErrorHandler, useClass: AppErrorHandler },
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
     UserService,
     ModelDataService,
     RuleDataService,
@@ -91,7 +98,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ActionDataService,
     FactionDataService,
     DataAccessService,
-    WindowService
+    WindowService,
+    ErrorHandlerService
+  ],
+  entryComponents: [
+    ErrorDialogComponent
   ],
   bootstrap: [AppComponent]
 })

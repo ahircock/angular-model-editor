@@ -4,7 +4,7 @@ import { ModelAttackData, ModelAbilityData, ModelActionData } from './model-data
 import { UserService } from './user.service';
 import { FactionData, FactionDataService, FactionModelData } from './faction-data.service';
 import { AttackType } from './attack-data.service';
-import { element } from '@angular/core/src/render3';
+import { ErrorHandlerService } from './error-handler.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -93,7 +93,8 @@ export class ForceDataService {
   constructor(
     private factionDataService: FactionDataService,
     private dbConnectService: DataAccessService,
-    private userService: UserService
+    private userService: UserService,
+    private errorHandlerService: ErrorHandlerService
   ) {
 
     // initialize the user id
@@ -217,6 +218,13 @@ export class ForceDataService {
    */
   async addModel( force: ForceData, model: FactionModelData ): Promise<ForceData> {
 
+    // make sure that you haven't exceeded the max
+    if ( this.exceededModelMax(force, model) ) {
+      const error = new Error('You have already reached the maximum number of this model to the force. You cannot add another.');
+      this.errorHandlerService.displayError(error);
+      return force;
+    }
+
     // if this is the first model, mark it as the leader
     let isLeader = false;
     if ( force.models.length === 0 ) {
@@ -262,6 +270,31 @@ export class ForceDataService {
 
     // update the force in the DB
     return await this.updateForce( force );
+  }
+
+  /**
+   * This method makes sure that you are not adding more than the max for a model
+   * 
+   * @param force the force that you are checking
+   * @param model the model that you want to add
+   */
+  private exceededModelMax( force: ForceData, model: FactionModelData ) {
+
+    // how many of this type of model are already in the force?
+    let modelCounter = 0;
+    for ( const checkModel of force.models ) {
+      if ( checkModel.factionModelData.modelData._id === model.modelData._id ) {
+        modelCounter = modelCounter + checkModel.count;
+      }
+    }
+
+    // make sure that you have not exceeded the maximum for this model type
+    if ( model.max && modelCounter >= model.max ) {
+      return true;
+    }
+
+    // have not exceeded the max
+    return false;
   }
 
   /**
@@ -312,6 +345,13 @@ export class ForceDataService {
   async increaseModelCount( forceModel: ForceModelData ): Promise<ForceData> {
 
     const force = forceModel.force;
+
+    // make sure that you haven't exceeded the max
+    if ( this.exceededModelMax(force, forceModel.factionModelData) ) {
+      const error = new Error('You have already reached the maximum number of this model to the force. You cannot increase the count.');
+      this.errorHandlerService.displayError(error);
+      return force;
+    }
 
     // increase the count of this model
     forceModel.count++;

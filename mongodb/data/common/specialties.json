@@ -1,5 +1,4 @@
 [
-            {},
             {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
                 {"cost":3,"abilities":[{"modelAbilityName":"Leadership","abilityId":"COMMON.AURA6.USENERVE"},{"modelAbilityName":"Bravery","abilityId":"COMMON.NERVE.NERVE+1"}]},
                 {"cost":5,"abilities":[{"modelAbilityName":"Tactician","abilityId":"COMMON.COMMAND.CP+1"}]},

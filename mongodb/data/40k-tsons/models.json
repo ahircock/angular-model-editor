@@ -1,5 +1,5 @@
 [
-    {"_id":"40K.TSONS.ASPIRINGSORCEROR","userId":"global","name":"Aspiring Sorceror","picture":"tsons-sorceror.jpg","cost":17,"CP":1,"SP":5,"AR":3,"WN":2,"NE":3,
+    {"_id":"40K.TSONS.ASPIRINGSORCEROR","userId":"global","name":"Aspiring Sorceror","picture":"tsons-sorceror.jpg","cost":17,"SP":5,"AR":3,"WN":2,"NE":3,
         "attacks":[
             {"attackId":"40K.TSONS.ASPIRINGSORC.FORCESTAVE"}
         ],
@@ -19,7 +19,7 @@
 
         ]
     },
-    {"_id":"40K.TSONS.TWISTBRAY","userId":"global","name":"Tzaangor Twistbray","picture":"tsons-twistbray.jpg","cost":8,"CP":1,"SP":5,"AR":6,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.TWISTBRAY","userId":"global","name":"Tzaangor Twistbray","picture":"tsons-twistbray.jpg","cost":8,"SP":5,"AR":6,"WN":2,"NE":4,
         "attacks":[],
         "abilities":[],
         "options":[
@@ -29,7 +29,7 @@
             ]}
         ]
     },
-    {"_id":"40K.TSONS.RUBRICMARINE","userId":"global","name":"Rubric Marine","picture":"tsons-marine.jpg","cost":16,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.RUBRICMARINE","userId":"global","name":"Rubric Marine","picture":"tsons-marine.jpg","cost":16,"SP":4,"AR":3,"WN":2,"NE":4,
         "attacks":[
             {"attackId":"40K.TSONS.MARINE.FIST"}
         ],
@@ -43,7 +43,7 @@
             ]}
         ]
     },
-    {"_id":"40K.TSONS.RUBRICHEAVY","userId":"global","name":"Rubric Heavy Marine","picture":"tsons-heavy.jpg","cost":20,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.RUBRICHEAVY","userId":"global","name":"Rubric Heavy Marine","picture":"tsons-heavy.jpg","cost":20,"SP":4,"AR":3,"WN":2,"NE":4,
         "attacks":[
             {"attackId":"40K.TSONS.MARINE.FIST"},{"attackId":"40K.TSONS.SOULREAPERCANNON"}
         ],
@@ -51,7 +51,7 @@
             {"abilityId":"40K.TSONS.ALLISDUST"}
         ]
     },
-    {"_id":"40K.TSONS.RUBRICICON","userId":"global","name":"Rubric Icon Of Flame","picture":"tsons-marine.jpg","cost":17,"CP":0,"SP":4,"AR":3,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.RUBRICICON","userId":"global","name":"Rubric Icon Of Flame","picture":"tsons-marine.jpg","cost":17,"SP":4,"AR":3,"WN":2,"NE":4,
         "attacks":[
             {"attackId":"40K.TSONS.MARINE.FIST"}
         ],
@@ -66,7 +66,7 @@
             ]}
         ]
     },
-    {"_id":"40K.TSONS.TZAANGOR","userId":"global","name":"Tzaangor","picture":"tsons-tzaangor.jpg","cost":7,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.TZAANGOR","userId":"global","name":"Tzaangor","picture":"tsons-tzaangor.jpg","cost":7,"SP":5,"AR":6,"WN":2,"NE":4,
         "attacks":[],
         "abilities":[],
         "options":[
@@ -76,7 +76,7 @@
             ]}
         ]
     },
-    {"_id":"40K.TSONS.BRAYHORN","userId":"global","name":"Tzaangor Brayhorn","picture":"tsons-brayhorn.jpg","cost":10,"CP":0,"SP":5,"AR":6,"WN":2,"NE":4,
+    {"_id":"40K.TSONS.BRAYHORN","userId":"global","name":"Tzaangor Brayhorn","picture":"tsons-brayhorn.jpg","cost":10,"SP":5,"AR":6,"WN":2,"NE":4,
         "attacks":[],
         "abilities":[
             {"abilityId":"40K.TSONS.BRAYHORN"}

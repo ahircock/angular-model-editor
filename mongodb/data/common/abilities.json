@@ -18,8 +18,8 @@
     {"_id":"COMMON.AURA6.ATTACKHIT","userId":"global","name":"Attack Hit Aura","text":"This model and friendly models within 6\" can re-roll melee and ranged hit rolls of 1"},
     {"_id":"COMMON.AURA6.SPEED","userId":"global","name":"Speed Aura","text":"This model and friendly models that start their activation within 6\" get +1 SP."},
 
-    {"_id":"COMMON.COMMAND.CP+1","userId":"global","name":"Tactician","modCP":1,"text":"This model gets +1 Command Point"},
-    {"_id":"COMMON.COMMAND.CP+2","userId":"global","name":"Master Tactician","modCP":2,"text":"This model gets +2 Command Point"},
+    {"_id":"COMMON.COMMAND.CP+1","userId":"global","name":"Tactician","text":"This model generates 1 additional command point during the start phase"},
+    {"_id":"COMMON.COMMAND.CP+2","userId":"global","name":"Master Tactician","text":"This model generates 2 additional command points during the start phase"},
     
     {"_id":"COMMON.DEFENSE.CAMO","userId":"global","name":"Camo","text":"When targeting this model with a ranged attack, attackers get a -2 modifier for being obscured rather than -1"},
     {"_id":"COMMON.DEFENSE.EVADE-1","userId":"global","name":"Evade -1","text":"All attacks targeting this model get -1 to hit"},

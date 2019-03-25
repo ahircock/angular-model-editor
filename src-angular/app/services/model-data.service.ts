@@ -11,7 +11,6 @@ export interface ModelData {
   picture: string;
   traits: string;
   cost: number;
-  CP: number;
   SP: number;
   AR: number;
   WN: number;
@@ -61,7 +60,6 @@ interface ModelDBData {
   traits: string;
   picture: string;
   cost: number;
-  CP: number;
   SP: number;
   AR: number;
   WN: number;
@@ -192,7 +190,6 @@ export class ModelDataService {
       traits: modelDBData.traits ? modelDBData.traits : '',
       picture: modelDBData.picture,
       cost: modelDBData.cost ? modelDBData.cost : 0,
-      CP: modelDBData.CP ? modelDBData.CP : 0,
       SP: modelDBData.SP ? modelDBData.SP : 5,
       AR: modelDBData.AR ? modelDBData.AR : 5,
       WN: modelDBData.WN ? modelDBData.WN : 2,

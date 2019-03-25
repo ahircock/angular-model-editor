@@ -24,8 +24,9 @@
         </div>
 
       <!-- LIST ABILITIES FOR CHOICE -->
-      <div *ngFor="let ability of choice.abilities" class="special-rule-box">
-        <app-ability-details [ability]="ability" [cost]="choice.cost"></app-ability-details>
+      <div *ngFor="let ability of choice.abilities; index as abilityIndex" class="special-rule-box">
+        <app-ability-details *ngIf="abilityIndex === 0" [ability]="ability" [cost]="choice.cost"></app-ability-details>
+        <app-ability-details *ngIf="abilityIndex > 0" [ability]="ability" [cost]="0"></app-ability-details>
       </div>
 
     </div>

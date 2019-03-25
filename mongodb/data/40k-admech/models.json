@@ -11,14 +11,14 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCPISTOL"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.PHOSPHORPISTOL"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":3,"abilities":[{"abilityId":"COMMON.AURA6.USENERVE"},{"abilityId":"COMMON.NERVE.NERVE+1"}]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.NERVE+1"},{"abilityId":"COMMON.AURA6.USENERVE"}]},
                 {"cost":5,"abilities":[{"abilityId":"COMMON.COMMAND.CP+1"}]},
-                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
-                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
-                {"cost":4,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
-                {"cost":4,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
-                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]}
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]}
             ]}
         ]
     },
@@ -29,17 +29,17 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.PRINCEPS.TRANSONICBLADES"}]},
                 {"cost":1,"attacks":[{"attackId":"40K.ADMECH.PRINCEPS.TRANSONICRAZOR"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":5,"abilities":[{"modelAbilityName":"Tactician","abilityId":"COMMON.COMMAND.CP+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Ferocity","abilityId":"COMMON.MELEE.DICE+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Fearless","abilityId":"COMMON.NERVE.PASSNERVE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Tough","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Durable","abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Strong","abilityId":"COMMON.MELEE.AP+1"}]},
-                {"cost":4,"abilities":[{"modelAbilityName":"Combat Master","abilityId":"COMMON.MELEE.REROLLHIT"}]},
-                {"cost":4,"abilities":[{"modelAbilityName":"Swift","abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Unstoppable","abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Intimidating","abilityId":"COMMON.FEAR.INTIMIDATING"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":5,"abilities":[{"abilityId":"COMMON.COMMAND.CP+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.AP+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":4,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]}
             ]}
         ]
     },
@@ -53,15 +53,15 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.STUBCARBINE"},{"attackId":"40K.ADMECH.PRINCEPS.POWERSWORD"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.FLECHETTEBLASTER"},{"attackId":"40K.ADMECH.PRINCEPS.TASERGOAD"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":5,"abilities":[{"modelAbilityName":"Tactician","abilityId":"COMMON.COMMAND.CP+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Fearless","abilityId":"COMMON.NERVE.PASSNERVE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Tough","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Durable","abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Intimidating","abilityId":"COMMON.FEAR.INTIMIDATING"}]},
-                {"cost":2,"abilities":[{"modelAbilityName":"Pathfinder","abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":5,"abilities":[{"abilityId":"COMMON.COMMAND.CP+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
                 
             ]}
         ]
@@ -75,13 +75,13 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCRIFLE"}]},
                 {"cost":3,"attacks":[{"attackId":"40K.ADMECH.PLASMACALIVER"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":5,"abilities":[{"modelAbilityName":"Trigger Happy","abilityId":"COMMON.RANGED.DOUBLEATTACK"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Marksman","abilityId":"COMMON.RANGED.REROLLHIT"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Reposition","abilityId":"COMMON.RANGED.REPOSITION"}]},
-                {"cost":2,"abilities":[{"modelAbilityName":"Pathfinder","abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":5,"abilities":[{"abilityId":"COMMON.RANGED.DOUBLEATTACK"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
                 
             ]}
         ]
@@ -98,8 +98,7 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.GALVANICRIFLE"}]},
                 {"cost":3,"attacks":[{"attackId":"40K.ADMECH.RADIUMCARBINE"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":5,"abilities":[{"modelAbilityName":"Rousing Transmission","abilityId":"COMMON.AURAALL.REROLLNERVE"}]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
                 {"cost":3,"actions":[{"modelActionName":"Static Screech","actionId":"COMMON.DEBUFF.STUN"}]},
                 {"cost":3,"actions":[{"modelActionName":"Target Uplink","actionId":"COMMON.DEBUFF.RANGETARGET"}]}
             ]}
@@ -114,11 +113,11 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.GALVANICRIFLE"}]},
                 {"cost":5,"attacks":[{"attackId":"40K.ADMECH.TRANSARQUE"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":3,"abilities":[{"modelAbilityName":"Marksman","abilityId":"COMMON.RANGED.REROLLHIT"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Reposition","abilityId":"COMMON.RANGED.REPOSITION"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}                
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":4,"abilities":[{"abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}                
             ]}
         ]
     },
@@ -131,12 +130,12 @@
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"modelAbilityName":"Omnispex","abilityId":"COMMON.ASSIST.IGNORECOVER"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":3,"abilities":[{"modelAbilityName":"Marksman","abilityId":"COMMON.RANGED.REROLLHIT"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Reposition","abilityId":"COMMON.RANGED.REPOSITION"}]},
-                {"cost":2,"abilities":[{"modelAbilityName":"Pathfinder","abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":2,"abilities":[{"abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
                 
             ]}
         ]
@@ -150,13 +149,13 @@
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"modelAbilityName":"Omnispex","abilityId":"COMMON.ASSIST.IGNORECOVER"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":3,"abilities":[{"modelAbilityName":"Ferocity","abilityId":"COMMON.MELEE.DICE+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Fearless","abilityId":"COMMON.NERVE.PASSNERVE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Reposition","abilityId":"COMMON.RANGED.REPOSITION"}]},
-                {"cost":2,"abilities":[{"modelAbilityName":"Pathfinder","abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
                 
             ]}        
         ]
@@ -168,16 +167,16 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.SICARIAN.TRANSONICBLADES"}]},
                 {"cost":1,"attacks":[{"attackId":"40K.ADMECH.SICARIAN.TRANSONICRAZOR"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":3,"abilities":[{"modelAbilityName":"Ferocity","abilityId":"COMMON.MELEE.DICE+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Fearless","abilityId":"COMMON.NERVE.PASSNERVE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Tough","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Durable","abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Strong","abilityId":"COMMON.MELEE.AP+1"}]},
-                {"cost":4,"abilities":[{"modelAbilityName":"Combat Master","abilityId":"COMMON.MELEE.REROLLHIT"}]},
-                {"cost":4,"abilities":[{"modelAbilityName":"Swift","abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Unstoppable","abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Intimidating","abilityId":"COMMON.FEAR.INTIMIDATING"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.AP+1"}]},
+                {"cost":4,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":4,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]}
             ]}
         ]
     },
@@ -191,14 +190,14 @@
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.STUBCARBINE"},{"attackId":"40K.ADMECH.SICARIAN.POWERSWORD"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.FLECHETTEBLASTER"},{"attackId":"40K.ADMECH.SICARIAN.TASERGOAD"}]}
             ]},
-            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
-                {"cost":3,"abilities":[{"modelAbilityName":"Fearless","abilityId":"COMMON.NERVE.PASSNERVE"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Tough","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Durable","abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Intimidating","abilityId":"COMMON.FEAR.INTIMIDATING"}]},
-                {"cost":2,"abilities":[{"modelAbilityName":"Pathfinder","abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
-                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
-                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
                 
             ]}
         ]

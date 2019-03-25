@@ -334,7 +334,7 @@ export class ForceDataService {
     // create the new object
     const forceData: ForceData = {
       _id: forceDBData._id,
-      name: forceDBData.name,
+      name: forceDBData.name.toUpperCase(),
       faction: faction,
       cost: 0, // will be calculated below
       models: [],

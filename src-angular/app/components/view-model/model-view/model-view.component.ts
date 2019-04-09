@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { PORTRAIT_LIST } from '../../../../assets/portraits/portrait-list.const';
 import { ForceModelData } from '../../../services/force-data.service';
-import { ModelAbilityData } from 'src-angular/app/services/model-data.service';
+import { ModelAbilityData } from '../../../services/model-data.service';
 
 interface StatCost {
   stat: number;

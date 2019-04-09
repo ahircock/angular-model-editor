@@ -7,13 +7,13 @@
             {"modelAbilityName":"Vermin","abilityId":"COMMON.WEAK.RECOVERY-1"},
             {"modelAbilityName":"Small","abilityId":"COMMON.DEFENSE.EVADE-1"},
             {"modelAbilityName":"Leaping","abilityId":"COMMON.MOVE.IGNORETERRAIN"},
-            {"modelAbilityName":"Jumping Insectoids","abilityId":"COMMON.MELEE.CONSOLIDATE6"}
+            {"modelAbilityName":"Jumping Insectoids","abilityId":"COMMON.MOVE.HIT&RUN6"}
         ],
         "actions":[],
         "options":[]
     },
     {"_id":"40K.GELLER.EYESTINGER","userId":"global","name":"Eyestinger Swarm","picture":"geller-eyestinger.jpg","cost":5,"CP":0,"SP":9,"AR":6,"WN":1,"NE":3, "traits":"Vermin",
-        "attacks":[
+        "attacks":[ 
             {"attackId":"40K.GELLER.EYESTINGER.BARB"}
         ],
         "abilities":[

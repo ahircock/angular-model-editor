@@ -69,7 +69,6 @@
     {"_id":"COMMON.MELEE.REROLLHIT","userId":"global","name":"Reroll Melee","text":"This model can re-roll melee hit rolls of 1"},
     {"_id":"COMMON.MELEE.CHARGEDMG","userId":"global","name":"Charge Damage","text":"If this model finishes a charge move engaged with the target model, roll 1D6. On a 4+ the target immediately suffers 1 mortal wound."},
     {"_id":"COMMON.MELEE.PREVENTDISENGAGE","userId":"global","name":"Prevent Disengage","text":"When performing a disengaging attack, you may choose to deal no damage and instead the enemy model's move ends immediately"},
-    {"_id":"COMMON.MELEE.CONSOLIDATE6","userId":"global","name":"Consolidate 6","text":"After removing a model from play with a melee attack, this model may immediately move 6\""},
 
     {"_id":"COMMON.MOVE.SWIFTCHARGE","userId":"global","name":"Swift Charge","text":"This model may move twice its SP when making a Charge action"},
     {"_id":"COMMON.MOVE.LEAPINGCHARGE","userId":"global","name":"Leaping Charge","text":"This model ignores difficult terrain and obstacles when making a Charge action"},
@@ -77,6 +76,8 @@
     {"_id":"COMMON.MOVE.IGNOREFALLING","userId":"global","name":"Ignore Falling","text":"This model does not suffer falling damage"},
     {"_id":"COMMON.MOVE.REPOSITION3","userId":"global","name":"Reposition","text":"This model may move 3\" at the end of its activation"},
     {"_id":"COMMON.MOVE.FLYING","userId":"global","name":"Flying","text":"This model ignores other models, difficult terrain and obstacles when moving, and can climb up and down any distance for free"},
+    {"_id":"COMMON.MOVE.CONSOLIDATE6","userId":"global","name":"Consolidate 6","text":"After removing a model from play with a melee attack, this model may immediately move 6\""},
+    {"_id":"COMMON.MOVE.HIT&RUN6","userId":"global","name":"Consolidate 6","text":"After performing a charge attack, this model may immediately move 6\". This model cannot be targeted by disengaging attacks during this movement"},
 
     {"_id":"COMMON.SETUP.ADVANCEDEPLOY","userId":"global","name":"Advance Deploy","text":"After deploying this model during setup, it may move up to 8\""},
     {"_id":"COMMON.SETUP.DEEPDEPLOY","userId":"global","name":"Deep Deploy","text":"You may choose not to deploy this model during setup. At the beginning of the start phase of the second round, you must deploy this model in contact with any table edge and more than 6\" from an enemy model, then give it the following condition: <i>Stunned</i>: This model only gets 1 short action during its turn, cannot be given an extra action, cannot be re-activated and cannot retaliate; remove this condition at the end of its activation"},

@@ -3,9 +3,9 @@
         "models":[
             {"modelId":"40K.ORK.BOSSNOB","max":1},
             {"modelId":"40K.ORK.KOMMANDOBOSSNOB","max":1},
-            {"modelId":"40K.ORK.ORKBOY","max":1},
-            {"modelId":"40K.ORK.ORKGUNNER","max":1},
-            {"modelId":"40K.ORK.GRETCHIN","max":1},
+            {"modelId":"40K.ORK.ORKBOY"},
+            {"modelId":"40K.ORK.ORKGUNNER","max":2},
+            {"modelId":"40K.ORK.GRETCHIN"},
             {"modelId":"40K.ORK.KOMMANDO"},
             {"modelId":"40K.ORK.BURNABOY"},
             {"modelId":"40K.ORK.LOOTA"},

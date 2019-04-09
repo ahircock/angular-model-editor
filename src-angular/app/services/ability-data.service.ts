@@ -10,7 +10,6 @@ export interface AbilityData {
   name: string;
   text: string;
   power: number;
-  modCP: number;
   modSP: number;
   modAR: number;
   modWN: number;
@@ -26,7 +25,6 @@ interface AbilityDBData {
   name: string;
   text: string;
   power: number;
-  modCP: number;
   modSP: number;
   modAR: number;
   modWN: number;
@@ -88,7 +86,6 @@ export class AbilityDataService {
       name: dbData.name,
       text: dbData.text,
       power: dbData.power ? dbData.power : 0,
-      modCP: dbData.modCP ? dbData.modCP : 0,
       modSP: dbData.modSP ? dbData.modSP : 0,
       modAR: dbData.modAR ? dbData.modAR : 0,
       modWN: dbData.modWN ? dbData.modWN : 0,
@@ -97,7 +94,7 @@ export class AbilityDataService {
     };
 
     // if there are any stat modifications, then don't show this one
-    if ( appData.modCP || appData.modSP || appData.modAR || appData.modWN || appData.modNE ) {
+    if ( appData.modSP || appData.modAR || appData.modWN || appData.modNE ) {
       appData.display = false;
     }
 

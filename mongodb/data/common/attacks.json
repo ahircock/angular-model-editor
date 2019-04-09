@@ -1,2 +1,3 @@
 [
+    {"_id":"COMMON.DEMOLITIONCHARGES","userId":"global","name":"Demolition Charge","type":"RANGED","RNG":3,"DICE":1,"HIT":4,"AP":0,"DMG":0,"ruleIds":["ONCE","GRENADE","BLASTHEAVY"],"secondary":true}
 ]

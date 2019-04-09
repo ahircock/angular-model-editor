@@ -1,19 +1,72 @@
 [
-    {"_id":"40K.ADMECH.SKITALPHA","userId":"global","name":"Skitarri Alpha","picture":"skitarii-vanguard-alpha.jpg","cost":10,"CP":1,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SKITALPHA","userId":"global","name":"Skitarri Alpha","picture":"skitarii-vanguard-alpha.jpg","cost":10,"SP":5,"AR":4,"WN":2,"NE":4,
         "options":[
             {"id":"MELEE","description":"Choose a melee weapon","choices":[
-                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCMAUL"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.POWERSWORD"}]},
-                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.TASERGOAD"}]}
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ALPHA.ARCMAUL"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.ALPHA.POWERSWORD"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.ALPHA.TASERGOAD"}]}
             ]},
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.RADIUMPISTOL"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCPISTOL"}]},
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.PHOSPHORPISTOL"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.NERVE+1"},{"abilityId":"COMMON.AURA6.USENERVE"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.COMMAND.CP+1"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]}
             ]}
         ]
     },
-    {"_id":"40K.ADMECH.SKITGUNNER","userId":"global","name":"Skitarri Gunner","picture":"skitarii-vanguard-plasmacaliver.jpg","cost":10,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SICRUSTPRINCEPS","userId":"global","name":"Ruststalker Princeps","picture":"sicarian-rust-princeps.jpg","cost":15,"SP":7,"AR":4,"WN":3,"NE":4,
+        "attacks":[],
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.PRINCEPS.TRANSONICBLADES"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.PRINCEPS.TRANSONICRAZOR"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":5,"abilities":[{"abilityId":"COMMON.COMMAND.CP+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.AP+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":4,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ADMECH.SICINFPRINCEPS","userId":"global","name":"Infiltrator Princeps","picture":"sicarian-inf-princeps.jpg","cost":15,"SP":7,"AR":4,"WN":3,"NE":4,
+        "attacks":[],
+        "abilities":[
+            {"modelAbilityName":"Neurostatic Aura","abilityId":"COMMON.FEAR.FEARAURA"}
+        ],
+        "options":[
+            {"id":"WEAPON","description":"Choose weapon combination","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.STUBCARBINE"},{"attackId":"40K.ADMECH.PRINCEPS.POWERSWORD"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.FLECHETTEBLASTER"},{"attackId":"40K.ADMECH.PRINCEPS.TASERGOAD"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":5,"abilities":[{"abilityId":"COMMON.COMMAND.CP+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+                
+            ]}
+        ]
+    },
+    {"_id":"40K.ADMECH.SKITGUNNER","userId":"global","name":"Skitarri Gunner","picture":"skitarii-vanguard-plasmacaliver.jpg","cost":10,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[
             {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"}
         ],
@@ -21,10 +74,19 @@
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.ARCRIFLE"}]},
                 {"cost":3,"attacks":[{"attackId":"40K.ADMECH.PLASMACALIVER"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":5,"abilities":[{"abilityId":"COMMON.RANGED.DOUBLEATTACK"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+                
             ]}
         ]
     },
-    {"_id":"40K.ADMECH.SKITCOMMS","userId":"global","name":"Skitarri Comms","picture":"skitarii-comms.jpg","cost":14,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SKITCOMMS","userId":"global","name":"Skitarri Comms","picture":"skitarii-comms.jpg","cost":14,"SP":5,"AR":4,"WN":2,"NE":4,
         "abilities":[
             {"modelAbilityName":"Enhanced Data Tether","abilityId":"COMMON.AURAALL.REROLLNERVE"}
         ],
@@ -35,16 +97,31 @@
             {"id":"RANGED","description":"Choose a ranged weapon","choices":[
                 {"cost":0,"attacks":[{"attackId":"40K.ADMECH.GALVANICRIFLE"}]},
                 {"cost":3,"attacks":[{"attackId":"40K.ADMECH.RADIUMCARBINE"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"actions":[{"modelActionName":"Static Screech","actionId":"COMMON.DEBUFF.STUN"}]},
+                {"cost":3,"actions":[{"modelActionName":"Target Uplink","actionId":"COMMON.DEBUFF.RANGETARGET"}]}
             ]}
         ]
     },
-    {"_id":"40K.ADMECH.SKITSNIPER","userId":"global","name":"Skitarii Sniper","picture":"skitarii-ranger-arquebus.jpg","cost":15,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SKITSNIPER","userId":"global","name":"Skitarii Sniper","picture":"skitarii-ranger-arquebus.jpg","cost":10,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[
-            {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"},
-            {"attackId":"40K.ADMECH.TRANSARQUE"}
+            {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"}
+        ],
+        "options":[
+            {"id":"RANGED","description":"Choose a ranged weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.GALVANICRIFLE"}]},
+                {"cost":5,"attacks":[{"attackId":"40K.ADMECH.TRANSARQUE"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":4,"abilities":[{"abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}                
+            ]}
         ]
     },
-    {"_id":"40K.ADMECH.SKITRANGER","userId":"global","name":"Skitarii Ranger","picture":"skitarii-ranger.jpg","cost":9,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SKITRANGER","userId":"global","name":"Skitarii Ranger","picture":"skitarii-ranger.jpg","cost":9,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[
             {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"},
             {"attackId":"40K.ADMECH.GALVANICRIFLE"}
@@ -52,10 +129,18 @@
         "options":[
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"modelAbilityName":"Omnispex","abilityId":"COMMON.ASSIST.IGNORECOVER"}]}
-            ]}            
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":2,"abilities":[{"abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+                
+            ]}
         ]
     },
-    {"_id":"40K.ADMECH.SKITVANGUARD","userId":"global","name":"Skitarii Vanguard","picture":"skitarii-vanguard.jpg","cost":9,"CP":0,"SP":5,"AR":4,"WN":2,"NE":4,
+    {"_id":"40K.ADMECH.SKITVANGUARD","userId":"global","name":"Skitarii Vanguard","picture":"skitarii-vanguard.jpg","cost":9,"SP":5,"AR":4,"WN":2,"NE":4,
         "attacks":[
             {"modelAttackName":"Bionic Hand","attackId":"40K.ADMECH.HAND"},
             {"attackId":"40K.ADMECH.RADIUMCARBINE"}
@@ -63,7 +148,58 @@
         "options":[
             {"id":"EQUIP","description":"Choose wargear","optional":true,"multiSelect":true,"choices":[
                 {"cost":1,"abilities":[{"modelAbilityName":"Omnispex","abilityId":"COMMON.ASSIST.IGNORECOVER"}]}
-            ]}            
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.RANGED.REPOSITION"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+                
+            ]}        
+        ]
+    },
+    {"_id":"40K.ADMECH.SICRUSTALKER","userId":"global","name":"Sicarian Ruststalker","picture":"sicarian-rust.jpg","cost":14,"SP":7,"AR":4,"WN":3,"NE":4,
+        "attacks":[],
+        "options":[
+            {"id":"MELEE","description":"Choose a melee weapon","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.SICARIAN.TRANSONICBLADES"}]},
+                {"cost":1,"attacks":[{"attackId":"40K.ADMECH.SICARIAN.TRANSONICRAZOR"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MELEE.AP+1"}]},
+                {"cost":4,"abilities":[{"abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":4,"abilities":[{"abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]}
+            ]}
+        ]
+    },
+    {"_id":"40K.ADMECH.SICINFILTRATOR","userId":"global","name":"Sicarian Infiltrator","picture":"sicarian-inf.jpg","cost":14,"SP":7,"AR":4,"WN":3,"NE":4,
+        "attacks":[],
+        "abilities":[
+            {"modelAbilityName":"Neurostatic Aura","abilityId":"COMMON.FEAR.FEARAURA"}
+        ],
+        "options":[
+            {"id":"WEAPON","description":"Choose weapon combination","choices":[
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.STUBCARBINE"},{"attackId":"40K.ADMECH.SICARIAN.POWERSWORD"}]},
+                {"cost":0,"attacks":[{"attackId":"40K.ADMECH.FLECHETTEBLASTER"},{"attackId":"40K.ADMECH.SICARIAN.TASERGOAD"}]}
+            ]},
+            {"id":"SPECIAL","description":"Choose upgrades","optional":true,"choices":[
+                {"cost":3,"abilities":[{"abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.FEAR.INTIMIDATING"}]},
+                {"cost":2,"abilities":[{"abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+                
+            ]}
         ]
     }
 ]

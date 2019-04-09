@@ -4,6 +4,7 @@ import { ModelAttackData, ModelAbilityData, ModelActionData } from './model-data
 import { UserService } from './user.service';
 import { FactionData, FactionDataService, FactionModelData } from './faction-data.service';
 import { AttackType } from './attack-data.service';
+import { ErrorHandlerService } from './error-handler.service';
 
 /**
  * Interface that defines the data-structure of a force. Can be loaded using the methods of the ForceDataService
@@ -24,7 +25,6 @@ export interface ForceModelData {
   forceModelName: string;
   cost: number;
   leader: boolean;
-  CP: number;
   SP: number;
   AR: number;
   WN: number;
@@ -93,7 +93,8 @@ export class ForceDataService {
   constructor(
     private factionDataService: FactionDataService,
     private dbConnectService: DataAccessService,
-    private userService: UserService
+    private userService: UserService,
+    private errorHandlerService: ErrorHandlerService
   ) {
 
     // initialize the user id
@@ -133,7 +134,7 @@ export class ForceDataService {
     }
 
     // return the entry with the matching ID
-    return this.forceCache.find( element => element._id === id );
+    return this.forceCache.find( elem => elem._id === id );
   }
 
   /**
@@ -162,7 +163,7 @@ export class ForceDataService {
     let newForceDB: ForceDBData = {
       _id: newForceId,
       userId: this.loggedInUserId.toLowerCase(),
-      name: 'New Force',
+      name: this.generateForceName(faction),
       factionId: faction._id,
       models: []
     };
@@ -192,7 +193,7 @@ export class ForceDataService {
 
     // find the old force record in the cache, and then replace it with the updated force
     const newUpdatedForce = await this.convertDBToForceData( updateDBForce );
-    const forceIndex: number = this.forceCache.findIndex( element => element._id === newUpdatedForce._id );
+    const forceIndex: number = this.forceCache.findIndex( elem => elem._id === newUpdatedForce._id );
     this.forceCache[forceIndex] = newUpdatedForce;
 
     // return a deep copy of the model from the DB
@@ -207,7 +208,7 @@ export class ForceDataService {
 
     // delete the matching force from the DB
     await this.dbConnectService.deleteForce( this.convertForceDataToDB(deleteForce) );
-    const forceIndex: number = this.forceCache.findIndex( element => element._id === deleteForce._id );
+    const forceIndex: number = this.forceCache.findIndex( elem => elem._id === deleteForce._id );
     this.forceCache.splice( forceIndex, 1 );
   }
 
@@ -216,6 +217,13 @@ export class ForceDataService {
    * @param model the model that you wanted added to your force
    */
   async addModel( force: ForceData, model: FactionModelData ): Promise<ForceData> {
+
+    // make sure that you haven't exceeded the max
+    if ( this.exceededModelMax(force, model) ) {
+      const error = new Error('You have already reached the maximum number of this model to the force. You cannot add another.');
+      this.errorHandlerService.displayError(error);
+      return force;
+    }
 
     // if this is the first model, mark it as the leader
     let isLeader = false;
@@ -231,7 +239,6 @@ export class ForceDataService {
       cost: model.modelData.cost,
       count: 1,
       leader: isLeader,
-      CP: model.modelData.CP, // leaders get +1 CP
       SP: model.modelData.SP,
       AR: model.modelData.AR,
       WN: model.modelData.WN, // leaders get +1 NE
@@ -266,6 +273,31 @@ export class ForceDataService {
   }
 
   /**
+   * This method makes sure that you are not adding more than the max for a model
+   * 
+   * @param force the force that you are checking
+   * @param model the model that you want to add
+   */
+  private exceededModelMax( force: ForceData, model: FactionModelData ) {
+
+    // how many of this type of model are already in the force?
+    let modelCounter = 0;
+    for ( const checkModel of force.models ) {
+      if ( checkModel.factionModelData.modelData._id === model.modelData._id ) {
+        modelCounter = modelCounter + checkModel.count;
+      }
+    }
+
+    // make sure that you have not exceeded the maximum for this model type
+    if ( model.max && modelCounter >= model.max ) {
+      return true;
+    }
+
+    // have not exceeded the max
+    return false;
+  }
+
+  /**
    * Choose a new leader for a given force
    * @param forceModel the model who is being selected as leader
    */
@@ -274,7 +306,7 @@ export class ForceDataService {
     const force = forceModel.force;
 
     // de-select the current leader
-    const previousLeader = force.models.find( element => element.leader === true );
+    const previousLeader = force.models.find( elem => elem.leader === true );
     if ( previousLeader ) {
       previousLeader.leader = false;
     }
@@ -298,7 +330,7 @@ export class ForceDataService {
     // decrease the count on the force object
     forceModel.count--;
     if ( forceModel.count <= 0) {
-      const modelIndex: number = force.models.findIndex( element => element === forceModel );
+      const modelIndex: number = force.models.findIndex( elem => elem === forceModel );
       force.models.splice(modelIndex, 1);
     }
 
@@ -313,6 +345,13 @@ export class ForceDataService {
   async increaseModelCount( forceModel: ForceModelData ): Promise<ForceData> {
 
     const force = forceModel.force;
+
+    // make sure that you haven't exceeded the max
+    if ( this.exceededModelMax(force, forceModel.factionModelData) ) {
+      const error = new Error('You have already reached the maximum number of this model to the force. You cannot increase the count.');
+      this.errorHandlerService.displayError(error);
+      return force;
+    }
 
     // increase the count of this model
     forceModel.count++;
@@ -335,7 +374,7 @@ export class ForceDataService {
     // create the new object
     const forceData: ForceData = {
       _id: forceDBData._id,
-      name: forceDBData.name,
+      name: forceDBData.name.toUpperCase(),
       faction: faction,
       cost: 0, // will be calculated below
       models: [],
@@ -345,7 +384,7 @@ export class ForceDataService {
 
     // create an array of ForceModelData objects, and copy contents from FactionModelData and ForceDBData
     for ( const forceModelDB of forceDBData.models ) {
-      const factionModel = faction.models.find( element => element.modelData._id === forceModelDB._id );
+      const factionModel = faction.models.find( elem => elem.modelData._id === forceModelDB._id );
       if ( factionModel ) {
         const forceModelData: ForceModelData = await this.generateForceModelData( forceData, factionModel, forceModelDB );
         forceData.models.push(forceModelData);
@@ -369,6 +408,30 @@ export class ForceDataService {
     return forceData;
   }
 
+  private generateForceName(faction: FactionData) {
+
+    let forceName: string; // this is the proposed force name
+    let forceCounter = 0; // this is the number to put it brackets after the faction name
+    let matchFound = false; // set this to true if a force with this name already exists
+
+    // keep increasing the counter until you find a name with no match
+    do {
+
+      // come up with the next possible force name
+      matchFound = false;
+      forceCounter++;
+      forceName = faction.name + '(' + forceCounter + ')';
+
+      // does this force name already exist?
+      if ( this.forceCache.find( elem => elem.name === forceName ) ) {
+        matchFound = true;
+      }
+
+    } while (matchFound);
+
+    return forceName;
+  }
+
   /**
    * This method will create a force model object using the information from the base model-type
    * and the options provided in the force-model information
@@ -389,7 +452,6 @@ export class ForceDataService {
       cost: factionModel.modelData.cost,
       leader: forceModelDB.leader ? forceModelDB.leader : false,
       forceModelName: forceModelDB.forceModelName,
-      CP: factionModel.modelData.CP,
       SP: factionModel.modelData.SP,
       AR: factionModel.modelData.AR,
       WN: factionModel.modelData.WN,
@@ -412,7 +474,7 @@ export class ForceDataService {
 
     // copy over any new faction-model options that are not currently listed on the force model
     for ( const option of factionModel.options ) {
-      const optionChoiceIndex = forceModelData.optionChoices.findIndex( element => element.optionId === option.id );
+      const optionChoiceIndex = forceModelData.optionChoices.findIndex( elem => elem.optionId === option.id );
       if ( optionChoiceIndex === -1 ) {
 
         // create a new option
@@ -431,11 +493,6 @@ export class ForceDataService {
 
     // apply any stat modifiers
     this.applyStatMods(forceModelData);
-
-    // give leaders the default upgrades
-    if ( forceModelData.leader ) {
-      await this.getLeaderUpgrades(forceModelData);
-    }
 
     // sort the attacks, abilities and actions
     forceModelData.attacks.sort(this.sortForceModelAttacks);
@@ -456,7 +513,6 @@ export class ForceDataService {
     for ( const ability of forceModel.abilities ) {
 
       // modify base stats if there is any modifier
-      forceModel.CP += ability.abilityData.modCP;
       forceModel.SP += ability.abilityData.modSP;
       forceModel.AR += ability.abilityData.modAR;
       forceModel.WN += ability.abilityData.modWN;
@@ -465,23 +521,14 @@ export class ForceDataService {
 
   }
 
-  private async getLeaderUpgrades(forceModel: ForceModelData) {
-    if ( forceModel.leader ) {
-
-      // leaders get +1 CP and +1 WN
-      forceModel.CP++;
-      forceModel.WN++;
-    }
-  }
-
   private addOptionChoicesToModel(forceModel: ForceModelData, optionChoice: ForceModelOptionChoiceData ) {
 
     // get the matching model option from the baseline model data
-    const modelOption = forceModel.factionModelData.options.find( element => element.id === optionChoice.optionId );
+    const modelOption = forceModel.factionModelData.options.find( elem => elem.id === optionChoice.optionId );
 
     // if the option is no longer listed on the factionModel, then remove it from the forceModel
     if (!modelOption) {
-      const optionIndex = forceModel.optionChoices.findIndex( element => element === optionChoice );
+      const optionIndex = forceModel.optionChoices.findIndex( elem => elem === optionChoice );
       forceModel.optionChoices.splice(optionIndex, 1);
       return;
     }

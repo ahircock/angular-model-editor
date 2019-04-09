@@ -16,7 +16,7 @@
         ],
         "factionAbilities":[
             {"modelAbilityName":"Transhuman Physiology","abilityId":"COMMON.TOUGH.REROLLRECOVERY"},
-            {"modelAbilityName":"Disgustingly Resilient","abilityId":"COMMON.TOUGH.RESILIENT"}
+            {"modelAbilityName":"Disgustingly Resilient","abilityId":"COMMON.TOUGH.RECOVERY+1"}
         ],
         "factionAttacks":[
             {"attackId":"40K.DGUARD.BLIGHTGRENADE"},

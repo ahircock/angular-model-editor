@@ -1,15 +1,25 @@
 [
-    {"_id":"40K.ADMECH.ARCMAUL","userId":"global","name":"Arc Maul","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":2,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ADMECH.ARCPISTOL","userId":"global","name":"Arc Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ADMECH.ARCRIFLE","userId":"global","name":"Arc Rifle","type":"RANGED","RNG":24,"DICE":2,"HIT":3,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMECH.FLECHETTEBLASTER","userId":"global","name":"Flechette Blaster","type":"RANGED","RNG":12,"DICE":5,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
     {"_id":"40K.ADMECH.GALVANICRIFLE","userId":"global","name":"Galvanic Rifle","type":"RANGED","RNG":30,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITAP1"]},
     {"_id":"40K.ADMECH.PHOSPHORPISTOL","userId":"global","name":"Phosphor Blast Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["IGNORECOVER"]},
     {"_id":"40K.ADMECH.PLASMACALIVER","userId":"global","name":"Plasma Caliver","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":["PLASMA"]},
     {"_id":"40K.ADMECH.RADIUMCARBINE","userId":"global","name":"Radium Carbine","type":"RANGED","RNG":18,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["ASSAULT","CRITDMG2"]},
     {"_id":"40K.ADMECH.RADIUMPISTOL","userId":"global","name":"Radium Pistol","type":"RANGED","RNG":12,"DICE":2,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITDMG2"]},
-    {"_id":"40K.ADMECH.TASERGOAD","userId":"global","name":"Taser Goad","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":1,"DMG":1,"ruleIds":["CRITHIT3"]},
-    {"_id":"40K.ADMECH.TRANSARQUE","userId":"global","name":"Transuranic Arquebus","type":"RANGED","RNG":60,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":["SNIPER","CRITMORTAL"]},
+    {"_id":"40K.ADMECH.STUBCARBINE","userId":"global","name":"Stub Carbine","type":"RANGED","RNG":18,"DICE":3,"HIT":3,"AP":0,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMECH.TRANSARQUE","userId":"global","name":"Transuranic Arquebus","type":"RANGED","RNG":60,"DICE":1,"HIT":3,"AP":3,"DMG":2,"ruleIds":["SNIPER","CRITMORTALADD"]},
 
+    {"_id":"40K.ADMECH.ALPHA.ARCMAUL","userId":"global","name":"Arc Maul","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":2,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMECH.ALPHA.POWERSWORD","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMECH.ALPHA.TASERGOAD","userId":"global","name":"Taser Goad","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":1,"DMG":1,"ruleIds":["CRITHIT3"]},
     {"_id":"40K.ADMECH.HAND","userId":"global","name":"Bionic Hand","type":"MELEE","RNG":0,"DICE":1,"HIT":4,"AP":0,"DMG":1,"ruleIds":[]},
-    {"_id":"40K.ADMECH.POWERSWORD","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":4,"AP":3,"DMG":1,"ruleIds":[]}
+    {"_id":"40K.ADMECH.PRINCEPS.POWERSWORD","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMECH.PRINCEPS.TASERGOAD","userId":"global","name":"Taser Goad","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITHIT3"]},
+    {"_id":"40K.ADMECH.PRINCEPS.TRANSONICRAZOR","userId":"global","name":"Transonic Razor","type":"MELEE","RNG":0,"DICE":5,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITMORTAL"]},
+    {"_id":"40K.ADMECH.PRINCEPS.TRANSONICBLADES","userId":"global","name":"Transonic Blades","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITMORTAL"]},
+    {"_id":"40K.ADMECH.SICARIAN.POWERSWORD","userId":"global","name":"Power Sword","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":3,"DMG":1,"ruleIds":[]},
+    {"_id":"40K.ADMECH.SICARIAN.TASERGOAD","userId":"global","name":"Taser Goad Razor","type":"MELEE","RNG":0,"DICE":2,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITHIT3"]},
+    {"_id":"40K.ADMECH.SICARIAN.TRANSONICRAZOR","userId":"global","name":"Transonic Razor","type":"MELEE","RNG":0,"DICE":4,"HIT":3,"AP":0,"DMG":1,"ruleIds":["CRITMORTAL"]},
+    {"_id":"40K.ADMECH.SICARIAN.TRANSONICBLADES","userId":"global","name":"Transonic Blades","type":"MELEE","RNG":0,"DICE":3,"HIT":3,"AP":1,"DMG":1,"ruleIds":["CRITMORTAL"]}
 ]

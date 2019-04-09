@@ -3,6 +3,6 @@
   <span *ngIf="cost >= 0">+{{cost}}pts </span>
   
   <span *ngIf="!action.actionData.power"><b>{{action.modelActionName}}</b> ({{action.actionData.duration}})</span>
-  <span *ngIf="action.actionData.power"><b>{{action.modelActionName}}</b> ({{action.actionData.duration}}, {{action.actionData.power}} CP)</span>  
+  <span *ngIf="action.actionData.power"><b>{{action.modelActionName}}</b> ({{action.actionData.duration}}, {{action.actionData.power}} CP)</span>
   - <span [innerHTML]="action.actionData.text" class="rule-text"></span>
 </div>

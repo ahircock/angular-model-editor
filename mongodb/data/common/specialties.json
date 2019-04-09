@@ -1,0 +1,37 @@
+[
+            {"id":"SPECIAL","description":"Choose a specialty","optional":true,"choices":[
+                {"cost":3,"abilities":[{"modelAbilityName":"Leadership","abilityId":"COMMON.AURA6.USENERVE"},{"modelAbilityName":"Bravery","abilityId":"COMMON.NERVE.NERVE+1"}]},
+                {"cost":5,"abilities":[{"modelAbilityName":"Tactician","abilityId":"COMMON.COMMAND.CP+1"}]},
+
+                {"cost":3,"abilities":[{"modelAbilityName":"Tough","abilityId":"COMMON.TOUGH.REROLLRECOVERY"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Durable","abilityId":"COMMON.TOUGH.WOUNDS+1"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Intimidating","abilityId":"COMMON.FEAR.INTIMIDATING"}]},
+
+                {"cost":3,"abilities":[{"modelAbilityName":"Ferocity","abilityId":"COMMON.MELEE.DICE+1"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Fearless","abilityId":"COMMON.NERVE.PASSNERVE"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Strong","abilityId":"COMMON.MELEE.AP+1"}]},
+                {"cost":4,"abilities":[{"modelAbilityName":"Combat Master","abilityId":"COMMON.MELEE.REROLLHIT"}]},
+                {"cost":4,"abilities":[{"modelAbilityName":"Swift","abilityId":"COMMON.MOVE.SWIFTCHARGE"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Unstoppable","abilityId":"COMMON.MOVE.UNSTOPPABLECHARGE"}]},
+                
+                {"cost":5,"abilities":[{"modelAbilityName":"Rousing Transmission","abilityId":"COMMON.AURAALL.REROLLNERVE"}]},
+                {"cost":3,"actions":[{"modelActionName":"Static Screech","actionId":"COMMON.DEBUFF.STUN"}]},
+                {"cost":3,"actions":[{"modelActionName":"Target Uplink","actionId":"COMMON.DEBUFF.RANGETARGET"}]},
+                
+                {"cost":5,"attacks":[{"modelAttackName":"Demolition Charges","attackId":"COMMON.DEMOLITIONCHARGES"}]},
+                
+                {"cost":3,"abilities":[{"modelAbilityName":"Heavy Gunner","abilityId":"COMMON.RANGED.HEAVY"}]},
+                {"cost":5,"abilities":[{"modelAbilityName":"Trigger Happy","abilityId":"COMMON.RANGED.DOUBLEATTACK"}]},
+                
+                {"cost":3,"abilities":[{"modelAbilityName":"Marksman","abilityId":"COMMON.RANGED.REROLLHIT"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Reposition","abilityId":"COMMON.RANGED.REPOSITION"}]},
+
+                {"cost":3,"actions":[{"modelActionName":"Field Medic","actionId":"COMMON.HEAL.HEAL"}]},
+                {"cost":3,"actions":[{"modelActionName":"Stimm Shot","actionId":"COMMON.HEAL.REMOVECONDITION"}]},
+
+                {"cost":2,"abilities":[{"modelAbilityName":"Pathfinder","abilityId":"COMMON.MOVE.IGNORETERRAIN"}]},
+                {"cost":3,"abilities":[{"modelAbilityName":"Advance Deploy","abilityId":"COMMON.SETUP.ADVANCEDEPLOY"}]},
+                {"cost":5,"abilities":[{"modelAbilityName":"Deep Deploy","abilityId":"COMMON.SETUP.DEEPDEPLOY"}]}
+                
+            ]}
+]

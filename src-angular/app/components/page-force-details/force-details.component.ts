@@ -5,7 +5,8 @@ import { UserService } from '../../services/user.service';
 import { Location } from '@angular/common';
 import { WindowService } from '../../services/window.service';
 import { FactionModelData } from '../../services/faction-data.service';
-import {CdkDragDrop, moveItemInArray, CdkDragStart} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-force-details',
@@ -31,7 +32,8 @@ export class ForceDetailsComponent implements OnInit {
     private forceDataService: ForceDataService,
     private userService: UserService,
     private location: Location,
-    private windowService: WindowService
+    private windowService: WindowService,
+    private dialogService: MatDialog
   ) { }
 
   async ngOnInit() {
@@ -90,6 +92,16 @@ export class ForceDetailsComponent implements OnInit {
   async addModel( model: FactionModelData ) {
 
     // add the model to the force
+    // try {
+    //   this.force = await this.forceDataService.addModel( this.force, model );
+    // } catch (e) {
+    //   if ( e.message && e.message === 'MAX_MODEL_COUNT_EXCEEDED') {
+    //     const displayMessage = 'You have already added the maximum number of this model to the force. You cannot add another.';
+    //     this.dialogService.open( ErrorDialogComponent, {data: displayMessage} );
+    //   } else {
+    //     throw e;
+    //   }
+    // }
     this.force = await this.forceDataService.addModel( this.force, model );
 
     // select the new model (which should be the last one in the list)

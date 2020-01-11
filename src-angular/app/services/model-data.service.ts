@@ -11,10 +11,10 @@ export interface ModelData {
   picture: string;
   traits: string;
   cost: number;
-  SP: number;
-  AR: number;
-  WN: number;
-  NE: number;
+  SPD: number;
+  DEF: number;
+  ARM: number;
+  HP: number;
   attacks: ModelAttackData[];
   actions: ModelActionData[];
   abilities: ModelAbilityData[];
@@ -60,10 +60,10 @@ interface ModelDBData {
   traits: string;
   picture: string;
   cost: number;
-  SP: number;
-  AR: number;
-  WN: number;
-  NE: number;
+  SPD: number;
+  DEF: number;
+  ARM: number;
+  HP: number;
   attacks: ModelAttackDBData[];
   abilities: ModelAbilityDBData[];
   actions: ModelActionDBData[];
@@ -190,10 +190,10 @@ export class ModelDataService {
       traits: modelDBData.traits ? modelDBData.traits : '',
       picture: modelDBData.picture,
       cost: modelDBData.cost ? modelDBData.cost : 0,
-      SP: modelDBData.SP ? modelDBData.SP : 5,
-      AR: modelDBData.AR ? modelDBData.AR : 5,
-      WN: modelDBData.WN ? modelDBData.WN : 2,
-      NE: modelDBData.NE ? modelDBData.NE : 4,
+      SPD: modelDBData.SPD ? modelDBData.SPD : 5,
+      DEF: modelDBData.DEF ? modelDBData.DEF : 4,
+      ARM: modelDBData.ARM ? modelDBData.ARM : 1,
+      HP: modelDBData.HP ? modelDBData.HP : 5,
       abilities: [],
       actions: [],
       attacks: [],

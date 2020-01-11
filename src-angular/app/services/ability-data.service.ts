@@ -10,10 +10,10 @@ export interface AbilityData {
   name: string;
   text: string;
   power: number;
-  modSP: number;
-  modAR: number;
-  modWN: number;
-  modNE: number;
+  modSPD: number;
+  modDEF: number;
+  modARM: number;
+  modHP: number;
   display: boolean;
 }
 
@@ -25,10 +25,10 @@ interface AbilityDBData {
   name: string;
   text: string;
   power: number;
-  modSP: number;
-  modAR: number;
-  modWN: number;
-  modNE: number;
+  modSPD: number;
+  modDEF: number;
+  modARM: number;
+  modHP: number;
 }
 
 @Injectable()
@@ -86,15 +86,15 @@ export class AbilityDataService {
       name: dbData.name,
       text: dbData.text,
       power: dbData.power ? dbData.power : 0,
-      modSP: dbData.modSP ? dbData.modSP : 0,
-      modAR: dbData.modAR ? dbData.modAR : 0,
-      modWN: dbData.modWN ? dbData.modWN : 0,
-      modNE: dbData.modNE ? dbData.modNE : 0,
+      modSPD: dbData.modSPD ? dbData.modSPD : 0,
+      modDEF: dbData.modDEF ? dbData.modDEF : 0,
+      modARM: dbData.modARM ? dbData.modARM : 0,
+      modHP: dbData.modHP ? dbData.modHP : 0,
       display: true
     };
 
     // if there are any stat modifications, then don't show this one
-    if ( appData.modSP || appData.modAR || appData.modWN || appData.modNE ) {
+    if ( appData.modSPD || appData.modDEF || appData.modARM || appData.modHP ) {
       appData.display = false;
     }
 

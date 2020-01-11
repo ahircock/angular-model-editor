@@ -25,10 +25,10 @@ export interface ForceModelData {
   forceModelName: string;
   cost: number;
   leader: boolean;
-  SP: number;
-  AR: number;
-  WN: number;
-  NE: number;
+  SPD: number;
+  DEF: number;
+  ARM: number;
+  HP: number;
   attacks: ModelAttackData[];
   actions: ModelActionData[];
   abilities: ModelAbilityData[];
@@ -239,10 +239,10 @@ export class ForceDataService {
       cost: model.modelData.cost,
       count: 1,
       leader: isLeader,
-      SP: model.modelData.SP,
-      AR: model.modelData.AR,
-      WN: model.modelData.WN, // leaders get +1 NE
-      NE: model.modelData.NE,
+      SPD: model.modelData.SPD,
+      DEF: model.modelData.DEF,
+      ARM: model.modelData.ARM, // leaders get +1 NE
+      HP: model.modelData.HP,
       attacks: model.modelData.attacks.slice(),
       actions: model.modelData.actions.slice(),
       abilities: model.modelData.abilities.slice(),
@@ -274,7 +274,7 @@ export class ForceDataService {
 
   /**
    * This method makes sure that you are not adding more than the max for a model
-   * 
+   *
    * @param force the force that you are checking
    * @param model the model that you want to add
    */
@@ -452,10 +452,10 @@ export class ForceDataService {
       cost: factionModel.modelData.cost,
       leader: forceModelDB.leader ? forceModelDB.leader : false,
       forceModelName: forceModelDB.forceModelName,
-      SP: factionModel.modelData.SP,
-      AR: factionModel.modelData.AR,
-      WN: factionModel.modelData.WN,
-      NE: factionModel.modelData.NE,
+      SPD: factionModel.modelData.SPD,
+      DEF: factionModel.modelData.DEF,
+      ARM: factionModel.modelData.ARM,
+      HP: factionModel.modelData.HP,
       attacks: factionModel.modelData.attacks.slice(),
       actions: factionModel.modelData.actions.slice(),
       abilities: factionModel.modelData.abilities.slice(),
@@ -513,10 +513,10 @@ export class ForceDataService {
     for ( const ability of forceModel.abilities ) {
 
       // modify base stats if there is any modifier
-      forceModel.SP += ability.abilityData.modSP;
-      forceModel.AR += ability.abilityData.modAR;
-      forceModel.WN += ability.abilityData.modWN;
-      forceModel.NE += ability.abilityData.modNE;
+      forceModel.SPD += ability.abilityData.modSPD;
+      forceModel.DEF += ability.abilityData.modDEF;
+      forceModel.ARM += ability.abilityData.modARM;
+      forceModel.HP += ability.abilityData.modHP;
     }
 
   }

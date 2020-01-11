@@ -24,7 +24,7 @@
     <ul>
       <li *ngFor="let subAttackData of attack.attackData.multiProfileAttackData">
         <b>{{subAttackData.name}}</b> 
-        ( {{subAttackData.RNG}}", {{subAttackData.DICE}}D6, {{subAttackData.HIT}}+, AP{{subAttackData.AP}}, D{{subAttackData.DMG}} )
+        ( {{subAttackData.RNG}}", {{subAttackData.DICE}}D6, D{{subAttackData.DMG}} )
         <div *ngFor="let actionRule of subAttackData.rules" class="subattack-rule-box">
           <span *ngIf="actionRule.ruleName != ''"><i>{{actionRule.ruleName}}</i> 
           <span *ngIf="actionRule.power > 0"> ({{actionRule.power}} CP)</span>

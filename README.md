@@ -11,7 +11,7 @@ You can then use the following script to install baseline data into the local Mo
 ```
 
 Once the MongoDB database is up and running, execute the folloiwng commands on SEPARATE command lines.
-Alternatively, you can use Visual Studio Code's "Tasks / Run Tasks" feature to launch these processes
+Alternatively, you can use Visual Studio Code's "Terminal / Run Tasks" feature to launch these processes
 
 ```
 npm run start-dev-node

@@ -1,0 +1,5 @@
+[
+    {"_id":"AOS.STORMCAST.LIBERATOR","userId":"global","name":"Knight","picture":"templar-knight.jpg","cost":10,"SPD":5,"DEF":4,"ARM":2,"HP":5,
+        "attacks":[{"attackId":"AOS.STORMCAST.LIBERATOR.HAMMERSTRIKE"}]
+    }
+]

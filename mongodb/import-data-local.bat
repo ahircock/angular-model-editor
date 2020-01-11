@@ -22,6 +22,8 @@ cd ../40k-tsons
 call import-data-local.bat
 cd ../40k-tyranids
 call import-data-local.bat
+cd ../aos-stormcast
+call import-data-local.bat
 
 REM return to the main directory
 cd ../..

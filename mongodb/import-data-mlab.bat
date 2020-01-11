@@ -23,6 +23,8 @@ cd ../40k-tsons
 call import-data-mlab.bat %1 %2
 cd ../40k-tyranids
 call import-data-mlab.bat %1 %2
+cd ../aos-stormcast
+call import-data-mlab.bat %1 %2
 
 REM return to the main directory
 cd ../..

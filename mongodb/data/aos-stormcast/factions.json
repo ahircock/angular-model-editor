@@ -1,0 +1,11 @@
+[
+    {"_id":"AOS.STORMCAST","userId":"global","name":"Templars",
+        "models":[
+            {"modelId":"AOS.STORMCAST.LIBERATOR"}
+        ],
+        "modelOptions":[
+        ],
+        "factionAbilities":[
+        ]
+    }
+]

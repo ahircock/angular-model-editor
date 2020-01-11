@@ -21,8 +21,6 @@ export interface AttackData {
   traits: string;
   RNG: number;
   DICE: number;
-  HIT: number;
-  AP: number;
   DMG: number;
   rules: RuleData[];
   seeBelow: boolean;
@@ -40,8 +38,6 @@ interface AttackDBData {
   traits: string;
   RNG: number;
   DICE: number;
-  HIT: number;
-  AP: number;
   DMG: number;
   ruleIds: string[];
   seeBelow: boolean;
@@ -126,10 +122,8 @@ export class AttackDataService {
       type: dbData.type,
       traits: dbData.traits ? dbData.traits : '',
       RNG: dbData.RNG ? dbData.RNG : 0,
-      DICE: dbData.DICE ? dbData.DICE : 0,
-      HIT: dbData.HIT ? dbData.HIT : 0,
-      AP: dbData.AP ? dbData.AP : 0,
-      DMG: dbData.DMG ? dbData.DMG : 0,
+      DICE: dbData.DICE ? dbData.DICE : 1,
+      DMG: dbData.DMG ? dbData.DMG : 1,
       seeBelow: dbData.seeBelow ? dbData.seeBelow : false,
       secondary: dbData.secondary ? dbData.secondary : false,
       rules: [],

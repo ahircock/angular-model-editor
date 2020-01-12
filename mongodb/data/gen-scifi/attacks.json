@@ -1,3 +1,9 @@
 [
-    {"_id":"GEN.SCIFI.LIBERATOR.HAMMERSTRIKE","userId":"global","name":"Hammer Strike","type":"MELEE","RNG":1,"DICE":5,"DMG":4,"ruleIds":[]}
+    {"_id":"GEN.SCIFI.RNG.R16_H6_D4","userId":"global","name":"R16 H6 D4","type":"RANGED","RNG":16,"DICE":6,"DMG":4,"ruleIds":[]},
+    {"_id":"GEN.SCIFI.RNG.R16_H7_D5","userId":"global","name":"R16 H6 D4","type":"RANGED","RNG":16,"DICE":7,"DMG":5,"ruleIds":[]},
+    {"_id":"GEN.SCIFI.RNG.R12_H6_D4_AP","userId":"global","name":"R16 H6 D4","type":"RANGED","RNG":12,"DICE":6,"DMG":4,"ruleIds":["GEN.SCIFI.ARMORPIERCING"]},
+    {"_id":"GEN.SCIFI.RNG.R48_H6_D4","userId":"global","name":"R48 H6 D4","type":"RANGED","RNG":48,"DICE":6,"DMG":4,"ruleIds":[]},
+    {"_id":"GEN.SCIFI.RNG.MISSILELAUNCHER","userId":"global","name":"MISSILE LAUNCHER","type":"RANGED","RNG":24,"DICE":4,"DMG":8,"ruleIds":["GEN.SCIFI.BLAST2_3"]},
+    
+    {"_id":"GEN.SCIFI.MEL.R1H5D3","userId":"global","name":"R1 H5 D3","type":"MELEE","RNG":1,"DICE":5,"DMG":3,"ruleIds":[]}
 ]

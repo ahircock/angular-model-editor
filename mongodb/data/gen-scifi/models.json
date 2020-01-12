@@ -1,7 +1,32 @@
 [
-    {"_id":"GEN.SCIFI.LIBERATOR","userId":"global","name":"Knight","picture":"templar-knight.jpg","cost":10,"SPD":5,"DEF":4,"ARM":2,"HP":5,
+    {"_id":"GEN.SCIFI.EXAMPLE","userId":"global","name":"Example","picture":"templar-knight.jpg","cost":10,"SPD":5,"DEF":4,"ARM":2,"HP":5,
         "attacks":[{"attackId":"GEN.SCIFI.LIBERATOR.HAMMERSTRIKE","modelAttackName":"Hammer Strike"}],
         "actions":[{"actionId":"GEN.SCIFI.COMMAND.MELEEATTACK","modelActionName":"Get Em!"}],
-        "abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY","modelAbilityName":"Transhuman Physiology"}]
+        "abilities":[{"abilityId":"GEN.SCIFI.CANTICLES","modelAbilityName":"Transhuman Physiology"}]
+    },
+    {"_id":"GEN.SCIFI.LINETROOPER","userId":"global","name":"Line Trooper","picture":"ork-boy.jpg","cost":5,"SPD":5,"DEF":4,"ARM":1,"HP":5,
+        "attacks":[{"attackId":"GEN.SCIFI.RNG.R16_H6_D4","modelAttackName":"Assault Rifle"}],
+        "actions":[],
+        "abilities":[]
+    },
+    {"_id":"GEN.SCIFI.HEAVYTROOPER","userId":"global","name":"Heavy Trooper","picture":"tsons-marine.jpg","cost":15,"SPD":5,"DEF":4,"ARM":2,"HP":8,
+        "attacks":[{"attackId":"GEN.SCIFI.RNG.R16_H7_D5","modelAttackName":"Heavy Rifle"}],
+        "actions":[],
+        "abilities":[]
+    },
+    {"_id":"GEN.SCIFI.POWERGUN","userId":"global","name":"Power Gun","picture":"gcult-neophyteheavy.jpg","cost":10,"SPD":5,"DEF":4,"ARM":1,"HP":5,
+        "attacks":[{"attackId":"GEN.SCIFI.RNG.R12_H6_D4_AP","modelAttackName":"Plasma Gun"}],
+        "actions":[],
+        "abilities":[]
+    },
+    {"_id":"GEN.SCIFI.SNIPER","userId":"global","name":"Sniper","picture":"necron-warrior.jpg","cost":15,"SPD":5,"DEF":4,"ARM":1,"HP":5,
+        "attacks":[{"attackId":"GEN.SCIFI.RNG.R48_H6_D4","modelAttackName":"Sniper Rifle"}],
+        "actions":[],
+        "abilities":[]
+    },
+    {"_id":"GEN.SCIFI.ROCKET","userId":"global","name":"Rocket Launcher","picture":"ork-loota.jpg","cost":15,"SPD":5,"DEF":4,"ARM":1,"HP":5,
+        "attacks":[{"attackId":"GEN.SCIFI.RNG.MISSILELAUNCHER","modelAttackName":"Rocket Launcher"}],
+        "actions":[],
+        "abilities":[]
     }
 ]

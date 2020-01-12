@@ -1,5 +1,5 @@
 [
-    {"_id": "GEN.SCIFI.COMMAND.MELEEATTACK","userId": "global","name": "Fight!","duration": "short","text": "Target another friendly model within 12\". Target model may immediately perform a melee attack action for free"},
+    {"_id": "GEN.SCIFI.COMMAND.MELEEATTACK","userId": "global","name": "Fight!","duration": "long","text": "Target another friendly model within 12\". Target model may immediately perform a melee attack action for free"},
     {"_id": "GEN.SCIFI.COMMAND.WALK","userId": "global","name": "Move!","duration": "short","text": "Target another friendly model within 12\". Target model may immediately perform a Walk action for free"},
 
     {"_id": "GEN.SCIFI.ATTACK.DIRECTDMG","userId": "global","name": "Direct Attack","duration": "short","text": "Target an enemy model within 12\"and LOS. Roll 1D6. On a 3+ that model suffers 1 mortal wound, on a 6 that model suffers 2 mortal wounds"},

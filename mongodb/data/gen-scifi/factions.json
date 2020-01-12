@@ -1,7 +1,11 @@
 [
     {"_id":"GEN.SCIFI","userId":"global","name":"Sci-Fi",
         "models":[
-            {"modelId":"GEN.SCIFI.LIBERATOR"}
+            {"modelId":"GEN.SCIFI.LINETROOPER"},
+            {"modelId":"GEN.SCIFI.HEAVYTROOPER"},
+            {"modelId":"GEN.SCIFI.POWERGUN"},
+            {"modelId":"GEN.SCIFI.SNIPER"},
+            {"modelId":"GEN.SCIFI.ROCKET"}
         ],
         "modelOptions":[
         ],

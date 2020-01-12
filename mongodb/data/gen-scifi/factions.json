@@ -1,0 +1,11 @@
+[
+    {"_id":"GEN.SCIFI","userId":"global","name":"Sci-Fi",
+        "models":[
+            {"modelId":"GEN.SCIFI.LIBERATOR"}
+        ],
+        "modelOptions":[
+        ],
+        "factionAbilities":[
+        ]
+    }
+]

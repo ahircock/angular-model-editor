@@ -1,0 +1,7 @@
+[
+    {"_id":"GEN.SCIFI.LIBERATOR","userId":"global","name":"Knight","picture":"templar-knight.jpg","cost":10,"SPD":5,"DEF":4,"ARM":2,"HP":5,
+        "attacks":[{"attackId":"GEN.SCIFI.LIBERATOR.HAMMERSTRIKE","modelAttackName":"Hammer Strike"}],
+        "actions":[{"actionId":"GEN.SCIFI.COMMAND.MELEEATTACK","modelActionName":"Get Em!"}],
+        "abilities":[{"abilityId":"COMMON.TOUGH.REROLLRECOVERY","modelAbilityName":"Transhuman Physiology"}]
+    }
+]
